@@ -60,14 +60,14 @@
   "economie": {
    "statut": "injoignable",
    "nb": 0,
-   "erreur": "<urlopen error Tunnel connection failed: 502 Bad Gateway>",
+   "erreur": "<urlopen error [Errno -2] Name or service not known>",
    "vu_le": "2026-10-08",
    "ok_le": ""
   },
   "industrie": {
    "statut": "injoignable",
    "nb": 0,
-   "erreur": "<urlopen error [Errno 104] Connection reset by peer>",
+   "erreur": "<urlopen error timed out>",
    "vu_le": "2026-10-08",
    "ok_le": ""
   },
@@ -102,7 +102,7 @@
   "domaines": {
    "statut": "injoignable",
    "nb": 0,
-   "erreur": "<urlopen error Tunnel connection failed: 502 Bad Gateway>",
+   "erreur": "<urlopen error [Errno -2] Name or service not known>",
    "vu_le": "2026-10-08",
    "ok_le": ""
   },
@@ -123,7 +123,7 @@
   "sante": {
    "statut": "injoignable",
    "nb": 0,
-   "erreur": "<urlopen error [Errno 104] Connection reset by peer>",
+   "erreur": "<urlopen error timed out>",
    "vu_le": "2026-10-08",
    "ok_le": ""
   },
@@ -135,11 +135,11 @@
    "ok_le": "2026-10-08"
   },
   "education": {
-   "statut": "injoignable",
+   "statut": "ok",
    "nb": 0,
-   "erreur": "<urlopen error [Errno 104] Connection reset by peer>",
+   "erreur": "",
    "vu_le": "2026-10-08",
-   "ok_le": ""
+   "ok_le": "2026-10-08"
   },
   "enseignement-superieur": {
    "statut": "ok",
@@ -151,7 +151,7 @@
   "emploi": {
    "statut": "injoignable",
    "nb": 0,
-   "erreur": "<urlopen error [Errno 104] Connection reset by peer>",
+   "erreur": "<urlopen error [Errno 101] Network is unreachable>",
    "vu_le": "2026-10-08",
    "ok_le": ""
   },
@@ -165,7 +165,7 @@
   "jeunesse-sport": {
    "statut": "injoignable",
    "nb": 0,
-   "erreur": "<urlopen error Tunnel connection failed: 502 Bad Gateway>",
+   "erreur": "<urlopen error [Errno -2] Name or service not known>",
    "vu_le": "2026-10-08",
    "ok_le": ""
   },
