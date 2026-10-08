@@ -91,14 +91,16 @@ def carte_tunisie(locaux, racine, actif=""):
             f'<path class="tn-terre" d="{contour}"/><ellipse class="tn-terre" cx="{dj[0]}" cy="{dj[1]}" rx="9" ry="6.5"/>' + "".join(bulles) + "</svg>")
 
 
-def bloc_carte(ouverts, racine, grille_html, actif=""):
+def hero_carte(ouverts, racine, texte, actif=""):
+    """Bandeau : texte à gauche, carte de la Tunisie EN HAUT à droite (règle d'Ahmed, comme les annuaires)."""
     locaux = {}
     for c in ouverts:
         locaux[c["gouvernorat"]] = locaux.get(c["gouvernorat"], 0) + 1
     nat = locaux.get("national", 0)
-    return (f'<section class="carte bloc-carte"><figure>{carte_tunisie(locaux, racine, actif)}'
-            f'<figcaption>{L(f"Concours des organismes de chaque gouvernorat, + {nat} concours nationaux ouverts partout. Touchez une bulle.", f"مناظرات هياكل كل ولاية، + {ISO(nat)} مناظرة وطنية مفتوحة في كل مكان. المس دائرة.")}</figcaption></figure>'
-            f'{grille_html}</section>')
+    leg = (L(f"+ {nat} concours nationaux, ouverts partout. Touchez une bulle.", f"+ {ISO(nat)} مناظرة وطنية مفتوحة في كل مكان. المس دائرة.") if not actif
+           else L("Autres gouvernorats : touchez la carte", "ولايات أخرى: المس الخريطة"))
+    return (f'    <div class="hero-grille"><div class="hero-texte">\n{texte}\n    </div>'
+            f'<figure class="hero-carte{" petite" if actif else ""}">{carte_tunisie(locaux, racine, actif)}<figcaption>{leg}</figcaption></figure></div>')
 
 
 TYPES_ACTU = {t[0]: t for t in A.TYPES + [A.AUTRE]}
@@ -359,14 +361,15 @@ def construire(jour):
 {filtres(ouverts)}
 {liste_html(ouverts, "", jour, "Aucun concours ouvert pour ce choix. Essayez un autre métier ou tous les gouvernorats.", "لا توجد مناظرة مفتوحة لهذا الاختيار. جرّب اختصاصًا آخر أو كل الولايات.")}
 <h2 class="titre-section" id="gouvernorats">{L("Par gouvernorat", "حسب الولاية")}</h2>
-{bloc_carte(ouverts, "", grille(GOUVS + [G.NATIONAL], "", "gouvernorat", cg, "grille-gouv"))}
-<section class="carte"><p class="note">{L("Les concours nationaux (ministères, offices nationaux) sont ouverts à toute la Tunisie : ils sont comptés dans chaque gouvernorat.", "المناظرات الوطنية (الوزارات والدواوين الوطنية) مفتوحة لكل الجمهورية: تُحتسب في كل ولاية.")}</p></section>
+<section class="carte">{grille(GOUVS + [G.NATIONAL], "", "gouvernorat", cg, "grille-gouv")}
+<p class="note">{L("Les concours nationaux (ministères, offices nationaux) sont ouverts à toute la Tunisie : ils sont comptés dans chaque gouvernorat.", "المناظرات الوطنية (الوزارات والدواوين الوطنية) مفتوحة لكل الجمهورية: تُحتسب في كل ولاية.")}</p></section>
 <h2 class="titre-section" id="metiers">{L("Par métier", "حسب الاختصاص")}</h2>
 <section class="carte">{grille(METIERS, "", "metier", cm, "grille-metiers")}</section>
 {f'<h2 class="titre-section" id="actualites">{L("Dernières actualités des concours", "آخر أخبار المناظرات")}</h2><div class="actus">{"".join(actu_html(x, "") for x in actus[:4])}</div><p><a class="btn" href="actualites/">{L("Toutes les actualités (résultats, convocations…)", "كل الأخبار (النتائج، الاستدعاءات…)")}</a></p>' if actus else ""}
 <section class="carte"><h2>{L("Comment s'inscrire ?", "كيف تترشح؟")}</h2><p>{L("L'inscription se fait toujours sur le portail officiel. Notre guide explique les étapes une par une.", "الترشح يتم دائمًا في البوابة الرسمية. دليلنا يشرح المراحل واحدة بواحدة.")}</p>
 <a class="btn" href="guide-inscription/">{L("Lire le guide d'inscription", "اقرأ دليل الترشح")}</a></section>
 {AVIS}"""
+    hero = hero_carte(ouverts, "", hero)
     pages[""] = page("", "", "Concours Tunisie 2026 : tous les concours ouverts par gouvernorat | Alerte Concours Tunisie",
                      f"{len(ouverts)} concours publics ouverts en Tunisie, dans les 24 gouvernorats : date limite, postes, lien officiel. Mis à jour chaque jour. مناظرات تونس.",
                      hero, contenu, v, maj, jsonld)
@@ -385,7 +388,9 @@ def construire(jour):
 {filtres(cs, avec_gouv=False)}
 {liste_html(cs, "../../", jour, "Aucun concours ouvert pour ce gouvernorat aujourd'hui.", "لا توجد مناظرة مفتوحة في هذه الولاية اليوم.")}
 <h2 class="titre-section">{L("Autres gouvernorats", "ولايات أخرى")}</h2>
-{bloc_carte(ouverts, "../../", grille([x for x in GOUVS + [G.NATIONAL] if x[0] != s], "../../", "gouvernorat", cg, "grille-gouv"), s)}"""
+<section class="carte">{grille([x for x in GOUVS + [G.NATIONAL] if x[0] != s], "../../", "gouvernorat", cg, "grille-gouv")}</section>"""
+        if s != "national":
+            hero = hero_carte(ouverts, "../../", hero, s)
         pages[f"gouvernorat/{s}/"] = page(f"gouvernorat/{s}/", "../../", f"{titre_fr} 2026 : {len(cs)} concours ouverts | Alerte Concours Tunisie",
                                           f"{titre_fr} : {len(cs)} concours ouverts, date limite, postes et lien officiel. {titre_ar}.", hero, contenu, v, maj)
 

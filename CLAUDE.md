@@ -44,7 +44,7 @@ ensuite les nouvelles, 300 gardées ; résumé ≤ 300 caractères ; types résu
 autre ; rattachées aux concours du même organisme) → `donnees/actualites.json` → page `actualites/`, 4 dernières sur l'accueil,
 « Actualités de cet organisme » sur la page d'un concours. Panne : ancien fichier gardé, le site n'est pas bloqué.
 ANETI : son site ne répond pas depuis l'ordinateur de Claude → robot manuel `essai-aneti.yml` pour voir si GitHub le lit.
-**Carte de la Tunisie** (08/10/2026, même dessin qu'Alertes appels d'offres) : `carte_tunisie` / `bloc_carte`, bulle = concours des organismes du gouvernorat
+**Carte de la Tunisie EN HAUT du bandeau** (08/10/2026, règle d'Ahmed, comme les annuaires) : `carte_tunisie` / `hero_carte`, bulle = concours des organismes du gouvernorat
 (+ nationaux indiqués sous la carte) ; accueil et pages de gouvernorat (la sienne en or) ; app.js ne recompte que sur l'accueil.
 Construire : `python robot/construire_site.py [--aujourdhui AAAA-MM-JJ]`.
 Tests : `python tools/test_robot.py` (29) et `node tools/test_site.mjs` (61, jsdom ; dont les pages des concours, sabotage vérifié) — sabotage vérifié le 08/10 (filtre
