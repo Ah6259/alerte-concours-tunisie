@@ -145,6 +145,13 @@ st, ann, err = V.veiller({"url": "https://x.gov.tn/"}, lambda u: (_ for _ in ())
 check("ministères : site injoignable → noté, rien de cassé", st == "injoignable" and ann == [] and "reset" in err)
 st, ann, err = V.veiller({"url": "https://x.gov.tn/"}, lambda u: (u, "<title>Just a moment...</title>"))
 check("ministères : protection anti-robot → noté « bloqué », pas de contournement", st == "bloque")
+_d = ('<a href="/f/demande-acces.pdf">تحميل مطلب نفاذ إلى المعلومة</a><a href="/formulaires">Formulaires</a>'
+      '<a href="/a/5">مشروع نموذجي لدعم الحرفيين وتثمين الموارد المحلية بالجهة</a>')
+_pd = {"https://www.exemple.gov.tn/": _d, "https://www.exemple.gov.tn/formulaires": '<a href="/f/attestation.pdf">Attestation de travail</a>'}
+_docs = []
+V.veiller({"url": "https://www.exemple.gov.tn/"}, lambda u: (u, _pd[u]), _docs)
+check("ministères : documents officiels relevés pour le site Documents (PDF de l'accueil + rubrique « Formulaires »), « نموذجي » écarté",
+      [u for u, _ in _docs] == ["https://www.exemple.gov.tn/f/demande-acces.pdf", "https://www.exemple.gov.tn/f/attestation.pdf"])
 
 # --- 2e source : plateforme des concours du ministère des Finances (08/10/2026)
 import lire_finances as F

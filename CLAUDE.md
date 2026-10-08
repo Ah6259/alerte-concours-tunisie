@@ -100,3 +100,7 @@ Rien n'est ajouté au site sans l'accord d'Ahmed.
 - Page **`ministeres/`** : annonces par ministère (type deviné par `type_de`, « Nouveau » 8 jours), doublons entre sites retirés ;
   liens depuis l'accueil et la page Actualités. 1re visite (depuis le cloud) : 20/27 sites lus, 67 annonces affichées.
 - Injoignables le 08/10 depuis le cloud : économie, industrie, domaines, santé, éducation, emploi, jeunesse-sport.
+- **Documents officiels** (idée d'Ahmed du 08/10) : le même robot relève les formulaires / imprimés / demandes / attestations
+  (`DOC_MOTS`, PDF ou titres longs, + 3 rubriques « Formulaires / نماذج » par site) → liste `documents` de donnees/ministeres.json,
+  PROPOSÉE au site Documents (rien publié sans l'accord d'Ahmed). 1er essai : PM, Justice (registre foncier, accès à
+  l'information, requête), Finances (certificats et attestations), Éducation, Enseignement supérieur.

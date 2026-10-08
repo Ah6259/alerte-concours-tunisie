@@ -24,6 +24,10 @@ GARDER = 400
 MOTS = re.compile(r"مناظر|انتداب|إنتداب|concours|recrutement|recrute", re.I)
 EXCLUS = re.compile(r"مناظرة\s+وطنية\s+للإبداع|concours\s+(?:de\s+)?(?:photo|dessin|cuisine|beaut|artistique)|r[èe]glement\s+du\s+concours|"
                     r"concours\s+\d{4}\s+«|جائزة|résultats?\s+du\s+bac|مسابقة", re.I)
+# documents officiels (formulaires, imprimés, demandes) : pour le site Documents (idée d'Ahmed du 08/10/2026)
+DOC_MOTS = re.compile(r"مطبوع|استمار|أنموذج|نموذج(?!ي)|نماذج|مطلب|مطالب|وثائق إدارية|الخدمات الإدارية|formulaire|imprim[ée]|mod[èe]le|"
+                      r"demande d['’]|attestation|documents? administratifs?|services? administratifs?|e-services", re.I)
+FICHIER_DOC = re.compile(r"\.(?:pdf|docx?|odt|xlsx?)(?:$|\?)", re.I)
 TITRE_MIN = 25          # caractères : en dessous, c'est le nom d'une rubrique
 MAX_RUBRIQUES = 3
 ANTI_ROBOT = re.compile(r"just a moment|cf-chl|captcha|are you human|verify you are|Accès refusé|Access denied", re.I)
@@ -75,8 +79,40 @@ def trier(ls):
     return annonces, rubriques
 
 
-def veiller(site, lire=get):
-    """Annonces de concours d'un site : (statut, [(lien, titre)], erreur)."""
+def trier_docs(ls):
+    """Documents officiels (formulaires…) et rubriques de documents d'une page."""
+    docs, rubriques = [], []
+    for u, t in ls:
+        if not DOC_MOTS.search(t) or MOTS.search(t):
+            continue
+        if FICHIER_DOC.search(u) or len(t) >= TITRE_MIN:
+            docs.append((u, t))
+        else:
+            rubriques.append((u, t))
+    return docs, rubriques
+
+
+def veiller_docs(site, page, base, lire=get):
+    """Formulaires et documents officiels d'un site (page d'accueil déjà lue + 3 rubriques de documents au plus)."""
+    docs, rubriques = trier_docs(liens(page, base))
+    hote = urllib.parse.urlparse(base).netloc
+    for u, _ in [r for r in rubriques if urllib.parse.urlparse(r[0]).netloc == hote][:MAX_RUBRIQUES]:
+        time.sleep(PAUSE)
+        try:
+            b2, p2 = lire(u)
+            docs += trier_docs(liens(p2, b2))[0]
+        except Exception:
+            pass
+    vus, res = set(), []
+    for u, t in docs:
+        if u not in vus:
+            vus.add(u)
+            res.append((u, t))
+    return res
+
+
+def veiller(site, lire=get, avec_docs=None):
+    """Annonces de concours d'un site : (statut, [(lien, titre)], erreur). avec_docs = liste où ajouter les documents trouvés."""
     try:
         base, page = lire(site["url"])
     except Exception as e:
@@ -84,6 +120,8 @@ def veiller(site, lire=get):
     if ANTI_ROBOT.search(page[:20000]) and len(liens(page, base)) < 15:
         return "bloque", [], "protection anti-robot (pas de contournement)"
     annonces, rubriques = trier(liens(page, base))
+    if avec_docs is not None:
+        avec_docs += veiller_docs(site, page, base, lire)
     hote = urllib.parse.urlparse(base).netloc
     for u, _ in [r for r in rubriques if urllib.parse.urlparse(r[0]).netloc == hote][:MAX_RUBRIQUES]:
         time.sleep(PAUSE)
@@ -110,10 +148,17 @@ def main():
     sites = [s for s in json.load(open(LISTE, encoding="utf-8"))["sites"] if s.get("actif", True) and (not a.seulement or s["id"] == a.seulement)]
     ancien = json.load(open(a.sortie, encoding="utf-8")) if os.path.exists(a.sortie) else {"sites": {}, "annonces": []}
     connues = {x["lien"]: x for x in ancien["annonces"]}
+    docs_connus = {x["lien"]: x for x in ancien.get("documents", [])}
     etat, nouvelles = dict(ancien.get("sites", {})), []
     lire = (lambda url: (url, open(a.fichier, encoding="utf-8").read())) if a.fichier else get
     for s in sites:
-        statut, annonces, err = veiller(s, lire)
+        docs = []
+        statut, annonces, err = veiller(s, lire, docs)
+        for u, t in docs:
+            if u in docs_connus:
+                docs_connus[u]["revu_le"] = a.aujourdhui
+            else:
+                docs_connus[u] = {"ministere": s["id"], "titre": t, "lien": u, "vu_le": a.aujourdhui, "revu_le": a.aujourdhui}
         premiere = not any(x["ministere"] == s["id"] for x in ancien["annonces"]) and not etat.get(s["id"], {}).get("ok_le")
         etat[s["id"]] = {"statut": statut, "nb": len(annonces), "erreur": err, "vu_le": a.aujourdhui,
                          "ok_le": a.aujourdhui if statut == "ok" else etat.get(s["id"], {}).get("ok_le", "")}
@@ -124,11 +169,12 @@ def main():
             x = {"ministere": s["id"], "titre": t, "lien": u, "vu_le": "" if premiere else a.aujourdhui, "revu_le": a.aujourdhui}
             connues[u] = x
             nouvelles.append(x)
-        print(f"{s['id']:24} {statut:12} {len(annonces):3} annonce(s) {err}")
+        print(f"{s['id']:24} {statut:12} {len(annonces):3} annonce(s) {len(docs):3} document(s) {err}")
         time.sleep(0 if a.fichier else PAUSE)
     toutes = sorted(connues.values(), key=lambda x: (x.get("vu_le") or "", x.get("revu_le") or ""), reverse=True)[:GARDER]
     os.makedirs(os.path.dirname(a.sortie), exist_ok=True)
-    json.dump({"lu_le": a.aujourdhui, "sites": etat, "annonces": toutes}, open(a.sortie, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
+    documents = sorted(docs_connus.values(), key=lambda x: (x.get("vu_le") or "", x["ministere"]), reverse=True)[:GARDER]
+    json.dump({"lu_le": a.aujourdhui, "sites": etat, "annonces": toutes, "documents": documents}, open(a.sortie, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
     ok = sum(1 for v in etat.values() if v["statut"] == "ok")
     print(f"{ok}/{len(etat)} site(s) lus ; {len(nouvelles)} annonce(s) ajoutée(s) ; {len(toutes)} gardées")
 
