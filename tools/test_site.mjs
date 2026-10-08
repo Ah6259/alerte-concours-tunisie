@@ -12,7 +12,7 @@ const check = (nom, cond) => { if (cond) ok++; else { ko++; console.log("ÉCHEC 
 const D = JSON.parse(lire("donnees/concours.json"));
 const GOUVS = ["tunis", "ariana", "ben-arous", "manouba", "nabeul", "zaghouan", "bizerte", "beja", "jendouba", "le-kef", "siliana", "sousse",
   "monastir", "mahdia", "sfax", "kairouan", "kasserine", "sidi-bouzid", "gabes", "medenine", "tataouine", "gafsa", "tozeur", "kebili"];
-const pages = ["index.html", "actualites/index.html", "guide-inscription/index.html", "alertes/index.html", "a-propos/index.html",
+const pages = ["index.html", "actualites/index.html", "guide-inscription/index.html", "alertes/index.html", "alertes/conditions/index.html", "a-propos/index.html",
   ...GOUVS.map(g => `gouvernorat/${g}/index.html`), "gouvernorat/national/index.html",
   ...readdirSync(join(root, "metier")).map(m => `metier/${m}/index.html`)];
 
@@ -103,6 +103,52 @@ if (JSDOM) {
   check("navigateur : recherche sans résultat → message « Aucun concours »", ouvertes().length === 0 && !d.getElementById("vide").hidden);
   d.querySelector(".langue").dispatchEvent(new w.Event("click"));
   check("navigateur : bouton langue → page en arabe (de droite à gauche)", d.documentElement.lang === "ar" && d.documentElement.dir === "rtl");
+}
+
+// ---- Alertes concours (abonnement Telegram, 08/10/2026) : page, paiement, formulaire, rien de privé dans ce dépôt
+const al = lire("alertes/index.html");
+check("alertes : prix 15 DT / 3 mois ou 39 DT / an, 7 jours d'essai gratuit, pas de renouvellement automatique",
+  /15 DT \/ 3 mois/.test(al) && /39 DT \/ an/.test(al) && /7 jours d'essai gratuit/.test(al) && /Pas de renouvellement automatique/.test(al));
+check("alertes : paiement en 3 étapes D17 / IZI au 24 321 390 (logos, écrans d'exemple), phrase de confiance, preuve WhatsApp",
+  /<ol class="paie-etapes">/.test(al) && /class="paie-confiance"/.test(al) && al.includes("24 321 390") && /href="https:\/\/wa\.me\/21624321390\?text=/.test(al)
+  && ["d17.png", "izi.png", "transfert-d17.svg", "transfert-izi.svg"].every(f => existsSync(join(root, "assets/paiement", f))) && /src="\.\.\/assets\/paiement\/d17\.png"/.test(al));
+check("alertes : formulaire Formspree (mwlpakqj) : nom, téléphone, métiers, gouvernorats (+ « Toute la Tunisie »), concours à suivre, formule, conditions",
+  /<form id="abo-form" action="https:\/\/formspree\.io\/f\/mwlpakqj"/.test(al) && /name="nom" required/.test(al) && /name="telephone" required/.test(al)
+  && (al.match(/name="metiers"/g) || []).length >= 10 && (al.match(/name="gouvernorats"/g) || []).length === 25 && /id="g-tous"/.test(al)
+  && /name="suivis"/.test(al) && (al.match(/name="formule"/g) || []).length === 3 && /href="conditions\/"/.test(al));
+check("alertes : script externe abonnement.js sur cette page seulement", /<script src="\.\.\/assets\/abonnement\.js\?v=/.test(al) && !/abonnement\.js/.test(acc));
+const co = lire("alertes/conditions/index.html");
+check("conditions : prix, essai, paiement, arrêt (/stop), données personnelles, non officiel", /15 DT pour 3 mois/.test(co) && /\/stop/.test(co) && /Données personnelles/.test(co) && /pas officiel/.test(co));
+check("accueil + pages : gros bouton doré vers alertes/ (7 jours d'essai)", /class="btn-pro-grand" id="btn-alertes" href="alertes\/"/.test(acc) && /7 jours d'essai gratuit/.test(acc)
+  && /class="btn-pro-grand" id="btn-alertes" href="\.\.\/\.\.\/alertes\/"/.test(lire(`gouvernorat/${GOUVS[0]}/index.html`)));
+check("sitemap : alertes/ et alertes/conditions/", sm.includes("alertes/</loc>") && sm.includes("alertes/conditions/</loc>"));
+check("aucune donnée d'abonné dans ce dépôt public (abonnes.json, chat_id, jeton Telegram)",
+  !existsSync(join(root, "abonnes.json")) && !existsSync(join(root, "donnees/abonnes.json")) && !/chat_id|bot\d{6,}:/.test(al + lire("assets/abonnement.js")));
+if (JSDOM) {
+  const envois = [];
+  const dom = new JSDOM(al, { runScripts: "outside-only", url: "https://ah6259.github.io/alerte-concours-tunisie/alertes/", pretendToBeVisual: true });
+  const w = dom.window, d = w.document;
+  w.fetch = (url, o) => { envois.push([url, o.body]); return Promise.resolve({ ok: true }); };
+  w.eval(lire("assets/page.js")); w.eval(lire("assets/abonnement.js"));
+  d.dispatchEvent(new w.Event("DOMContentLoaded"));
+  const f = d.getElementById("abo-form"), caseG = v => d.querySelector(`#abo-gouv input[value="${v}"]`);
+  const soumettre = async () => { f.dispatchEvent(new w.Event("submit", { cancelable: true })); await new Promise(r => setTimeout(r, 20)); };
+  caseG("sfax").checked = true; caseG("sfax").dispatchEvent(new w.Event("change", { bubbles: true }));
+  caseG("tous").checked = true; caseG("tous").dispatchEvent(new w.Event("change", { bubbles: true }));
+  check("alertes : « Toute la Tunisie » décoche les gouvernorats", caseG("tous").checked && !caseG("sfax").checked);
+  f.querySelector('[name="nom"]').value = "Test Candidat"; f.querySelector('[name="telephone"]').value = "24 321 390";
+  await soumettre();
+  check("alertes : sans métier coché → message d'erreur, rien n'est envoyé", envois.length === 0 && /métier/.test(d.getElementById("abo-status").textContent));
+  f.querySelector('#abo-metiers input').checked = true; f.querySelector('[name="suivis"]').value = "n° 2390 ; 2412, abc";
+  await soumettre();
+  check("alertes : conditions non acceptées → rien n'est envoyé", envois.length === 0 && /conditions/.test(d.getElementById("abo-status").textContent));
+  d.getElementById("abo-conditions").checked = true;
+  await soumettre();
+  const corps = envois[0] && envois[0][1];
+  check("alertes : envoi à Formspree avec la ligne « pour_activer » (téléphone 8 chiffres, concours suivis nettoyés), puis confirmation",
+    envois.length === 1 && /formspree\.io\/f\/mwlpakqj/.test(envois[0][0]) && corps.get("telephone") === "24321390" && corps.get("suivis") === "2390, 2412"
+    && /suivis: 2390,2412/.test(corps.get("pour_activer")) && f.hidden && !d.getElementById("apres-abo").hidden
+    && /Test%20Candidat/.test(d.getElementById("abo-preuve-apres").getAttribute("href")));
 }
 
 console.log(`\n${ok}/${ok + ko} vérifications réussies` + (ko ? ` — ${ko} ÉCHEC(S) : ne pas publier.` : " — tout est bon."));
