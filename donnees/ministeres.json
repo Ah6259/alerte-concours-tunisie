@@ -1081,5 +1081,196 @@
    "vu_le": "",
    "revu_le": "2026-10-08"
   }
+ ],
+ "documents": [
+  {
+   "ministere": "religieuses",
+   "titre": "مطبوعة مطلب تنازل عن الترشّح للحجّ",
+   "lien": "https://www.affaires-religieuses.tn/public/pages/500995017",
+   "vu_le": "2026-10-08",
+   "revu_le": "2026-10-08"
+  },
+  {
+   "ministere": "religieuses",
+   "titre": "مطلب نفاذ للمعلومة",
+   "lien": "http://www.inai.tn/wp-content/uploads/2021/02/%D9%85%D8%B7%D9%84%D8%A8-%D9%86%D9%81%D8%A7%D8%B0-%D8%A7%D9%84%D9%89-%D8%A7%D9%84%D9%85%D8%B9%D9%84%D9%88%D9%85%D8%A9-%D9%87%D9%8A%D8%A6%D8%A9-%D8%A7%D9%84%D9%86%D9%81%D8%A7%D8%B0-%D8%A7%D9%84%D9%89-%D8%A7%D9%84%D9%85%D8%B9%D9%84%D9%88%D9%85%D8%A9.pdf",
+   "vu_le": "2026-10-08",
+   "revu_le": "2026-10-08"
+  },
+  {
+   "ministere": "religieuses",
+   "titre": "استمارة ترشّح لبعثة وزارة الشؤون الدينية لموسم حج 1448 هـ / 2027 م",
+   "lien": "http://www.affaires-religieuses.gov.tn/storage/app/public/hajj2026/Formulaire-candidature-2027.pdf",
+   "vu_le": "2026-10-08",
+   "revu_le": "2026-10-08"
+  },
+  {
+   "ministere": "religieuses",
+   "titre": "مطلب ترشح للمشاركة في اختبار التجويد وحسن الصوت",
+   "lien": "http://www.affaires-religieuses.gov.tn/storage/app/public/pdf/coran/tajwid2023.pdf",
+   "vu_le": "2026-10-08",
+   "revu_le": "2026-10-08"
+  },
+  {
+   "ministere": "religieuses",
+   "titre": "مطلب ترشّـح للمشاركة في اختبار الحفظ",
+   "lien": "http://www.affaires-religieuses.gov.tn/storage/app/public/pdf/coran/recit2023.pdf",
+   "vu_le": "2026-10-08",
+   "revu_le": "2026-10-08"
+  },
+  {
+   "ministere": "religieuses",
+   "titre": "أنموذج لتقرير مهمّة بالخارج",
+   "lien": "https://www.affaires-religieuses.tn/storage/app/public/articles/Document_en_ligne/exemplaire-mission.pdf",
+   "vu_le": "2026-10-08",
+   "revu_le": "2026-10-08"
+  },
+  {
+   "ministere": "religieuses",
+   "titre": "استمارة ترشّح لتسديد شغورات بوزارة الشّؤون الدّينيّة عن طريق النقلة أو الإلحاق",
+   "lien": "https://www.affaires-religieuses.tn/storage/app/public/articles/Document_en_ligne/Formulaire-de-nomination.pdf",
+   "vu_le": "2026-10-08",
+   "revu_le": "2026-10-08"
+  },
+  {
+   "ministere": "religieuses",
+   "titre": "استمارة ترشّح لتوعية الجالية التّونسيّة بالخارج",
+   "lien": "https://www.affaires-religieuses.tn/storage/app/public/articles/Document_en_ligne/formulaire-etranger_01.pdf",
+   "vu_le": "2026-10-08",
+   "revu_le": "2026-10-08"
+  },
+  {
+   "ministere": "religieuses",
+   "titre": "استمارة ترشّح لبعثة وزارة الشؤون الدينية لموسم حج 1448...",
+   "lien": "https://www.affaires-religieuses.tn/public/pages/{$page->slug}",
+   "vu_le": "2026-10-08",
+   "revu_le": "2026-10-08"
+  },
+  {
+   "ministere": "pm",
+   "titre": "مطلب تظلّم لدى رئيس الهيكل",
+   "lien": "https://www.pm.gov.tn/ar/mtlb-tzlwm-ldy-ryys-alhykl",
+   "vu_le": "2026-10-08",
+   "revu_le": "2026-10-08"
+  },
+  {
+   "ministere": "pm",
+   "titre": "تحميل مطلب نفاذ إلى المعلومة",
+   "lien": "https://www.pm.gov.tn/sites/default/files/2022-02/3-demande-acces.pdf",
+   "vu_le": "2026-10-08",
+   "revu_le": "2026-10-08"
+  },
+  {
+   "ministere": "pm",
+   "titre": "تحميل مطلب تظلم لدى رئيس الهيكل",
+   "lien": "https://www.pm.gov.tn/sites/default/files/2022-02/4-demande-au-chef.pdf",
+   "vu_le": "2026-10-08",
+   "revu_le": "2026-10-08"
+  },
+  {
+   "ministere": "justice",
+   "titre": "مطلب تسجيل",
+   "lien": "https://www.justice.gov.tn/fileadmin/medias/Textes_et_documents/Formulaires/Requisition_immatriculation.pdf",
+   "vu_le": "2026-10-08",
+   "revu_le": "2026-10-08"
+  },
+  {
+   "ministere": "justice",
+   "titre": "مطلب تحيين رسم عقاري",
+   "lien": "https://www.justice.gov.tn/fileadmin/medias/Textes_et_documents/Formulaires/Mise_jour_titre_foncier.pdf",
+   "vu_le": "2026-10-08",
+   "revu_le": "2026-10-08"
+  },
+  {
+   "ministere": "justice",
+   "titre": "نماذج من المطالب المشتركة بين مختلف أصناف المحاكم",
+   "lien": "https://www.justice.gov.tn/index.php?id=416",
+   "vu_le": "2026-10-08",
+   "revu_le": "2026-10-08"
+  },
+  {
+   "ministere": "justice",
+   "titre": "نماذج من المطالب الخاصة بكل صنف من المحاكم",
+   "lien": "https://www.justice.gov.tn/index.php?id=417",
+   "vu_le": "2026-10-08",
+   "revu_le": "2026-10-08"
+  },
+  {
+   "ministere": "justice",
+   "titre": "نماذج من المطالب الخاصة بالإدارة المركزية",
+   "lien": "https://www.justice.gov.tn/index.php?id=418",
+   "vu_le": "2026-10-08",
+   "revu_le": "2026-10-08"
+  },
+  {
+   "ministere": "justice",
+   "titre": "مطلب نفاذ الى المعلومة",
+   "lien": "https://www.justice.gov.tn/fileadmin/medias/gouvernement_ouvert/nafedh14325.pdf",
+   "vu_le": "2026-10-08",
+   "revu_le": "2026-10-08"
+  },
+  {
+   "ministere": "justice",
+   "titre": "مطلب تظلم",
+   "lien": "https://www.justice.gov.tn/fileadmin/medias/gouvernement_ouvert/tadhalom14325.pdf",
+   "vu_le": "2026-10-08",
+   "revu_le": "2026-10-08"
+  },
+  {
+   "ministere": "justice",
+   "titre": "نموذج عريضة دعوى",
+   "lien": "https://www.justice.gov.tn/fileadmin/medias/gouvernement_ouvert/aridha14325.pdf",
+   "vu_le": "2026-10-08",
+   "revu_le": "2026-10-08"
+  },
+  {
+   "ministere": "finances",
+   "titre": "E-Services Télédéclaration, Télé-Amende,...",
+   "lien": "https://www.finances.gov.tn/e-services",
+   "vu_le": "2026-10-08",
+   "revu_le": "2026-10-08"
+  },
+  {
+   "ministere": "finances",
+   "titre": "Certificats & attestations",
+   "lien": "https://www.finances.gov.tn/fr/certificats-attestations",
+   "vu_le": "2026-10-08",
+   "revu_le": "2026-10-08"
+  },
+  {
+   "ministere": "finances",
+   "titre": "Certificats et attestations",
+   "lien": "https://www.finances.gov.tn/fr/certificats-et-attestations",
+   "vu_le": "2026-10-08",
+   "revu_le": "2026-10-08"
+  },
+  {
+   "ministere": "finances",
+   "titre": "Téléchargement Formulaires",
+   "lien": "http://\nhttp://www.finances.gov.tn/fr/telechargement?field_type_document_target_id=All&field_secteur_et_domaines_target_id=All%0A",
+   "vu_le": "2026-10-08",
+   "revu_le": "2026-10-08"
+  },
+  {
+   "ministere": "environnement",
+   "titre": "Demande d'intervention (ONAS)",
+   "lien": "http://www.onas.nat.tn/Fr/contact.php?code=56",
+   "vu_le": "2026-10-08",
+   "revu_le": "2026-10-08"
+  },
+  {
+   "ministere": "enseignement-superieur",
+   "titre": "شروط ومكونـات مطلب الترخيص لإحداث مؤسسـة خـاصة للتعليم العـالي",
+   "lien": "https://www.mes.tn/page.php?code_menu=149&code_menu_parent=54",
+   "vu_le": "2026-10-08",
+   "revu_le": "2026-10-08"
+  },
+  {
+   "ministere": "education",
+   "titre": "Accès aux documents administratifs",
+   "lien": "https://education.gov.tn/?cat=33",
+   "vu_le": "2026-10-08",
+   "revu_le": "2026-10-08"
+  }
  ]
 }
