@@ -65,6 +65,23 @@ check("page qui n'est pas une actualité → ignorée", A.lire_detail("<html><bo
 r = A.rattacher([{"organisme": "بلدية رقادة"}], [{"organisme": "بلديّة رقاده", "id": "3155"}, {"organisme": "بلدية رقادة", "id": "3156"}])
 check("actualité rattachée aux concours du même organisme (à la chadda et au ة près)", r[0]["concours"] == ["3155", "3156"])
 
+# --- page coupée par le portail (08/10/2026 : 37 lignes au lieu de 143) : la page vide est redemandée
+import io, urllib.request as U
+class _Rep(io.BytesIO):
+    def __enter__(self): return self
+    def __exit__(self, *a): return False
+_suite = [page if "Page$Next" in page else page + "Page$Next", "<html>erreur passagère</html>",
+          page.replace("Page$Next", "").replace(f">{L[0]['id']}<", ">7777<")]
+class _Op:
+    def open(self, req, timeout=0): return _Rep(_suite.pop(0).encode())
+_vrai, _pause, _dormir = U.build_opener, R.PAUSE, R.time.sleep
+U.build_opener = lambda *a: _Op(); R.PAUSE = 0; R.time.sleep = lambda s: None
+try:
+    lu, n = R.lire_portail(10)
+finally:
+    U.build_opener, R.PAUSE, R.time.sleep = _vrai, _pause, _dormir
+check("page vide renvoyée par le portail : redemandée, la lecture continue (rien de perdu)", n == 2 and not _suite and len(lu) >= 6)
+
 # --- 2e source : plateforme des concours du ministère des Finances (08/10/2026)
 import lire_finances as F
 fin = F.lignes(open(os.path.join(ICI, "exemples", "finances.html"), encoding="utf-8").read(), R.metier)

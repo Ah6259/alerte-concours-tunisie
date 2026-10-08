@@ -98,7 +98,19 @@ def lire_portail(max_pages):
     while "Page$Next" in page and n < max_pages:
         f = champs_caches(page); f.update({"__EVENTTARGET": "GVConcoursPublic", "__EVENTARGUMENT": "Page$Next"})
         time.sleep(PAUSE)
-        page = get(urllib.parse.urlencode(f).encode()); n += 1
+        donnees = urllib.parse.urlencode(f).encode()
+        page = get(donnees); n += 1
+        # page vide ou coupée (08/10/2026 : lecture arrêtée à la 8e page, 37 lignes au lieu de 143) : on la redemande
+        # jusqu'à 3 fois ; une vraie dernière page (moins de 5 lignes, pas de page suivante) revient pareille et est gardée
+        meilleure = page
+        for essai in range(3):
+            if "Page$Next" in page or len(lignes(page)) >= 5:
+                break
+            time.sleep(10 * (essai + 1))
+            page = get(donnees)
+            if len(lignes(page)) >= len(lignes(meilleure)) or "Page$Next" in page:
+                meilleure = page
+        page = meilleure
         for l in lignes(page): vus[l["id"]] = l
     return list(vus.values()), n
 
