@@ -1,0 +1,35 @@
+# Robot quotidien d'Alerte Concours Tunisie — tourne sur GitHub, sans PC.
+# Lecture du tableau officiel des concours -> test du robot -> enregistrement de donnees/concours.json (historique gardé).
+# Si le portail est en panne, l'ancien fichier est gardé (le robot sort en erreur et GitHub prévient).
+name: maj
+on:
+  schedule:
+    - cron: "20 5 * * *"       # 6h20 heure de Tunis
+  workflow_dispatch:
+concurrency:
+  group: maj-site
+  cancel-in-progress: false
+permissions:
+  contents: write
+env:
+  TZ: Africa/Tunis
+  PYTHONIOENCODING: utf-8
+jobs:
+  maj:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12" }
+      - name: Test du robot (sans réseau)
+        run: python tools/test_robot.py
+      - name: Lecture du tableau officiel des concours
+        run: python robot/lire_concours.py
+      - name: Enregistrer
+        run: |
+          git config user.name "robot-concours"
+          git config user.email "robot-concours@users.noreply.github.com"
+          git add donnees
+          git diff --cached --quiet || git commit -m "Concours du $(date +%d/%m/%Y)"
+          git pull --rebase -q && git push -q
