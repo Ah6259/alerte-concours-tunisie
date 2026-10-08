@@ -43,7 +43,8 @@ d'Alertes appels d'offres (couleur verte #1F6B60) ; `assets/app.js` : filtre gou
 ensuite les nouvelles, 300 gardées ; résumé ≤ 300 caractères ; types résultats / report / convocation / candidatures / nouveau /
 autre ; rattachées aux concours du même organisme) → `donnees/actualites.json` → page `actualites/`, 4 dernières sur l'accueil,
 « Actualités de cet organisme » sur la page d'un concours. Panne : ancien fichier gardé, le site n'est pas bloqué.
-ANETI : son site ne répond pas depuis l'ordinateur de Claude → robot manuel `essai-aneti.yml` pour voir si GitHub le lit.
+ANETI (emploi.nat.tn) : REFUSE les connexions depuis GitHub et depuis l'ordinateur de Claude (essai du 08/10/2026 : « connection reset »),
+il ne répond qu'aux connexions de Tunisie (PC d'Ahmed) → pas utilisé pour l'instant (règle « tout sans PC ») ; le portail officiel suffit.
 **Carte de la Tunisie EN HAUT du bandeau** (08/10/2026, règle d'Ahmed, comme les annuaires) : `carte_tunisie` / `hero_carte`, bulle = concours des organismes du gouvernorat
 (+ nationaux indiqués sous la carte) ; accueil et pages de gouvernorat (la sienne en or) ; app.js ne recompte que sur l'accueil.
 Construire : `python robot/construire_site.py [--aujourdhui AAAA-MM-JJ]`.
@@ -53,4 +54,4 @@ national cassé → détecté).
 ## État au 08/10/2026
 Fait : robot, classement métier / gouvernorat, pages FR + AR, tests, publication GitHub Pages.
 À faire : portail + vidéo, Search Console, vérification du matin et gendarme IA (ajouter ce dépôt à leurs sources),
-ANETI (si GitHub le lit), puis Alertes / Suivi (Telegram, paiement 3 étapes), puis Entraînement.
+ Alertes / Suivi (Telegram, paiement 3 étapes), puis Entraînement.
