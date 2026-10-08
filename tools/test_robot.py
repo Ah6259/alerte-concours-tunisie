@@ -82,6 +82,24 @@ finally:
     U.build_opener, R.PAUSE, R.time.sleep = _vrai, _pause, _dormir
 check("page vide renvoyée par le portail : redemandée, la lecture continue (rien de perdu)", n == 2 and not _suite and len(lu) >= 6)
 
+# --- relevé de l'ANETI depuis le PC d'Ahmed (tools/aneti_pc.py, 08/10/2026) : sans réseau
+sys.path.insert(0, ICI)
+import aneti_pc as P, pathlib
+with tempfile.TemporaryDirectory() as d:
+    P.SORTIE, P.PAUSE = pathlib.Path(d), 0
+    vus_url = []
+    def _faux(url):
+        vus_url.append(url)
+        if url.endswith("page=21"):
+            return 200, "".join(f'<a href="global.php?page=198&amp;ref={n}">x</a>' for n in range(1, 60)) + '<a href="global.php?page=198&amp;ref=1">bis</a>'
+        if "ref=7" in url: raise OSError("coupé")
+        return 200, f"<p>détail {url}</p>"
+    P.telecharger = _faux
+    r = P.relever({"pages": [{"nom": "concours-fr", "url": "https://www.emploi.nat.tn/fo/Fr/global.php?page=21", "suivre": "global\\.php\\?page=198&(?:amp;)?ref=\\d+", "max": 40}]})
+    check("ANETI (PC) : la liste + 40 détails au plus (liens en double ignorés), adresses complètes, une page en panne n'arrête pas le relevé",
+          len(vus_url) == 41 and vus_url[1] == "https://www.emploi.nat.tn/fo/Fr/global.php?page=198&ref=1" and len(set(vus_url)) == 41
+          and sum("erreur" in x for x in r["pages"]) == 1 and (pathlib.Path(d) / "concours-fr-detail-3.html").exists() and (pathlib.Path(d) / "releve.json").exists())
+
 # --- 2e source : plateforme des concours du ministère des Finances (08/10/2026)
 import lire_finances as F
 fin = F.lignes(open(os.path.join(ICI, "exemples", "finances.html"), encoding="utf-8").read(), R.metier)

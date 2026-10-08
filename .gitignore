@@ -5,3 +5,4 @@ __pycache__/
 Thumbs.db
 desktop.ini
 .env
+tools/aneti_pc.log

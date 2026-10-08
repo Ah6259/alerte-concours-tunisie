@@ -1,0 +1,8 @@
+{
+ "_note": "Pages de l'ANETI que le PC d'Ahmed télécharge chaque jour (tools/aneti_pc.py). Modifiable depuis GitHub : le PC relit ce fichier à chaque passage. « suivre » = liens à télécharger aussi depuis la page (détails), au plus « max ».",
+ "pages": [
+  {"nom": "concours-fr", "url": "https://www.emploi.nat.tn/fo/Fr/global.php?page=21",
+   "suivre": "global\\.php\\?page=198&(?:amp;)?ref=\\d+", "max": 40},
+  {"nom": "accueil-fr", "url": "https://www.emploi.nat.tn/fo/Fr/global.php"}
+ ]
+}

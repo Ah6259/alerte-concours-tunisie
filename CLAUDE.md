@@ -49,7 +49,14 @@ ensuite les nouvelles, 300 gardées ; résumé ≤ 300 caractères ; types résu
 autre ; rattachées aux concours du même organisme) → `donnees/actualites.json` → page `actualites/`, 4 dernières sur l'accueil,
 « Actualités de cet organisme » sur la page d'un concours. Panne : ancien fichier gardé, le site n'est pas bloqué.
 ANETI (emploi.nat.tn) : REFUSE les connexions depuis GitHub et depuis l'ordinateur de Claude (essai du 08/10/2026 : « connection reset »),
-il ne répond qu'aux connexions de Tunisie (PC d'Ahmed) → pas utilisé pour l'instant (règle « tout sans PC ») ; le portail officiel suffit.
+il ne répond qu'aux connexions de Tunisie (PC d'Ahmed).
+**RÈGLE SPÉCIFIQUE (Ahmed, 08/10/2026) : l'ANETI est lue DEPUIS LE PC d'Ahmed** (exception à « tout sans PC », comme Otrity) :
+tâche Windows « Concours-ANETI » à 12h30 (`tools/installer_aneti_pc.ps1`) → `tools/aneti_pc.py` ne fait QUE télécharger
+les pages listées dans `tools/aneti_a_lire.json` (modifiable depuis GitHub, relu à chaque passage ; « suivre » = liens de
+détail, 40 au plus, 80 pages/jour au plus, 2 s entre deux) → `donnees/aneti/*.html` + `releve.json` → commit + push.
+Tout le tri se fait sur GitHub (concours pour ce site, nouveaux documents pour le site Documents) : rien à changer sur le PC.
+Visite normale depuis la Tunisie, robots.txt de l'ANETI : tout autorisé (pas un contournement). PC éteint = l'ANETI manque, le reste tourne.
+À faire dès le 1er relevé reçu : écrire la lecture des pages (structure encore inconnue : l'ANETI est fermée au cloud).
 **Carte de la Tunisie EN HAUT du bandeau** (08/10/2026, règle d'Ahmed, comme les annuaires) : `carte_tunisie` / `hero_carte`, bulle = concours des organismes du gouvernorat
 (+ nationaux indiqués sous la carte) ; accueil et pages de gouvernorat (la sienne en or) ; app.js ne recompte que sur l'accueil.
 Construire : `python robot/construire_site.py [--aujourdhui AAAA-MM-JJ]`.
