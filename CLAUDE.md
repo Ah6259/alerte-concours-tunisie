@@ -35,14 +35,15 @@ Un organisme mal classé → ajouter son lieu, puis un cas dans `tools/test_robo
 
 ## Pages (robot/construire_site.py)
 Accueil (résumé, « se terminent bientôt », filtres, liste, gouvernorats, métiers, guide, avis), `gouvernorat/<slug>/`
-(24 + `national`), `metier/<slug>/`, `guide-inscription/` (d'après le guide officiel du candidat), `alertes/` (bientôt),
+(24 + `national`), `metier/<slug>/`, **`concours/<n°>/`** (08/10/2026 : une page par concours du tableau, ouvert ou clos :
+grade, organisme, postes, dates, résultats, lien officiel, guide, concours proches ; le grade des cartes y mène), `guide-inscription/` (d'après le guide officiel du candidat), `alertes/` (bientôt),
 `a-propos/` ; sitemap, robots.txt (IA refusées), manifeste, service worker. Gabarit, styles et scripts repris
 d'Alertes appels d'offres (couleur verte #1F6B60) ; `assets/app.js` : filtre gouvernorat = ses concours + les nationaux.
 Construire : `python robot/construire_site.py [--aujourdhui AAAA-MM-JJ]`.
-Tests : `python tools/test_robot.py` (29) et `node tools/test_site.mjs` (58, jsdom) — sabotage vérifié le 08/10 (filtre
+Tests : `python tools/test_robot.py` (29) et `node tools/test_site.mjs` (61, jsdom ; dont les pages des concours, sabotage vérifié) — sabotage vérifié le 08/10 (filtre
 national cassé → détecté).
 
 ## État au 08/10/2026
 Fait : robot, classement métier / gouvernorat, pages FR + AR, tests, publication GitHub Pages.
 À faire : portail + vidéo, Search Console, vérification du matin et gendarme IA (ajouter ce dépôt à leurs sources),
-actualités du portail et ANETI, page par concours, puis Alertes / Suivi (Telegram, paiement 3 étapes), puis Entraînement.
+actualités du portail et ANETI, puis Alertes / Suivi (Telegram, paiement 3 étapes), puis Entraînement.

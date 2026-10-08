@@ -69,7 +69,7 @@ def carte(c, racine, jour):
     gouv_lien = f'{racine}gouvernorat/{g[0]}/'
     return f"""<article class="ao{' urgent' if urgent else ''}" id="c-{E(c['id'])}" data-num="{E(c['id'])}" data-metier="{m[0]}" data-gouv="{g[0]}" data-limite="{lim}" data-pub="{E(c.get('vu_le', ''))}">
  <div class="ao-haut"><a class="pastille" href="{racine}metier/{m[0]}/">{L(E(m[1]), m[2])}</a><a class="pastille gouv" href="{gouv_lien}">{ICONE_LIEU}{L(E(g[1]), g[2])}</a><span class="nouveau" hidden>{L("Nouveau", "جديد")}</span><span class="rappel" hidden></span></div>
- <h3 dir="rtl" lang="ar">{E(c['grade'])}</h3>
+ <h3 dir="rtl" lang="ar"><a href="{racine}concours/{E(c['id'])}/">{E(c['grade'])}</a></h3>
  <p class="acheteur" dir="rtl" lang="ar">{E(c['organisme'])}</p>
  <div class="ao-infos">
   <div class="limite"><span>{L("Inscription jusqu'au", "آخر أجل للترشح")}</span><b>{L(dfr(lim) or "non indiquée", ISO(dfr(lim)) if lim else "غير مذكور")}</b><small class="reste">{reste_fr}</small></div>
@@ -328,6 +328,55 @@ def construire(jour):
 <section class="carte">{grille([x for x in METIERS if x[0] != s], "../../", "metier", cm, "grille-metiers")}</section>"""
         pages[f"metier/{s}/"] = page(f"metier/{s}/", "../../", f"Concours {fr} Tunisie 2026 : {len(cs)} ouverts | Alerte Concours Tunisie",
                                      f"Concours {fr.lower()} en Tunisie : {len(cs)} ouverts, par gouvernorat, date limite et lien officiel. مناظرات {ar}.", hero, contenu, v, maj)
+
+    # --- une page par concours (08/10/2026, plan Google « une page par recherche ») : tous les concours du tableau officiel,
+    # ouverts ou clos (les résultats arrivent après la clôture) ; aucune page vide, toujours le lien officiel.
+    tous = d["concours"]
+    for c in tous:
+        m, g = M_PAR[c["metier"]], G_PAR[c["gouvernorat"]]
+        lim, fin = c.get("cloture_candidatures") or "", c.get("cloture_concours") or ""
+        ouvert = not lim or lim >= jour
+        postes = c.get("postes")
+        p_fr = f"{postes} poste{'s' if postes and postes > 1 else ''}" if postes else ""
+        if ouvert:
+            reste = (dt.date.fromisoformat(lim) - dt.date.fromisoformat(jour)).days if lim else None
+            etat = L(f"Inscriptions ouvertes jusqu'au {dfr(lim)}" + (f" ({'aujourd’hui' if reste == 0 else 'demain' if reste == 1 else f'encore {reste} jours'})" if reste is not None else "") if lim else "Inscriptions ouvertes",
+                     f"الترشح مفتوح إلى غاية {ISO(dfr(lim))}" if lim else "الترشح مفتوح")
+        else:
+            etat = L(f"Inscriptions closes depuis le {dfr(lim)}", f"انتهى أجل الترشح في {ISO(dfr(lim))}")
+        lignes = [("N° du concours", "عدد المناظرة", ISO(E(c["id"]))), ("Décision", "القرار", f'<span dir="rtl" lang="ar">{E(c.get("decision"))}</span>'),
+                  ("Organisme", "الهيكل", f'<span dir="rtl" lang="ar">{E(c["organisme"])}</span>'),
+                  ("Grade", "الخطة", f'<span dir="rtl" lang="ar">{E(c["grade"])}</span>'),
+                  ("Postes", "عدد الخطط", L(p_fr or "voir le portail", ISO(postes) if postes else "انظر البوابة")),
+                  ("Clôture des candidatures", "آخر أجل للترشح", L(dfr(lim) or "non indiquée", ISO(dfr(lim)) if lim else "غير مذكور")),
+                  ("Clôture du concours", "ختم المناظرة", L(dfr(fin) or "non indiquée", ISO(dfr(fin)) if fin else "غير مذكور")),
+                  ("Résultats", "النتائج", resultat(c)),
+                  ("Gouvernorat", "الولاية", f'<a href="../../gouvernorat/{g[0]}/">{L(E(g[1]), g[2])}</a>'),
+                  ("Métier", "الاختصاص", f'<a href="../../metier/{m[0]}/">{L(E(m[1]), m[2])}</a>')]
+        table = "".join(f"<tr><th>{L(a, b)}</th><td>{v_}</td></tr>" for a, b, v_ in lignes)
+        proches = [x for x in ouverts if x["id"] != c["id"] and (x["metier"] == c["metier"] or x["gouvernorat"] == c["gouvernorat"])][:8]
+        autres = "".join(f'<li><a href="../{E(x["id"])}/" dir="rtl" lang="ar">{E(x["grade"])} — {E(x["organisme"])}</a></li>' for x in proches)
+        hero = f"""{fil("../../", f"Concours n° {E(c['id'])}", f"المناظرة عدد {ISO(E(c['id']))}")}
+    <h1 dir="rtl" lang="ar">{E(c["grade"])}</h1>
+    <p class="intro" dir="rtl" lang="ar">{E(c["organisme"])}</p>
+    <p class="intro">{etat}</p>"""
+        contenu = f"""<section class="carte"><h2>{L("Le concours", "المناظرة")}</h2>
+<table class="fiche-concours">{table}</table>
+<a class="officiel" href="{URL_PORTAIL}P1/index5.aspx?id=5" target="_blank" rel="noopener">{L("S'inscrire ou voir le détail sur le portail officiel <small>(concours.gov.tn)</small>", "الترشح أو الاطلاع على التفاصيل في البوابة الرسمية <small>(concours.gov.tn)</small>")}{ICONE_LIEN}</a>
+<p class="note">{L("Informations reprises du tableau officiel des concours publics. Seul le portail officiel fait foi : lisez toujours l'avis officiel (conditions, pièces, dates).", "معطيات مأخوذة من الجدول الرسمي للمناظرات العمومية. البوابة الرسمية هي المرجع الوحيد: اطّلع دائمًا على البلاغ الرسمي (الشروط، الوثائق، الآجال).")}</p></section>
+<section class="carte"><h2>{L("Comment s'inscrire ?", "كيف تترشح؟")}</h2><p>{L("Sur le portail officiel, avec le numéro de votre carte d'identité. Notre guide explique les étapes une par une.", "في البوابة الرسمية، برقم بطاقة التعريف الوطنية. دليلنا يشرح المراحل واحدة بواحدة.")}</p>
+<a class="btn" href="../../guide-inscription/">{L("Lire le guide d'inscription", "اقرأ دليل الترشح")}</a></section>
+{bouton_alertes("../../")}
+{f'<section class="carte"><h2>{L("Autres concours ouverts proches", "مناظرات مفتوحة قريبة")}</h2><ul class="liens-concours">{autres}</ul></section>' if autres else ""}"""
+        titre = f"Concours {m[1]} : {c['grade']} — {c['organisme']}" + (f" ({p_fr})" if p_fr else "")
+        desc = (f"Concours n° {c['id']} : {c['grade']}, {c['organisme']}" + (f", {p_fr}" if p_fr else "")
+                + (f". Inscription jusqu'au {dfr(lim)}" if ouvert and lim else f". Inscriptions closes le {dfr(lim)}" if lim else "")
+                + ". Lien officiel, guide d'inscription, état des résultats. مناظرة.")
+        fil_ld = ('<script type="application/ld+json">\n' + json.dumps({"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "Alerte Concours Tunisie", "item": URL_SITE},
+            {"@type": "ListItem", "position": 2, "name": f"Concours {m[1]}", "item": URL_SITE + f"metier/{m[0]}/"},
+            {"@type": "ListItem", "position": 3, "name": f"Concours n° {c['id']}", "item": URL_SITE + f"concours/{c['id']}/"}]}, ensure_ascii=False) + "\n</script>\n")
+        pages[f"concours/{c['id']}/"] = page(f"concours/{c['id']}/", "../../", titre[:150] + " | Alerte Concours Tunisie", desc, hero, contenu, v, maj, fil_ld)
 
     # --- guide d'inscription
     etapes = "".join(f'<li><b>{L(E(tf), ta)}</b><p>{L(E(df), da)}</p></li>' for tf, ta, df, da in GUIDE)

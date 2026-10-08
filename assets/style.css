@@ -418,3 +418,9 @@ html[dir="rtl"] .paie-etapes>li::before{left:auto;right:12px}
 .carte .etapes li{margin:0 0 12px}
 .carte .etapes li p{margin:4px 0 0;color:var(--doux)}
 .carte .prix{font-size:22px;font-weight:800;color:var(--bleu);margin:6px 0 10px}
+/* page d'un concours (08/10/2026) */
+.fiche-concours{width:100%;border-collapse:collapse;margin:0 0 14px;font-size:15px}
+.fiche-concours th,.fiche-concours td{padding:8px 6px;border-top:1px solid #E3E8EE;vertical-align:top;text-align:start}
+.fiche-concours th{width:42%;color:#5B6B7A;font-weight:600}
+.liens-concours{margin:0;padding-inline-start:18px;display:flex;flex-direction:column;gap:8px}
+.ao h3 a{color:inherit;text-decoration:none}.ao h3 a:hover{text-decoration:underline}
