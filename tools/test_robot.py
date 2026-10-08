@@ -65,5 +65,28 @@ check("page qui n'est pas une actualité → ignorée", A.lire_detail("<html><bo
 r = A.rattacher([{"organisme": "بلدية رقادة"}], [{"organisme": "بلديّة رقاده", "id": "3155"}, {"organisme": "بلدية رقادة", "id": "3156"}])
 check("actualité rattachée aux concours du même organisme (à la chadda et au ة près)", r[0]["concours"] == ["3155", "3156"])
 
+# --- 2e source : plateforme des concours du ministère des Finances (08/10/2026)
+import lire_finances as F
+fin = F.lignes(open(os.path.join(ICI, "exemples", "finances.html"), encoding="utf-8").read(), R.metier)
+check("Finances : 6 concours lus (les blocs de résultats ignorés), une ligne par grade", len(fin) == 6 and not any("الناجحين" in c["grade"] for c in fin))
+check("Finances : numéros stables 900000+ (jamais ceux du portail), uniques", all(c["id"].isdigit() and int(c["id"]) >= 900000 for c in fin) and len({c["id"] for c in fin}) == 6
+      and fin[0]["id"] == "900900")
+check("Finances : grade + spécialités, postes, dates ISO, national, lien vers l'avis officiel (PDF)",
+      fin[0]["grade"].startswith("متفقدين") and "محاسبة" in fin[0]["grade"] and fin[0]["postes"] == 434 and fin[0]["cloture_candidatures"] == "2026-09-10"
+      and fin[0]["ouverture_candidatures"] == "2026-08-20" and all(c["gouvernorat"] == "national" and c["organisme"] == "وزارة المالية" for c in fin)
+      and fin[0]["lien"] == "https://concours.finances.gov.tn/theme/documents/concours/9/avis-concours.pdf")
+check("Finances : métiers (inspecteurs → finances, techniciens → techniciens)", fin[0]["metier"] == "finance" and fin[2]["metier"] == "technicien")
+with tempfile.TemporaryDirectory() as d:
+    f = os.path.join(d, "page.html"); open(f, "w", encoding="utf-8").write(page)
+    sortie = os.path.join(d, "concours.json")
+    run = lambda jour, ff: subprocess.run([sys.executable, os.path.join(RACINE, "robot", "lire_concours.py"), "--fichier", f, "--finances-fichier", ff, "--sortie", sortie, "--aujourdhui", jour], capture_output=True, text=True, encoding="utf-8", env={**os.environ, "PYTHONIOENCODING": "utf-8"})
+    r = run("2026-10-08", os.path.join(ICI, "exemples", "finances.html")); cs = json.load(open(sortie, encoding="utf-8"))["concours"]
+    ff = [c for c in cs if c.get("source") == "finances"]
+    check("lecture complète : portail (5) + Finances clos depuis moins de 60 jours (2 ; ceux d'août et de 2024 écartés), lien gardé",
+          r.returncode == 0 and len(cs) == 7 and len(ff) == 2 and all(c["lien"].startswith(F.URL) for c in ff))
+    r = run("2026-10-09", os.path.join(d, "absent.html")); cs = json.load(open(sortie, encoding="utf-8"))["concours"]
+    check("plateforme des Finances en panne : non bloquant, ses concours de la veille gardés", r.returncode == 0 and len([c for c in cs if c.get("source") == "finances"]) == 2
+          and "ÉCHEC (non bloquant)" in r.stdout)
+
 print(f"\n{ok}/{ok + ko} vérifications réussies" + (" — tout est bon." if not ko else f" — {ko} ÉCHEC(S)"))
 sys.exit(1 if ko else 0)

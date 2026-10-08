@@ -46,8 +46,12 @@ check("un concours local figure seulement dans son gouvernorat", !loc || (lire(`
 const pc = D.concours.map(c => [c, `concours/${c.id}/index.html`]);
 check(`pages des concours : une par concours (${D.concours.length}), grade + organisme, lien officiel https, guide, adresse canonique`,
   pc.every(([c, f]) => existsSync(join(root, f)) && (h => h.includes(`<link rel="canonical" href="https://ah6259.github.io/alerte-concours-tunisie/concours/${c.id}/">`)
-    && h.includes('class="officiel" href="https://www.concours.gov.tn/') && h.includes('href="../../guide-inscription/"')
+    && h.includes(c.source === "finances" ? 'class="officiel" href="https://concours.finances.gov.tn/' : 'class="officiel" href="https://www.concours.gov.tn/') && h.includes('href="../../guide-inscription/"')
     && h.includes(c.grade.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;")) && !/undefined|NaN|None/.test(h))(lire(f))));
+const cf = D.concours.filter(c => c.source === "finances");
+check("2e source (ministère des Finances) : numéros 900000+, classés « national », lien vers concours.finances.gov.tn, source citée dans le pied de page",
+  cf.every(c => +c.id >= 900000 && c.gouvernorat === "national" && /^https:\/\/concours\.finances\.gov\.tn\//.test(c.lien)) && acc.includes("concours.finances.gov.tn")
+  && D.concours.filter(c => c.source !== "finances").every(c => +c.id < 900000));
 check("cartes : le grade mène à la page du concours", D.concours.filter(c => acc.includes(`id="c-${c.id}"`)).every(c => acc.includes(`href="concours/${c.id}/"`)) && acc.includes('href="concours/'));
 // carte de la Tunisie (08/10/2026, comme les autres sites) : 24 bulles cliquables sur l'accueil ; sur une page de gouvernorat, la sienne en surbrillance
 const bullesAcc = [...acc.matchAll(/<a href="gouvernorat\/([a-z-]+)\/" class="tn-b[^"]*" data-gouv="([a-z-]+)"/g)];

@@ -71,3 +71,8 @@ Monastir, Kairouan, Manouba) ; classement vérifié juste. Test par le robot `te
 - Ces sources sont surtout NATIONALES (ministères) : elles ajoutent des concours ouverts à tous, pas des concours locaux.
   Aucune source officielle centrale des communes / hôpitaux régionaux n'est lisible depuis GitHub.
 Rien n'est ajouté au site sans l'accord d'Ahmed.
+- **AJOUTÉ (08/10/2026, « fais 1 » d'Ahmed) : ministère des Finances** = `robot/lire_finances.py`, appelé par lire_concours.py :
+  une ligne par grade, numéros **900000 + 100 × n° de l'annonce + rang** (jamais ceux du portail), gouvernorat « national »,
+  `source: "finances"`, `lien` = avis officiel (PDF) ; clos depuis plus de 60 jours = pas repris ; même date limite qu'un concours
+  « المالية » du portail = doublon écarté ; panne = concours de la veille gardés (jamais bloquant). Bouton officiel → plateforme
+  des Finances (`lien_officiel()` de construire_site.py). Exemple enregistré : `tools/exemples/finances.html` (tests).

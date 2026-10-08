@@ -9,18 +9,22 @@ Données : faits publics (organisme, grade, nombre de postes, dates, état des r
 officiel ; jamais le texte entier. Le portail n'a pas de robots.txt ; le robot reste lent et s'identifie.
 Prudence : si la lecture ramène beaucoup moins de lignes que la fois précédente (panne du portail), l'ancien fichier
 est gardé et le robot sort en erreur (GitHub prévient ; le site garde ses données).
-L'historique des résultats (« لم تنشر » = pas encore publié → publié) sert au futur « Suivi de mes concours »."""
+L'historique des résultats (« لم تنشر » = pas encore publié → publié) sert au « Suivi de mes concours ».
+Deuxième source (08/10/2026) : plateforme du ministère des Finances (robot/lire_finances.py), numéros 900000+,
+classés « national » ; une panne de cette source garde ses concours de la veille et ne bloque jamais le site."""
 import argparse, datetime as dt, html, http.cookiejar, json, os, re, sys, time, urllib.parse, urllib.request
 
 ICI = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, ICI)
 import gouvernorats as G   # noqa: E402
+import lire_finances as F  # noqa: E402
 RACINE = os.path.dirname(ICI)
 SORTIE = os.path.join(RACINE, "donnees", "concours.json")
 URL = "https://www.concours.gov.tn/P1/index5.aspx?id=5"
 AGENT = "alerte-concours-tunisie/1.0 (site gratuit d'information ; robot lent, 1 page toutes les 2 s)"
 PAUSE = 2.0
 MAX_PAGES = 200
+JOURS_FERMES_FINANCES = 60  # concours des Finances clos depuis plus longtemps : pas repris
 SEUIL_CHUTE = 0.5          # moins de 50 % des lignes de la fois précédente : lecture suspecte
 
 # métiers : (slug, nom FR, nom AR, mots du grade). L'ordre compte : le premier qui correspond gagne.
@@ -111,7 +115,7 @@ def fusionner(anciens, nouveaux, jour):
             if a and a.get(cle) != c.get(cle):
                 hist.append({"le": jour, "champ": cle, "avant": a.get(cle, ""), "apres": c.get(cle, "")})
         c["historique"] = hist
-        c["lien"] = URL
+        c["lien"] = c.get("lien") if c.get("source") == "finances" else URL
     return nouveaux
 
 
@@ -119,6 +123,7 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--max-pages", type=int, default=MAX_PAGES)
     ap.add_argument("--fichier", help="page HTML enregistrée (tests, sans réseau)")
+    ap.add_argument("--finances-fichier", help="page enregistrée de la plateforme des Finances (tests) ; « non » = ne pas la lire")
     ap.add_argument("--sortie", default=SORTIE)
     ap.add_argument("--aujourdhui", default=dt.date.today().isoformat())
     a = ap.parse_args()
@@ -130,6 +135,24 @@ def main():
     if not nouveaux or (len(ancien["concours"]) >= 20 and len(nouveaux) < SEUIL_CHUTE * len(ancien["concours"])):
         print(f"ÉCHEC : lecture suspecte ({len(nouveaux)} lignes contre {len(ancien['concours'])} la fois précédente) ; ancien fichier gardé.")
         sys.exit(1)
+    # deuxième source : ministère des Finances (une panne ne bloque rien : ses concours de la veille sont gardés)
+    limite = (dt.date.fromisoformat(a.aujourdhui) - dt.timedelta(days=JOURS_FERMES_FINANCES)).isoformat()
+    try:
+        if a.finances_fichier == "non" or (a.fichier and not a.finances_fichier):
+            fin = []
+        elif a.finances_fichier:
+            fin = F.lignes(open(a.finances_fichier, encoding="utf-8").read(), metier)
+        else:
+            fin = F.lire(metier)
+        fin = [c for c in fin if not c["cloture_candidatures"] or c["cloture_candidatures"] >= limite]
+        # même concours déjà sur le portail (Finances, même date limite) : on garde celui du portail
+        deja = {(c["cloture_candidatures"]) for c in nouveaux if "المالية" in c["organisme"]}
+        fin = [c for c in fin if c["cloture_candidatures"] not in deja]
+        print(f"Ministère des Finances : {len(fin)} concours repris")
+    except Exception as e:
+        fin = [c for c in ancien["concours"] if c.get("source") == "finances"]
+        print(f"ÉCHEC (non bloquant) : plateforme des Finances illisible ({str(e)[:120]}) ; {len(fin)} concours de la veille gardés")
+    nouveaux = nouveaux + fin
     donnees = {"source": URL, "lu_le": a.aujourdhui, "pages": pages,
                "concours": sorted(fusionner(ancien["concours"], nouveaux, a.aujourdhui), key=lambda c: (c["cloture_candidatures"] or "9999", c["id"]))}
     os.makedirs(os.path.dirname(a.sortie), exist_ok=True)

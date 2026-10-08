@@ -123,12 +123,29 @@ def actu_html(x, racine):
 
 
 def resultat(c):
+    if c.get("source") == "finances":
+        return L("sur la plateforme du ministère des Finances", "في منصة وزارة المالية")
     # « اطلاع » (consulter) = résultat publié ; « لم تنشر » (pas encore publié) ou « -- » (rien pour l'instant)
     if "اطلاع" in (c.get("resultat_final") or ""):
         return L("résultats définitifs publiés sur le portail", "النتائج النهائية منشورة في البوابة")
     if "اطلاع" in (c.get("resultat_initial") or ""):
         return L("résultats initiaux publiés sur le portail", "النتائج الأولية منشورة في البوابة")
     return L("pas encore publiés", "لم تنشر بعد")
+
+
+URL_FINANCES = "https://concours.finances.gov.tn/"
+
+
+def lien_officiel(c, detail=False):
+    """Bouton vers le site officiel où l'on s'inscrit : le portail, ou la plateforme du ministère des Finances (2e source)."""
+    if c.get("source") == "finances":
+        lien = c.get("lien") if str(c.get("lien") or "").startswith(URL_FINANCES) else URL_FINANCES
+        return (f'<a class="officiel" href="{E(lien)}" target="_blank" rel="noopener">'
+                + L("Lire l'avis officiel et s'inscrire <small>(concours.finances.gov.tn)</small>", "اقرأ البلاغ الرسمي وترشح <small>(concours.finances.gov.tn)</small>")
+                + f'{ICONE_LIEN}</a>')
+    t = (L("S'inscrire ou voir le détail sur le portail officiel <small>(concours.gov.tn)</small>", "الترشح أو الاطلاع على التفاصيل في البوابة الرسمية <small>(concours.gov.tn)</small>") if detail
+         else L("S'inscrire sur le portail officiel <small>(concours.gov.tn)</small>", "الترشح في البوابة الرسمية <small>(concours.gov.tn)</small>"))
+    return f'<a class="officiel" href="{URL_PORTAIL}P1/index5.aspx?id=5" target="_blank" rel="noopener">{t}{ICONE_LIEN}</a>'
 
 
 def carte(c, racine, jour):
@@ -150,7 +167,7 @@ def carte(c, racine, jour):
   <div><span>{L("Postes", "عدد الخطط")}</span><b>{L(p_fr, p_ar)}</b></div>
  </div>
  <p class="ao-type">{L(f"Concours n° {E(c['id'])} · résultats : ", f"المناظرة عدد {ISO(E(c['id']))} · النتائج: ")}{resultat(c)}</p>
- <a class="officiel" href="{URL_PORTAIL}P1/index5.aspx?id=5" target="_blank" rel="noopener">{L("S'inscrire sur le portail officiel <small>(concours.gov.tn)</small>", "الترشح في البوابة الرسمية <small>(concours.gov.tn)</small>")}{ICONE_LIEN}</a>
+ {lien_officiel(c)}
 </article>"""
 
 
@@ -286,7 +303,7 @@ def page(chemin, racine, titre, description, hero, contenu, v, maj, jsonld="", s
 <div class="alerte-panne" id="alerte-panne" role="status"></div>
 {contenu}
 </main>
-<footer id="pied"><div class="wrap"><p>Source : portail officiel des concours publics (concours.gov.tn) · © 2026 Alerte Concours Tunisie — tous droits réservés.</p></div></footer>
+<footer id="pied"><div class="wrap"><p>Sources : portail officiel des concours publics (concours.gov.tn) et plateforme des concours du ministère des Finances (concours.finances.gov.tn) · © 2026 Alerte Concours Tunisie — tous droits réservés.</p></div></footer>
 <script data-goatcounter="{COMPTEUR}/count" async src="https://gc.zgo.at/count.js"></script>
 </body>
 </html>
@@ -651,7 +668,7 @@ def construire(jour):
     <p class="intro">{etat}</p>"""
         contenu = f"""<section class="carte"><h2>{L("Le concours", "المناظرة")}</h2>
 <table class="fiche-concours">{table}</table>
-<a class="officiel" href="{URL_PORTAIL}P1/index5.aspx?id=5" target="_blank" rel="noopener">{L("S'inscrire ou voir le détail sur le portail officiel <small>(concours.gov.tn)</small>", "الترشح أو الاطلاع على التفاصيل في البوابة الرسمية <small>(concours.gov.tn)</small>")}{ICONE_LIEN}</a>
+{lien_officiel(c, detail=True)}
 <p class="note">{L("Informations reprises du tableau officiel des concours publics. Seul le portail officiel fait foi : lisez toujours l'avis officiel (conditions, pièces, dates).", "معطيات مأخوذة من الجدول الرسمي للمناظرات العمومية. البوابة الرسمية هي المرجع الوحيد: اطّلع دائمًا على البلاغ الرسمي (الشروط، الوثائق، الآجال).")}</p></section>
 <section class="carte"><h2>{L("Comment s'inscrire ?", "كيف تترشح؟")}</h2><p>{L("Sur le portail officiel, avec le numéro de votre carte d'identité. Notre guide explique les étapes une par une.", "في البوابة الرسمية، برقم بطاقة التعريف الوطنية. دليلنا يشرح المراحل واحدة بواحدة.")}</p>
 <a class="btn" href="../../guide-inscription/">{L("Lire le guide d'inscription", "اقرأ دليل الترشح")}</a></section>
@@ -707,11 +724,11 @@ def construire(jour):
     hero = f"""{fil("../", "À propos et sources", "من نحن والمصادر")}
     <h1>{L("À propos et sources", "من نحن والمصادر")}</h1>"""
     contenu = f"""<section class="carte"><h2>{L("D'où viennent les concours ?", "من أين تأتي المناظرات؟")}</h2>
-<p>{L("Chaque jour, un robot lit le tableau officiel des concours ouverts du portail des concours publics (www.concours.gov.tn) : organisme, grade, nombre de postes, dates et état des résultats. Le gouvernorat est déduit du nom de l'organisme ; un concours national est ouvert à toute la Tunisie.",
-       "كل يوم، يقرأ برنامج آلي الجدول الرسمي للمناظرات المفتوحة في بوابة المناظرات العمومية (www.concours.gov.tn): الهيكل، الخطة، عدد الخطط، الآجال وحالة النتائج. تُستنتج الولاية من اسم الهيكل؛ والمناظرة الوطنية مفتوحة لكل الجمهورية.")}</p>
+<p>{L("Chaque jour, un robot lit le tableau officiel des concours ouverts du portail des concours publics (www.concours.gov.tn) : organisme, grade, nombre de postes, dates et état des résultats. Le gouvernorat est déduit du nom de l'organisme ; un concours national est ouvert à toute la Tunisie. Il lit aussi la plateforme officielle des concours du ministère des Finances (concours.finances.gov.tn) : ces concours sont nationaux.",
+       "كل يوم، يقرأ برنامج آلي الجدول الرسمي للمناظرات المفتوحة في بوابة المناظرات العمومية (www.concours.gov.tn): الهيكل، الخطة، عدد الخطط، الآجال وحالة النتائج. تُستنتج الولاية من اسم الهيكل؛ والمناظرة الوطنية مفتوحة لكل الجمهورية. كما يقرأ المنصة الرسمية لمناظرات وزارة المالية (concours.finances.gov.tn): وهي مناظرات وطنية.")}</p>
 <p>{L("Ce site est indépendant et non officiel. Seul le portail officiel fait foi, et l'inscription se fait toujours sur le site officiel.", "هذا الموقع مستقل وغير رسمي. البوابة الرسمية هي المرجع الوحيد، والترشح يتم دائمًا في الموقع الرسمي.")}</p></section>
 {AVIS}"""
-    pages["a-propos/"] = page("a-propos/", "../", "À propos et sources | Alerte Concours Tunisie", "D'où viennent les concours d'Alerte Concours Tunisie : le portail officiel des concours publics.", hero, contenu, v, maj)
+    pages["a-propos/"] = page("a-propos/", "../", "À propos et sources | Alerte Concours Tunisie", "D'où viennent les concours d'Alerte Concours Tunisie : le portail officiel des concours publics et la plateforme du ministère des Finances.", hero, contenu, v, maj)
 
     for chemin, h in pages.items():
         ecrire(chemin, h)
