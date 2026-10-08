@@ -19,8 +19,8 @@ Sur un nouveau PC, avant le premier commit : `git config user.name Ah6259` et
 - **Page `alertes/` OUVERTE (08/10/2026, « fais » d'Ahmed)** : offre + paiement en 3 étapes + formulaire Formspree
   (nom, téléphone, e-mail facultatif, métiers, gouvernorats ou « Toute la Tunisie », numéros de concours à suivre,
   formule essai **7 jours** / 3 mois / 1 an) + `alertes/conditions/` ; `assets/abonnement.js` (ligne « pour_activer »).
-  Gros bouton doré `bouton_alertes()` sur toutes les pages. Réglages : `ABO` de construire_site.py (`robot` = nom du
-  robot Telegram, vide tant qu'il n'existe pas). **Abonnés = dépôt PRIVÉ `concours-abonnes`** (jamais ici).
+  Gros bouton doré `bouton_alertes()` sur toutes les pages. Réglages : `ABO` de construire_site.py (`robot` = **@AlerteConcoursTunisieBot**, créé le 08/10 ;
+  son jeton = secret `TELEGRAM_BOT_TOKEN` du dépôt privé, jamais ailleurs). **Abonnés = dépôt PRIVÉ `concours-abonnes`** (jamais ici).
 - **Prix** (frais D17 / IZI d'environ 2 DT payés par le client en plus) : Alertes + Suivi 15 DT / 3 mois ou
   39 DT / an ; Entraînement 19 DT / 30 jours ou 29 DT / 90 jours ; Pack complet 49 DT / an.
 - Règles communes à tous les sites d'Ahmed : `../../regles communes a tous les sites.md` (paiement en 3 étapes,

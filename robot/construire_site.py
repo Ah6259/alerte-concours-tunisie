@@ -325,7 +325,7 @@ ABO = {
     "whatsapp": "21624321390",                      # preuve de paiement
     "paiements": ["D17", "IZI"],
     "formspree": "https://formspree.io/f/mwlpakqj",
-    "robot": "",                                    # nom du robot Telegram (sans @) quand Ahmed l'aura créé
+    "robot": "AlerteConcoursTunisieBot",            # robot Telegram créé par Ahmed le 08/10/2026 (jeton dans le dépôt privé concours-abonnes)
 }
 TEXTE_PREUVE = ("Bonjour, voici la preuve de paiement de mon abonnement Alertes concours "
                 "(Alerte Concours Tunisie). Nom : ")
