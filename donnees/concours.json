@@ -1,87 +1,92 @@
 {
  "source": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
  "lu_le": "2026-10-08",
- "pages": 15,
+ "pages": 17,
  "concours": [
   {
-   "id": "2613",
-   "decision": "مقرر عدد 129/2025 يتعلق بفتح مناظرة خارجية بالاختبارات لانتداب أعوان تنظيف و أعوان حراسة و ميزانية الشركة الوطنية لعجين الحلفاء و الورق لسنة 2025 المصادق عليها بتاريخ 14 فيفري 2025",
-   "organisme": "الشركة الوطنية لعجين الحلفاء والورق",
-   "grade": "عون حراسة",
-   "postes": 2,
-   "cloture_candidatures": "2025-12-15",
-   "cloture_concours": "2025-12-15",
+   "id": "1008",
+   "decision": ": مقرر الرئيس المدير العام عدد 195 لسنة 2021 المؤرخ في 10 فيفري 2021 و المتعلق بفتح المناظرة الخارجية بالملفات و الإختبارات لإنتداب عملة .",
+   "organisme": "شركة استغلال قنال و انابيب مياه الشمال",
+   "grade": "03 عمال صنف 5 بخطة كهربائي ,03 عمال صنف 5 بخطة ميكانيكي , 01 عامل صنف 5 بخطة دهان , 02عمال صنف 5 بخطة لحام , 02 عمال صنف 5 بخطة سائق آلة جرف , 05 عمال صنف 5 بخطة سائق صنف د , 06 عمال صنف 1 بخطة عامل ص",
+   "postes": 38,
+   "cloture_candidatures": "2021-03-31",
+   "cloture_concours": "2021-03-31",
    "resultat_initial": "اطلاع",
    "resultat_final": "اطلاع",
-   "metier": "ouvrier",
+   "metier": "chauffeur",
    "gouvernorat": "national",
    "vu_le": "2026-10-08",
    "historique": [],
-   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5"
+   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
+   "lu_le": "2026-10-08"
   },
   {
-   "id": "2614",
-   "decision": "مقرر عدد 129/2025 يتعلق بفتح مناظرة خارجية بالاختبارات لانتداب أعوان تنظيف و أعوان حراسة و ميزانية الشركة الوطنية لعجين الحلفاء و الورق لسنة 2025 المصادق عليها بتاريخ 14 فيفري 2025.",
-   "organisme": "الشركة الوطنية لعجين الحلفاء والورق",
-   "grade": "عون تنظيف",
-   "postes": 2,
-   "cloture_candidatures": "2025-12-15",
-   "cloture_concours": "2025-12-15",
-   "resultat_initial": "لم تنشر",
-   "resultat_final": "لم تنشر",
-   "metier": "ouvrier",
-   "gouvernorat": "national",
-   "vu_le": "2026-10-08",
-   "historique": [],
-   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5"
-  },
-  {
-   "id": "2840",
-   "decision": "مقرر عدد 39/2026 يتعلق باعادة فتح مناظرة خارجية بالاختبارات لانتداب عدد 02 أعوان تنظيف و ميزانية الشركة الوطنية لعجين الحلفاء و الورق لسنة 2025 المصادق عليها بتاريخ 14 فيفري 2025.",
-   "organisme": "الشركة الوطنية لعجين الحلفاء والورق",
-   "grade": "عون تنظيف",
-   "postes": 2,
-   "cloture_candidatures": "2026-03-31",
-   "cloture_concours": "2026-03-31",
+   "id": "1009",
+   "decision": "مقرر الرئيس المدير العام عدد 196 لسنة 2021 المؤرخ في 10 فيفري 2021 و المتعلق بفتح المناظرة الخارجية بالملفات و الاختبارات لانتداب مساعدين تقنيين",
+   "organisme": "شركة استغلال قنال و انابيب مياه الشمال",
+   "grade": "01 مساعد تقني إختصاص ميكانيك , 02 مساعدين تقنيين إختصاص صيانة صناعية .",
+   "postes": 3,
+   "cloture_candidatures": "2021-03-31",
+   "cloture_concours": "2021-03-31",
    "resultat_initial": "اطلاع",
-   "resultat_final": "لم تنشر",
-   "metier": "ouvrier",
-   "gouvernorat": "national",
-   "vu_le": "2026-10-08",
-   "historique": [],
-   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5"
-  },
-  {
-   "id": "2894",
-   "decision": "ميزانية الشركة الوطنية لعجين الحلفاء والورق لسنة 2026 المصادق عليها بتاريخ 05 ديسمبر 2025 والمقرر عدد 03/2026 المتعلق بفتح مناظرة خارجية بالاختبارات لانتداب 04 أعوان فنيين بادارة الصيانة و 04 اعوان فنيين بادارة الاستغلال و المقرر عدد 40 /2026 المتعلق بتحديد الاختصاصات المطلوبة في المناظرة الخارجية ب",
-   "organisme": "الشركة الوطنية لعجين الحلفاء والورق",
-   "grade": "عون فني",
-   "postes": 1,
-   "cloture_candidatures": "2026-05-13",
-   "cloture_concours": "2026-05-13",
-   "resultat_initial": "لم تنشر",
-   "resultat_final": "لم تنشر",
+   "resultat_final": "اطلاع",
    "metier": "technicien",
    "gouvernorat": "national",
    "vu_le": "2026-10-08",
    "historique": [],
-   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5"
+   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
+   "lu_le": "2026-10-08"
   },
   {
-   "id": "2895",
-   "decision": "ميزانية الشركة الوطنية لعجين الحلفاء والورق لسنة 2026 المصادق عليها بتاريخ 05 ديسمبر 2025 والمقرر عدد 03/2026 المتعلق بفتح مناظرة خارجية بالاختبارات لانتداب 04 أعوان فنيين بادارة الصيانة و 04 اعوان فنيين بادارة الاستغلال و المقرر عدد 40 /2026 المتعلق بتحديد الاختصاصات المطلوبة في المناظرة الخارجية ب",
-   "organisme": "الشركة الوطنية لعجين الحلفاء والورق",
-   "grade": "عون فني",
+   "id": "1010",
+   "decision": "مقرر الرئيس المدير العام عدد 197 لسنة 2021 المؤرخ في 10 فيفري 2021 و المتعلق بفتح المناظرة الخارجية بالملفات و الإختبارات لإنتداب 09 تقنيين بالسلك التقني المشترك للإدارات العمومية .",
+   "organisme": "شركة استغلال قنال و انابيب مياه الشمال",
+   "grade": "02 تقنيين إختصاص صيانة صناعية , 05 تقنيين إختصاص كهرباء آلية أو صيانة صناعية 01 تقني إختصاص هيدروليك , 01 تقني إختصاص هندسة مدنية .",
+   "postes": 9,
+   "cloture_candidatures": "2021-03-31",
+   "cloture_concours": "2021-03-31",
+   "resultat_initial": "اطلاع",
+   "resultat_final": "اطلاع",
+   "metier": "technicien",
+   "gouvernorat": "national",
+   "vu_le": "2026-10-08",
+   "historique": [],
+   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
+   "lu_le": "2026-10-08"
+  },
+  {
+   "id": "1177",
+   "decision": "مقرر الرئيس المدير العام عدد 1021 لسنة 2021 المؤرخ في 22 جوان 2021 و المتعلق بفتح المناظرة الخارجية بالملفات و الإختبارات لإنتداب 02 متصرفين مساعدين بالسلك الإداري المشترك للإدارات العمومية .",
+   "organisme": "شركة استغلال قنال و انابيب مياه الشمال",
+   "grade": "01 متصرف مساعد إختصاص تصرف و محاسبة , 01 متصرف مساعد إختصاص علوم قانونية.",
    "postes": 2,
-   "cloture_candidatures": "2026-05-13",
-   "cloture_concours": "2026-05-13",
-   "resultat_initial": "لم تنشر",
-   "resultat_final": "لم تنشر",
-   "metier": "technicien",
+   "cloture_candidatures": "2021-08-09",
+   "cloture_concours": "2021-08-09",
+   "resultat_initial": "اطلاع",
+   "resultat_final": "اطلاع",
+   "metier": "finance",
    "gouvernorat": "national",
    "vu_le": "2026-10-08",
    "historique": [],
-   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5"
+   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
+   "lu_le": "2026-10-08"
+  },
+  {
+   "id": "1178",
+   "decision": "مقرر الرئيس المدير العام عدد 1020 لسنة 2021 المؤرخ في 22 جوان 2021 و المتعلق بفتح المناظرة الخارجية بالملفات و الإختبارات لإنتداب 04 مهندسين أوليين بالسلك المشترك لمهندسي الإدارات العمومية .",
+   "organisme": "شركة استغلال قنال و انابيب مياه الشمال",
+   "grade": "03 مهندسين أوليين إختصاص كهرباء آلية أو كهرباء أو صيانة صناعية , 01 مهندس أول إختصاص هندسة مدنية.",
+   "postes": 4,
+   "cloture_candidatures": "2021-08-09",
+   "cloture_concours": "2021-08-09",
+   "resultat_initial": "اطلاع",
+   "resultat_final": "اطلاع",
+   "metier": "ingenieur",
+   "gouvernorat": "national",
+   "vu_le": "2026-10-08",
+   "historique": [],
+   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
+   "lu_le": "2026-10-08"
   },
   {
    "id": "900800",
@@ -99,7 +104,8 @@
    "source": "finances",
    "lien": "https://concours.finances.gov.tn/theme/documents/concours/8/avis-concours.pdf",
    "vu_le": "2026-10-08",
-   "historique": []
+   "historique": [],
+   "lu_le": "2026-10-08"
   },
   {
    "id": "900900",
@@ -117,7 +123,8 @@
    "source": "finances",
    "lien": "https://concours.finances.gov.tn/theme/documents/concours/9/avis-concours.pdf",
    "vu_le": "2026-10-08",
-   "historique": []
+   "historique": [],
+   "lu_le": "2026-10-08"
   },
   {
    "id": "3233",
@@ -133,7 +140,59 @@
    "gouvernorat": "bizerte",
    "vu_le": "",
    "historique": [],
-   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5"
+   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
+   "lu_le": "2026-10-08"
+  },
+  {
+   "id": "3155",
+   "decision": "قرار من الكاتب العام المكلف بتسيير شؤون بلدية رقادة مؤرخ في 03 أوت 2026 يتعلق بفتح مناظرة خارجية بالامتحان المهني لانتداب عدد 01 عامل متعاقد من الوحدة الثانية الصنف 5 اختصاص ميكانيكي سيارات بنزين و ديازل لفائدة بلدية رقادة بعنوان سنة 2026",
+   "organisme": "بلدية رقادة",
+   "grade": "ميكانيكي سيارات بنزين وديازال عامل صنف 05",
+   "postes": 1,
+   "cloture_candidatures": "2026-10-09",
+   "cloture_concours": "2026-10-09",
+   "resultat_initial": "--",
+   "resultat_final": "--",
+   "metier": "ouvrier",
+   "gouvernorat": "kairouan",
+   "vu_le": "",
+   "historique": [],
+   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
+   "lu_le": "2026-10-08"
+  },
+  {
+   "id": "3193",
+   "decision": "مناظرة خارجية بعنوان سنة 2026",
+   "organisme": "وكالة التعمير لتونس الكبرى",
+   "grade": "حارس",
+   "postes": 1,
+   "cloture_candidatures": "2026-10-09",
+   "cloture_concours": "2026-10-09",
+   "resultat_initial": "لم تنشر",
+   "resultat_final": "لم تنشر",
+   "metier": "ouvrier",
+   "gouvernorat": "tunis",
+   "vu_le": "",
+   "historique": [],
+   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
+   "lu_le": "2026-10-08"
+  },
+  {
+   "id": "3194",
+   "decision": "مناظرة خارجية بعنوان سنة 2026",
+   "organisme": "وكالة التعمير لتونس الكبرى",
+   "grade": "منظفة",
+   "postes": 1,
+   "cloture_candidatures": "2026-10-09",
+   "cloture_concours": "2026-10-09",
+   "resultat_initial": "لم تنشر",
+   "resultat_final": "لم تنشر",
+   "metier": "ouvrier",
+   "gouvernorat": "tunis",
+   "vu_le": "",
+   "historique": [],
+   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
+   "lu_le": "2026-10-08"
   },
   {
    "id": "3205",
@@ -149,7 +208,8 @@
    "gouvernorat": "bizerte",
    "vu_le": "",
    "historique": [],
-   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5"
+   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
+   "lu_le": "2026-10-08"
   },
   {
    "id": "3206",
@@ -165,7 +225,8 @@
    "gouvernorat": "bizerte",
    "vu_le": "",
    "historique": [],
-   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5"
+   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
+   "lu_le": "2026-10-08"
   },
   {
    "id": "3208",
@@ -181,7 +242,8 @@
    "gouvernorat": "kebili",
    "vu_le": "",
    "historique": [],
-   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5"
+   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
+   "lu_le": "2026-10-08"
   },
   {
    "id": "3209",
@@ -197,7 +259,8 @@
    "gouvernorat": "kebili",
    "vu_le": "",
    "historique": [],
-   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5"
+   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
+   "lu_le": "2026-10-08"
   },
   {
    "id": "3210",
@@ -213,7 +276,8 @@
    "gouvernorat": "kebili",
    "vu_le": "",
    "historique": [],
-   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5"
+   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
+   "lu_le": "2026-10-08"
   },
   {
    "id": "3211",
@@ -229,7 +293,8 @@
    "gouvernorat": "kebili",
    "vu_le": "",
    "historique": [],
-   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5"
+   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
+   "lu_le": "2026-10-08"
   },
   {
    "id": "3212",
@@ -245,7 +310,8 @@
    "gouvernorat": "kebili",
    "vu_le": "",
    "historique": [],
-   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5"
+   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
+   "lu_le": "2026-10-08"
   },
   {
    "id": "3213",
@@ -261,7 +327,8 @@
    "gouvernorat": "kebili",
    "vu_le": "",
    "historique": [],
-   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5"
+   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
+   "lu_le": "2026-10-08"
   },
   {
    "id": "3214",
@@ -277,7 +344,8 @@
    "gouvernorat": "kebili",
    "vu_le": "",
    "historique": [],
-   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5"
+   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
+   "lu_le": "2026-10-08"
   },
   {
    "id": "3215",
@@ -293,7 +361,8 @@
    "gouvernorat": "kebili",
    "vu_le": "",
    "historique": [],
-   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5"
+   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
+   "lu_le": "2026-10-08"
   },
   {
    "id": "3216",
@@ -309,7 +378,8 @@
    "gouvernorat": "kebili",
    "vu_le": "",
    "historique": [],
-   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5"
+   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
+   "lu_le": "2026-10-08"
   },
   {
    "id": "3217",
@@ -325,7 +395,8 @@
    "gouvernorat": "kebili",
    "vu_le": "",
    "historique": [],
-   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5"
+   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
+   "lu_le": "2026-10-08"
   },
   {
    "id": "3218",
@@ -341,7 +412,8 @@
    "gouvernorat": "kebili",
    "vu_le": "",
    "historique": [],
-   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5"
+   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
+   "lu_le": "2026-10-08"
   },
   {
    "id": "3219",
@@ -357,7 +429,8 @@
    "gouvernorat": "kebili",
    "vu_le": "",
    "historique": [],
-   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5"
+   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
+   "lu_le": "2026-10-08"
   },
   {
    "id": "3220",
@@ -373,7 +446,8 @@
    "gouvernorat": "kebili",
    "vu_le": "",
    "historique": [],
-   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5"
+   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
+   "lu_le": "2026-10-08"
   },
   {
    "id": "3221",
@@ -389,7 +463,178 @@
    "gouvernorat": "kebili",
    "vu_le": "",
    "historique": [],
-   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5"
+   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
+   "lu_le": "2026-10-08"
+  },
+  {
+   "id": "3222",
+   "decision": "القرار عدد 3001/إ ع/ 2026 بتاريخ في 09-09-2026 يتعلق بفتح اختبار مهني لانتداب عملة صنف1بسلك عملة الدولة والجماعات المحلية والمؤسسات العمومية ذات الصبغة الإدارية بديوان رجيم معتوق لتنمية الجنوب والصحراء بعنــوان سنــة 2026",
+   "organisme": "ديوان رجيم معتوق لتنمية الجنوب والصحراء",
+   "grade": "حراسة",
+   "postes": 3,
+   "cloture_candidatures": "2026-10-09",
+   "cloture_concours": "2026-10-09",
+   "resultat_initial": "--",
+   "resultat_final": "--",
+   "metier": "autre",
+   "gouvernorat": "kebili",
+   "vu_le": "",
+   "historique": [],
+   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
+   "lu_le": "2026-10-08"
+  },
+  {
+   "id": "3223",
+   "decision": "القرار عدد 3001/إ ع/ 2026 بتاريخ في 09-09-2026 يتعلق بفتح اختبار مهني لانتداب عملة صنف1بسلك عملة الدولة والجماعات المحلية والمؤسسات العمومية ذات الصبغة الإدارية بديوان رجيم معتوق لتنمية الجنوب والصحراء بعنــوان سنــة 2026",
+   "organisme": "ديوان رجيم معتوق لتنمية الجنوب والصحراء",
+   "grade": "منظف",
+   "postes": 2,
+   "cloture_candidatures": "2026-10-09",
+   "cloture_concours": "2026-10-09",
+   "resultat_initial": "--",
+   "resultat_final": "--",
+   "metier": "ouvrier",
+   "gouvernorat": "kebili",
+   "vu_le": "",
+   "historique": [],
+   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
+   "lu_le": "2026-10-08"
+  },
+  {
+   "id": "3224",
+   "decision": "القرار عدد 3002/إ ع/ 2026 بتاريخ في09-09-2026 يتعلق بفتح اختبار مهني لانتداب عملة صنف4 بسلك عملة الدولة والجماعات المحلية والمؤسسات العمومية ذات الصبغة الإدارية بديوان رجيم معتوق لتنمية الجنوب والصحراء بعنــوان سنــة 2026",
+   "organisme": "ديوان رجيم معتوق لتنمية الجنوب والصحراء",
+   "grade": "سائق سيارة خفيفة",
+   "postes": 5,
+   "cloture_candidatures": "2026-10-09",
+   "cloture_concours": "2026-10-09",
+   "resultat_initial": "--",
+   "resultat_final": "--",
+   "metier": "chauffeur",
+   "gouvernorat": "kebili",
+   "vu_le": "",
+   "historique": [],
+   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
+   "lu_le": "2026-10-08"
+  },
+  {
+   "id": "3225",
+   "decision": "القرار عدد 3003/إ ع/ 2026 بتاريخ في 09-09-2026 يتعلق بفتح اختبار مهني لانتداب عملة صنف5 بسلك عملة الدولة والجماعات المحلية والمؤسسات العمومية ذات الصبغة الإدارية بديوان رجيم معتوق لتنمية الجنوب والصحراء بعنــوان سنــة 2026.",
+   "organisme": "ديوان رجيم معتوق لتنمية الجنوب والصحراء",
+   "grade": "عامل صنف 5",
+   "postes": 1,
+   "cloture_candidatures": "2026-10-09",
+   "cloture_concours": "2026-10-09",
+   "resultat_initial": "--",
+   "resultat_final": "--",
+   "metier": "ouvrier",
+   "gouvernorat": "kebili",
+   "vu_le": "",
+   "historique": [],
+   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
+   "lu_le": "2026-10-08"
+  },
+  {
+   "id": "3226",
+   "decision": "القرار عدد 3003/إ ع/ 2026 بتاريخ في 09-09-2026 يتعلق بفتح اختبار مهني لانتداب عملة صنف5 بسلك عملة الدولة والجماعات المحلية والمؤسسات العمومية ذات الصبغة الإدارية بديوان رجيم معتوق لتنمية الجنوب والصحراء بعنــوان سنــة 2026.",
+   "organisme": "ديوان رجيم معتوق لتنمية الجنوب والصحراء",
+   "grade": "عامل صنف 5",
+   "postes": 1,
+   "cloture_candidatures": "2026-10-09",
+   "cloture_concours": "2026-10-09",
+   "resultat_initial": "--",
+   "resultat_final": "--",
+   "metier": "ouvrier",
+   "gouvernorat": "kebili",
+   "vu_le": "",
+   "historique": [],
+   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
+   "lu_le": "2026-10-08"
+  },
+  {
+   "id": "3227",
+   "decision": "القرار عدد 3003/إ ع/ 2026 بتاريخ في 09-09-2026 يتعلق بفتح اختبار مهني لانتداب عملة صنف5 بسلك عملة الدولة والجماعات المحلية والمؤسسات العمومية ذات الصبغة الإدارية بديوان رجيم معتوق لتنمية الجنوب والصحراء بعنــوان سنــة 2026.",
+   "organisme": "ديوان رجيم معتوق لتنمية الجنوب والصحراء",
+   "grade": "عامل صنف 5",
+   "postes": 1,
+   "cloture_candidatures": "2026-10-09",
+   "cloture_concours": "2026-10-09",
+   "resultat_initial": "--",
+   "resultat_final": "--",
+   "metier": "ouvrier",
+   "gouvernorat": "kebili",
+   "vu_le": "",
+   "historique": [],
+   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
+   "lu_le": "2026-10-08"
+  },
+  {
+   "id": "3228",
+   "decision": "القرار عدد 3003/إ ع/ 2026 بتاريخ في09-09-2026 يتعلق بفتح اختبار مهني لانتداب عملة صنف5 بسلك عملة الدولة والجماعات المحلية والمؤسسات العمومية ذات الصبغة الإدارية بديوان رجيم معتوق لتنمية الجنوب والصحراء بعنــوان سنــة 2026",
+   "organisme": "ديوان رجيم معتوق لتنمية الجنوب والصحراء",
+   "grade": "عامل صنف 5",
+   "postes": 1,
+   "cloture_candidatures": "2026-10-09",
+   "cloture_concours": "2026-10-09",
+   "resultat_initial": "--",
+   "resultat_final": "--",
+   "metier": "ouvrier",
+   "gouvernorat": "kebili",
+   "vu_le": "",
+   "historique": [],
+   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
+   "lu_le": "2026-10-08"
+  },
+  {
+   "id": "3229",
+   "decision": "القرار عدد 3003/إ ع/ 2026 بتاريخ في 09-09-2026 يتعلق بفتح اختبار مهني لانتداب عملة صنف5 بسلك عملة الدولة والجماعات المحلية والمؤسسات العمومية ذات الصبغة الإدارية بديوان رجيم معتوق لتنمية الجنوب والصحراء بعنــوان سنــة 2026",
+   "organisme": "ديوان رجيم معتوق لتنمية الجنوب والصحراء",
+   "grade": "عامل صنف 5",
+   "postes": 1,
+   "cloture_candidatures": "2026-10-09",
+   "cloture_concours": "2026-10-09",
+   "resultat_initial": "--",
+   "resultat_final": "--",
+   "metier": "ouvrier",
+   "gouvernorat": "kebili",
+   "vu_le": "",
+   "historique": [],
+   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
+   "lu_le": "2026-10-08"
+  },
+  {
+   "id": "3230",
+   "decision": "القرار عدد 3003/إ ع/ 2026 بتاريخ في 09-09-2026 يتعلق بفتح اختبار مهني لانتداب عملة صنف5 بسلك عملة الدولة والجماعات المحلية والمؤسسات العمومية ذات الصبغة الإدارية بديوان رجيم معتوق لتنمية الجنوب والصحراء بعنــوان سنــة 2026",
+   "organisme": "ديوان رجيم معتوق لتنمية الجنوب والصحراء",
+   "grade": "عامل صنف 5",
+   "postes": 1,
+   "cloture_candidatures": "2026-10-09",
+   "cloture_concours": "2026-10-09",
+   "resultat_initial": "--",
+   "resultat_final": "--",
+   "metier": "ouvrier",
+   "gouvernorat": "kebili",
+   "vu_le": "",
+   "historique": [],
+   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
+   "lu_le": "2026-10-08"
+  },
+  {
+   "id": "3231",
+   "decision": "القرار عدد 3004/إ ع/ 2026 بتاريخ في 09-09-2026يتعلق بفتح اختبار مهني لانتداب عامل صنف 6 بسلك عملة الدولة والجماعات المحلية والمؤسسات العمومية ذات الصبغة الإدارية بديوان رجيم معتوق لتنمية الجنوب والصحراء بعنــوان سنــة 2026",
+   "organisme": "ديوان رجيم معتوق لتنمية الجنوب والصحراء",
+   "grade": "عامل صنف 6",
+   "postes": 1,
+   "cloture_candidatures": "2026-10-09",
+   "cloture_concours": "2026-10-09",
+   "resultat_initial": "--",
+   "resultat_final": "--",
+   "metier": "ouvrier",
+   "gouvernorat": "kebili",
+   "vu_le": "",
+   "historique": [],
+   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
+   "lu_le": "2026-10-08"
   },
   {
    "id": "3235",
@@ -405,7 +650,161 @@
    "gouvernorat": "manouba",
    "vu_le": "",
    "historique": [],
-   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5"
+   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
+   "lu_le": "2026-10-08"
+  },
+  {
+   "id": "3197",
+   "decision": "قرار السيد كاتب عام بلدية طبرقة المؤرخ في 08 سبتمبر 2026",
+   "organisme": "بلدية طبرقة",
+   "grade": "عامل صنف 03",
+   "postes": 10,
+   "cloture_candidatures": "2026-10-13",
+   "cloture_concours": "2026-10-13",
+   "resultat_initial": "لم تنشر",
+   "resultat_final": "لم تنشر",
+   "metier": "ouvrier",
+   "gouvernorat": "jendouba",
+   "vu_le": "",
+   "historique": [],
+   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
+   "lu_le": "2026-10-08"
+  },
+  {
+   "id": "3198",
+   "decision": "قرار السيد كاتب عام بلدية طبرقة المؤرخ في 08 سبتمبر 2026",
+   "organisme": "بلدية طبرقة",
+   "grade": "عامل صنف 02",
+   "postes": 5,
+   "cloture_candidatures": "2026-10-13",
+   "cloture_concours": "2026-10-13",
+   "resultat_initial": "لم تنشر",
+   "resultat_final": "لم تنشر",
+   "metier": "ouvrier",
+   "gouvernorat": "jendouba",
+   "vu_le": "",
+   "historique": [],
+   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
+   "lu_le": "2026-10-08"
+  },
+  {
+   "id": "3199",
+   "decision": "قرار السيد كاتب عام بلدية طبرقة المؤرخ في 08 سبتمبر 2026",
+   "organisme": "بلدية طبرقة",
+   "grade": "عامل صنف 03",
+   "postes": 4,
+   "cloture_candidatures": "2026-10-13",
+   "cloture_concours": "2026-10-13",
+   "resultat_initial": "لم تنشر",
+   "resultat_final": "لم تنشر",
+   "metier": "ouvrier",
+   "gouvernorat": "jendouba",
+   "vu_le": "",
+   "historique": [],
+   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
+   "lu_le": "2026-10-08"
+  },
+  {
+   "id": "3200",
+   "decision": "قرار السيد كاتب عام بلدية طبرقة المؤرخ في 08 سبتمبر 2026",
+   "organisme": "بلدية طبرقة",
+   "grade": "عامل صنف 05",
+   "postes": 1,
+   "cloture_candidatures": "2026-10-13",
+   "cloture_concours": "2026-10-13",
+   "resultat_initial": "لم تنشر",
+   "resultat_final": "لم تنشر",
+   "metier": "ouvrier",
+   "gouvernorat": "jendouba",
+   "vu_le": "",
+   "historique": [],
+   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
+   "lu_le": "2026-10-08"
+  },
+  {
+   "id": "3201",
+   "decision": "قرار السيد كاتب عام بلدية طبرقة المؤرخ في 08 سبتمبر 2026",
+   "organisme": "بلدية طبرقة",
+   "grade": "عامل صنف 05",
+   "postes": 1,
+   "cloture_candidatures": "2026-10-13",
+   "cloture_concours": "2026-10-13",
+   "resultat_initial": "لم تنشر",
+   "resultat_final": "لم تنشر",
+   "metier": "ouvrier",
+   "gouvernorat": "jendouba",
+   "vu_le": "",
+   "historique": [],
+   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
+   "lu_le": "2026-10-08"
+  },
+  {
+   "id": "3202",
+   "decision": "قرار السيد كاتب عام بلدية طبرقة المؤرخ في 08 سبتمبر 2026",
+   "organisme": "بلدية طبرقة",
+   "grade": "عامل صنف 05",
+   "postes": 2,
+   "cloture_candidatures": "2026-10-13",
+   "cloture_concours": "2026-10-13",
+   "resultat_initial": "لم تنشر",
+   "resultat_final": "لم تنشر",
+   "metier": "ouvrier",
+   "gouvernorat": "jendouba",
+   "vu_le": "",
+   "historique": [],
+   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
+   "lu_le": "2026-10-08"
+  },
+  {
+   "id": "3203",
+   "decision": "قرار السيد كاتب عام بلدية طبرقة المؤرخ في 08 سبتمبر 2026",
+   "organisme": "بلدية طبرقة",
+   "grade": "لحام",
+   "postes": 1,
+   "cloture_candidatures": "2026-10-13",
+   "cloture_concours": "2026-10-13",
+   "resultat_initial": "لم تنشر",
+   "resultat_final": "لم تنشر",
+   "metier": "autre",
+   "gouvernorat": "jendouba",
+   "vu_le": "",
+   "historique": [],
+   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
+   "lu_le": "2026-10-08"
+  },
+  {
+   "id": "3204",
+   "decision": "قرار السيد كاتب عام بلدية طبرقة المؤرخ في 08 سبتمبر 2026",
+   "organisme": "بلدية طبرقة",
+   "grade": "بناء",
+   "postes": 1,
+   "cloture_candidatures": "2026-10-13",
+   "cloture_concours": "2026-10-13",
+   "resultat_initial": "لم تنشر",
+   "resultat_final": "لم تنشر",
+   "metier": "ouvrier",
+   "gouvernorat": "jendouba",
+   "vu_le": "",
+   "historique": [],
+   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
+   "lu_le": "2026-10-08"
+  },
+  {
+   "id": "3195",
+   "decision": "قرار المكلفة بالكتابة العامة و تسيير شؤون البلدية بتاريخ 10 جويلية 2026 المتعلق بفتح اختبار مهني لإنتداب عدد 06 عملة اختصاص رافع فضلات بصفة وقتية",
+   "organisme": "بلدية منزل عبد الرحمان",
+   "grade": "عامل صنف 03 (رافع فضلات)",
+   "postes": 6,
+   "cloture_candidatures": "2026-10-16",
+   "cloture_concours": "2026-10-16",
+   "resultat_initial": "لم تنشر",
+   "resultat_final": "لم تنشر",
+   "metier": "ouvrier",
+   "gouvernorat": "bizerte",
+   "vu_le": "",
+   "historique": [],
+   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
+   "lu_le": "2026-10-08"
   },
   {
    "id": "3236",
@@ -421,7 +820,8 @@
    "gouvernorat": "sousse",
    "vu_le": "",
    "historique": [],
-   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5"
+   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
+   "lu_le": "2026-10-08"
   },
   {
    "id": "3237",
@@ -437,7 +837,8 @@
    "gouvernorat": "sousse",
    "vu_le": "",
    "historique": [],
-   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5"
+   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
+   "lu_le": "2026-10-08"
   },
   {
    "id": "3238",
@@ -453,7 +854,25 @@
    "gouvernorat": "monastir",
    "vu_le": "",
    "historique": [],
-   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5"
+   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
+   "lu_le": "2026-10-08"
+  },
+  {
+   "id": "3196",
+   "decision": "قرار المكلفة بالكتابة و تسيير شؤون البلدية المؤرخ في 10 جويلية 2026",
+   "organisme": "بلدية منزل عبد الرحمان",
+   "grade": "منظفة متعاقدة",
+   "postes": 1,
+   "cloture_candidatures": "2026-10-19",
+   "cloture_concours": "2026-10-19",
+   "resultat_initial": "لم تنشر",
+   "resultat_final": "لم تنشر",
+   "metier": "ouvrier",
+   "gouvernorat": "bizerte",
+   "vu_le": "",
+   "historique": [],
+   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
+   "lu_le": "2026-10-08"
   },
   {
    "id": "3242",
@@ -469,7 +888,8 @@
    "gouvernorat": "bizerte",
    "vu_le": "",
    "historique": [],
-   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5"
+   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
+   "lu_le": "2026-10-08"
   },
   {
    "id": "3243",
@@ -485,7 +905,8 @@
    "gouvernorat": "bizerte",
    "vu_le": "",
    "historique": [],
-   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5"
+   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
+   "lu_le": "2026-10-08"
   },
   {
    "id": "3257",
@@ -501,7 +922,8 @@
    "gouvernorat": "nabeul",
    "vu_le": "",
    "historique": [],
-   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5"
+   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
+   "lu_le": "2026-10-08"
   },
   {
    "id": "3258",
@@ -517,7 +939,8 @@
    "gouvernorat": "nabeul",
    "vu_le": "",
    "historique": [],
-   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5"
+   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
+   "lu_le": "2026-10-08"
   },
   {
    "id": "3259",
@@ -533,7 +956,8 @@
    "gouvernorat": "nabeul",
    "vu_le": "",
    "historique": [],
-   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5"
+   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
+   "lu_le": "2026-10-08"
   },
   {
    "id": "3246",
@@ -549,7 +973,8 @@
    "gouvernorat": "national",
    "vu_le": "",
    "historique": [],
-   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5"
+   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
+   "lu_le": "2026-10-08"
   },
   {
    "id": "3247",
@@ -565,7 +990,8 @@
    "gouvernorat": "national",
    "vu_le": "",
    "historique": [],
-   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5"
+   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
+   "lu_le": "2026-10-08"
   },
   {
    "id": "3248",
@@ -581,7 +1007,8 @@
    "gouvernorat": "national",
    "vu_le": "",
    "historique": [],
-   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5"
+   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
+   "lu_le": "2026-10-08"
   },
   {
    "id": "3249",
@@ -597,7 +1024,8 @@
    "gouvernorat": "national",
    "vu_le": "",
    "historique": [],
-   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5"
+   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
+   "lu_le": "2026-10-08"
   },
   {
    "id": "3250",
@@ -613,7 +1041,8 @@
    "gouvernorat": "national",
    "vu_le": "",
    "historique": [],
-   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5"
+   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
+   "lu_le": "2026-10-08"
   },
   {
    "id": "3264",
@@ -629,7 +1058,8 @@
    "gouvernorat": "sousse",
    "vu_le": "",
    "historique": [],
-   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5"
+   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
+   "lu_le": "2026-10-08"
   },
   {
    "id": "3265",
@@ -645,7 +1075,8 @@
    "gouvernorat": "sousse",
    "vu_le": "",
    "historique": [],
-   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5"
+   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
+   "lu_le": "2026-10-08"
   },
   {
    "id": "3239",
@@ -661,7 +1092,8 @@
    "gouvernorat": "national",
    "vu_le": "",
    "historique": [],
-   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5"
+   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
+   "lu_le": "2026-10-08"
   },
   {
    "id": "3240",
@@ -677,7 +1109,8 @@
    "gouvernorat": "national",
    "vu_le": "",
    "historique": [],
-   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5"
+   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
+   "lu_le": "2026-10-08"
   },
   {
    "id": "3241",
@@ -693,7 +1126,8 @@
    "gouvernorat": "national",
    "vu_le": "",
    "historique": [],
-   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5"
+   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
+   "lu_le": "2026-10-08"
   },
   {
    "id": "3244",
@@ -709,7 +1143,8 @@
    "gouvernorat": "national",
    "vu_le": "",
    "historique": [],
-   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5"
+   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
+   "lu_le": "2026-10-08"
   },
   {
    "id": "3245",
@@ -725,7 +1160,8 @@
    "gouvernorat": "national",
    "vu_le": "",
    "historique": [],
-   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5"
+   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
+   "lu_le": "2026-10-08"
   },
   {
    "id": "3251",
@@ -741,7 +1177,8 @@
    "gouvernorat": "tunis",
    "vu_le": "",
    "historique": [],
-   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5"
+   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
+   "lu_le": "2026-10-08"
   },
   {
    "id": "3252",
@@ -757,7 +1194,8 @@
    "gouvernorat": "tunis",
    "vu_le": "",
    "historique": [],
-   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5"
+   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
+   "lu_le": "2026-10-08"
   },
   {
    "id": "3253",
@@ -773,7 +1211,8 @@
    "gouvernorat": "tunis",
    "vu_le": "",
    "historique": [],
-   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5"
+   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
+   "lu_le": "2026-10-08"
   },
   {
    "id": "3254",
@@ -789,7 +1228,8 @@
    "gouvernorat": "tunis",
    "vu_le": "",
    "historique": [],
-   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5"
+   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
+   "lu_le": "2026-10-08"
   },
   {
    "id": "3255",
@@ -805,7 +1245,8 @@
    "gouvernorat": "tunis",
    "vu_le": "",
    "historique": [],
-   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5"
+   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
+   "lu_le": "2026-10-08"
   },
   {
    "id": "3256",
@@ -821,7 +1262,8 @@
    "gouvernorat": "tunis",
    "vu_le": "",
    "historique": [],
-   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5"
+   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
+   "lu_le": "2026-10-08"
   },
   {
    "id": "3271",
@@ -837,7 +1279,8 @@
    "gouvernorat": "kebili",
    "vu_le": "",
    "historique": [],
-   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5"
+   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
+   "lu_le": "2026-10-08"
   },
   {
    "id": "3260",
@@ -853,7 +1296,8 @@
    "gouvernorat": "nabeul",
    "vu_le": "",
    "historique": [],
-   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5"
+   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
+   "lu_le": "2026-10-08"
   },
   {
    "id": "3277",
@@ -869,7 +1313,8 @@
    "gouvernorat": "monastir",
    "vu_le": "",
    "historique": [],
-   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5"
+   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
+   "lu_le": "2026-10-08"
   },
   {
    "id": "3261",
@@ -885,7 +1330,8 @@
    "gouvernorat": "national",
    "vu_le": "",
    "historique": [],
-   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5"
+   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
+   "lu_le": "2026-10-08"
   },
   {
    "id": "3262",
@@ -901,7 +1347,8 @@
    "gouvernorat": "national",
    "vu_le": "",
    "historique": [],
-   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5"
+   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
+   "lu_le": "2026-10-08"
   },
   {
    "id": "3263",
@@ -917,7 +1364,8 @@
    "gouvernorat": "national",
    "vu_le": "",
    "historique": [],
-   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5"
+   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
+   "lu_le": "2026-10-08"
   },
   {
    "id": "3269",
@@ -933,7 +1381,8 @@
    "gouvernorat": "national",
    "vu_le": "",
    "historique": [],
-   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5"
+   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
+   "lu_le": "2026-10-08"
   },
   {
    "id": "3270",
@@ -949,7 +1398,8 @@
    "gouvernorat": "national",
    "vu_le": "",
    "historique": [],
-   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5"
+   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
+   "lu_le": "2026-10-08"
   },
   {
    "id": "3273",
@@ -965,7 +1415,8 @@
    "gouvernorat": "national",
    "vu_le": "",
    "historique": [],
-   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5"
+   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
+   "lu_le": "2026-10-08"
   },
   {
    "id": "3274",
@@ -981,7 +1432,8 @@
    "gouvernorat": "national",
    "vu_le": "",
    "historique": [],
-   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5"
+   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
+   "lu_le": "2026-10-08"
   },
   {
    "id": "3275",
@@ -997,7 +1449,8 @@
    "gouvernorat": "national",
    "vu_le": "",
    "historique": [],
-   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5"
+   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
+   "lu_le": "2026-10-08"
   },
   {
    "id": "3276",
@@ -1013,7 +1466,8 @@
    "gouvernorat": "national",
    "vu_le": "",
    "historique": [],
-   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5"
+   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
+   "lu_le": "2026-10-08"
   },
   {
    "id": "3278",
@@ -1029,7 +1483,8 @@
    "gouvernorat": "nabeul",
    "vu_le": "",
    "historique": [],
-   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5"
+   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
+   "lu_le": "2026-10-08"
   },
   {
    "id": "3279",
@@ -1045,7 +1500,8 @@
    "gouvernorat": "nabeul",
    "vu_le": "",
    "historique": [],
-   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5"
+   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
+   "lu_le": "2026-10-08"
   },
   {
    "id": "3280",
@@ -1061,7 +1517,8 @@
    "gouvernorat": "nabeul",
    "vu_le": "",
    "historique": [],
-   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5"
+   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
+   "lu_le": "2026-10-08"
   },
   {
    "id": "3281",
@@ -1077,7 +1534,8 @@
    "gouvernorat": "nabeul",
    "vu_le": "",
    "historique": [],
-   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5"
+   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
+   "lu_le": "2026-10-08"
   },
   {
    "id": "3282",
@@ -1093,7 +1551,8 @@
    "gouvernorat": "nabeul",
    "vu_le": "",
    "historique": [],
-   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5"
+   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
+   "lu_le": "2026-10-08"
   },
   {
    "id": "3283",
@@ -1109,7 +1568,8 @@
    "gouvernorat": "nabeul",
    "vu_le": "",
    "historique": [],
-   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5"
+   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
+   "lu_le": "2026-10-08"
   },
   {
    "id": "3284",
@@ -1125,7 +1585,8 @@
    "gouvernorat": "nabeul",
    "vu_le": "",
    "historique": [],
-   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5"
+   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
+   "lu_le": "2026-10-08"
   },
   {
    "id": "3285",
@@ -1141,7 +1602,8 @@
    "gouvernorat": "nabeul",
    "vu_le": "",
    "historique": [],
-   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5"
+   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
+   "lu_le": "2026-10-08"
   },
   {
    "id": "3286",
@@ -1157,7 +1619,8 @@
    "gouvernorat": "nabeul",
    "vu_le": "",
    "historique": [],
-   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5"
+   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
+   "lu_le": "2026-10-08"
   },
   {
    "id": "3287",
@@ -1173,7 +1636,8 @@
    "gouvernorat": "nabeul",
    "vu_le": "",
    "historique": [],
-   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5"
+   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
+   "lu_le": "2026-10-08"
   },
   {
    "id": "3272",
@@ -1189,7 +1653,8 @@
    "gouvernorat": "monastir",
    "vu_le": "",
    "historique": [],
-   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5"
+   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
+   "lu_le": "2026-10-08"
   },
   {
    "id": "3266",
@@ -1205,7 +1670,8 @@
    "gouvernorat": "sousse",
    "vu_le": "",
    "historique": [],
-   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5"
+   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
+   "lu_le": "2026-10-08"
   },
   {
    "id": "3267",
@@ -1221,7 +1687,8 @@
    "gouvernorat": "national",
    "vu_le": "",
    "historique": [],
-   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5"
+   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
+   "lu_le": "2026-10-08"
   },
   {
    "id": "3268",
@@ -1237,7 +1704,8 @@
    "gouvernorat": "national",
    "vu_le": "",
    "historique": [],
-   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5"
+   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
+   "lu_le": "2026-10-08"
   }
  ]
 }

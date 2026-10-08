@@ -120,6 +120,15 @@ with tempfile.TemporaryDirectory() as d:
           len(vus_url) == 41 and vus_url[1] == "https://www.emploi.nat.tn/fo/Fr/global.php?page=198&ref=1" and len(set(vus_url)) == 41
           and sum("erreur" in x for x in r["pages"]) == 1 and (pathlib.Path(d) / "concours-fr-detail-3.html").exists() and (pathlib.Path(d) / "releve.json").exists())
 
+# --- concours ouvert absent de la lecture du jour (portail qui coupe la liste, 08/10/2026) : gardé 3 jours
+base = [dict(l, cloture_candidatures="2026-12-31") for l in L]
+f1 = R.fusionner([], [dict(x) for x in base], "2026-10-08")
+f2 = R.fusionner(f1, [dict(x) for x in base[1:]], "2026-10-09")
+f3 = R.fusionner(f2, [dict(x) for x in base[1:]], "2026-10-12")
+clos = R.fusionner([dict(base[0], cloture_candidatures="2026-10-01", lu_le="2026-10-08")], [], "2026-10-09")
+check("concours ouvert qui manque un jour : gardé (avec sa date de lecture), retiré après 3 jours d'absence ; un concours clos n'est pas gardé",
+      len(f2) == 5 and [c for c in f2 if c["id"] == base[0]["id"]][0]["lu_le"] == "2026-10-08" and len(f3) == 4 and clos == [])
+
 # --- 2e source : plateforme des concours du ministère des Finances (08/10/2026)
 import lire_finances as F
 fin = F.lignes(open(os.path.join(ICI, "exemples", "finances.html"), encoding="utf-8").read(), R.metier)

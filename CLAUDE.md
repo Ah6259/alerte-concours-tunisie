@@ -83,3 +83,9 @@ Rien n'est ajouté au site sans l'accord d'Ahmed.
   `source: "finances"`, `lien` = avis officiel (PDF) ; clos depuis plus de 60 jours = pas repris ; même date limite qu'un concours
   « المالية » du portail = doublon écarté ; panne = concours de la veille gardés (jamais bloquant). Bouton officiel → plateforme
   des Finances (`lien_officiel()` de construire_site.py). Exemple enregistré : `tools/exemples/finances.html` (tests).
+
+## Portail instable (soir du 08/10/2026) — protections ajoutées
+- Lecture coupée en cours de route (37 puis 75 lignes au lieu de 143) : une page vide ou coupée est redemandée 3 fois ;
+  un concours ENCORE OUVERT absent de la lecture est gardé `JOURS_ABSENT` = 3 jours (champ `lu_le` = dernière lecture).
+- Actualités : 5 min au plus, arrêt après 3 échecs de suite ; étape non bloquante dans maj.yml (8 min au plus).
+- Les 92 concours ouverts ont été remis le soir même (lecture complète depuis le cloud, historique d'hier conservé).

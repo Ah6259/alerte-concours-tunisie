@@ -25,6 +25,7 @@ AGENT = "alerte-concours-tunisie/1.0 (site gratuit d'information ; robot lent, 1
 PAUSE = 2.0
 MAX_PAGES = 200
 JOURS_FERMES_FINANCES = 60  # concours des Finances clos depuis plus longtemps : pas repris
+JOURS_ABSENT = 3          # un concours ouvert qui manque à la lecture est gardé 3 jours
 SEUIL_CHUTE = 0.5          # moins de 50 % des lignes de la fois précédente : lecture suspecte
 
 # métiers : (slug, nom FR, nom AR, mots du grade). L'ordre compte : le premier qui correspond gagne.
@@ -128,6 +129,15 @@ def fusionner(anciens, nouveaux, jour):
                 hist.append({"le": jour, "champ": cle, "avant": a.get(cle, ""), "apres": c.get(cle, "")})
         c["historique"] = hist
         c["lien"] = c.get("lien") if c.get("source") == "finances" else URL
+        c["lu_le"] = jour
+    # concours encore ouvert absent de la lecture du jour (portail qui coupe la liste : 08/10/2026, 75 lignes sur 143) :
+    # gardé tel quel JOURS_ABSENT jours (date de sa dernière lecture dans « lu_le »), puis retiré
+    vus = {c["id"] for c in nouveaux}
+    limite = (dt.date.fromisoformat(jour) - dt.timedelta(days=JOURS_ABSENT)).isoformat()
+    for a in anciens:
+        ouvert = not a.get("cloture_candidatures") or a["cloture_candidatures"] >= jour
+        if a["id"] not in vus and ouvert and a.get("lu_le", jour) >= limite:
+            nouveaux.append(dict(a, lu_le=a.get("lu_le", jour)))
     return nouveaux
 
 
