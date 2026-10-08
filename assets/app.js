@@ -151,8 +151,9 @@
     if (rO) rO.querySelector("b").textContent = ouvertes.length;
     // Carte de la Tunisie : nombres recalculés avec la date du visiteur, seulement sur l'accueil (qui a TOUS les concours) ;
     // sur une page de gouvernorat, la liste ne contient que ce gouvernorat : on garde les nombres du robot
+    // chiffre = concours du gouvernorat + nationaux (ouverts partout, demande d'Ahmed du 08/10/2026)
     if (document.getElementById("f-gouv")) document.querySelectorAll(".tn-b[data-gouv] text").forEach(t => {
-      t.textContent = ouvertes.filter(c => c.dataset.gouv === t.parentNode.dataset.gouv).length;
+      t.textContent = ouvertes.filter(c => c.dataset.gouv === t.parentNode.dataset.gouv || c.dataset.gouv === "national").length;
     });
     const rU = document.getElementById("r-urgent");
     if (rU) rU.querySelector("b").textContent = ouvertes.filter(c => c.classList.contains("urgent")).length;

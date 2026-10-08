@@ -433,7 +433,8 @@ html[dir="rtl"] .paie-etapes>li::before{left:auto;right:12px}
 .tn-terre{fill:#E2F0ED;stroke:#1F6B60;stroke-width:1.3;stroke-linejoin:round}
 .tn-b circle{fill:#1F6B60;fill-opacity:.9;stroke:#fff;stroke-width:1.6;transition:fill-opacity .15s}
 .tn-b:hover circle{fill-opacity:1}
-.tn-b.vide circle{fill:#5A6878;fill-opacity:.35}
+.tn-b.vide circle{fill:#1F6B60;fill-opacity:.38}
+.tn-b.vide text{fill:#14514A}
 .tn-b.actif circle{fill:#F2B33D;fill-opacity:1;stroke:#14514A;stroke-width:2.5}
 .tn-b text{fill:#fff;font:800 10.5px Figtree,system-ui,sans-serif;text-anchor:middle;dominant-baseline:central;pointer-events:none}
 @media (max-width:640px){ .hero-grille{grid-template-columns:1fr} .hero-carte,.hero-carte.petite{max-width:240px;width:100%;margin:6px auto 0;justify-self:center} }

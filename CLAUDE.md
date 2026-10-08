@@ -57,7 +57,7 @@ détail, 40 au plus, 80 pages/jour au plus, 2 s entre deux) → `donnees/aneti/*
 Tout le tri se fait sur GitHub (concours pour ce site, nouveaux documents pour le site Documents) : rien à changer sur le PC.
 Visite normale depuis la Tunisie, robots.txt de l'ANETI : tout autorisé (pas un contournement). PC éteint = l'ANETI manque, le reste tourne.
 À faire dès le 1er relevé reçu : écrire la lecture des pages (structure encore inconnue : l'ANETI est fermée au cloud).
-**Carte de la Tunisie EN HAUT du bandeau** (08/10/2026, règle d'Ahmed, comme les annuaires) : `carte_tunisie` / `hero_carte`, bulle = concours des organismes du gouvernorat
+**Carte de la Tunisie EN HAUT du bandeau** (08/10/2026, règle d'Ahmed, comme les annuaires) : `carte_tunisie` / `hero_carte`, chiffre de la bulle = concours du gouvernorat + nationaux (demande d'Ahmed 08/10 : aucun gouvernorat à 0), taille/couleur = concours locaux
 (+ nationaux indiqués sous la carte) ; accueil et pages de gouvernorat (la sienne en or) ; app.js ne recompte que sur l'accueil.
 Construire : `python robot/construire_site.py [--aujourdhui AAAA-MM-JJ]`.
 Tests : `python tools/test_robot.py` (29) et `node tools/test_site.mjs` (61, jsdom ; dont les pages des concours, sabotage vérifié) — sabotage vérifié le 08/10 (filtre

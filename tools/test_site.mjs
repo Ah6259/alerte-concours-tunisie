@@ -59,6 +59,11 @@ check("carte de la Tunisie EN HAUT (bandeau) de l'accueil et des pages de gouver
   && GOUVS.every(g => (h => h.indexOf('class="hero-carte petite"') > 0 && h.indexOf('class="hero-carte petite"') < h.indexOf('id="liste"'))(lire(`gouvernorat/${g}/index.html`))));
 check("carte de la Tunisie : 24 gouvernorats sur l'accueil, chaque bulle mène à sa page", bullesAcc.length === 24 && bullesAcc.every(m => m[1] === m[2] && GOUVS.includes(m[1])));
 check("carte de la Tunisie : nombres recalculés par le navigateur seulement sur l'accueil (sinon 0 partout sur une page de gouvernorat)", /if \(document\.getElementById\("f-gouv"\)\) document\.querySelectorAll\("\.tn-b\[data-gouv\] text"\)/.test(lire("assets/app.js")));
+{ const ouv = D.concours.filter(c => !c.cloture_candidatures || c.cloture_candidatures >= D.lu_le), nNat = ouv.filter(c => c.gouvernorat === "national").length;
+  const chiffre = g => +((acc.match(new RegExp(`data-gouv="${g}"><title>[^<]*</title><circle[^>]*/><text[^>]*>(\\d+)</text>`)) || [])[1] ?? -1);
+  check("carte de la Tunisie : chaque bulle = concours du gouvernorat + nationaux (aucun gouvernorat à 0 s'il y a des nationaux), légende claire",
+    GOUVS.every(g => chiffre(g) === ouv.filter(c => c.gouvernorat === g).length + nNat) && acc.includes("concours nationaux, ouverts partout")
+    && /c\.dataset\.gouv === t\.parentNode\.dataset\.gouv \|\| c\.dataset\.gouv === "national"/.test(lire("assets/app.js"))); }
 check("carte de la Tunisie : sur chaque page de gouvernorat, sa bulle est en surbrillance", GOUVS.every(g => new RegExp(`class="tn-b[^"]*actif" data-gouv="${g}"`).test(lire(`gouvernorat/${g}/index.html`))));
 // actualités du portail (08/10/2026) : page « actualites/ » + 4 dernières sur l'accueil, chacune avec son lien officiel
 const AC = existsSync(join(root, "donnees/actualites.json")) ? JSON.parse(lire("donnees/actualites.json")).actualites : [];

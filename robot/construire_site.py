@@ -75,19 +75,22 @@ def _proj(lon, lat):
 
 
 def carte_tunisie(locaux, racine, actif=""):
-    """Une bulle par gouvernorat : nombre de concours de SES organismes (les nationaux sont en plus, partout)."""
+    """Une bulle par gouvernorat. Chiffre = concours de SES organismes + concours nationaux (ouverts partout) : demande
+    d'Ahmed du 08/10/2026, pour qu'aucun gouvernorat ne paraisse vide. Taille et couleur = concours locaux seulement."""
     dj = _proj(10.9, 33.8)
     contour = "M" + " L".join(f"{x},{y}" for x, y in (_proj(*p) for p in CONTOUR_TN)) + "Z"
+    nat = locaux.get("national", 0)
     bulles = []
     for slug, fr, ar in GOUVS:
         x, y = _proj(*POSITIONS_TN[slug])
         n = locaux.get(slug, 0)
-        r = round(min(18, 7.5 + 2.2 * n ** 0.5), 1) if n else 4.5
+        r = round(min(18, 9 + 2.2 * n ** 0.5), 1)
         if slug == actif:
-            r = max(r, 11)
+            r = max(r, 12)
         bulles.append(f'<a href="{racine}gouvernorat/{slug}/" class="tn-b{" vide" if not n else ""}{" actif" if slug == actif else ""}" data-gouv="{slug}">'
-                      f'<title>{E(fr)} · {ar} : {n}</title><circle cx="{x}" cy="{y}" r="{r}"/>' + (f'<text x="{x}" y="{y}">{n}</text>' if n else "") + "</a>")
-    return (f'<svg class="carte-tn" viewBox="0 0 232 462" role="img" aria-label="Carte de la Tunisie : concours ouverts par gouvernorat">'
+                      f'<title>{E(fr)} : {n} + {nat} nationaux · {ar}: {n} + {nat} وطنية</title><circle cx="{x}" cy="{y}" r="{r}"/>'
+                      f'<text x="{x}" y="{y}">{n + nat}</text></a>')
+    return (f'<svg class="carte-tn" viewBox="0 0 232 462" role="img" aria-label="Carte de la Tunisie : concours ouverts par gouvernorat, nationaux compris">'
             f'<path class="tn-terre" d="{contour}"/><ellipse class="tn-terre" cx="{dj[0]}" cy="{dj[1]}" rx="9" ry="6.5"/>' + "".join(bulles) + "</svg>")
 
 
@@ -97,8 +100,10 @@ def hero_carte(ouverts, racine, texte, actif=""):
     for c in ouverts:
         locaux[c["gouvernorat"]] = locaux.get(c["gouvernorat"], 0) + 1
     nat = locaux.get("national", 0)
-    leg = (L(f"+ {nat} concours nationaux, ouverts partout. Touchez une bulle.", f"+ {ISO(nat)} مناظرة وطنية مفتوحة في كل مكان. المس دائرة.") if not actif
-           else L("Autres gouvernorats : touchez la carte", "ولايات أخرى: المس الخريطة"))
+    leg = (L(f"Chiffre = concours du gouvernorat + {nat} concours nationaux, ouverts partout. Bulle pâle : aucun concours local en ce moment. Touchez une bulle.",
+             f"الرقم = مناظرات الولاية + {ISO(nat)} مناظرة وطنية مفتوحة في كل مكان. دائرة باهتة: لا مناظرة محلية حاليًا. المس دائرة.") if not actif
+           else L(f"Chiffre = concours du gouvernorat + {nat} nationaux. Autres gouvernorats : touchez la carte",
+                  f"الرقم = مناظرات الولاية + {ISO(nat)} وطنية. ولايات أخرى: المس الخريطة"))
     return (f'    <div class="hero-grille"><div class="hero-texte">\n{texte}\n    </div>'
             f'<figure class="hero-carte{" petite" if actif else ""}">{carte_tunisie(locaux, racine, actif)}<figcaption>{leg}</figcaption></figure></div>')
 
