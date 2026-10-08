@@ -437,3 +437,17 @@ html[dir="rtl"] .paie-etapes>li::before{left:auto;right:12px}
 .tn-b text{fill:#fff;font:800 10.5px Figtree,system-ui,sans-serif;text-anchor:middle;dominant-baseline:central;pointer-events:none}
 @media (prefers-color-scheme:dark){ :root:not([data-theme="light"]) .tn-b text{fill:#0D141D} }
 @media (max-width:640px){ .bloc-carte{grid-template-columns:1fr} .bloc-carte figure{max-width:230px;margin:0 auto} }
+/* actualités du portail (08/10/2026) */
+.actus{display:flex;flex-direction:column;gap:12px;margin:0 0 14px}
+.actu{background:var(--carte);border:1px solid var(--ligne);border-radius:14px;padding:12px 14px}
+.actu-haut{display:flex;justify-content:space-between;align-items:center;gap:8px;margin:0 0 6px;font-size:12.5px;font-weight:700}
+.actu-type{background:var(--bleu-clair);color:var(--bleu-fonce);border-radius:999px;padding:3px 10px}
+.actu-resultats .actu-type{background:var(--vert-clair);color:var(--vert)}
+.actu-convocation .actu-type,.actu-report .actu-type{background:var(--or-clair);color:var(--or)}
+.actu-date{color:var(--doux)}
+.actu h3{margin:0 0 6px;font-size:16px}
+.actu-resume{margin:0 0 8px;color:var(--texte);font-size:14.5px;line-height:1.6}
+.actu-concours{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 8px;font-size:13px;font-weight:700}
+.actu-lien{display:inline-flex;align-items:center;gap:6px;font-weight:700;font-size:14px}
+.actu-lien svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:2}
+.puces-actu{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 10px}

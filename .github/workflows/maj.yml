@@ -27,6 +27,8 @@ jobs:
         run: python tools/test_robot.py
       - name: Lecture du tableau officiel des concours
         run: python robot/lire_concours.py
+      - name: Lecture des actualités du portail (résultats, convocations…) — une panne ne bloque pas le site
+        run: python robot/lire_actualites.py
       - uses: actions/setup-node@v4
         with: { node-version: "22" }
       - name: Pages du site

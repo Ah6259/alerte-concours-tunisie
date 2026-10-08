@@ -51,5 +51,19 @@ with tempfile.TemporaryDirectory() as d:
     r3 = run("2026-10-10")
     check("panne du portail (beaucoup moins de lignes) : ancien fichier gardé, sortie en erreur", r3.returncode == 1 and len(json.load(open(sortie, encoding="utf-8"))["concours"]) == 40)
 
+# --- actualités du portail (08/10/2026)
+import lire_actualites as A
+x = A.lire_detail(open(os.path.join(ICI, "exemples", "portail-actualite-333.html"), encoding="utf-8").read(), 333)
+check("actualité enregistrée : organisme, date ISO, résumé court (jamais le texte entier), lien officiel", x and x["organisme"] == "الديوان الوطني للتطهير"
+      and x["date"] == "2026-10-07" and 50 < len(x["resume"]) <= A.RESUME + 1 and x["lien"].startswith("https://www.concours.gov.tn/P1/index31.aspx?id=333"))
+check("actualité : « يعتزم … فتح مناظرة » → nouveau concours", x and x["type"] == "nouveau")
+for t, attendu in [("تعلن الشركة عن القائمات النهائيّة للمقبولين بالاختبارات الشفاهية", "resultats"), ("تم نشر القائمة النهائية للناجحين", "resultats"),
+                   ("يعلم المركز كافة المترشحين الذين تم قبول ترشحاتهم أوليا", "candidatures"), ("استدعاء المترشحين لاجتياز الاختبار الكتابي", "convocation"),
+                   ("تأجيل موعد الاختبار الكتابي", "report"), ("بلاغ إلى العموم", "autre")]:
+    check(f"type d'actualité : « {t[:40]} » → {attendu}", A.type_de(t) == attendu)
+check("page qui n'est pas une actualité → ignorée", A.lire_detail("<html><body>rien</body></html>", 1) is None)
+r = A.rattacher([{"organisme": "بلدية رقادة"}], [{"organisme": "بلديّة رقاده", "id": "3155"}, {"organisme": "بلدية رقادة", "id": "3156"}])
+check("actualité rattachée aux concours du même organisme (à la chadda et au ة près)", r[0]["concours"] == ["3155", "3156"])
+
 print(f"\n{ok}/{ok + ko} vérifications réussies" + (" — tout est bon." if not ko else f" — {ko} ÉCHEC(S)"))
 sys.exit(1 if ko else 0)

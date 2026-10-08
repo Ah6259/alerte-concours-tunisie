@@ -12,7 +12,7 @@ const check = (nom, cond) => { if (cond) ok++; else { ko++; console.log("ÉCHEC 
 const D = JSON.parse(lire("donnees/concours.json"));
 const GOUVS = ["tunis", "ariana", "ben-arous", "manouba", "nabeul", "zaghouan", "bizerte", "beja", "jendouba", "le-kef", "siliana", "sousse",
   "monastir", "mahdia", "sfax", "kairouan", "kasserine", "sidi-bouzid", "gabes", "medenine", "tataouine", "gafsa", "tozeur", "kebili"];
-const pages = ["index.html", "guide-inscription/index.html", "alertes/index.html", "a-propos/index.html",
+const pages = ["index.html", "actualites/index.html", "guide-inscription/index.html", "alertes/index.html", "a-propos/index.html",
   ...GOUVS.map(g => `gouvernorat/${g}/index.html`), "gouvernorat/national/index.html",
   ...readdirSync(join(root, "metier")).map(m => `metier/${m}/index.html`)];
 
@@ -54,6 +54,15 @@ const bullesAcc = [...acc.matchAll(/<a href="gouvernorat\/([a-z-]+)\/" class="tn
 check("carte de la Tunisie : 24 gouvernorats sur l'accueil, chaque bulle mène à sa page", bullesAcc.length === 24 && bullesAcc.every(m => m[1] === m[2] && GOUVS.includes(m[1])));
 check("carte de la Tunisie : nombres recalculés par le navigateur seulement sur l'accueil (sinon 0 partout sur une page de gouvernorat)", /if \(document\.getElementById\("f-gouv"\)\) document\.querySelectorAll\("\.tn-b\[data-gouv\] text"\)/.test(lire("assets/app.js")));
 check("carte de la Tunisie : sur chaque page de gouvernorat, sa bulle est en surbrillance", GOUVS.every(g => new RegExp(`class="tn-b[^"]*actif" data-gouv="${g}"`).test(lire(`gouvernorat/${g}/index.html`))));
+// actualités du portail (08/10/2026) : page « actualites/ » + 4 dernières sur l'accueil, chacune avec son lien officiel
+const AC = existsSync(join(root, "donnees/actualites.json")) ? JSON.parse(lire("donnees/actualites.json")).actualites : [];
+if (AC.length) {
+  const pa = lire("actualites/index.html");
+  check(`actualités : page avec les ${AC.length} avis, chacun avec son lien officiel https vers SON avis`, (pa.match(/<article class="actu /g) || []).length === AC.length
+    && AC.every(x => pa.includes(`href="${x.lien}"`) && /^https:\/\/www\.concours\.gov\.tn\/P1\/index31\.aspx\?id=\d+$/.test(x.lien)));
+  check("actualités : résumés courts seulement (300 caractères au plus)", AC.every(x => x.resume.length <= 301));
+  check("accueil : les 4 dernières actualités + lien vers la page", (acc.match(/<article class="actu /g) || []).length === Math.min(4, AC.length) && acc.includes('href="actualites/"'));
+}
 const sm = lire("sitemap.xml");
 check("plan du site : les pages des concours", D.concours.every(c => sm.includes(`https://ah6259.github.io/alerte-concours-tunisie/concours/${c.id}/`)));
 check("plan du site : toutes les pages", pages.every(p => sm.includes("https://ah6259.github.io/alerte-concours-tunisie/" + p.replace(/index\.html$/, ""))));

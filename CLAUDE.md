@@ -39,6 +39,11 @@ Accueil (résumé, « se terminent bientôt », filtres, liste, gouvernorats, m�
 grade, organisme, postes, dates, résultats, lien officiel, guide, concours proches ; le grade des cartes y mène), `guide-inscription/` (d'après le guide officiel du candidat), `alertes/` (bientôt),
 `a-propos/` ; sitemap, robots.txt (IA refusées), manifeste, service worker. Gabarit, styles et scripts repris
 d'Alertes appels d'offres (couleur verte #1F6B60) ; `assets/app.js` : filtre gouvernorat = ses concours + les nationaux.
+**Actualités du portail** (08/10/2026) : `robot/lire_actualites.py` (liste P1/index15.aspx?id=pub, détail index31 ; 40 la 1re fois,
+ensuite les nouvelles, 300 gardées ; résumé ≤ 300 caractères ; types résultats / report / convocation / candidatures / nouveau /
+autre ; rattachées aux concours du même organisme) → `donnees/actualites.json` → page `actualites/`, 4 dernières sur l'accueil,
+« Actualités de cet organisme » sur la page d'un concours. Panne : ancien fichier gardé, le site n'est pas bloqué.
+ANETI : son site ne répond pas depuis l'ordinateur de Claude → robot manuel `essai-aneti.yml` pour voir si GitHub le lit.
 **Carte de la Tunisie** (08/10/2026, même dessin qu'Alertes appels d'offres) : `carte_tunisie` / `bloc_carte`, bulle = concours des organismes du gouvernorat
 (+ nationaux indiqués sous la carte) ; accueil et pages de gouvernorat (la sienne en or) ; app.js ne recompte que sur l'accueil.
 Construire : `python robot/construire_site.py [--aujourdhui AAAA-MM-JJ]`.
@@ -48,4 +53,4 @@ national cassé → détecté).
 ## État au 08/10/2026
 Fait : robot, classement métier / gouvernorat, pages FR + AR, tests, publication GitHub Pages.
 À faire : portail + vidéo, Search Console, vérification du matin et gendarme IA (ajouter ce dépôt à leurs sources),
-actualités du portail et ANETI, puis Alertes / Suivi (Telegram, paiement 3 étapes), puis Entraînement.
+ANETI (si GitHub le lit), puis Alertes / Suivi (Telegram, paiement 3 étapes), puis Entraînement.

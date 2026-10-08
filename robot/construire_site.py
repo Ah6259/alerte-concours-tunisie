@@ -12,6 +12,7 @@ RACINE = os.path.dirname(ICI)
 sys.path.insert(0, ICI)
 import gouvernorats as G      # noqa: E402
 import lire_concours as R     # noqa: E402
+import lire_actualites as A   # noqa: E402
 
 URL_SITE = "https://ah6259.github.io/alerte-concours-tunisie/"
 URL_PORTAIL = "https://www.concours.gov.tn/"
@@ -98,6 +99,25 @@ def bloc_carte(ouverts, racine, grille_html, actif=""):
     return (f'<section class="carte bloc-carte"><figure>{carte_tunisie(locaux, racine, actif)}'
             f'<figcaption>{L(f"Concours des organismes de chaque gouvernorat, + {nat} concours nationaux ouverts partout. Touchez une bulle.", f"مناظرات هياكل كل ولاية، + {ISO(nat)} مناظرة وطنية مفتوحة في كل مكان. المس دائرة.")}</figcaption></figure>'
             f'{grille_html}</section>')
+
+
+TYPES_ACTU = {t[0]: t for t in A.TYPES + [A.AUTRE]}
+LIRE_AVIS = L("Lire l'avis sur le portail officiel", "اقرأ البلاغ في البوابة الرسمية")
+
+
+def charger_actus():
+    f = os.path.join(RACINE, "donnees", "actualites.json")
+    return json.load(open(f, encoding="utf-8"))["actualites"] if os.path.exists(f) else []
+
+
+def actu_html(x, racine):
+    t = TYPES_ACTU.get(x["type"], A.AUTRE)
+    liens = "".join(f'<a href="{racine}concours/{E(n)}/">{L(f"Concours n° {E(n)}", f"المناظرة عدد {ISO(E(n))}")}</a>' for n in x.get("concours", [])[:6])
+    return (f'<article class="actu actu-{t[0]}"><p class="actu-haut"><span class="actu-type">{L(t[1], t[2])}</span>'
+            f'<span class="actu-date">{ISO(dfr(x.get("date")))}</span></p>'
+            f'<h3 dir="rtl" lang="ar">{E(x["organisme"])}</h3><p class="actu-resume" dir="rtl" lang="ar">{E(x["resume"])}</p>'
+            + (f'<p class="actu-concours">{liens}</p>' if liens else "")
+            + f'<a class="actu-lien" href="{E(x["lien"])}" target="_blank" rel="noopener">{LIRE_AVIS}{ICONE_LIEN}</a></article>')
 
 
 def resultat(c):
@@ -314,6 +334,7 @@ def construire(jour):
     urgents = sum(1 for c in ouverts if c.get("cloture_candidatures") and 0 <= (dt.date.fromisoformat(c["cloture_candidatures"]) - dt.date.fromisoformat(jour)).days < 7)
     postes = sum(c.get("postes") or 0 for c in ouverts)
     pages = {}
+    actus = charger_actus()
 
     # --- accueil
     hero = f"""    <h1>{L("Tous les concours publics ouverts en Tunisie", "كل المناظرات العمومية المفتوحة في تونس")}</h1>
@@ -342,6 +363,7 @@ def construire(jour):
 <section class="carte"><p class="note">{L("Les concours nationaux (ministères, offices nationaux) sont ouverts à toute la Tunisie : ils sont comptés dans chaque gouvernorat.", "المناظرات الوطنية (الوزارات والدواوين الوطنية) مفتوحة لكل الجمهورية: تُحتسب في كل ولاية.")}</p></section>
 <h2 class="titre-section" id="metiers">{L("Par métier", "حسب الاختصاص")}</h2>
 <section class="carte">{grille(METIERS, "", "metier", cm, "grille-metiers")}</section>
+{f'<h2 class="titre-section" id="actualites">{L("Dernières actualités des concours", "آخر أخبار المناظرات")}</h2><div class="actus">{"".join(actu_html(x, "") for x in actus[:4])}</div><p><a class="btn" href="actualites/">{L("Toutes les actualités (résultats, convocations…)", "كل الأخبار (النتائج، الاستدعاءات…)")}</a></p>' if actus else ""}
 <section class="carte"><h2>{L("Comment s'inscrire ?", "كيف تترشح؟")}</h2><p>{L("L'inscription se fait toujours sur le portail officiel. Notre guide explique les étapes une par une.", "الترشح يتم دائمًا في البوابة الرسمية. دليلنا يشرح المراحل واحدة بواحدة.")}</p>
 <a class="btn" href="guide-inscription/">{L("Lire le guide d'inscription", "اقرأ دليل الترشح")}</a></section>
 {AVIS}"""
@@ -419,6 +441,7 @@ def construire(jour):
 <section class="carte"><h2>{L("Comment s'inscrire ?", "كيف تترشح؟")}</h2><p>{L("Sur le portail officiel, avec le numéro de votre carte d'identité. Notre guide explique les étapes une par une.", "في البوابة الرسمية، برقم بطاقة التعريف الوطنية. دليلنا يشرح المراحل واحدة بواحدة.")}</p>
 <a class="btn" href="../../guide-inscription/">{L("Lire le guide d'inscription", "اقرأ دليل الترشح")}</a></section>
 {bouton_alertes("../../")}
+{(lambda la: f'<h2 class="titre-section">{L("Actualités de cet organisme", "أخبار هذا الهيكل")}</h2><div class="actus">{"".join(actu_html(x, "../../") for x in la)}</div>' if la else "")([x for x in actus if c["id"] in x.get("concours", [])][:6])}
 {f'<section class="carte"><h2>{L("Autres concours ouverts proches", "مناظرات مفتوحة قريبة")}</h2><ul class="liens-concours">{autres}</ul></section>' if autres else ""}"""
         titre = f"Concours {m[1]} : {c['grade']} — {c['organisme']}" + (f" ({p_fr})" if p_fr else "")
         desc = (f"Concours n° {c['id']} : {c['grade']}, {c['organisme']}" + (f", {p_fr}" if p_fr else "")
@@ -429,6 +452,27 @@ def construire(jour):
             {"@type": "ListItem", "position": 2, "name": f"Concours {m[1]}", "item": URL_SITE + f"metier/{m[0]}/"},
             {"@type": "ListItem", "position": 3, "name": f"Concours n° {c['id']}", "item": URL_SITE + f"concours/{c['id']}/"}]}, ensure_ascii=False) + "\n</script>\n")
         pages[f"concours/{c['id']}/"] = page(f"concours/{c['id']}/", "../../", titre[:150] + " | Alerte Concours Tunisie", desc, hero, contenu, v, maj, fil_ld)
+
+    # --- actualités du portail (08/10/2026) : nouveaux concours, candidatures acceptées, convocations, résultats, reports
+    if actus:
+        compte_t = {}
+        for x in actus: compte_t[x["type"]] = compte_t.get(x["type"], 0) + 1
+        puces = "".join(f'<a class="pastille" href="#t-{k}">{L(TYPES_ACTU[k][1], TYPES_ACTU[k][2])} ({n})</a>' for k, n in compte_t.items())
+        blocs = ""
+        for k in [t[0] for t in A.TYPES + [A.AUTRE]]:
+            la = [x for x in actus if x["type"] == k]
+            if la:
+                blocs += f'<h2 class="titre-section" id="t-{k}">{L(TYPES_ACTU[k][1], TYPES_ACTU[k][2])}</h2><div class="actus">{"".join(actu_html(x, "../") for x in la)}</div>'
+        hero = f"""{fil("../", "Actualités", "الأخبار")}
+    <h1>{L("Actualités des concours : résultats, convocations, candidatures acceptées", "أخبار المناظرات: النتائج، الاستدعاءات، قبول الترشحات")}</h1>
+    <p class="intro">{L(f"Les {len(actus)} derniers avis publiés sur le portail officiel des concours publics, classés par type. Mis à jour chaque jour.", f"آخر {ISO(len(actus))} بلاغًا منشورًا في البوابة الرسمية للمناظرات العمومية، مصنفة حسب النوع. تحيين يومي.")}</p>"""
+        contenu = f"""<section class="carte"><p class="puces-actu">{puces}</p>
+<p class="note">{L("Résumés des avis officiels. Lisez toujours l'avis complet sur le portail officiel : seul lui fait foi.", "ملخصات للبلاغات الرسمية. اقرأ دائمًا البلاغ كاملًا في البوابة الرسمية: هي المرجع الوحيد.")}</p></section>
+{blocs}
+{bouton_alertes("../")}"""
+        pages["actualites/"] = page("actualites/", "../", "Actualités des concours en Tunisie : résultats, convocations, admis | Alerte Concours Tunisie",
+                                    f"Résultats, listes des admis, convocations et nouveaux concours publiés sur le portail officiel des concours publics : {len(actus)} avis, mis à jour chaque jour. نتائج المناظرات.",
+                                    hero, contenu, v, maj)
 
     # --- guide d'inscription
     etapes = "".join(f'<li><b>{L(E(tf), ta)}</b><p>{L(E(df), da)}</p></li>' for tf, ta, df, da in GUIDE)
