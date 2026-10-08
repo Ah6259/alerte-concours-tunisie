@@ -142,6 +142,7 @@ st, ann, err = V.veiller({"url": "https://www.exemple.gov.tn/"}, lambda u: (u, _
 check("ministères : annonces de l'accueil + celles de la rubrique « المناظرات » (lue aussi), liens complets, concours artistique écarté",
       st == "ok" and [u for u, _ in ann] == ["https://www.exemple.gov.tn/actualite/1", "https://www.exemple.gov.tn/a/3", "https://www.exemple.gov.tn/actualite/9"])
 st, ann, err = V.veiller({"url": "https://x.gov.tn/"}, lambda u: (_ for _ in ()).throw(OSError("connection reset")))
+check("ministères : liens mal écrits par le site corrigés ou écartés", V.liens('<a href="http://\nhttp://x.gov.tn/a">Formulaires utiles</a><a href="/p/{$page->slug}">مطلب</a>', "https://x.gov.tn/") == [("http://x.gov.tn/a", "Formulaires utiles")])
 check("ministères : site injoignable → noté, rien de cassé", st == "injoignable" and ann == [] and "reset" in err)
 st, ann, err = V.veiller({"url": "https://x.gov.tn/"}, lambda u: (u, "<title>Just a moment...</title>"))
 check("ministères : protection anti-robot → noté « bloqué », pas de contournement", st == "bloque")

@@ -1140,13 +1140,6 @@
    "revu_le": "2026-10-08"
   },
   {
-   "ministere": "religieuses",
-   "titre": "استمارة ترشّح لبعثة وزارة الشؤون الدينية لموسم حج 1448...",
-   "lien": "https://www.affaires-religieuses.tn/public/pages/{$page->slug}",
-   "vu_le": "2026-10-08",
-   "revu_le": "2026-10-08"
-  },
-  {
    "ministere": "pm",
    "titre": "مطلب تظلّم لدى رئيس الهيكل",
    "lien": "https://www.pm.gov.tn/ar/mtlb-tzlwm-ldy-ryys-alhykl",
@@ -1247,7 +1240,7 @@
   {
    "ministere": "finances",
    "titre": "Téléchargement Formulaires",
-   "lien": "http://\nhttp://www.finances.gov.tn/fr/telechargement?field_type_document_target_id=All&field_secteur_et_domaines_target_id=All%0A",
+   "lien": "http://www.finances.gov.tn/fr/telechargement?field_type_document_target_id=All&field_secteur_et_domaines_target_id=All%0A",
    "vu_le": "2026-10-08",
    "revu_le": "2026-10-08"
   },

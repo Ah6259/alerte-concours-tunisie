@@ -59,7 +59,11 @@ def liens(page, base):
         t = nettoyer(texte)[:300]
         if not t or href.lower().startswith(("javascript:", "mailto:", "tel:")):
             continue
-        u = urllib.parse.urljoin(base, html.unescape(href.strip()))
+        href = html.unescape(href).strip()
+        if "{" in href or "$" in href:                 # modèle de page non rempli par le site (« {$page->slug} »)
+            continue
+        href = re.split(r"\s+", href)[-1]              # « http://\nhttp://… » (lien mal écrit) : on garde la dernière adresse
+        u = urllib.parse.urljoin(base, href)
         if u not in vus:
             vus.add(u)
             out.append((u, t))
