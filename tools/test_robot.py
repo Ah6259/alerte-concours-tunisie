@@ -82,6 +82,26 @@ finally:
     U.build_opener, R.PAUSE, R.time.sleep = _vrai, _pause, _dormir
 check("page vide renvoyée par le portail : redemandée, la lecture continue (rien de perdu)", n == 2 and not _suite and len(lu) >= 6)
 
+# --- portail des actualités qui ne répond plus (08/10/2026 : étape bloquée 20 min) : arrêt après 3 échecs de suite
+appels = []
+def _get(url):
+    appels.append(url)
+    if url == A.LISTE: return "".join(f'<a href="index31.aspx?id={n}">x</a>' for n in range(1, 30))
+    raise OSError("délai dépassé")
+_g, _p, _argv = A.get, A.PAUSE, sys.argv
+with tempfile.TemporaryDirectory() as d:
+    sortie = os.path.join(d, "actualites.json")
+    json.dump({"actualites": [{"id": "999", "organisme": "x", "date": "2026-10-01", "resume": "بلاغ", "lien": "https://www.concours.gov.tn/"}]}, open(sortie, "w", encoding="utf-8"))
+    A.get, A.PAUSE, sys.argv = _get, 0, ["lire_actualites.py", "--sortie", sortie]
+    try:
+        import contextlib, io as _io
+        with contextlib.redirect_stdout(_io.StringIO()):
+            A.main()
+    finally:
+        A.get, A.PAUSE, sys.argv = _g, _p, _argv
+    check("actualités : portail en panne → arrêt après 3 échecs de suite (pas 29 attentes), ancien fichier gardé",
+          len(appels) == 4 and json.load(open(sortie, encoding="utf-8"))["actualites"][0]["id"] == "999")
+
 # --- relevé de l'ANETI depuis le PC d'Ahmed (tools/aneti_pc.py, 08/10/2026) : sans réseau
 sys.path.insert(0, ICI)
 import aneti_pc as P, pathlib

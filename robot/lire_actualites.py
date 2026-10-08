@@ -20,6 +20,8 @@ LISTE = "https://www.concours.gov.tn/P1/index15.aspx?id=pub"
 DETAIL = "https://www.concours.gov.tn/P1/index31.aspx?id={}"
 AGENT = "alerte-concours-tunisie/1.0 (site gratuit d'information ; robot lent, 1 page toutes les 2 s)"
 PAUSE = 2.0
+BUDGET = 300          # secondes au plus pour lire les actualités (portail qui ne répond plus, 08/10/2026 : bloqué 20 min)
+ECHECS_DE_SUITE = 3   # 3 actualités illisibles de suite : le portail est en panne, on s'arrête (reprise demain)
 PREMIERE_FOIS = 40     # 1re lecture : les 40 dernières actualités seulement
 GARDER = 300           # au plus 300 actualités gardées (les plus récentes)
 RESUME = 300           # caractères au plus (jamais le texte entier)
@@ -89,7 +91,7 @@ def rattacher(actus, concours):
 def get(url):
     for essai in range(3):
         try:
-            with urllib.request.urlopen(urllib.request.Request(url, headers={"User-Agent": AGENT}), timeout=60) as r:
+            with urllib.request.urlopen(urllib.request.Request(url, headers={"User-Agent": AGENT}), timeout=30) as r:
                 return r.read().decode("utf-8", "ignore")
         except Exception:
             if essai == 2:
@@ -115,12 +117,16 @@ def main():
             print(f"ÉCHEC : liste des actualités illisible ({e}) ; ancien fichier gardé.")
             return
         a_lire = [i for i in ids if str(i) not in connus][: (PREMIERE_FOIS if not connus else 60)]
-        nouvelles = []
+        nouvelles, debut, de_suite = [], time.monotonic(), 0
         for i in a_lire:
+            if time.monotonic() - debut > BUDGET or de_suite >= ECHECS_DE_SUITE:
+                print(f"  arrêt : portail trop lent ou en panne ; les autres actualités seront lues demain")
+                break
             time.sleep(PAUSE)
             try:
-                x = lire_detail(get(DETAIL.format(i)), i)
+                x = lire_detail(get(DETAIL.format(i)), i); de_suite = 0
             except Exception as e:
+                de_suite += 1
                 print(f"  actualité {i} illisible ({e})"); continue
             if x:
                 x["vu_le"] = a.aujourdhui if connus else ""

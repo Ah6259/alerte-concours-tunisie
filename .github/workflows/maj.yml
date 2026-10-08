@@ -27,8 +27,11 @@ jobs:
         run: python tools/test_robot.py
       - name: Lecture du tableau officiel des concours
         run: python robot/lire_concours.py
+        timeout-minutes: 15
       - name: Lecture des actualités du portail (résultats, convocations…) — une panne ne bloque pas le site
         run: python robot/lire_actualites.py
+        timeout-minutes: 8           # portail qui ne répond plus : on passe, le site se met quand même à jour
+        continue-on-error: true
       - uses: actions/setup-node@v4
         with: { node-version: "22" }
       - name: Pages du site
