@@ -1,0 +1,31 @@
+{
+  "id": "/alerte-concours-tunisie/",
+  "name": "Alerte Concours Tunisie",
+  "short_name": "Alerte Concours",
+  "description": "Tous les concours publics ouverts en Tunisie, par gouvernorat et par métier.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "lang": "fr",
+  "dir": "auto",
+  "theme_color": "#1F6B60",
+  "background_color": "#F3F6F9",
+  "icons": [
+    {
+      "src": "assets/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/icons/icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}

@@ -41,7 +41,11 @@ with tempfile.TemporaryDirectory() as d:
     run("2026-10-09"); d2 = json.load(open(sortie, encoding="utf-8"))
     c0 = [c for c in d2["concours"] if c["id"] == d1["concours"][0]["id"]][0]
     check("historique : un changement de l'état des résultats est gardé avec sa date", any(h["le"] == "2026-10-09" and h["champ"] == "resultat_initial" for h in c0["historique"]))
-    check("date de première apparition conservée", c0["vu_le"] == "2026-10-08")
+    check("1re lecture du site : pas de date d'apparition (rien ne paraît « nouveau »), et elle est conservée", c0["vu_le"] == "")
+    d3 = json.load(open(sortie, encoding="utf-8")); d3["concours"] = d3["concours"][1:]; json.dump(d3, open(sortie, "w", encoding="utf-8"), ensure_ascii=False)
+    run("2026-10-11"); d4 = json.load(open(sortie, encoding="utf-8"))
+    check("un concours apparu après la 1re lecture reçoit sa date d'apparition", [c for c in d4["concours"] if c["id"] == d1["concours"][0]["id"]][0]["vu_le"] == "2026-10-11")
+    d2 = d4
     # panne : l'ancien fichier compte 40 lignes, la nouvelle lecture 5 → refus
     d2["concours"] = d2["concours"] * 8; json.dump(d2, open(sortie, "w", encoding="utf-8"), ensure_ascii=False)
     r3 = run("2026-10-10")

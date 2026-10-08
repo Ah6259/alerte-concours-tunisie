@@ -104,7 +104,8 @@ def fusionner(anciens, nouveaux, jour):
     par_id = {a["id"]: a for a in anciens}
     for c in nouveaux:
         a = par_id.get(c["id"])
-        c["vu_le"] = a.get("vu_le", jour) if a else jour
+        # 1re lecture du site (aucun ancien concours) : pas de date d'apparition, sinon tout paraîtrait « nouveau »
+        c["vu_le"] = a.get("vu_le", jour) if a else (jour if par_id else "")
         hist = list(a.get("historique", [])) if a else []
         for cle in ("resultat_initial", "resultat_final"):
             if a and a.get(cle) != c.get(cle):

@@ -33,7 +33,16 @@ Sur un nouveau PC, avant le premier commit : `git config user.name Ah6259` et
 Le 08/10/2026 : 143 lignes lues, toutes les municipalités du jour classées ; « national » pour ministères et offices.
 Un organisme mal classé → ajouter son lieu, puis un cas dans `tools/test_robot.py`.
 
+## Pages (robot/construire_site.py)
+Accueil (résumé, « se terminent bientôt », filtres, liste, gouvernorats, métiers, guide, avis), `gouvernorat/<slug>/`
+(24 + `national`), `metier/<slug>/`, `guide-inscription/` (d'après le guide officiel du candidat), `alertes/` (bientôt),
+`a-propos/` ; sitemap, robots.txt (IA refusées), manifeste, service worker. Gabarit, styles et scripts repris
+d'Alertes appels d'offres (couleur verte #1F6B60) ; `assets/app.js` : filtre gouvernorat = ses concours + les nationaux.
+Construire : `python robot/construire_site.py [--aujourdhui AAAA-MM-JJ]`.
+Tests : `python tools/test_robot.py` (29) et `node tools/test_site.mjs` (58, jsdom) — sabotage vérifié le 08/10 (filtre
+national cassé → détecté).
+
 ## État au 08/10/2026
-Fait : robot + classement métier / gouvernorat + test (28 vérifications) + robot GitHub quotidien qui garde
-l'historique. À faire : pages du site (FR + AR), tests du site, sabotage, gendarmes, GitHub Pages, portail + vidéo,
-Search Console ; puis Alertes / Suivi ; puis Entraînement.
+Fait : robot, classement métier / gouvernorat, pages FR + AR, tests, publication GitHub Pages.
+À faire : portail + vidéo, Search Console, vérification du matin et gendarme IA (ajouter ce dépôt à leurs sources),
+actualités du portail et ANETI, page par concours, puis Alertes / Suivi (Telegram, paiement 3 étapes), puis Entraînement.
