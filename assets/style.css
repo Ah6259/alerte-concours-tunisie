@@ -424,3 +424,16 @@ html[dir="rtl"] .paie-etapes>li::before{left:auto;right:12px}
 .fiche-concours th{width:42%;color:#5B6B7A;font-weight:600}
 .liens-concours{margin:0;padding-inline-start:18px;display:flex;flex-direction:column;gap:8px}
 .ao h3 a{color:inherit;text-decoration:none}.ao h3 a:hover{text-decoration:underline}
+/* carte de la Tunisie (08/10/2026, même dessin qu'Alertes appels d'offres) */
+.bloc-carte{display:grid;grid-template-columns:220px 1fr;gap:18px;align-items:start}
+.bloc-carte figure{margin:0}
+.bloc-carte figcaption{font-size:12.5px;color:var(--doux);text-align:center;margin-top:6px;font-weight:600}
+.carte-tn{width:100%;height:auto;overflow:visible;-webkit-user-select:none;user-select:none}
+.tn-terre{fill:var(--bleu-clair);stroke:var(--bleu);stroke-width:1.3;stroke-linejoin:round}
+.tn-b circle{fill:var(--bleu);fill-opacity:.9;stroke:var(--carte);stroke-width:1.6;transition:fill-opacity .15s}
+.tn-b:hover circle{fill-opacity:1}
+.tn-b.vide circle{fill:var(--doux);fill-opacity:.35}
+.tn-b.actif circle{fill:var(--or);fill-opacity:1;stroke-width:2.4}
+.tn-b text{fill:#fff;font:800 10.5px Figtree,system-ui,sans-serif;text-anchor:middle;dominant-baseline:central;pointer-events:none}
+@media (prefers-color-scheme:dark){ :root:not([data-theme="light"]) .tn-b text{fill:#0D141D} }
+@media (max-width:640px){ .bloc-carte{grid-template-columns:1fr} .bloc-carte figure{max-width:230px;margin:0 auto} }

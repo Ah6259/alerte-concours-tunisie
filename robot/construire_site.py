@@ -48,6 +48,58 @@ ICONE_LIEU = '<svg viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 1
 ICONE_LIEN = '<svg viewBox="0 0 24 24"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg>'
 
 
+# Carte de la Tunisie (08/10/2026, demande d'Ahmed : « comme pour les autres sites ») — même dessin qu'Alertes appels
+# d'offres : contour simplifié (longitude, latitude) et chef-lieu de chaque gouvernorat ; Grand Tunis un peu écarté.
+CONTOUR_TN = [(8.62, 36.94), (9.0, 37.12), (9.2, 37.23), (9.6, 37.33), (9.87, 37.34), (10.05, 37.27), (10.25, 37.18),
+              (10.17, 37.0), (10.25, 36.83), (10.33, 36.78), (10.5, 36.7), (10.8, 36.9), (11.0, 37.06), (11.1, 36.87),
+              (10.95, 36.65), (10.75, 36.45), (10.58, 36.38), (10.5, 36.08), (10.64, 35.83), (10.83, 35.78), (10.88, 35.66),
+              (11.07, 35.5), (11.12, 35.23), (10.95, 34.95), (10.77, 34.73), (10.5, 34.52), (10.07, 34.3), (10.1, 33.88),
+              (10.45, 33.6), (10.75, 33.62), (11.12, 33.5), (11.25, 33.3), (11.56, 33.17), (11.48, 32.62), (11.0, 32.35),
+              (10.7, 31.98), (10.3, 31.6), (10.15, 31.0), (9.55, 30.23), (9.3, 30.9), (9.05, 31.9), (8.35, 32.5),
+              (7.85, 33.2), (7.5, 33.8), (7.75, 34.2), (8.25, 34.65), (8.4, 35.2), (8.3, 35.7), (8.4, 36.0), (8.42, 36.45),
+              (8.2, 36.55)]
+POSITIONS_TN = {
+    "bizerte": (9.62, 37.1), "ariana": (10.08, 37.08), "tunis": (10.55, 36.98), "manouba": (9.72, 36.72),
+    "ben-arous": (10.2, 36.6), "nabeul": (10.9, 36.62), "zaghouan": (10.0, 36.2), "beja": (9.08, 36.72),
+    "jendouba": (8.72, 36.55), "le-kef": (8.75, 36.1), "siliana": (9.37, 35.95), "kairouan": (9.95, 35.62),
+    "sousse": (10.42, 35.9), "monastir": (10.88, 35.62), "mahdia": (10.9, 35.22), "kasserine": (8.85, 35.2),
+    "sidi-bouzid": (9.5, 35.0), "sfax": (10.45, 34.8), "gafsa": (8.75, 34.42), "tozeur": (8.13, 33.95),
+    "kebili": (8.95, 33.55), "gabes": (9.85, 33.85), "medenine": (10.75, 33.3), "tataouine": (10.15, 32.55),
+}
+
+
+def _proj(lon, lat):
+    import math
+    return round((lon - 7.3) * 62 * math.cos(math.radians(34)), 1), round((37.5 - lat) * 62, 1)
+
+
+def carte_tunisie(locaux, racine, actif=""):
+    """Une bulle par gouvernorat : nombre de concours de SES organismes (les nationaux sont en plus, partout)."""
+    dj = _proj(10.9, 33.8)
+    contour = "M" + " L".join(f"{x},{y}" for x, y in (_proj(*p) for p in CONTOUR_TN)) + "Z"
+    bulles = []
+    for slug, fr, ar in GOUVS:
+        x, y = _proj(*POSITIONS_TN[slug])
+        n = locaux.get(slug, 0)
+        r = round(min(18, 7.5 + 2.2 * n ** 0.5), 1) if n else 4.5
+        if slug == actif:
+            r = max(r, 11)
+        bulles.append(f'<a href="{racine}gouvernorat/{slug}/" class="tn-b{" vide" if not n else ""}{" actif" if slug == actif else ""}" data-gouv="{slug}">'
+                      f'<title>{E(fr)} · {ar} : {n}</title><circle cx="{x}" cy="{y}" r="{r}"/>' + (f'<text x="{x}" y="{y}">{n}</text>' if n else "") + "</a>")
+    return (f'<svg class="carte-tn" viewBox="0 0 232 462" role="img" aria-label="Carte de la Tunisie : concours ouverts par gouvernorat">'
+            f'<path class="tn-terre" d="{contour}"/><ellipse class="tn-terre" cx="{dj[0]}" cy="{dj[1]}" rx="9" ry="6.5"/>' + "".join(bulles) + "</svg>")
+
+
+def bloc_carte(ouverts, racine, grille_html, actif=""):
+    locaux = {}
+    for c in ouverts:
+        locaux[c["gouvernorat"]] = locaux.get(c["gouvernorat"], 0) + 1
+    nat = locaux.get("national", 0)
+    return (f'<section class="carte bloc-carte"><figure>{carte_tunisie(locaux, racine, actif)}'
+            f'<figcaption>{L(f"Concours des organismes de chaque gouvernorat, + {nat} concours nationaux ouverts partout. Touchez une bulle.", f"مناظرات هياكل كل ولاية، + {ISO(nat)} مناظرة وطنية مفتوحة في كل مكان. المس دائرة.")}</figcaption></figure>'
+            f'{grille_html}</section>')
+
+
 def resultat(c):
     # « اطلاع » (consulter) = résultat publié ; « لم تنشر » (pas encore publié) ou « -- » (rien pour l'instant)
     if "اطلاع" in (c.get("resultat_final") or ""):
@@ -286,8 +338,8 @@ def construire(jour):
 {filtres(ouverts)}
 {liste_html(ouverts, "", jour, "Aucun concours ouvert pour ce choix. Essayez un autre métier ou tous les gouvernorats.", "لا توجد مناظرة مفتوحة لهذا الاختيار. جرّب اختصاصًا آخر أو كل الولايات.")}
 <h2 class="titre-section" id="gouvernorats">{L("Par gouvernorat", "حسب الولاية")}</h2>
-<section class="carte">{grille(GOUVS + [G.NATIONAL], "", "gouvernorat", cg, "grille-gouv")}
-<p class="note">{L("Les concours nationaux (ministères, offices nationaux) sont ouverts à toute la Tunisie : ils sont comptés dans chaque gouvernorat.", "المناظرات الوطنية (الوزارات والدواوين الوطنية) مفتوحة لكل الجمهورية: تُحتسب في كل ولاية.")}</p></section>
+{bloc_carte(ouverts, "", grille(GOUVS + [G.NATIONAL], "", "gouvernorat", cg, "grille-gouv"))}
+<section class="carte"><p class="note">{L("Les concours nationaux (ministères, offices nationaux) sont ouverts à toute la Tunisie : ils sont comptés dans chaque gouvernorat.", "المناظرات الوطنية (الوزارات والدواوين الوطنية) مفتوحة لكل الجمهورية: تُحتسب في كل ولاية.")}</p></section>
 <h2 class="titre-section" id="metiers">{L("Par métier", "حسب الاختصاص")}</h2>
 <section class="carte">{grille(METIERS, "", "metier", cm, "grille-metiers")}</section>
 <section class="carte"><h2>{L("Comment s'inscrire ?", "كيف تترشح؟")}</h2><p>{L("L'inscription se fait toujours sur le portail officiel. Notre guide explique les étapes une par une.", "الترشح يتم دائمًا في البوابة الرسمية. دليلنا يشرح المراحل واحدة بواحدة.")}</p>
@@ -311,7 +363,7 @@ def construire(jour):
 {filtres(cs, avec_gouv=False)}
 {liste_html(cs, "../../", jour, "Aucun concours ouvert pour ce gouvernorat aujourd'hui.", "لا توجد مناظرة مفتوحة في هذه الولاية اليوم.")}
 <h2 class="titre-section">{L("Autres gouvernorats", "ولايات أخرى")}</h2>
-<section class="carte">{grille([x for x in GOUVS + [G.NATIONAL] if x[0] != s], "../../", "gouvernorat", cg, "grille-gouv")}</section>"""
+{bloc_carte(ouverts, "../../", grille([x for x in GOUVS + [G.NATIONAL] if x[0] != s], "../../", "gouvernorat", cg, "grille-gouv"), s)}"""
         pages[f"gouvernorat/{s}/"] = page(f"gouvernorat/{s}/", "../../", f"{titre_fr} 2026 : {len(cs)} concours ouverts | Alerte Concours Tunisie",
                                           f"{titre_fr} : {len(cs)} concours ouverts, date limite, postes et lien officiel. {titre_ar}.", hero, contenu, v, maj)
 

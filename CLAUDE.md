@@ -39,6 +39,8 @@ Accueil (résumé, « se terminent bientôt », filtres, liste, gouvernorats, m�
 grade, organisme, postes, dates, résultats, lien officiel, guide, concours proches ; le grade des cartes y mène), `guide-inscription/` (d'après le guide officiel du candidat), `alertes/` (bientôt),
 `a-propos/` ; sitemap, robots.txt (IA refusées), manifeste, service worker. Gabarit, styles et scripts repris
 d'Alertes appels d'offres (couleur verte #1F6B60) ; `assets/app.js` : filtre gouvernorat = ses concours + les nationaux.
+**Carte de la Tunisie** (08/10/2026, même dessin qu'Alertes appels d'offres) : `carte_tunisie` / `bloc_carte`, bulle = concours des organismes du gouvernorat
+(+ nationaux indiqués sous la carte) ; accueil et pages de gouvernorat (la sienne en or) ; app.js ne recompte que sur l'accueil.
 Construire : `python robot/construire_site.py [--aujourdhui AAAA-MM-JJ]`.
 Tests : `python tools/test_robot.py` (29) et `node tools/test_site.mjs` (61, jsdom ; dont les pages des concours, sabotage vérifié) — sabotage vérifié le 08/10 (filtre
 national cassé → détecté).
