@@ -60,3 +60,14 @@ national cassé → détecté).
 Fait : robot, classement métier / gouvernorat, pages FR + AR, tests, publication GitHub Pages.
 À faire : portail + vidéo, Search Console, vérification du matin et gendarme IA (ajouter ce dépôt à leurs sources),
  Alertes / Suivi (Telegram, paiement 3 étapes), puis Entraînement.
+
+## Autres sources officielles testées depuis GitHub (08/10/2026, demande d'Ahmed : « des concours dans tous les gouvernorats »)
+Constat : le portail n'a des concours LOCAUX que dans 9 gouvernorats (Kébili, Nabeul, Tunis, Jendouba, Bizerte, Sousse,
+Monastir, Kairouan, Manouba) ; classement vérifié juste. Test par le robot `tester-source.yml` du dépôt prix-eaux-tunisie :
+- LISIBLES : concours.finances.gov.tn (tableau clair : grade, spécialité, postes, dates, avis) ; education.gov.tn,
+  interieur.gov.tn, mes.tn, cnss.tn (certificat incomplet → `curl -k`) ; pm.gov.tn ; steg.com.tn.
+- NON JOIGNABLES : collectivites-locales.gov.tn et santetunisie.rns.tn (adresse introuvable), defense.tn (délai),
+  emploi.gov.tn, iort.gov.tn (page vide). BLOQUÉS anti-robot (pas de contournement) : douane.gov.tn, sonede.com.tn.
+- Ces sources sont surtout NATIONALES (ministères) : elles ajoutent des concours ouverts à tous, pas des concours locaux.
+  Aucune source officielle centrale des communes / hôpitaux régionaux n'est lisible depuis GitHub.
+Rien n'est ajouté au site sans l'accord d'Ahmed.
