@@ -129,6 +129,23 @@ clos = R.fusionner([dict(base[0], cloture_candidatures="2026-10-01", lu_le="2026
 check("concours ouvert qui manque un jour : gardé (avec sa date de lecture), retiré après 3 jours d'absence ; un concours clos n'est pas gardé",
       len(f2) == 5 and [c for c in f2 if c["id"] == base[0]["id"]][0]["lu_le"] == "2026-10-08" and len(f3) == 4 and clos == [])
 
+# --- veille hebdomadaire des sites des ministères (08/10/2026) : sans réseau
+import veille_ministeres as V
+V.PAUSE = 0
+_acc = ('<a href="/actualite/1">إعلان فتح مناظرة خارجية بالإختبارات لإنتداب نظار أمن بعنوان سنة 2026</a>'
+        '<a href="/fr/concours">المناظرات</a><a href="/contact">اتصل بنا</a>'
+        '<a href="/a/2">RÈGLEMENT DU CONCOURS ARTISTIQUE L’ART AU SERVICE DE LA LAGUNE</a>'
+        '<a href="/a/3">Avis concernant le concours externe pour le recrutement des ingénieurs principaux</a>')
+_rub = '<a href="/actualite/9">قائمة المترشحين المدعوين لاجتياز الاختبار الكتابي للمناظرة الخارجية</a>'
+_pages = {"https://www.exemple.gov.tn/": _acc, "https://www.exemple.gov.tn/fr/concours": _rub}
+st, ann, err = V.veiller({"url": "https://www.exemple.gov.tn/"}, lambda u: (u, _pages[u]))
+check("ministères : annonces de l'accueil + celles de la rubrique « المناظرات » (lue aussi), liens complets, concours artistique écarté",
+      st == "ok" and [u for u, _ in ann] == ["https://www.exemple.gov.tn/actualite/1", "https://www.exemple.gov.tn/a/3", "https://www.exemple.gov.tn/actualite/9"])
+st, ann, err = V.veiller({"url": "https://x.gov.tn/"}, lambda u: (_ for _ in ()).throw(OSError("connection reset")))
+check("ministères : site injoignable → noté, rien de cassé", st == "injoignable" and ann == [] and "reset" in err)
+st, ann, err = V.veiller({"url": "https://x.gov.tn/"}, lambda u: (u, "<title>Just a moment...</title>"))
+check("ministères : protection anti-robot → noté « bloqué », pas de contournement", st == "bloque")
+
 # --- 2e source : plateforme des concours du ministère des Finances (08/10/2026)
 import lire_finances as F
 fin = F.lignes(open(os.path.join(ICI, "exemples", "finances.html"), encoding="utf-8").read(), R.metier)

@@ -12,7 +12,7 @@ const check = (nom, cond) => { if (cond) ok++; else { ko++; console.log("ÉCHEC 
 const D = JSON.parse(lire("donnees/concours.json"));
 const GOUVS = ["tunis", "ariana", "ben-arous", "manouba", "nabeul", "zaghouan", "bizerte", "beja", "jendouba", "le-kef", "siliana", "sousse",
   "monastir", "mahdia", "sfax", "kairouan", "kasserine", "sidi-bouzid", "gabes", "medenine", "tataouine", "gafsa", "tozeur", "kebili"];
-const pages = ["index.html", "actualites/index.html", "guide-inscription/index.html", "alertes/index.html", "alertes/conditions/index.html", "a-propos/index.html",
+const pages = ["index.html", "actualites/index.html", "guide-inscription/index.html", "alertes/index.html", "alertes/conditions/index.html", "ministeres/index.html", "a-propos/index.html",
   ...GOUVS.map(g => `gouvernorat/${g}/index.html`), "gouvernorat/national/index.html",
   ...readdirSync(join(root, "metier")).map(m => `metier/${m}/index.html`)];
 
@@ -114,6 +114,12 @@ if (JSDOM) {
   check("navigateur : bouton langue → page en arabe (de droite à gauche)", d.documentElement.lang === "ar" && d.documentElement.dir === "rtl");
 }
 
+// ---- veille des sites des ministères (08/10/2026)
+{ const DM = existsSync(join(root, "donnees/ministeres.json")) ? JSON.parse(lire("donnees/ministeres.json")) : { annonces: [] };
+  const pm = lire("ministeres/index.html"), nbm = (pm.match(/<li class="annonce-min">/g) || []).length;
+  check("page « sites des ministères » : annonces avec lien officiel (https/http), source citée, lien depuis l'accueil et les actualités",
+    nbm >= Math.min(1, DM.annonces.length) && [...pm.matchAll(/<li class="annonce-min">(.*?)<\/li>/g)].every(m => /href="https?:\/\//.test(m[1])) && pm.includes("Source : site officiel")
+    && acc.includes('href="ministeres/"') && lire("actualites/index.html").includes('href="../ministeres/"') && sm.includes("ministeres/</loc>")); }
 // ---- Alertes concours (abonnement Telegram, 08/10/2026) : page, paiement, formulaire, rien de privé dans ce dépôt
 const al = lire("alertes/index.html");
 check("alertes : prix 15 DT / 3 mois ou 39 DT / an, 7 jours d'essai gratuit, pas de renouvellement automatique",

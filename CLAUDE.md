@@ -89,3 +89,14 @@ Rien n'est ajouté au site sans l'accord d'Ahmed.
   un concours ENCORE OUVERT absent de la lecture est gardé `JOURS_ABSENT` = 3 jours (champ `lu_le` = dernière lecture).
 - Actualités : 5 min au plus, arrêt après 3 échecs de suite ; étape non bloquante dans maj.yml (8 min au plus).
 - Les 92 concours ouverts ont été remis le soir même (lecture complète depuis le cloud, historique d'hier conservé).
+
+## Veille hebdomadaire des sites des ministères (08/10/2026, demande d'Ahmed)
+- Liste : `tools/ministeres.json` (27 sites officiels ; ajouter une ligne pour un nouveau site, `"actif": false` pour l'écarter).
+- Robot : `robot/veille_ministeres.py`, workflow **`veille-ministeres.yml` chaque lundi 5h40** (+ bouton manuel) → `donnees/ministeres.json`
+  (`sites` = statut de chaque visite ; `annonces` = titre + lien officiel, `vu_le` vide à la 1re visite d'un site = pas « nouveau »).
+  Méthode commune : liens dont le texte parle de concours ; titre ≥ 25 caractères = annonce, lien court (« المناظرات ») = rubrique
+  lue aussi (3 au plus) ; concours artistiques / photo / règlements écartés ; certificat incomplet toléré (page publique) ;
+  anti-robot = « bloqué », jamais de contournement.
+- Page **`ministeres/`** : annonces par ministère (type deviné par `type_de`, « Nouveau » 8 jours), doublons entre sites retirés ;
+  liens depuis l'accueil et la page Actualités. 1re visite (depuis le cloud) : 20/27 sites lus, 67 annonces affichées.
+- Injoignables le 08/10 depuis le cloud : économie, industrie, domaines, santé, éducation, emploi, jeunesse-sport.

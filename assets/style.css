@@ -452,3 +452,10 @@ html[dir="rtl"] .paie-etapes>li::before{left:auto;right:12px}
 .actu-lien{display:inline-flex;align-items:center;gap:6px;font-weight:700;font-size:14px}
 .actu-lien svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:2}
 .puces-actu{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 10px}
+/* ---- page ministeres/ (veille hebdomadaire des sites des ministères, 08/10/2026) ---- */
+.liste-annonces{list-style:none;margin:0;padding:0}
+.annonce-min{padding:9px 0;border-top:1px solid var(--ligne);line-height:1.5;overflow-wrap:anywhere}
+.annonce-min:first-child{border-top:0}
+.annonce-min .actu-type{display:inline-block;font-size:12px;font-weight:800;background:var(--bleu-tres-clair,#E6F2EF);color:var(--bleu,#1F6B60);border-radius:999px;padding:1px 9px;margin-inline-end:6px}
+.annonce-min .nouveau{display:inline-block;font-size:12px;font-weight:800;background:#F2B33D;color:#3A2A00;border-radius:999px;padding:1px 8px;margin-inline-end:6px}
+.annonce-min a{font-weight:600}

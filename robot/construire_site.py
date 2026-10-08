@@ -5,7 +5,7 @@ Pages : accueil (tous les concours ouverts, filtres gouvernorat + métier, compt
 (24 + « Toute la Tunisie » ; un concours national apparaît dans CHAQUE gouvernorat), une page par métier, guide
 « s'inscrire à un concours », alertes (abonnement Telegram) et leurs conditions, à propos et sources ; sitemap, robots.txt, manifeste.
 Gabarit, styles et scripts repris d'Alertes appels d'offres Tunisie (même famille de sites)."""
-import argparse, datetime as dt, hashlib, html, json, os, sys
+import argparse, datetime as dt, hashlib, html, json, os, re, sys
 
 ICI = os.path.dirname(os.path.abspath(__file__))
 RACINE = os.path.dirname(ICI)
@@ -115,6 +115,52 @@ LIRE_AVIS = L("Lire l'avis sur le portail officiel", "اقرأ البلاغ في
 def charger_actus():
     f = os.path.join(RACINE, "donnees", "actualites.json")
     return json.load(open(f, encoding="utf-8"))["actualites"] if os.path.exists(f) else []
+
+
+def charger_ministeres():
+    """Veille hebdomadaire des sites des ministères (robot/veille_ministeres.py) : (sites de tools/ministeres.json, données)."""
+    sites = json.load(open(os.path.join(RACINE, "tools", "ministeres.json"), encoding="utf-8"))["sites"]
+    f = os.path.join(RACINE, "donnees", "ministeres.json")
+    return sites, (json.load(open(f, encoding="utf-8")) if os.path.exists(f) else {"sites": {}, "annonces": []})
+
+
+def page_ministeres(v, maj, jour):
+    """Page ministeres/ : annonces de concours trouvées sur les sites des ministères, par ministère."""
+    sites, d = charger_ministeres()
+    lu = d.get("lu_le", "")
+    recent = (dt.date.fromisoformat(lu) - dt.timedelta(days=8)).isoformat() if lu else "9999"
+    blocs, n_ann, deja = "", 0, set()
+    titre_n = lambda t: re.sub(r"[\W_ـ]+", "", A.normal(t) if hasattr(A, "normal") else t).lower()
+    for s in sites:
+        la = []
+        for x in d["annonces"]:
+            if x["ministere"] == s["id"] and titre_n(x["titre"]) not in deja and len(la) < 15:
+                deja.add(titre_n(x["titre"]))      # même annonce sur deux sites (Intérieur et sa plateforme) : une seule fois
+                la.append(x)
+        if not la:
+            continue
+        n_ann += len(la)
+        items = ""
+        for x in la:
+            t = TYPES_ACTU.get(A.type_de(x["titre"]), A.AUTRE)
+            neuf = x.get("vu_le") and x["vu_le"] >= recent
+            items += (f'<li class="annonce-min"><span class="actu-type">{L(t[1], t[2])}</span>'
+                      + (f'<span class="nouveau">{L("Nouveau", "جديد")}</span>' if neuf else "")
+                      + f' <a href="{E(x["lien"])}" target="_blank" rel="noopener" dir="auto">{E(x["titre"])}</a></li>')
+        blocs += (f'<section class="carte"><h2>{L(E(s["fr"]), s["ar"])}</h2><ul class="liste-annonces">{items}</ul>'
+                  f'<p class="note">{L("Source : site officiel", "المصدر: الموقع الرسمي")} <a href="{E(s["url"])}" target="_blank" rel="noopener">{E(s["url"].split("//")[1].strip("/"))}</a></p></section>')
+    ok = sum(1 for x in d.get("sites", {}).values() if x.get("statut") == "ok")
+    hero = f"""{fil("../", "Sites des ministères", "مواقع الوزارات")}
+    <h1>{L("Concours annoncés sur les sites des ministères", "المناظرات المعلنة في مواقع الوزارات")}</h1>
+    <p class="intro">{L(f"Chaque semaine, un robot visite les sites officiels de {len(sites)} ministères et relève leurs annonces de concours (ouverture, candidats retenus, convocations, résultats). Dernière visite : {dfr(lu) or '—'}.",
+                        f"كل أسبوع، يزور برنامج آلي المواقع الرسمية لـ{ISO(len(sites))} وزارة ويجمع بلاغات المناظرات (فتح، قبول الترشحات، الاستدعاءات، النتائج). آخر زيارة: {ISO(dfr(lu) or '—')}.")}</p>"""
+    contenu = f"""<section class="carte"><p class="note">{L(f"{ok} site(s) lus lors de la dernière visite ; les autres ne répondaient pas ou refusent les robots (pas de contournement). Titres repris tels quels avec le lien officiel : lisez toujours l'avis complet sur le site du ministère.",
+        f"تمت قراءة {ISO(ok)} موقعًا في آخر زيارة؛ البقية لم تستجب أو ترفض البرامج الآلية (دون تحايل). العناوين كما هي مع الرابط الرسمي: اقرأ دائمًا البلاغ كاملًا في موقع الوزارة.")}</p></section>
+{blocs or f'<section class="carte"><p>{L("Première visite des sites des ministères en cours : les annonces apparaîtront ici.", "الزيارة الأولى لمواقع الوزارات جارية: ستظهر البلاغات هنا.")}</p></section>'}
+{bouton_alertes("../")}"""
+    return page("ministeres/", "../", "Concours des ministères en Tunisie : annonces sur les sites officiels | Alerte Concours Tunisie",
+                f"Annonces de concours publiées sur les sites officiels des ministères tunisiens ({n_ann} annonces), vérifiées chaque semaine : ouverture, convocations, résultats. مناظرات الوزارات.",
+                hero, contenu, v, maj)
 
 
 def actu_html(x, racine):
@@ -598,6 +644,7 @@ def construire(jour):
 <h2 class="titre-section" id="metiers">{L("Par métier", "حسب الاختصاص")}</h2>
 <section class="carte">{grille(METIERS, "", "metier", cm, "grille-metiers")}</section>
 {f'<h2 class="titre-section" id="actualites">{L("Dernières actualités des concours", "آخر أخبار المناظرات")}</h2><div class="actus">{"".join(actu_html(x, "") for x in actus[:4])}</div><p><a class="btn" href="actualites/">{L("Toutes les actualités (résultats, convocations…)", "كل الأخبار (النتائج، الاستدعاءات…)")}</a></p>' if actus else ""}
+<p><a class="btn" href="ministeres/">{L("Concours annoncés sur les sites des ministères", "المناظرات المعلنة في مواقع الوزارات")}</a></p>
 <section class="carte"><h2>{L("Comment s'inscrire ?", "كيف تترشح؟")}</h2><p>{L("L'inscription se fait toujours sur le portail officiel. Notre guide explique les étapes une par une.", "الترشح يتم دائمًا في البوابة الرسمية. دليلنا يشرح المراحل واحدة بواحدة.")}</p>
 <a class="btn" href="guide-inscription/">{L("Lire le guide d'inscription", "اقرأ دليل الترشح")}</a></section>
 {AVIS}"""
@@ -703,13 +750,16 @@ def construire(jour):
         hero = f"""{fil("../", "Actualités", "الأخبار")}
     <h1>{L("Actualités des concours : résultats, convocations, candidatures acceptées", "أخبار المناظرات: النتائج، الاستدعاءات، قبول الترشحات")}</h1>
     <p class="intro">{L(f"Les {len(actus)} derniers avis publiés sur le portail officiel des concours publics, classés par type. Mis à jour chaque jour.", f"آخر {ISO(len(actus))} بلاغًا منشورًا في البوابة الرسمية للمناظرات العمومية، مصنفة حسب النوع. تحيين يومي.")}</p>"""
-        contenu = f"""<section class="carte"><p class="puces-actu">{puces}</p>
+        contenu = f"""<section class="carte"><p class="puces-actu">{puces} <a class="pastille" href="../ministeres/">{L("Sites des ministères", "مواقع الوزارات")}</a></p>
 <p class="note">{L("Résumés des avis officiels. Lisez toujours l'avis complet sur le portail officiel : seul lui fait foi.", "ملخصات للبلاغات الرسمية. اقرأ دائمًا البلاغ كاملًا في البوابة الرسمية: هي المرجع الوحيد.")}</p></section>
 {blocs}
 {bouton_alertes("../")}"""
         pages["actualites/"] = page("actualites/", "../", "Actualités des concours en Tunisie : résultats, convocations, admis | Alerte Concours Tunisie",
                                     f"Résultats, listes des admis, convocations et nouveaux concours publiés sur le portail officiel des concours publics : {len(actus)} avis, mis à jour chaque jour. نتائج المناظرات.",
                                     hero, contenu, v, maj)
+
+    # --- annonces des sites des ministères (veille hebdomadaire, 08/10/2026)
+    pages["ministeres/"] = page_ministeres(v, maj, jour)
 
     # --- guide d'inscription
     etapes = "".join(f'<li><b>{L(E(tf), ta)}</b><p>{L(E(df), da)}</p></li>' for tf, ta, df, da in GUIDE)

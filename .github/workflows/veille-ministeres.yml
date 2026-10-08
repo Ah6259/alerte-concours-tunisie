@@ -1,0 +1,35 @@
+# Veille hebdomadaire des sites des ministères (demande d'Ahmed du 08/10/2026) : annonces de concours -> donnees/ministeres.json.
+# Le robot quotidien « maj » les affiche le lendemain matin. Une panne d'un site ne bloque rien.
+name: veille-ministeres
+on:
+  schedule:
+    - cron: "40 4 * * 1"       # chaque lundi à 5h40 (Tunis), avant le robot quotidien de 6h20
+  workflow_dispatch:
+concurrency:
+  group: maj-site
+  cancel-in-progress: false
+permissions:
+  contents: write
+env:
+  TZ: Africa/Tunis
+  PYTHONIOENCODING: utf-8
+jobs:
+  veille:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12" }
+      - name: Test du robot (sans réseau)
+        run: python tools/test_robot.py
+      - name: Visite des sites des ministères
+        run: python robot/veille_ministeres.py
+        timeout-minutes: 15
+      - name: Enregistrer
+        run: |
+          git config user.name "robot-concours"
+          git config user.email "robot-concours@users.noreply.github.com"
+          git add donnees/ministeres.json
+          git diff --cached --quiet || git commit -m "Veille des ministères du $(date +%d/%m/%Y)"
+          git pull --rebase -q && git push -q

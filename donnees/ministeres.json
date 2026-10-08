@@ -1,0 +1,1085 @@
+{
+ "lu_le": "2026-10-08",
+ "sites": {
+  "pm": {
+   "statut": "ok",
+   "nb": 0,
+   "erreur": "",
+   "vu_le": "2026-10-08",
+   "ok_le": "2026-10-08"
+  },
+  "interieur": {
+   "statut": "ok",
+   "nb": 4,
+   "erreur": "",
+   "vu_le": "2026-10-08",
+   "ok_le": "2026-10-08"
+  },
+  "interieur-concours": {
+   "statut": "ok",
+   "nb": 4,
+   "erreur": "",
+   "vu_le": "2026-10-08",
+   "ok_le": "2026-10-08"
+  },
+  "interieur-recrutement": {
+   "statut": "ok",
+   "nb": 0,
+   "erreur": "",
+   "vu_le": "2026-10-08",
+   "ok_le": "2026-10-08"
+  },
+  "defense": {
+   "statut": "ok",
+   "nb": 7,
+   "erreur": "",
+   "vu_le": "2026-10-08",
+   "ok_le": "2026-10-08"
+  },
+  "justice": {
+   "statut": "ok",
+   "nb": 71,
+   "erreur": "",
+   "vu_le": "2026-10-08",
+   "ok_le": "2026-10-08"
+  },
+  "diplomatie": {
+   "statut": "ok",
+   "nb": 0,
+   "erreur": "",
+   "vu_le": "2026-10-08",
+   "ok_le": "2026-10-08"
+  },
+  "finances": {
+   "statut": "ok",
+   "nb": 2,
+   "erreur": "",
+   "vu_le": "2026-10-08",
+   "ok_le": "2026-10-08"
+  },
+  "economie": {
+   "statut": "injoignable",
+   "nb": 0,
+   "erreur": "<urlopen error Tunnel connection failed: 502 Bad Gateway>",
+   "vu_le": "2026-10-08",
+   "ok_le": ""
+  },
+  "industrie": {
+   "statut": "injoignable",
+   "nb": 0,
+   "erreur": "<urlopen error [Errno 104] Connection reset by peer>",
+   "vu_le": "2026-10-08",
+   "ok_le": ""
+  },
+  "commerce": {
+   "statut": "ok",
+   "nb": 7,
+   "erreur": "",
+   "vu_le": "2026-10-08",
+   "ok_le": "2026-10-08"
+  },
+  "agriculture": {
+   "statut": "ok",
+   "nb": 0,
+   "erreur": "",
+   "vu_le": "2026-10-08",
+   "ok_le": "2026-10-08"
+  },
+  "environnement": {
+   "statut": "ok",
+   "nb": 4,
+   "erreur": "",
+   "vu_le": "2026-10-08",
+   "ok_le": "2026-10-08"
+  },
+  "equipement": {
+   "statut": "ok",
+   "nb": 0,
+   "erreur": "",
+   "vu_le": "2026-10-08",
+   "ok_le": "2026-10-08"
+  },
+  "domaines": {
+   "statut": "injoignable",
+   "nb": 0,
+   "erreur": "<urlopen error Tunnel connection failed: 502 Bad Gateway>",
+   "vu_le": "2026-10-08",
+   "ok_le": ""
+  },
+  "transport": {
+   "statut": "ok",
+   "nb": 10,
+   "erreur": "",
+   "vu_le": "2026-10-08",
+   "ok_le": "2026-10-08"
+  },
+  "communication": {
+   "statut": "ok",
+   "nb": 3,
+   "erreur": "",
+   "vu_le": "2026-10-08",
+   "ok_le": "2026-10-08"
+  },
+  "sante": {
+   "statut": "injoignable",
+   "nb": 0,
+   "erreur": "<urlopen error [Errno 104] Connection reset by peer>",
+   "vu_le": "2026-10-08",
+   "ok_le": ""
+  },
+  "social": {
+   "statut": "ok",
+   "nb": 10,
+   "erreur": "",
+   "vu_le": "2026-10-08",
+   "ok_le": "2026-10-08"
+  },
+  "education": {
+   "statut": "injoignable",
+   "nb": 0,
+   "erreur": "<urlopen error [Errno 104] Connection reset by peer>",
+   "vu_le": "2026-10-08",
+   "ok_le": ""
+  },
+  "enseignement-superieur": {
+   "statut": "ok",
+   "nb": 6,
+   "erreur": "",
+   "vu_le": "2026-10-08",
+   "ok_le": "2026-10-08"
+  },
+  "emploi": {
+   "statut": "injoignable",
+   "nb": 0,
+   "erreur": "<urlopen error [Errno 104] Connection reset by peer>",
+   "vu_le": "2026-10-08",
+   "ok_le": ""
+  },
+  "culture": {
+   "statut": "ok",
+   "nb": 0,
+   "erreur": "",
+   "vu_le": "2026-10-08",
+   "ok_le": "2026-10-08"
+  },
+  "jeunesse-sport": {
+   "statut": "injoignable",
+   "nb": 0,
+   "erreur": "<urlopen error Tunnel connection failed: 502 Bad Gateway>",
+   "vu_le": "2026-10-08",
+   "ok_le": ""
+  },
+  "famille": {
+   "statut": "ok",
+   "nb": 0,
+   "erreur": "",
+   "vu_le": "2026-10-08",
+   "ok_le": "2026-10-08"
+  },
+  "tourisme": {
+   "statut": "ok",
+   "nb": 0,
+   "erreur": "",
+   "vu_le": "2026-10-08",
+   "ok_le": "2026-10-08"
+  },
+  "religieuses": {
+   "statut": "ok",
+   "nb": 0,
+   "erreur": "",
+   "vu_le": "2026-10-08",
+   "ok_le": "2026-10-08"
+  }
+ },
+ "annonces": [
+  {
+   "ministere": "interieur",
+   "titre": "إعلان فتح مناظرة خارجية للإنتداب بعنوان سنة 2026",
+   "lien": "https://www.interieur.gov.tn/actualite/33373/%D8%A5%D8%B9%D9%84%D8%A7%D9%86-%D9%81%D8%AA%D8%AD-%D9%85%D9%86%D8%A7%D8%B8%D8%B1%D8%A9-%D8%AE%D8%A7%D8%B1%D8%AC%D9%8A%D8%A9-%D9%84%D9%84%D8%A5%D9%86%D8%AA%D8%AF%D8%A7%D8%A8-%D8%A8%D8%B9%D9%86%D9%88%D8%A7%D9%86-%D8%B3%D9%86%D8%A9-2026",
+   "vu_le": "",
+   "revu_le": "2026-10-08"
+  },
+  {
+   "ministere": "interieur",
+   "titre": "فتح مُناظرة خارجيّة بالإختبارات لإنتداب عُرفاء ذكُور لفائدة الوحدات الحدُوديّة المُتقدّمة بسلك الحرس الوطني بعنوان سنة 2026",
+   "lien": "https://www.interieur.gov.tn/actualite/33295/%D9%81%D8%AA%D8%AD-%D9%85-%D9%86%D8%A7%D8%B8%D8%B1%D8%A9-%D8%AE%D8%A7%D8%B1%D8%AC%D9%8A-%D8%A9-%D8%A8%D8%A7%D9%84%D8%A5%D8%AE%D8%AA%D8%A8%D8%A7%D8%B1%D8%A7%D8%AA-%D9%84%D8%A5%D9%86%D8%AA%D8%AF%D8%A7%D8%A8-%D8%B9-%D8%B1%D9%81%D8%A7%D8%A1-%D8%B0%D9%83-%D9%88%D8%B1-%D9%84%D9%81%D8%A7%D8%A6%D8%AF%D8%A9-%D8%A7%D9%84%D9%88%D8%AD%D8%AF%D8%A7%D8%AA-%D8%A7%D9%84%D8%AD%D8%AF-%D9%88%D8%AF%D9%8A-%D8%A9-%D8%A7%D9%84%D9%85-%D8%AA%D9%82%D8%AF-%D9%85%D8%A9-%D8%A8%D8%B3%D9%84%D9%83-%D8%A7%D9%84%D8%AD%D8%B1%D8%B3-%D8%A7%D9%84%D9%88%D8%B7%D9%86%D9%8A-%D8%A8%D8%B9%D9%86%D9%88%D8%A7%D9%86-%D8%B3%D9%86%D8%A9-2026",
+   "vu_le": "",
+   "revu_le": "2026-10-08"
+  },
+  {
+   "ministere": "interieur",
+   "titre": "إعلان فتح مناظرة خارجية بالإختبارات لإنتداب نظار أمن (إختصاصات شبه طبية وتقنية)",
+   "lien": "https://www.interieur.gov.tn/actualite/33290/%D8%A5%D8%B9%D9%84%D8%A7%D9%86-%D9%81%D8%AA%D8%AD-%D9%85%D9%86%D8%A7%D8%B8%D8%B1%D8%A9-%D8%AE%D8%A7%D8%B1%D8%AC%D9%8A%D8%A9-%D8%A8%D8%A7%D9%84%D8%A5%D8%AE%D8%AA%D8%A8%D8%A7%D8%B1%D8%A7%D8%AA-%D9%84%D8%A5%D9%86%D8%AA%D8%AF%D8%A7%D8%A8-%D9%86%D8%B8%D8%A7%D8%B1-%D8%A3%D9%85%D9%86-%D8%A5%D8%AE%D8%AA%D8%B5%D8%A7%D8%B5%D8%A7%D8%AA-%D8%B4%D8%A8%D9%87-%D8%B7%D8%A8%D9%8A%D8%A9-%D9%88%D8%AA%D9%82%D9%86%D9%8A%D8%A9",
+   "vu_le": "",
+   "revu_le": "2026-10-08"
+  },
+  {
+   "ministere": "interieur",
+   "titre": "المناظرات: concours.interieur.gov.tn",
+   "lien": "https://concours.interieur.gov.tn/",
+   "vu_le": "",
+   "revu_le": "2026-10-08"
+  },
+  {
+   "ministere": "interieur-concours",
+   "titre": "إعلان فتح مناظرة خارجية للإنتداب بعنوان سنة 2026",
+   "lien": "https://www.interieur.gov.tn:443/actualite/33373/%D8%A5%D8%B9%D9%84%D8%A7%D9%86-%D9%81%D8%AA%D8%AD-%D9%85%D9%86%D8%A7%D8%B8%D8%B1%D8%A9-%D8%AE%D8%A7%D8%B1%D8%AC%D9%8A%D8%A9-%D9%84%D9%84%D8%A5%D9%86%D8%AA%D8%AF%D8%A7%D8%A8-%D8%A8%D8%B9%D9%86%D9%88%D8%A7%D9%86-%D8%B3%D9%86%D8%A9-2026",
+   "vu_le": "",
+   "revu_le": "2026-10-08"
+  },
+  {
+   "ministere": "interieur-concours",
+   "titre": "فتح مُناظرة خارجيّة بالإختبارات لإنتداب عُرفاء ذكُور لفائدة الوحدات الحدُوديّة المُتقدّمة بسلك الحرس الوطني بعنوان سنة 2026",
+   "lien": "https://www.interieur.gov.tn:443/actualite/33295/%D9%81%D8%AA%D8%AD-%D9%85-%D9%86%D8%A7%D8%B8%D8%B1%D8%A9-%D8%AE%D8%A7%D8%B1%D8%AC%D9%8A-%D8%A9-%D8%A8%D8%A7%D9%84%D8%A5%D8%AE%D8%AA%D8%A8%D8%A7%D8%B1%D8%A7%D8%AA-%D9%84%D8%A5%D9%86%D8%AA%D8%AF%D8%A7%D8%A8-%D8%B9-%D8%B1%D9%81%D8%A7%D8%A1-%D8%B0%D9%83-%D9%88%D8%B1-%D9%84%D9%81%D8%A7%D8%A6%D8%AF%D8%A9-%D8%A7%D9%84%D9%88%D8%AD%D8%AF%D8%A7%D8%AA-%D8%A7%D9%84%D8%AD%D8%AF-%D9%88%D8%AF%D9%8A-%D8%A9-%D8%A7%D9%84%D9%85-%D8%AA%D9%82%D8%AF-%D9%85%D8%A9-%D8%A8%D8%B3%D9%84%D9%83-%D8%A7%D9%84%D8%AD%D8%B1%D8%B3-%D8%A7%D9%84%D9%88%D8%B7%D9%86%D9%8A-%D8%A8%D8%B9%D9%86%D9%88%D8%A7%D9%86-%D8%B3%D9%86%D8%A9-2026",
+   "vu_le": "",
+   "revu_le": "2026-10-08"
+  },
+  {
+   "ministere": "interieur-concours",
+   "titre": "إعلان فتح مناظرة خارجية بالإختبارات لإنتداب نظار أمن (إختصاصات شبه طبية وتقنية)",
+   "lien": "https://www.interieur.gov.tn:443/actualite/33290/%D8%A5%D8%B9%D9%84%D8%A7%D9%86-%D9%81%D8%AA%D8%AD-%D9%85%D9%86%D8%A7%D8%B8%D8%B1%D8%A9-%D8%AE%D8%A7%D8%B1%D8%AC%D9%8A%D8%A9-%D8%A8%D8%A7%D9%84%D8%A5%D8%AE%D8%AA%D8%A8%D8%A7%D8%B1%D8%A7%D8%AA-%D9%84%D8%A5%D9%86%D8%AA%D8%AF%D8%A7%D8%A8-%D9%86%D8%B8%D8%A7%D8%B1-%D8%A3%D9%85%D9%86-%D8%A5%D8%AE%D8%AA%D8%B5%D8%A7%D8%B5%D8%A7%D8%AA-%D8%B4%D8%A8%D9%87-%D8%B7%D8%A8%D9%8A%D8%A9-%D9%88%D8%AA%D9%82%D9%86%D9%8A%D8%A9",
+   "vu_le": "",
+   "revu_le": "2026-10-08"
+  },
+  {
+   "ministere": "defense",
+   "titre": "إنتداب تلامذة ضباط أطباء من الطلبة المرسّمين بالمرحلة الثانية لدراسة الطب أو طب الأسنان أو الصيدلة أو الطب البيطري",
+   "lien": "https://defense.tn/%d8%a5%d9%86%d8%aa%d8%af%d8%a7%d8%a8-%d8%aa%d9%84%d8%a7%d9%85%d8%b0%d8%a9-%d8%b6%d8%a8%d8%a7%d8%b7-%d8%a3%d8%b7%d8%a8%d8%a7%d8%a1-%d9%85%d9%86-%d8%a7%d9%84%d8%b7%d9%84%d8%a8%d8%a9-%d8%a7%d9%84%d9%85-2/",
+   "vu_le": "",
+   "revu_le": "2026-10-08"
+  },
+  {
+   "ministere": "defense",
+   "titre": "إنتداب جنود متطوعين مباشرين لجيش البر (فتيان)",
+   "lien": "https://defense.tn/%d8%a5%d9%86%d8%aa%d8%af%d8%a7%d8%a8-%d8%ac%d9%86%d9%88%d8%af-%d9%85%d8%aa%d8%b7%d9%88%d8%b9%d9%8a%d9%86-%d9%85%d8%a8%d8%a7%d8%b4%d8%b1%d9%8a%d9%86-%d9%84%d8%ac%d9%8a%d8%b4-%d8%a7%d9%84%d8%a8%d8%b1/",
+   "vu_le": "",
+   "revu_le": "2026-10-08"
+  },
+  {
+   "ministere": "defense",
+   "titre": "إنتداب تقنيين سامين للصحة العسكرية برتبة وكيل مباشر لفائدة الإدارة العامة للصحة العسكرية بعنوان سنة 2026",
+   "lien": "https://defense.tn/%d8%a5%d9%86%d8%aa%d8%af%d8%a7%d8%a8-%d8%aa%d9%82%d9%86%d9%8a%d9%8a%d9%86-%d8%b3%d8%a7%d9%85%d9%8a%d9%86-%d9%84%d9%84%d8%b5%d8%ad%d8%a9-%d8%a7%d9%84%d8%b9%d8%b3%d9%83%d8%b1%d9%8a%d8%a9-%d8%a8%d8%b1-2/",
+   "vu_le": "",
+   "revu_le": "2026-10-08"
+  },
+  {
+   "ministere": "defense",
+   "titre": "إنتداب أساتذة عرضيين بعنوان السنة التكوينية 2026-2027",
+   "lien": "https://defense.tn/%d8%a5%d9%86%d8%aa%d8%af%d8%a7%d8%a8-%d8%a3%d8%b3%d8%a7%d8%aa%d8%b0%d8%a9-%d8%b9%d8%b1%d8%b6%d9%8a%d9%8a%d9%86-%d8%a8%d8%b9%d9%86%d9%88%d8%a7%d9%86-%d8%a7%d9%84%d8%b3%d9%86%d8%a9-%d8%a7%d9%84%d8%aa-2/",
+   "vu_le": "",
+   "revu_le": "2026-10-08"
+  },
+  {
+   "ministere": "defense",
+   "titre": "قائمة الناجحين نهائيا في مناظرة إنتداب ملحقيين قضائيين عسكريين برتبة ملازم أول مباشر لتكوينهم بالمعهد الأعلى للقضاء.",
+   "lien": "https://defense.tn/%d9%82%d8%a7%d8%a6%d9%85%d8%a9-%d8%a7%d9%84%d9%86%d8%a7%d8%ac%d8%ad%d9%8a%d9%86-%d9%86%d9%87%d8%a7%d8%a6%d9%8a%d8%a7-%d9%81%d9%8a-%d9%85%d9%86%d8%a7%d8%b8%d8%b1%d8%a9-%d8%a5%d9%86%d8%aa%d8%af%d8%a7/",
+   "vu_le": "",
+   "revu_le": "2026-10-08"
+  },
+  {
+   "ministere": "defense",
+   "titre": "إعلان إنتداب تلامذة رقباء مباشرين لجيش البر (فتيان)",
+   "lien": "https://defense.tn/%d8%a5%d8%b9%d9%84%d8%a7%d9%86-%d8%a5%d9%86%d8%aa%d8%af%d8%a7%d8%a8-%d8%aa%d9%84%d8%a7%d9%85%d8%b0%d8%a9-%d8%b1%d9%82%d8%a8%d8%a7%d8%a1-%d9%85%d8%a8%d8%a7%d8%b4%d8%b1%d9%8a%d9%86-%d8%a8%d8%a7%d9%84/",
+   "vu_le": "",
+   "revu_le": "2026-10-08"
+  },
+  {
+   "ministere": "defense",
+   "titre": "إنتداب أساتذة عرضيين بعنوان السنة التكوينية 2026-2027",
+   "lien": "https://defense.tn/%d8%a5%d9%86%d8%aa%d8%af%d8%a7%d8%a8-%d8%a3%d8%b3%d8%a7%d8%aa%d8%b0%d8%a9-%d8%b9%d8%b1%d8%b6%d9%8a%d9%8a%d9%86-%d8%a8%d8%b9%d9%86%d9%88%d8%a7%d9%86-%d8%a7%d9%84%d8%b3%d9%86%d8%a9-%d8%a7%d9%84%d8%aa/",
+   "vu_le": "",
+   "revu_le": "2026-10-08"
+  },
+  {
+   "ministere": "justice",
+   "titre": "بلاغ خاص بالمترشحين المشاركين في الاختبارات والامتحانات المهنية لانتداب عملة من الاصناف 1 و 4 و 5 بوزارة العدل المفتوحة بعنوان 2026",
+   "lien": "https://www.justice.gov.tn/index.php?id=191&tx_ttnews%5Btt_news%5D=5211&cHash=1f9854cab2832dc6bb130c2f928f41b6",
+   "vu_le": "",
+   "revu_le": "2026-10-08"
+  },
+  {
+   "ministere": "justice",
+   "titre": "المناظرة الخارجية بالاختبارت لانتداب تقني مخبر الإعلامية بسلك محللي وتقني الإعلامية للإدارات العمومية - المترشحون المدعوون للإدلاء بملفاتهم",
+   "lien": "https://www.justice.gov.tn/index.php?id=191&tx_ttnews%5Btt_news%5D=5172&cHash=19eda68c0181f89c8fb43563b0272349",
+   "vu_le": "",
+   "revu_le": "2026-10-08"
+  },
+  {
+   "ministere": "justice",
+   "titre": "المناظرة الخارجية بالاختبارات لانتداب مهندسين أولين في الإعلامية دورة 24 سبتمبر 2025 - المترشحون المدعوون لإجراء الاختبار الشفاهي",
+   "lien": "https://www.justice.gov.tn/index.php?id=191&tx_ttnews%5Btt_news%5D=5171&cHash=9102cf1eef35923a0680cf465d2ee6ee",
+   "vu_le": "",
+   "revu_le": "2026-10-08"
+  },
+  {
+   "ministere": "justice",
+   "titre": "طباعة استدعاءات اجراء الاختبار النفسي-التقني والاختبار الشفاهي والفحص الطبي المعمق لمناظرة عرفاء السجون والإصلاح دورة عدد 1 لسنة 2025",
+   "lien": "https://www.justice.gov.tn/index.php?id=191&tx_ttnews%5Btt_news%5D=5170&cHash=ca54a52a112418d398988c7d8552ac0b",
+   "vu_le": "",
+   "revu_le": "2026-10-08"
+  },
+  {
+   "ministere": "justice",
+   "titre": "بلاغ انتداب اطباء صحة عمومية لفائدة الهيئة العامة للسجون والاصلاح",
+   "lien": "https://www.justice.gov.tn/index.php?id=191&tx_ttnews%5Btt_news%5D=5169&cHash=ca26da69b692f8abe0a1e520f859c2d3",
+   "vu_le": "",
+   "revu_le": "2026-10-08"
+  },
+  {
+   "ministere": "justice",
+   "titre": "قائمة المترشحين المدعووين للادلاء بملفاتهم في المناظرة الخارجية بالملفات لانتداب كتبة المحاكم الأولين بسلك كتابات المحاكم من الصنف العدلي",
+   "lien": "https://www.justice.gov.tn/index.php?id=191&tx_ttnews%5Btt_news%5D=5165&cHash=49dd7e3b5418f4f67dd5c31dd2ed5a4f",
+   "vu_le": "",
+   "revu_le": "2026-10-08"
+  },
+  {
+   "ministere": "justice",
+   "titre": "قائمة المترشحين المدعووين للادلاء بملفاتهم في المناظرة الخارجية بالملفات لانتداب متصرفي كتابات المحاكم بسلك كتابات المحاكم من الصنف العدلي",
+   "lien": "https://www.justice.gov.tn/index.php?id=191&tx_ttnews%5Btt_news%5D=5164&cHash=6014acbe95e62ca7c1c8457535c6a89d",
+   "vu_le": "",
+   "revu_le": "2026-10-08"
+  },
+  {
+   "ministere": "justice",
+   "titre": "اعلان عن امتحانات مهنية لانتداب عملة بوزارة العدل بعنوان سنة 2026",
+   "lien": "https://www.justice.gov.tn/index.php?id=191&tx_ttnews%5Btt_news%5D=5124&cHash=660d1cb0e4295a7f8a7d972d12b8c197",
+   "vu_le": "",
+   "revu_le": "2026-10-08"
+  },
+  {
+   "ministere": "justice",
+   "titre": "اعلان عن اختبارين مهنيين لانتداب عملة بوزارة العدل بعنوان سنة 2026",
+   "lien": "https://www.justice.gov.tn/index.php?id=191&tx_ttnews%5Btt_news%5D=5123&cHash=1f4c22fd9c0118256b00a57bf8e1e152",
+   "vu_le": "",
+   "revu_le": "2026-10-08"
+  },
+  {
+   "ministere": "justice",
+   "titre": "قائمة المترشحين المدعوين لاجراء الاختبار الكتابي للقبول الأولي في المناظرة الخارجية بالاختبارات لانتداب كتبة محاكم بسلك كتابات المحاكم من الصنف العدلي دورة 2025",
+   "lien": "https://www.justice.gov.tn/index.php?id=191&tx_ttnews%5Btt_news%5D=5119&cHash=8e5f43290964677b347a6cf5ef142ec2",
+   "vu_le": "",
+   "revu_le": "2026-10-08"
+  },
+  {
+   "ministere": "justice",
+   "titre": "بلاغ حول رزنامة العرض على الفحص الطبي للمترشحين الناجحين في الاختبارات الكتابية للقبول الأولي لمناظرة الدخول لمرحلة التكوين الأساسي للملحقين القضائيين بالمعهد الأعلى للقضاء (دورة ديسمبر 2025)",
+   "lien": "https://www.justice.gov.tn/index.php?id=191&tx_ttnews%5Btt_news%5D=5116&cHash=95707756f48cf303d7a6d0b4cb63a42f",
+   "vu_le": "",
+   "revu_le": "2026-10-08"
+  },
+  {
+   "ministere": "justice",
+   "titre": "بلاغ يتعلق بالإختبارات الشفاهية لمناظرة الدخول لمرحلة التكوين الأساسي للملحقين القضائيين بالمعهد الأعلى للقضاء (دورة ديسمبر 2025)",
+   "lien": "https://www.justice.gov.tn/index.php?id=191&tx_ttnews%5Btt_news%5D=5107&cHash=1f72b928a2aef60aa7b87cacff8b5db1",
+   "vu_le": "",
+   "revu_le": "2026-10-08"
+  },
+  {
+   "ministere": "justice",
+   "titre": "الاعلان عن فتح مناظرة داخلية بالملفات للترقية إلى رتبة متصرف رئيس كتابة محكمة بعنوان سنة 2026",
+   "lien": "https://www.justice.gov.tn/index.php?id=191&tx_ttnews%5Btt_news%5D=5106&cHash=99c0d5bb981e11cca1719660f46eb674",
+   "vu_le": "",
+   "revu_le": "2026-10-08"
+  },
+  {
+   "ministere": "justice",
+   "titre": "قائمة الناجحين في الاختبارات الكتابية لمناظرة الدخول الى مرحلة التكوين الاساسي للملحقين القضائيين بالمعهد الاعلى للقضاء-دورة ديسمبر 2025",
+   "lien": "https://www.justice.gov.tn/index.php?id=191&tx_ttnews%5Btt_news%5D=5092&cHash=fadee419d661729d9aef4e5a7591a1c1",
+   "vu_le": "",
+   "revu_le": "2026-10-08"
+  },
+  {
+   "ministere": "justice",
+   "titre": "إعلان عن فتح مناظرات داخلية للترقية بالملفات إلى الرتب التالية: متصرف عام كتابة محكمة - تقني رئيس أول- تقني رئيس -تقني أول - تقني - مساعد تقني - محلل مركزي - واضع برامج - حافظ مكتبات أو توثيق",
+   "lien": "https://www.justice.gov.tn/index.php?id=191&tx_ttnews%5Btt_news%5D=5051&cHash=8e87d44b2c94a5d482299b723b5e0b07",
+   "vu_le": "",
+   "revu_le": "2026-10-08"
+  },
+  {
+   "ministere": "justice",
+   "titre": "إعلان عن فتح مناظرات داخلية للترقية بالملفات بالسلك الإداري المشترك للإدارات العمومية بعنوان سنة 2026 (متصرف عام - متصرف رئيس - متصرف - متصرف مساعد - كاتب تصرف)",
+   "lien": "https://www.justice.gov.tn/index.php?id=191&tx_ttnews%5Btt_news%5D=5050&cHash=ba89aedd6099aa0d5bad875d3630334e",
+   "vu_le": "",
+   "revu_le": "2026-10-08"
+  },
+  {
+   "ministere": "justice",
+   "titre": "فتح مناظرات داخلية للترقية بالملفات في عدّة اختصاصات بعنوان سنة 2026",
+   "lien": "https://www.justice.gov.tn/index.php?id=191&tx_ttnews%5Btt_news%5D=5041&cHash=169b90d27c94c06c1583a446fb9ccfef",
+   "vu_le": "",
+   "revu_le": "2026-10-08"
+  },
+  {
+   "ministere": "justice",
+   "titre": "الإعلان عن فتح المناظرة الخارجية بالملفات لإنتداب كتبة المحاكم الأولين بسلك كتابات المحاكم من الصنف العدلي بعنوان سنة 2026",
+   "lien": "https://www.justice.gov.tn/index.php?id=191&tx_ttnews%5Btt_news%5D=5017&cHash=58b06307db558931e0897299d9adea9a",
+   "vu_le": "",
+   "revu_le": "2026-10-08"
+  },
+  {
+   "ministere": "justice",
+   "titre": "الإعلان عن فتح المناظرة الخارجية بالملفات ﻻنتداب متصرفي كتابات المحاكم بسلك كتابات المحاكم من الصنف العدلي بعنوان سنة 2026",
+   "lien": "https://www.justice.gov.tn/index.php?id=191&tx_ttnews%5Btt_news%5D=5015&cHash=feef3a4e3e0d43e47c72213fb55c98ca",
+   "vu_le": "",
+   "revu_le": "2026-10-08"
+  },
+  {
+   "ministere": "justice",
+   "titre": "طباعة استدعاءات اجتياز الفحص الطبي و الاختبار الرياضي لمناظرة عرفاء السجون والإصلاح دورة عدد 1 لسنة 2025",
+   "lien": "https://www.justice.gov.tn/index.php?id=191&tx_ttnews%5Btt_news%5D=5022&cHash=f6fa49353bc3e647236682183d846368",
+   "vu_le": "",
+   "revu_le": "2026-10-08"
+  },
+  {
+   "ministere": "justice",
+   "titre": "إعلان عن فتح مناظرة داخلية بالملفات للترقية في رتبة متصرف مستشار كتابة محكمة ومناظرة داخلية بالملفات للترقية إلى رتبة متصرف كتابة محكمة",
+   "lien": "https://www.justice.gov.tn/index.php?id=191&tx_ttnews%5Btt_news%5D=4897&cHash=326c5782ced18dd07d6c3091eae63644",
+   "vu_le": "",
+   "revu_le": "2026-10-08"
+  },
+  {
+   "ministere": "justice",
+   "titre": "قرار من وزيرة العدل مؤرخ في 01 أفريل 2026 يتعلق بفتح مناظرة داخلية بالملفات للترقية إلى رتبة متصرف مستشار كتابة محكمة.",
+   "lien": "https://www.justice.gov.tn/index.php?id=191&tx_ttnews%5Btt_news%5D=4895&cHash=d7741944d28ae65078e0cc6a6fd1b815",
+   "vu_le": "",
+   "revu_le": "2026-10-08"
+  },
+  {
+   "ministere": "justice",
+   "titre": "قرار من وزيرة العدل مؤرخ في 01 أفريل 2026 يتعلق بفتح مناظرة داخلية بالملفات للترقية إلى رتبة متصرف كتابة محكمة.",
+   "lien": "https://www.justice.gov.tn/index.php?id=191&tx_ttnews%5Btt_news%5D=4896&cHash=ca4d48a192f77072d7ea52b39630c84d",
+   "vu_le": "",
+   "revu_le": "2026-10-08"
+  },
+  {
+   "ministere": "justice",
+   "titre": "قائمة الناجحين نهائيا حسب الترتيب التفاضلي في المناظرة الداخلية بالملفات للترقية إلى رتبة واضع برامج",
+   "lien": "https://www.justice.gov.tn/index.php?id=191&tx_ttnews%5Btt_news%5D=4853&cHash=7054298a19d729c5b0f3e902f8dddd09",
+   "vu_le": "",
+   "revu_le": "2026-10-08"
+  },
+  {
+   "ministere": "justice",
+   "titre": "طباعة الاستدعاءات الخاصة باجتياز مناظرة القبول بالمعهد الأعلى للقضاء قصد الترسيم بجدول العدول المنفذين (دورة مارس 2026)",
+   "lien": "https://www.justice.gov.tn/index.php?id=191&tx_ttnews%5Btt_news%5D=4841&cHash=8df9ba876586f9d4a3a6f15bf8cf3bd6",
+   "vu_le": "",
+   "revu_le": "2026-10-08"
+  },
+  {
+   "ministere": "justice",
+   "titre": "طباعة استدعاءات الإختبار الكتابي للمناظرة الخارجية بالإختبارات للدخول لمرحلة تكوين عرفاء سجون وإصلاح بالمدرسة الوطنية للسجون والإصلاح دورة عدد 1 لسنة 2025",
+   "lien": "https://www.justice.gov.tn/index.php?id=191&tx_ttnews%5Btt_news%5D=4837&cHash=ad1dbdc303bfa7c3280cfb42ede61aa1",
+   "vu_le": "",
+   "revu_le": "2026-10-08"
+  },
+  {
+   "ministere": "justice",
+   "titre": "فتح مناظرة خارجية بالملفات لانتداب عون تنظيف لفائدة ديوان مساكن القضاة وأعوان وزارة العدل",
+   "lien": "https://www.justice.gov.tn/index.php?id=191&tx_ttnews%5Btt_news%5D=4835&cHash=47810057bd08913f9ecdb1f521a5f462",
+   "vu_le": "",
+   "revu_le": "2026-10-08"
+  },
+  {
+   "ministere": "justice",
+   "titre": "إعلان عن فتح مناظرة داخلية بالملفات للترقية إلى رتبة متصرف مستشار في الوثائق والأرشيف بعنوان سنة 2025",
+   "lien": "https://www.justice.gov.tn/index.php?id=191&tx_ttnews%5Btt_news%5D=4823&cHash=11d53b6c49344d75af155ce1167ba0a4",
+   "vu_le": "",
+   "revu_le": "2026-10-08"
+  },
+  {
+   "ministere": "justice",
+   "titre": "قائمة الناجحين نهائيا حسب الترتيب التفاضلي في المناظرة الداخلية بالملفات للترقية إلى رتبة متصرف مستشار في الوثائق والأرشيف بعنوان سنة 2024",
+   "lien": "https://www.justice.gov.tn/index.php?id=191&tx_ttnews%5Btt_news%5D=4824&cHash=9e9e5a1d403e7a713c7cd1eba3be0a24",
+   "vu_le": "",
+   "revu_le": "2026-10-08"
+  },
+  {
+   "ministere": "justice",
+   "titre": "فتح مناظرة بالمواد لانتداب مائتا (200) عدل تنفيذ لدى المعهد الأعلى للقضاء",
+   "lien": "https://www.justice.gov.tn/index.php?id=191&tx_ttnews%5Btt_news%5D=4719&cHash=53cedbfc90a74355225926c03ec5b9ef",
+   "vu_le": "",
+   "revu_le": "2026-10-08"
+  },
+  {
+   "ministere": "justice",
+   "titre": "قراري وزيرة العدل مؤرخين في 30 جانفي 2026 يتعلقان بضبط برنامج وشروط مناظرة القبول بالمعهد الأعلى للقضاء قصد الترسيم بجداول العدول المنفذين، وبفتح مناظرة لانتداب 200 عدل تنفيذ.",
+   "lien": "https://www.justice.gov.tn/index.php?id=191&tx_ttnews%5Btt_news%5D=4717&cHash=144050d293380299bbfe42b2b32b3be2",
+   "vu_le": "",
+   "revu_le": "2026-10-08"
+  },
+  {
+   "ministere": "justice",
+   "titre": "بلاغ انتداب عملة من الصنف الأول والثالث لفائدة الهيئة العامة للسجون والاصلاح بعنوان سنة 2025",
+   "lien": "https://www.justice.gov.tn/index.php?id=191&tx_ttnews%5Btt_news%5D=4645&cHash=71604b7bdb735e1ee98ea7f9567edae1",
+   "vu_le": "",
+   "revu_le": "2026-10-08"
+  },
+  {
+   "ministere": "justice",
+   "titre": "طباعة الإستدعاءات الخاصة بإجتياز الإختبارات الكتابية لمناظرة الملحقين القضائيين بالمعهد الأعلى للقضاء دورة ديسمبر 2025",
+   "lien": "https://www.justice.gov.tn/index.php?id=191&tx_ttnews%5Btt_news%5D=4631&cHash=5adfdac4eda99337b0283f0fc631037a",
+   "vu_le": "",
+   "revu_le": "2026-10-08"
+  },
+  {
+   "ministere": "justice",
+   "titre": "تفتح بوزارة العدل \"الهيئة العامة للسجون والإصلاح \" مناظرة خارجية بالإختبارات للدخول لمرحلة تكوين عرفاء سجون وإصلاح بالمدرسة الوطنية للسجون والإصلاح لسنة 2025",
+   "lien": "https://www.justice.gov.tn/index.php?id=191&tx_ttnews%5Btt_news%5D=4578&cHash=a84a7e4ee993fe96311e261e65da2fb3",
+   "vu_le": "",
+   "revu_le": "2026-10-08"
+  },
+  {
+   "ministere": "justice",
+   "titre": "إعلان عن فتح مناظرة داخلية بالملفات للترقية إلى رتبة متصرف عام من الصنف الأعلى بالسلك الإداري المشترك ( دورة 10 ديسمبر 2025 )",
+   "lien": "https://www.justice.gov.tn/index.php?id=191&tx_ttnews%5Btt_news%5D=4557&cHash=d96e0d13a36c873818537525f17f8932",
+   "vu_le": "",
+   "revu_le": "2026-10-08"
+  },
+  {
+   "ministere": "justice",
+   "titre": "إعلان عن فتح مناظرة داخلية بالملفات للترقية إلى رتبة متصرف مستشار بالسلك الإداري المشترك ( دورة 11 ديسمبر 2025 )",
+   "lien": "https://www.justice.gov.tn/index.php?id=191&tx_ttnews%5Btt_news%5D=4556&cHash=5ca0c59f9e0c00ad60d22ec77bd2568d",
+   "vu_le": "",
+   "revu_le": "2026-10-08"
+  },
+  {
+   "ministere": "justice",
+   "titre": "قرار من وزيرة العدل مؤرخ في 23 أكتوبر 2025 يتعلق بإلغاء المناظرة الداخلية بالملفات للترقية إلى رتبة متصرف عام من الصنف الأعلى بالسلك الإداري المشترك للإدارات العمومية. قرار من وزيرة العدل مؤرخ في 23 أكتوبر 2025 يتعلق بفتح مناظرة داخلية بالملفات للترقية إلى",
+   "lien": "https://www.justice.gov.tn/index.php?id=191&tx_ttnews%5Btt_news%5D=4555&cHash=2ed3f7bf3276aebf8e480094c4fa1f46",
+   "vu_le": "",
+   "revu_le": "2026-10-08"
+  },
+  {
+   "ministere": "justice",
+   "titre": "قرار من وزيرة العدل مؤرخ في 23 أكتوبر 2025 يتعلق بإلغاء المناظرة الداخلية بالملفات للترقية إلى رتبة متصرف مستشار بالسلك الإداري المشترك للإدارات العمومية. قرار من وزيرة العدل مؤرخ في 23 أكتوبر 2025 يتعلق بفتح مناظرة داخلية بالملفات للترقية إلى رتبة متصرف م",
+   "lien": "https://www.justice.gov.tn/index.php?id=191&tx_ttnews%5Btt_news%5D=4554&cHash=eccf93e2151d27c95436cfff47e881b3",
+   "vu_le": "",
+   "revu_le": "2026-10-08"
+  },
+  {
+   "ministere": "justice",
+   "titre": "الإعلان عن فتح مناظرة بالإختبارات للدخول الى مرحلة التكوين الأساسي للملحقين القضائيين بالمعهد الأعلى للقضاء",
+   "lien": "https://www.justice.gov.tn/index.php?id=191&tx_ttnews%5Btt_news%5D=4529&cHash=31cd905e4c1d3c72616aacf08568cabc",
+   "vu_le": "",
+   "revu_le": "2026-10-08"
+  },
+  {
+   "ministere": "justice",
+   "titre": "قرار من وزيرة العدل مؤرخ في 8 أكتوبر 2025 يتعلق بفتح مناظرة بالاختبارات للدخول الى مرحلة التكوين الأساسي للملحقين القضائيين بالمعهد الأعلى للقضاء",
+   "lien": "https://www.justice.gov.tn/index.php?id=191&tx_ttnews%5Btt_news%5D=4528&cHash=7fc50e3dd58cf32aee1ad0360ff8b7cb",
+   "vu_le": "",
+   "revu_le": "2026-10-08"
+  },
+  {
+   "ministere": "justice",
+   "titre": "فتح مناظرة داخلية بالملفات للترقية إلى رتبة مهندس رئيس بعنوان سنة 2025",
+   "lien": "https://www.justice.gov.tn/index.php?id=191&tx_ttnews%5Btt_news%5D=4523&cHash=e72b0ca8196331767d13a6ae8311306b",
+   "vu_le": "",
+   "revu_le": "2026-10-08"
+  },
+  {
+   "ministere": "justice",
+   "titre": "قائمة المترشحين المدعوين للإدلاء بملفاتهم في المناظرة الخارجية بالإختبارات لانتداب تقنيين بالسلك التقني المشترك للإدارات العمومية بعنوان سنة 2025 دورة 22 سبتمبر 2025",
+   "lien": "https://www.justice.gov.tn/index.php?id=191&tx_ttnews%5Btt_news%5D=4513&cHash=daa8769667101d2ecabb0e9a79424de5",
+   "vu_le": "",
+   "revu_le": "2026-10-08"
+  },
+  {
+   "ministere": "justice",
+   "titre": "قائمة المترشحين المدعوين للإدلاء بملفاتهم في المناظرة الخارجية بالإختبارات لانتداب تقنيي مخبر الإعلامية بعنوان سنة 2025 دورة 26 سبتمبر 2025",
+   "lien": "https://www.justice.gov.tn/index.php?id=191&tx_ttnews%5Btt_news%5D=4511&cHash=99afb90e6ebe3c334ed9475ef26372c0",
+   "vu_le": "",
+   "revu_le": "2026-10-08"
+  },
+  {
+   "ministere": "justice",
+   "titre": "قائمة المترشحين المدعوين للإدلاء بملفاتهم في المناظرة الخارجية بالإختبارات لانتداب مهندسين أولين في الإعلامية بعنوان سنة 2025 دورة 24 سبتمبر 2025",
+   "lien": "https://www.justice.gov.tn/index.php?id=191&tx_ttnews%5Btt_news%5D=4510&cHash=7b01929218bed51a0ae8d2feee886630",
+   "vu_le": "",
+   "revu_le": "2026-10-08"
+  },
+  {
+   "ministere": "justice",
+   "titre": "قائمة المترشحين المدعويين للإدلاء بملفاتهم في المناظرة الخارجية بالإختبارات لإنتداب كتبة محاكم مساعدين دورة 18 جويلية 2025",
+   "lien": "https://www.justice.gov.tn/index.php?id=191&tx_ttnews%5Btt_news%5D=4485&cHash=acd008a9e2c1f65076ef762403116194",
+   "vu_le": "",
+   "revu_le": "2026-10-08"
+  },
+  {
+   "ministere": "justice",
+   "titre": "قائمة المترشحين المدعويين للإدلاء بملفاتهم في المناظرة الخارجية بالإختبارات لإنتداب كتبة محاكم دورة 18 جويلية 2025",
+   "lien": "https://www.justice.gov.tn/index.php?id=191&tx_ttnews%5Btt_news%5D=4472&cHash=f211802b95f4b847c25086bf2b26fd66",
+   "vu_le": "",
+   "revu_le": "2026-10-08"
+  },
+  {
+   "ministere": "justice",
+   "titre": "الإعلان عن فتح مناظرات داخلية للترقية بالملفات بعنوان سنة 2025",
+   "lien": "https://www.justice.gov.tn/index.php?id=191&tx_ttnews%5Btt_news%5D=4467&cHash=6b6dd873dfbac3f2e92b22750b605037",
+   "vu_le": "",
+   "revu_le": "2026-10-08"
+  },
+  {
+   "ministere": "justice",
+   "titre": "قرارات من وزيرة العدل مؤرخة في 26 أوت 2025 تتعلق بفتح مناظرات داخلية للترقية بالملفات",
+   "lien": "https://www.justice.gov.tn/index.php?id=191&tx_ttnews%5Btt_news%5D=4468&cHash=002e4c5e6147fe867336b0f37b81a596",
+   "vu_le": "",
+   "revu_le": "2026-10-08"
+  },
+  {
+   "ministere": "justice",
+   "titre": "قائمة الناجحين حسب الترتيب التفاضلي في المناظرة الخارجية بالإختبارات لإنتداب مساعدين تقنيين بالسلك التقني المشترك للإدارات العمومية (دورة 01 فيفري 2024)",
+   "lien": "https://www.justice.gov.tn/index.php?id=191&tx_ttnews%5Btt_news%5D=4428&cHash=e64d2ba8c5743888429f3dfd3e2959f3",
+   "vu_le": "",
+   "revu_le": "2026-10-08"
+  },
+  {
+   "ministere": "justice",
+   "titre": "التسجيل بالمناظرة الخارجية الخاصة بانتداب مهندسين أولين في الإعلامية",
+   "lien": "https://www.justice.gov.tn/index.php?id=191&tx_ttnews%5Btt_news%5D=4423&cHash=6b0d71ee1654f657c557536812e00b0d",
+   "vu_le": "",
+   "revu_le": "2026-10-08"
+  },
+  {
+   "ministere": "justice",
+   "titre": "التسجيل بالمناظرة الخارجية الخاصة بانتداب تقنيي مخبر في الإعلامية",
+   "lien": "https://www.justice.gov.tn/index.php?id=191&tx_ttnews%5Btt_news%5D=4424&cHash=c6dd41fcafcc4ca37315f11da853faed",
+   "vu_le": "",
+   "revu_le": "2026-10-08"
+  },
+  {
+   "ministere": "justice",
+   "titre": "التسجيل بالمناظرة الخارجية الخاصة بانتداب تقنيين بالسلك التقني المشترك للادارات العمومية",
+   "lien": "https://www.justice.gov.tn/index.php?id=191&tx_ttnews%5Btt_news%5D=4425&cHash=4f82856059c9428e7fde57a489d0558f",
+   "vu_le": "",
+   "revu_le": "2026-10-08"
+  },
+  {
+   "ministere": "justice",
+   "titre": "فتح مناظرة خارجية بالاختبارات بعنوان سنة 2025 (لانتداب مهندسين أولين في الإعلامية - تقنيين بالسلك التقني المشترك للإدارات العمومية - تقنيي مخبر الإعلامية بسلك محللي وتقنيي الإعلامية للإدارات العمومية)",
+   "lien": "https://www.justice.gov.tn/index.php?id=191&tx_ttnews%5Btt_news%5D=4401&cHash=380c2b78c3e0bc08c7666ffbc2dfa01b",
+   "vu_le": "",
+   "revu_le": "2026-10-08"
+  },
+  {
+   "ministere": "justice",
+   "titre": "النتائج النهائية لمناظرة الدخول إلى مرحلة التكوين الأساسي للملحقين القضائيين بالمعهد الأعلى للقضاء ( دورة أوت 2024 )",
+   "lien": "https://www.justice.gov.tn/index.php?id=191&tx_ttnews%5Btt_news%5D=4364&cHash=494c0a3e3895504b8b09140416500a18",
+   "vu_le": "",
+   "revu_le": "2026-10-08"
+  },
+  {
+   "ministere": "justice",
+   "titre": "بلاغ يخص المشاركة في المناظرتين الخارجيتين بالاختبارات لانتداب كتبة محاكم وكتبة محاكم مساعدين",
+   "lien": "https://www.justice.gov.tn/index.php?id=191&tx_ttnews%5Btt_news%5D=4350&cHash=b97a769930c1a04af35901697b580204",
+   "vu_le": "",
+   "revu_le": "2026-10-08"
+  },
+  {
+   "ministere": "justice",
+   "titre": "الإعلان عن فتح المناظرة الخارجية بالاختبارات لانتداب كتبة محاكم مساعدين بسلك كتابات المحاكم من الصنف العدلي",
+   "lien": "https://www.justice.gov.tn/index.php?id=191&tx_ttnews%5Btt_news%5D=4307&cHash=7dd786c30b7b69f8d0553f53d3923d09",
+   "vu_le": "",
+   "revu_le": "2026-10-08"
+  },
+  {
+   "ministere": "justice",
+   "titre": "الإعلان عن فتح المناظرة الخارجية بالاختبارات لانتداب كتبة محاكم بسلك كتابات المحاكم من الصنف العدلي",
+   "lien": "https://www.justice.gov.tn/index.php?id=191&tx_ttnews%5Btt_news%5D=4306&cHash=6051b59b5ad643a6175a2c26cdb13687",
+   "vu_le": "",
+   "revu_le": "2026-10-08"
+  },
+  {
+   "ministere": "justice",
+   "titre": "المناظرة الخارجية بالإختبارات لإنتداب تقنيي مخبر الإعلامية دورة 30 جانفي 2024",
+   "lien": "https://www.justice.gov.tn/index.php?id=191&tx_ttnews%5Btt_news%5D=4311&cHash=0a0325d6c78c13571c15eaaa78910809",
+   "vu_le": "",
+   "revu_le": "2026-10-08"
+  },
+  {
+   "ministere": "justice",
+   "titre": "المناظرة الخارجية بالإختبارات لإنتداب مهندسين أولين دورة 29 جانفي 2024",
+   "lien": "https://www.justice.gov.tn/index.php?id=191&tx_ttnews%5Btt_news%5D=4310&cHash=12eceba60faa88ee4d35f54643754d7d",
+   "vu_le": "",
+   "revu_le": "2026-10-08"
+  },
+  {
+   "ministere": "justice",
+   "titre": "قرارين من وزيرة العدل مؤرخين في 19 ماي 2025 يتعلقان بفتح مناظرة خارجية بالاختبارات لانتداب كتبة محاكم بسلك كتابات المحاكم من الصنف العدلي وضبط كيفية تنظيمها.",
+   "lien": "https://www.justice.gov.tn/index.php?id=191&tx_ttnews%5Btt_news%5D=4302&cHash=6fe7aea5c4196764da39a6ab381424b2",
+   "vu_le": "",
+   "revu_le": "2026-10-08"
+  },
+  {
+   "ministere": "justice",
+   "titre": "قرارين من وزيرة العدل مؤرخين في 19 ماي 2025 يتعلقان بفتح مناظرة خارجية بالاختبارات لانتداب كتبة محاكم مساعدين بسلك كتابات المحاكم من الصنف العدلي وضبط كيفية تنظيمها.",
+   "lien": "https://www.justice.gov.tn/index.php?id=191&tx_ttnews%5Btt_news%5D=4301&cHash=ad6c730daf4d19b7e5b409d4d5a55e08",
+   "vu_le": "",
+   "revu_le": "2026-10-08"
+  },
+  {
+   "ministere": "justice",
+   "titre": "بلاغ حول رزنامة العرض على الفحص الطبي للمترشحين الناجحين في الاختبارات الكتابية للقبول الأولي لمناظرة الدخول لمرحلة التكوين الأساسي للملحقين القضائيين بالمعهد الأعلى للقضاء (دورة أوت 2024)",
+   "lien": "https://www.justice.gov.tn/index.php?id=191&tx_ttnews%5Btt_news%5D=4300&cHash=982dc8192ab5dfbcdd8dc7339e0fb6b7",
+   "vu_le": "",
+   "revu_le": "2026-10-08"
+  },
+  {
+   "ministere": "justice",
+   "titre": "بلاغ من وزارة العدل للمترشحين الناجحين في الاختبار الكتابي للقبول الأولي في المناظرة الخارجية بالاختبارات لانتداب مساعدين تقنيين للادارات العمومية دورة 1 فيفري 2024",
+   "lien": "https://www.justice.gov.tn/index.php?id=191&tx_ttnews%5Btt_news%5D=4291&cHash=754393c31661a44ea4b4937e56de8b52",
+   "vu_le": "",
+   "revu_le": "2026-10-08"
+  },
+  {
+   "ministere": "justice",
+   "titre": "طباعة الإستدعاءات الخاصة بإجراء الإختبارات الكتابية للقبول الأولي في مناظرة الدخول للسنة الأولى والثانية بالمعهد الأعلى للمحاماة بعنوان سنة 2025",
+   "lien": "https://www.justice.gov.tn/index.php?id=191&tx_ttnews%5Btt_news%5D=4273&cHash=52fe189660de86f1afbae3b6aa8b5e86",
+   "vu_le": "",
+   "revu_le": "2026-10-08"
+  },
+  {
+   "ministere": "justice",
+   "titre": "التصريح بنتائج الإختبار الكتابي للمناظرة الخارجية بالإختبارات للدخول لمرحلة تكوين عرفاء سجون وإصلاح لسنة 2024 مع طباعة الإستدعاء",
+   "lien": "https://www.justice.gov.tn/index.php?id=191&tx_ttnews%5Btt_news%5D=4249&cHash=d1865a4e0aeeb38aaf31fe78c5643ab5",
+   "vu_le": "",
+   "revu_le": "2026-10-08"
+  },
+  {
+   "ministere": "justice",
+   "titre": "بلاغ يتعلق بالإختبارات الشفاهية لمناظرة الدخول لمرحلة التكوين الأساسي للملحقين القضائيين بالمعهد الأعلى للقضاء (دورة أوت 2024)",
+   "lien": "https://www.justice.gov.tn/index.php?id=191&tx_ttnews%5Btt_news%5D=4251&cHash=370c9144a82b6cc47918cdf00f11ea10",
+   "vu_le": "",
+   "revu_le": "2026-10-08"
+  },
+  {
+   "ministere": "justice",
+   "titre": "اعلان عن المناظرة الداخلية للترقية بالملفات إلى رتبة متصرف رئيس كتابة محكمة",
+   "lien": "https://www.justice.gov.tn/index.php?id=191&tx_ttnews%5Btt_news%5D=4242&cHash=bab8de8aec4bc0761e6e7df11d028d49",
+   "vu_le": "",
+   "revu_le": "2026-10-08"
+  },
+  {
+   "ministere": "justice",
+   "titre": "قرار من وزيرة العدل مؤرخ في 28 أفريل 2025 يتعلق بفتح مناظرة داخلية بالملفات للترقية إلى رتبة متصرف رئيس كتابة محكمة.",
+   "lien": "https://www.justice.gov.tn/index.php?id=191&tx_ttnews%5Btt_news%5D=4240&cHash=320f9626e8f2e3ebc84493aaed8d3fe8",
+   "vu_le": "",
+   "revu_le": "2026-10-08"
+  },
+  {
+   "ministere": "justice",
+   "titre": "إعلان خاص بالمناظرة الخارجية بالاختبارات لانتداب أعوان المحاكم دورة 31 جانفي 2024 للإدلاء بملفاتهم",
+   "lien": "https://www.justice.gov.tn/index.php?id=191&tx_ttnews%5Btt_news%5D=4236&cHash=f4375d8a49b234e2194d303ee7e45a33",
+   "vu_le": "",
+   "revu_le": "2026-10-08"
+  },
+  {
+   "ministere": "justice",
+   "titre": "الإطلاع على النتائج الكتابية لمناظرة الملحقين القضائيين بالمعهد الأعلى للقضاء دورة أوت 2024",
+   "lien": "https://www.justice.gov.tn/index.php?id=191&tx_ttnews%5Btt_news%5D=4231&cHash=443c531ea60a8b25046aaf4b18b4b23f",
+   "vu_le": "",
+   "revu_le": "2026-10-08"
+  },
+  {
+   "ministere": "justice",
+   "titre": "طباعة الإستدعاءات الخاصة باجتياز الإختبار الأول (QCM) لمناظرات الدخول للسنة الأولى والثانية بالمعهد الأعلى للمحاماة بعنوان سنة 2025-2026",
+   "lien": "https://www.justice.gov.tn/index.php?id=191&tx_ttnews%5Btt_news%5D=4185&cHash=10e6d07aa607196756201c63ca4d2f17",
+   "vu_le": "",
+   "revu_le": "2026-10-08"
+  },
+  {
+   "ministere": "finances",
+   "titre": "Liste des candidats Tunisiens admis définitivement au concours de recrutement de la 45ème promotion",
+   "lien": "https://www.finances.gov.tn/sites/default/files/2026-10/AVIS06102026.pdf",
+   "vu_le": "",
+   "revu_le": "2026-10-08"
+  },
+  {
+   "ministere": "finances",
+   "titre": "Concours de recrutement de la 45ème promotion de l'IEDF : liste des candidats tunisiens admissibles convoqués pour passer l’épreuve orale",
+   "lien": "https://www.finances.gov.tn/sites/default/files/2026-09/avis21092026.pdf",
+   "vu_le": "",
+   "revu_le": "2026-10-08"
+  },
+  {
+   "ministere": "commerce",
+   "titre": "المستجدات تعلن الشركة التونسية لأسواق الجملة عن فتح مناظرة خارجية لانتداب إطارات وأعوان",
+   "lien": "https://commerce.gov.tn/taln-alshrkh-altwnsyh-laswaq-aljmlh-an-fth-mnazrh-kharjyh-lantdab-itarat-waawan/presse-communications",
+   "vu_le": "",
+   "revu_le": "2026-10-08"
+  },
+  {
+   "ministere": "commerce",
+   "titre": "المستجدات تعلن الشركة التونسية لأسواق الجملة عن فتح مناظرة خارجية لانتداب أعوان حراسة وتنظيف",
+   "lien": "https://commerce.gov.tn/taln-alshrkh-altwnsyh-laswaq-aljmlh-an-fth-mnazrh-kharjyh-lantdab-aawan-hrash-wtnzyf/presse-communications",
+   "vu_le": "",
+   "revu_le": "2026-10-08"
+  },
+  {
+   "ministere": "commerce",
+   "titre": "المستجدات بلاغ فتح مناظرة للانتداب في 08 خطط بالأمانة العامة للكوميسا",
+   "lien": "https://commerce.gov.tn/appel-a-candidatures-pour-huit-08-postes-vacants-au-secretariat-du-comesa/actualite",
+   "vu_le": "",
+   "revu_le": "2026-10-08"
+  },
+  {
+   "ministere": "commerce",
+   "titre": "المستجدات القائمات الأصليّة للمقبولين نهائيا بالمناظرة الخارجيّة بالملفات لانتداب عدد (194) متفقدا للمراقبة الاقتصادية بعنوان سنة 2024",
+   "lien": "https://commerce.gov.tn/les-listes-principales-des-candidats-definitivement-admis-au-concours-externe-sur-dossiers-pour-le-recrutement-de-194-inspecteurs-du-controle-economique-au-titre-de-l-annee-2024/actualite",
+   "vu_le": "",
+   "revu_le": "2026-10-08"
+  },
+  {
+   "ministere": "commerce",
+   "titre": "المستجدات مناظرة خارجية بالاختبارات لانتداب مهندسين أول",
+   "lien": "https://commerce.gov.tn/concours-externe-sur-epreuves-pour-le-recrutement-des-ingenieurs-principaux/presse-communications",
+   "vu_le": "",
+   "revu_le": "2026-10-08"
+  },
+  {
+   "ministere": "commerce",
+   "titre": "بــــلاغ حول نتائج المناظرة الخارجية لإ ...",
+   "lien": "https://commerce.gov.tn/avis-a-propos-les-resultats-d-admission-definitive-du-concours-externe-pour-le-recrutement-des-ingenieurs-principaux-pour-l-annee-2024/presse-communications",
+   "vu_le": "",
+   "revu_le": "2026-10-08"
+  },
+  {
+   "ministere": "commerce",
+   "titre": "مناظرة خارجية بالملفات لانتداب متفقدي ا ...",
+   "lien": "https://commerce.gov.tn/concours-externe-pour-le-recrutement-des-inspecteurs-du-controle-economique/presse-communications",
+   "vu_le": "",
+   "revu_le": "2026-10-08"
+  },
+  {
+   "ministere": "environnement",
+   "titre": "بلاغ متعلّق بالمناظرة الخارجية لإنتداب متصرّفين",
+   "lien": "https://www.environnement.gov.tn/home/a-la-une/a-la-une-1?tx_news_pi1%5Baction%5D=detail&tx_news_pi1%5Bcontroller%5D=News&tx_news_pi1%5Bnews%5D=483&cHash=2a7096624539dfd8ab2f08daf1507138",
+   "vu_le": "",
+   "revu_le": "2026-10-08"
+  },
+  {
+   "ministere": "environnement",
+   "titre": "بلاغ متعلّق بالتصريح بنتائج فرز ملفّات المترشّحين للمناظرة الخارجيّة بالإختبارات لإنتداب مهندسين أول بالسلك الإداري المشترك للإدارات العموميّة",
+   "lien": "https://www.environnement.gov.tn/home/a-la-une/a-la-une-1?tx_news_pi1%5Baction%5D=detail&tx_news_pi1%5Bcontroller%5D=News&tx_news_pi1%5Bnews%5D=468&cHash=04fd32b1e712ed0c56244f14a7356aff",
+   "vu_le": "",
+   "revu_le": "2026-10-08"
+  },
+  {
+   "ministere": "environnement",
+   "titre": "المناظرة الخارجية بالإختبارات لإنتداب مهندسين أول بالسلك الإداري المشترك للإدارات العمومية",
+   "lien": "https://www.environnement.gov.tn/home/avis-annonces/avis-annonces-1?tx_news_pi1%5Baction%5D=detail&tx_news_pi1%5Bcontroller%5D=News&tx_news_pi1%5Bnews%5D=507&cHash=b9d375a3186f5e13aa2281b586745724",
+   "vu_le": "",
+   "revu_le": "2026-10-08"
+  },
+  {
+   "ministere": "environnement",
+   "titre": "Appel à candidature visant le recrutement de trois experts par Expertise France",
+   "lien": "https://www.environnement.gov.tn/home/avis-annonces/avis-annonces-1?tx_news_pi1%5Baction%5D=detail&tx_news_pi1%5Bcontroller%5D=News&tx_news_pi1%5Bnews%5D=469&cHash=00f595b69c145cb5c5fbc533894ce31d",
+   "vu_le": "",
+   "revu_le": "2026-10-08"
+  },
+  {
+   "ministere": "transport",
+   "titre": "Avis concernant le concours externe pour le recrutement des ingénieurs principaux spécialité \"L’aviation Civile, la navigation aérienne et le trafic aérien\"",
+   "lien": "https://www.transport.tn/uploads/download/Concours/20260824103230.pdf",
+   "vu_le": "",
+   "revu_le": "2026-10-08"
+  },
+  {
+   "ministere": "transport",
+   "titre": "Avis concernant le concours externe pour le recrutement des ingénieurs principaux spécialité \"Génie civil\"",
+   "lien": "https://www.transport.tn/uploads/download/Concours/20260828140750.pdf",
+   "vu_le": "",
+   "revu_le": "2026-10-08"
+  },
+  {
+   "ministere": "transport",
+   "titre": "Avis concernant le concours externe pour le recrutement des techniciens dans les spécialités \"Transports terrestres\", \"Navigation maritime\" et \"Aviation civile, navigation aérienne et trafic aérien\"",
+   "lien": "https://www.transport.tn/uploads/download/Concours/20260828141204.pdf",
+   "vu_le": "",
+   "revu_le": "2026-10-08"
+  },
+  {
+   "ministere": "transport",
+   "titre": "Concours interne sur dossiers pour la promotion exceptionnelle au grade d’administrateur conseiller du corps administratif commun des administrations publiques au Ministère des Transports",
+   "lien": "http://www.transport.tn/uploads/download/Concours/235.pdf",
+   "vu_le": "",
+   "revu_le": "2026-10-08"
+  },
+  {
+   "ministere": "transport",
+   "titre": "Concours interne sur dossiers pour la promotion exceptionnelle aux grade administrateur adjoint au corps administratif commun des administrations publiques au Ministère des Transports",
+   "lien": "http://www.transport.tn/uploads/download/Concours/236.pdf",
+   "vu_le": "",
+   "revu_le": "2026-10-08"
+  },
+  {
+   "ministere": "transport",
+   "titre": "Avis de concours externe sur épreuves pour le recrutement de deux (02) adjoints techniques",
+   "lien": "http://www.transport.tn/uploads/download/Concours/233.pdf",
+   "vu_le": "",
+   "revu_le": "2026-10-08"
+  },
+  {
+   "ministere": "transport",
+   "titre": "Avis de deux concours externes sur épreuves pour le recrutement de 23 ingénieurs principaux et 17 techniciens",
+   "lien": "http://www.transport.tn/uploads/download/Concours/227.pdf",
+   "vu_le": "",
+   "revu_le": "2026-10-08"
+  },
+  {
+   "ministere": "transport",
+   "titre": "Concours interne sur dossiers pour la promotion exceptionnelle aux grade administrateur général de la classe supérieure au corps administratif commun des administrations publiques au Ministère du Transport au titres de l'année 2025",
+   "lien": "http://www.transport.tn/uploads/download/Concours/226.pdf",
+   "vu_le": "",
+   "revu_le": "2026-10-08"
+  },
+  {
+   "ministere": "transport",
+   "titre": "Concours interne sur dossiers pour la promotion exceptionnelle aux grade administrateur général au corps administratif commun des administrations publiques au Ministère des Transports",
+   "lien": "http://www.transport.tn/uploads/download/Concours/224.pdf",
+   "vu_le": "",
+   "revu_le": "2026-10-08"
+  },
+  {
+   "ministere": "transport",
+   "titre": "Concours interne sur dossiers pour la promotion au grade d'ingénieur en chef au corps commun des ingénieurs des administrations publiques au ministère du transport au titres de l'année 2025",
+   "lien": "https://www.transport.tn/www.transport.tn/uploads/download/Concours/222.pdf",
+   "vu_le": "",
+   "revu_le": "2026-10-08"
+  },
+  {
+   "ministere": "communication",
+   "titre": "La liste des admis aux concours internes pour la promotion aux différents grades au titre de l’année 2021",
+   "lien": "https://www.mtc.gov.tn/index.php?id=293&L=82&tx_ttnews%5Btt_news%5D=4248&cHash=702581fff6ca6603656e13e4e40b771f",
+   "vu_le": "",
+   "revu_le": "2026-10-08"
+  },
+  {
+   "ministere": "communication",
+   "titre": "Résultats des concours internes sur dossiers pour la promotion exceptionnelle aux différents grade du corps administratif commun au titre de l’année 2020",
+   "lien": "https://www.mtc.gov.tn/index.php?id=293&L=82&tx_ttnews%5Btt_news%5D=4158&cHash=292b16ba090b3344e66f32902ce688d8",
+   "vu_le": "",
+   "revu_le": "2026-10-08"
+  },
+  {
+   "ministere": "communication",
+   "titre": "Résultat du concours interne sur dossier pour le passage de grade au titre de l'année 2018",
+   "lien": "https://www.mtc.gov.tn/index.php?id=293&L=82&tx_ttnews%5Btt_news%5D=3854&cHash=8baec44138f80f9c04cf6ea5850806e1",
+   "vu_le": "",
+   "revu_le": "2026-10-08"
+  },
+  {
+   "ministere": "social",
+   "titre": "بلاغ فتح المناظرة الخارجية لانتداب مهندسين في إختصاص إعلامية…",
+   "lien": "https://www.social.gov.tn/ar/%D8%A8%D9%84%D8%A7%D8%BA-%D9%81%D8%AA%D8%AD-%D8%A7%D9%84%D9%85%D9%86%D8%A7%D8%B8%D8%B1%D8%A9-%D8%A7%D9%84%D8%AE%D8%A7%D8%B1%D8%AC%D9%8A%D8%A9-%D9%84%D8%A7%D9%86%D8%AA%D8%AF%D8%A7%D8%A8-%D9%85%D9%87%D9%86%D8%AF%D8%B3%D9%8A%D9%86-%D9%81%D9%8A-%D8%A5%D8%AE%D8%AA%D8%B5%D8%A7%D8%B5-%D8%A5%D8%B9%D9%84%D8%A7%D9%85%D9%8A%D8%A9-%D9%88%D9%87%D9%86%D8%AF%D8%B3%D8%A9-%D9%85%D8%AF%D9%86%D9%8A%D8%A9-%D9%84%D9%88%D8%B2%D8%A7%D8%B1%D8%A9-%D8%A7%D9%84%D8%B4%D8%A4%D9%88%D9%86-%D8%A7%D9%84%D8%A7%D8%AC%D8%AA%D9%85%D8%A7%D8%B9%D9%8A%D8%A9",
+   "vu_le": "",
+   "revu_le": "2026-10-08"
+  },
+  {
+   "ministere": "social",
+   "titre": "بــــلاغ حول موعد ومكان إجراء الاختبار الطبي في المناظرة الخ…",
+   "lien": "https://www.social.gov.tn/ar/%D8%A8%D9%80%D9%80%D9%80%D9%80%D9%84%D8%A7%D8%BA-%D8%AD%D9%88%D9%84-%D9%85%D9%88%D8%B9%D8%AF-%D9%88%D9%85%D9%83%D8%A7%D9%86-%D8%A5%D8%AC%D8%B1%D8%A7%D8%A1-%D8%A7%D9%84%D8%A7%D8%AE%D8%AA%D8%A8%D8%A7%D8%B1-%D8%A7%D9%84%D8%B7%D8%A8%D9%8A-%D9%81%D9%8A-%D8%A7%D9%84%D9%85%D9%86%D8%A7%D8%B8%D8%B1%D8%A9-%D8%A7%D9%84%D8%AE%D8%A7%D8%B1%D8%AC%D9%8A%D8%A9-%D9%84%D8%A7%D9%86%D8%AA%D8%AF%D8%A7%D8%A8-%D8%A7%D9%84%D8%A3%D8%B4%D8%AE%D8%A7%D8%B5-%D8%B0%D9%88%D9%8A-%D8%A7%D9%84%D8%A5%D8%B9%D8%A7%D9%82%D8%A9-0",
+   "vu_le": "",
+   "revu_le": "2026-10-08"
+  },
+  {
+   "ministere": "social",
+   "titre": "بلاغ النتائج النهائية للمناظرة الخارجية لانتداب الأشخاص ذوي الإعاقة بالقطاع…",
+   "lien": "https://www.social.gov.tn/ar/%D8%A8%D9%84%D8%A7%D8%BA-%D8%A7%D9%84%D9%86%D8%AA%D8%A7%D8%A6%D8%AC-%D8%A7%D9%84%D9%86%D9%87%D8%A7%D8%A6%D9%8A%D8%A9-%D9%84%D9%84%D9%85%D9%86%D8%A7%D8%B8%D8%B1%D8%A9-%D8%A7%D9%84%D8%AE%D8%A7%D8%B1%D8%AC%D9%8A%D8%A9-%D9%84%D8%A7%D9%86%D8%AA%D8%AF%D8%A7%D8%A8-%D8%A7%D9%84%D8%A3%D8%B4%D8%AE%D8%A7%D8%B5-%D8%B0%D9%88%D9%8A-%D8%A7%D9%84%D8%A5%D8%B9%D8%A7%D9%82%D8%A9-%D8%A8%D8%A7%D9%84%D9%82%D8%B7%D8%A7%D8%B9-%D8%A7%D9%84%D8%B9%D9%85%D9%88%D9%85%D9%8A-%D8%A8%D8%B9%D9%86%D9%88%D8%A7%D9%86-%D8%B3%D9%86%D8%A9-2024",
+   "vu_le": "",
+   "revu_le": "2026-10-08"
+  },
+  {
+   "ministere": "social",
+   "titre": "بلاغ دعوة المترشحين المقبولين لإجراء الامتحان المهني - المناظرة الخارجية…",
+   "lien": "https://www.social.gov.tn/ar/%D8%A8%D9%84%D8%A7%D8%BA-%D8%AF%D8%B9%D9%88%D8%A9-%D8%A7%D9%84%D9%85%D8%AA%D8%B1%D8%B4%D8%AD%D9%8A%D9%86-%D8%A7%D9%84%D9%85%D9%82%D8%A8%D9%88%D9%84%D9%8A%D9%86-%D9%84%D8%A5%D8%AC%D8%B1%D8%A7%D8%A1-%D8%A7%D9%84%D8%A7%D9%85%D8%AA%D8%AD%D8%A7%D9%86-%D8%A7%D9%84%D9%85%D9%87%D9%86%D9%8A-%D8%A7%D9%84%D9%85%D9%86%D8%A7%D8%B8%D8%B1%D8%A9-%D8%A7%D9%84%D8%AE%D8%A7%D8%B1%D8%AC%D9%8A%D8%A9-%D9%84%D8%A5%D9%86%D8%AA%D8%AF%D8%A7%D8%A8-%D8%A3%D8%B9%D9%88%D8%A7%D9%86-%D8%A5%D8%AD%D8%A7%D8%B7%D8%A9-%D8%AD%D9%8A%D8%A7%D8%AA%D9%8A%D8%A9",
+   "vu_le": "",
+   "revu_le": "2026-10-08"
+  },
+  {
+   "ministere": "social",
+   "titre": "بـــــلاغ دعوة المترشحين المقبولة ملفاتهم في المناظرة الخارجية بالاختبارات…",
+   "lien": "https://www.social.gov.tn/ar/%D8%A8%D9%80%D9%80%D9%80%D9%80%D9%80%D9%84%D8%A7%D8%BA-%D8%AF%D8%B9%D9%88%D8%A9-%D8%A7%D9%84%D9%85%D8%AA%D8%B1%D8%B4%D8%AD%D9%8A%D9%86-%D8%A7%D9%84%D9%85%D9%82%D8%A8%D9%88%D9%84%D8%A9-%D9%85%D9%84%D9%81%D8%A7%D8%AA%D9%87%D9%85-%D9%81%D9%8A-%D8%A7%D9%84%D9%85%D9%86%D8%A7%D8%B8%D8%B1%D8%A9-%D8%A7%D9%84%D8%AE%D8%A7%D8%B1%D8%AC%D9%8A%D8%A9-%D8%A8%D8%A7%D9%84%D8%A7%D8%AE%D8%AA%D8%A8%D8%A7%D8%B1%D8%A7%D8%AA-%D9%84%D8%A7%D9%86%D8%AA%D8%AF%D8%A7%D8%A8-%D8%A3%D8%AE%D8%B5%D8%A7%D8%A6%D9%8A%D9%8A%D9%86",
+   "vu_le": "",
+   "revu_le": "2026-10-08"
+  },
+  {
+   "ministere": "social",
+   "titre": "بلاغ دعوة المترشحين المقبولين أوليا في المناظرة الخارجية بالاختبارات لانتداب…",
+   "lien": "https://www.social.gov.tn/ar/%D8%A8%D9%84%D8%A7%D8%BA-%D8%AF%D8%B9%D9%88%D8%A9-%D8%A7%D9%84%D9%85%D8%AA%D8%B1%D8%B4%D8%AD%D9%8A%D9%86-%D8%A7%D9%84%D9%85%D9%82%D8%A8%D9%88%D9%84%D9%8A%D9%86-%D8%A3%D9%88%D9%84%D9%8A%D8%A7-%D9%81%D9%8A-%D8%A7%D9%84%D9%85%D9%86%D8%A7%D8%B8%D8%B1%D8%A9-%D8%A7%D9%84%D8%AE%D8%A7%D8%B1%D8%AC%D9%8A%D8%A9-%D8%A8%D8%A7%D9%84%D8%A7%D8%AE%D8%AA%D8%A8%D8%A7%D8%B1%D8%A7%D8%AA-%D9%84%D8%A7%D9%86%D8%AA%D8%AF%D8%A7%D8%A8-%D9%85%D9%87%D9%86%D8%AF%D8%B3%D9%8A%D9%86-%D8%A3%D9%88%D9%84-%D9%84%D8%AA%D9%82%D8%AF%D9%8A%D9%85",
+   "vu_le": "",
+   "revu_le": "2026-10-08"
+  },
+  {
+   "ministere": "social",
+   "titre": "بلاغ فتح مناظرة خارجية بالاختبارات لانتداب متصرفين بالسلك الإداري المشترك…",
+   "lien": "https://www.social.gov.tn/ar/%D8%A8%D9%84%D8%A7%D8%BA-%D9%81%D8%AA%D8%AD-%D9%85%D9%86%D8%A7%D8%B8%D8%B1%D8%A9-%D8%AE%D8%A7%D8%B1%D8%AC%D9%8A%D8%A9-%D8%A8%D8%A7%D9%84%D8%A7%D8%AE%D8%AA%D8%A8%D8%A7%D8%B1%D8%A7%D8%AA-%D9%84%D8%A7%D9%86%D8%AA%D8%AF%D8%A7%D8%A8-%D9%85%D8%AA%D8%B5%D8%B1%D9%81%D9%8A%D9%86-%D8%A8%D8%A7%D9%84%D8%B3%D9%84%D9%83-%D8%A7%D9%84%D8%A5%D8%AF%D8%A7%D8%B1%D9%8A-%D8%A7%D9%84%D9%85%D8%B4%D8%AA%D8%B1%D9%83-%D9%84%D9%84%D8%A5%D8%AF%D8%A7%D8%B1%D8%A7%D8%AA-%D8%A7%D9%84%D8%B9%D9%85%D9%88%D9%85%D9%8A%D8%A9",
+   "vu_le": "",
+   "revu_le": "2026-10-08"
+  },
+  {
+   "ministere": "social",
+   "titre": "بــــلاغ فتح مناظرة خارجية بالاختبارات لانتداب تقنيين أول بالسلك التقني المشترك…",
+   "lien": "https://www.social.gov.tn/ar/%D8%A8%D9%80%D9%80%D9%80%D9%80%D9%84%D8%A7%D8%BA-%D9%81%D8%AA%D8%AD-%D9%85%D9%86%D8%A7%D8%B8%D8%B1%D8%A9-%D8%AE%D8%A7%D8%B1%D8%AC%D9%8A%D8%A9-%D8%A8%D8%A7%D9%84%D8%A7%D8%AE%D8%AA%D8%A8%D8%A7%D8%B1%D8%A7%D8%AA-%D9%84%D8%A7%D9%86%D8%AA%D8%AF%D8%A7%D8%A8-%D8%AA%D9%82%D9%86%D9%8A%D9%8A%D9%86-%D8%A3%D9%88%D9%84-%D8%A8%D8%A7%D9%84%D8%B3%D9%84%D9%83-%D8%A7%D9%84%D8%AA%D9%82%D9%86%D9%8A-%D8%A7%D9%84%D9%85%D8%B4%D8%AA%D8%B1%D9%83-%D9%84%D9%84%D8%A5%D8%AF%D8%A7%D8%B1%D8%A7%D8%AA-%D8%A7%D9%84%D8%B9%D9%85%D9%88%D9%85%D9%8A%D8%A9",
+   "vu_le": "",
+   "revu_le": "2026-10-08"
+  },
+  {
+   "ministere": "social",
+   "titre": "بــــــلاغ فتح مناظرة خارجية بالاختبارات لانتداب محللين بسلك محللي وتقنيي…",
+   "lien": "https://www.social.gov.tn/ar/%D8%A8%D9%80%D9%80%D9%80%D9%80%D9%80%D9%80%D9%84%D8%A7%D8%BA-%D9%81%D8%AA%D8%AD-%D9%85%D9%86%D8%A7%D8%B8%D8%B1%D8%A9-%D8%AE%D8%A7%D8%B1%D8%AC%D9%8A%D8%A9-%D8%A8%D8%A7%D9%84%D8%A7%D8%AE%D8%AA%D8%A8%D8%A7%D8%B1%D8%A7%D8%AA-%D9%84%D8%A7%D9%86%D8%AA%D8%AF%D8%A7%D8%A8-%D9%85%D8%AD%D9%84%D9%84%D9%8A%D9%86-%D8%A8%D8%B3%D9%84%D9%83-%D9%85%D8%AD%D9%84%D9%84%D9%8A-%D9%88%D8%AA%D9%82%D9%86%D9%8A%D9%8A-%D8%A7%D9%84%D8%A7%D8%B9%D9%84%D8%A7%D9%85%D9%8A%D8%A9-%D9%84%D9%84%D8%A5%D8%AF%D8%A7%D8%B1%D8%A7%D8%AA",
+   "vu_le": "",
+   "revu_le": "2026-10-08"
+  },
+  {
+   "ministere": "social",
+   "titre": "بــــلاغ فتح المناظرة الخارجية بالاختبارات لانتداب أخصائيين نفسانيين بسلك…",
+   "lien": "https://www.social.gov.tn/ar/%D8%A8%D9%80%D9%80%D9%80%D9%80%D9%84%D8%A7%D8%BA-%D9%81%D8%AA%D8%AD-%D8%A7%D9%84%D9%85%D9%86%D8%A7%D8%B8%D8%B1%D8%A9-%D8%A7%D9%84%D8%AE%D8%A7%D8%B1%D8%AC%D9%8A%D8%A9-%D8%A8%D8%A7%D9%84%D8%A7%D8%AE%D8%AA%D8%A8%D8%A7%D8%B1%D8%A7%D8%AA-%D9%84%D8%A7%D9%86%D8%AA%D8%AF%D8%A7%D8%A8-%D8%A3%D8%AE%D8%B5%D8%A7%D8%A6%D9%8A%D9%8A%D9%86-%D9%86%D9%81%D8%B3%D8%A7%D9%86%D9%8A%D9%8A%D9%86-%D8%A8%D8%B3%D9%84%D9%83-%D8%A7%D9%84%D8%A3%D8%AE%D8%B5%D8%A7%D8%A6%D9%8A%D9%8A%D9%86-%D8%A7%D9%84%D9%86%D9%81%D8%B3%D8%A7%D9%86%D9%8A%D9%8A%D9%86",
+   "vu_le": "",
+   "revu_le": "2026-10-08"
+  },
+  {
+   "ministere": "enseignement-superieur",
+   "titre": "مناظرات التبريز في علوم الرياضيات والعلوم الفيزيائية",
+   "lien": "https://www.mes.tn/page.php?code_menu=150&code_menu_parent=122",
+   "vu_le": "",
+   "revu_le": "2026-10-08"
+  },
+  {
+   "ministere": "enseignement-superieur",
+   "titre": "مناظرات التبريز في المواد الأدبية والعلوم الإنسانية",
+   "lien": "https://www.mes.tn/page.php?code_menu=151&code_menu_parent=122",
+   "vu_le": "",
+   "revu_le": "2026-10-08"
+  },
+  {
+   "ministere": "enseignement-superieur",
+   "titre": "مناظرة داخلية بالملفات للترقية إلى رتبة أستاذ مبرز أول",
+   "lien": "https://www.mes.tn/page.php?code_menu=153&code_menu_parent=122",
+   "vu_le": "",
+   "revu_le": "2026-10-08"
+  },
+  {
+   "ministere": "enseignement-superieur",
+   "titre": "مناظرة داخلية بالملفات للترقية إلى رتبة أستاذ أول بالسلك المشترك لمدرسي اللغة الإنقليزية والإعلامية",
+   "lien": "https://www.mes.tn/page.php?code_menu=154&code_menu_parent=122",
+   "vu_le": "",
+   "revu_le": "2026-10-08"
+  },
+  {
+   "ministere": "enseignement-superieur",
+   "titre": "مناظرات الإنتداب أو الترقية لمختلف سلك المدرسن الباحثين التابعين للجامعات",
+   "lien": "https://www.mes.tn/page.php?code_menu=155&code_menu_parent=122",
+   "vu_le": "",
+   "revu_le": "2026-10-08"
+  },
+  {
+   "ministere": "enseignement-superieur",
+   "titre": "المناظرات الوطنية للدخول إلى مراحل تكوين المهندسين",
+   "lien": "https://www.mes.tn/page.php?code_menu=156&code_menu_parent=122",
+   "vu_le": "",
+   "revu_le": "2026-10-08"
+  }
+ ]
+}
