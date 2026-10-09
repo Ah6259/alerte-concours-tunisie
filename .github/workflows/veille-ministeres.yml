@@ -32,4 +32,4 @@ jobs:
           git config user.email "robot-concours@users.noreply.github.com"
           git add donnees/ministeres.json
           git diff --cached --quiet || git commit -m "Veille des ministères du $(date +%d/%m/%Y)"
-          git pull --rebase -q && git push -q
+          git pull --rebase --autostash -q && git push -q
