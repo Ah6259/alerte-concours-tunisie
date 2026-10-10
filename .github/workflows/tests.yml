@@ -1,9 +1,14 @@
 # À chaque envoi : test du robot (sans réseau) + test du site. En cas d'échec, GitHub prévient.
 name: Tests
+# Audit des robots du 10/10/2026 : pas de tests pour un envoi qui ne change que des notes (.md) ; un nouvel envoi annule le précédent.
 on:
   push:
     branches: [main, "entretien-tests/**"]
+    paths-ignore: ["**.md"]
   workflow_dispatch:
+concurrency:
+  group: tests-${{ github.ref }}
+  cancel-in-progress: true
 jobs:
   tests:
     runs-on: ubuntu-latest
