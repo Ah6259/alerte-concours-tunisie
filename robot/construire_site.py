@@ -794,7 +794,7 @@ def construire(jour):
         "User-agent: Googlebot\nAllow: /\n\nUser-agent: Bingbot\nAllow: /\n\n"
         + "".join(f"User-agent: {b}\nDisallow: /\n\n" for b in ("GPTBot", "ChatGPT-User", "OAI-SearchBot", "CCBot", "ClaudeBot", "anthropic-ai", "Google-Extended", "PerplexityBot", "Bytespider", "Amazonbot", "Applebot-Extended", "meta-externalagent", "Diffbot", "omgili", "cohere-ai"))
         + f"User-agent: *\nAllow: /\n\nSitemap: {URL_SITE}sitemap.xml\n")
-    json.dump({"id": "/alerte-concours-tunisie/", "name": "Alerte Concours Tunisie", "short_name": "Alerte Concours",
+    json.dump({"id": "/", "name": "Alerte Concours Tunisie", "short_name": "Alerte Concours",
                "description": "Tous les concours publics ouverts en Tunisie, par gouvernorat et par métier.", "start_url": "./", "scope": "./",
                "display": "standalone", "lang": "fr", "dir": "auto", "theme_color": "#1F6B60", "background_color": "#F3F6F9",
                "icons": [{"src": "assets/icons/icon-192.png", "sizes": "192x192", "type": "image/png"},
