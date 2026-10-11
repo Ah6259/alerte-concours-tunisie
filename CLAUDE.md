@@ -104,3 +104,5 @@ Rien n'est ajouté au site sans l'accord d'Ahmed.
   (`DOC_MOTS`, PDF ou titres longs, + 3 rubriques « Formulaires / نماذج » par site) → liste `documents` de donnees/ministeres.json,
   PROPOSÉE au site Documents (rien publié sans l'accord d'Ahmed). 1er essai : PM, Justice (registre foncier, accès à
   l'information, requête), Finances (certificats et attestations), Éducation, Enseignement supérieur.
+
+- **Adresse depuis le 11/10/2026 : https://concours.clicvia.com/** (domaine clicvia.com d'Ahmed, ligne DNS `CNAME concours → ah6259.github.io` nuage gris, fichier `CNAME`). L'ancienne adresse ah6259.github.io/alerte-concours-tunisie/ redirige seule. Site à la racine « / » : `BASE_SITE` de assets/page.js (sw.js, vidéo) ; GoatCounter garde le préfixe `/alerte-concours-tunisie`. Si l'outil vidéo réécrit le bloc VIDEO_SITE, remettre `"base": BASE_SITE` et l'ORIGINE concours.clicvia.com.

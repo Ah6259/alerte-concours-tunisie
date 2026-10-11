@@ -25,7 +25,7 @@ check("données : au moins un concours local (gouvernorat) et un national", D.co
 check("pages : accueil, 24 gouvernorats + national, métiers, guide, alertes, à propos", pages.every(p => existsSync(join(root, p))) && pages.length >= 38);
 for (const p of pages) {
   const h = lire(p);
-  const ok1 = /<title>[^<]{10,}<\/title>/.test(h) && /name="description" content="[^"]{30,}"/.test(h) && /rel="canonical" href="https:\/\/ah6259\.github\.io\/alerte-concours-tunisie\//.test(h)
+  const ok1 = /<title>[^<]{10,}<\/title>/.test(h) && /name="description" content="[^"]{30,}"/.test(h) && /rel="canonical" href="https:\/\/concours\.clicvia\.com\//.test(h)
     && h.includes('http-equiv="Content-Security-Policy"') && h.includes('content="noai, noimageai"') && h.includes('data-l="ar"') && h.includes("assets/page.js")
     && !/undefined|NaN|\[object/.test(h) && !/<script>(?!\s*$)/.test(h.replace(/<script type="application\/ld\+json">[\s\S]*?<\/script>/g, ""));
   check(`${p} : titre, description, adresse canonique, sécurité, français + arabe, aucun trou`, ok1);
@@ -45,7 +45,7 @@ check("un concours local figure seulement dans son gouvernorat", !loc || (lire(`
 // une page par concours (08/10/2026) : chaque concours du tableau officiel, avec grade, organisme, lien officiel, guide, canonique
 const pc = D.concours.map(c => [c, `concours/${c.id}/index.html`]);
 check(`pages des concours : une par concours (${D.concours.length}), grade + organisme, lien officiel https, guide, adresse canonique`,
-  pc.every(([c, f]) => existsSync(join(root, f)) && (h => h.includes(`<link rel="canonical" href="https://ah6259.github.io/alerte-concours-tunisie/concours/${c.id}/">`)
+  pc.every(([c, f]) => existsSync(join(root, f)) && (h => h.includes(`<link rel="canonical" href="https://concours.clicvia.com/concours/${c.id}/">`)
     && h.includes(c.source === "finances" ? 'class="officiel" href="https://concours.finances.gov.tn/' : 'class="officiel" href="https://www.concours.gov.tn/') && h.includes('href="../../guide-inscription/"')
     && h.includes(c.grade.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;")) && !/undefined|NaN|None/.test(h))(lire(f))));
 const cf = D.concours.filter(c => c.source === "finances");
@@ -75,15 +75,15 @@ if (AC.length) {
   check("accueil : les 4 dernières actualités + lien vers la page", (acc.match(/<article class="actu /g) || []).length === Math.min(4, AC.length) && acc.includes('href="actualites/"'));
 }
 const sm = lire("sitemap.xml");
-check("plan du site : les pages des concours", D.concours.every(c => sm.includes(`https://ah6259.github.io/alerte-concours-tunisie/concours/${c.id}/`)));
-check("plan du site : toutes les pages", pages.every(p => sm.includes("https://ah6259.github.io/alerte-concours-tunisie/" + p.replace(/index\.html$/, ""))));
+check("plan du site : les pages des concours", D.concours.every(c => sm.includes(`https://concours.clicvia.com/concours/${c.id}/`)));
+check("plan du site : toutes les pages", pages.every(p => sm.includes("https://concours.clicvia.com/" + p.replace(/index\.html$/, ""))));
 const rb = lire("robots.txt");
 check("robots.txt : Google autorisé, robots d'IA refusés, plan du site", /User-agent: Googlebot\nAllow: \//.test(rb) && /User-agent: GPTBot\nDisallow: \//.test(rb) && /User-agent: ClaudeBot\nDisallow: \//.test(rb) && rb.includes("sitemap.xml"));
 const man = JSON.parse(lire("manifest.webmanifest"));
-check("manifeste : id propre au site, icônes présentes", man.id === "/alerte-concours-tunisie/" && man.icons.every(i => existsSync(join(root, i.src))));
+check("manifeste : id propre au site, icônes présentes", man.id === "/" && man.icons.every(i => existsSync(join(root, i.src))));
 check("image d'aperçu WhatsApp et icônes", existsSync(join(root, "assets/og-image-v1.png")) && statSync(join(root, "assets/og-image-v1.png")).size < 300 * 1024
   && existsSync(join(root, "assets/apple-touch-icon.png")) && existsSync(join(root, "favicon.ico")) && existsSync(join(root, "assets/logo.svg")));
-check("service worker propre au site", /const PREFIXE = "alerte-concours-tunisie-"/.test(lire("sw.js")) && lire("assets/page.js").includes('register("/alerte-concours-tunisie/sw.js"'));
+check("service worker propre au site", /const PREFIXE = "alerte-concours-tunisie-"/.test(lire("sw.js")) && lire("assets/page.js").includes('register(BASE_SITE + "sw.js"'));
 // jamais le nom d'un site concurrent dans le dépôt public (noms écrits à l'envers ici)
 const interdits = ["moc.einisutsruocnoc", "nt.sruocnoceinisut"].map(x => [...x].reverse().join(""));
 const tous = []; (function parcourir(d) { for (const f of readdirSync(d)) { const c = join(d, f); if (f === "node_modules" || f === ".git") continue; statSync(c).isDirectory() ? parcourir(c) : /\.(html|js|mjs|py|md|json|txt|xml|css)$/.test(f) && tous.push(c); } })(root);
@@ -94,7 +94,7 @@ let JSDOM = null;
 try { ({ JSDOM } = await import("jsdom")); } catch (e) { console.log("(jsdom absent : tests du navigateur ignorés)"); }
 if (JSDOM) {
   const html = acc.replace(/<script[^>]*src="[^"]*"[^>]*><\/script>/g, "");
-  const dom = new JSDOM(html, { runScripts: "outside-only", url: "https://ah6259.github.io/alerte-concours-tunisie/?jour=" + D.lu_le, pretendToBeVisual: true });
+  const dom = new JSDOM(html, { runScripts: "outside-only", url: "https://concours.clicvia.com/?jour=" + D.lu_le, pretendToBeVisual: true });
   const w = dom.window; w.localStorage.setItem("langue", "fr");
   for (const js of ["assets/page.js", "assets/app.js"]) w.eval(lire(js));
   w.document.dispatchEvent(new w.Event("DOMContentLoaded"));
@@ -141,7 +141,7 @@ check("aucune donnée d'abonné dans ce dépôt public (abonnes.json, chat_id, j
   !existsSync(join(root, "abonnes.json")) && !existsSync(join(root, "donnees/abonnes.json")) && !/chat_id|bot\d{6,}:/.test(al + lire("assets/abonnement.js")));
 if (JSDOM) {
   const envois = [];
-  const dom = new JSDOM(al, { runScripts: "outside-only", url: "https://ah6259.github.io/alerte-concours-tunisie/alertes/", pretendToBeVisual: true });
+  const dom = new JSDOM(al, { runScripts: "outside-only", url: "https://concours.clicvia.com/alertes/", pretendToBeVisual: true });
   const w = dom.window, d = w.document;
   w.fetch = (url, o) => { envois.push([url, o.body]); return Promise.resolve({ ok: true }); };
   w.eval(lire("assets/page.js")); w.eval(lire("assets/abonnement.js"));

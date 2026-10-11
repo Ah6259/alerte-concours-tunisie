@@ -52,4 +52,4 @@ Disallow: /
 User-agent: *
 Allow: /
 
-Sitemap: https://ah6259.github.io/alerte-concours-tunisie/sitemap.xml
+Sitemap: https://concours.clicvia.com/sitemap.xml

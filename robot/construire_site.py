@@ -14,7 +14,7 @@ import gouvernorats as G      # noqa: E402
 import lire_concours as R     # noqa: E402
 import lire_actualites as A   # noqa: E402
 
-URL_SITE = "https://ah6259.github.io/alerte-concours-tunisie/"
+URL_SITE = "https://concours.clicvia.com/"
 URL_PORTAIL = "https://www.concours.gov.tn/"
 COMPTEUR = "https://prix-eaux-tunisie.goatcounter.com"
 FORMSPREE = "https://formspree.io"
