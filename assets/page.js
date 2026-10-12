@@ -41,6 +41,7 @@
           <a href="${racine}alertes/">${T("Alertes par métier et gouvernorat", "تنبيهات حسب الاختصاص والولاية")}</a>
           <a href="${racine}a-propos/">${T("À propos et sources", "من نحن والمصادر")}</a>
           <a href="${racine}#avis">${T("Votre avis", "رأيك")}</a>
+        <a href="https://clicvia.com/" rel="noopener" target="_blank">${T("Tous nos services", "كل خدماتنا")}</a>
         </nav>
         <p>${T(`Source : <a href="https://www.concours.gov.tn/" rel="noopener">portail officiel des concours publics</a> (concours.gov.tn). Chaque concours renvoie au portail officiel, où se fait l'inscription.`,
                `المصدر: <a href="https://www.concours.gov.tn/" rel="noopener">البوابة الرسمية للمناظرات العمومية</a> (${iso("concours.gov.tn")}). كل مناظرة مرفقة برابط البوابة الرسمية حيث يتم الترشح.`)}</p>
