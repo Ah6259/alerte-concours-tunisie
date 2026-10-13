@@ -792,8 +792,9 @@ def construire(jour):
         '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
         + "".join(f"  <url><loc>{URL_SITE}{c}</loc><lastmod>{maj or jour}</lastmod></url>\n" for c in pages) + "</urlset>\n")
     open(os.path.join(RACINE, "robots.txt"), "w", encoding="utf-8", newline="\n").write(
-        "User-agent: Googlebot\nAllow: /\n\nUser-agent: Bingbot\nAllow: /\n\n"
-        + "".join(f"User-agent: {b}\nDisallow: /\n\n" for b in ("GPTBot", "ChatGPT-User", "OAI-SearchBot", "CCBot", "ClaudeBot", "anthropic-ai", "Google-Extended", "PerplexityBot", "Bytespider", "Amazonbot", "Applebot-Extended", "meta-externalagent", "Diffbot", "omgili", "cohere-ai"))
+        "# Assistants IA qui répondent à une question en citant leur source : bienvenus (référencement sur les IA, 13/10/2026)\nUser-agent: OAI-SearchBot\nUser-agent: ChatGPT-User\nUser-agent: PerplexityBot\nUser-agent: Perplexity-User\nUser-agent: Claude-SearchBot\nUser-agent: Claude-User\nUser-agent: MistralAI-User\nUser-agent: DuckAssistBot\nAllow: /\n\n"
+        + "User-agent: Googlebot\nAllow: /\n\nUser-agent: Bingbot\nAllow: /\n\n"
+        + "".join(f"User-agent: {b}\nDisallow: /\n\n" for b in ("GPTBot", "CCBot", "ClaudeBot", "anthropic-ai", "Google-Extended", "Bytespider", "Amazonbot", "Applebot-Extended", "meta-externalagent", "Diffbot", "omgili", "cohere-ai"))
         + f"User-agent: *\nAllow: /\n\nSitemap: {URL_SITE}sitemap.xml\n")
     json.dump({"id": "/", "name": "Alerte Concours Tunisie", "short_name": "Alerte Concours",
                "description": "Tous les concours publics ouverts en Tunisie, par gouvernorat et par métier.", "start_url": "./", "scope": "./",
