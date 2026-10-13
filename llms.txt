@@ -39,6 +39,11 @@ Langues : français, arabe.
 
 Le site compte 156 pages au total ; la liste complète est dans le plan du site : https://concours.clicvia.com/sitemap.xml
 
+## Données fraîches (JSON, lisibles par une machine)
+
+Ces fichiers sont produits par les robots du site ; un assistant peut les lire pour répondre avec les données du jour, en citant le site.
+- [Concours publics tunisiens relevés sur la source officielle (ouverts et récents)](https://concours.clicvia.com/donnees/concours.json) — mis à jour chaque jour. Champs : concours[] : organisme, grade, postes, cloture_candidatures (date limite d'inscription), cloture_concours, metier, gouvernorat, lien (officiel) ; lu_le = date du relevé.
+
 ## À savoir
 
 - Concours publics ouverts, relevés chaque jour sur les sources officielles ; chaque page donne la date limite et le lien officiel.
