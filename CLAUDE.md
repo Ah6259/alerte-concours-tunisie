@@ -112,3 +112,5 @@ Rien n'est ajouté au site sans l'accord d'Ahmed.
 - **Google + Bing (12/10/2026)** : sitemap envoyé par Ahmed dans Google Search Console et dans Bing Webmaster Tools (site clicvia.com/), indexation de l'accueil demandée. Pour un nouveau site : mêmes gestes, voir `nouveau site - procedure.md` § 4 étape 5 (dépôt projets-ahmed).
 
 - **Page Facebook Clicvia (12/10/2026)** : https://www.facebook.com/1327283777142447 — le robot `facebook` du dépôt du portail (`Ah6259.github.io`, `tools/facebook.mjs`, chaque jour 18h05) publie tout seul une page de ce site à son tour (titre, description et image `og:image` lus sur la page : les garder soignés). Ahmed ne publie rien à la main. Détail et dépannage : `nouveau site - procedure.md` § 4 étape 6 (dépôt projets-ahmed).
+
+- **13/10/2026 — aperçu WhatsApp** : image de partage passée de PNG (276 Ko) à JPEG (`assets/og-image-v2.jpg`, 49 Ko) avec `og:image:type/width/height` (règle commune : JPEG de moins de 250 Ko). L'ancien PNG reste pour les anciens liens.

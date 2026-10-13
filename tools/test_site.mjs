@@ -81,7 +81,7 @@ const rb = lire("robots.txt");
 check("robots.txt : Google autorisé, robots d'IA refusés, plan du site", /User-agent: Googlebot\nAllow: \//.test(rb) && /User-agent: GPTBot\nDisallow: \//.test(rb) && /User-agent: ClaudeBot\nDisallow: \//.test(rb) && rb.includes("sitemap.xml"));
 const man = JSON.parse(lire("manifest.webmanifest"));
 check("manifeste : id propre au site, icônes présentes", man.id === "/" && man.icons.every(i => existsSync(join(root, i.src))));
-check("image d'aperçu WhatsApp et icônes", existsSync(join(root, "assets/og-image-v1.png")) && statSync(join(root, "assets/og-image-v1.png")).size < 300 * 1024
+check("image d'aperçu WhatsApp et icônes", existsSync(join(root, "assets/og-image-v2.jpg")) && statSync(join(root, "assets/og-image-v2.jpg")).size < 250 * 1024 && lire("index.html").includes("assets/og-image-v2.jpg") && lire("index.html").includes('og:image:type" content="image/jpeg"')
   && existsSync(join(root, "assets/apple-touch-icon.png")) && existsSync(join(root, "favicon.ico")) && existsSync(join(root, "assets/logo.svg")));
 check("service worker propre au site", /const PREFIXE = "alerte-concours-tunisie-"/.test(lire("sw.js")) && lire("assets/page.js").includes('register(BASE_SITE + "sw.js"'));
 // jamais le nom d'un site concurrent dans le dépôt public (noms écrits à l'envers ici)

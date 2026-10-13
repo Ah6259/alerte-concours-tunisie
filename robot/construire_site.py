@@ -331,7 +331,8 @@ def page(chemin, racine, titre, description, hero, contenu, v, maj, jsonld="", s
 <meta property="og:title" content="{E(titre.split(' | ')[0])}">
 <meta property="og:description" content="{E(description)}">
 <meta property="og:url" content="{canon}">
-<meta property="og:image" content="{URL_SITE}assets/og-image-v1.png">
+<meta property="og:image" content="{URL_SITE}assets/og-image-v2.jpg">
+<meta property="og:image:type" content="image/jpeg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="fr_TN"><meta property="og:locale:alternate" content="ar_TN">
 <meta name="twitter:card" content="summary_large_image">
