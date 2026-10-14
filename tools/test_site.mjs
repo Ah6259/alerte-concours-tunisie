@@ -176,5 +176,9 @@ if (JSDOM) {
   check("essai immédiat : listes triées du formulaire = cases du formulaire", JSON.stringify([...f.querySelectorAll('#abo-metiers input')].map(x => x.value).sort()) === JSON.stringify(mSorted));
 }
 
+// 15/10/2026 (demande d'Ahmed) : « Votre avis » = e-mail obligatoire + confirmation bien visible dans la carte
+check("Votre avis : e-mail obligatoire (required, « obligatoire ») et confirmation « Merci ! Votre avis a bien été envoyé » dans la carte",
+  /id="avis-email" name="email" autocomplete="email" required/.test(acc) && /obligatoire, pour vous répondre/.test(acc)
+  && /avis-merci/.test(lire("assets/avis.js")) && /Merci ! Votre avis a bien été envoyé/.test(lire("assets/avis.js")) && /\[\^\\s@\]\+@/.test(lire("assets/avis.js")));
 console.log(`\n${ok}/${ok + ko} vérifications réussies` + (ko ? ` — ${ko} ÉCHEC(S) : ne pas publier.` : " — tout est bon."));
 process.exit(ko ? 1 : 0);
