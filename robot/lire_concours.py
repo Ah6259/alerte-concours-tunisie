@@ -24,6 +24,7 @@ URL = "https://www.concours.gov.tn/P1/index5.aspx?id=5"
 AGENT = "alerte-concours-tunisie/1.0 (site gratuit d'information ; robot lent, 1 page toutes les 2 s)"
 PAUSE = 2.0
 MAX_PAGES = 200
+DUREE_MAX = 10 * 60       # 14/10/2026 : portail très lent -> on garde ce qui est lu après 10 min (l'étape avait dépassé 15 min)
 JOURS_FERMES_FINANCES = 60  # concours des Finances clos depuis plus longtemps : pas repris
 JOURS_ABSENT = 3          # un concours ouvert qui manque à la lecture est gardé 3 jours
 SEUIL_CHUTE = 0.5          # moins de 50 % des lignes de la fois précédente : lecture suspecte
@@ -83,13 +84,14 @@ def champs_caches(page):
     return {n: html.unescape(v) for n, v in re.findall(r'<input type="hidden" name="([^"]+)" id="[^"]*" value="([^"]*)"', page)}
 
 
-def lire_portail(max_pages):
+def lire_portail(max_pages, duree_max=DUREE_MAX, horloge=time.monotonic):
+    debut = horloge()
     op = urllib.request.build_opener(urllib.request.HTTPCookieProcessor(http.cookiejar.CookieJar()))
     def get(data=None):
         req = urllib.request.Request(URL, data=data, headers={"User-Agent": AGENT})
         for essai in range(3):
             try:
-                with op.open(req, timeout=60) as r:
+                with op.open(req, timeout=30) as r:
                     return r.read().decode("utf-8", "ignore")
             except Exception:
                 if essai == 2: raise
@@ -97,6 +99,9 @@ def lire_portail(max_pages):
     page = get(); vus = {}; n = 1
     for l in lignes(page): vus[l["id"]] = l
     while "Page$Next" in page and n < max_pages:
+        if horloge() - debut > duree_max:      # trop lent : on s'arrête là ; les concours non relus sont gardés 3 jours (fusionner)
+            print(f"Portail trop lent : lecture arrêtée après {n} page(s) ({int(horloge() - debut)} s), concours manquants gardés 3 jours")
+            break
         f = champs_caches(page); f.update({"__EVENTTARGET": "GVConcoursPublic", "__EVENTARGUMENT": "Page$Next"})
         time.sleep(PAUSE)
         donnees = urllib.parse.urlencode(f).encode()

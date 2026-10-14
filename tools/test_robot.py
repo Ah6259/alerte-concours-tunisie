@@ -81,6 +81,15 @@ try:
 finally:
     U.build_opener, R.PAUSE, R.time.sleep = _vrai, _pause, _dormir
 check("page vide renvoyée par le portail : redemandée, la lecture continue (rien de perdu)", n == 2 and not _suite and len(lu) >= 6)
+# --- portail très lent (14/10/2026 : étape arrêtée à 15 min) : au-delà de DUREE_MAX, on garde les pages déjà lues
+_suite = [page if "Page$Next" in page else page + "Page$Next"] * 5
+_t = iter([0, 1, 700, 700, 700, 700])
+U.build_opener = lambda *a: _Op(); R.PAUSE = 0; R.time.sleep = lambda s: None
+try:
+    lu, n = R.lire_portail(10, duree_max=600, horloge=lambda: next(_t))
+finally:
+    U.build_opener, R.PAUSE, R.time.sleep = _vrai, _pause, _dormir
+check("portail trop lent : lecture arrêtée après 10 min avec les pages déjà lues (plus d'étape coupée à 15 min)", n == 2 and len(lu) == len(R.lignes(page)) > 0)
 
 # --- portail des actualités qui ne répond plus (08/10/2026 : étape bloquée 20 min) : arrêt après 3 échecs de suite
 appels = []

@@ -6,6 +6,7 @@ name: maj
 on:
   schedule:
     - cron: "20 5 * * *"       # 6h20 heure de Tunis
+    - cron: "20 12 * * *"      # 13h20 : rattrapage si le portail était en panne le matin (dépôt public : minutes gratuites)
   workflow_dispatch:
 concurrency:
   group: maj-site
