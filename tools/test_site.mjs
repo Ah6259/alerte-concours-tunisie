@@ -164,6 +164,16 @@ if (JSDOM) {
     envois.length === 1 && /formspree\.io\/f\/mwlpakqj/.test(envois[0][0]) && corps.get("telephone") === "24321390" && corps.get("suivis") === "2390, 2412"
     && /suivis: 2390,2412/.test(corps.get("pour_activer")) && f.hidden && !d.getElementById("apres-abo").hidden
     && /Test%20Candidat/.test(d.getElementById("abo-preuve-apres").getAttribute("href")));
+  // 14/10/2026 (règle commune § 15 : essai immédiat) : code créé sur place, lien Telegram avec les choix, gestes expliqués avant
+  const code = d.getElementById("abo-code").textContent, lienTg = d.getElementById("abo-ouvrir-tg").getAttribute("href");
+  const mSorted = f.getAttribute("data-metiers").split(","), premier = f.querySelector('#abo-metiers input').value;
+  check("essai immédiat : code de 6 caractères affiché, « Ouvrir Telegram » avec les choix (start=e<CODE>_<métiers>_x), code envoyé à Formspree et dans WhatsApp",
+    /^[A-HJ-NP-Z2-9]{6}$/.test(code) && lienTg === `https://t.me/AlerteConcoursTunisieBot?start=e${code}_${w.ESSAI_ALERTES.encoder([premier], mSorted)}_x`
+    && lienTg.split("start=")[1].length <= 64 && corps.get("code") === code && /code%20/.test(d.getElementById("abo-preuve-apres").getAttribute("href")));
+  check("essai immédiat : 3 gestes expliqués avant Telegram (DÉMARRER, réponse le matin suivant vers 8 h) ; plus d'« activation sous 24 heures »",
+    d.querySelectorAll("#apres-abo .etapes-tg li").length === 3 && /DÉMARRER/.test(d.getElementById("apres-abo").textContent)
+    && /le matin suivant, vers 8 h/.test(d.getElementById("apres-abo").textContent) && !/24 heures/.test(al));
+  check("essai immédiat : listes triées du formulaire = cases du formulaire", JSON.stringify([...f.querySelectorAll('#abo-metiers input')].map(x => x.value).sort()) === JSON.stringify(mSorted));
 }
 
 console.log(`\n${ok}/${ok + ko} vérifications réussies` + (ko ? ` — ${ko} ÉCHEC(S) : ne pas publier.` : " — tout est bon."));
