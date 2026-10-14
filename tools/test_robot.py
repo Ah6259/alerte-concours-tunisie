@@ -185,6 +185,21 @@ with tempfile.TemporaryDirectory() as d:
     r = run("2026-10-09", os.path.join(d, "absent.html")); cs = json.load(open(sortie, encoding="utf-8"))["concours"]
     check("plateforme des Finances en panne : non bloquant, ses concours de la veille gardés", r.returncode == 0 and len([c for c in cs if c.get("source") == "finances"]) == 2
           and "ÉCHEC (non bloquant)" in r.stdout)
+    d_fin = json.load(open(sortie, encoding="utf-8"))
+    check("Finances en panne : la date de dernière lecture réussie n'avance pas (alerte après 2 jours)", d_fin.get("finances_ok") == "2026-10-08")
+
+# --- 15/10/2026 (§ 17) : aucune source en panne qui reste invisible (robot vert)
+try:
+    F.lignes("<html><body>Nouvelle présentation du site</body></html>")
+    check("Finances : page sans aucun bloc d'annonce = panne (pas « 0 concours » en vert)", False)
+except ValueError:
+    check("Finances : page sans aucun bloc d'annonce = panne (pas « 0 concours » en vert)", True)
+sys.path.insert(0, os.path.join(RACINE, "tools"))
+import sources_en_panne as SP
+check("alerte : Finances sans lecture réussie depuis 3 jours -> ÉCHEC ; 2 jours -> rien",
+      [s for s, _ in SP.en_panne({"lu_le": "2026-10-15", "finances_ok": "2026-10-12"}, {"lu_le": "2026-10-15"}, "2026-10-15")] == ["plateforme du ministère des Finances"]
+      and SP.en_panne({"lu_le": "2026-10-15", "finances_ok": "2026-10-13"}, {"lu_le": "2026-10-13"}, "2026-10-15") == [])
+check("alerte : actualités jamais lues -> ÉCHEC", any("actualités" in s for s, _ in SP.en_panne({"lu_le": "2026-10-15", "finances_ok": "2026-10-15"}, {}, "2026-10-15")))
 
 print(f"\n{ok}/{ok + ko} vérifications réussies" + (" — tout est bon." if not ko else f" — {ko} ÉCHEC(S)"))
 sys.exit(1 if ko else 0)

@@ -9,7 +9,8 @@ Liste : page « الأخبار » (P1/index15.aspx?id=pub) ; chaque actualité :
 Données : faits publics + RÉSUMÉ court (300 caractères au plus) + lien officiel ; jamais le texte entier.
 Chaque actualité est rattachée, si possible, aux concours du même organisme (donnees/concours.json) : c'est la base
 du futur « Suivi de mes concours ». Panne du portail : l'ancien fichier est gardé, le site reste en ligne (sortie 0,
-avec un message « ÉCHEC » dans le journal ; les concours, eux, sont lus par lire_concours.py)."""
+avec un message « ÉCHEC » dans le journal ; les concours, eux, sont lus par lire_concours.py). « lu_le » n'avance que si
+la lecture a réussi : tools/sources_en_panne.py met le robot en ÉCHEC après 2 jours sans lecture réussie (15/10/2026)."""
 import argparse, datetime as dt, html, json, os, re, sys, time, urllib.request
 
 ICI = os.path.dirname(os.path.abspath(__file__))
@@ -115,6 +116,9 @@ def main():
             ids = sorted({int(n) for n in re.findall(r"index31\.aspx\?id=(\d+)", get(LISTE))}, reverse=True)
         except Exception as e:
             print(f"ÉCHEC : liste des actualités illisible ({e}) ; ancien fichier gardé.")
+            return
+        if not ids:                          # page lue mais aucun lien d'actualité : page changée (§ 17, 15/10/2026)
+            print("ÉCHEC : aucune actualité dans la liste (page du portail changée ?) ; ancien fichier gardé.")
             return
         a_lire = [i for i in ids if str(i) not in connus][: (PREMIERE_FOIS if not connus else 60)]
         nouvelles, debut, de_suite = [], time.monotonic(), 0

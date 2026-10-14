@@ -30,6 +30,8 @@ def date_iso(t):
 def lignes(page, metier=None):
     """Les concours annoncés sur la page de la plateforme (liste de dicts au format de donnees/concours.json)."""
     metier = metier or (lambda g: "autre")
+    if not BLOC.search(page):                           # aucun bloc d'annonce : page changée -> panne (§ 17, 15/10/2026)
+        raise ValueError("aucun bloc d'annonce sur la page (forme changée ?)")
     out, vus = [], set()
     for bloc in BLOC.findall(page):
         titre = nettoyer((re.search(r"<h5[^>]*>(.*?)</h5>", bloc, re.S) or [None, ""])[1])

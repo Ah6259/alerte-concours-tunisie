@@ -164,6 +164,8 @@ def main():
         sys.exit(1)
     # deuxième source : ministère des Finances (une panne ne bloque rien : ses concours de la veille sont gardés)
     limite = (dt.date.fromisoformat(a.aujourdhui) - dt.timedelta(days=JOURS_FERMES_FINANCES)).isoformat()
+    # date de la dernière lecture réussie des Finances (tools/sources_en_panne.py : ÉCHEC après 2 jours, 15/10/2026)
+    finances_ok = ancien.get("finances_ok") or a.aujourdhui
     try:
         if a.finances_fichier == "non" or (a.fichier and not a.finances_fichier):
             fin = []
@@ -176,11 +178,13 @@ def main():
         deja = {(c["cloture_candidatures"]) for c in nouveaux if "المالية" in c["organisme"]}
         fin = [c for c in fin if c["cloture_candidatures"] not in deja]
         print(f"Ministère des Finances : {len(fin)} concours repris")
+        if a.finances_fichier != "non" and not (a.fichier and not a.finances_fichier):
+            finances_ok = a.aujourdhui
     except Exception as e:
         fin = [c for c in ancien["concours"] if c.get("source") == "finances"]
         print(f"ÉCHEC (non bloquant) : plateforme des Finances illisible ({str(e)[:120]}) ; {len(fin)} concours de la veille gardés")
     nouveaux = nouveaux + fin
-    donnees = {"source": URL, "lu_le": a.aujourdhui, "pages": pages,
+    donnees = {"source": URL, "lu_le": a.aujourdhui, "finances_ok": finances_ok, "pages": pages,
                "concours": sorted(fusionner(ancien["concours"], nouveaux, a.aujourdhui), key=lambda c: (c["cloture_candidatures"] or "9999", c["id"]))}
     os.makedirs(os.path.dirname(a.sortie), exist_ok=True)
     json.dump(donnees, open(a.sortie, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
