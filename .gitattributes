@@ -1,0 +1,18 @@
+# Fins de ligne Unix (LF) partout : PC Windows, téléphone, GitHub (règle commune du 16/10/2026).
+* text=auto eol=lf
+*.bat text eol=crlf
+*.cmd text eol=crlf
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.webp binary
+*.gif binary
+*.ico binary
+*.mp4 binary
+*.mp3 binary
+*.pdf binary
+*.woff binary
+*.woff2 binary
+*.zip binary
+*.gz binary
+*.dat binary
