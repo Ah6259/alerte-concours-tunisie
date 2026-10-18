@@ -1,5 +1,5 @@
 # Robot quotidien d'Alerte Concours Tunisie — tourne sur GitHub, sans PC.
-# Lecture du tableau officiel des concours -> pages du site -> tests -> enregistrement (GitHub Pages republie tout seul).
+# Lecture du tableau officiel des concours -> rapports du mois -> pages du site -> tests -> enregistrement (GitHub Pages republie tout seul).
 # Le site n'est enregistré que si TOUS les tests passent (sinon GitHub prévient et l'ancien site reste en ligne).
 # Si le portail est en panne, l'ancien fichier est gardé (le robot sort en erreur et GitHub prévient).
 name: maj
@@ -33,6 +33,8 @@ jobs:
         run: python robot/lire_actualites.py
         timeout-minutes: 8           # portail qui ne répond plus : on passe, le site se met quand même à jour
         continue-on-error: true
+      - name: Rapports du mois (chiffres du mois en cours ; un mois fini n'est jamais modifié) — donnees/rapports.json
+        run: python robot/rapports.py
       - uses: actions/setup-node@v4
         with: { node-version: "22" }
       - name: Pages du site

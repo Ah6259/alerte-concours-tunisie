@@ -180,5 +180,47 @@ if (JSDOM) {
 check("Votre avis : e-mail obligatoire (required, « obligatoire ») et confirmation « Merci ! Votre avis a bien été envoyé » dans la carte",
   /id="avis-email" name="email" autocomplete="email" required/.test(acc) && /obligatoire, pour vous répondre/.test(acc)
   && /avis-merci/.test(lire("assets/avis.js")) && /Merci ! Votre avis a bien été envoyé/.test(lire("assets/avis.js")) && /\[\^\\s@\]\+@/.test(lire("assets/avis.js")));
+// ---- Rapports du mois (18/10/2026, règle commune § 25) : chiffres = données du site, mois fini figé, plan du site
+{ const H = existsSync(join(root, "donnees/rapports.json")) ? JSON.parse(lire("donnees/rapports.json")).mois : {};
+  const mois = Object.keys(H).sort();
+  check("rapports : historique présent, au moins le mois des données", mois.length >= 1 && !!H[(D.lu_le || "").slice(0, 7)]);
+  const pr = ["rapports/index.html", ...mois.map(m => `rapports/${m}/index.html`)];
+  check("rapports : rapports/ et une page par mois, propres (titre, description, canonique, CSP, FR + AR, aucun trou, pas de script en ligne)", pr.every(p => existsSync(join(root, p)) && (h =>
+    /<title>[^<]{10,}<\/title>/.test(h) && /name="description" content="[^"]{30,}"/.test(h) && h.includes(`<link rel="canonical" href="https://concours.clicvia.com/${p.replace(/index\.html$/, "")}">`)
+    && h.includes('http-equiv="Content-Security-Policy"') && h.includes('data-l="ar"') && !/undefined|NaN|None|\[object/.test(h) && !/ on[a-z]+="/.test(h)
+    && !/<script>(?!\s*$)/.test(h.replace(/<script type="application\/ld\+json">[\s\S]*?<\/script>/g, "")))(lire(p))));
+  check("rapports : JSON-LD Article + FAQ + fil d'Ariane, méthode et « Citer ces chiffres » sur chaque mois", mois.every(m => (h => h.includes('"@type": "Article"') && h.includes('"@type": "FAQPage"')
+    && h.includes('"@type": "BreadcrumbList"') && h.includes('id="methode"') && h.includes('id="citer"'))(lire(`rapports/${m}/index.html`))));
+  check("rapports : dans le plan du site avec la date de leurs chiffres", sm.includes("<loc>https://concours.clicvia.com/rapports/</loc>")
+    && mois.every(m => sm.includes(`<loc>https://concours.clicvia.com/rapports/${m}/</loc><lastmod>${H[m].dernier_jour}</lastmod>`)));
+  check("rapports : lien dans le pied de page (toutes les pages) et sur l'accueil", lire("assets/page.js").includes('href="${racine}rapports/"') && acc.includes('href="rapports/"'));
+  check("rapports : 1er mois = « Premier rapport » sans évolution ; mois suivants = évolution", mois.every((m, i) => (h => i === 0 ? h.includes("Premier rapport") && !h.includes('id="evolution"')
+    : h.includes('id="evolution"') && !h.includes("Premier rapport"))(lire(`rapports/${m}/index.html`))));
+  check("rapports : un mois fini dit « figés » avec sa dernière date ; seul le dernier mois peut être en cours", mois.every((m, i) => (h => H[m].fini
+    ? h.includes("figés") && h.includes(`au ${H[m].dernier_jour.split("-").reverse().join("/")}`) && !H[m].vus : i === mois.length - 1 && h.includes("mois en cours"))(lire(`rapports/${m}/index.html`))));
+  // chiffres du mois en cours = données du site (même jour) = accueil
+  const m = (D.lu_le || "").slice(0, 7), e = H[m];
+  if (e && e.dernier_jour === D.lu_le) {
+    const ouv = D.concours.filter(c => !c.cloture_candidatures || c.cloture_candidatures >= D.lu_le), somme = cs => cs.reduce((a, c) => a + (c.postes || 0), 0);
+    const h = lire(`rapports/${m}/index.html`), nb = id => +((h.match(new RegExp(`id="${id}">([\\d ]+)<`)) || [])[1] || "-1").replace(/ /g, "");
+    const fr = n => String(n).replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+    check(`rapports : concours ouverts (${ouv.length}) et postes (${somme(ouv)}) = données du site et accueil`, nb("rap-ouverts") === ouv.length && nb("rap-postes") === somme(ouv)
+      && acc.includes(`<div class="r-ouverts" id="r-ouverts"><b>${ouv.length}</b>`) && acc.includes(`${fr(somme(ouv))} postes à pourvoir en tout`));
+    const nat = ouv.filter(c => c.gouvernorat === "national");
+    check("rapports : nationaux / locaux = données", nb("rap-nationaux") === nat.length && nb("rap-locaux") === ouv.length - nat.length);
+    const lignesG = [...h.matchAll(/<tr data-gouv="([a-z-]+)" data-n="(\d+)" data-postes="(\d+)">/g)];
+    check("rapports : chaque ligne par gouvernorat = concours ouverts de ce gouvernorat (et nationaux), aucun gouvernorat oublié",
+      lignesG.every(([, g, n, p]) => (cs => cs.length === +n && somme(cs) === +p)(ouv.filter(c => c.gouvernorat === g)))
+      && new Set(lignesG.map(x => x[1])).size === new Set(ouv.map(c => c.gouvernorat)).size);
+    const lignesM = [...h.matchAll(/<tr data-metier="([a-z-]+)" data-n="(\d+)" data-postes="(\d+)">/g)];
+    check("rapports : chaque ligne par métier = concours ouverts de ce métier", lignesM.length === new Set(ouv.map(c => c.metier)).size
+      && lignesM.every(([, mt, n, p]) => (cs => cs.length === +n && somme(cs) === +p)(ouv.filter(c => c.metier === mt))));
+    const urg = ouv.filter(c => c.cloture_candidatures && (new Date(c.cloture_candidatures) - new Date(D.lu_le)) / 864e5 < 7).length;
+    check("rapports : clôturent sous 7 jours = accueil", nb("rap-semaine") === urg && acc.includes(`<div class="r-urgent" id="r-urgent"><b>${urg}</b>`));
+    const orgs = {}; ouv.forEach(c => orgs[c.organisme] = (orgs[c.organisme] || 0) + 1);
+    const nOrg = Object.values(orgs).filter(n => n >= 3).length;
+    check("rapports : organismes classés seulement avec au moins 3 concours, et seulement s'il y en a au moins 3", nOrg >= 3 ? (h.match(/<tr data-n="\d+"><th scope="row" dir="rtl"/g) || []).length === nOrg : !h.includes('id="organismes"'));
+  }
+}
 console.log(`\n${ok}/${ok + ko} vérifications réussies` + (ko ? ` — ${ko} ÉCHEC(S) : ne pas publier.` : " — tout est bon."));
 process.exit(ko ? 1 : 0);

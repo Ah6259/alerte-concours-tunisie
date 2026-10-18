@@ -60,7 +60,7 @@ Visite normale depuis la Tunisie, robots.txt de l'ANETI : tout autorisé (pas un
 **Carte de la Tunisie EN HAUT du bandeau** (08/10/2026, règle d'Ahmed, comme les annuaires) : `carte_tunisie` / `hero_carte`, chiffre de la bulle = concours du gouvernorat + nationaux (demande d'Ahmed 08/10 : aucun gouvernorat à 0), taille/couleur = concours locaux
 (+ nationaux indiqués sous la carte) ; accueil et pages de gouvernorat (la sienne en or) ; app.js ne recompte que sur l'accueil.
 Construire : `python robot/construire_site.py [--aujourdhui AAAA-MM-JJ]`.
-Tests : `python tools/test_robot.py` (29) et `node tools/test_site.mjs` (61, jsdom ; dont les pages des concours, sabotage vérifié) — sabotage vérifié le 08/10 (filtre
+Tests : `python tools/test_robot.py` (72 au 18/10/2026) et `node tools/test_site.mjs` (103 avec jsdom ; dont les pages des concours, sabotage vérifié) — sabotage vérifié le 08/10 (filtre
 national cassé → détecté).
 
 ## État au 08/10/2026
@@ -114,3 +114,14 @@ Rien n'est ajouté au site sans l'accord d'Ahmed.
 - **Page Facebook Clicvia (12/10/2026)** : https://www.facebook.com/1327283777142447 — le robot `facebook` du dépôt du portail (`Ah6259.github.io`, `tools/facebook.mjs`, chaque jour 18h05) publie tout seul une page de ce site à son tour (titre, description et image `og:image` lus sur la page : les garder soignés). Ahmed ne publie rien à la main. Détail et dépannage : `nouveau site - procedure.md` § 4 étape 6 (dépôt projets-ahmed).
 
 - **13/10/2026 — aperçu WhatsApp** : image de partage passée de PNG (276 Ko) à JPEG (`assets/og-image-v2.jpg`, 49 Ko) avec `og:image:type/width/height` (règle commune : JPEG de moins de 250 Ko). L'ancien PNG reste pour les anciens liens.
+
+- **Rapports du mois (18/10/2026, demande d'Ahmed, règle commune § 25)** : `rapports/` (liste) et `rapports/AAAA-MM/` (FR + AR), écrits par
+  `robot/rapports.py` (étape de maj.yml après les lectures) à partir des seules données GRATUITES (concours.json, actualites.json) :
+  en bref, évolution (seulement si le mois précédent existe ; sinon « Premier rapport »), par métier, par gouvernorat, organismes
+  (classés seulement avec ≥ 3 concours ouverts et ≥ 3 organismes), ce qui s'est passé dans le mois (nouveaux concours OUVERTS apparus
+  après le 08/10/2026 = 1re lecture, inscriptions closes, résultats publiés, avis du portail), méthode, « Citer ces chiffres »,
+  JSON-LD Article + FAQ + fil d'Ariane. Historique `donnees/rapports.json` (mois -> premier_jour, dernier_jour, fini, chiffres, vus) :
+  le mois des données (`lu_le`) est recalculé à chaque passage, un mois passé devient « fini » au 1er passage du mois suivant et
+  n'est plus jamais modifié. construire_site.py ne fait que LIRE cet historique ; plan du site avec lastmod = date des chiffres ;
+  lien dans le pied de page (page.js) et sur l'accueil. Tests : test_robot.py (comptages, mois figé, pas de fausse évolution) et
+  test_site.mjs (chiffres = concours.json = accueil, sitemap). Pas de sous-pages pour l'instant (données trop maigres par gouvernorat).

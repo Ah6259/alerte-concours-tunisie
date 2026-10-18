@@ -13,6 +13,7 @@ sys.path.insert(0, ICI)
 import gouvernorats as G      # noqa: E402
 import lire_concours as R     # noqa: E402
 import lire_actualites as A   # noqa: E402
+import rapports as RAP         # noqa: E402
 
 URL_SITE = "https://concours.clicvia.com/"
 URL_PORTAIL = "https://www.concours.gov.tn/"
@@ -651,7 +652,7 @@ def construire(jour):
 <h2 class="titre-section" id="metiers">{L("Par métier", "حسب الاختصاص")}</h2>
 <section class="carte">{grille(METIERS, "", "metier", cm, "grille-metiers")}</section>
 {f'<h2 class="titre-section" id="actualites">{L("Dernières actualités des concours", "آخر أخبار المناظرات")}</h2><div class="actus">{"".join(actu_html(x, "") for x in actus[:4])}</div><p><a class="btn" href="actualites/">{L("Toutes les actualités (résultats, convocations…)", "كل الأخبار (النتائج، الاستدعاءات…)")}</a></p>' if actus else ""}
-<p><a class="btn" href="ministeres/">{L("Concours annoncés sur les sites des ministères", "المناظرات المعلنة في مواقع الوزارات")}</a></p>
+<p><a class="btn" href="ministeres/">{L("Concours annoncés sur les sites des ministères", "المناظرات المعلنة في مواقع الوزارات")}</a> <a class="btn" href="rapports/">{L("Rapports du mois : les concours en chiffres", "التقارير الشهرية: المناظرات بالأرقام")}</a></p>
 <section class="carte"><h2>{L("Comment s'inscrire ?", "كيف تترشح؟")}</h2><p>{L("L'inscription se fait toujours sur le portail officiel. Notre guide explique les étapes une par une.", "الترشح يتم دائمًا في البوابة الرسمية. دليلنا يشرح المراحل واحدة بواحدة.")}</p>
 <a class="btn" href="guide-inscription/">{L("Lire le guide d'inscription", "اقرأ دليل الترشح")}</a></section>
 {AVIS}"""
@@ -792,11 +793,15 @@ def construire(jour):
 {AVIS}"""
     pages["a-propos/"] = page("a-propos/", "../", "À propos et sources | Alerte Concours Tunisie", "D'où viennent les concours d'Alerte Concours Tunisie : le portail officiel des concours publics et la plateforme du ministère des Finances.", hero, contenu, v, maj)
 
+    # --- rapports du mois (18/10/2026, règle commune § 25) : lus dans donnees/rapports.json (robot/rapports.py), jamais recalculés ici
+    rap, rap_dates = RAP.pages(sys.modules[__name__], RAP.charger_hist(), v, maj)
+    pages.update(rap)
+
     for chemin, h in pages.items():
         ecrire(chemin, h)
     open(os.path.join(RACINE, "sitemap.xml"), "w", encoding="utf-8", newline="\n").write(
         '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
-        + "".join(f"  <url><loc>{URL_SITE}{c}</loc><lastmod>{maj or jour}</lastmod></url>\n" for c in pages) + "</urlset>\n")
+        + "".join(f"  <url><loc>{URL_SITE}{c}</loc><lastmod>{rap_dates.get(c) or maj or jour}</lastmod></url>\n" for c in pages) + "</urlset>\n")
     open(os.path.join(RACINE, "robots.txt"), "w", encoding="utf-8", newline="\n").write(
         "# Assistants IA qui répondent à une question en citant leur source : bienvenus (référencement sur les IA, 13/10/2026)\nUser-agent: OAI-SearchBot\nUser-agent: ChatGPT-User\nUser-agent: PerplexityBot\nUser-agent: Perplexity-User\nUser-agent: Claude-SearchBot\nUser-agent: Claude-User\nUser-agent: MistralAI-User\nUser-agent: DuckAssistBot\nAllow: /\n\n"
         + "User-agent: Googlebot\nAllow: /\n\nUser-agent: Bingbot\nAllow: /\n\n"

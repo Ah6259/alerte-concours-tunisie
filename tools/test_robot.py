@@ -201,5 +201,48 @@ check("alerte : Finances sans lecture réussie depuis 3 jours -> ÉCHEC ; 2 jour
       and SP.en_panne({"lu_le": "2026-10-15", "finances_ok": "2026-10-13"}, {"lu_le": "2026-10-13"}, "2026-10-15") == [])
 check("alerte : actualités jamais lues -> ÉCHEC", any("actualités" in s for s, _ in SP.en_panne({"lu_le": "2026-10-15", "finances_ok": "2026-10-15"}, {}, "2026-10-15")))
 
+# --- Rapports du mois (18/10/2026, règle commune § 25) : chiffres = comptages, mois fini figé, pas de fausse évolution
+import rapports as RAP, construire_site as CS
+def _c(i, g, p, vu, lim, m="ouvrier", org=None, hist=()):
+    return {"id": str(i), "gouvernorat": g, "postes": p, "vu_le": vu, "cloture_candidatures": lim, "metier": m,
+            "organisme": org or f"org{i}", "grade": "g", "historique": list(hist)}
+base = [_c(1, "national", 3, "", "2026-11-30", "ingenieur"), _c(2, "nabeul", 2, "2026-10-12", "2026-10-20"),
+        _c(3, "tunis", 4, "2026-10-12", "2026-10-05"), _c(4, "sousse", None, "2026-10-08", "2026-12-01"),
+        _c(5, "bizerte", 1, "2026-10-14", "2026-11-10", hist=[{"le": "2026-10-14", "champ": "resultat_initial", "avant": "لم تنشر", "apres": "اطلاع"}])]
+actus = [{"date": "2026-10-03", "type": "resultats"}, {"date": "2026-10-14", "type": "nouveau"}, {"date": "2026-09-30", "type": "nouveau"}, {"date": "2026-10-16", "type": "nouveau"}]
+k, _ = RAP.calculer(base, actus, "2026-10-15")
+check("rapport : concours ouverts = même règle que l'accueil (4 ouverts, 6 postes, 1 sans nombre de postes)", k["ouverts"] == {"n": 4, "postes": 6, "sans_postes": 1})
+check("rapport : nationaux 1 / locaux 3, 3 gouvernorats, clôture sous 7 jours = 1", k["national"]["n"] == 1 and k["locaux"]["n"] == 3 and len(k["gouvernorats"]) == 3 and k["semaine"]["n"] == 1)
+check("rapport : nouveaux = apparus après le 1er jour de lecture ET encore ouverts (1 clos et 1 du 08/10 écartés)", k["nouveaux"]["n"] == 2 and k["debut"] == "2026-10-09")
+check("rapport : inscriptions closes ce mois = 1 ; résultat publié vu par le robot = 1 ; avis du mois jusqu'au jour des chiffres = 2",
+      k["clos"]["n"] == 1 and k["resultats"] == {"initial": 1, "final": 0} and k["avis"]["n"] == 2)
+check("rapport : aucun organisme classé sous 3 concours ouverts", k["organismes"] == [])
+k3, _ = RAP.calculer([_c(10 + i, "tunis", 1, "", "2026-12-01", org=f"o{i % 3}") for i in range(9)], [], "2026-10-15")
+k2, _ = RAP.calculer([_c(10 + i, "tunis", 1, "", "2026-12-01", org=f"o{i % 2}") for i in range(6)], [], "2026-10-15")
+check("rapport : organismes classés seulement avec au moins 3 concours chacun", len(k3["organismes"]) == 3 and len(k2["organismes"]) == 2)
+h1 = RAP.mettre_a_jour(None, base, actus, "2026-10-15")
+h2 = RAP.mettre_a_jour(h1, [c for c in base if c["id"] != "3"], actus, "2026-10-20")
+check("historique : concours retiré du tableau en cours de mois toujours compté (inscriptions closes), 1er jour gardé, dernière date avancée",
+      h2["mois"]["2026-10"]["chiffres"]["clos"]["n"] == 1 and h2["mois"]["2026-10"]["premier_jour"] == "2026-10-15" and h2["mois"]["2026-10"]["dernier_jour"] == "2026-10-20")
+oct_fige = json.dumps(h2["mois"]["2026-10"]["chiffres"], sort_keys=True)
+autres = [_c(20 + i, "sfax", 5, "2026-11-01", "2026-12-15") for i in range(4)]
+h3 = RAP.mettre_a_jour(h2, autres, [], "2026-11-02")
+h4 = RAP.mettre_a_jour(h3, autres[:1], [], "2026-10-25")
+h5 = RAP.mettre_a_jour(h4, autres[:2], [], "2026-11-05")
+check("mois fini : figé au 1er passage du mois suivant, chiffres et date jamais modifiés ensuite (même avec d'autres données ou une date plus ancienne)",
+      h3["mois"]["2026-10"]["fini"] and "vus" not in h3["mois"]["2026-10"] and h4 == h3 and h5["mois"]["2026-10"] == h3["mois"]["2026-10"]
+      and json.dumps(h5["mois"]["2026-10"]["chiffres"], sort_keys=True) == oct_fige and h5["mois"]["2026-10"]["dernier_jour"] == "2026-10-20")
+p1, d1 = RAP.pages(CS, h2, "v", "2026-10-20")
+p5, d5 = RAP.pages(CS, h5, "v", "2026-11-05")
+check("pages : rapports/ + rapports/2026-10/, date des chiffres pour le plan du site", set(p1) == {"rapports/", "rapports/2026-10/"} and d1["rapports/2026-10/"] == "2026-10-20")
+check("1er mois : « Premier rapport », aucune évolution inventée", "Premier rapport" in p1["rapports/2026-10/"] and 'id="evolution"' not in p1["rapports/2026-10/"])
+check("mois suivant : évolution depuis le mois précédent (ses chiffres au 20/10), mois précédent marqué « figés »",
+      'id="evolution"' in p5["rapports/2026-11/"] and "au 20/10/2026" in p5["rapports/2026-11/"] and "figés" in p5["rapports/2026-10/"] and "Premier rapport" not in p5["rapports/2026-11/"])
+check("pages des rapports : JSON-LD Article + FAQ + fil d'Ariane, « Citer ces chiffres », méthode, aucun trou",
+      all('"@type": "Article"' in h and '"@type": "FAQPage"' in h and '"@type": "BreadcrumbList"' in h and 'id="citer"' in h and 'id="methode"' in h
+          and "None" not in h and "undefined" not in h for c, h in p5.items() if c != "rapports/"))
+check("pas de classement sur 1 ou 2 éléments : pas de « gouvernorat qui compte le plus » avec 1 seul gouvernorat (novembre)",
+      "Gouvernorat qui compte le plus" not in p5["rapports/2026-11/"] and "Gouvernorat qui compte le plus" in p1["rapports/2026-10/"])
+
 print(f"\n{ok}/{ok + ko} vérifications réussies" + (" — tout est bon." if not ko else f" — {ko} ÉCHEC(S)"))
 sys.exit(1 if ko else 0)

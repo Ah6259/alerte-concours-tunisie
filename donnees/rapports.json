@@ -1,0 +1,1036 @@
+{
+ "mois": {
+  "2026-10": {
+   "premier_jour": "2026-10-17",
+   "dernier_jour": "2026-10-17",
+   "fini": false,
+   "chiffres": {
+    "au": "2026-10-17",
+    "debut": "2026-10-09",
+    "ouverts": {
+     "n": 61,
+     "postes": 117,
+     "sans_postes": 0
+    },
+    "national": {
+     "n": 21,
+     "postes": 44,
+     "sans_postes": 0
+    },
+    "locaux": {
+     "n": 40,
+     "postes": 73,
+     "sans_postes": 0
+    },
+    "finances": 0,
+    "gouvernorats": [
+     [
+      "nabeul",
+      16,
+      32
+     ],
+     [
+      "monastir",
+      6,
+      9
+     ],
+     [
+      "tunis",
+      6,
+      6
+     ],
+     [
+      "sousse",
+      4,
+      11
+     ],
+     [
+      "bizerte",
+      3,
+      6
+     ],
+     [
+      "sfax",
+      2,
+      4
+     ],
+     [
+      "medenine",
+      1,
+      2
+     ],
+     [
+      "sidi-bouzid",
+      1,
+      2
+     ],
+     [
+      "kebili",
+      1,
+      1
+     ]
+    ],
+    "metiers": [
+     [
+      "ouvrier",
+      22,
+      36
+     ],
+     [
+      "autre",
+      12,
+      29
+     ],
+     [
+      "technicien",
+      9,
+      15
+     ],
+     [
+      "administratif",
+      6,
+      10
+     ],
+     [
+      "ingenieur",
+      4,
+      11
+     ],
+     [
+      "chauffeur",
+      3,
+      5
+     ],
+     [
+      "informatique",
+      3,
+      5
+     ],
+     [
+      "finance",
+      2,
+      6
+     ]
+    ],
+    "organismes": [
+     [
+      "بلدية الحمامات",
+      10,
+      18,
+      "nabeul"
+     ],
+     [
+      "الديوان الوطني للمناجم",
+      6,
+      12,
+      "national"
+     ],
+     [
+      "وكالة التعمير لتونس الكبرى",
+      6,
+      6,
+      "tunis"
+     ],
+     [
+      "المعهد الوطني للمواصفات والملكية الصناعية",
+      5,
+      8,
+      "national"
+     ],
+     [
+      "بلدية بوعرقوب",
+      3,
+      10,
+      "nabeul"
+     ],
+     [
+      "مركز الإعلامية لوزارة الداخلية",
+      3,
+      8,
+      "national"
+     ],
+     [
+      "المركز الوطني للسينما والصورة",
+      3,
+      4,
+      "national"
+     ],
+     [
+      "بلدية دارعلوش",
+      3,
+      4,
+      "nabeul"
+     ]
+    ],
+    "semaine": {
+     "n": 11,
+     "postes": 18,
+     "sans_postes": 0,
+     "jusqu_au": "2026-10-23"
+    },
+    "nouveaux": {
+     "n": 15,
+     "postes": 28,
+     "sans_postes": 0
+    },
+    "nouveaux_metiers": [
+     [
+      "ouvrier",
+      5
+     ],
+     [
+      "autre",
+      4
+     ],
+     [
+      "administratif",
+      3
+     ],
+     [
+      "chauffeur",
+      2
+     ],
+     [
+      "technicien",
+      1
+     ]
+    ],
+    "clos": {
+     "n": 1,
+     "postes": 6,
+     "sans_postes": 0
+    },
+    "resultats": {
+     "initial": 0,
+     "final": 0
+    },
+    "avis": {
+     "n": 11,
+     "types": {
+      "resultats": 4,
+      "candidatures": 3,
+      "nouveau": 4
+     }
+    }
+   },
+   "vus": {
+    "2390": {
+     "postes": 1,
+     "metier": "technicien",
+     "gouvernorat": "bizerte",
+     "cloture_candidatures": "2025-10-03",
+     "vu_le": "2026-10-13",
+     "publies": []
+    },
+    "2391": {
+     "postes": 1,
+     "metier": "technicien",
+     "gouvernorat": "bizerte",
+     "cloture_candidatures": "2025-10-03",
+     "vu_le": "2026-10-13",
+     "publies": []
+    },
+    "2392": {
+     "postes": 1,
+     "metier": "informatique",
+     "gouvernorat": "bizerte",
+     "cloture_candidatures": "2025-10-10",
+     "vu_le": "2026-10-13",
+     "publies": []
+    },
+    "2412": {
+     "postes": 1,
+     "metier": "autre",
+     "gouvernorat": "bizerte",
+     "cloture_candidatures": "2025-10-17",
+     "vu_le": "2026-10-13",
+     "publies": []
+    },
+    "2543": {
+     "postes": 1,
+     "metier": "autre",
+     "gouvernorat": "bizerte",
+     "cloture_candidatures": "2025-11-07",
+     "vu_le": "2026-10-13",
+     "publies": []
+    },
+    "2548": {
+     "postes": 1,
+     "metier": "ingenieur",
+     "gouvernorat": "nabeul",
+     "cloture_candidatures": "2025-11-25",
+     "vu_le": "2026-10-13",
+     "publies": []
+    },
+    "2749": {
+     "postes": 10,
+     "metier": "ouvrier",
+     "gouvernorat": "bizerte",
+     "cloture_candidatures": "2026-03-23",
+     "vu_le": "2026-10-13",
+     "publies": []
+    },
+    "2978": {
+     "postes": 1,
+     "metier": "autre",
+     "gouvernorat": "national",
+     "cloture_candidatures": "2026-07-02",
+     "vu_le": "2026-10-09",
+     "publies": []
+    },
+    "2979": {
+     "postes": 1,
+     "metier": "autre",
+     "gouvernorat": "national",
+     "cloture_candidatures": "2026-07-02",
+     "vu_le": "2026-10-09",
+     "publies": []
+    },
+    "2980": {
+     "postes": 1,
+     "metier": "chauffeur",
+     "gouvernorat": "national",
+     "cloture_candidatures": "2026-07-02",
+     "vu_le": "2026-10-09",
+     "publies": []
+    },
+    "2981": {
+     "postes": 1,
+     "metier": "ingenieur",
+     "gouvernorat": "national",
+     "cloture_candidatures": "2026-07-02",
+     "vu_le": "2026-10-09",
+     "publies": []
+    },
+    "2985": {
+     "postes": 2,
+     "metier": "administratif",
+     "gouvernorat": "national",
+     "cloture_candidatures": "2026-07-02",
+     "vu_le": "2026-10-09",
+     "publies": []
+    },
+    "2986": {
+     "postes": 1,
+     "metier": "administratif",
+     "gouvernorat": "national",
+     "cloture_candidatures": "2026-07-02",
+     "vu_le": "2026-10-09",
+     "publies": []
+    },
+    "2987": {
+     "postes": 2,
+     "metier": "finance",
+     "gouvernorat": "national",
+     "cloture_candidatures": "2026-07-02",
+     "vu_le": "2026-10-09",
+     "publies": []
+    },
+    "2988": {
+     "postes": 1,
+     "metier": "finance",
+     "gouvernorat": "national",
+     "cloture_candidatures": "2026-07-02",
+     "vu_le": "2026-10-09",
+     "publies": []
+    },
+    "2989": {
+     "postes": 1,
+     "metier": "finance",
+     "gouvernorat": "national",
+     "cloture_candidatures": "2026-07-02",
+     "vu_le": "2026-10-09",
+     "publies": []
+    },
+    "2990": {
+     "postes": 1,
+     "metier": "autre",
+     "gouvernorat": "national",
+     "cloture_candidatures": "2026-07-02",
+     "vu_le": "2026-10-09",
+     "publies": []
+    },
+    "2991": {
+     "postes": 1,
+     "metier": "autre",
+     "gouvernorat": "national",
+     "cloture_candidatures": "2026-07-02",
+     "vu_le": "2026-10-09",
+     "publies": []
+    },
+    "2992": {
+     "postes": 1,
+     "metier": "enseignant",
+     "gouvernorat": "national",
+     "cloture_candidatures": "2026-07-02",
+     "vu_le": "2026-10-09",
+     "publies": []
+    },
+    "2993": {
+     "postes": 1,
+     "metier": "autre",
+     "gouvernorat": "national",
+     "cloture_candidatures": "2026-07-02",
+     "vu_le": "2026-10-09",
+     "publies": []
+    },
+    "2994": {
+     "postes": 1,
+     "metier": "ouvrier",
+     "gouvernorat": "national",
+     "cloture_candidatures": "2026-07-02",
+     "vu_le": "2026-10-09",
+     "publies": []
+    },
+    "2995": {
+     "postes": 1,
+     "metier": "ouvrier",
+     "gouvernorat": "national",
+     "cloture_candidatures": "2026-07-02",
+     "vu_le": "2026-10-09",
+     "publies": []
+    },
+    "2996": {
+     "postes": 1,
+     "metier": "ouvrier",
+     "gouvernorat": "national",
+     "cloture_candidatures": "2026-07-02",
+     "vu_le": "2026-10-09",
+     "publies": []
+    },
+    "2997": {
+     "postes": 1,
+     "metier": "technicien",
+     "gouvernorat": "national",
+     "cloture_candidatures": "2026-07-02",
+     "vu_le": "2026-10-09",
+     "publies": []
+    },
+    "2998": {
+     "postes": 1,
+     "metier": "technicien",
+     "gouvernorat": "national",
+     "cloture_candidatures": "2026-07-02",
+     "vu_le": "2026-10-09",
+     "publies": []
+    },
+    "2999": {
+     "postes": 1,
+     "metier": "technicien",
+     "gouvernorat": "national",
+     "cloture_candidatures": "2026-07-02",
+     "vu_le": "2026-10-09",
+     "publies": []
+    },
+    "3000": {
+     "postes": 1,
+     "metier": "technicien",
+     "gouvernorat": "national",
+     "cloture_candidatures": "2026-07-02",
+     "vu_le": "2026-10-09",
+     "publies": []
+    },
+    "3001": {
+     "postes": 1,
+     "metier": "enseignant",
+     "gouvernorat": "national",
+     "cloture_candidatures": "2026-07-02",
+     "vu_le": "2026-10-09",
+     "publies": []
+    },
+    "3002": {
+     "postes": 1,
+     "metier": "enseignant",
+     "gouvernorat": "national",
+     "cloture_candidatures": "2026-07-02",
+     "vu_le": "2026-10-09",
+     "publies": []
+    },
+    "3003": {
+     "postes": 1,
+     "metier": "enseignant",
+     "gouvernorat": "national",
+     "cloture_candidatures": "2026-07-02",
+     "vu_le": "2026-10-09",
+     "publies": []
+    },
+    "3004": {
+     "postes": 1,
+     "metier": "enseignant",
+     "gouvernorat": "national",
+     "cloture_candidatures": "2026-07-02",
+     "vu_le": "2026-10-09",
+     "publies": []
+    },
+    "3005": {
+     "postes": 1,
+     "metier": "enseignant",
+     "gouvernorat": "national",
+     "cloture_candidatures": "2026-07-02",
+     "vu_le": "2026-10-09",
+     "publies": []
+    },
+    "3006": {
+     "postes": 1,
+     "metier": "technicien",
+     "gouvernorat": "national",
+     "cloture_candidatures": "2026-07-02",
+     "vu_le": "2026-10-13",
+     "publies": []
+    },
+    "3007": {
+     "postes": 1,
+     "metier": "technicien",
+     "gouvernorat": "national",
+     "cloture_candidatures": "2026-07-02",
+     "vu_le": "2026-10-13",
+     "publies": []
+    },
+    "3008": {
+     "postes": 1,
+     "metier": "enseignant",
+     "gouvernorat": "national",
+     "cloture_candidatures": "2026-07-02",
+     "vu_le": "2026-10-13",
+     "publies": []
+    },
+    "3009": {
+     "postes": 1,
+     "metier": "technicien",
+     "gouvernorat": "national",
+     "cloture_candidatures": "2026-07-02",
+     "vu_le": "2026-10-13",
+     "publies": []
+    },
+    "3010": {
+     "postes": 1,
+     "metier": "enseignant",
+     "gouvernorat": "national",
+     "cloture_candidatures": "2026-07-02",
+     "vu_le": "2026-10-13",
+     "publies": []
+    },
+    "3011": {
+     "postes": 1,
+     "metier": "enseignant",
+     "gouvernorat": "national",
+     "cloture_candidatures": "2026-07-02",
+     "vu_le": "2026-10-13",
+     "publies": []
+    },
+    "900800": {
+     "postes": 593,
+     "metier": "finance",
+     "gouvernorat": "national",
+     "cloture_candidatures": "2026-09-10",
+     "vu_le": "2026-10-08",
+     "publies": []
+    },
+    "900900": {
+     "postes": 434,
+     "metier": "finance",
+     "gouvernorat": "national",
+     "cloture_candidatures": "2026-09-10",
+     "vu_le": "2026-10-08",
+     "publies": []
+    },
+    "3233": {
+     "postes": 6,
+     "metier": "administratif",
+     "gouvernorat": "bizerte",
+     "cloture_candidatures": "2026-10-02",
+     "vu_le": "",
+     "publies": []
+    },
+    "3196": {
+     "postes": 1,
+     "metier": "ouvrier",
+     "gouvernorat": "bizerte",
+     "cloture_candidatures": "2026-10-19",
+     "vu_le": "",
+     "publies": []
+    },
+    "3242": {
+     "postes": 4,
+     "metier": "autre",
+     "gouvernorat": "bizerte",
+     "cloture_candidatures": "2026-10-19",
+     "vu_le": "",
+     "publies": []
+    },
+    "3243": {
+     "postes": 1,
+     "metier": "autre",
+     "gouvernorat": "bizerte",
+     "cloture_candidatures": "2026-10-19",
+     "vu_le": "",
+     "publies": []
+    },
+    "3257": {
+     "postes": 2,
+     "metier": "autre",
+     "gouvernorat": "nabeul",
+     "cloture_candidatures": "2026-10-20",
+     "vu_le": "",
+     "publies": []
+    },
+    "3258": {
+     "postes": 1,
+     "metier": "autre",
+     "gouvernorat": "nabeul",
+     "cloture_candidatures": "2026-10-20",
+     "vu_le": "",
+     "publies": []
+    },
+    "3259": {
+     "postes": 1,
+     "metier": "ouvrier",
+     "gouvernorat": "nabeul",
+     "cloture_candidatures": "2026-10-20",
+     "vu_le": "",
+     "publies": []
+    },
+    "3246": {
+     "postes": 4,
+     "metier": "technicien",
+     "gouvernorat": "national",
+     "cloture_candidatures": "2026-10-21",
+     "vu_le": "",
+     "publies": []
+    },
+    "3247": {
+     "postes": 1,
+     "metier": "ouvrier",
+     "gouvernorat": "national",
+     "cloture_candidatures": "2026-10-21",
+     "vu_le": "",
+     "publies": []
+    },
+    "3248": {
+     "postes": 1,
+     "metier": "ouvrier",
+     "gouvernorat": "national",
+     "cloture_candidatures": "2026-10-21",
+     "vu_le": "",
+     "publies": []
+    },
+    "3249": {
+     "postes": 1,
+     "metier": "ouvrier",
+     "gouvernorat": "national",
+     "cloture_candidatures": "2026-10-21",
+     "vu_le": "",
+     "publies": []
+    },
+    "3250": {
+     "postes": 1,
+     "metier": "ouvrier",
+     "gouvernorat": "national",
+     "cloture_candidatures": "2026-10-21",
+     "vu_le": "",
+     "publies": []
+    },
+    "3264": {
+     "postes": 1,
+     "metier": "ouvrier",
+     "gouvernorat": "sousse",
+     "cloture_candidatures": "2026-10-26",
+     "vu_le": "",
+     "publies": []
+    },
+    "3265": {
+     "postes": 1,
+     "metier": "ouvrier",
+     "gouvernorat": "sousse",
+     "cloture_candidatures": "2026-10-26",
+     "vu_le": "",
+     "publies": []
+    },
+    "3239": {
+     "postes": 1,
+     "metier": "ouvrier",
+     "gouvernorat": "national",
+     "cloture_candidatures": "2026-10-28",
+     "vu_le": "",
+     "publies": []
+    },
+    "3240": {
+     "postes": 1,
+     "metier": "ouvrier",
+     "gouvernorat": "national",
+     "cloture_candidatures": "2026-10-28",
+     "vu_le": "",
+     "publies": []
+    },
+    "3241": {
+     "postes": 2,
+     "metier": "autre",
+     "gouvernorat": "national",
+     "cloture_candidatures": "2026-10-28",
+     "vu_le": "",
+     "publies": []
+    },
+    "3244": {
+     "postes": 4,
+     "metier": "finance",
+     "gouvernorat": "national",
+     "cloture_candidatures": "2026-10-28",
+     "vu_le": "",
+     "publies": []
+    },
+    "3245": {
+     "postes": 3,
+     "metier": "technicien",
+     "gouvernorat": "national",
+     "cloture_candidatures": "2026-10-28",
+     "vu_le": "",
+     "publies": []
+    },
+    "3251": {
+     "postes": 1,
+     "metier": "ingenieur",
+     "gouvernorat": "tunis",
+     "cloture_candidatures": "2026-10-30",
+     "vu_le": "",
+     "publies": []
+    },
+    "3252": {
+     "postes": 1,
+     "metier": "technicien",
+     "gouvernorat": "tunis",
+     "cloture_candidatures": "2026-10-30",
+     "vu_le": "",
+     "publies": []
+    },
+    "3253": {
+     "postes": 1,
+     "metier": "informatique",
+     "gouvernorat": "tunis",
+     "cloture_candidatures": "2026-10-30",
+     "vu_le": "",
+     "publies": []
+    },
+    "3254": {
+     "postes": 1,
+     "metier": "technicien",
+     "gouvernorat": "tunis",
+     "cloture_candidatures": "2026-10-30",
+     "vu_le": "",
+     "publies": []
+    },
+    "3255": {
+     "postes": 1,
+     "metier": "technicien",
+     "gouvernorat": "tunis",
+     "cloture_candidatures": "2026-10-30",
+     "vu_le": "",
+     "publies": []
+    },
+    "3256": {
+     "postes": 1,
+     "metier": "technicien",
+     "gouvernorat": "tunis",
+     "cloture_candidatures": "2026-10-30",
+     "vu_le": "",
+     "publies": []
+    },
+    "3271": {
+     "postes": 1,
+     "metier": "administratif",
+     "gouvernorat": "kebili",
+     "cloture_candidatures": "2026-10-30",
+     "vu_le": "",
+     "publies": []
+    },
+    "3260": {
+     "postes": 8,
+     "metier": "autre",
+     "gouvernorat": "nabeul",
+     "cloture_candidatures": "2026-11-02",
+     "vu_le": "",
+     "publies": []
+    },
+    "3277": {
+     "postes": 2,
+     "metier": "administratif",
+     "gouvernorat": "monastir",
+     "cloture_candidatures": "2026-11-04",
+     "vu_le": "2026-10-15",
+     "publies": []
+    },
+    "3261": {
+     "postes": 3,
+     "metier": "ingenieur",
+     "gouvernorat": "national",
+     "cloture_candidatures": "2026-11-05",
+     "vu_le": "",
+     "publies": []
+    },
+    "3262": {
+     "postes": 3,
+     "metier": "informatique",
+     "gouvernorat": "national",
+     "cloture_candidatures": "2026-11-05",
+     "vu_le": "",
+     "publies": []
+    },
+    "3263": {
+     "postes": 2,
+     "metier": "administratif",
+     "gouvernorat": "national",
+     "cloture_candidatures": "2026-11-05",
+     "vu_le": "",
+     "publies": []
+    },
+    "3269": {
+     "postes": 5,
+     "metier": "ingenieur",
+     "gouvernorat": "national",
+     "cloture_candidatures": "2026-11-06",
+     "vu_le": "",
+     "publies": []
+    },
+    "3270": {
+     "postes": 2,
+     "metier": "ingenieur",
+     "gouvernorat": "national",
+     "cloture_candidatures": "2026-11-06",
+     "vu_le": "",
+     "publies": []
+    },
+    "3273": {
+     "postes": 2,
+     "metier": "finance",
+     "gouvernorat": "national",
+     "cloture_candidatures": "2026-11-06",
+     "vu_le": "",
+     "publies": []
+    },
+    "3274": {
+     "postes": 1,
+     "metier": "technicien",
+     "gouvernorat": "national",
+     "cloture_candidatures": "2026-11-06",
+     "vu_le": "",
+     "publies": []
+    },
+    "3275": {
+     "postes": 1,
+     "metier": "informatique",
+     "gouvernorat": "national",
+     "cloture_candidatures": "2026-11-06",
+     "vu_le": "",
+     "publies": []
+    },
+    "3276": {
+     "postes": 1,
+     "metier": "technicien",
+     "gouvernorat": "national",
+     "cloture_candidatures": "2026-11-06",
+     "vu_le": "",
+     "publies": []
+    },
+    "3278": {
+     "postes": 6,
+     "metier": "ouvrier",
+     "gouvernorat": "nabeul",
+     "cloture_candidatures": "2026-11-08",
+     "vu_le": "",
+     "publies": []
+    },
+    "3279": {
+     "postes": 1,
+     "metier": "ouvrier",
+     "gouvernorat": "nabeul",
+     "cloture_candidatures": "2026-11-08",
+     "vu_le": "",
+     "publies": []
+    },
+    "3280": {
+     "postes": 1,
+     "metier": "ouvrier",
+     "gouvernorat": "nabeul",
+     "cloture_candidatures": "2026-11-08",
+     "vu_le": "",
+     "publies": []
+    },
+    "3281": {
+     "postes": 2,
+     "metier": "chauffeur",
+     "gouvernorat": "nabeul",
+     "cloture_candidatures": "2026-11-08",
+     "vu_le": "",
+     "publies": []
+    },
+    "3282": {
+     "postes": 1,
+     "metier": "ouvrier",
+     "gouvernorat": "nabeul",
+     "cloture_candidatures": "2026-11-08",
+     "vu_le": "",
+     "publies": []
+    },
+    "3283": {
+     "postes": 1,
+     "metier": "ouvrier",
+     "gouvernorat": "nabeul",
+     "cloture_candidatures": "2026-11-08",
+     "vu_le": "",
+     "publies": []
+    },
+    "3284": {
+     "postes": 1,
+     "metier": "ouvrier",
+     "gouvernorat": "nabeul",
+     "cloture_candidatures": "2026-11-08",
+     "vu_le": "",
+     "publies": []
+    },
+    "3285": {
+     "postes": 1,
+     "metier": "ouvrier",
+     "gouvernorat": "nabeul",
+     "cloture_candidatures": "2026-11-08",
+     "vu_le": "2026-10-15",
+     "publies": []
+    },
+    "3286": {
+     "postes": 2,
+     "metier": "chauffeur",
+     "gouvernorat": "nabeul",
+     "cloture_candidatures": "2026-11-08",
+     "vu_le": "2026-10-15",
+     "publies": []
+    },
+    "3287": {
+     "postes": 2,
+     "metier": "ouvrier",
+     "gouvernorat": "nabeul",
+     "cloture_candidatures": "2026-11-08",
+     "vu_le": "2026-10-15",
+     "publies": []
+    },
+    "3288": {
+     "postes": 1,
+     "metier": "autre",
+     "gouvernorat": "monastir",
+     "cloture_candidatures": "2026-11-09",
+     "vu_le": "2026-10-09",
+     "publies": []
+    },
+    "3289": {
+     "postes": 1,
+     "metier": "autre",
+     "gouvernorat": "monastir",
+     "cloture_candidatures": "2026-11-09",
+     "vu_le": "2026-10-09",
+     "publies": []
+    },
+    "3291": {
+     "postes": 2,
+     "metier": "administratif",
+     "gouvernorat": "sfax",
+     "cloture_candidatures": "2026-11-09",
+     "vu_le": "2026-10-15",
+     "publies": []
+    },
+    "3292": {
+     "postes": 2,
+     "metier": "administratif",
+     "gouvernorat": "sfax",
+     "cloture_candidatures": "2026-11-09",
+     "vu_le": "2026-10-15",
+     "publies": []
+    },
+    "3272": {
+     "postes": 1,
+     "metier": "administratif",
+     "gouvernorat": "monastir",
+     "cloture_candidatures": "2026-11-10",
+     "vu_le": "",
+     "publies": []
+    },
+    "3266": {
+     "postes": 4,
+     "metier": "ouvrier",
+     "gouvernorat": "sousse",
+     "cloture_candidatures": "2026-11-11",
+     "vu_le": "",
+     "publies": []
+    },
+    "3290": {
+     "postes": 2,
+     "metier": "ouvrier",
+     "gouvernorat": "sidi-bouzid",
+     "cloture_candidatures": "2026-11-13",
+     "vu_le": "2026-10-14",
+     "publies": []
+    },
+    "3293": {
+     "postes": 2,
+     "metier": "technicien",
+     "gouvernorat": "medenine",
+     "cloture_candidatures": "2026-11-15",
+     "vu_le": "2026-10-15",
+     "publies": []
+    },
+    "3294": {
+     "postes": 1,
+     "metier": "ouvrier",
+     "gouvernorat": "nabeul",
+     "cloture_candidatures": "2026-11-16",
+     "vu_le": "2026-10-16",
+     "publies": []
+    },
+    "3295": {
+     "postes": 1,
+     "metier": "chauffeur",
+     "gouvernorat": "nabeul",
+     "cloture_candidatures": "2026-11-16",
+     "vu_le": "2026-10-16",
+     "publies": []
+    },
+    "3296": {
+     "postes": 1,
+     "metier": "autre",
+     "gouvernorat": "monastir",
+     "cloture_candidatures": "2026-11-16",
+     "vu_le": "2026-10-16",
+     "publies": []
+    },
+    "3297": {
+     "postes": 3,
+     "metier": "autre",
+     "gouvernorat": "monastir",
+     "cloture_candidatures": "2026-11-16",
+     "vu_le": "2026-10-16",
+     "publies": []
+    },
+    "3298": {
+     "postes": 5,
+     "metier": "ouvrier",
+     "gouvernorat": "sousse",
+     "cloture_candidatures": "2026-11-20",
+     "vu_le": "2026-10-16",
+     "publies": []
+    },
+    "3267": {
+     "postes": 3,
+     "metier": "autre",
+     "gouvernorat": "national",
+     "cloture_candidatures": "2026-11-27",
+     "vu_le": "",
+     "publies": []
+    },
+    "3268": {
+     "postes": 2,
+     "metier": "autre",
+     "gouvernorat": "national",
+     "cloture_candidatures": "2026-11-27",
+     "vu_le": "",
+     "publies": []
+    }
+   }
+  }
+ }
+}
