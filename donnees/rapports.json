@@ -2,10 +2,10 @@
  "mois": {
   "2026-10": {
    "premier_jour": "2026-10-17",
-   "dernier_jour": "2026-10-17",
+   "dernier_jour": "2026-10-18",
    "fini": false,
    "chiffres": {
-    "au": "2026-10-17",
+    "au": "2026-10-18",
     "debut": "2026-10-09",
     "ouverts": {
      "n": 61,
@@ -166,7 +166,7 @@
      "n": 11,
      "postes": 18,
      "sans_postes": 0,
-     "jusqu_au": "2026-10-23"
+     "jusqu_au": "2026-10-24"
     },
     "nouveaux": {
      "n": 15,
