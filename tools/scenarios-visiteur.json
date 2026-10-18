@@ -1,0 +1,12 @@
+[
+ {"page": "", "nom": "accueil : nombre de concours ouverts (résumé du jour)", "lire": "#r-ouverts b"},
+ {"page": "", "nom": "accueil : recherche d'un mot absent → 0 concours", "etapes": [{"sel": "#f-q", "valeur": "zzqxwv"}], "lire": "#compte", "groupe": "entonnoir", "ordre": 0, "croissant": true},
+ {"page": "", "nom": "accueil : filtre Sfax + Ouvriers", "etapes": [{"sel": "#f-gouv", "valeur": "sfax"}, {"sel": "#f-metier", "valeur": "ouvrier"}], "lire": "#compte", "groupe": "entonnoir", "ordre": 1, "croissant": true},
+ {"page": "", "nom": "accueil : filtre Sfax seul", "etapes": [{"sel": "#f-gouv", "valeur": "sfax"}], "lire": "#compte", "groupe": "entonnoir", "ordre": 2, "croissant": true},
+ {"page": "", "nom": "accueil : sans filtre (tous les concours)", "lire": "#compte", "groupe": "entonnoir", "ordre": 3, "croissant": true},
+ {"page": "", "nom": "accueil : recherche « ingénieur » + tri récents", "etapes": [{"sel": "#f-q", "valeur": "ingénieur"}, {"sel": "#f-tri", "valeur": "recent"}], "lire": "#compte"},
+ {"page": "", "nom": "accueil : effacer les filtres (bouton « Tout afficher »)", "etapes": [{"sel": "#f-gouv", "valeur": "tunis"}, {"sel": "#effacer", "clic": true}], "lire": "#compte", "apres": 800},
+ {"page": "gouvernorat/sfax/", "nom": "page Sfax : nombre de concours", "lire": "#compte"},
+ {"page": "metier/sante/", "nom": "page Santé : nombre de concours", "lire": "#compte"},
+ {"page": "rapports/2026-10/", "nom": "rapport d'octobre (tableau des chiffres)", "lire": "table"}
+]

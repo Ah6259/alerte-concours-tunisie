@@ -14,7 +14,7 @@ permissions:
 jobs:
   tests:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -26,3 +26,5 @@ jobs:
       - run: |
           npm install --no-save --no-package-lock jsdom
           node tools/test_site.mjs
+      - name: Visiteur simule (comme un visiteur sur telephone, avant le vrai visiteur - regle generale du 18/10/2026)
+        run: python tools/visiteur_simule.py

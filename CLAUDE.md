@@ -134,3 +134,6 @@ Rien n'est ajouté au site sans l'accord d'Ahmed.
   polices DejaVu dans `robot/polices/`, modèle d'Immobilier Tunisie) dessine `rapports/AAAA-MM/apercu-<empreinte 8>.jpg` 1200 × 630
   (concours ouverts · postes, nationaux · locaux, date des chiffres) ; nom = empreinte du contenu (Facebook reprend la nouvelle image quand
   les chiffres changent), anciennes images effacées ; og:image + `image` du JSON-LD Article ; sans Pillow : og-image-v2.jpg. maj.yml installe pillow.
+
+## Visiteur simulé (18/10/2026, règle générale)
+- `python tools/visiteur_simule.py` (outil COMMUN, copie identique dans chaque site : ne pas le modifier ici) : liens/images morts, puis Chromium à 390 px (page trop large, image cassée, « NaN/undefined », page vide) + scénarios `tools/scenarios-visiteur.json` (recherche, filtres, résultat affiché, groupes « croissant »). Lancé par tests.yml. Nouvelle recherche, nouveau filtre ou nouveau formulaire → ajouter un scénario.
