@@ -1029,6 +1029,86 @@
      "cloture_candidatures": "2026-11-27",
      "vu_le": "",
      "publies": []
+    },
+    "672": {
+     "postes": 1,
+     "metier": "technicien",
+     "gouvernorat": "gabes",
+     "cloture_candidatures": "2020-03-27",
+     "vu_le": "2026-10-18",
+     "publies": []
+    },
+    "673": {
+     "postes": 6,
+     "metier": "ouvrier",
+     "gouvernorat": "gabes",
+     "cloture_candidatures": "2020-03-27",
+     "vu_le": "2026-10-18",
+     "publies": []
+    },
+    "675": {
+     "postes": 3,
+     "metier": "ouvrier",
+     "gouvernorat": "gabes",
+     "cloture_candidatures": "2020-03-27",
+     "vu_le": "2026-10-18",
+     "publies": []
+    },
+    "676": {
+     "postes": 4,
+     "metier": "ouvrier",
+     "gouvernorat": "gabes",
+     "cloture_candidatures": "2020-03-27",
+     "vu_le": "2026-10-18",
+     "publies": []
+    },
+    "677": {
+     "postes": 2,
+     "metier": "ouvrier",
+     "gouvernorat": "gabes",
+     "cloture_candidatures": "2020-03-27",
+     "vu_le": "2026-10-18",
+     "publies": []
+    },
+    "711": {
+     "postes": 2,
+     "metier": "ouvrier",
+     "gouvernorat": "kairouan",
+     "cloture_candidatures": "2020-05-11",
+     "vu_le": "2026-10-18",
+     "publies": []
+    },
+    "712": {
+     "postes": 1,
+     "metier": "ouvrier",
+     "gouvernorat": "kairouan",
+     "cloture_candidatures": "2020-05-11",
+     "vu_le": "2026-10-18",
+     "publies": []
+    },
+    "713": {
+     "postes": 1,
+     "metier": "technicien",
+     "gouvernorat": "kairouan",
+     "cloture_candidatures": "2020-05-11",
+     "vu_le": "2026-10-18",
+     "publies": []
+    },
+    "714": {
+     "postes": 1,
+     "metier": "technicien",
+     "gouvernorat": "kairouan",
+     "cloture_candidatures": "2020-05-11",
+     "vu_le": "2026-10-18",
+     "publies": []
+    },
+    "715": {
+     "postes": 2,
+     "metier": "technicien",
+     "gouvernorat": "kairouan",
+     "cloture_candidatures": "2020-05-11",
+     "vu_le": "2026-10-18",
+     "publies": []
     }
    }
   }
