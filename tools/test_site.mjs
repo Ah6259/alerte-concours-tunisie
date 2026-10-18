@@ -16,6 +16,23 @@ const pages = ["index.html", "actualites/index.html", "guide-inscription/index.h
   ...GOUVS.map(g => `gouvernorat/${g}/index.html`), "gouvernorat/national/index.html",
   ...readdirSync(join(root, "metier")).map(m => `metier/${m}/index.html`)];
 
+// ---- 0. Lieux (règle commune § 11.11, 18/10/2026) : les gouvernorats proposés = les 24 de La Poste + l'exception listée ici
+//      (« national » = toute la Tunisie, un groupe et non un gouvernorat), dans les deux sens : toutes présentes, rien d'autre
+{ const OFFICIELS = ["ariana", "beja", "ben arous", "bizerte", "gabes", "gafsa", "jendouba", "kairouan", "kasserine", "kebili", "kef", "mahdia",
+    "manouba", "medenine", "monastir", "nabeul", "sfax", "sidi bouzid", "siliana", "sousse", "tataouine", "tozeur", "tunis", "zaghouan"];
+  const EXCEPTIONS = ["national"];   // relue à la main
+  const norm = s => String(s).toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/-/g, " ").replace(/^(la|le) /, "").trim();
+  const exact = (l, avec) => { const n = l.map(norm), att = [...OFFICIELS, ...avec];
+    return n.length === att.length && new Set(n).size === n.length && att.every(o => n.includes(o)) && n.every(x => att.includes(x)); };
+  const accL = lire("index.html");
+  const m = accL.match(/<select id="f-gouv"[^>]*>([\s\S]*?)<\/select>/);
+  const vals = m ? [...m[1].matchAll(/<option value="([^"]*)"/g)].map(o => o[1]).filter(Boolean) : [];
+  check("lieux : liste « Gouvernorat » de l'accueil = les 24 gouvernorats officiels + « national », rien d'autre", exact(vals, EXCEPTIONS));
+  check("lieux : pages de gouvernorat = les 24 officiels + « national », rien d'autre",
+    exact(readdirSync(join(root, "gouvernorat")).filter(n => existsSync(join(root, "gouvernorat", n, "index.html"))), EXCEPTIONS));
+  check("lieux : carte de l'accueil = une bulle par gouvernorat officiel, rien d'autre", exact([...accL.matchAll(/class="tn-b[^"]*" data-gouv="([^"]+)"/g)].map(x => x[1]), []));
+  check("lieux : chaque concours est rangé dans un gouvernorat officiel ou « national »", D.concours.every(c => OFFICIELS.includes(norm(c.gouvernorat)) || EXCEPTIONS.includes(c.gouvernorat))); }
+
 // ---- 1. Données
 check("données : au moins 20 concours lus, chacun avec organisme, grade, métier et gouvernorat", D.concours.length >= 20
   && D.concours.every(c => c.organisme && c.grade && c.metier && c.gouvernorat));
@@ -121,6 +138,8 @@ if (JSDOM) {
   const vis = ouvertes();
   check(`navigateur : filtre gouvernorat « ${g} » → ses concours + les concours nationaux`, vis.length > 0 && vis.length < total && vis.every(c => c.dataset.gouv === g || c.dataset.gouv === "national")
     && (!nat || vis.some(c => c.dataset.gouv === "national")));
+  check("navigateur : la carte suit le filtre — le gouvernorat choisi, et lui seul, est entouré sur la carte (règle § 11.11)",
+    (a => g === "national" ? a.length === 0 : a.length === 1 && a[0].dataset.gouv === g)([...d.querySelectorAll(".carte-tn .tn-b.actif")]));
   fg.value = ""; fg.dispatchEvent(new w.Event("change"));
   const fq = d.getElementById("f-q"); fq.value = "zzzzqqq"; fq.dispatchEvent(new w.Event("input"));
   check("navigateur : recherche sans résultat → message « Aucun concours »", ouvertes().length === 0 && !d.getElementById("vide").hidden);

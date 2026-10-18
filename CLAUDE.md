@@ -148,3 +148,5 @@ Rien n'est ajouté au site sans l'accord d'Ahmed.
   (`#abo-code`) et le met dans le lien Telegram ; rien dans localStorage. Essai gratuit réel de 7 jours (texte juste).
 - Corrigé : les conditions disaient « motif = nom et prénom de l'abonné » alors que la page dit « Motif : votre code personnel »
   -> « code personnel de l'abonné (donné à l'inscription) » (test dans test_site.mjs).
+
+- **Lieux officiels (18/10/2026, règle commune § 11.11)** : test_site.mjs vérifie dans les deux sens que la liste « Gouvernorat », les pages et la carte = les 24 gouvernorats de La Poste + l'exception « national » (un groupe, jamais un gouvernorat) ; la carte de l'accueil entoure le gouvernorat choisi dans le filtre (app.js).
