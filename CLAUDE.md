@@ -130,3 +130,7 @@ Rien n'est ajouté au site sans l'accord d'Ahmed.
   téléphone, sinon texte + lien copiés (« Lien copié ✓ »), sinon fenêtre ; texte « <titre> — Rapport du mois d’Alerte Concours Tunisie
   (concours.clicvia.com) : » ; signature sous le titre ; meta description qui commence par « Alerte Concours Tunisie — rapport du mois. ».
   Jamais de boutons Facebook / WhatsApp séparés (le téléphone propose déjà tout). Tests dans test_site.mjs et test_robot.py.
+  **Image d'aperçu PROPRE à chaque rapport du mois (18/10/2026, Ahmed : Facebook montrait l'image du site)** : `robot/apercus.py` (Pillow,
+  polices DejaVu dans `robot/polices/`, modèle d'Immobilier Tunisie) dessine `rapports/AAAA-MM/apercu-<empreinte 8>.jpg` 1200 × 630
+  (concours ouverts · postes, nationaux · locaux, date des chiffres) ; nom = empreinte du contenu (Facebook reprend la nouvelle image quand
+  les chiffres changent), anciennes images effacées ; og:image + `image` du JSON-LD Article ; sans Pillow : og-image-v2.jpg. maj.yml installe pillow.

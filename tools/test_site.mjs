@@ -239,7 +239,18 @@ check("Votre avis : e-mail obligatoire (required, « obligatoire ») et confirma
     const meta = n => (h.match(new RegExp(`<meta (?:name|property)="${n}" content="([^"]*)"`)) || [])[1] || "";
     check(`${c} : aperçu de partage (description et og:description commencent par le nom du site, og:title, og:image, og:url justes)`,
       meta("description").startsWith("Alerte Concours Tunisie — rapport du mois. ") && meta("og:description") === meta("description") && meta("og:title").length > 10
-      && !meta("og:title").includes(" | ") && meta("og:url") === url && meta("og:image") === "https://concours.clicvia.com/assets/og-image-v2.jpg" && existsSync(join(root, "assets/og-image-v2.jpg")));
+      && !meta("og:title").includes(" | ") && meta("og:url") === url && (c === "rapports/" ? meta("og:image") === "https://concours.clicvia.com/assets/og-image-v2.jpg" && existsSync(join(root, "assets/og-image-v2.jpg")) : meta("og:image").startsWith(url + "apercu-")));
+    // image PROPRE à chaque rapport du mois (18/10/2026, Ahmed : sur Facebook, l'aperçu montrait l'image du site, pas l'article)
+    if (c !== "rapports/") {
+      const og = meta("og:image").replace("https://concours.clicvia.com/", ""), nom = og.split("/").pop();
+      const ld = (h.match(/"@type": "Article"[^\n]*"image": "([^"]+)"/) || [])[1];
+      check(`${c} : image d'aperçu propre au rapport (apercu-<empreinte>.jpg dans son dossier, < 250 Ko, JPEG 1200 × 630, aussi dans le JSON-LD Article, une seule)`,
+        og === c + nom && /^apercu-[0-9a-f]{8}\.jpg$/.test(nom) && existsSync(join(root, og)) && statSync(join(root, og)).size < 250 * 1024
+        && (b => b[0] === 0xFF && b[1] === 0xD8 && (() => { for (let i = 2; i < b.length - 8;) { if (b[i] !== 0xFF) return false; const t = b[i + 1], n = b.readUInt16BE(i + 2);
+          if (t >= 0xC0 && t <= 0xC3) return b.readUInt16BE(i + 5) === 630 && b.readUInt16BE(i + 7) === 1200; i += 2 + n; } return false; })())(readFileSync(join(root, og)))
+        && ld === meta("og:image") && readdirSync(join(root, c)).filter(f => /^apercu-.*\.jpg$/.test(f)).length === 1
+        && meta("og:type") === "article");
+    }
   }
   const pj = lire("assets/page.js"), css = lire("assets/style.css");
   check("rapports : code du bouton dans page.js (écouteur, navigator.share, copie, message « Lien copié », window.prompt, GoatCounter)", pj.includes('closest("button[data-partage-rapport]")')

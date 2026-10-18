@@ -234,6 +234,12 @@ check("mois fini : figé au 1er passage du mois suivant, chiffres et date jamais
       and json.dumps(h5["mois"]["2026-10"]["chiffres"], sort_keys=True) == oct_fige and h5["mois"]["2026-10"]["dernier_jour"] == "2026-10-20")
 p1, d1 = RAP.pages(CS, h2, "v", "2026-10-20")
 p5, d5 = RAP.pages(CS, h5, "v", "2026-11-05")
+pi, _ = RAP.pages(CS, h5, "v", "2026-11-05", images=True)
+a10, a11, a11b = RAP.apercu(h5, "2026-10"), RAP.apercu(h5, "2026-11"), RAP.apercu(h3, "2026-11")
+check("image d'aperçu de chaque rapport (18/10/2026) : nom selon les chiffres (change quand ils changent), chiffre clé = chiffres de la page, image générale sans Pillow",
+      a10[0].startswith("rapports/2026-10/apercu-") and a11[0] != a11b[0] and a10[3] == f"{h5['mois']['2026-10']['chiffres']['ouverts']['n']} concours ouverts · {h5['mois']['2026-10']['chiffres']['ouverts']['postes']} postes"
+      and f'og:image" content="https://concours.clicvia.com/{a11[0]}"' in pi["rapports/2026-11/"] and f'"image": "https://concours.clicvia.com/{a11[0]}"' in pi["rapports/2026-11/"]
+      and 'og:image" content="https://concours.clicvia.com/assets/og-image-v2.jpg"' in p5["rapports/2026-11/"] and 'og:image" content="https://concours.clicvia.com/assets/og-image-v2.jpg"' in pi["rapports/"])
 check("pages : rapports/ + rapports/2026-10/, date des chiffres pour le plan du site", set(p1) == {"rapports/", "rapports/2026-10/"} and d1["rapports/2026-10/"] == "2026-10-20")
 check("1er mois : « Premier rapport », aucune évolution inventée", "Premier rapport" in p1["rapports/2026-10/"] and 'id="evolution"' not in p1["rapports/2026-10/"])
 check("mois suivant : évolution depuis le mois précédent (ses chiffres au 20/10), mois précédent marqué « figés »",

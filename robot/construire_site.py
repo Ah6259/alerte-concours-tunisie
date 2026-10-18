@@ -14,6 +14,7 @@ import gouvernorats as G      # noqa: E402
 import lire_concours as R     # noqa: E402
 import lire_actualites as A   # noqa: E402
 import rapports as RAP         # noqa: E402
+import apercus as AP           # noqa: E402  image d'aperçu propre à chaque rapport (18/10/2026)
 
 URL_SITE = "https://concours.clicvia.com/"
 URL_PORTAIL = "https://www.concours.gov.tn/"
@@ -307,7 +308,7 @@ AVIS = """<section class="carte avis" id="avis" aria-labelledby="avis-titre">
 </section>"""
 
 
-def page(chemin, racine, titre, description, hero, contenu, v, maj, jsonld="", scripts=()):
+def page(chemin, racine, titre, description, hero, contenu, v, maj, jsonld="", scripts=(), og_image="assets/og-image-v2.jpg", og_type="website"):
     canon = URL_SITE + chemin
     return f"""<!doctype html>
 <html lang="fr" dir="ltr" translate="no" data-racine="{racine}">
@@ -332,9 +333,9 @@ def page(chemin, racine, titre, description, hero, contenu, v, maj, jsonld="", s
 <meta property="og:title" content="{E(titre.split(' | ')[0])}">
 <meta property="og:description" content="{E(description)}">
 <meta property="og:url" content="{canon}">
-<meta property="og:image" content="{URL_SITE}assets/og-image-v2.jpg">
+<meta property="og:image" content="{URL_SITE}{og_image}">
 <meta property="og:image:type" content="image/jpeg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
-<meta property="og:type" content="website">
+<meta property="og:type" content="{og_type}">
 <meta property="og:locale" content="fr_TN"><meta property="og:locale:alternate" content="ar_TN">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -794,8 +795,18 @@ def construire(jour):
     pages["a-propos/"] = page("a-propos/", "../", "À propos et sources | Alerte Concours Tunisie", "D'où viennent les concours d'Alerte Concours Tunisie : le portail officiel des concours publics et la plateforme du ministère des Finances.", hero, contenu, v, maj)
 
     # --- rapports du mois (18/10/2026, règle commune § 25) : lus dans donnees/rapports.json (robot/rapports.py), jamais recalculés ici
-    rap, rap_dates = RAP.pages(sys.modules[__name__], RAP.charger_hist(), v, maj)
+    hist_rap, images = RAP.charger_hist(), AP.disponible()
+    rap, rap_dates = RAP.pages(sys.modules[__name__], hist_rap, v, maj, images=images)
     pages.update(rap)
+    if images:                                       # une image par rapport ; les anciennes (autres chiffres) sont effacées
+        for m in hist_rap.get("mois", {}):
+            rel, titre_img, mois_img, chiffre, sous = RAP.apercu(hist_rap, m)
+            dossier = os.path.join(RACINE, os.path.dirname(rel))
+            for f in (os.listdir(dossier) if os.path.isdir(dossier) else []):
+                if f.startswith("apercu-") and f.endswith(".jpg") and f != os.path.basename(rel):
+                    os.remove(os.path.join(dossier, f))
+            if not os.path.exists(os.path.join(RACINE, rel)):
+                AP.fabriquer(os.path.join(RACINE, rel), titre_img, mois_img, chiffre, sous)
 
     for chemin, h in pages.items():
         ecrire(chemin, h)

@@ -14,7 +14,7 @@ Historique (donnees/rapports.json) : mois -> {premier_jour, dernier_jour, fini, 
   dans « nouveaux » et « inscriptions closes »).
 Les pages rapports/ et rapports/AAAA-MM/ sont fabriquées par construire_site.py (fonction pages() ci-dessous), en
 lecture seule de l'historique."""
-import argparse, datetime as dt, json, os, sys
+import argparse, datetime as dt, hashlib, json, os, sys
 
 ICI = os.path.dirname(os.path.abspath(__file__))
 RACINE = os.path.dirname(ICI)
@@ -160,7 +160,23 @@ def bloc_partage(C, titre, chemin, haut=False):
             '<p class="rap-partage-ok" role="status" aria-live="polite"></p></div>')
 
 
-def page_mois(C, hist, mois, v, maj):
+IMAGE_GENERALE = "assets/og-image-v2.jpg"
+
+
+def apercu(hist, mois):
+    """Image d'aperçu PROPRE au rapport (18/10/2026, Ahmed) : (chemin, titre, mois, chiffre clé, sous-titre), avec les chiffres
+    affichés sur la page. Le nom dépend du contenu : quand les chiffres changent, Facebook prend la nouvelle image."""
+    e = hist["mois"][mois]
+    k, au = e["chiffres"], e["dernier_jour"]
+    o = k["ouverts"]
+    titre = "Concours publics en Tunisie"
+    chiffre = f"{o['n']} concours ouverts · {_nb(o['postes'])} postes"
+    sous = f"{k['national']['n']} nationaux · {k['locaux']['n']} locaux · chiffres au {'/'.join(reversed(au.split('-')))}"
+    cle = hashlib.sha1(f"{titre}|{mois}|{chiffre}|{sous}".encode()).hexdigest()[:8]
+    return f"rapports/{mois}/apercu-{cle}.jpg", titre, nom_mois(mois), chiffre, sous
+
+
+def page_mois(C, hist, mois, v, maj, images=False):
     e = hist["mois"][mois]
     k, au, fini = e["chiffres"], e["dernier_jour"], e.get("fini")
     L, ISO, E, dfr = C.L, C.ISO, C.E, C.dfr
@@ -170,6 +186,7 @@ def page_mois(C, hist, mois, v, maj):
     o, nat, loc, sem, nv, cl = k["ouverts"], k["national"], k["locaux"], k["semaine"], k["nouveaux"], k["clos"]
     titre = f"Concours publics en Tunisie, {mfr} : {o['n']} concours ouverts, {_nb(o['postes'])} postes"
     chemin = f"rapports/{mois}/"
+    img = apercu(hist, mois)[0] if images else IMAGE_GENERALE
 
     # --- en bref
     bref = [L(f"Au {dfr(au)}, <b id=\"rap-ouverts\">{o['n']}</b> concours publics sont ouverts aux candidatures, pour <b id=\"rap-postes\">{_nb(o['postes'])}</b> postes en tout"
@@ -297,10 +314,10 @@ def page_mois(C, hist, mois, v, maj):
                     "datePublished": e["premier_jour"], "dateModified": au, "url": C.URL_SITE + chemin,
                     "author": {"@type": "Organization", "name": "Alerte Concours Tunisie", "url": C.URL_SITE},
                     "publisher": {"@type": "Organization", "name": "Alerte Concours Tunisie", "url": C.URL_SITE},
-                    "image": C.URL_SITE + "assets/og-image-v2.jpg"})
+                    "image": C.URL_SITE + img})
           + jsonld({"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [
               {"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in faq]}))
-    return C.page(chemin, "../../", titre + " | Alerte Concours Tunisie", desc, hero, "\n".join(sections), v, maj, ld)
+    return C.page(chemin, "../../", titre + " | Alerte Concours Tunisie", desc, hero, "\n".join(sections), v, maj, ld, og_image=img, og_type="article")
 
 
 def page_liste(C, hist, v, maj):
@@ -325,14 +342,14 @@ def page_liste(C, hist, v, maj):
                   hero, contenu, v, maj)
 
 
-def pages(C, hist, v, maj):
+def pages(C, hist, v, maj, images=False):
     """{chemin: html} et {chemin: date des chiffres} (lastmod du plan du site)."""
     if not hist.get("mois"):
         return {}, {}
     out = {"rapports/": page_liste(C, hist, v, maj)}
     dates = {"rapports/": max(e["dernier_jour"] for e in hist["mois"].values())}
     for m, e in hist["mois"].items():
-        out[f"rapports/{m}/"] = page_mois(C, hist, m, v, maj)
+        out[f"rapports/{m}/"] = page_mois(C, hist, m, v, maj, images)
         dates[f"rapports/{m}/"] = e["dernier_jour"]
     return out, dates
 

@@ -24,6 +24,8 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with: { python-version: "3.12" }
+      - name: Pillow (image d'aperçu de chaque rapport du mois)
+        run: pip install pillow
       - name: Test du robot (sans réseau)
         run: python tools/test_robot.py
       - name: Lecture du tableau officiel des concours
