@@ -150,8 +150,9 @@ def bloc_partage(C, titre, chemin, haut=False):
     """UN SEUL bouton « Partager ce rapport » (menu de partage du téléphone : Facebook, WhatsApp, LinkedIn…) ; sur ordinateur,
     le texte + le lien sont copiés. Code dans assets/page.js (écouteur sur button[data-partage-rapport], CSP : rien en ligne)."""
     E = C.E
-    texte = f"{titre} — Rapport du mois d’{NOM_SITE} ({DOMAINE}) :"
-    texte_ar = f"{titre} — تقرير الشهر من {NOM_SITE_AR} ({DOMAINE}):"
+    # AUCUNE adresse dans le texte (18/10/2026, vu par Ahmed) : Facebook prendrait la 1re adresse du texte (l'accueil) au lieu du rapport
+    texte = f"{titre} — Rapport du mois d’{NOM_SITE} :"
+    texte_ar = f"{titre} — تقرير الشهر من {NOM_SITE_AR}:"
     return (f'<div class="rap-partage{" rap-partage-haut" if haut else ""}">'
             f'<button class="rap-partager" type="button" data-partage-rapport data-url="{C.URL_SITE}{chemin}" data-titre="{E(titre)}" data-texte="{E(texte)}" data-texte-ar="{E(texte_ar)}">'
             '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 13.5l6.8 4M15.4 6.5l-6.8 4"/></svg>'

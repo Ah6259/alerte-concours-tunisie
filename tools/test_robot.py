@@ -244,7 +244,7 @@ check("pages des rapports : JSON-LD Article + FAQ + fil d'Ariane, « Citer ces c
 check("rapports : UN bouton « Partager ce rapport » en haut et en bas (adresse de la page), signature, description qui commence par le nom du site, aucun lien Facebook / WhatsApp séparé",
       all(h.count("data-partage-rapport") == 2 and h.count(f'data-url="https://concours.clicvia.com/{c}"') == 2 and "rap-partage-haut" in h
           and "Un rapport d’<b>Alerte Concours Tunisie</b> · concours.clicvia.com" in h and '<meta name="description" content="Alerte Concours Tunisie — rapport du mois. ' in h
-          and "Rapport du mois d’Alerte Concours Tunisie (concours.clicvia.com) :" in h and "wa.me/" not in h and "sharer" not in h for c, h in p5.items()))
+          and "Rapport du mois d’Alerte Concours Tunisie :" in h and "wa.me/" not in h and "sharer" not in h for c, h in p5.items()))
 check("pas de classement sur 1 ou 2 éléments : pas de « gouvernorat qui compte le plus » avec 1 seul gouvernorat (novembre)",
       "Gouvernorat qui compte le plus" not in p5["rapports/2026-11/"] and "Gouvernorat qui compte le plus" in p1["rapports/2026-10/"])
 

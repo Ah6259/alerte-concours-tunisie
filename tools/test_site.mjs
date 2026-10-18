@@ -231,7 +231,7 @@ check("Votre avis : e-mail obligatoire (required, « obligatoire ») et confirma
     const iH = h.indexOf("rap-partage-haut"), i1 = h.indexOf("<section", h.indexOf("<main")), iB = h.lastIndexOf("data-partage-rapport"), iC = h.lastIndexOf("</section>", h.indexOf("</main>"));
     check(`${c} : 2 boutons « Partager ce rapport » (haut + bas) avec la bonne adresse`, bt.length === 2 && bt.every(m => m[1] === url) && (h.match(/Partager ce rapport/g) || []).length === 2
       && iH > h.indexOf("<main") && iH < i1 && iB > iC);
-    check(`${c} : le texte partagé dit de quel site vient l'article`, bt.every(m => m[3].startsWith(m[2] + " — Rapport du mois d’Alerte Concours Tunisie (concours.clicvia.com) :")));
+    check(`${c} : le texte partagé dit de quel site vient l'article`, bt.every(m => m[3].startsWith(m[2] + " — Rapport du mois d’Alerte Concours Tunisie :") && !/clicvia|https?:/.test(m[3])));
     check(`${c} : aide « menu de votre téléphone » sous chaque bouton (FR + AR) et zone « Lien copié »`, (h.match(/le menu de votre téléphone s’ouvre/g) || []).length === 2
       && (h.match(/تُفتح قائمة المشاركة في هاتفك/g) || []).length === 2 && (h.match(/class="rap-partage-ok" role="status"/g) || []).length === 2);
     check(`${c} : aucun bouton séparé Facebook / WhatsApp / LinkedIn`, !/facebook\.com\/sharer|wa\.me\/|api\.whatsapp|linkedin\.com\/share|twitter\.com\/intent/.test(h));
@@ -264,7 +264,7 @@ check("Votre avis : e-mail obligatoire (required, « obligatoire ») et confirma
     };
     const t1 = await essai(true, true);
     check("navigateur : rapport → téléphone : menu de partage avec titre, texte « … Rapport du mois d’Alerte Concours Tunisie » et lien ; clic compté", t1.journal.share && t1.journal.share.url === t1.b.dataset.url
-      && t1.journal.share.text.includes("Rapport du mois d’Alerte Concours Tunisie (concours.clicvia.com)") && !t1.journal.clip && t1.journal.compte && t1.journal.compte.path.startsWith("partage/rapports/"));
+      && t1.journal.share.text.includes("Rapport du mois d’Alerte Concours Tunisie") && !t1.journal.clip && t1.journal.compte && t1.journal.compte.path.startsWith("partage/rapports/"));
     const t2 = await essai(false, true);
     check("navigateur : rapport → ordinateur : texte + lien copiés et « Lien copié ✓ » affiché", t2.journal.clip === t2.b.dataset.texte + " " + t2.b.dataset.url && t2.ok.startsWith("Lien copié ✓"));
     const t3 = await essai(false, false);
