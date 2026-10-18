@@ -146,6 +146,13 @@ check("alertes : formulaire Formspree (mwlpakqj) : nom, téléphone, métiers, g
   && (al.match(/name="metiers"/g) || []).length >= 10 && (al.match(/name="gouvernorats"/g) || []).length === 25 && /id="g-tous"/.test(al)
   && /name="suivis"/.test(al) && (al.match(/name="formule"/g) || []).length === 3 && /href="conditions\/"/.test(al));
 check("alertes : script externe abonnement.js sur cette page seulement", /<script src="\.\.\/assets\/abonnement\.js\?v=/.test(al) && !/abonnement\.js/.test(acc));
+{ // 18/10/2026 : le motif du paiement est le CODE PERSONNEL donné à l'inscription (#abo-code) — jamais « votre nom » / « nom de l'entreprise » ailleurs sur la page ou dans les conditions
+  const sansBalises = f => lire(f).replace(/<[^>]*>/g, " ");
+  const contradictions = [/pour motif (votre nom|le nom)/, /name as reference/, /motif du paiement et facture/];
+  check("paiement : motif = code personnel partout (page d'abonnement + conditions), aucune phrase « motif = nom »",
+    /id="abo-code"/.test(lire("alertes/index.html")) && /motif[^.]{0,40}code personnel/.test(sansBalises("alertes/index.html")) && /code personnel/.test(sansBalises("alertes/conditions/index.html")) &&
+    ["alertes/index.html", "alertes/conditions/index.html"].every(f => contradictions.every(r => !r.test(sansBalises(f)))));
+}
 const co = lire("alertes/conditions/index.html");
 check("conditions : prix, essai, paiement, arrêt (/stop), données personnelles, non officiel", /15 DT pour 3 mois/.test(co) && /\/stop/.test(co) && /Données personnelles/.test(co) && /pas officiel/.test(co));
 check("accueil + pages : gros bouton doré vers alertes/ (7 jours d'essai)", /class="btn-pro-grand" id="btn-alertes" href="alertes\/"/.test(acc) && /7 jours d'essai gratuit/.test(acc)

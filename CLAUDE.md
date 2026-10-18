@@ -142,3 +142,9 @@ Rien n'est ajouté au site sans l'accord d'Ahmed.
   `metier_vide_html()` de construire_site.py (message, bouton « M'alerter dès qu'un concours s'ouvre », lien « Voir les N concours ouverts »,
   métiers qui en ont) ; la page est `noindex, follow` (paramètre `indexer=False` de `page()`) et retirée du plan du site (`sans_index`) ;
   elle y revient seule dès qu'un concours de ce métier s'ouvre. Tests : test_robot.py + test_site.mjs ; scénario Santé lit `p.intro`.
+
+## Code personnel des alertes (18/10/2026, contrôle commun « case du code »)
+- Ce site n'a AUCUNE case où le visiteur tape un code : `alertes/` CRÉE le code (6 caractères, `assets/abonnement.js`), l'affiche
+  (`#abo-code`) et le met dans le lien Telegram ; rien dans localStorage. Essai gratuit réel de 7 jours (texte juste).
+- Corrigé : les conditions disaient « motif = nom et prénom de l'abonné » alors que la page dit « Motif : votre code personnel »
+  -> « code personnel de l'abonné (donné à l'inscription) » (test dans test_site.mjs).
