@@ -232,8 +232,8 @@ check("Votre avis : e-mail obligatoire (required, « obligatoire ») et confirma
     check(`${c} : 2 boutons « Partager ce rapport » (haut + bas) avec la bonne adresse`, bt.length === 2 && bt.every(m => m[1] === url) && (h.match(/Partager ce rapport/g) || []).length === 2
       && iH > h.indexOf("<main") && iH < i1 && iB > iC);
     check(`${c} : le texte partagé dit de quel site vient l'article`, bt.every(m => m[3].startsWith(m[2] + " — Rapport du mois d’Alerte Concours Tunisie :") && !/clicvia|https?:/.test(m[3])));
-    check(`${c} : aide « menu de votre téléphone » sous chaque bouton (FR + AR) et zone « Lien copié »`, (h.match(/le menu de votre téléphone s’ouvre/g) || []).length === 2
-      && (h.match(/تُفتح قائمة المشاركة في هاتفك/g) || []).length === 2 && (h.match(/class="rap-partage-ok" role="status"/g) || []).length === 2);
+    check(`${c} : plus de phrase d'aide sous le bouton (demande d'Ahmed) et zone « Lien copié »`, (h.match(/le menu de votre téléphone s’ouvre/g) || []).length === 0
+      && (h.match(/تُفتح قائمة المشاركة في هاتفك/g) || []).length === 0 && (h.match(/class="rap-partage-ok" role="status"/g) || []).length === 2);
     check(`${c} : aucun bouton séparé Facebook / WhatsApp / LinkedIn`, !/facebook\.com\/sharer|wa\.me\/|api\.whatsapp|linkedin\.com\/share|twitter\.com\/intent/.test(h));
     check(`${c} : signature « Un rapport d’Alerte Concours Tunisie · concours.clicvia.com » sous le titre`, /<\/h1>\s*<p class="rap-signature"><span data-l="fr">Un rapport d’<b>Alerte Concours Tunisie<\/b> · concours\.clicvia\.com<\/span>/.test(h));
     const meta = n => (h.match(new RegExp(`<meta (?:name|property)="${n}" content="([^"]*)"`)) || [])[1] || "";

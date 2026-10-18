@@ -157,7 +157,6 @@ def bloc_partage(C, titre, chemin, haut=False):
             f'<button class="rap-partager" type="button" data-partage-rapport data-url="{C.URL_SITE}{chemin}" data-titre="{E(titre)}" data-texte="{E(texte)}" data-texte-ar="{E(texte_ar)}">'
             '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 13.5l6.8 4M15.4 6.5l-6.8 4"/></svg>'
             f'<span>{C.L("Partager ce rapport", "شارك هذا التقرير")}</span></button>'
-            f'<p class="rap-partage-aide">{C.L("Facebook, WhatsApp, LinkedIn… : le menu de votre téléphone s’ouvre.", "فيسبوك، واتساب، لينكدإن…: تُفتح قائمة المشاركة في هاتفك.")}</p>'
             '<p class="rap-partage-ok" role="status" aria-live="polite"></p></div>')
 
 
