@@ -127,7 +127,7 @@ if (JSDOM) {
   const html = acc.replace(/<script[^>]*src="[^"]*"[^>]*><\/script>/g, "");
   const dom = new JSDOM(html, { runScripts: "outside-only", url: "https://concours.clicvia.com/?jour=" + D.lu_le, pretendToBeVisual: true });
   const w = dom.window; w.localStorage.setItem("langue", "fr");
-  for (const js of ["assets/page.js", "assets/app.js"]) w.eval(lire(js));
+  for (const js of ["assets/page.js", "assets/son.js", "assets/app.js"]) w.eval(lire(js));
   w.document.dispatchEvent(new w.Event("DOMContentLoaded"));
   await new Promise(r => setTimeout(r, 30));
   const d = w.document, ouvertes = () => [...d.querySelectorAll("#liste .ao")].filter(c => c.dataset.ok === "1");
@@ -143,6 +143,23 @@ if (JSDOM) {
   fg.value = ""; fg.dispatchEvent(new w.Event("change"));
   const fq = d.getElementById("f-q"); fq.value = "zzzzqqq"; fq.dispatchEvent(new w.Event("input"));
   check("navigateur : recherche sans résultat → message « Aucun concours »", ouvertes().length === 0 && !d.getElementById("vide").hidden);
+  // Recherche « au son » (règle commune § 27, 18/10/2026, demande d'Ahmed) : deux écritures d'un même nom = même résultat
+  { const S = w.sonRecherche, chercher = t => { fq.value = t; fq.dispatchEvent(new w.Event("input")); return ouvertes().map(c => c.id); };
+    const commun = join(root, "..", "projets-ahmed", "outils communs", "recherche-au-son", "son.js");
+    check("recherche au son : assets/son.js chargé avant app.js sur toutes les pages (copie identique de l'outil commun quand il est présent)", !!S
+      && /assets\/son\.js\?v=[^"]+"><\/script>\s*<script src="[^"]*assets\/app\.js/.test(acc) && (!existsSync(commun) || readFileSync(commun, "utf8") === lire("assets/son.js")));
+    const paires = [["Djerba", "Jerba"], ["Kairouan", "Qairouan"], ["Hammamet", "Hamamet"], ["Houmt Souk", "Houmet Essouk"]];
+    check("recherche au son : Djerba = Jerba, Kairouan = Qairouan, Hammamet = Hamamet, Houmt Souk = Houmet Essouk (même résultat)",
+      paires.every(([a, b]) => chercher(a).join() === chercher(b).join()) &&
+      paires.every(([a, b]) => S.trouve(S.cle("Commune de " + a), b) && S.trouve(S.cle("Commune de " + b), a)));
+    // une paire tirée des VRAIS concours : un mot d'un titre écrit avec une consonne doublée
+    const mots = [...d.querySelectorAll("#liste .ao")].flatMap(c => ((c._q || c.textContent.toLowerCase()).match(/\b[a-z]{6,}\b/g) || []).map(m => [m, c.id]));
+    const [mot, id] = mots.find(([m]) => /[aeiou][bcdfglmnprstv][aeiou]/.test(m)) || ["", ""];
+    const double = mot.replace(/([aeiou])([bcdfglmnprstv])(?=[aeiou])/, "$1$2$2");
+    const r1 = chercher(mot), r2 = chercher(double);
+    check(`recherche au son : « ${mot} » écrit « ${double} » trouve les mêmes concours`, !!mot && r2.includes(id) && r2.every(x => r1.includes(x)));
+    check("recherche au son : une recherche absurde (« zzzzqqq ») ne trouve toujours rien", chercher("zzzzqqq").length === 0);
+    chercher(""); }
   d.querySelector(".langue").dispatchEvent(new w.Event("click"));
   check("navigateur : bouton langue → page en arabe (de droite à gauche)", d.documentElement.lang === "ar" && d.documentElement.dir === "rtl");
 }

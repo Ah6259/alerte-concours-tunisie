@@ -151,3 +151,5 @@ Rien n'est ajouté au site sans l'accord d'Ahmed.
 
 - **Lieux officiels (18/10/2026, règle commune § 11.11)** : test_site.mjs vérifie dans les deux sens que la liste « Gouvernorat », les pages et la carte = les 24 gouvernorats de La Poste + l'exception « national » (un groupe, jamais un gouvernorat) ; la carte de l'accueil entoure le gouvernorat choisi dans le filtre (app.js).
 - 18/10/2026 (Ahmed) : motif du paiement = le code personnel uniquement (plus « ou votre nom »).
+
+- **Recherche « au son » (18/10/2026, règle commune § 27)** : la case « Rechercher » utilise `assets/son.js` (outil commun de projets-ahmed, copié TEL QUEL, chargé avant app.js, compté dans le `?v=`) : Djerba = Jerba, Kairouan = Qairouan, Hammamet = Hamamet (l'ancienne recherche « mot contenu » reste valable en plus). Test dans test_site.mjs (paires + mot réel avec consonne doublée + « zzzzqqq » = 0).

@@ -358,6 +358,7 @@ def page(chemin, racine, titre, description, hero, contenu, v, maj, jsonld="", s
 <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;600;700;800&family=Noto+Kufi+Arabic:wght@400;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="{racine}assets/style.css?v={v}">
 {jsonld}<script src="{racine}assets/page.js?v={v}"></script>
+<script src="{racine}assets/son.js?v={v}"></script>
 <script src="{racine}assets/app.js?v={v}"></script>
 <script src="{racine}assets/avis.js?v={v}"></script>
 {"".join(f'<script src="{racine}assets/{x}?v={v}"></script>'+chr(10) for x in scripts)}</head>
@@ -634,7 +635,7 @@ def ecrire(chemin, contenu):
 def construire(jour):
     d, ouverts = charger(jour)
     maj = d.get("lu_le", "")
-    v = hashlib.sha1("".join(open(os.path.join(RACINE, "assets", f), "rb").read().decode("utf-8", "ignore") for f in ("style.css", "page.js", "app.js", "avis.js", "abonnement.js")).encode()).hexdigest()[:8]
+    v = hashlib.sha1("".join(open(os.path.join(RACINE, "assets", f), "rb").read().decode("utf-8", "ignore") for f in ("style.css", "page.js", "son.js", "app.js", "avis.js", "abonnement.js")).encode()).hexdigest()[:8]
     cm, cg = comptes(ouverts)
     urgents = sum(1 for c in ouverts if c.get("cloture_candidatures") and 0 <= (dt.date.fromisoformat(c["cloture_candidatures"]) - dt.date.fromisoformat(jour)).days < 7)
     postes = sum(c.get("postes") or 0 for c in ouverts)
