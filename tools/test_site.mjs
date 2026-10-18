@@ -26,7 +26,7 @@ check("pages : accueil, 24 gouvernorats + national, métiers, guide, alertes, à
 for (const p of pages) {
   const h = lire(p);
   const ok1 = /<title>[^<]{10,}<\/title>/.test(h) && /name="description" content="[^"]{30,}"/.test(h) && /rel="canonical" href="https:\/\/concours\.clicvia\.com\//.test(h)
-    && h.includes('http-equiv="Content-Security-Policy"') && h.includes('content="noai, noimageai"') && h.includes('data-l="ar"') && h.includes("assets/page.js")
+    && h.includes('http-equiv="Content-Security-Policy"') && /content="(noindex, follow, )?noai, noimageai"/.test(h) && h.includes('data-l="ar"') && h.includes("assets/page.js")
     && !/undefined|NaN|\[object/.test(h) && !/<script>(?!\s*$)/.test(h.replace(/<script type="application\/ld\+json">[\s\S]*?<\/script>/g, ""));
   check(`${p} : titre, description, adresse canonique, sécurité, français + arabe, aucun trou`, ok1);
 }
@@ -76,7 +76,21 @@ if (AC.length) {
 }
 const sm = lire("sitemap.xml");
 check("plan du site : les pages des concours", D.concours.every(c => sm.includes(`https://concours.clicvia.com/concours/${c.id}/`)));
-check("plan du site : toutes les pages", pages.every(p => sm.includes("https://concours.clicvia.com/" + p.replace(/index\.html$/, ""))));
+const indexees = pages.filter(p => !lire(p).includes('content="noindex'));
+check("plan du site : toutes les pages indexables", indexees.every(p => sm.includes("https://concours.clicvia.com/" + p.replace(/index\.html$/, ""))));
+// VS.4 (18/10/2026) : page métier sans concours ouvert -> message utile (alerte, tous les concours), « noindex », hors du plan du site ; jamais « 0 concours ouvert »
+{
+  const ouvM = D.concours.filter(c => !c.cloture_candidatures || c.cloture_candidatures >= (D.lu_le || ""));
+  const metiers = readdirSync(join(root, "metier"));
+  const vides = metiers.filter(m => !ouvM.some(c => c.metier === m)), pleins = metiers.filter(m => ouvM.some(c => c.metier === m));
+  check(`métiers vides (${vides.join(", ") || "aucun aujourd'hui"}) : noindex, absents du plan du site, message utile avec lien Alertes + tous les concours, pas de « 0 concours »`,
+    vides.every(m => { const h = lire(`metier/${m}/index.html`);
+      return h.includes('content="noindex, follow, noai, noimageai"') && !sm.includes(`/metier/${m}/</loc>`) && h.includes('id="metier-vide"')
+        && h.includes('id="vide-alertes" href="../../alertes/"') && h.includes('id="vide-tous" href="../../#liste"') && !/>\s*0 concours/.test(h) && !h.includes('id="compte"'); }));
+  check("métiers avec des concours ouverts : indexés, dans le plan du site, sans message « aucun »", pleins.length > 0
+    && pleins.every(m => { const h = lire(`metier/${m}/index.html`); return h.includes('content="noai, noimageai"') && sm.includes(`/metier/${m}/</loc>`) && !h.includes('id="metier-vide"') && h.includes('id="compte"'); }));
+  check("aucune page du site n'annonce « 0 concours ouvert(s) »", pages.every(p => !/>\s*0 concours ouverts?\b/.test(lire(p))));
+}
 const rb = lire("robots.txt");
 check("robots.txt : Google autorisé, robots d'IA refusés, plan du site", /User-agent: Googlebot\nAllow: \//.test(rb) && /User-agent: GPTBot\nDisallow: \//.test(rb) && /User-agent: ClaudeBot\nDisallow: \//.test(rb) && rb.includes("sitemap.xml"));
 const man = JSON.parse(lire("manifest.webmanifest"));

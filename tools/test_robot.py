@@ -254,5 +254,14 @@ check("rapports : UN bouton « Partager ce rapport » en haut et en bas (adresse
 check("pas de classement sur 1 ou 2 éléments : pas de « gouvernorat qui compte le plus » avec 1 seul gouvernorat (novembre)",
       "Gouvernorat qui compte le plus" not in p5["rapports/2026-11/"] and "Gouvernorat qui compte le plus" in p1["rapports/2026-10/"])
 
+# --- VS.4 (18/10/2026) : métier sans concours ouvert -> message utile, page noindex hors du plan du site (générateur)
+_mv = CS.metier_vide_html("sante", "Santé", "الصحة", base, {"ouvrier": 3, "ingenieur": 1}, "../../")
+check("métier vide : message « Aucun concours ouvert », lien Alertes, lien vers TOUS les concours ouverts, métiers qui en ont (le plus fourni d'abord)",
+      "Aucun concours « Santé » ouvert" in _mv and 'href="../../alertes/"' in _mv and 'href="../../#liste"' in _mv and f"Voir les {len(base)} concours ouverts" in _mv
+      and _mv.index("metier/ouvrier/") < _mv.index("metier/ingenieur/") and "metier/sante/" not in _mv)
+_pg = CS.page("metier/sante/", "../../", "Titre de test assez long", "Description de test assez longue pour la page.", "", "", "v", "", indexer=False)
+check("page noindex : balise robots « noindex, follow » (et toujours noai) ; page normale : sans noindex",
+      'content="noindex, follow, noai, noimageai"' in _pg and "noindex" not in CS.page("x/", "../", "T", "D", "", "", "v", ""))
+
 print(f"\n{ok}/{ok + ko} vérifications réussies" + (" — tout est bon." if not ko else f" — {ko} ÉCHEC(S)"))
 sys.exit(1 if ko else 0)

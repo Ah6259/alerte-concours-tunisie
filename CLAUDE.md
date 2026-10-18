@@ -137,3 +137,8 @@ Rien n'est ajouté au site sans l'accord d'Ahmed.
 
 ## Visiteur simulé (18/10/2026, règle générale)
 - `python tools/visiteur_simule.py` (outil COMMUN, copie identique dans chaque site : ne pas le modifier ici) : liens/images morts, puis Chromium à 390 px (page trop large, image cassée, « NaN/undefined », page vide) + scénarios `tools/scenarios-visiteur.json` (recherche, filtres, résultat affiché, groupes « croissant »). Lancé par tests.yml. Nouvelle recherche, nouveau filtre ou nouveau formulaire → ajouter un scénario.
+
+- **18/10/2026 (VS.4, « Fais » d'Ahmed)** : page d'un métier SANS concours ouvert (ex. metier/sante/) → plus de « 0 concours ouvert » :
+  `metier_vide_html()` de construire_site.py (message, bouton « M'alerter dès qu'un concours s'ouvre », lien « Voir les N concours ouverts »,
+  métiers qui en ont) ; la page est `noindex, follow` (paramètre `indexer=False` de `page()`) et retirée du plan du site (`sans_index`) ;
+  elle y revient seule dès qu'un concours de ce métier s'ouvre. Tests : test_robot.py + test_site.mjs ; scénario Santé lit `p.intro`.

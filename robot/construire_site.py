@@ -269,6 +269,22 @@ def liste_html(cs, racine, jour, vide_fr, vide_ar):
 <p class="carte vide" id="vide"{' hidden' if cs else ''}>{L(vide_fr, vide_ar)}</p>"""
 
 
+def metier_vide_html(s, fr, ar, ouverts, cm, racine):
+    """VS.4 (18/10/2026) : page d'un métier SANS concours ouvert aujourd'hui -> message utile (alerte, tous les concours,
+    métiers qui ont des concours ouverts) au lieu de « 0 concours ouvert ». La page est aussi « noindex » et absente du plan du site."""
+    autres = sorted([x for x in METIERS if x[0] != s and cm.get(x[0], 0)], key=lambda x: -cm[x[0]])[:4]
+    n = len(ouverts)
+    liens = "".join(f'<a class="btn" href="{racine}metier/{m}/">{L(E(mfr), mar)} ({cm[m]})</a> ' for m, mfr, mar in autres)
+    return f"""<section class="carte metier-vide" id="metier-vide">
+<h2>{L(f"Aucun concours « {E(fr)} » ouvert aujourd'hui", f"لا توجد مناظرة «{ar}» مفتوحة اليوم")}</h2>
+<p>{L(f"De nouveaux concours sont publiés chaque semaine. Recevez une alerte sur Telegram dès qu'un concours « {E(fr)} » s'ouvre dans votre gouvernorat.",
+       f"تُنشر مناظرات جديدة كل أسبوع. تلقَّ تنبيهًا على تيليغرام فور فتح مناظرة «{ar}» في ولايتك.")}</p>
+<p><a class="btn" id="vide-alertes" href="{racine}alertes/">{L("M'alerter dès qu'un concours s'ouvre", "نبّهني عند فتح مناظرة")}</a>
+<a class="btn" id="vide-tous" href="{racine}#liste">{L(f"Voir les {n} concours ouverts (tous les métiers)", f"شاهد {ISO(n)} مناظرة مفتوحة (كل الاختصاصات)")}</a></p>
+{f'<p>{L("Métiers qui ont des concours ouverts :", "اختصاصات فيها مناظرات مفتوحة:")}</p><p class="liens-proches">{liens}</p>' if liens else ""}
+</section>"""
+
+
 def grille(items, racine, dossier, compte, ident):
     liens = []
     for s, fr, ar in items:
@@ -308,7 +324,7 @@ AVIS = """<section class="carte avis" id="avis" aria-labelledby="avis-titre">
 </section>"""
 
 
-def page(chemin, racine, titre, description, hero, contenu, v, maj, jsonld="", scripts=(), og_image="assets/og-image-v2.jpg", og_type="website"):
+def page(chemin, racine, titre, description, hero, contenu, v, maj, jsonld="", scripts=(), og_image="assets/og-image-v2.jpg", og_type="website", indexer=True):
     canon = URL_SITE + chemin
     return f"""<!doctype html>
 <html lang="fr" dir="ltr" translate="no" data-racine="{racine}">
@@ -318,7 +334,7 @@ def page(chemin, racine, titre, description, hero, contenu, v, maj, jsonld="", s
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Security-Policy" content="{CSP}">
 <meta name="referrer" content="strict-origin-when-cross-origin">
-<meta name="robots" content="noai, noimageai">
+<meta name="robots" content="{'noai, noimageai' if indexer else 'noindex, follow, noai, noimageai'}">
 <title>{E(titre)}</title>
 <meta name="description" content="{E(description)}">
 <link rel="canonical" href="{canon}">
@@ -623,6 +639,7 @@ def construire(jour):
     urgents = sum(1 for c in ouverts if c.get("cloture_candidatures") and 0 <= (dt.date.fromisoformat(c["cloture_candidatures"]) - dt.date.fromisoformat(jour)).days < 7)
     postes = sum(c.get("postes") or 0 for c in ouverts)
     pages = {}
+    sans_index = set()       # pages « noindex » (métier sans concours ouvert) : jamais dans le plan du site
     actus = charger_actus()
 
     # --- accueil
@@ -685,16 +702,30 @@ def construire(jour):
     # --- métiers
     for s, fr, ar in METIERS:
         cs = [c for c in ouverts if c["metier"] == s]
+        autres_m = f"""<h2 class="titre-section">{L("Autres métiers", "اختصاصات أخرى")}</h2>
+<section class="carte">{grille([x for x in METIERS if x[0] != s], "../../", "metier", cm, "grille-metiers")}</section>"""
+        if not cs:   # VS.4 (18/10/2026) : jamais « 0 concours ouvert » ; message utile, page noindex et hors du plan du site
+            hero = f"""{fil("../../", fr, ar)}
+    <h1>{L(f"Concours : {fr}", f"مناظرات: {ar}")}</h1>
+    <p class="intro">{L(f"Aucun concours de ce métier n'est ouvert aujourd'hui. {len(ouverts)} concours sont ouverts dans d'autres métiers.",
+                         f"لا توجد مناظرة مفتوحة في هذا الاختصاص اليوم. {ISO(len(ouverts))} مناظرة مفتوحة في اختصاصات أخرى.")}</p>"""
+            contenu = f"""{bouton_alertes("../../")}
+{metier_vide_html(s, fr, ar, ouverts, cm, "../../")}
+{autres_m}"""
+            pages[f"metier/{s}/"] = page(f"metier/{s}/", "../../", f"Concours {fr} Tunisie 2026 : aucun ouvert aujourd'hui | Alerte Concours Tunisie",
+                                         f"Concours {fr.lower()} en Tunisie : aucun ouvert aujourd'hui. Alertes Telegram dès l'ouverture, et tous les concours ouverts. مناظرات {ar}.",
+                                         hero, contenu, v, maj, indexer=False)
+            sans_index.add(f"metier/{s}/")
+            continue
         hero = f"""{fil("../../", fr, ar)}
     <h1>{L(f"Concours : {fr}", f"مناظرات: {ar}")}</h1>
-    <p class="intro">{L(f"{len(cs)} concours ouverts dans toute la Tunisie. Filtrez par gouvernorat.", f"{ISO(len(cs))} مناظرة مفتوحة في كل الجمهورية. اختر الولاية.")}</p>"""
+    <p class="intro">{L(f"{len(cs)} concours ouvert{'s' if len(cs) > 1 else ''} dans toute la Tunisie. Filtrez par gouvernorat.", f"{ISO(len(cs))} مناظرة مفتوحة في كل الجمهورية. اختر الولاية.")}</p>"""
         contenu = f"""{bouton_alertes("../../")}
 {filtres(cs, avec_metier=False)}
-{liste_html(cs, "../../", jour, "Aucun concours ouvert pour ce métier aujourd'hui.", "لا توجد مناظرة مفتوحة في هذا الاختصاص اليوم.")}
-<h2 class="titre-section">{L("Autres métiers", "اختصاصات أخرى")}</h2>
-<section class="carte">{grille([x for x in METIERS if x[0] != s], "../../", "metier", cm, "grille-metiers")}</section>"""
-        pages[f"metier/{s}/"] = page(f"metier/{s}/", "../../", f"Concours {fr} Tunisie 2026 : {len(cs)} ouverts | Alerte Concours Tunisie",
-                                     f"Concours {fr.lower()} en Tunisie : {len(cs)} ouverts, par gouvernorat, date limite et lien officiel. مناظرات {ar}.", hero, contenu, v, maj)
+{liste_html(cs, "../../", jour, "Aucun concours ouvert pour ce métier aujourd'hui. <a href='../../alertes/'>Recevoir une alerte</a> · <a href='../../#liste'>tous les concours ouverts</a>", "لا توجد مناظرة مفتوحة في هذا الاختصاص اليوم. <a href='../../alertes/'>تلقَّ تنبيهًا</a> · <a href='../../#liste'>كل المناظرات المفتوحة</a>")}
+{autres_m}"""
+        pages[f"metier/{s}/"] = page(f"metier/{s}/", "../../", f"Concours {fr} Tunisie 2026 : {len(cs)} ouvert{'s' if len(cs) > 1 else ''} | Alerte Concours Tunisie",
+                                     f"Concours {fr.lower()} en Tunisie : {len(cs)} ouvert{'s' if len(cs) > 1 else ''}, par gouvernorat, date limite et lien officiel. مناظرات {ar}.", hero, contenu, v, maj)
 
     # --- une page par concours (08/10/2026, plan Google « une page par recherche ») : tous les concours du tableau officiel,
     # ouverts ou clos (les résultats arrivent après la clôture) ; aucune page vide, toujours le lien officiel.
@@ -812,7 +843,7 @@ def construire(jour):
         ecrire(chemin, h)
     open(os.path.join(RACINE, "sitemap.xml"), "w", encoding="utf-8", newline="\n").write(
         '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
-        + "".join(f"  <url><loc>{URL_SITE}{c}</loc><lastmod>{rap_dates.get(c) or maj or jour}</lastmod></url>\n" for c in pages) + "</urlset>\n")
+        + "".join(f"  <url><loc>{URL_SITE}{c}</loc><lastmod>{rap_dates.get(c) or maj or jour}</lastmod></url>\n" for c in pages if c not in sans_index) + "</urlset>\n")
     open(os.path.join(RACINE, "robots.txt"), "w", encoding="utf-8", newline="\n").write(
         "# Assistants IA qui répondent à une question en citant leur source : bienvenus (référencement sur les IA, 13/10/2026)\nUser-agent: OAI-SearchBot\nUser-agent: ChatGPT-User\nUser-agent: PerplexityBot\nUser-agent: Perplexity-User\nUser-agent: Claude-SearchBot\nUser-agent: Claude-User\nUser-agent: MistralAI-User\nUser-agent: DuckAssistBot\nAllow: /\n\n"
         + "User-agent: Googlebot\nAllow: /\n\nUser-agent: Bingbot\nAllow: /\n\n"
