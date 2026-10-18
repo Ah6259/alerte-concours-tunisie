@@ -330,5 +330,8 @@ check("Votre avis : e-mail obligatoire (required, « obligatoire ») et confirma
   if (mauvaises.length) console.log("   og:locale refusé : " + mauvaises.slice(0, 5).join(", "));
 }
 
+// 18/10/2026 (décision d'Ahmed) : motif du paiement = le CODE PERSONNEL, jamais le nom (deux clients peuvent avoir le même nom)
+check("paiement : le motif est le code personnel, jamais « nom … (motif du paiement) »",
+  !/nom[^<]{0,40}\(motif du paiement\)/.test(lire("alertes/index.html")) && !/motif\s*[:=]\s*(votre )?nom/i.test(lire("alertes/index.html")));
 console.log(`\n${ok}/${ok + ko} vérifications réussies` + (ko ? ` — ${ko} ÉCHEC(S) : ne pas publier.` : " — tout est bon."));
 process.exit(ko ? 1 : 0);

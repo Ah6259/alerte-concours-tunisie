@@ -524,7 +524,7 @@ def pages_alertes(v, maj):
   <h2 id="abo-titre">{L("Inscription", "التسجيل")}</h2>
   <form id="abo-form" action="{ABO['formspree']}" method="POST" novalidate data-robot="{ABO['robot']}"
         data-metiers="{','.join(sorted(s for s, _, _ in METIERS))}" data-gouv="{','.join(sorted(s for s, _, _ in GOUVS))}">
-    <label class="abo-etiquette" for="abo-nom">{L("Votre nom et prénom (motif du paiement)", "اسمك ولقبك (سبب الدفع)")}</label>
+    <label class="abo-etiquette" for="abo-nom">{L("Votre nom et prénom", "اسمك ولقبك")}</label>
     <input id="abo-nom" name="nom" required maxlength="100" autocomplete="name">
     <label class="abo-etiquette" for="abo-tel">{L("Téléphone (8 chiffres)", "الهاتف (⁦8⁩ أرقام)")}</label>
     <input id="abo-tel" name="telephone" required inputmode="tel" pattern="[0-9 ]{{8,11}}" maxlength="11" autocomplete="tel">
