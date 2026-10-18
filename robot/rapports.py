@@ -24,6 +24,8 @@ MIN_ORG = 3                  # un organisme n'est classé qu'avec au moins 3 con
 MIN_LIGNES = 3               # pas de classement sur 1 ou 2 éléments (règle commune § 22.4)
 PUBLIE = "اطلاع"             # « consulter » dans la colonne des résultats = résultat publié
 MOIS_FR = ["janvier", "février", "mars", "avril", "mai", "juin", "juillet", "août", "septembre", "octobre", "novembre", "décembre"]
+NOM_SITE, NOM_SITE_AR, DOMAINE = "Alerte Concours Tunisie", "تنبيه المناظرات تونس", "concours.clicvia.com"
+DESC_DEBUT = f"{NOM_SITE} — rapport du mois. "   # début de la meta description des rapports (aperçu Facebook / WhatsApp)
 MOIS_AR = ["جانفي", "فيفري", "مارس", "أفريل", "ماي", "جوان", "جويلية", "أوت", "سبتمبر", "أكتوبر", "نوفمبر", "ديسمبر"]
 
 
@@ -139,6 +141,25 @@ def _table(C, entetes, lignes):
     return f'<div class="rap-tableau"><table class="rap-table"><thead><tr>{th}</tr></thead><tbody>{"".join(lignes)}</tbody></table></div>'
 
 
+def signature(C):
+    """« Un rapport d'Alerte Concours Tunisie · concours.clicvia.com », sous le titre (18/10/2026, demande d'Ahmed)."""
+    return (f'    <p class="rap-signature">' + C.L(f"Un rapport d’<b>{NOM_SITE}</b> · {DOMAINE}", f"تقرير من <b>{NOM_SITE_AR}</b> · <bdi dir=\"ltr\">{DOMAINE}</bdi>") + "</p>")
+
+
+def bloc_partage(C, titre, chemin, haut=False):
+    """UN SEUL bouton « Partager ce rapport » (menu de partage du téléphone : Facebook, WhatsApp, LinkedIn…) ; sur ordinateur,
+    le texte + le lien sont copiés. Code dans assets/page.js (écouteur sur button[data-partage-rapport], CSP : rien en ligne)."""
+    E = C.E
+    texte = f"{titre} — Rapport du mois d’{NOM_SITE} ({DOMAINE}) :"
+    texte_ar = f"{titre} — تقرير الشهر من {NOM_SITE_AR} ({DOMAINE}):"
+    return (f'<div class="rap-partage{" rap-partage-haut" if haut else ""}">'
+            f'<button class="rap-partager" type="button" data-partage-rapport data-url="{C.URL_SITE}{chemin}" data-titre="{E(titre)}" data-texte="{E(texte)}" data-texte-ar="{E(texte_ar)}">'
+            '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 13.5l6.8 4M15.4 6.5l-6.8 4"/></svg>'
+            f'<span>{C.L("Partager ce rapport", "شارك هذا التقرير")}</span></button>'
+            f'<p class="rap-partage-aide">{C.L("Facebook, WhatsApp, LinkedIn… : le menu de votre téléphone s’ouvre.", "فيسبوك، واتساب، لينكدإن…: تُفتح قائمة المشاركة في هاتفك.")}</p>'
+            '<p class="rap-partage-ok" role="status" aria-live="polite"></p></div>')
+
+
 def page_mois(C, hist, mois, v, maj):
     e = hist["mois"][mois]
     k, au, fini = e["chiffres"], e["dernier_jour"], e.get("fini")
@@ -250,14 +271,17 @@ def page_mois(C, hist, mois, v, maj):
 <section class="carte" id="citer"><h2>{L("Citer ces chiffres", "الاستشهاد بهذه الأرقام")}</h2>
 <p>{L("Journalistes, blogs, écoles : vous pouvez reprendre ces chiffres en citant la source avec ce lien.", "صحفيون، مدوّنات، مدارس: يمكنكم نقل هذه الأرقام مع ذكر المصدر بهذا الرابط.")}</p>
 <p class="rap-citer">Source : Alerte Concours Tunisie, « {E(titre)} », {C.URL_SITE}{chemin}</p></section>''')
+    sections.insert(0, bloc_partage(C, titre, chemin, haut=True))
+    sections.append(bloc_partage(C, titre, chemin))
     sections.append(C.bouton_alertes("../../"))
 
     etat = (L(f"Mois terminé : chiffres au {dfr(au)}, figés.", f"شهر منتهٍ: الأرقام في {ISO(dfr(au))}، نهائية.") if fini
             else L(f"Chiffres au {dfr(au)} — mois en cours, mis à jour chaque jour.", f"الأرقام في {ISO(dfr(au))} — الشهر الجاري، تحيين يومي."))
     hero = f"""    <p class="fil"><a href="../../">{L("Accueil", "الرئيسية")}</a> › <a href="../">{L("Rapports du mois", "التقارير الشهرية")}</a> › {L(mfr, mar)}</p>
     <h1>{L(f"Concours publics en Tunisie : le rapport {de(mfr)}", f"المناظرات العمومية في تونس: تقرير {mar}")}</h1>
+{signature(C)}
     <p class="intro" id="rap-etat">{etat}</p>"""
-    desc = (f"{mfr.capitalize()} : {o['n']} concours publics ouverts en Tunisie au {dfr(au)}, {_nb(o['postes'])} postes ; {nat['n']} nationaux, {loc['n']} locaux ; "
+    desc = (f"{DESC_DEBUT}{mfr.capitalize()} : {o['n']} concours publics ouverts en Tunisie au {dfr(au)}, {_nb(o['postes'])} postes ; {nat['n']} nationaux, {loc['n']} locaux ; "
             f"par métier, gouvernorat et organisme. Chiffres du tableau officiel. تقرير المناظرات.")
     jsonld = lambda x: '<script type="application/ld+json">\n' + json.dumps(x, ensure_ascii=False) + "\n</script>\n"
     faq = [(f"Combien de concours publics sont ouverts en Tunisie en {mfr} ?",
@@ -290,12 +314,14 @@ def page_liste(C, hist, v, maj):
                   + "</li>")
     hero = f"""{C.fil("../", "Rapports du mois", "التقارير الشهرية")}
     <h1>{L("Rapports du mois : les concours publics en chiffres", "التقارير الشهرية: المناظرات العمومية بالأرقام")}</h1>
+{signature(C)}
     <p class="intro">{L("Chaque mois, les concours publics ouverts en Tunisie comptés à partir du tableau officiel : par métier, par gouvernorat et par organisme.", "كل شهر، المناظرات العمومية المفتوحة في تونس معدودة من الجدول الرسمي: حسب الاختصاص والولاية والهيكل.")}</p>"""
-    contenu = (f'<section class="carte"><ul class="rap-mois">{items}</ul>'
+    tl = "Rapports du mois : les concours publics en Tunisie en chiffres"
+    contenu = (bloc_partage(C, tl, "rapports/", haut=True) + f'<section class="carte"><ul class="rap-mois">{items}</ul>'
                f'<p class="note">{L("Le mois en cours est mis à jour chaque jour ; un mois terminé n’est plus jamais modifié. Aucune estimation : chaque nombre est un comptage.", "الشهر الجاري يُحيَّن كل يوم؛ والشهر المنتهي لا يُغيَّر أبدًا. لا تقديرات: كل رقم هو عدّ.")}</p></section>'
-               + C.bouton_alertes("../"))
-    return C.page("rapports/", "../", "Rapports du mois : les concours publics en Tunisie en chiffres | Alerte Concours Tunisie",
-                  "Chaque mois, les concours publics ouverts en Tunisie en chiffres : nombre de concours et de postes, par métier, gouvernorat et organisme, d'après le tableau officiel. تقارير المناظرات.",
+               + bloc_partage(C, tl, "rapports/") + C.bouton_alertes("../"))
+    return C.page("rapports/", "../", tl + " | Alerte Concours Tunisie",
+                  DESC_DEBUT + "Chaque mois, les concours publics ouverts en Tunisie en chiffres : nombre de concours et de postes, par métier, gouvernorat et organisme, d'après le tableau officiel. تقارير المناظرات.",
                   hero, contenu, v, maj)
 
 

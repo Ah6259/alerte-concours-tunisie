@@ -98,6 +98,39 @@ if ("serviceWorker" in navigator && location.protocol === "https:") {
   });
 }
 
+/* Rapports du mois (18/10/2026, demande d'Ahmed) : UN SEUL bouton « Partager ce rapport » (button[data-partage-rapport],
+   fabriqué par robot/rapports.py). Téléphone : menu de partage (Facebook, WhatsApp, LinkedIn…) ; ordinateur : texte + lien
+   copiés, sinon fenêtre avec le lien. Le texte dit de quel site vient l'article. */
+document.addEventListener("click", function (e) {
+  var b = e.target && e.target.closest && e.target.closest("button[data-partage-rapport]");
+  if (!b) return;
+  e.preventDefault();
+  var ar = document.documentElement.lang === "ar";
+  var url = b.getAttribute("data-url"), titre = b.getAttribute("data-titre") || document.title.split(" | ")[0];
+  var texte = (ar && b.getAttribute("data-texte-ar")) || b.getAttribute("data-texte") || titre;
+  var zone = b.parentNode && b.parentNode.querySelector(".rap-partage-ok");
+  try { if (window.goatcounter && window.goatcounter.count) window.goatcounter.count({ path: "partage" + location.pathname.replace(/^\/alerte-concours-tunisie\//, "/"), title: "Partage", event: true }); } catch (x) {}
+  function message() {
+    if (!zone) return;
+    zone.textContent = ar ? "تم نسخ الرابط ✓ — ألصقه حيث تريد" : "Lien copié ✓ — collez-le où vous voulez";
+    clearTimeout(zone._t); zone._t = setTimeout(function () { zone.textContent = ""; }, 4000);
+  }
+  function fenetre() { try { window.prompt(ar ? "انسخ هذا الرابط:" : "Copiez ce lien :", texte + " " + url); } catch (x) {} }
+  function copier() {
+    try {
+      if (navigator.clipboard && navigator.clipboard.writeText) return navigator.clipboard.writeText(texte + " " + url).then(message, fenetre);
+    } catch (x) {}
+    fenetre();
+  }
+  if (navigator.share) {
+    try {
+      navigator.share({ title: titre, text: texte, url: url }).catch(function (x) { if (!x || x.name !== "AbortError") copier(); });
+      return;
+    } catch (x) {}
+  }
+  copier();
+});
+
 /* >>> vidéo de présentation : page video/ partagée par le bouton « Partager » (outil vidéos d'Ahmed) */
 /* Adresse du site (11 octobre 2026) : concours.clicvia.com (racine « / ») ; l'ancienne adresse ah6259.github.io/alerte-concours-tunisie/ redirige
    vers elle. BASE_SITE = dossier du site selon l'adresse ; GoatCounter garde le préfixe /alerte-concours-tunisie (compteur commun). */

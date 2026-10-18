@@ -485,3 +485,15 @@ html[dir="rtl"] .paie-etapes>li::before{left:auto;right:12px}
 .rap-citer{background:#F3F6F9;border-radius:10px;padding:10px 12px;font-size:14px;overflow-wrap:anywhere}
 .rap-mois{margin:0;padding-inline-start:20px}
 .rap-mois li{margin:0 0 8px}
+/* Rapports du mois : signature sous le titre + UN bouton « Partager ce rapport » (18/10/2026) */
+.hero p.rap-signature{margin:0 0 8px;font-size:14px;opacity:.95}
+.rap-partage{background:var(--carte);border:1px solid var(--ligne);border-radius:var(--rayon);padding:14px 16px;margin:0 0 14px;box-shadow:var(--ombre);text-align:center}
+.rap-partager{display:inline-flex;align-items:center;justify-content:center;gap:9px;min-height:48px;width:100%;max-width:420px;box-sizing:border-box;
+  border:0;border-radius:14px;padding:12px 18px;background:var(--bleu);color:#fff;font:inherit;font-weight:800;font-size:16px;cursor:pointer}
+.rap-partager:hover{background:var(--bleu-fonce)}
+.rap-partager:focus-visible{outline:3px solid var(--or);outline-offset:2px}
+.rap-partager svg{width:20px;height:20px;flex:none;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.rap-partage-aide{margin:8px 0 0;font-size:13px;color:var(--doux)}
+.rap-partage-ok{margin:6px 0 0;font-size:14px;font-weight:700;color:var(--vert)}
+.rap-partage-ok:empty{display:none}
+@media (prefers-color-scheme:dark){ :root:not([data-theme="light"]) .rap-partager{color:#0D141D} }

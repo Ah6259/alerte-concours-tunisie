@@ -125,3 +125,8 @@ Rien n'est ajouté au site sans l'accord d'Ahmed.
   n'est plus jamais modifié. construire_site.py ne fait que LIRE cet historique ; plan du site avec lastmod = date des chiffres ;
   lien dans le pied de page (page.js) et sur l'accueil. Tests : test_robot.py (comptages, mois figé, pas de fausse évolution) et
   test_site.mjs (chiffres = concours.json = accueil, sitemap). Pas de sous-pages pour l'instant (données trop maigres par gouvernorat).
+  **Partage (18/10/2026, demande d'Ahmed)** : UN SEUL bouton « Partager ce rapport » en haut et en bas de chaque page de rapport
+  (`bloc_partage()` de rapports.py, `button[data-partage-rapport]` ; code dans assets/page.js AVANT le bloc vidéo) : menu de partage du
+  téléphone, sinon texte + lien copiés (« Lien copié ✓ »), sinon fenêtre ; texte « <titre> — Rapport du mois d’Alerte Concours Tunisie
+  (concours.clicvia.com) : » ; signature sous le titre ; meta description qui commence par « Alerte Concours Tunisie — rapport du mois. ».
+  Jamais de boutons Facebook / WhatsApp séparés (le téléphone propose déjà tout). Tests dans test_site.mjs et test_robot.py.

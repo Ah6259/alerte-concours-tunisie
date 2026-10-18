@@ -222,5 +222,54 @@ check("Votre avis : e-mail obligatoire (required, « obligatoire ») et confirma
     check("rapports : organismes classés seulement avec au moins 3 concours, et seulement s'il y en a au moins 3", nOrg >= 3 ? (h.match(/<tr data-n="\d+"><th scope="row" dir="rtl"/g) || []).length === nOrg : !h.includes('id="organismes"'));
   }
 }
+// ---- Rapports du mois : UN SEUL bouton « Partager ce rapport » en haut et en bas, signature, aperçu de partage (18/10/2026)
+{ const H = existsSync(join(root, "donnees/rapports.json")) ? JSON.parse(lire("donnees/rapports.json")).mois : {};
+  const pr = [["rapports/index.html", "rapports/"], ...Object.keys(H).sort().map(m => [`rapports/${m}/index.html`, `rapports/${m}/`])];
+  for (const [f, c] of pr) {
+    const h = lire(f), url = "https://concours.clicvia.com/" + c;
+    const bt = [...h.matchAll(/<button class="rap-partager" type="button" data-partage-rapport data-url="([^"]+)" data-titre="([^"]+)" data-texte="([^"]+)"/g)];
+    const iH = h.indexOf("rap-partage-haut"), i1 = h.indexOf("<section", h.indexOf("<main")), iB = h.lastIndexOf("data-partage-rapport"), iC = h.lastIndexOf("</section>", h.indexOf("</main>"));
+    check(`${c} : 2 boutons « Partager ce rapport » (haut + bas) avec la bonne adresse`, bt.length === 2 && bt.every(m => m[1] === url) && (h.match(/Partager ce rapport/g) || []).length === 2
+      && iH > h.indexOf("<main") && iH < i1 && iB > iC);
+    check(`${c} : le texte partagé dit de quel site vient l'article`, bt.every(m => m[3].startsWith(m[2] + " — Rapport du mois d’Alerte Concours Tunisie (concours.clicvia.com) :")));
+    check(`${c} : aide « menu de votre téléphone » sous chaque bouton (FR + AR) et zone « Lien copié »`, (h.match(/le menu de votre téléphone s’ouvre/g) || []).length === 2
+      && (h.match(/تُفتح قائمة المشاركة في هاتفك/g) || []).length === 2 && (h.match(/class="rap-partage-ok" role="status"/g) || []).length === 2);
+    check(`${c} : aucun bouton séparé Facebook / WhatsApp / LinkedIn`, !/facebook\.com\/sharer|wa\.me\/|api\.whatsapp|linkedin\.com\/share|twitter\.com\/intent/.test(h));
+    check(`${c} : signature « Un rapport d’Alerte Concours Tunisie · concours.clicvia.com » sous le titre`, /<\/h1>\s*<p class="rap-signature"><span data-l="fr">Un rapport d’<b>Alerte Concours Tunisie<\/b> · concours\.clicvia\.com<\/span>/.test(h));
+    const meta = n => (h.match(new RegExp(`<meta (?:name|property)="${n}" content="([^"]*)"`)) || [])[1] || "";
+    check(`${c} : aperçu de partage (description et og:description commencent par le nom du site, og:title, og:image, og:url justes)`,
+      meta("description").startsWith("Alerte Concours Tunisie — rapport du mois. ") && meta("og:description") === meta("description") && meta("og:title").length > 10
+      && !meta("og:title").includes(" | ") && meta("og:url") === url && meta("og:image") === "https://concours.clicvia.com/assets/og-image-v2.jpg" && existsSync(join(root, "assets/og-image-v2.jpg")));
+  }
+  const pj = lire("assets/page.js"), css = lire("assets/style.css");
+  check("rapports : code du bouton dans page.js (écouteur, navigator.share, copie, message « Lien copié », window.prompt, GoatCounter)", pj.includes('closest("button[data-partage-rapport]")')
+    && pj.includes("navigator.share({ title: titre, text: texte, url: url })") && pj.includes("navigator.clipboard.writeText(texte + \" \" + url)") && pj.includes("Lien copié ✓ — collez-le où vous voulez")
+    && pj.includes("window.prompt(") && /goatcounter\.count\(\{ path: "partage"/.test(pj) && pj.indexOf("data-partage-rapport") < pj.indexOf(">>> vidéo de présentation"));
+  check("rapports : bouton tactile (≥ 44 px de haut) et pas la classe du petit bouton rond .partager", /\.rap-partager\{[^}]*min-height:(4[4-9]|[5-9]\d)px/.test(css) && ![...lire("rapports/index.html").matchAll(/<button class="([^"]*)" type="button" data-partage-rapport/g)].some(m => m[1].split(/\s+/).includes("partager")));
+  if (JSDOM) {
+    const f = Object.keys(H).length ? `rapports/${Object.keys(H).sort().pop()}/index.html` : "rapports/index.html";
+    const essai = async (share, clip) => {
+      const dom = new JSDOM(lire(f).replace(/<script[^>]*src="[^"]*"[^>]*><\/script>/g, ""), { runScripts: "outside-only", url: "https://concours.clicvia.com/" + f.replace(/index\.html$/, ""), pretendToBeVisual: true });
+      const w = dom.window, journal = { share: null, clip: null, prompt: null, compte: null };
+      w.localStorage.setItem("langue", "fr");
+      if (share) Object.defineProperty(w.navigator, "share", { value: o => { journal.share = o; return Promise.resolve(); }, configurable: true });
+      if (clip) Object.defineProperty(w.navigator, "clipboard", { value: { writeText: t => { journal.clip = t; return Promise.resolve(); } }, configurable: true });
+      w.prompt = (a, b) => { journal.prompt = b; return null; };
+      w.goatcounter = { count: o => { journal.compte = o; } };
+      w.eval(lire("assets/page.js")); w.document.dispatchEvent(new w.Event("DOMContentLoaded"));
+      const b = w.document.querySelectorAll("button[data-partage-rapport]")[1];
+      b.dispatchEvent(new w.MouseEvent("click", { bubbles: true }));
+      await new Promise(r => setTimeout(r, 30));
+      return { journal, b, ok: b.parentNode.querySelector(".rap-partage-ok").textContent };
+    };
+    const t1 = await essai(true, true);
+    check("navigateur : rapport → téléphone : menu de partage avec titre, texte « … Rapport du mois d’Alerte Concours Tunisie » et lien ; clic compté", t1.journal.share && t1.journal.share.url === t1.b.dataset.url
+      && t1.journal.share.text.includes("Rapport du mois d’Alerte Concours Tunisie (concours.clicvia.com)") && !t1.journal.clip && t1.journal.compte && t1.journal.compte.path.startsWith("partage/rapports/"));
+    const t2 = await essai(false, true);
+    check("navigateur : rapport → ordinateur : texte + lien copiés et « Lien copié ✓ » affiché", t2.journal.clip === t2.b.dataset.texte + " " + t2.b.dataset.url && t2.ok.startsWith("Lien copié ✓"));
+    const t3 = await essai(false, false);
+    check("navigateur : rapport → sans presse-papiers : fenêtre avec le lien", t3.journal.prompt === t3.b.dataset.texte + " " + t3.b.dataset.url);
+  }
+}
 console.log(`\n${ok}/${ok + ko} vérifications réussies` + (ko ? ` — ${ko} ÉCHEC(S) : ne pas publier.` : " — tout est bon."));
 process.exit(ko ? 1 : 0);
