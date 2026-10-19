@@ -303,6 +303,7 @@ img,svg{-webkit-user-drag:none}
 .btn-pro-grand span{min-width:0}
 .btn-pro-grand small{display:block;font-size:12.5px;font-weight:700;opacity:.85;margin-top:2px}
 .btn-pro-grand:hover{filter:brightness(1.05)}
+.btn-pro-grand + .carte{margin-top:16px}   /* 19/10/2026 (visiteur simulé, PC) : le bouton ne colle plus à la recherche */
 .btn-pro{display:block;text-align:center;border:0;width:100%;text-decoration:none;font:inherit;font-weight:800;font-size:15.5px;color:#3A2A00;background:#F2B33D;
   border-radius:12px;padding:12px 14px;margin:12px 0 0;cursor:pointer}
 .btn-pro:disabled{opacity:.55;cursor:default}
