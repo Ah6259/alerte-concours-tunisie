@@ -2,10 +2,10 @@
  "mois": {
   "2026-10": {
    "premier_jour": "2026-10-17",
-   "dernier_jour": "2026-10-18",
+   "dernier_jour": "2026-10-19",
    "fini": false,
    "chiffres": {
-    "au": "2026-10-18",
+    "au": "2026-10-19",
     "debut": "2026-10-09",
     "ouverts": {
      "n": 61,
@@ -166,7 +166,7 @@
      "n": 11,
      "postes": 18,
      "sans_postes": 0,
-     "jusqu_au": "2026-10-24"
+     "jusqu_au": "2026-10-25"
     },
     "nouveaux": {
      "n": 15,
@@ -539,7 +539,7 @@
      "metier": "administratif",
      "gouvernorat": "bizerte",
      "cloture_candidatures": "2026-10-02",
-     "vu_le": "",
+     "vu_le": "2026-10-19",
      "publies": []
     },
     "3196": {
