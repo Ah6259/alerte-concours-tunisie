@@ -153,3 +153,5 @@ Rien n'est ajouté au site sans l'accord d'Ahmed.
 - 18/10/2026 (Ahmed) : motif du paiement = le code personnel uniquement (plus « ou votre nom »).
 
 - **Recherche « au son » (18/10/2026, règle commune § 27)** : la case « Rechercher » utilise `assets/son.js` (outil commun de projets-ahmed, copié TEL QUEL, chargé avant app.js, compté dans le `?v=`) : Djerba = Jerba, Kairouan = Qairouan, Hammamet = Hamamet (l'ancienne recherche « mot contenu » reste valable en plus). Test dans test_site.mjs (paires + mot réel avec consonne doublée + « zzzzqqq » = 0).
+
+- **19/10/2026 — Visiteur simulé : contrôle des ESPACES (règle commune § 29)** : nouvelle copie commune installée, 0 anomalie, aucun défaut d'espace sur ce site.
