@@ -18,7 +18,7 @@ Sur un nouveau PC, avant le premier commit : `git config user.name Ah6259` et
   (l'état des résultats du tableau officiel change → message). **Entraînement** : QCM écrits par nous.
 - **Page `alertes/` OUVERTE (08/10/2026, « fais » d'Ahmed)** : offre + paiement en 3 étapes + formulaire Formspree
   (nom, téléphone, e-mail facultatif, métiers, gouvernorats ou « Toute la Tunisie », numéros de concours à suivre,
-  formule essai **7 jours** / 3 mois / 1 an) + `alertes/conditions/` ; `assets/abonnement.js` (ligne « pour_activer »).
+  formule 3 mois / 1 an ; plus d'essai depuis le 20/10/2026) + `alertes/conditions/` ; `assets/abonnement.js` (ligne « pour_activer »).
   Gros bouton doré `bouton_alertes()` sur toutes les pages. Réglages : `ABO` de construire_site.py (`robot` = **@AlerteConcoursTunisieBot**, créé le 08/10 ;
   son jeton = secret `TELEGRAM_BOT_TOKEN` du dépôt privé, jamais ailleurs). **Abonnés = dépôt PRIVÉ `concours-abonnes`** (jamais ici).
 - **Prix** (frais D17 / IZI d'environ 2 DT payés par le client en plus) : Alertes + Suivi 15 DT / 3 mois ou
@@ -145,7 +145,7 @@ Rien n'est ajouté au site sans l'accord d'Ahmed.
 
 ## Code personnel des alertes (18/10/2026, contrôle commun « case du code »)
 - Ce site n'a AUCUNE case où le visiteur tape un code : `alertes/` CRÉE le code (6 caractères, `assets/abonnement.js`), l'affiche
-  (`#abo-code`) et le met dans le lien Telegram ; rien dans localStorage. Essai gratuit réel de 7 jours (texte juste).
+  (`#abo-code`) et le met dans le lien Telegram ; rien dans localStorage. Plus d'essai gratuit depuis le 20/10/2026.
 - Corrigé : les conditions disaient « motif = nom et prénom de l'abonné » alors que la page dit « Motif : votre code personnel »
   -> « code personnel de l'abonné (donné à l'inscription) » (test dans test_site.mjs).
 
@@ -155,3 +155,8 @@ Rien n'est ajouté au site sans l'accord d'Ahmed.
 - **Recherche « au son » (18/10/2026, règle commune § 27)** : la case « Rechercher » utilise `assets/son.js` (outil commun de projets-ahmed, copié TEL QUEL, chargé avant app.js, compté dans le `?v=`) : Djerba = Jerba, Kairouan = Qairouan, Hammamet = Hamamet (l'ancienne recherche « mot contenu » reste valable en plus). Test dans test_site.mjs (paires + mot réel avec consonne doublée + « zzzzqqq » = 0).
 
 - **19/10/2026 — Visiteur simulé : contrôle des ESPACES (règle commune § 29)** : nouvelle copie commune installée, 0 anomalie, aucun défaut d'espace sur ce site.
+
+- **20/10/2026 — PLUS D'ESSAI GRATUIT** (Ahmed : « Enlève tous les essais gratuits ») : aucune mention d'essai sur le site (bouton doré,
+  page `alertes/`, conditions renumérotées 1-8, titres, descriptions, llms.txt) ; formule 3 mois (cochée) ou 1 an ; le code reste créé
+  sur la page, le robot privé le met « en attente » jusqu'au paiement. Les ~130 anciennes pages de concours (plus dans les données)
+  ont été corrigées à la main. Test : « aucune page ne parle d'essai gratuit » dans test_site.mjs.

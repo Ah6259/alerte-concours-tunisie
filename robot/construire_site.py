@@ -408,7 +408,7 @@ GUIDE = [
 # Repris d'Alertes appels d'offres (même paiement en 3 étapes, même formulaire Formspree, même robot Telegram privé).
 # Les abonnés (nom, téléphone, Telegram) ne sont JAMAIS dans ce dépôt public : dépôt privé « concours-abonnes ».
 ABO = {
-    "prix_3mois": 15, "prix_an": 39, "essai_jours": 7, "rappel_jours": 3,
+    "prix_3mois": 15, "prix_an": 39, "rappel_jours": 3,     # plus d'essai gratuit depuis le 20/10/2026 (décision d'Ahmed)
     "numero": "24 321 390",                         # D17, IZI
     "whatsapp": "21624321390",                      # preuve de paiement
     "paiements": ["D17", "IZI"],
@@ -468,17 +468,16 @@ def texte_telegram(robot):
 
 def bouton_alertes(racine):
     """Gros bouton doré (comme Alertes appels d'offres) -> page alertes/ (inscription)."""
-    n = ABO["essai_jours"]
     titre = L("Alertes concours : votre métier et votre gouvernorat chaque matin sur Telegram", "تنبيهات المناظرات: اختصاصك وولايتك كل صباح على تيليغرام")
-    sous = L(f"{n} jours d'essai gratuit · suivi de vos concours (convocations, résultats)",
-             f"تجربة مجانية {ISO(n)} أيام · متابعة مناظراتك (الاستدعاءات، النتائج)")
+    sous = L(f"Suivi de vos concours (convocations, résultats) · {ABO['prix_3mois']} DT / 3 mois",
+             f"متابعة مناظراتك (الاستدعاءات، النتائج) · {ISO(ABO['prix_3mois'])} دينار / ⁦3⁩ أشهر")
     return (f'<a class="btn-pro-grand" id="btn-alertes" href="{racine}alertes/">{ICONE_CLOCHE}'
             f'<span>{titre}<small>{sous}</small></span></a>')
 
 
 def pages_alertes(v, maj):
     """Page alertes/ (offre, paiement, inscription) et alertes/conditions/."""
-    essai, p3, pa, rj = ABO["essai_jours"], ABO["prix_3mois"], ABO["prix_an"], ABO["rappel_jours"]
+    p3, pa, rj = ABO["prix_3mois"], ABO["prix_an"], ABO["rappel_jours"]
     cases_m = "".join(f'<label class="case"><input type="checkbox" name="metiers" value="{s}"> <span>{L(E(fr), ar)}</span></label>' for s, fr, ar in METIERS)
     cases_g = (f'<label class="case tous"><input type="checkbox" name="gouvernorats" value="tous" id="g-tous"> <span><b>{L("Toute la Tunisie", "كل الولايات")}</b></span></label>'
                + "".join(f'<label class="case"><input type="checkbox" name="gouvernorats" value="{s}"> <span>{L(E(fr), ar)}</span></label>' for s, fr, ar in GOUVS))
@@ -488,7 +487,7 @@ def pages_alertes(v, maj):
     <p class="intro">{L("Chaque matin, seulement les nouveaux concours de VOTRE métier et de VOTRE gouvernorat, et le suivi des concours que vous passez. La liste complète reste gratuite sur ce site.",
                         "كل صباح، المناظرات الجديدة في اختصاصك وولايتك فقط، مع متابعة المناظرات التي تشارك فيها. القائمة الكاملة تبقى مجانية في هذا الموقع.")}</p>"""
     contenu = f"""<section class="offre-pro" id="offre">
-  <p class="ruban">{L(f"{essai} jours d'essai gratuit", f"تجربة مجانية {ISO(essai)} أيام")}</p>
+  <p class="ruban">{L("Pas de renouvellement automatique", "لا تجديد آلي")}</p>
   <h2>{L("Alertes + Suivi", "التنبيهات + المتابعة")}</h2>
   <p class="prix" id="abo-prix">{prix_abo()}</p>
   <ul class="avantages masque-si-paiement">
@@ -498,26 +497,26 @@ def pages_alertes(v, maj):
     <li>{L("Pour chaque concours : nombre de postes, date limite et lien vers le portail officiel", "لكل مناظرة: عدد الخطط، آخر أجل ورابط البوابة الرسمية")}</li>
     <li>{L(f"Pas de renouvellement automatique : rappel {rj} jours avant la fin, puis l'alerte s'arrête simplement", f"لا تجديد آلي: تذكير قبل النهاية بـ{ISO(rj)} أيام، ثم يتوقف التنبيه ببساطة")}</li>
   </ul>
-  <p class="petit masque-si-paiement">{L(f"{essai} jours d'essai gratuit, sans paiement. Ensuite, paiement par D17 ou IZI (bouton « Paiement »). Frais de l'application (environ 2 DT) en plus.",
-                      f"تجربة مجانية لمدة {ISO(essai)} أيام دون دفع. بعدها، الدفع عبر ⁨D17⁩ أو ⁨IZI⁩ (زر «الدفع»). معاليم التطبيق (حوالي ⁦2⁩ د) إضافية.")}</p>
+  <p class="petit masque-si-paiement">{L("Paiement par D17 ou IZI (bouton « Paiement »), avec pour motif votre code personnel : vos alertes commencent dès réception du paiement. Frais de l'application (environ 2 DT) en plus.",
+                      "الدفع عبر ⁨D17⁩ أو ⁨IZI⁩ (زر «الدفع») مع ذكر رمزك الشخصي: تبدأ تنبيهاتك فور استلام الدفع. معاليم التطبيق (حوالي ⁦2⁩ د) إضافية.")}</p>
   <details class="paiement" id="paiement"><summary class="btn-clair">{L("Paiement", "الدفع")}</summary>
     {liste_paiements("../")}
     {lien_preuve()}
   </details>
-  <a class="btn-pro" href="#inscription">{L(f"Je m'inscris : {essai} jours gratuits", f"أسجّل: {ISO(essai)} أيام مجانًا")}</a>
+  <a class="btn-pro" href="#inscription">{L("Je m'inscris", "أسجّل")}</a>
 </section>
 <section class="carte">
   <h2>{L("Comment ça marche ?", "كيف يعمل؟")}</h2>
   <ol class="etapes" data-l="fr">
     <li>Vous choisissez vos <b>métiers</b> et vos <b>gouvernorats</b> dans le formulaire ci-dessous (et, si vous voulez, les numéros des concours à suivre).</li>
-    <li>Votre essai démarre <b>tout de suite</b> : la page vous donne votre <b>code personnel</b> et un bouton « Ouvrir Telegram ».</li>
-    <li>Dans Telegram, vous touchez <b>DÉMARRER</b> : c'est tout (vos choix sont dans le lien).</li>
+    <li>La page vous donne votre <b>code personnel</b> et un bouton « Ouvrir Telegram » : touchez <b>DÉMARRER</b> (vos choix sont dans le lien).</li>
+    <li>Vous payez par D17 ou IZI, avec pour motif votre code, et envoyez la preuve par WhatsApp : vos alertes commencent dès réception du paiement.</li>
     <li>Chaque matin, vous recevez les nouveaux concours qui vous concernent. Pour suivre un concours de plus, envoyez au robot <b>/suivre</b> et son numéro (exemple : <code>/suivre 2390</code>).</li>
   </ol>
   <ol class="etapes" data-l="ar">
     <li>تختار <b>اختصاصاتك</b> و<b>ولاياتك</b> في الاستمارة أسفله (وأرقام المناظرات التي تريد متابعتها إن شئت).</li>
-    <li>تبدأ تجربتك <b>فورًا</b>: تعطيك الصفحة <b>رمزك الشخصي</b> وزر « افتح تيليغرام ».</li>
-    <li>في تيليغرام، تلمس <b>ابدأ</b>: هذا كل شيء (اختياراتك موجودة في الرابط).</li>
+    <li>تعطيك الصفحة <b>رمزك الشخصي</b> وزر « افتح تيليغرام »: المس <b>ابدأ</b> (اختياراتك موجودة في الرابط).</li>
+    <li>تدفع عبر ⁨D17⁩ أو ⁨IZI⁩ مع ذكر رمزك، وترسل الإثبات عبر واتساب: تبدأ تنبيهاتك فور استلام الدفع.</li>
     <li>كل صباح، تصلك المناظرات الجديدة التي تهمّك. لمتابعة مناظرة أخرى، أرسل إلى البرنامج <b><bdi dir="ltr">/suivre</bdi></b> ورقمها (مثال: <code dir="ltr">/suivre 2390</code>).</li>
   </ol>
 </section>
@@ -543,9 +542,8 @@ def pages_alertes(v, maj):
     <input id="abo-suivis" name="suivis" maxlength="120" inputmode="numeric" placeholder="2390, 2412">
     <fieldset class="abo-choix" id="abo-formule">
       <legend>{L("Votre formule", "صيغتك")}</legend>
-      <label class="case"><input type="radio" name="formule" value="essai {essai} jours" checked> <span>{L(f"<b>{essai} jours d'essai gratuit</b>, je paierai ensuite si je suis satisfait", f"<b>تجربة مجانية {ISO(essai)} أيام</b>، وأدفع بعدها إن كنت راضيًا")}</span></label>
-      <label class="case"><input type="radio" name="formule" value="3 mois"> <span>{L(f"Je paie directement 3 mois ({p3} DT)", f"أدفع مباشرة ⁦3⁩ أشهر ({ISO(p3)} دينار)")}</span></label>
-      <label class="case"><input type="radio" name="formule" value="1 an"> <span>{L(f"Je paie directement 1 an ({pa} DT)", f"أدفع مباشرة سنة ({ISO(pa)} دينار)")}</span></label>
+      <label class="case"><input type="radio" name="formule" value="3 mois" checked> <span>{L(f"3 mois ({p3} DT)", f"⁦3⁩ أشهر ({ISO(p3)} دينار)")}</span></label>
+      <label class="case"><input type="radio" name="formule" value="1 an"> <span>{L(f"1 an ({pa} DT)", f"سنة ({ISO(pa)} دينار)")}</span></label>
     </fieldset>
     <label class="case"><input type="checkbox" name="conditions" value="oui" required id="abo-conditions"> <span>{accepte}</span></label>
     <input type="hidden" name="site" value="Alerte Concours Tunisie">
@@ -559,17 +557,17 @@ def pages_alertes(v, maj):
   </form>
   <div class="apres-abo" id="apres-abo" hidden>
     <h3>{L("Dernière étape : ouvrez Telegram", "الخطوة الأخيرة: افتح تيليغرام")}</h3>
-    <p>{L(f"Votre essai gratuit de {essai} jours démarre <b>tout de suite</b>, sans attendre personne. Votre code personnel :", f"تجربتك المجانية لمدة {ISO(essai)} أيام تبدأ <b>فورًا</b>، دون انتظار أحد. رمزك الشخصي:")}
+    <p>{L("Votre inscription est prête. Votre code personnel (motif du paiement) :", "تسجيلك جاهز. رمزك الشخصي (سبب الدفع):")}
       <b class="abo-code" id="abo-code" dir="ltr"></b></p>
     <ol class="etapes-tg">
       <li>{L("Touchez « Ouvrir Telegram » : l'application s'ouvre sur notre robot.", "المس « افتح تيليغرام »: يفتح التطبيق على برنامجنا.")}</li>
       <li>{L("Touchez <b>DÉMARRER</b> en bas de l'écran. Rien d'autre à écrire : vos choix sont déjà dans le lien.", "المس <b>ابدأ</b> أسفل الشاشة. لا شيء آخر تكتبه: اختياراتك موجودة في الرابط.")}</li>
-      <li>{L("Le robot vous répond <b>le matin suivant, vers 8 h</b>, avec vos premiers concours, puis chaque matin. Vous pouvez fermer Telegram en attendant.", "يجيبك البرنامج <b>في الصباح الموالي، حوالي الساعة ⁦8⁩</b>، بأولى مناظراتك، ثم كل صباح. يمكنك غلق تيليغرام في الأثناء.")}</li>
+      <li>{L("Le robot vous répond <b>le matin suivant, vers 8 h</b>. Vos concours arrivent chaque matin dès réception de votre paiement (ci-dessous). Vous pouvez fermer Telegram en attendant.", "يجيبك البرنامج <b>في الصباح الموالي، حوالي الساعة ⁦8⁩</b>. تصلك مناظراتك كل صباح فور استلام دفعك (أسفله). يمكنك غلق تيليغرام في الأثناء.")}</li>
     </ol>
     <a class="btn-telegram" id="abo-ouvrir-tg" href="https://t.me/{ABO['robot']}" target="_blank" rel="noopener">{L("Ouvrir Telegram", "افتح تيليغرام")}</a>
     <p class="petit">{L("Pas Telegram ? Il s'installe en une minute (Google Play, App Store), puis revenez toucher le bouton. En attendant, toute la liste des concours reste gratuite sur ce site.", "ليس لديك تيليغرام؟ يُثبَّت في دقيقة (Google Play، App Store)، ثم عد والمس الزر. في الأثناء، قائمة المناظرات كاملة مجانية في هذا الموقع.")}</p>
     <h3>{L("Paiement", "الدفع")}</h3>
-    <p>{L("Après l'essai (ou tout de suite si vous avez choisi de payer directement), payez par D17 ou IZI, avec pour motif votre code personnel :", "بعد التجربة (أو فورًا إن اخترت الدفع مباشرة)، ادفع عبر ⁨D17⁩ أو ⁨IZI⁩ مع ذكر رمزك الشخصي كسبب للدفع:")}</p>
+    <p>{L("Payez par D17 ou IZI, avec pour motif votre code personnel : vos alertes commencent dès réception du paiement.", "ادفع عبر ⁨D17⁩ أو ⁨IZI⁩ مع ذكر رمزك الشخصي كسبب للدفع: تبدأ تنبيهاتك فور استلام الدفع.")}</p>
     {liste_paiements("../")}
     {lien_preuve("abo-preuve-apres")}
     <p class="petit">{L(f"Pas de renouvellement automatique : nous vous prévenons {rj} jours avant la fin.", f"لا تجديد آلي: نعلمك قبل النهاية بـ{ISO(rj)} أيام.")}</p>
@@ -578,14 +576,14 @@ def pages_alertes(v, maj):
 <p class="avert">{L("La liste des concours reste <b>gratuite, sans inscription</b>, sur ce site. L'abonnement ajoute seulement l'alerte personnalisée et le suivi sur Telegram. Ce site n'est pas officiel : l'inscription aux concours se fait toujours sur le portail officiel.",
                     "قائمة المناظرات تبقى <b>مجانية ودون تسجيل</b> في هذا الموقع. الاشتراك يضيف فقط التنبيه الشخصي والمتابعة على تيليغرام. هذا الموقع ليس رسميًا: الترشح يتم دائمًا في البوابة الرسمية.")}</p>
 {AVIS}"""
-    titre = f"Alertes concours Tunisie sur Telegram : votre métier, votre gouvernorat — {essai} jours gratuits | Alerte Concours Tunisie"
+    titre = f"Alertes concours Tunisie sur Telegram : votre métier, votre gouvernorat — {p3} DT / 3 mois | Alerte Concours Tunisie"
     desc = (f"Recevez chaque matin sur Telegram les nouveaux concours publics de votre métier et de votre gouvernorat, et le suivi de vos concours "
-            f"(convocations, résultats). {p3} DT / 3 mois ou {pa} DT / an, {essai} jours d'essai gratuit, sans renouvellement automatique.")
+            f"(convocations, résultats). {p3} DT / 3 mois ou {pa} DT / an, sans renouvellement automatique.")
     res = {"alertes/": page("alertes/", "../", titre, desc, hero, contenu, v, maj, scripts=("abonnement.js",))}
 
     hero = f"""    <p class="fil"><a href="../../">{L("Accueil", "الرئيسية")}</a> › <a href="../">{L("Alertes", "التنبيهات")}</a> › {L("Conditions", "الشروط")}</p>
     <h1>{L("Conditions de l'abonnement", "شروط الاشتراك")}</h1>
-    <p class="intro">{L("Alertes concours : prix, essai gratuit, paiement, données personnelles, arrêt.", "تنبيهات المناظرات: السعر، التجربة المجانية، الدفع، المعطيات الشخصية، الإيقاف.")}</p>"""
+    <p class="intro">{L("Alertes concours : prix, paiement, données personnelles, arrêt.", "تنبيهات المناظرات: السعر، الدفع، المعطيات الشخصية، الإيقاف.")}</p>"""
     num = ABO["numero"]
     sections = [
         ("1. Le service", "1. الخدمة",
@@ -594,25 +592,22 @@ def pages_alertes(v, maj):
         ("2. Prix", "2. السعر",
          f"{p3} DT pour 3 mois ou {pa} DT pour un an, en dinars tunisiens. Les frais de l'application de paiement (environ 2 DT) sont à la charge de l'abonné. Le prix affiché au moment de l'inscription s'applique à toute la période payée.",
          f"{ISO(p3)} دينار لـ⁦3⁩ أشهر أو {ISO(pa)} دينار للسنة. معاليم تطبيق الدفع (حوالي ⁦2⁩ د) على حساب المشترك. السعر المعروض عند التسجيل يُطبَّق على كامل المدة المدفوعة."),
-        ("3. Essai gratuit", "3. التجربة المجانية",
-         f"Les {essai} premiers jours sont gratuits, sans paiement et sans engagement. Sans paiement à la fin de l'essai, l'alerte s'arrête simplement.",
-         f"الأيام الـ{ISO(essai)} الأولى مجانية، دون دفع ودون التزام. إذا لم يتم الدفع في نهاية التجربة، يتوقف التنبيه ببساطة."),
-        ("4. Paiement", "4. الدفع",
-         f"Paiement par D17 ou IZI au {num}, avec pour motif le code personnel de l'abonné (donné à l'inscription), puis preuve envoyée par WhatsApp au même numéro. La période payée commence après l'essai gratuit ou après la période déjà payée.",
-         f"الدفع عبر ⁨D17⁩ أو ⁨IZI⁩ على الرقم {ISO(num)} مع ذكر الرمز الشخصي للمشترك (يُعطى عند التسجيل)، ثم إرسال الإثبات عبر واتساب على نفس الرقم. تبدأ المدة المدفوعة بعد التجربة المجانية أو بعد المدة المدفوعة سابقًا."),
-        ("5. Pas de renouvellement automatique", "5. لا تجديد آلي",
+        ("3. Paiement", "3. الدفع",
+         f"Paiement par D17 ou IZI au {num}, avec pour motif le code personnel de l'abonné (donné à l'inscription), puis preuve envoyée par WhatsApp au même numéro. La période payée commence le jour de l'activation, ou après la période déjà payée.",
+         f"الدفع عبر ⁨D17⁩ أو ⁨IZI⁩ على الرقم {ISO(num)} مع ذكر الرمز الشخصي للمشترك (يُعطى عند التسجيل)، ثم إرسال الإثبات عبر واتساب على نفس الرقم. تبدأ المدة المدفوعة يوم التفعيل، أو بعد المدة المدفوعة سابقًا."),
+        ("4. Pas de renouvellement automatique", "4. لا تجديد آلي",
          f"Il n'y a aucun renouvellement automatique : un rappel est envoyé {rj} jours avant la fin ; sans nouveau paiement, l'alerte s'arrête simplement à la date de fin.",
          f"لا يوجد أي تجديد آلي: يُرسل تذكير قبل النهاية بـ{ISO(rj)} أيام، ودون دفع جديد يتوقف التنبيه ببساطة في تاريخ النهاية."),
-        ("6. Arrêt", "6. الإيقاف",
-         "L'abonné peut arrêter les alertes à tout moment, en envoyant /stop au robot Telegram ou en nous écrivant sur WhatsApp. Pendant l'essai gratuit, rien n'est dû. Une période déjà payée n'est pas renouvelée.",
-         "يمكن للمشترك إيقاف التنبيهات في أي وقت بإرسال ⁨/stop⁩ إلى برنامج تيليغرام أو بمراسلتنا عبر واتساب. خلال التجربة المجانية لا يُستحق أي مبلغ. المدة المدفوعة لا تُجدَّد."),
-        ("7. Limites", "7. الحدود",
+        ("5. Arrêt", "5. الإيقاف",
+         "L'abonné peut arrêter les alertes à tout moment, en envoyant /stop au robot Telegram ou en nous écrivant sur WhatsApp. Une période déjà payée n'est pas renouvelée.",
+         "يمكن للمشترك إيقاف التنبيهات في أي وقت بإرسال ⁨/stop⁩ إلى برنامج تيليغرام أو بمراسلتنا عبر واتساب. المدة المدفوعة لا تُجدَّد."),
+        ("6. Limites", "6. الحدود",
          "Les concours et les nouvelles viennent du portail officiel des concours publics (concours.gov.tn). Le classement par métier et par gouvernorat est automatique et peut se tromper ; une annonce peut manquer si le portail est en panne. Seul le portail officiel fait foi : vérifiez toujours l'avis officiel. Ce site n'est pas officiel et ne s'occupe pas de votre candidature.",
          "المناظرات والأخبار مصدرها البوابة الرسمية للمناظرات العمومية (concours.gov.tn). الترتيب حسب الاختصاص والولاية آلي وقد يخطئ، وقد يغيب إعلان إذا تعطلت البوابة. البوابة الرسمية هي المرجع الوحيد: اطّلع دائمًا على البلاغ الرسمي. هذا الموقع ليس رسميًا ولا يتولى ترشحك."),
-        ("8. Données personnelles", "8. المعطيات الشخصية",
+        ("7. Données personnelles", "7. المعطيات الشخصية",
          "Nous gardons seulement : nom, téléphone, e-mail s'il est donné, métiers, gouvernorats et concours suivis, dates de l'abonnement et identifiant Telegram. Elles servent uniquement à envoyer les alertes, sont conservées dans un espace privé, ne sont jamais publiées ni vendues, et sont supprimées sur simple demande (WhatsApp). Le formulaire passe par le service Formspree et les alertes par Telegram. Pour vous contacter au sujet de votre abonnement, nous gardons votre nom Telegram et, si vous le partagez, votre numéro. Ils ne sont jamais publiés ni donnés à personne ; envoyez /oublier au robot pour les effacer.",
          "نحتفظ فقط بـ: الاسم، الهاتف، البريد الإلكتروني إن وُجد، الاختصاصات والولايات والمناظرات المتابَعة، تواريخ الاشتراك ومعرّف تيليغرام. تُستعمل فقط لإرسال التنبيهات، وتُحفظ في فضاء خاص، ولا تُنشر ولا تُباع أبدًا، وتُحذف بمجرد الطلب (واتساب). تمر الاستمارة عبر خدمة ⁨Formspree⁩ والتنبيهات عبر تيليغرام. للتواصل معك بخصوص اشتراكك، نحتفظ باسمك على تيليغرام، وبرقمك إن شاركته. لا يُنشران ولا يُعطيان لأي أحد أبدًا؛ أرسل ⁨/oublier⁩ إلى البرنامج لحذفهما."),
-        ("9. Contact", "9. الاتصال", f"WhatsApp : {num}.", f"واتساب: {ISO(num)}."),
+        ("8. Contact", "8. الاتصال", f"WhatsApp : {num}.", f"واتساب: {ISO(num)}."),
     ]
     corps = "\n".join(f"  <h2>{L(a, b)}</h2>\n  <p>{L(c, d)}</p>" for a, b, c, d in sections)
     contenu = f"""<section class="carte conditions">
@@ -620,7 +615,7 @@ def pages_alertes(v, maj):
   <p><a class="btn-pro" href="../#inscription">{L("Retour à l'inscription", "العودة إلى التسجيل")}</a></p>
 </section>"""
     titre = "Conditions de l'abonnement Alertes concours (Telegram) | Alerte Concours Tunisie"
-    desc = (f"Conditions d'Alertes concours : {p3} DT / 3 mois ou {pa} DT / an, {essai} jours d'essai gratuit, "
+    desc = (f"Conditions d'Alertes concours : {p3} DT / 3 mois ou {pa} DT / an, "
             "pas de renouvellement automatique, paiement D17 ou IZI, données personnelles et arrêt.")
     res["alertes/conditions/"] = page("alertes/conditions/", "../../", titre, desc, hero, contenu, v, maj)
     return res

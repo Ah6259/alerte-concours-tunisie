@@ -174,15 +174,23 @@ if (JSDOM) {
     && acc.includes('href="ministeres/"') && lire("actualites/index.html").includes('href="../ministeres/"') && sm.includes("ministeres/</loc>")); }
 // ---- Alertes concours (abonnement Telegram, 08/10/2026) : page, paiement, formulaire, rien de privé dans ce dépôt
 const al = lire("alertes/index.html");
-check("alertes : prix 15 DT / 3 mois ou 39 DT / an, 7 jours d'essai gratuit, pas de renouvellement automatique",
-  /15 DT \/ 3 mois/.test(al) && /39 DT \/ an/.test(al) && /7 jours d'essai gratuit/.test(al) && /Pas de renouvellement automatique/.test(al));
+check("alertes : prix 15 DT / 3 mois ou 39 DT / an, pas de renouvellement automatique, alertes dès réception du paiement",
+  /15 DT \/ 3 mois/.test(al) && /39 DT \/ an/.test(al) && /Pas de renouvellement automatique/.test(al) && /dès réception du paiement/.test(al));
+{ // 20/10/2026 (décision d'Ahmed : « Enlève tous les essais gratuits ») : aucune page, aucun script ni le manifeste ne parle d'essai gratuit
+  const fichiers = []; (function parcourir(d) { for (const f of readdirSync(d)) { const c = join(d, f); if (f === "node_modules" || f === ".git" || f === "tools") continue;
+    statSync(c).isDirectory() ? parcourir(c) : /\.(html|js|json|webmanifest|txt|xml)$/.test(f) && fichiers.push(c); } })(root);
+  const ESSAI = /essais? gratuits?|jours? d(?:'|&#x27;|&#39;|’)essai|(?:votre|pendant l(?:'|&#x27;|&#39;|’)|après l(?:'|&#x27;|&#39;|’)|fin de l(?:'|&#x27;|&#39;|’))essai\b|free[ -]trial|trial (?:until|period)|تجربة مجانية|التجربة المجانية|تجربتك|بعد التجربة|نهاية التجربة/i;
+  const fautifs = fichiers.filter(c => ESSAI.test(readFileSync(c, "utf8"))).map(c => c.slice(root.length + 1));
+  check(`aucune page ne parle d'essai gratuit / free trial / تجربة مجانية (${fichiers.length} fichiers lus)` + (fautifs.length ? " : " + fautifs.slice(0, 5).join(", ") : ""),
+    fichiers.length > 100 && !fautifs.length);
+  check("formulaire : plus de formule « essai » (3 mois cochés par défaut)", !/value="essai/.test(al) && /name="formule" value="3 mois" checked/.test(al)); }
 check("alertes : paiement en 3 étapes D17 / IZI au 24 321 390 (logos, écrans d'exemple), phrase de confiance, preuve WhatsApp",
   /<ol class="paie-etapes">/.test(al) && /class="paie-confiance"/.test(al) && al.includes("24 321 390") && /href="https:\/\/wa\.me\/21624321390\?text=/.test(al)
   && ["d17.png", "izi.png", "transfert-d17.svg", "transfert-izi.svg"].every(f => existsSync(join(root, "assets/paiement", f))) && /src="\.\.\/assets\/paiement\/d17\.png"/.test(al));
 check("alertes : formulaire Formspree (mwlpakqj) : nom, téléphone, métiers, gouvernorats (+ « Toute la Tunisie »), concours à suivre, formule, conditions",
   /<form id="abo-form" action="https:\/\/formspree\.io\/f\/mwlpakqj"/.test(al) && /name="nom" required/.test(al) && /name="telephone" required/.test(al)
   && (al.match(/name="metiers"/g) || []).length >= 10 && (al.match(/name="gouvernorats"/g) || []).length === 25 && /id="g-tous"/.test(al)
-  && /name="suivis"/.test(al) && (al.match(/name="formule"/g) || []).length === 3 && /href="conditions\/"/.test(al));
+  && /name="suivis"/.test(al) && (al.match(/name="formule"/g) || []).length === 2 && /href="conditions\/"/.test(al));
 check("alertes : script externe abonnement.js sur cette page seulement", /<script src="\.\.\/assets\/abonnement\.js\?v=/.test(al) && !/abonnement\.js/.test(acc));
 { // 18/10/2026 : le motif du paiement est le CODE PERSONNEL donné à l'inscription (#abo-code) — jamais « votre nom » / « nom de l'entreprise » ailleurs sur la page ou dans les conditions
   const sansBalises = f => lire(f).replace(/<[^>]*>/g, " ");
@@ -192,8 +200,8 @@ check("alertes : script externe abonnement.js sur cette page seulement", /<scrip
     ["alertes/index.html", "alertes/conditions/index.html"].every(f => contradictions.every(r => !r.test(sansBalises(f)))));
 }
 const co = lire("alertes/conditions/index.html");
-check("conditions : prix, essai, paiement, arrêt (/stop), données personnelles, non officiel", /15 DT pour 3 mois/.test(co) && /\/stop/.test(co) && /Données personnelles/.test(co) && /pas officiel/.test(co));
-check("accueil + pages : gros bouton doré vers alertes/ (7 jours d'essai)", /class="btn-pro-grand" id="btn-alertes" href="alertes\/"/.test(acc) && /7 jours d'essai gratuit/.test(acc)
+check("conditions : prix, paiement, arrêt (/stop), données personnelles, non officiel", /15 DT pour 3 mois/.test(co) && /\/stop/.test(co) && /Données personnelles/.test(co) && /pas officiel/.test(co));
+check("accueil + pages : gros bouton doré vers alertes/ (avec le prix)", /class="btn-pro-grand" id="btn-alertes" href="alertes\/"/.test(acc) && /15 DT \/ 3 mois/.test(acc)
   && /class="btn-pro-grand" id="btn-alertes" href="\.\.\/\.\.\/alertes\/"/.test(lire(`gouvernorat/${GOUVS[0]}/index.html`)));
 check("sitemap : alertes/ et alertes/conditions/", sm.includes("alertes/</loc>") && sm.includes("alertes/conditions/</loc>"));
 check("aucune donnée d'abonné dans ce dépôt public (abonnes.json, chat_id, jeton Telegram)",
@@ -223,16 +231,16 @@ if (JSDOM) {
     envois.length === 1 && /formspree\.io\/f\/mwlpakqj/.test(envois[0][0]) && corps.get("telephone") === "24321390" && corps.get("suivis") === "2390, 2412"
     && /suivis: 2390,2412/.test(corps.get("pour_activer")) && f.hidden && !d.getElementById("apres-abo").hidden
     && /Test%20Candidat/.test(d.getElementById("abo-preuve-apres").getAttribute("href")));
-  // 14/10/2026 (règle commune § 15 : essai immédiat) : code créé sur place, lien Telegram avec les choix, gestes expliqués avant
+  // 14/10/2026 (règle commune § 15 : inscription immédiate ; plus d'essai depuis le 20/10/2026) : code créé sur place, lien Telegram avec les choix, gestes expliqués avant
   const code = d.getElementById("abo-code").textContent, lienTg = d.getElementById("abo-ouvrir-tg").getAttribute("href");
   const mSorted = f.getAttribute("data-metiers").split(","), premier = f.querySelector('#abo-metiers input').value;
-  check("essai immédiat : code de 6 caractères affiché, « Ouvrir Telegram » avec les choix (start=e<CODE>_<métiers>_x), code envoyé à Formspree et dans WhatsApp",
+  check("inscription immédiate : code de 6 caractères affiché, « Ouvrir Telegram » avec les choix (start=e<CODE>_<métiers>_x), code envoyé à Formspree et dans WhatsApp",
     /^[A-HJ-NP-Z2-9]{6}$/.test(code) && lienTg === `https://t.me/AlerteConcoursTunisieBot?start=e${code}_${w.ESSAI_ALERTES.encoder([premier], mSorted)}_x`
     && lienTg.split("start=")[1].length <= 64 && corps.get("code") === code && /code%20/.test(d.getElementById("abo-preuve-apres").getAttribute("href")));
-  check("essai immédiat : 3 gestes expliqués avant Telegram (DÉMARRER, réponse le matin suivant vers 8 h) ; plus d'« activation sous 24 heures »",
+  check("inscription immédiate : 3 gestes expliqués avant Telegram (DÉMARRER, réponse le matin suivant vers 8 h) ; plus d'« activation sous 24 heures »",
     d.querySelectorAll("#apres-abo .etapes-tg li").length === 3 && /DÉMARRER/.test(d.getElementById("apres-abo").textContent)
     && /le matin suivant, vers 8 h/.test(d.getElementById("apres-abo").textContent) && !/24 heures/.test(al));
-  check("essai immédiat : listes triées du formulaire = cases du formulaire", JSON.stringify([...f.querySelectorAll('#abo-metiers input')].map(x => x.value).sort()) === JSON.stringify(mSorted));
+  check("inscription immédiate : listes triées du formulaire = cases du formulaire", JSON.stringify([...f.querySelectorAll('#abo-metiers input')].map(x => x.value).sort()) === JSON.stringify(mSorted));
 }
 
 // 15/10/2026 (demande d'Ahmed) : « Votre avis » = e-mail obligatoire + confirmation bien visible dans la carte

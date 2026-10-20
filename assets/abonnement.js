@@ -79,7 +79,8 @@
       if (!gouv.length) { dire("err", "Cochez au moins un gouvernorat (ou « Toute la Tunisie »).", "اختر ولاية واحدة على الأقل (أو «كل الولايات»)."); return; }
       if (!champ("conditions").checked) { dire("err", "Cochez « J'accepte les conditions de l'abonnement ».", "يجب الموافقة على شروط الاشتراك."); return; }
 
-      // Essai IMMÉDIAT (14/10/2026) : code personnel créé ici + lien Telegram qui contient les choix (le robot crée l'essai seul)
+      // Code personnel créé ici + lien Telegram qui contient les choix (le robot crée l'inscription, en attente du paiement :
+      // aucun essai depuis le 20/10/2026)
       var code = nouveauCode();
       var lien = "https://t.me/" + form.getAttribute("data-robot") + "?start=e" + code + "_" +
         encoder(metiers, (form.getAttribute("data-metiers") || "").split(",")) + "_" + encoder(gouv, (form.getAttribute("data-gouv") || "").split(","));
@@ -106,7 +107,7 @@
       donnees.set("metiers", metiers.join(", "));
       donnees.set("gouvernorats", gouv.join(", "));
       donnees.set("suivis", suivis.join(", "));
-      donnees.set("code", code);                               // code de l'essai (motif du paiement)
+      donnees.set("code", code);                               // code personnel (motif du paiement)
       // ligne prête pour le bouton « activer-abonne » (dépôt privé)
       donnees.set("pour_activer", "nom: " + val("nom") + " ; telephone: " + tel +
         " ; metiers: " + metiers.join(",") + " ; gouvernorats: " + gouv.join(",") + " ; suivis: " + suivis.join(","));
@@ -119,9 +120,9 @@
           fini();
         })
         .catch(function () {
-          // l'essai ne dépend pas de cet envoi : le robot Telegram le crée seul ; on continue quand même
-          dire("", "Inscription non envoyée (connexion), mais votre essai fonctionne : ouvrez Telegram ci-dessous.",
-               "لم يُرسل التسجيل (الاتصال)، لكن تجربتك تعمل: افتح تيليغرام أسفله.");
+          // l'inscription ne dépend pas de cet envoi : le robot Telegram la crée seul ; on continue quand même
+          dire("", "Inscription non envoyée (connexion), mais votre code fonctionne : ouvrez Telegram ci-dessous.",
+               "لم يُرسل التسجيل (الاتصال)، لكن رمزك يعمل: افتح تيليغرام أسفله.");
           fini();
         })
         .then(function () { bouton.disabled = false; });
