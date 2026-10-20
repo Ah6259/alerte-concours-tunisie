@@ -83,7 +83,7 @@ def relever(conf):
             total += 1
             try:
                 code, texte = telecharger(url)
-                (SORTIE / f"{nom_fichier(nom)}.html").write_text(texte, encoding="utf-8")
+                (SORTIE / f"{nom_fichier(nom)}.html").write_text(texte, encoding="utf-8", newline="\n")
                 resume["pages"].append({"nom": nom_fichier(nom), "url": url, "code": code, "taille": len(texte)})
                 if p.get("suivre") and nom == p["nom"]:
                     liens = []
@@ -97,7 +97,7 @@ def relever(conf):
             except Exception as e:
                 resume["pages"].append({"nom": nom_fichier(nom), "url": url, "erreur": str(e)[:200]})
             time.sleep(PAUSE)
-    (SORTIE / "releve.json").write_text(json.dumps(resume, ensure_ascii=False, indent=1), encoding="utf-8")
+    (SORTIE / "releve.json").write_text(json.dumps(resume, ensure_ascii=False, indent=1), encoding="utf-8", newline="\n")
     return resume
 
 
