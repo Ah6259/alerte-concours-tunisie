@@ -2,24 +2,24 @@
  "mois": {
   "2026-10": {
    "premier_jour": "2026-10-17",
-   "dernier_jour": "2026-10-19",
+   "dernier_jour": "2026-10-20",
    "fini": false,
    "chiffres": {
-    "au": "2026-10-19",
+    "au": "2026-10-20",
     "debut": "2026-10-09",
     "ouverts": {
-     "n": 61,
-     "postes": 117,
+     "n": 64,
+     "postes": 120,
      "sans_postes": 0
     },
     "national": {
-     "n": 21,
-     "postes": 44,
+     "n": 27,
+     "postes": 53,
      "sans_postes": 0
     },
     "locaux": {
-     "n": 40,
-     "postes": 73,
+     "n": 37,
+     "postes": 67,
      "sans_postes": 0
     },
     "finances": 0,
@@ -43,11 +43,6 @@
       "sousse",
       4,
       11
-     ],
-     [
-      "bizerte",
-      3,
-      6
      ],
      [
       "sfax",
@@ -78,8 +73,8 @@
      ],
      [
       "autre",
-      12,
-      29
+      10,
+      24
      ],
      [
       "technicien",
@@ -88,13 +83,13 @@
      ],
      [
       "administratif",
-      6,
-      10
+      9,
+      14
      ],
      [
       "ingenieur",
-      4,
-      11
+      6,
+      15
      ],
      [
       "chauffeur",
@@ -123,6 +118,12 @@
       "الديوان الوطني للمناجم",
       6,
       12,
+      "national"
+     ],
+     [
+      "الشركة الوطنية العقارية للبلاد التونسية للجنوب",
+      6,
+      9,
       "national"
      ],
      [
@@ -163,31 +164,35 @@
      ]
     ],
     "semaine": {
-     "n": 11,
-     "postes": 18,
+     "n": 10,
+     "postes": 14,
      "sans_postes": 0,
-     "jusqu_au": "2026-10-25"
+     "jusqu_au": "2026-10-26"
     },
     "nouveaux": {
-     "n": 15,
-     "postes": 28,
+     "n": 21,
+     "postes": 37,
      "sans_postes": 0
     },
     "nouveaux_metiers": [
      [
+      "administratif",
+      6
+     ],
+     [
       "ouvrier",
-      5
+      6
      ],
      [
       "autre",
       4
      ],
      [
-      "administratif",
-      3
+      "chauffeur",
+      2
      ],
      [
-      "chauffeur",
+      "ingenieur",
       2
      ],
      [
@@ -196,8 +201,8 @@
      ]
     ],
     "clos": {
-     "n": 1,
-     "postes": 6,
+     "n": 4,
+     "postes": 12,
      "sans_postes": 0
     },
     "resultats": {
@@ -205,11 +210,11 @@
      "final": 0
     },
     "avis": {
-     "n": 11,
+     "n": 15,
      "types": {
-      "resultats": 4,
-      "candidatures": 3,
-      "nouveau": 4
+      "resultats": 6,
+      "nouveau": 5,
+      "candidatures": 4
      }
     }
    },
@@ -1108,6 +1113,534 @@
      "gouvernorat": "kairouan",
      "cloture_candidatures": "2020-05-11",
      "vu_le": "2026-10-18",
+     "publies": []
+    },
+    "1204": {
+     "postes": 1,
+     "metier": "technicien",
+     "gouvernorat": "kairouan",
+     "cloture_candidatures": "2021-09-21",
+     "vu_le": "2026-10-20",
+     "publies": []
+    },
+    "1196": {
+     "postes": 1,
+     "metier": "ingenieur",
+     "gouvernorat": "tunis",
+     "cloture_candidatures": "2021-09-30",
+     "vu_le": "2026-10-20",
+     "publies": []
+    },
+    "1232": {
+     "postes": 1,
+     "metier": "ingenieur",
+     "gouvernorat": "national",
+     "cloture_candidatures": "2021-10-06",
+     "vu_le": "2026-10-20",
+     "publies": []
+    },
+    "1224": {
+     "postes": 1,
+     "metier": "technicien",
+     "gouvernorat": "jendouba",
+     "cloture_candidatures": "2021-10-12",
+     "vu_le": "2026-10-20",
+     "publies": []
+    },
+    "1243": {
+     "postes": 1,
+     "metier": "autre",
+     "gouvernorat": "monastir",
+     "cloture_candidatures": "2021-10-29",
+     "vu_le": "2026-10-20",
+     "publies": []
+    },
+    "1247": {
+     "postes": 1,
+     "metier": "ingenieur",
+     "gouvernorat": "jendouba",
+     "cloture_candidatures": "2021-10-30",
+     "vu_le": "2026-10-20",
+     "publies": []
+    },
+    "1248": {
+     "postes": 1,
+     "metier": "technicien",
+     "gouvernorat": "jendouba",
+     "cloture_candidatures": "2021-10-30",
+     "vu_le": "2026-10-20",
+     "publies": []
+    },
+    "1201": {
+     "postes": 2,
+     "metier": "technicien",
+     "gouvernorat": "tataouine",
+     "cloture_candidatures": "2021-11-01",
+     "vu_le": "2026-10-20",
+     "publies": []
+    },
+    "1244": {
+     "postes": 1,
+     "metier": "ingenieur",
+     "gouvernorat": "mahdia",
+     "cloture_candidatures": "2021-11-01",
+     "vu_le": "2026-10-20",
+     "publies": []
+    },
+    "1258": {
+     "postes": 2,
+     "metier": "technicien",
+     "gouvernorat": "kairouan",
+     "cloture_candidatures": "2021-11-24",
+     "vu_le": "2026-10-20",
+     "publies": []
+    },
+    "1363": {
+     "postes": 1,
+     "metier": "ingenieur",
+     "gouvernorat": "bizerte",
+     "cloture_candidatures": "2022-02-21",
+     "vu_le": "2026-10-20",
+     "publies": []
+    },
+    "1369": {
+     "postes": 2,
+     "metier": "technicien",
+     "gouvernorat": "kairouan",
+     "cloture_candidatures": "2022-02-28",
+     "vu_le": "2026-10-20",
+     "publies": []
+    },
+    "1400": {
+     "postes": 1,
+     "metier": "technicien",
+     "gouvernorat": "beja",
+     "cloture_candidatures": "2022-04-08",
+     "vu_le": "2026-10-20",
+     "publies": []
+    },
+    "1408": {
+     "postes": 7,
+     "metier": "ingenieur",
+     "gouvernorat": "national",
+     "cloture_candidatures": "2022-04-11",
+     "vu_le": "2026-10-20",
+     "publies": []
+    },
+    "1418": {
+     "postes": 9,
+     "metier": "ingenieur",
+     "gouvernorat": "national",
+     "cloture_candidatures": "2022-04-11",
+     "vu_le": "2026-10-20",
+     "publies": []
+    },
+    "1454": {
+     "postes": 1,
+     "metier": "technicien",
+     "gouvernorat": "nabeul",
+     "cloture_candidatures": "2022-06-14",
+     "vu_le": "2026-10-20",
+     "publies": []
+    },
+    "1496": {
+     "postes": 1,
+     "metier": "technicien",
+     "gouvernorat": "national",
+     "cloture_candidatures": "2022-07-20",
+     "vu_le": "2026-10-20",
+     "publies": []
+    },
+    "1475": {
+     "postes": 1,
+     "metier": "technicien",
+     "gouvernorat": "mahdia",
+     "cloture_candidatures": "2022-08-01",
+     "vu_le": "2026-10-20",
+     "publies": []
+    },
+    "1527": {
+     "postes": 1,
+     "metier": "technicien",
+     "gouvernorat": "sidi-bouzid",
+     "cloture_candidatures": "2022-09-02",
+     "vu_le": "2026-10-20",
+     "publies": []
+    },
+    "1551": {
+     "postes": 1,
+     "metier": "technicien",
+     "gouvernorat": "mahdia",
+     "cloture_candidatures": "2022-11-11",
+     "vu_le": "2026-10-20",
+     "publies": []
+    },
+    "1552": {
+     "postes": 2,
+     "metier": "autre",
+     "gouvernorat": "ariana",
+     "cloture_candidatures": "2022-11-15",
+     "vu_le": "2026-10-20",
+     "publies": []
+    },
+    "1558": {
+     "postes": 1,
+     "metier": "ingenieur",
+     "gouvernorat": "ariana",
+     "cloture_candidatures": "2022-11-15",
+     "vu_le": "2026-10-20",
+     "publies": []
+    },
+    "1570": {
+     "postes": 1,
+     "metier": "ingenieur",
+     "gouvernorat": "sidi-bouzid",
+     "cloture_candidatures": "2022-11-25",
+     "vu_le": "2026-10-20",
+     "publies": []
+    },
+    "1572": {
+     "postes": 1,
+     "metier": "ingenieur",
+     "gouvernorat": "sfax",
+     "cloture_candidatures": "2022-11-28",
+     "vu_le": "2026-10-20",
+     "publies": []
+    },
+    "1579": {
+     "postes": 4,
+     "metier": "technicien",
+     "gouvernorat": "sfax",
+     "cloture_candidatures": "2022-11-28",
+     "vu_le": "2026-10-20",
+     "publies": []
+    },
+    "1583": {
+     "postes": 1,
+     "metier": "ingenieur",
+     "gouvernorat": "monastir",
+     "cloture_candidatures": "2022-11-30",
+     "vu_le": "2026-10-20",
+     "publies": []
+    },
+    "1587": {
+     "postes": 1,
+     "metier": "technicien",
+     "gouvernorat": "gabes",
+     "cloture_candidatures": "2022-12-01",
+     "vu_le": "2026-10-20",
+     "publies": []
+    },
+    "1631": {
+     "postes": 1,
+     "metier": "technicien",
+     "gouvernorat": "sousse",
+     "cloture_candidatures": "2022-12-18",
+     "vu_le": "2026-10-20",
+     "publies": []
+    },
+    "1603": {
+     "postes": 1,
+     "metier": "technicien",
+     "gouvernorat": "kairouan",
+     "cloture_candidatures": "2022-12-30",
+     "vu_le": "2026-10-20",
+     "publies": []
+    },
+    "1632": {
+     "postes": 1,
+     "metier": "technicien",
+     "gouvernorat": "sousse",
+     "cloture_candidatures": "2023-01-20",
+     "vu_le": "2026-10-20",
+     "publies": []
+    },
+    "1642": {
+     "postes": 5,
+     "metier": "technicien",
+     "gouvernorat": "national",
+     "cloture_candidatures": "2023-01-27",
+     "vu_le": "2026-10-20",
+     "publies": []
+    },
+    "1697": {
+     "postes": 14,
+     "metier": "chauffeur",
+     "gouvernorat": "national",
+     "cloture_candidatures": "2023-06-28",
+     "vu_le": "2026-10-20",
+     "publies": []
+    },
+    "1721": {
+     "postes": 73,
+     "metier": "ingenieur",
+     "gouvernorat": "national",
+     "cloture_candidatures": "2023-11-27",
+     "vu_le": "2026-10-20",
+     "publies": []
+    },
+    "1749": {
+     "postes": 1,
+     "metier": "ingenieur",
+     "gouvernorat": "national",
+     "cloture_candidatures": "2023-12-28",
+     "vu_le": "2026-10-20",
+     "publies": []
+    },
+    "1766": {
+     "postes": 1,
+     "metier": "ingenieur",
+     "gouvernorat": "national",
+     "cloture_candidatures": "2024-01-08",
+     "vu_le": "2026-10-20",
+     "publies": []
+    },
+    "1779": {
+     "postes": 1,
+     "metier": "ouvrier",
+     "gouvernorat": "monastir",
+     "cloture_candidatures": "2024-01-29",
+     "vu_le": "2026-10-20",
+     "publies": []
+    },
+    "1814": {
+     "postes": 1,
+     "metier": "technicien",
+     "gouvernorat": "medenine",
+     "cloture_candidatures": "2024-05-15",
+     "vu_le": "2026-10-20",
+     "publies": []
+    },
+    "1843": {
+     "postes": 1,
+     "metier": "ingenieur",
+     "gouvernorat": "sousse",
+     "cloture_candidatures": "2024-07-28",
+     "vu_le": "2026-10-20",
+     "publies": []
+    },
+    "1898": {
+     "postes": 2,
+     "metier": "ingenieur",
+     "gouvernorat": "bizerte",
+     "cloture_candidatures": "2024-09-27",
+     "vu_le": "2026-10-20",
+     "publies": []
+    },
+    "1904": {
+     "postes": 2,
+     "metier": "ingenieur",
+     "gouvernorat": "national",
+     "cloture_candidatures": "2024-10-16",
+     "vu_le": "2026-10-20",
+     "publies": []
+    },
+    "1920": {
+     "postes": 2,
+     "metier": "technicien",
+     "gouvernorat": "national",
+     "cloture_candidatures": "2024-10-21",
+     "vu_le": "2026-10-20",
+     "publies": []
+    },
+    "1930": {
+     "postes": 1,
+     "metier": "ingenieur",
+     "gouvernorat": "ben-arous",
+     "cloture_candidatures": "2024-10-30",
+     "vu_le": "2026-10-20",
+     "publies": []
+    },
+    "1940": {
+     "postes": 1,
+     "metier": "ingenieur",
+     "gouvernorat": "nabeul",
+     "cloture_candidatures": "2024-11-11",
+     "vu_le": "2026-10-20",
+     "publies": []
+    },
+    "1975": {
+     "postes": 1,
+     "metier": "technicien",
+     "gouvernorat": "kasserine",
+     "cloture_candidatures": "2024-11-22",
+     "vu_le": "2026-10-20",
+     "publies": []
+    },
+    "1989": {
+     "postes": 1,
+     "metier": "autre",
+     "gouvernorat": "gabes",
+     "cloture_candidatures": "2024-11-25",
+     "vu_le": "2026-10-20",
+     "publies": []
+    },
+    "1990": {
+     "postes": 2,
+     "metier": "autre",
+     "gouvernorat": "gabes",
+     "cloture_candidatures": "2024-11-25",
+     "vu_le": "2026-10-20",
+     "publies": []
+    },
+    "1998": {
+     "postes": 1,
+     "metier": "technicien",
+     "gouvernorat": "kairouan",
+     "cloture_candidatures": "2024-11-25",
+     "vu_le": "2026-10-20",
+     "publies": []
+    },
+    "1980": {
+     "postes": 1,
+     "metier": "technicien",
+     "gouvernorat": "kasserine",
+     "cloture_candidatures": "2024-11-29",
+     "vu_le": "2026-10-20",
+     "publies": []
+    },
+    "2009": {
+     "postes": 1,
+     "metier": "technicien",
+     "gouvernorat": "kairouan",
+     "cloture_candidatures": "2024-11-29",
+     "vu_le": "2026-10-20",
+     "publies": []
+    },
+    "2012": {
+     "postes": 2,
+     "metier": "technicien",
+     "gouvernorat": "kairouan",
+     "cloture_candidatures": "2024-11-29",
+     "vu_le": "2026-10-20",
+     "publies": []
+    },
+    "2014": {
+     "postes": 1,
+     "metier": "technicien",
+     "gouvernorat": "national",
+     "cloture_candidatures": "2024-11-29",
+     "vu_le": "2026-10-20",
+     "publies": []
+    },
+    "2028": {
+     "postes": 1,
+     "metier": "technicien",
+     "gouvernorat": "monastir",
+     "cloture_candidatures": "2024-11-29",
+     "vu_le": "2026-10-20",
+     "publies": []
+    },
+    "2032": {
+     "postes": 1,
+     "metier": "ingenieur",
+     "gouvernorat": "sousse",
+     "cloture_candidatures": "2024-11-29",
+     "vu_le": "2026-10-20",
+     "publies": []
+    },
+    "2036": {
+     "postes": 1,
+     "metier": "technicien",
+     "gouvernorat": "beja",
+     "cloture_candidatures": "2024-11-29",
+     "vu_le": "2026-10-20",
+     "publies": []
+    },
+    "2018": {
+     "postes": 1,
+     "metier": "technicien",
+     "gouvernorat": "bizerte",
+     "cloture_candidatures": "2024-11-30",
+     "vu_le": "2026-10-20",
+     "publies": []
+    },
+    "2073": {
+     "postes": 1,
+     "metier": "ingenieur",
+     "gouvernorat": "sfax",
+     "cloture_candidatures": "2024-12-03",
+     "vu_le": "2026-10-20",
+     "publies": []
+    },
+    "2047": {
+     "postes": 1,
+     "metier": "ingenieur",
+     "gouvernorat": "jendouba",
+     "cloture_candidatures": "2024-12-30",
+     "vu_le": "2026-10-20",
+     "publies": []
+    },
+    "2074": {
+     "postes": 1,
+     "metier": "ingenieur",
+     "gouvernorat": "sfax",
+     "cloture_candidatures": "2024-12-31",
+     "vu_le": "2026-10-20",
+     "publies": []
+    },
+    "2077": {
+     "postes": 1,
+     "metier": "technicien",
+     "gouvernorat": "jendouba",
+     "cloture_candidatures": "2024-12-31",
+     "vu_le": "2026-10-20",
+     "publies": []
+    },
+    "2090": {
+     "postes": 2,
+     "metier": "ingenieur",
+     "gouvernorat": "national",
+     "cloture_candidatures": "2025-01-23",
+     "vu_le": "2026-10-20",
+     "publies": []
+    },
+    "3299": {
+     "postes": 2,
+     "metier": "ingenieur",
+     "gouvernorat": "national",
+     "cloture_candidatures": "2026-11-23",
+     "vu_le": "2026-10-20",
+     "publies": []
+    },
+    "3300": {
+     "postes": 1,
+     "metier": "administratif",
+     "gouvernorat": "national",
+     "cloture_candidatures": "2026-11-23",
+     "vu_le": "2026-10-20",
+     "publies": []
+    },
+    "3301": {
+     "postes": 1,
+     "metier": "administratif",
+     "gouvernorat": "national",
+     "cloture_candidatures": "2026-11-23",
+     "vu_le": "2026-10-20",
+     "publies": []
+    },
+    "3302": {
+     "postes": 2,
+     "metier": "ingenieur",
+     "gouvernorat": "national",
+     "cloture_candidatures": "2026-11-23",
+     "vu_le": "2026-10-20",
+     "publies": []
+    },
+    "3303": {
+     "postes": 2,
+     "metier": "administratif",
+     "gouvernorat": "national",
+     "cloture_candidatures": "2026-11-23",
+     "vu_le": "2026-10-20",
+     "publies": []
+    },
+    "3304": {
+     "postes": 1,
+     "metier": "ouvrier",
+     "gouvernorat": "national",
+     "cloture_candidatures": "2026-11-23",
+     "vu_le": "2026-10-20",
      "publies": []
     }
    }
