@@ -90,6 +90,19 @@ try:
 finally:
     U.build_opener, R.PAUSE, R.time.sleep = _vrai, _pause, _dormir
 check("portail trop lent : lecture arrêtée après 10 min avec les pages déjà lues (plus d'étape coupée à 15 min)", n == 2 and len(lu) == len(R.lignes(page)) > 0)
+# --- liste coupée une fois par le portail (20/10/2026 : 35 lignes au lieu de 100, robot rouge pour une panne passagère) :
+# la lecture suspecte est refaite et la bonne est gardée ; le rouge ne reste que si chaque essai est coupé
+_lectures, _attentes = [([{"id": i} for i in range(35)], 4), ([{"id": i} for i in range(98)], 10)], []
+lu, n = R.lire_avec_reprise(lambda: _lectures.pop(0), 100, dormir=_attentes.append)
+check("liste coupée une fois par le portail : relue après une pause, la lecture complète est gardée (pas de rouge)",
+      len(lu) == 98 and n == 10 and len(_attentes) == 1 and not R.suspecte(lu, 100))
+_lectures = [([{"id": i} for i in range(30 + k)], 3) for k in range(3)]
+lu, n = R.lire_avec_reprise(lambda: _lectures.pop(0), 100, dormir=lambda s: None)
+check("liste coupée à chaque essai : la meilleure lecture est gardée et reste suspecte (robot rouge, ancien fichier gardé)",
+      len(lu) == 32 and not _lectures and R.suspecte(lu, 100))
+_lectures, _t = [([{"id": 1}], 1), ([{"id": i} for i in range(98)], 10)], iter([0, 600])
+lu, n = R.lire_avec_reprise(lambda: _lectures.pop(0), 100, dormir=lambda s: None, horloge=lambda: next(_t))
+check("lecture suspecte déjà longue (10 min) : pas de nouvel essai (l'étape GitHub serait coupée à 15 min)", len(lu) == 1 and len(_lectures) == 1)
 
 # --- portail des actualités qui ne répond plus (08/10/2026 : étape bloquée 20 min) : arrêt après 3 échecs de suite
 appels = []

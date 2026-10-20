@@ -27,6 +27,8 @@ MAX_PAGES = 200
 DUREE_MAX = 10 * 60       # 14/10/2026 : portail très lent -> on garde ce qui est lu après 10 min (l'étape avait dépassé 15 min)
 JOURS_FERMES_FINANCES = 60  # concours des Finances clos depuis plus longtemps : pas repris
 JOURS_ABSENT = 3          # un concours ouvert qui manque à la lecture est gardé 3 jours
+REPRISE_ATTENTE = 120       # lecture suspecte : nouvel essai après 2 min, puis 4 min (20/10/2026)
+REPRISE_BUDGET = 8 * 60     # ... seulement si tout tient en 8 min (étape GitHub limitée à 15 min)
 SEUIL_CHUTE = 0.5          # moins de 50 % des lignes de la fois précédente : lecture suspecte
 
 # métiers : (slug, nom FR, nom AR, mots du grade). L'ordre compte : le premier qui correspond gagne.
@@ -146,6 +148,29 @@ def fusionner(anciens, nouveaux, jour):
     return nouveaux
 
 
+def suspecte(nouveaux, nb_ancien):
+    return not nouveaux or (nb_ancien >= 20 and len(nouveaux) < SEUIL_CHUTE * nb_ancien)
+
+
+def lire_avec_reprise(lire, nb_ancien, essais=3, attente=REPRISE_ATTENTE, dormir=time.sleep, horloge=time.monotonic,
+                      budget=REPRISE_BUDGET):
+    """20/10/2026 : le portail a coupé sa liste une fois (35 lignes au lieu de 100) et le robot est passé au rouge pour une
+    panne de quelques minutes (la relance suivante était bonne). Une lecture suspecte est refaite (jusqu'à 3 fois, quelques
+    minutes d'écart) ; la meilleure est gardée. Le rouge ne reste que si le portail coupe la liste à chaque essai.
+    Pas de nouvel essai au-delà de REPRISE_BUDGET (l'étape GitHub est arrêtée à 15 min)."""
+    debut = horloge()
+    meilleure = lire()
+    for essai in range(1, essais):
+        if not suspecte(meilleure[0], nb_ancien) or horloge() - debut + attente * essai > budget:
+            break
+        print(f"Lecture suspecte ({len(meilleure[0])} lignes contre {nb_ancien}) : nouvel essai dans {attente * essai} s")
+        dormir(attente * essai)
+        autre = lire()
+        if len(autre[0]) > len(meilleure[0]):
+            meilleure = autre
+    return meilleure
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--max-pages", type=int, default=MAX_PAGES)
@@ -157,10 +182,13 @@ def main():
     if a.fichier:
         nouveaux, pages = lignes(open(a.fichier, encoding="utf-8").read()), 1
     else:
-        nouveaux, pages = lire_portail(a.max_pages)
+        nouveaux, pages = None, 0
     ancien = json.load(open(a.sortie, encoding="utf-8")) if os.path.exists(a.sortie) else {"concours": []}
-    if not nouveaux or (len(ancien["concours"]) >= 20 and len(nouveaux) < SEUIL_CHUTE * len(ancien["concours"])):
-        print(f"ÉCHEC : lecture suspecte ({len(nouveaux)} lignes contre {len(ancien['concours'])} la fois précédente) ; ancien fichier gardé.")
+    nb_ancien = len([c for c in ancien["concours"] if c.get("source") != "finances"])   # même source que la lecture
+    if nouveaux is None:
+        nouveaux, pages = lire_avec_reprise(lambda: lire_portail(a.max_pages), nb_ancien)
+    if suspecte(nouveaux, nb_ancien):
+        print(f"ÉCHEC : lecture suspecte ({len(nouveaux)} lignes contre {nb_ancien} la fois précédente) ; ancien fichier gardé.")
         sys.exit(1)
     # deuxième source : ministère des Finances (une panne ne bloque rien : ses concours de la veille sont gardés)
     limite = (dt.date.fromisoformat(a.aujourdhui) - dt.timedelta(days=JOURS_FERMES_FINANCES)).isoformat()
