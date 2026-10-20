@@ -178,7 +178,7 @@ def main():
     toutes = sorted(connues.values(), key=lambda x: (x.get("vu_le") or "", x.get("revu_le") or ""), reverse=True)[:GARDER]
     os.makedirs(os.path.dirname(a.sortie), exist_ok=True)
     documents = sorted(docs_connus.values(), key=lambda x: (x.get("vu_le") or "", x["ministere"]), reverse=True)[:GARDER]
-    json.dump({"lu_le": a.aujourdhui, "sites": etat, "annonces": toutes, "documents": documents}, open(a.sortie, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
+    json.dump({"lu_le": a.aujourdhui, "sites": etat, "annonces": toutes, "documents": documents}, open(a.sortie, "w", encoding="utf-8", newline="\n"), ensure_ascii=False, indent=1)
     ok = sum(1 for v in etat.values() if v["statut"] == "ok")
     print(f"{ok}/{len(etat)} site(s) lus ; {len(nouvelles)} annonce(s) ajoutée(s) ; {len(toutes)} gardées")
 

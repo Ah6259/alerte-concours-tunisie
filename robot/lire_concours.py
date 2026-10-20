@@ -187,7 +187,7 @@ def main():
     donnees = {"source": URL, "lu_le": a.aujourdhui, "finances_ok": finances_ok, "pages": pages,
                "concours": sorted(fusionner(ancien["concours"], nouveaux, a.aujourdhui), key=lambda c: (c["cloture_candidatures"] or "9999", c["id"]))}
     os.makedirs(os.path.dirname(a.sortie), exist_ok=True)
-    json.dump(donnees, open(a.sortie, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
+    json.dump(donnees, open(a.sortie, "w", encoding="utf-8", newline="\n"), ensure_ascii=False, indent=1)
     par_metier = {}
     for c in nouveaux: par_metier[c["metier"]] = par_metier.get(c["metier"], 0) + 1
     print(f"{len(nouveaux)} concours lus sur {pages} page(s) ; par métier : {par_metier}")

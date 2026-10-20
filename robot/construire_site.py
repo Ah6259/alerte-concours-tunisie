@@ -851,7 +851,7 @@ def construire(jour):
                "icons": [{"src": "assets/icons/icon-192.png", "sizes": "192x192", "type": "image/png"},
                          {"src": "assets/icons/icon-512.png", "sizes": "512x512", "type": "image/png"},
                          {"src": "assets/icons/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable"}]},
-              open(os.path.join(RACINE, "manifest.webmanifest"), "w", encoding="utf-8"), ensure_ascii=False, indent=2)
+              open(os.path.join(RACINE, "manifest.webmanifest"), "w", encoding="utf-8", newline="\n"), ensure_ascii=False, indent=2)
     print(f"{len(pages)} pages, {len(ouverts)} concours ouverts, version {v}")
 
 

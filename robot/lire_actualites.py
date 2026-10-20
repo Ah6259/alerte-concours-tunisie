@@ -145,7 +145,7 @@ def main():
     toutes.sort(key=lambda x: (x.get("date") or "", int(x["id"]) if x["id"].isdigit() else 0), reverse=True)
     donnees = {"source": LISTE, "lu_le": a.aujourdhui, "actualites": rattacher(toutes[:GARDER], concours)}
     os.makedirs(os.path.dirname(a.sortie), exist_ok=True)
-    json.dump(donnees, open(a.sortie, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
+    json.dump(donnees, open(a.sortie, "w", encoding="utf-8", newline="\n"), ensure_ascii=False, indent=1)
     par_type = {}
     for x in nouvelles: par_type[x["type"]] = par_type.get(x["type"], 0) + 1
     print(f"{len(nouvelles)} nouvelle(s) actualité(s) ; {len(donnees['actualites'])} gardées ; par type : {par_type}")
