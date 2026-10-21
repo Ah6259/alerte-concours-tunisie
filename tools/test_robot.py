@@ -30,24 +30,36 @@ check("chaque ligne lue a un gouvernorat (ou « national »)", all(l["gouvernora
 check("chiffres arabes ٢٠٢٦-١١-١٠ → 2026-11-10", R.date_iso("٢٠٢٦-١١-١٠") == "2026-11-10")
 
 with tempfile.TemporaryDirectory() as d:
-    f = os.path.join(d, "page.html"); open(f, "w", encoding="utf-8").write(page)
+    f = os.path.join(d, "page.html"); open(f, "w", encoding="utf-8", newline="\n").write(page)
     sortie = os.path.join(d, "concours.json")
     run = lambda jour: subprocess.run([sys.executable, os.path.join(RACINE, "robot", "lire_concours.py"), "--fichier", f, "--sortie", sortie, "--aujourdhui", jour], capture_output=True, text=True, encoding="utf-8", env={**os.environ, "PYTHONIOENCODING": "utf-8"})
     r1 = run("2026-10-08")
     check("1re lecture : fichier écrit", r1.returncode == 0 and len(json.load(open(sortie, encoding="utf-8"))["concours"]) == 5)
     d1 = json.load(open(sortie, encoding="utf-8"))
+    # 21/10/2026 (règle commune § 40) : les grades rangés dans « Autres » sont notés dans le carnet, les autres non
+    _carnet = json.load(open(os.path.join(d, "sans-metier.json"), encoding="utf-8"))
+    _autres = sorted(c["grade"] for c in d1["concours"] if c["metier"] == "autre")
+    check(f"carnet sans-metier.json : exactement les {len(_autres)} grade(s) rangé(s) dans « Autres », avec premier et dernier jour vus",
+          sorted(e["texte"] for e in _carnet["elements"]) == _autres and all(e["premier_vu"] == "2026-10-08" for e in _carnet["elements"]))
+    with tempfile.TemporaryDirectory() as d9:   # un grade inconnu (« رسام خطاط ») : rangé dans « Autres » ET noté dans le carnet
+        f9 = os.path.join(d9, "page.html"); open(f9, "w", encoding="utf-8", newline="\n").write(page.replace("مستكتب إدارة", "رسام خطاط", 1))
+        subprocess.run([sys.executable, os.path.join(RACINE, "robot", "lire_concours.py"), "--fichier", f9, "--sortie", os.path.join(d9, "concours.json"),
+                        "--aujourdhui", "2026-10-08"], capture_output=True, text=True, encoding="utf-8", env={**os.environ, "PYTHONIOENCODING": "utf-8"})
+        _c9 = json.load(open(os.path.join(d9, "sans-metier.json"), encoding="utf-8"))["elements"]
+        check("carnet sans-metier.json : un grade inconnu est NOTÉ (texte, organisme, clé), pas rangé en silence",
+              [e["texte"] for e in _c9] == ["رسام خطاط"] and _c9[0]["cle"].startswith("portail-") and _c9[0]["organisme"])
     # un résultat publié entre deux lectures → historique
-    d1["concours"][0]["resultat_initial"] = "ancien état"; json.dump(d1, open(sortie, "w", encoding="utf-8"), ensure_ascii=False)
+    d1["concours"][0]["resultat_initial"] = "ancien état"; json.dump(d1, open(sortie, "w", encoding="utf-8", newline="\n"), ensure_ascii=False)
     run("2026-10-09"); d2 = json.load(open(sortie, encoding="utf-8"))
     c0 = [c for c in d2["concours"] if c["id"] == d1["concours"][0]["id"]][0]
     check("historique : un changement de l'état des résultats est gardé avec sa date", any(h["le"] == "2026-10-09" and h["champ"] == "resultat_initial" for h in c0["historique"]))
     check("1re lecture du site : pas de date d'apparition (rien ne paraît « nouveau »), et elle est conservée", c0["vu_le"] == "")
-    d3 = json.load(open(sortie, encoding="utf-8")); d3["concours"] = d3["concours"][1:]; json.dump(d3, open(sortie, "w", encoding="utf-8"), ensure_ascii=False)
+    d3 = json.load(open(sortie, encoding="utf-8")); d3["concours"] = d3["concours"][1:]; json.dump(d3, open(sortie, "w", encoding="utf-8", newline="\n"), ensure_ascii=False)
     run("2026-10-11"); d4 = json.load(open(sortie, encoding="utf-8"))
     check("un concours apparu après la 1re lecture reçoit sa date d'apparition", [c for c in d4["concours"] if c["id"] == d1["concours"][0]["id"]][0]["vu_le"] == "2026-10-11")
     d2 = d4
     # panne : l'ancien fichier compte 40 lignes, la nouvelle lecture 5 → refus
-    d2["concours"] = d2["concours"] * 8; json.dump(d2, open(sortie, "w", encoding="utf-8"), ensure_ascii=False)
+    d2["concours"] = d2["concours"] * 8; json.dump(d2, open(sortie, "w", encoding="utf-8", newline="\n"), ensure_ascii=False)
     r3 = run("2026-10-10")
     check("panne du portail (beaucoup moins de lignes) : ancien fichier gardé, sortie en erreur", r3.returncode == 1 and len(json.load(open(sortie, encoding="utf-8"))["concours"]) == 40)
 
@@ -113,7 +125,7 @@ def _get(url):
 _g, _p, _argv = A.get, A.PAUSE, sys.argv
 with tempfile.TemporaryDirectory() as d:
     sortie = os.path.join(d, "actualites.json")
-    json.dump({"actualites": [{"id": "999", "organisme": "x", "date": "2026-10-01", "resume": "بلاغ", "lien": "https://www.concours.gov.tn/"}]}, open(sortie, "w", encoding="utf-8"))
+    json.dump({"actualites": [{"id": "999", "organisme": "x", "date": "2026-10-01", "resume": "بلاغ", "lien": "https://www.concours.gov.tn/"}]}, open(sortie, "w", encoding="utf-8", newline="\n"))
     A.get, A.PAUSE, sys.argv = _get, 0, ["lire_actualites.py", "--sortie", sortie]
     try:
         import contextlib, io as _io
@@ -188,7 +200,7 @@ check("Finances : grade + spécialités, postes, dates ISO, national, lien vers 
       and fin[0]["lien"] == "https://concours.finances.gov.tn/theme/documents/concours/9/avis-concours.pdf")
 check("Finances : métiers (inspecteurs → finances, techniciens → techniciens)", fin[0]["metier"] == "finance" and fin[2]["metier"] == "technicien")
 with tempfile.TemporaryDirectory() as d:
-    f = os.path.join(d, "page.html"); open(f, "w", encoding="utf-8").write(page)
+    f = os.path.join(d, "page.html"); open(f, "w", encoding="utf-8", newline="\n").write(page)
     sortie = os.path.join(d, "concours.json")
     run = lambda jour, ff: subprocess.run([sys.executable, os.path.join(RACINE, "robot", "lire_concours.py"), "--fichier", f, "--finances-fichier", ff, "--sortie", sortie, "--aujourdhui", jour], capture_output=True, text=True, encoding="utf-8", env={**os.environ, "PYTHONIOENCODING": "utf-8"})
     r = run("2026-10-08", os.path.join(ICI, "exemples", "finances.html")); cs = json.load(open(sortie, encoding="utf-8"))["concours"]

@@ -18,6 +18,7 @@ ICI = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, ICI)
 import gouvernorats as G   # noqa: E402
 import lire_finances as F  # noqa: E402
+import carnet_categories as CC  # noqa: E402   (outil commun, règle commune § 40)
 RACINE = os.path.dirname(ICI)
 SORTIE = os.path.join(RACINE, "donnees", "concours.json")
 URL = "https://www.concours.gov.tn/P1/index5.aspx?id=5"
@@ -216,6 +217,12 @@ def main():
                "concours": sorted(fusionner(ancien["concours"], nouveaux, a.aujourdhui), key=lambda c: (c["cloture_candidatures"] or "9999", c["id"]))}
     os.makedirs(os.path.dirname(a.sortie), exist_ok=True)
     json.dump(donnees, open(a.sortie, "w", encoding="utf-8", newline="\n"), ensure_ascii=False, indent=1)
+    # 21/10/2026 (règle commune § 40, Ahmed) : un grade rangé dans « Autres » n'y va plus en silence -> carnet donnees/sans-metier.json,
+    # lu par la routine « concours-nouveau-metier » (mots du grade ajoutés à un métier, ou nouveau métier)
+    n_sans = CC.noter(os.path.join(os.path.dirname(a.sortie), "sans-metier.json"),
+                      [{"cle": f"{c.get('source') or 'portail'}-{c['id']}", "texte": c["grade"], "organisme": c["organisme"][:120]}
+                       for c in nouveaux if c["metier"] == AUTRE[0] and c.get("grade")], a.aujourdhui)
+    print(f"{n_sans} grade(s) rangé(s) dans « Autres » dans le carnet donnees/sans-metier.json")
     par_metier = {}
     for c in nouveaux: par_metier[c["metier"]] = par_metier.get(c["metier"], 0) + 1
     print(f"{len(nouveaux)} concours lus sur {pages} page(s) ; par métier : {par_metier}")
