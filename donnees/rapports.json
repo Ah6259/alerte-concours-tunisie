@@ -204,11 +204,11 @@
      "final": 0
     },
     "avis": {
-     "n": 16,
+     "n": 19,
      "types": {
-      "resultats": 7,
-      "nouveau": 5,
-      "candidatures": 4
+      "resultats": 8,
+      "candidatures": 6,
+      "nouveau": 5
      }
     }
    },
