@@ -2,14 +2,14 @@
  "mois": {
   "2026-10": {
    "premier_jour": "2026-10-17",
-   "dernier_jour": "2026-10-20",
+   "dernier_jour": "2026-10-21",
    "fini": false,
    "chiffres": {
-    "au": "2026-10-20",
+    "au": "2026-10-21",
     "debut": "2026-10-09",
     "ouverts": {
-     "n": 64,
-     "postes": 120,
+     "n": 61,
+     "postes": 116,
      "sans_postes": 0
     },
     "national": {
@@ -18,16 +18,16 @@
      "sans_postes": 0
     },
     "locaux": {
-     "n": 37,
-     "postes": 67,
+     "n": 34,
+     "postes": 63,
      "sans_postes": 0
     },
     "finances": 0,
     "gouvernorats": [
      [
       "nabeul",
-      16,
-      32
+      13,
+      28
      ],
      [
       "monastir",
@@ -68,13 +68,8 @@
     "metiers": [
      [
       "ouvrier",
-      22,
-      36
-     ],
-     [
-      "autre",
-      10,
-      24
+      21,
+      35
      ],
      [
       "technicien",
@@ -85,6 +80,11 @@
       "administratif",
       9,
       14
+     ],
+     [
+      "autre",
+      8,
+      21
      ],
      [
       "ingenieur",
@@ -155,19 +155,13 @@
       3,
       4,
       "national"
-     ],
-     [
-      "بلدية دارعلوش",
-      3,
-      4,
-      "nabeul"
      ]
     ],
     "semaine": {
-     "n": 10,
-     "postes": 14,
+     "n": 7,
+     "postes": 10,
      "sans_postes": 0,
-     "jusqu_au": "2026-10-26"
+     "jusqu_au": "2026-10-27"
     },
     "nouveaux": {
      "n": 21,
@@ -201,8 +195,8 @@
      ]
     ],
     "clos": {
-     "n": 4,
-     "postes": 12,
+     "n": 7,
+     "postes": 16,
      "sans_postes": 0
     },
     "resultats": {
@@ -210,9 +204,9 @@
      "final": 0
     },
     "avis": {
-     "n": 15,
+     "n": 16,
      "types": {
-      "resultats": 6,
+      "resultats": 7,
       "nouveau": 5,
       "candidatures": 4
      }
