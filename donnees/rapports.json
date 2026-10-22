@@ -2,24 +2,24 @@
  "mois": {
   "2026-10": {
    "premier_jour": "2026-10-17",
-   "dernier_jour": "2026-10-21",
+   "dernier_jour": "2026-10-22",
    "fini": false,
    "chiffres": {
-    "au": "2026-10-21",
+    "au": "2026-10-22",
     "debut": "2026-10-09",
     "ouverts": {
-     "n": 61,
-     "postes": 116,
+     "n": 57,
+     "postes": 110,
      "sans_postes": 0
     },
     "national": {
-     "n": 27,
-     "postes": 53,
+     "n": 22,
+     "postes": 45,
      "sans_postes": 0
     },
     "locaux": {
-     "n": 34,
-     "postes": 63,
+     "n": 35,
+     "postes": 65,
      "sans_postes": 0
     },
     "finances": 0,
@@ -46,8 +46,8 @@
      ],
      [
       "sfax",
-      2,
-      4
+      3,
+      6
      ],
      [
       "medenine",
@@ -68,23 +68,23 @@
     "metiers": [
      [
       "ouvrier",
-      21,
-      35
-     ],
-     [
-      "technicien",
-      9,
-      15
+      17,
+      31
      ],
      [
       "administratif",
-      9,
-      14
+      10,
+      16
      ],
      [
       "autre",
       8,
       21
+     ],
+     [
+      "technicien",
+      8,
+      11
      ],
      [
       "ingenieur",
@@ -133,12 +133,6 @@
       "tunis"
      ],
      [
-      "المعهد الوطني للمواصفات والملكية الصناعية",
-      5,
-      8,
-      "national"
-     ],
-     [
       "بلدية بوعرقوب",
       3,
       10,
@@ -159,19 +153,19 @@
     ],
     "semaine": {
      "n": 7,
-     "postes": 10,
+     "postes": 13,
      "sans_postes": 0,
-     "jusqu_au": "2026-10-27"
+     "jusqu_au": "2026-10-28"
     },
     "nouveaux": {
-     "n": 21,
-     "postes": 37,
+     "n": 22,
+     "postes": 39,
      "sans_postes": 0
     },
     "nouveaux_metiers": [
      [
       "administratif",
-      6
+      7
      ],
      [
       "ouvrier",
@@ -195,8 +189,8 @@
      ]
     ],
     "clos": {
-     "n": 7,
-     "postes": 16,
+     "n": 12,
+     "postes": 24,
      "sans_postes": 0
     },
     "resultats": {
@@ -1635,6 +1629,14 @@
      "gouvernorat": "national",
      "cloture_candidatures": "2026-11-23",
      "vu_le": "2026-10-20",
+     "publies": []
+    },
+    "3305": {
+     "postes": 2,
+     "metier": "administratif",
+     "gouvernorat": "sfax",
+     "cloture_candidatures": "2026-11-22",
+     "vu_le": "2026-10-22",
      "publies": []
     }
    }
