@@ -8,8 +8,8 @@
     "au": "2026-10-23",
     "debut": "2026-10-09",
     "ouverts": {
-     "n": 57,
-     "postes": 110,
+     "n": 59,
+     "postes": 112,
      "sans_postes": 0
     },
     "national": {
@@ -18,8 +18,8 @@
      "sans_postes": 0
     },
     "locaux": {
-     "n": 35,
-     "postes": 65,
+     "n": 37,
+     "postes": 67,
      "sans_postes": 0
     },
     "finances": 0,
@@ -31,8 +31,8 @@
      ],
      [
       "monastir",
-      6,
-      9
+      8,
+      11
      ],
      [
       "tunis",
@@ -68,8 +68,8 @@
     "metiers": [
      [
       "ouvrier",
-      17,
-      31
+      19,
+      33
      ],
      [
       "administratif",
@@ -158,18 +158,18 @@
      "jusqu_au": "2026-10-29"
     },
     "nouveaux": {
-     "n": 22,
-     "postes": 39,
+     "n": 24,
+     "postes": 41,
      "sans_postes": 0
     },
     "nouveaux_metiers": [
      [
-      "administratif",
-      7
+      "ouvrier",
+      8
      ],
      [
-      "ouvrier",
-      6
+      "administratif",
+      7
      ],
      [
       "autre",
@@ -198,10 +198,10 @@
      "final": 0
     },
     "avis": {
-     "n": 20,
+     "n": 21,
      "types": {
+      "resultats": 9,
       "nouveau": 6,
-      "resultats": 8,
       "candidatures": 6
      }
     }
@@ -1637,6 +1637,22 @@
      "gouvernorat": "sfax",
      "cloture_candidatures": "2026-11-22",
      "vu_le": "2026-10-22",
+     "publies": []
+    },
+    "3306": {
+     "postes": 1,
+     "metier": "ouvrier",
+     "gouvernorat": "monastir",
+     "cloture_candidatures": "2026-11-23",
+     "vu_le": "2026-10-23",
+     "publies": []
+    },
+    "3307": {
+     "postes": 1,
+     "metier": "ouvrier",
+     "gouvernorat": "monastir",
+     "cloture_candidatures": "2026-11-23",
+     "vu_le": "2026-10-23",
      "publies": []
     }
    }
