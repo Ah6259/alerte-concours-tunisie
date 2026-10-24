@@ -1,5 +1,5 @@
 {
- "maj": "2026-10-23",
+ "maj": "2026-10-24",
  "explication": "Éléments lus par le robot mais rangés dans aucune catégorie (gardés 120 jours) : une routine y cherche les thèmes qui reviennent (règle commune § 40).",
  "nombre": 15,
  "elements": [
@@ -8,105 +8,105 @@
    "texte": "رافع فضلات",
    "organisme": "بلدية صيادة",
    "premier_vu": "2026-10-21",
-   "dernier_vu": "2026-10-23"
+   "dernier_vu": "2026-10-24"
   },
   {
    "cle": "portail-3296",
    "texte": "ساعي صفقات",
    "organisme": "بلدية صيادة",
    "premier_vu": "2026-10-21",
-   "dernier_vu": "2026-10-23"
+   "dernier_vu": "2026-10-24"
   },
   {
    "cle": "portail-3289",
    "texte": "رافع فضلات",
    "organisme": "بلدية عميرة الحجاج",
    "premier_vu": "2026-10-21",
-   "dernier_vu": "2026-10-23"
+   "dernier_vu": "2026-10-24"
   },
   {
    "cle": "portail-3288",
    "texte": "موزع هاتف",
    "organisme": "بلدية عميرة الحجاج",
    "premier_vu": "2026-10-21",
-   "dernier_vu": "2026-10-23"
+   "dernier_vu": "2026-10-24"
   },
   {
    "cle": "portail-3268",
    "texte": "معاونين مكتبيين أو معاونين موثقين",
    "organisme": "دار الكتب الوطنية",
    "premier_vu": "2026-10-21",
-   "dernier_vu": "2026-10-23"
+   "dernier_vu": "2026-10-24"
   },
   {
    "cle": "portail-3267",
    "texte": "مختزني مكتبات أو توثيق",
    "organisme": "دار الكتب الوطنية",
    "premier_vu": "2026-10-21",
-   "dernier_vu": "2026-10-23"
+   "dernier_vu": "2026-10-24"
   },
   {
    "cle": "portail-3260",
    "texte": "رافع فضلات",
    "organisme": "بلدية بوعرقوب",
    "premier_vu": "2026-10-21",
-   "dernier_vu": "2026-10-23"
+   "dernier_vu": "2026-10-24"
   },
   {
    "cle": "portail-3241",
    "texte": "مكتبي أو موثق",
    "organisme": "المركز الوطني للسينما والصورة",
    "premier_vu": "2026-10-21",
-   "dernier_vu": "2026-10-23"
+   "dernier_vu": "2026-10-24"
   },
   {
    "cle": "portail-2993",
    "texte": "طباخ",
    "organisme": "وكالة التكوين في مهن السياحة",
    "premier_vu": "2026-10-21",
-   "dernier_vu": "2026-10-23"
+   "dernier_vu": "2026-10-24"
   },
   {
    "cle": "portail-2991",
    "texte": "طباخ بمعهد التكوين في مهن السياحة بسوسة",
    "organisme": "وكالة التكوين في مهن السياحة",
    "premier_vu": "2026-10-21",
-   "dernier_vu": "2026-10-23"
+   "dernier_vu": "2026-10-24"
   },
   {
    "cle": "portail-2990",
    "texte": "طباخ",
    "organisme": "وكالة التكوين في مهن السياحة",
    "premier_vu": "2026-10-21",
-   "dernier_vu": "2026-10-23"
+   "dernier_vu": "2026-10-24"
   },
   {
    "cle": "portail-2979",
    "texte": "قيّمة",
    "organisme": "وكالة التكوين في مهن السياحة",
    "premier_vu": "2026-10-21",
-   "dernier_vu": "2026-10-23"
+   "dernier_vu": "2026-10-24"
   },
   {
    "cle": "portail-2978",
    "texte": "قيّم",
    "organisme": "وكالة التكوين في مهن السياحة",
    "premier_vu": "2026-10-21",
-   "dernier_vu": "2026-10-23"
+   "dernier_vu": "2026-10-24"
   },
   {
    "cle": "portail-2543",
    "texte": "معماري أول متعاقد",
    "organisme": "بلدية ماطر",
    "premier_vu": "2026-10-21",
-   "dernier_vu": "2026-10-23"
+   "dernier_vu": "2026-10-24"
   },
   {
    "cle": "portail-2412",
    "texte": "معماري أول",
    "organisme": "بلدية ماطر",
    "premier_vu": "2026-10-21",
-   "dernier_vu": "2026-10-23"
+   "dernier_vu": "2026-10-24"
   }
  ]
 }
