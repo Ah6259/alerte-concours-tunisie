@@ -1,8 +1,29 @@
 {
  "maj": "2026-10-24",
  "explication": "Éléments lus par le robot mais rangés dans aucune catégorie (gardés 120 jours) : une routine y cherche les thèmes qui reviennent (règle commune § 40).",
- "nombre": 15,
+ "nombre": 18,
  "elements": [
+  {
+   "cle": "portail-3311",
+   "texte": "02 رافع فضلات",
+   "organisme": "بلدية باطن الغزال",
+   "premier_vu": "2026-10-24",
+   "dernier_vu": "2026-10-24"
+  },
+  {
+   "cle": "portail-3310",
+   "texte": "01 حراسة",
+   "organisme": "بلدية باطن الغزال",
+   "premier_vu": "2026-10-24",
+   "dernier_vu": "2026-10-24"
+  },
+  {
+   "cle": "portail-3309",
+   "texte": "01بستنة",
+   "organisme": "بلدية باطن الغزال",
+   "premier_vu": "2026-10-24",
+   "dernier_vu": "2026-10-24"
+  },
   {
    "cle": "portail-3297",
    "texte": "رافع فضلات",

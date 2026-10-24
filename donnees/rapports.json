@@ -8,8 +8,8 @@
     "au": "2026-10-24",
     "debut": "2026-10-09",
     "ouverts": {
-     "n": 59,
-     "postes": 112,
+     "n": 63,
+     "postes": 117,
      "sans_postes": 0
     },
     "national": {
@@ -18,8 +18,8 @@
      "sans_postes": 0
     },
     "locaux": {
-     "n": 37,
-     "postes": 67,
+     "n": 41,
+     "postes": 72,
      "sans_postes": 0
     },
     "finances": 0,
@@ -40,6 +40,11 @@
       6
      ],
      [
+      "sidi-bouzid",
+      5,
+      7
+     ],
+     [
       "sousse",
       4,
       11
@@ -55,11 +60,6 @@
       2
      ],
      [
-      "sidi-bouzid",
-      1,
-      2
-     ],
-     [
       "kebili",
       1,
       1
@@ -68,18 +68,18 @@
     "metiers": [
      [
       "ouvrier",
-      19,
-      33
+      20,
+      34
+     ],
+     [
+      "autre",
+      11,
+      25
      ],
      [
       "administratif",
       10,
       16
-     ],
-     [
-      "autre",
-      8,
-      21
      ],
      [
       "technicien",
@@ -133,6 +133,12 @@
       "tunis"
      ],
      [
+      "بلدية باطن الغزال",
+      4,
+      5,
+      "sidi-bouzid"
+     ],
+     [
       "بلدية بوعرقوب",
       3,
       10,
@@ -158,14 +164,14 @@
      "jusqu_au": "2026-10-30"
     },
     "nouveaux": {
-     "n": 24,
-     "postes": 41,
+     "n": 28,
+     "postes": 46,
      "sans_postes": 0
     },
     "nouveaux_metiers": [
      [
       "ouvrier",
-      8
+      9
      ],
      [
       "administratif",
@@ -173,7 +179,7 @@
      ],
      [
       "autre",
-      4
+      7
      ],
      [
       "chauffeur",
@@ -1653,6 +1659,38 @@
      "gouvernorat": "monastir",
      "cloture_candidatures": "2026-11-23",
      "vu_le": "2026-10-23",
+     "publies": []
+    },
+    "3308": {
+     "postes": 1,
+     "metier": "ouvrier",
+     "gouvernorat": "sidi-bouzid",
+     "cloture_candidatures": "2026-11-23",
+     "vu_le": "2026-10-24",
+     "publies": []
+    },
+    "3309": {
+     "postes": 1,
+     "metier": "autre",
+     "gouvernorat": "sidi-bouzid",
+     "cloture_candidatures": "2026-11-23",
+     "vu_le": "2026-10-24",
+     "publies": []
+    },
+    "3310": {
+     "postes": 1,
+     "metier": "autre",
+     "gouvernorat": "sidi-bouzid",
+     "cloture_candidatures": "2026-11-23",
+     "vu_le": "2026-10-24",
+     "publies": []
+    },
+    "3311": {
+     "postes": 2,
+     "metier": "autre",
+     "gouvernorat": "sidi-bouzid",
+     "cloture_candidatures": "2026-11-23",
+     "vu_le": "2026-10-24",
      "publies": []
     }
    }
