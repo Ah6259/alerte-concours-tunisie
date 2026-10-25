@@ -394,5 +394,32 @@ check("paiement : le motif est le code personnel, jamais « nom … (motif du pa
     /<h1><span data-l="fr">Comment fonctionne le site \?<\/span><span data-l="ar">كيف يعمل الموقع؟<\/span><\/h1>/.test(ap)
     && /a-propos\/">\$\{T\("Comment fonctionne le site \?"/.test(lire("assets/page.js")) && /<a href="a-propos\/">[^<]*Comment fonctionne le site/.test(acc2.replace(/<span data-l="fr">/g, "")));
   check("sitemap : a-propos/ présent", lire("sitemap.xml").includes("https://concours.clicvia.com/a-propos/")); }
+
+// ---- Vidéo de présentation (25/10/2026) : pas de page video/ = aucun lien vers video/ et le bouton « Partager » ne vise jamais
+//      une page absente (il partage la page en cours). Le jour où video/index.html existe, « "video": false » doit disparaître de page.js.
+{ const aVideo = existsSync(join(root, "video", "index.html")), pj = lire("assets/page.js");
+  check("vidéo : réglage de page.js cohérent avec la présence de video/index.html (\"video\": false si et seulement si la page manque)",
+    aVideo === !/"video": false/.test(pj));
+  if (!aVideo) {
+    const htmls = [], tous = d => { for (const n of readdirSync(join(root, d))) { if (["node_modules", ".git"].includes(n)) continue;
+      const f = d ? d + "/" + n : n; if (statSync(join(root, f)).isDirectory()) tous(f); else if (n.endsWith(".html") && !f.startsWith("tools/")) htmls.push(f); } };
+    tous("");
+    const fautifs = htmls.filter(f => /href="[^"]*video\/[^"]*"/.test(lire(f)));
+    check("vidéo : aucune page ne contient de lien vers video/ (la page n'existe pas)" + (fautifs.length ? " — " + fautifs.slice(0, 3).join(", ") : ""), fautifs.length === 0);
+    if (JSDOM) for (const [f, chemin] of [["index.html", "/"], ["a-propos/index.html", "/a-propos/"]]) {
+      const dom = new JSDOM(lire(f).replace(/<script[^>]*src="[^"]*"[^>]*><\/script>/g, ""), { runScripts: "outside-only", url: "https://concours.clicvia.com" + chemin, pretendToBeVisual: true });
+      const w = dom.window, journal = {}; w.localStorage.setItem("langue", "fr");
+      Object.defineProperty(w.navigator, "share", { value: o => { journal.share = o; return Promise.resolve(); }, configurable: true });
+      w.open = u => { journal.open = u; };
+      w.eval(pj); w.document.dispatchEvent(new w.Event("DOMContentLoaded"));
+      await new Promise(r => setTimeout(r, 30));
+      const liens = [...w.document.querySelectorAll("a[href]")].filter(a => /video\//.test(a.getAttribute("href")));
+      check(`navigateur : ${chemin} sans lien « Vidéo de présentation » ni lien vers video/`, liens.length === 0 && !w.document.getElementById("lien-video"));
+      const b = w.document.querySelector(".partager"); if (b) b.click();
+      await new Promise(r => setTimeout(r, 30));
+      check(`navigateur : ${chemin} bouton « Partager » → partage la page en cours (https://concours.clicvia.com${chemin}), jamais video/`,
+        !!b && journal.share && journal.share.url === "https://concours.clicvia.com" + chemin && !/video/.test(journal.share.url + " " + journal.share.text) && !journal.open);
+    }
+  } }
 console.log(`\n${ok}/${ok + ko} vérifications réussies` + (ko ? ` — ${ko} ÉCHEC(S) : ne pas publier.` : " — tout est bon."));
 process.exit(ko ? 1 : 0);

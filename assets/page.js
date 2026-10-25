@@ -137,7 +137,9 @@ document.addEventListener("click", function (e) {
 var BASE_SITE = /\.github\.io$/.test(location.hostname) ? "/alerte-concours-tunisie/" : "/";
 window.goatcounter = window.goatcounter || {};
 window.goatcounter.path = function (p) { return BASE_SITE === "/" ? "/alerte-concours-tunisie" + p : p; };
-window.VIDEO_SITE = {"base": BASE_SITE, "defaut": "fr", "nom": {"fr": "Alerte Concours Tunisie", "ar": "تنبيه المناظرات تونس"}};
+window.VIDEO_SITE = {"base": BASE_SITE, "defaut": "fr", "video": false, "nom": {"fr": "Alerte Concours Tunisie", "ar": "تنبيه المناظرات تونس"}};
+/* « video": false » (25/10/2026) : la page video/ n'existe pas encore -> aucun lien « Vidéo de présentation » et le bouton
+   « Partager » partage la page en cours. Le jour où la vidéo est faite : retirer « "video": false » (pas de vidéo = pas de lien). */
 /* Bouton « Partager » (demande d'Ahmed, octobre 2026) : partage un LIEN vers la page vidéo du site (qui montre la vidéo
    de présentation, avec un gros bouton « Ouvrir le site ») + l'adresse du site dans le texte. WhatsApp et Facebook
    affichent l'aperçu de la page vidéo (grande image, vidéo lisible sur Facebook). Menu de partage du téléphone, sinon WhatsApp.
@@ -155,9 +157,15 @@ window.VIDEO_SITE = {"base": BASE_SITE, "defaut": "fr", "nom": {"fr": "Alerte Co
              titre: M(pro ? S.titre_pro : S.nom) };
   };
   window.partagerLien = function (titre, site) {
-    var v = window.pageVideo(), t = titre || v.titre;
+    var v = window.pageVideo(), t = titre || v.titre, texte;
     if (site) v.site = site;
-    var texte = t + "\n" + M({ fr: "Le site : ", ar: "الموقع: ", en: "The website: " }) + v.site + "\n" + M({ fr: "Regardez la vidéo :", ar: "شاهد الفيديو:", en: "Watch the video:" });
+    if (S.video === false) {
+      t = titre || document.title.split(" | ")[0] || v.titre;
+      v.page = site || (location.origin + location.pathname).replace(/index\.html$/, "");
+      texte = t;
+    } else {
+      texte = t + "\n" + M({ fr: "Le site : ", ar: "الموقع: ", en: "The website: " }) + v.site + "\n" + M({ fr: "Regardez la vidéo :", ar: "شاهد الفيديو:", en: "Watch the video:" });
+    }
     function whatsapp() { window.open("https://wa.me/?text=" + encodeURIComponent(texte + " " + v.page), "_blank", "noopener"); return "whatsapp"; }
     if (navigator.share) {
       return navigator.share({ title: t, text: texte, url: v.page }).then(function () { return "lien"; }, function (e) {
@@ -182,7 +190,8 @@ window.VIDEO_SITE = {"base": BASE_SITE, "defaut": "fr", "nom": {"fr": "Alerte Co
     }
     // lien discret « Vidéo de présentation » en bas de l'accueil et de À propos -> la page vidéo
     var p = location.pathname.replace(/index\.html$/, "");
-    if (p === S.base || p === S.base + "a-propos/") {
+    if (S.video === false) { var ancien = document.getElementById("lien-video"); if (ancien) ancien.remove(); }
+    else if (p === S.base || p === S.base + "a-propos/") {
       var b = document.getElementById("lien-video");
       if (!b) {
         b = document.createElement("p"); b.id = "lien-video"; b.className = "lien-video"; b.appendChild(document.createElement("a"));
