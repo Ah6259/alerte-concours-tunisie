@@ -475,6 +475,96 @@ def bouton_alertes(racine):
             f'<span>{titre}<small>{sous}</small></span></a>')
 
 
+
+def page_a_propos(v, maj):
+    """Page a-propos/ « Comment fonctionne le site ? » (règle commune § 44) : à quoi sert le site, sources, mode d'emploi,
+    chaque fonction visible (une ligne), gratuit / payant, vos données, mises à jour, site indépendant."""
+    p3, pa, rj = ABO["prix_3mois"], ABO["prix_an"], ABO["rappel_jours"]
+    NB = " "
+    def li(fr, ar):
+        return f"<li>{L(fr, ar)}</li>"
+    fonctions = "".join(li(fr, ar) for fr, ar in [
+        ("<b>Résumé du jour</b> en haut de l'accueil : concours ouverts, nouveaux concours et inscriptions qui se terminent bientôt.",
+         "<b>ملخص اليوم</b> في أعلى الصفحة الرئيسية: المناظرات المفتوحة، المناظرات الجديدة والترشحات التي تنتهي قريبًا."),
+        ("<b>Carte de la Tunisie</b> : une bulle par gouvernorat avec le nombre de concours ; touchez une bulle pour voir ses concours.",
+         "<b>خريطة تونس</b>: دائرة لكل ولاية مع عدد المناظرات؛ المس دائرة لترى مناظراتها."),
+        ("<b>Inscriptions qui se terminent bientôt</b> : les dates limites des 7" + NB + "prochains jours, avec le nombre de jours restants.",
+         "<b>ترشحات تنتهي قريبًا</b>: آخر الآجال في الأيام الـ" + ISO(7) + " القادمة، مع عدد الأيام المتبقية."),
+        ("<b>Rechercher</b> un grade, un organisme ou une ville : la recherche comprend aussi les écritures proches (Jerba = Djerba).",
+         "<b>البحث</b> عن خطة أو هيكل أو مدينة: البحث يفهم أيضًا الكتابات القريبة."),
+        ("<b>Filtres</b> par métier et par gouvernorat, et <b>tri</b> par date limite.",
+         "<b>تصفية</b> حسب الاختصاص والولاية، و<b>ترتيب</b> حسب آخر أجل."),
+        ("Étiquette <b>« Nouveau »</b> sur les concours apparus depuis la dernière lecture, et rappel du nombre de jours avant la date limite.",
+         "علامة <b>«جديد»</b> على المناظرات الجديدة، وتذكير بعدد الأيام قبل آخر أجل."),
+        ("<b>Une page par concours</b> : grade, organisme, nombre de postes, dates, résultats, lien officiel et concours proches.",
+         "<b>صفحة لكل مناظرة</b>: الخطة، الهيكل، عدد الخطط، الآجال، النتائج، الرابط الرسمي ومناظرات قريبة."),
+        ("<b>Une page par gouvernorat</b> (les 24) : ses concours plus les concours nationaux, ouverts à toute la Tunisie.",
+         "<b>صفحة لكل ولاية</b> (الـ" + ISO(24) + "): مناظراتها مع المناظرات الوطنية المفتوحة لكل الجمهورية."),
+        ("<b>Une page par métier</b> : ingénieurs, techniciens, santé, enseignement, administration…",
+         "<b>صفحة لكل اختصاص</b>: مهندسون، تقنيون، صحة، تعليم، إدارة…"),
+        ("<b>Actualités</b> : résultats, convocations, candidatures acceptées et reports publiés sur le portail officiel.",
+         "<b>الأخبار</b>: النتائج، الاستدعاءات، قبول الترشحات والتأجيلات المنشورة في البوابة الرسمية."),
+        ("<b>Sites des ministères</b> : les concours annoncés sur les sites officiels des ministères, relus chaque semaine.",
+         "<b>مواقع الوزارات</b>: المناظرات المعلنة في المواقع الرسمية للوزارات، تُقرأ كل أسبوع."),
+        ("<b>Guide d'inscription</b> : les étapes pour s'inscrire sur le portail officiel des concours.",
+         "<b>دليل الترشح</b>: مراحل الترشح في البوابة الرسمية للمناظرات."),
+        ("<b>Rapports du mois</b> : les concours en chiffres (par métier, par gouvernorat), avec un bouton « Partager ce rapport ».",
+         "<b>التقارير الشهرية</b>: المناظرات بالأرقام (حسب الاختصاص والولاية)، مع زر «شارك هذا التقرير»."),
+        ("<b>Alertes sur Telegram</b> (payant) : voir plus bas.", "<b>تنبيهات على تيليغرام</b> (بمقابل): انظر أسفله."),
+        ("Bouton <b>Partager</b> en haut de chaque page (menu de partage du téléphone).",
+         "زر <b>شارك</b> في أعلى كل صفحة (قائمة المشاركة في الهاتف)."),
+        ("Bouton <b>ع / Fr</b> : tout le site en arabe ou en français.", "زر <b>ع / Fr</b>: كل الموقع بالعربية أو بالفرنسية."),
+        ("<b>Votre avis</b> : un petit formulaire pour nous écrire.", "<b>رأيك</b>: استمارة صغيرة لمراسلتنا."),
+        ("<b>Installer le site</b> sur l'écran d'accueil du téléphone ; les pages déjà vues s'ouvrent même sans connexion.",
+         "<b>تثبيت الموقع</b> على الشاشة الرئيسية للهاتف؛ الصفحات التي زرتها تفتح حتى دون اتصال."),
+    ])
+    hero = f"""{fil("../", "Comment fonctionne le site ?", "كيف يعمل الموقع؟")}
+    <h1>{L("Comment fonctionne le site ?", "كيف يعمل الموقع؟")}</h1>
+    <p class="intro">{L("Tout ce que fait Alerte Concours Tunisie, expliqué simplement.", "كل ما يقدمه موقع تنبيه المناظرات، بشرح بسيط.")}</p>"""
+    contenu = f"""<section class="carte"><h2>{L("À quoi sert le site ?", "ما فائدة الموقع؟")}</h2>
+<p>{L("Il réunit sur une seule page tous les concours publics ouverts en Tunisie, dans les 24" + NB + "gouvernorats. Pour chaque concours : le grade, l'organisme, le nombre de postes, la date limite et le lien officiel pour s'inscrire.",
+       "يجمع في صفحة واحدة كل المناظرات العمومية المفتوحة في تونس، في الولايات الـ" + ISO(24) + ". لكل مناظرة: الخطة، الهيكل، عدد الخطط، آخر أجل والرابط الرسمي للترشح.")}</p></section>
+<section class="carte"><h2>{L("D'où viennent les concours ?", "من أين تأتي المناظرات؟")}</h2>
+<ul>
+{li("Le <b>portail officiel des concours publics</b> (www.concours.gov.tn) : son tableau des concours ouverts et ses actualités.", "<b>البوابة الرسمية للمناظرات العمومية</b> (" + ISO("www.concours.gov.tn") + "): جدول المناظرات المفتوحة وأخبارها.")}
+{li("La <b>plateforme des concours du ministère des Finances</b> (concours.finances.gov.tn) : ces concours sont nationaux.", "<b>منصة مناظرات وزارة المالية</b> (" + ISO("concours.finances.gov.tn") + "): وهي مناظرات وطنية.")}
+{li("Les <b>sites officiels des ministères</b>, relus chaque semaine.", "<b>المواقع الرسمية للوزارات</b>، تُقرأ كل أسبوع.")}
+</ul>
+<p>{L("Le gouvernorat est déduit du nom de l'organisme (une commune, un hôpital régional…). Un concours d'un ministère ou d'un office national est « national » : il est ouvert à toute la Tunisie et figure dans chaque gouvernorat. Nous donnons les faits publics et le lien officiel, jamais le texte entier de l'avis.",
+       "تُستنتج الولاية من اسم الهيكل (بلدية، مستشفى جهوي…). مناظرة الوزارة أو الديوان الوطني «وطنية»: مفتوحة لكل الجمهورية وتظهر في كل ولاية. ننقل المعطيات العامة والرابط الرسمي، وليس نص البلاغ كاملًا.")}</p></section>
+<section class="carte"><h2>{L("Comment s'en servir ?", "كيف تستعمله؟")}</h2>
+<ol class="etapes">
+{li("Choisissez votre <b>métier</b> et votre <b>gouvernorat</b> (ou tapez un mot dans « Rechercher »).", "اختر <b>اختصاصك</b> و<b>ولايتك</b> (أو اكتب كلمة في «بحث»).")}
+{li("Regardez la <b>date limite</b> et le nombre de postes de chaque concours.", "انظر إلى <b>آخر أجل</b> وعدد الخطط في كل مناظرة.")}
+{li("Touchez le bouton officiel : l'<b>inscription se fait toujours sur le site officiel</b> du concours.", "المس الزر الرسمي: <b>الترشح يتم دائمًا في الموقع الرسمي</b> للمناظرة.")}
+</ol></section>
+<section class="carte"><h2>{L("Ce que vous trouvez sur le site", "ما تجده في الموقع")}</h2>
+<ul>{fonctions}</ul></section>
+<section class="carte"><h2>{L("Gratuit et payant", "مجاني وبمقابل")}</h2>
+<p>{L("<b>Gratuit</b> : la liste complète des concours, toutes les pages, les actualités, le guide et les rapports du mois. Sans inscription.",
+       "<b>مجانًا</b>: القائمة الكاملة للمناظرات، كل الصفحات، الأخبار، الدليل والتقارير الشهرية. دون تسجيل.")}</p>
+<p>{L(f"<b>Payant : Alertes + Suivi sur Telegram</b> ({p3}" + NB + f"DT pour 3" + NB + f"mois ou {pa}" + NB + "DT pour 1" + NB + "an). Chaque matin, les nouveaux concours de vos métiers et de vos gouvernorats (concours nationaux compris), un rappel 3" + NB + "jours avant la date limite, et le suivi des concours que vous choisissez (candidatures acceptées, convocations, report, résultats).",
+       f"<b>بمقابل: التنبيهات + المتابعة على تيليغرام</b> ({ISO(p3)} دينار لـ" + ISO(3) + f" أشهر أو {ISO(pa)} دينار للسنة). كل صباح، المناظرات الجديدة في اختصاصاتك وولاياتك (مع المناظرات الوطنية)، تذكير قبل آخر أجل بـ" + ISO(3) + " أيام، ومتابعة المناظرات التي تختارها (قبول الترشحات، الاستدعاءات، التأجيل، النتائج).")}</p>
+<p>{L(f"Paiement par D17 ou IZI, avec pour motif votre <b>code personnel</b> donné sur la page Alertes. Pas de renouvellement automatique : rappel {rj}" + NB + "jours avant la fin, puis l'alerte s'arrête simplement.",
+       f"الدفع عبر ⁨D17⁩ أو ⁨IZI⁩ مع ذكر <b>رمزك الشخصي</b> المعطى في صفحة التنبيهات. لا تجديد آلي: تذكير قبل النهاية بـ{ISO(rj)} أيام، ثم يتوقف التنبيه ببساطة.")}</p>
+<a class="btn" href="../alertes/">{L("Voir les alertes", "اطّلع على التنبيهات")}</a></section>
+<section class="carte"><h2>{L("Vos données", "بياناتك")}</h2>
+<ul>
+{li("Pas de compte à créer pour consulter le site. Votre téléphone garde seulement la langue choisie.", "لا حساب لإنشائه لتصفح الموقع. هاتفك يحفظ فقط اللغة المختارة.")}
+{li("Statistiques de visite anonymes, sans cookies (GoatCounter).", "إحصائيات زيارات مجهولة، دون ملفات تعريف الارتباط (⁨GoatCounter⁩).")}
+{li("Votre avis et l'inscription aux alertes ne sont envoyés que si vous touchez « Envoyer » (service Formspree). Vos coordonnées servent seulement à l'abonnement : elles ne sont jamais publiées ni vendues.", "رأيك والتسجيل في التنبيهات لا يُرسلان إلا إذا لمست «أرسل» (خدمة ⁨Formspree⁩). بياناتك تُستعمل للاشتراك فقط: لا تُنشر ولا تُباع أبدًا.")}
+</ul></section>
+<section class="carte"><h2>{L("Mises à jour automatiques", "تحيين آلي")}</h2>
+<p>{L("Chaque jour, un robot relit les sources et refait toutes les pages, sans intervention à la main. La date de la dernière lecture est écrite en bas de chaque page. Si le portail officiel ne répond pas, la dernière liste lue reste affichée et un avertissement apparaît quand elle date de plusieurs jours.",
+       "كل يوم، يعيد برنامج آلي قراءة المصادر ويعيد بناء كل الصفحات، دون أي تدخل يدوي. تاريخ آخر قراءة مكتوب أسفل كل صفحة. إذا لم تستجب البوابة الرسمية، تبقى آخر قائمة مقروءة معروضة ويظهر تنبيه عندما يمر عليها عدة أيام.")}</p></section>
+<section class="carte"><h2>{L("Un site indépendant", "موقع مستقل")}</h2>
+<p>{L("Ce site est indépendant et non officiel. Les informations sont indicatives : seul le portail officiel fait foi, et l'inscription se fait toujours sur le site officiel.",
+       "هذا الموقع مستقل وغير رسمي. المعلومات للإرشاد فقط: البوابة الرسمية هي المرجع الوحيد، والترشح يتم دائمًا في الموقع الرسمي.")}</p></section>
+{AVIS}"""
+    return page("a-propos/", "../", "Comment fonctionne le site ? | Alerte Concours Tunisie",
+                "Comment fonctionne Alerte Concours Tunisie : d'où viennent les concours (portail officiel, ministère des Finances), comment s'en servir, chaque fonction, gratuit et payant, vos données.",
+                hero, contenu, v, maj)
+
 def pages_alertes(v, maj):
     """Page alertes/ (offre, paiement, inscription) et alertes/conditions/."""
     p3, pa, rj = ABO["prix_3mois"], ABO["prix_an"], ABO["rappel_jours"]
@@ -668,7 +758,8 @@ def construire(jour):
 {f'<h2 class="titre-section" id="actualites">{L("Dernières actualités des concours", "آخر أخبار المناظرات")}</h2><div class="actus">{"".join(actu_html(x, "") for x in actus[:4])}</div><p><a class="btn" href="actualites/">{L("Toutes les actualités (résultats, convocations…)", "كل الأخبار (النتائج، الاستدعاءات…)")}</a></p>' if actus else ""}
 <p><a class="btn" href="ministeres/">{L("Concours annoncés sur les sites des ministères", "المناظرات المعلنة في مواقع الوزارات")}</a> <a class="btn" href="rapports/">{L("Rapports du mois : les concours en chiffres", "التقارير الشهرية: المناظرات بالأرقام")}</a></p>
 <section class="carte"><h2>{L("Comment s'inscrire ?", "كيف تترشح؟")}</h2><p>{L("L'inscription se fait toujours sur le portail officiel. Notre guide explique les étapes une par une.", "الترشح يتم دائمًا في البوابة الرسمية. دليلنا يشرح المراحل واحدة بواحدة.")}</p>
-<a class="btn" href="guide-inscription/">{L("Lire le guide d'inscription", "اقرأ دليل الترشح")}</a></section>
+<a class="btn" href="guide-inscription/">{L("Lire le guide d'inscription", "اقرأ دليل الترشح")}</a>
+<p class="lien-comment"><a href="a-propos/">{L("Comment fonctionne le site ?", "كيف يعمل الموقع؟")}</a></p></section>
 {AVIS}"""
     hero = hero_carte(ouverts, "", hero)
     pages[""] = page("", "", "Concours Tunisie 2026 : tous les concours ouverts par gouvernorat | Alerte Concours Tunisie",
@@ -811,15 +902,9 @@ def construire(jour):
     # --- alertes (abonnement Telegram) et conditions
     pages.update(pages_alertes(v, maj))
 
-    # --- à propos
-    hero = f"""{fil("../", "À propos et sources", "من نحن والمصادر")}
-    <h1>{L("À propos et sources", "من نحن والمصادر")}</h1>"""
-    contenu = f"""<section class="carte"><h2>{L("D'où viennent les concours ?", "من أين تأتي المناظرات؟")}</h2>
-<p>{L("Chaque jour, un robot lit le tableau officiel des concours ouverts du portail des concours publics (www.concours.gov.tn) : organisme, grade, nombre de postes, dates et état des résultats. Le gouvernorat est déduit du nom de l'organisme ; un concours national est ouvert à toute la Tunisie. Il lit aussi la plateforme officielle des concours du ministère des Finances (concours.finances.gov.tn) : ces concours sont nationaux.",
-       "كل يوم، يقرأ برنامج آلي الجدول الرسمي للمناظرات المفتوحة في بوابة المناظرات العمومية (www.concours.gov.tn): الهيكل، الخطة، عدد الخطط، الآجال وحالة النتائج. تُستنتج الولاية من اسم الهيكل؛ والمناظرة الوطنية مفتوحة لكل الجمهورية. كما يقرأ المنصة الرسمية لمناظرات وزارة المالية (concours.finances.gov.tn): وهي مناظرات وطنية.")}</p>
-<p>{L("Ce site est indépendant et non officiel. Seul le portail officiel fait foi, et l'inscription se fait toujours sur le site officiel.", "هذا الموقع مستقل وغير رسمي. البوابة الرسمية هي المرجع الوحيد، والترشح يتم دائمًا في الموقع الرسمي.")}</p></section>
-{AVIS}"""
-    pages["a-propos/"] = page("a-propos/", "../", "À propos et sources | Alerte Concours Tunisie", "D'où viennent les concours d'Alerte Concours Tunisie : le portail officiel des concours publics et la plateforme du ministère des Finances.", hero, contenu, v, maj)
+    # --- « Comment fonctionne le site ? » (règle commune § 44, Ahmed 25/10/2026) : à mettre à jour à CHAQUE modification visible,
+    # dans le même envoi ; test FONCTIONS dans tools/test_site.mjs (une fonction du site absente de cette page = test rouge)
+    pages["a-propos/"] = page_a_propos(v, maj)
 
     # --- rapports du mois (18/10/2026, règle commune § 25) : lus dans donnees/rapports.json (robot/rapports.py), jamais recalculés ici
     hist_rap, images = RAP.charger_hist(), AP.disponible()

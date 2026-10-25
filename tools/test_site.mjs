@@ -360,5 +360,39 @@ check("Votre avis : e-mail obligatoire (required, « obligatoire ») et confirma
 // 18/10/2026 (décision d'Ahmed) : motif du paiement = le CODE PERSONNEL, jamais le nom (deux clients peuvent avoir le même nom)
 check("paiement : le motif est le code personnel, jamais « nom … (motif du paiement) »",
   !/nom[^<]{0,40}\(motif du paiement\)/.test(lire("alertes/index.html")) && !/motif\s*[:=]\s*(votre )?nom/i.test(lire("alertes/index.html")));
+// 25/10/2026 (RÈGLE d'Ahmed : « la page Comment fonctionne le site doit être mise à jour chaque fois qu'on modifie le site », règle commune § 44) :
+// chaque fonction visible du site (repère dans les pages ou le code) doit être expliquée dans a-propos/ ; nouvelle fonction = une ligne ici + la page
+{ const ap = lire("a-propos/index.html"), acc2 = lire("index.html"), js = lire("assets/app.js") + lire("assets/page.js");
+  const FONCTIONS = [
+    ["résumé du jour (ouverts, nouveaux, bientôt)", /id="r-nouveaux"/.test(acc2), /Résumé du jour/],
+    ["carte de la Tunisie", /class="carte-tn"/.test(acc2), /Carte de la Tunisie/],
+    ["inscriptions qui se terminent bientôt", /id="bientot"/.test(acc2), /Inscriptions qui se terminent bientôt/],
+    ["recherche (aussi « au son »)", /id="f-q"/.test(acc2) && existsSync(join(root, "assets/son.js")), /Rechercher<\/b>[^<]*écritures proches/],
+    ["filtres métier / gouvernorat et tri", /id="f-metier"/.test(acc2) && /id="f-gouv"/.test(acc2) && /id="f-tri"/.test(acc2), /Filtres<\/b> par métier et par gouvernorat/],
+    ["étiquette « Nouveau »", /\.nouveau/.test(js), /« Nouveau »/],
+    ["une page par concours", existsSync(join(root, "concours")), /Une page par concours/],
+    ["une page par gouvernorat (nationaux inclus)", existsSync(join(root, "gouvernorat/national/index.html")), /Une page par gouvernorat[\s\S]*nationaux/],
+    ["une page par métier", existsSync(join(root, "metier")), /Une page par métier/],
+    ["actualités du portail", existsSync(join(root, "actualites/index.html")), /Actualités<\/b>/],
+    ["sites des ministères", existsSync(join(root, "ministeres/index.html")), /Sites des ministères/],
+    ["guide d'inscription", existsSync(join(root, "guide-inscription/index.html")), /Guide d'inscription|Guide d&#x27;inscription|Guide d’inscription/],
+    ["rapports du mois", existsSync(join(root, "rapports/index.html")), /Rapports du mois/],
+    ["alertes Telegram payantes (Alertes + Suivi)", existsSync(join(root, "alertes/index.html")), /Payant : Alertes \+ Suivi sur Telegram/],
+    ["paiement avec le code personnel, sans renouvellement automatique", /abo-code/.test(lire("alertes/index.html") + lire("assets/abonnement.js")), /code personnel[\s\S]*Pas de renouvellement automatique/],
+    ["bouton Partager", /class="partager"/.test(js), /Partager<\/b>/],
+    ["français / arabe", /class="langue"/.test(js), /ع \/ Fr/],
+    ["votre avis", /id="avis-form"/.test(acc2), /Votre avis<\/b>/],
+    ["installation sur le téléphone (service worker)", existsSync(join(root, "sw.js")) && /serviceWorker/.test(js), /Installer le site/],
+    ["sources officielles (portail + Finances)", true, /concours\.gov\.tn[\s\S]*concours\.finances\.gov\.tn/],
+    ["vos données (GoatCounter, Formspree)", true, /GoatCounter[\s\S]*Formspree/],
+    ["mises à jour automatiques", true, /Mises à jour automatiques/],
+    ["site indépendant", true, /indépendant et non officiel/]];
+  const manque = FONCTIONS.filter(([, sur, re]) => sur && !re.test(ap)).map(([n]) => n);
+  check(`page « Comment fonctionne le site ? » à jour : chaque fonction du site y est expliquée (${FONCTIONS.length} fonctions)` + (manque.length ? " — manque : " + manque.join(", ") : ""),
+    manque.length === 0);
+  check("page « Comment fonctionne le site ? » : titre h1, lien dans le pied de page (page.js) et sur l'accueil",
+    /<h1><span data-l="fr">Comment fonctionne le site \?<\/span><span data-l="ar">كيف يعمل الموقع؟<\/span><\/h1>/.test(ap)
+    && /a-propos\/">\$\{T\("Comment fonctionne le site \?"/.test(lire("assets/page.js")) && /<a href="a-propos\/">[^<]*Comment fonctionne le site/.test(acc2.replace(/<span data-l="fr">/g, "")));
+  check("sitemap : a-propos/ présent", lire("sitemap.xml").includes("https://concours.clicvia.com/a-propos/")); }
 console.log(`\n${ok}/${ok + ko} vérifications réussies` + (ko ? ` — ${ko} ÉCHEC(S) : ne pas publier.` : " — tout est bon."));
 process.exit(ko ? 1 : 0);

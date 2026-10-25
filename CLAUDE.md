@@ -160,3 +160,10 @@ Rien n'est ajouté au site sans l'accord d'Ahmed.
   page `alertes/`, conditions renumérotées 1-8, titres, descriptions, llms.txt) ; formule 3 mois (cochée) ou 1 an ; le code reste créé
   sur la page, le robot privé le met « en attente » jusqu'au paiement. Les ~130 anciennes pages de concours (plus dans les données)
   ont été corrigées à la main. Test : « aucune page ne parle d'essai gratuit » dans test_site.mjs.
+
+- **RÈGLE D'AHMED (25/10/2026, règle commune § 44) : la page « Comment fonctionne le site ? » (`a-propos/`, `page_a_propos()` de
+  robot/construire_site.py, FR + AR) est mise à jour à CHAQUE modification visible du site, dans le même envoi** : à quoi sert le site,
+  sources, mode d'emploi, une ligne par fonction visible, gratuit / payant (Alertes + Suivi), vos données, mises à jour, site indépendant.
+  Lien « Comment fonctionne le site ? » dans le pied de page (page.js) et sur l'accueil (carte « Comment s'inscrire ? »).
+  Test `FONCTIONS` dans tools/test_site.mjs (repère dans le site -> phrase attendue dans la page) : une fonction absente = test rouge.
+  Nouvelle fonction = une ligne dans `FONCTIONS` + son explication dans `page_a_propos()`.

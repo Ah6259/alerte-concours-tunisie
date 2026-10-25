@@ -40,7 +40,7 @@
           <a href="${racine}guide-inscription/">${T("S'inscrire à un concours", "كيف تترشح لمناظرة")}</a>
           <a href="${racine}rapports/">${T("Rapports du mois", "التقارير الشهرية")}</a>
           <a href="${racine}alertes/">${T("Alertes par métier et gouvernorat", "تنبيهات حسب الاختصاص والولاية")}</a>
-          <a href="${racine}a-propos/">${T("À propos et sources", "من نحن والمصادر")}</a>
+          <a href="${racine}a-propos/">${T("Comment fonctionne le site ?", "كيف يعمل الموقع؟")}</a>
           <a href="${racine}#avis">${T("Votre avis", "رأيك")}</a>
         <a href="https://clicvia.com/" rel="noopener" target="_blank">${T("Tous nos services", "كل خدماتنا")}</a>
         </nav>
