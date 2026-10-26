@@ -1713,6 +1713,126 @@
      "cloture_candidatures": "2026-11-25",
      "vu_le": "2026-10-26",
      "publies": []
+    },
+    "1943": {
+     "postes": 3,
+     "metier": "ingenieur",
+     "gouvernorat": "national",
+     "cloture_candidatures": "2024-11-03",
+     "vu_le": "2026-10-26",
+     "publies": []
+    },
+    "2002": {
+     "postes": 2,
+     "metier": "ingenieur",
+     "gouvernorat": "national",
+     "cloture_candidatures": "2024-11-27",
+     "vu_le": "2026-10-26",
+     "publies": []
+    },
+    "2031": {
+     "postes": 1,
+     "metier": "ingenieur",
+     "gouvernorat": "sousse",
+     "cloture_candidatures": "2024-11-29",
+     "vu_le": "2026-10-26",
+     "publies": []
+    },
+    "2069": {
+     "postes": 1,
+     "metier": "ingenieur",
+     "gouvernorat": "sfax",
+     "cloture_candidatures": "2024-12-03",
+     "vu_le": "2026-10-26",
+     "publies": []
+    },
+    "2070": {
+     "postes": 1,
+     "metier": "ingenieur",
+     "gouvernorat": "sfax",
+     "cloture_candidatures": "2024-12-03",
+     "vu_le": "2026-10-26",
+     "publies": []
+    },
+    "2072": {
+     "postes": 1,
+     "metier": "ingenieur",
+     "gouvernorat": "sfax",
+     "cloture_candidatures": "2024-12-03",
+     "vu_le": "2026-10-26",
+     "publies": []
+    },
+    "2086": {
+     "postes": 1,
+     "metier": "ingenieur",
+     "gouvernorat": "tunis",
+     "cloture_candidatures": "2024-12-30",
+     "vu_le": "2026-10-26",
+     "publies": []
+    },
+    "2068": {
+     "postes": 1,
+     "metier": "ingenieur",
+     "gouvernorat": "sfax",
+     "cloture_candidatures": "2024-12-31",
+     "vu_le": "2026-10-26",
+     "publies": []
+    },
+    "2071": {
+     "postes": 1,
+     "metier": "ingenieur",
+     "gouvernorat": "sfax",
+     "cloture_candidatures": "2024-12-31",
+     "vu_le": "2026-10-26",
+     "publies": []
+    },
+    "2087": {
+     "postes": 8,
+     "metier": "ingenieur",
+     "gouvernorat": "national",
+     "cloture_candidatures": "2025-01-23",
+     "vu_le": "2026-10-26",
+     "publies": []
+    },
+    "2089": {
+     "postes": 7,
+     "metier": "ingenieur",
+     "gouvernorat": "national",
+     "cloture_candidatures": "2025-01-23",
+     "vu_le": "2026-10-26",
+     "publies": []
+    },
+    "2091": {
+     "postes": 1,
+     "metier": "ingenieur",
+     "gouvernorat": "national",
+     "cloture_candidatures": "2025-01-23",
+     "vu_le": "2026-10-26",
+     "publies": []
+    },
+    "2096": {
+     "postes": 4,
+     "metier": "ingenieur",
+     "gouvernorat": "national",
+     "cloture_candidatures": "2025-01-23",
+     "vu_le": "2026-10-26",
+     "publies": []
+    },
+    "2097": {
+     "postes": 7,
+     "metier": "ingenieur",
+     "gouvernorat": "national",
+     "cloture_candidatures": "2025-01-23",
+     "vu_le": "2026-10-26",
+     "publies": []
+    },
+    "2098": {
+     "postes": 5,
+     "metier": "ingenieur",
+     "gouvernorat": "national",
+     "cloture_candidatures": "2025-01-23",
+     "vu_le": "2026-10-26",
+     "publies": []
     }
    }
   }
