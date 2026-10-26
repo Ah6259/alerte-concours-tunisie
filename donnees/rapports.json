@@ -2,14 +2,14 @@
  "mois": {
   "2026-10": {
    "premier_jour": "2026-10-17",
-   "dernier_jour": "2026-10-25",
+   "dernier_jour": "2026-10-26",
    "fini": false,
    "chiffres": {
-    "au": "2026-10-25",
+    "au": "2026-10-26",
     "debut": "2026-10-09",
     "ouverts": {
-     "n": 63,
-     "postes": 117,
+     "n": 64,
+     "postes": 121,
      "sans_postes": 0
     },
     "national": {
@@ -18,8 +18,8 @@
      "sans_postes": 0
     },
     "locaux": {
-     "n": 41,
-     "postes": 72,
+     "n": 42,
+     "postes": 76,
      "sans_postes": 0
     },
     "finances": 0,
@@ -55,6 +55,11 @@
       6
      ],
      [
+      "gabes",
+      1,
+      4
+     ],
+     [
       "medenine",
       1,
       2
@@ -78,8 +83,8 @@
      ],
      [
       "administratif",
-      10,
-      16
+      11,
+      20
      ],
      [
       "technicien",
@@ -161,11 +166,11 @@
      "n": 14,
      "postes": 20,
      "sans_postes": 0,
-     "jusqu_au": "2026-10-31"
+     "jusqu_au": "2026-11-01"
     },
     "nouveaux": {
-     "n": 28,
-     "postes": 46,
+     "n": 29,
+     "postes": 50,
      "sans_postes": 0
     },
     "nouveaux_metiers": [
@@ -175,7 +180,7 @@
      ],
      [
       "administratif",
-      7
+      8
      ],
      [
       "autre",
@@ -1699,6 +1704,14 @@
      "gouvernorat": "sfax",
      "cloture_candidatures": "2020-04-13",
      "vu_le": "2026-10-25",
+     "publies": []
+    },
+    "3312": {
+     "postes": 4,
+     "metier": "administratif",
+     "gouvernorat": "gabes",
+     "cloture_candidatures": "2026-11-25",
+     "vu_le": "2026-10-26",
      "publies": []
     }
    }
