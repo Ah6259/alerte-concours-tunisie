@@ -1,348 +1,42 @@
 {
  "source": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
- "lu_le": "2026-10-26",
+ "lu_le": "2026-10-27",
  "finances_ok": "2026-10-21",
- "pages": 23,
+ "pages": 21,
  "concours": [
   {
-   "id": "1943",
-   "decision": "C1/2018",
-   "organisme": "الشركة التونسية للملاحة",
-   "grade": "مهندس أول",
-   "postes": 3,
-   "cloture_candidatures": "2024-11-03",
-   "cloture_concours": "2024-11-03",
-   "resultat_initial": "لم تنشر",
-   "resultat_final": "لم تنشر",
-   "metier": "ingenieur",
-   "gouvernorat": "national",
-   "vu_le": "2026-10-26",
-   "historique": [],
-   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-10-26"
-  },
-  {
-   "id": "2002",
-   "decision": "01/2024",
-   "organisme": "المعهد الوطني للزراعات الكبرى",
-   "grade": "مهندس أول",
-   "postes": 2,
-   "cloture_candidatures": "2024-11-27",
-   "cloture_concours": "2024-11-27",
-   "resultat_initial": "لم تنشر",
-   "resultat_final": "لم تنشر",
-   "metier": "ingenieur",
-   "gouvernorat": "national",
-   "vu_le": "2026-10-26",
-   "historique": [],
-   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-10-26"
-  },
-  {
-   "id": "2031",
-   "decision": "قرار السيد الكاتب العام المكلف بالتسيير المؤرخ في 24 أكتوبر 2024 المتعلق بفتح مناظرة خارجية بالاختبارات لانتداب مهندس معماري أول بسلك المهندسين المعماريين لفائدة بلدية أكـــودة",
-   "organisme": "بلدية أكودة",
-   "grade": "مهندس معماري أول متعاقد",
+   "id": "2390",
+   "decision": "108/2025",
+   "organisme": "بلدية ماطر",
+   "grade": "عدد 01 تقني هندسة ميكانيكية",
    "postes": 1,
-   "cloture_candidatures": "2024-11-29",
-   "cloture_concours": "2024-11-29",
-   "resultat_initial": "--",
-   "resultat_final": "--",
-   "metier": "ingenieur",
-   "gouvernorat": "sousse",
-   "vu_le": "2026-10-26",
+   "cloture_candidatures": "2025-10-03",
+   "cloture_concours": "2026-12-31",
+   "resultat_initial": "لم تنشر",
+   "resultat_final": "لم تنشر",
+   "metier": "technicien",
+   "gouvernorat": "bizerte",
+   "vu_le": "2026-10-27",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-10-26"
+   "lu_le": "2026-10-27"
   },
   {
-   "id": "2032",
-   "decision": "قرار السيد الكاتب العام المكلف بالتسيير المؤرخ في 24 أكتوبر 2024 المتعلق بفتح مناظرة خارجية بالاختبارات لانتداب مهندس أول بالسلك المشترك لمهندسي الإدارات العمومية لفائدة بلدية أكـــودة",
-   "organisme": "بلدية أكودة",
-   "grade": "مهندس أول متعاقد",
+   "id": "2391",
+   "decision": "108أ/2025",
+   "organisme": "بلدية ماطر",
+   "grade": "عدد 01 تقني هنسة مدينة",
    "postes": 1,
-   "cloture_candidatures": "2024-11-29",
-   "cloture_concours": "2024-11-29",
-   "resultat_initial": "--",
-   "resultat_final": "--",
-   "metier": "ingenieur",
-   "gouvernorat": "sousse",
-   "vu_le": "2026-10-26",
-   "historique": [],
-   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-10-26"
-  },
-  {
-   "id": "2069",
-   "decision": "- قرار الكاتب العام المكلف بتسيير شؤون بلدية صفاقس المؤرخ في 26 نوفمبر 2024 المتعلق بضبط كيفية تنظيم المناظرة الخارجية بالاختبارات لانتداب مهندس أول (عن طريق التعاقد أو بصفة عون وقتي) بالسلك المشترك لمهندسي الإدارات العمومية لفائدة بلدية صفاقس. - قرار الكاتب العام المكلف بتسيير شؤون بلدية صفاقس عدد ",
-   "organisme": "بلدية صفاقس",
-   "grade": "مهندس أول",
-   "postes": 1,
-   "cloture_candidatures": "2024-12-03",
-   "cloture_concours": "2024-12-03",
+   "cloture_candidatures": "2025-10-03",
+   "cloture_concours": "2026-12-31",
    "resultat_initial": "لم تنشر",
    "resultat_final": "لم تنشر",
-   "metier": "ingenieur",
-   "gouvernorat": "sfax",
-   "vu_le": "2026-10-26",
+   "metier": "technicien",
+   "gouvernorat": "bizerte",
+   "vu_le": "2026-10-27",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-10-26"
-  },
-  {
-   "id": "2070",
-   "decision": "- قرار الكاتب العام المكلف بتسيير شؤون بلدية صفاقس المؤرخ في 26 نوفمبر 2024 المتعلق بضبط كيفية تنظيم المناظرة الخارجية بالاختبارات لانتداب مهندس أول (عن طريق التعاقد أو بصفة عون وقتي) بالسلك المشترك لمهندسي الإدارات العمومية لفائدة بلدية صفاقس. - قرار الكاتب العام المكلف بتسيير شؤون بلدية صفاقس عدد ",
-   "organisme": "بلدية صفاقس",
-   "grade": "مهندس أول",
-   "postes": 1,
-   "cloture_candidatures": "2024-12-03",
-   "cloture_concours": "2024-12-03",
-   "resultat_initial": "لم تنشر",
-   "resultat_final": "لم تنشر",
-   "metier": "ingenieur",
-   "gouvernorat": "sfax",
-   "vu_le": "2026-10-26",
-   "historique": [],
-   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-10-26"
-  },
-  {
-   "id": "2072",
-   "decision": "- قرار الكاتب العام المكلف بتسيير شؤون بلدية صفاقس المؤرخ في 26 نوفمبر 2024 المتعلق بضبط كيفية تنظيم المناظرة الخارجية بالاختبارات لانتداب مهندس أول (عن طريق التعاقد أو بصفة عون وقتي) بالسلك المشترك لمهندسي الإدارات العمومية لفائدة بلدية صفاقس. - قرار الكاتب العام المكلف بتسيير شؤون بلدية صفاقس عدد ",
-   "organisme": "بلدية صفاقس",
-   "grade": "مهندس أول",
-   "postes": 1,
-   "cloture_candidatures": "2024-12-03",
-   "cloture_concours": "2024-12-03",
-   "resultat_initial": "لم تنشر",
-   "resultat_final": "لم تنشر",
-   "metier": "ingenieur",
-   "gouvernorat": "sfax",
-   "vu_le": "2026-10-26",
-   "historique": [],
-   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-10-26"
-  },
-  {
-   "id": "2073",
-   "decision": "- قرار الكاتب العام المكلف بتسيير شؤون بلدية صفاقس المؤرخ في 26 نوفمبر 2024 المتعلق بضبط كيفية تنظيم المناظرة الخارجية بالاختبارات لانتداب مهندس أول (عن طريق التعاقد أو بصفة عون وقتي) بالسلك المشترك لمهندسي الإدارات العمومية لفائدة بلدية صفاقس. - قرار الكاتب العام المكلف بتسيير شؤون بلدية صفاقس عدد ",
-   "organisme": "بلدية صفاقس",
-   "grade": "مهندس أول",
-   "postes": 1,
-   "cloture_candidatures": "2024-12-03",
-   "cloture_concours": "2024-12-03",
-   "resultat_initial": "لم تنشر",
-   "resultat_final": "لم تنشر",
-   "metier": "ingenieur",
-   "gouvernorat": "sfax",
-   "vu_le": "2026-10-26",
-   "historique": [],
-   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-10-26"
-  },
-  {
-   "id": "2047",
-   "decision": "قرار كاتب عام بلدية فرنانة مؤرخ في 01 أكتوبر 2024",
-   "organisme": "بلدية فرنانة",
-   "grade": "مهندس أول بصفة عون وقتي",
-   "postes": 1,
-   "cloture_candidatures": "2024-12-30",
-   "cloture_concours": "2024-12-30",
-   "resultat_initial": "--",
-   "resultat_final": "--",
-   "metier": "ingenieur",
-   "gouvernorat": "jendouba",
-   "vu_le": "2026-10-26",
-   "historique": [],
-   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-10-26"
-  },
-  {
-   "id": "2086",
-   "decision": "اعلان مناظرة خارجية بعنوان سنة 2023",
-   "organisme": "وكالة التعمير لتونس الكبرى",
-   "grade": "مهندس أوّل",
-   "postes": 1,
-   "cloture_candidatures": "2024-12-30",
-   "cloture_concours": "2024-12-30",
-   "resultat_initial": "اطلاع",
-   "resultat_final": "اطلاع",
-   "metier": "ingenieur",
-   "gouvernorat": "tunis",
-   "vu_le": "2026-10-26",
-   "historique": [],
-   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-10-26"
-  },
-  {
-   "id": "2068",
-   "decision": "- قرار الكاتب العام المكلف بتسيير شؤون بلدية صفاقس المؤرخ في 26 نوفمبر 2024 المتعلق بضبط كيفية تنظيم المناظرة الخارجية بالاختبارات لانتداب مهندس أول (عن طريق التعاقد أو بصفة عون وقتي) بالسلك المشترك لمهندسي الإدارات العمومية لفائدة بلدية صفاقس. - قرار الكاتب العام المكلف بتسيير شؤون بلدية صفاقس عدد ",
-   "organisme": "بلدية صفاقس",
-   "grade": "مهندس أول",
-   "postes": 1,
-   "cloture_candidatures": "2024-12-31",
-   "cloture_concours": "2024-12-31",
-   "resultat_initial": "لم تنشر",
-   "resultat_final": "لم تنشر",
-   "metier": "ingenieur",
-   "gouvernorat": "sfax",
-   "vu_le": "2026-10-26",
-   "historique": [],
-   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-10-26"
-  },
-  {
-   "id": "2071",
-   "decision": "- قرار الكاتب العام المكلف بتسيير شؤون بلدية صفاقس المؤرخ في 26 نوفمبر 2024 المتعلق بضبط كيفية تنظيم المناظرة الخارجية بالاختبارات لانتداب مهندس أول (عن طريق التعاقد أو بصفة عون وقتي) بالسلك المشترك لمهندسي الإدارات العمومية لفائدة بلدية صفاقس. - قرار الكاتب العام المكلف بتسيير شؤون بلدية صفاقس عدد ",
-   "organisme": "بلدية صفاقس",
-   "grade": "مهندس أول",
-   "postes": 1,
-   "cloture_candidatures": "2024-12-31",
-   "cloture_concours": "2024-12-31",
-   "resultat_initial": "لم تنشر",
-   "resultat_final": "لم تنشر",
-   "metier": "ingenieur",
-   "gouvernorat": "sfax",
-   "vu_le": "2026-10-26",
-   "historique": [],
-   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-10-26"
-  },
-  {
-   "id": "2074",
-   "decision": "- قرار الكاتب العام المكلف بتسيير شؤون بلدية صفاقس المؤرخ في 26 نوفمبر 2024 المتعلق بضبط كيفية تنظيم المناظرة الخارجية بالاختبارات لانتداب مهندس أول (عن طريق التعاقد أو بصفة عون وقتي) بالسلك المشترك لمهندسي الإدارات العمومية لفائدة بلدية صفاقس. - قرار الكاتب العام المكلف بتسيير شؤون بلدية صفاقس عدد ",
-   "organisme": "بلدية صفاقس",
-   "grade": "مهندس أول",
-   "postes": 1,
-   "cloture_candidatures": "2024-12-31",
-   "cloture_concours": "2024-12-31",
-   "resultat_initial": "لم تنشر",
-   "resultat_final": "لم تنشر",
-   "metier": "ingenieur",
-   "gouvernorat": "sfax",
-   "vu_le": "2026-10-26",
-   "historique": [],
-   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-10-26"
-  },
-  {
-   "id": "2087",
-   "decision": "OMMP 01",
-   "organisme": "ديوان البحريّة التجاريّة والموانئ",
-   "grade": "مهندس أشغال (للعمل بخطّة قائد جرّار بحري) *أماكن التعيين: 02 إدارة ميناء حلق الوادي/01 إدارة ميناء بنزرت-منزل بورقيبة/03 إدارة ميناء صفاقس-سيدي يوسف/ 02 إدارة ميناء قابس",
-   "postes": 8,
-   "cloture_candidatures": "2025-01-23",
-   "cloture_concours": "2025-01-23",
-   "resultat_initial": "لم تنشر",
-   "resultat_final": "لم تنشر",
-   "metier": "ingenieur",
-   "gouvernorat": "national",
-   "vu_le": "2026-10-26",
-   "historique": [],
-   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-10-26"
-  },
-  {
-   "id": "2089",
-   "decision": "OMMP 03",
-   "organisme": "ديوان البحريّة التجاريّة والموانئ",
-   "grade": "مهندس أشغال (للعمل بخطّة ضابط ميكانيكي) *مكان التعيين: 01 إدارة ميناء بنزرت-منزل بورقيبة/02 إدارة ميناء صفاقس-سيدي يوسف/03 إدارة ميناء قابس/01 إدارة ميناء جرجيس",
-   "postes": 7,
-   "cloture_candidatures": "2025-01-23",
-   "cloture_concours": "2025-01-23",
-   "resultat_initial": "لم تنشر",
-   "resultat_final": "لم تنشر",
-   "metier": "ingenieur",
-   "gouvernorat": "national",
-   "vu_le": "2026-10-26",
-   "historique": [],
-   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-10-26"
-  },
-  {
-   "id": "2090",
-   "decision": "OMMP 04",
-   "organisme": "ديوان البحريّة التجاريّة والموانئ",
-   "grade": "مهندس أوّل (في اختصاص هندسة مدنية) *مكان التعيين: 01 إدارة ميناء بنزرت-منزل بورقيبة/01 إدارة ميناء جرجيس",
-   "postes": 2,
-   "cloture_candidatures": "2025-01-23",
-   "cloture_concours": "2025-01-23",
-   "resultat_initial": "لم تنشر",
-   "resultat_final": "لم تنشر",
-   "metier": "ingenieur",
-   "gouvernorat": "national",
-   "vu_le": "2026-10-26",
-   "historique": [],
-   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-10-26"
-  },
-  {
-   "id": "2091",
-   "decision": "OMMP 05",
-   "organisme": "ديوان البحريّة التجاريّة والموانئ",
-   "grade": "مهندس أوّل (في اختصاص جغرفة رقميّة) *مكان التعيين: 01 الإدارة العامّة بحلق الوادي",
-   "postes": 1,
-   "cloture_candidatures": "2025-01-23",
-   "cloture_concours": "2025-01-23",
-   "resultat_initial": "لم تنشر",
-   "resultat_final": "لم تنشر",
-   "metier": "ingenieur",
-   "gouvernorat": "national",
-   "vu_le": "2026-10-26",
-   "historique": [],
-   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-10-26"
-  },
-  {
-   "id": "2096",
-   "decision": "OMMP 09",
-   "organisme": "ديوان البحريّة التجاريّة والموانئ",
-   "grade": "مهندس مساعد (كهرباء ميكانيكيّة) *مكان التعيين: 01 إدارة ميناء حلق الوادي/01 إدارة ميناء رادس/01 إدارة ميناء بنزرت-منزل بورقيبة/01 إدارة ميناء جرجيس",
-   "postes": 4,
-   "cloture_candidatures": "2025-01-23",
-   "cloture_concours": "2025-01-23",
-   "resultat_initial": "لم تنشر",
-   "resultat_final": "لم تنشر",
-   "metier": "ingenieur",
-   "gouvernorat": "national",
-   "vu_le": "2026-10-26",
-   "historique": [],
-   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-10-26"
-  },
-  {
-   "id": "2097",
-   "decision": "OMMP 10",
-   "organisme": "ديوان البحريّة التجاريّة والموانئ",
-   "grade": "مهندس مساعد (كهرباء) *مكان التعيين : 03 إدارة ميناء حلق الوادي/02 إدارة ميناء رادس/01 إدارة ميناء سوسة/01 إدارة ميناء قابس",
-   "postes": 7,
-   "cloture_candidatures": "2025-01-23",
-   "cloture_concours": "2025-01-23",
-   "resultat_initial": "لم تنشر",
-   "resultat_final": "لم تنشر",
-   "metier": "ingenieur",
-   "gouvernorat": "national",
-   "vu_le": "2026-10-26",
-   "historique": [],
-   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-10-26"
-  },
-  {
-   "id": "2098",
-   "decision": "OMMP 11",
-   "organisme": "ديوان البحريّة التجاريّة والموانئ",
-   "grade": "مهندس مساعد (هندسة مدنيّة) *أماكن التعيين: 02 إدارة ميناء حلق الوادي/01 إدارة ميناء رادس/01 إدارة ميناء بنزرت-منزل بورقيبة/01 الإدارة العامّة بحلق الوادي",
-   "postes": 5,
-   "cloture_candidatures": "2025-01-23",
-   "cloture_concours": "2025-01-23",
-   "resultat_initial": "لم تنشر",
-   "resultat_final": "لم تنشر",
-   "metier": "ingenieur",
-   "gouvernorat": "national",
-   "vu_le": "2026-10-26",
-   "historique": [],
-   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-10-26"
+   "lu_le": "2026-10-27"
   },
   {
    "id": "2392",
@@ -359,7 +53,7 @@
    "vu_le": "2026-10-26",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-10-26"
+   "lu_le": "2026-10-27"
   },
   {
    "id": "2412",
@@ -376,7 +70,7 @@
    "vu_le": "2026-10-26",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-10-26"
+   "lu_le": "2026-10-27"
   },
   {
    "id": "2543",
@@ -393,7 +87,296 @@
    "vu_le": "2026-10-26",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-10-26"
+   "lu_le": "2026-10-27"
+  },
+  {
+   "id": "2548",
+   "decision": ": قرار عدد 5332",
+   "organisme": "بلدية الحمامات",
+   "grade": "مهندس أول اختصاص ميكانيك",
+   "postes": 1,
+   "cloture_candidatures": "2025-11-25",
+   "cloture_concours": "2026-11-26",
+   "resultat_initial": "اطلاع",
+   "resultat_final": "لم تنشر",
+   "metier": "ingenieur",
+   "gouvernorat": "nabeul",
+   "vu_le": "2026-10-27",
+   "historique": [],
+   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
+   "lu_le": "2026-10-27"
+  },
+  {
+   "id": "2749",
+   "decision": "04أ/26",
+   "organisme": "بلدية ماطر",
+   "grade": "عملة رافعي فضلات",
+   "postes": 10,
+   "cloture_candidatures": "2026-03-23",
+   "cloture_concours": "2026-12-31",
+   "resultat_initial": "لم تنشر",
+   "resultat_final": "لم تنشر",
+   "metier": "ouvrier",
+   "gouvernorat": "bizerte",
+   "vu_le": "2026-10-27",
+   "historique": [],
+   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
+   "lu_le": "2026-10-27"
+  },
+  {
+   "id": "2807",
+   "decision": "T07/2026",
+   "organisme": "وكالة احياء التراث والتنمية الثقافية",
+   "grade": "تقني سامي - إضاءة فنية",
+   "postes": 1,
+   "cloture_candidatures": "2026-04-11",
+   "cloture_concours": "2026-04-11",
+   "resultat_initial": "لم تنشر",
+   "resultat_final": "لم تنشر",
+   "metier": "technicien",
+   "gouvernorat": "national",
+   "vu_le": "2026-10-27",
+   "historique": [],
+   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
+   "lu_le": "2026-10-27"
+  },
+  {
+   "id": "2808",
+   "decision": "T08/2026",
+   "organisme": "وكالة احياء التراث والتنمية الثقافية",
+   "grade": "تقني سامي - هندسة مدنية",
+   "postes": 1,
+   "cloture_candidatures": "2026-04-11",
+   "cloture_concours": "2026-04-11",
+   "resultat_initial": "لم تنشر",
+   "resultat_final": "لم تنشر",
+   "metier": "technicien",
+   "gouvernorat": "national",
+   "vu_le": "2026-10-27",
+   "historique": [],
+   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
+   "lu_le": "2026-10-27"
+  },
+  {
+   "id": "2809",
+   "decision": "T09/2026",
+   "organisme": "وكالة احياء التراث والتنمية الثقافية",
+   "grade": "تقني سامي - فوتوغرافي",
+   "postes": 1,
+   "cloture_candidatures": "2026-04-11",
+   "cloture_concours": "2026-04-11",
+   "resultat_initial": "لم تنشر",
+   "resultat_final": "لم تنشر",
+   "metier": "technicien",
+   "gouvernorat": "national",
+   "vu_le": "2026-10-27",
+   "historique": [],
+   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
+   "lu_le": "2026-10-27"
+  },
+  {
+   "id": "2810",
+   "decision": "C01/2026",
+   "organisme": "وكالة احياء التراث والتنمية الثقافية",
+   "grade": "مستكتب إدارة - قابضي تذاكر ومراقبي دخول بالمتاحف والمواقع",
+   "postes": 14,
+   "cloture_candidatures": "2026-04-11",
+   "cloture_concours": "2026-04-11",
+   "resultat_initial": "لم تنشر",
+   "resultat_final": "لم تنشر",
+   "metier": "finance",
+   "gouvernorat": "national",
+   "vu_le": "2026-10-27",
+   "historique": [],
+   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
+   "lu_le": "2026-10-27"
+  },
+  {
+   "id": "2811",
+   "decision": "C02/2026",
+   "organisme": "وكالة احياء التراث والتنمية الثقافية",
+   "grade": "مستكتب إدارة - قابضي تذاكر ومراقبي دخول بالمتاحف والمواقع",
+   "postes": 1,
+   "cloture_candidatures": "2026-04-11",
+   "cloture_concours": "2026-04-11",
+   "resultat_initial": "لم تنشر",
+   "resultat_final": "لم تنشر",
+   "metier": "finance",
+   "gouvernorat": "national",
+   "vu_le": "2026-10-27",
+   "historique": [],
+   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
+   "lu_le": "2026-10-27"
+  },
+  {
+   "id": "2812",
+   "decision": "C03/2026",
+   "organisme": "وكالة احياء التراث والتنمية الثقافية",
+   "grade": "مستكتب إدارة - قابضي تذاكر ومراقبي دخول بالمتاحف والمواقع",
+   "postes": 1,
+   "cloture_candidatures": "2026-04-11",
+   "cloture_concours": "2026-04-11",
+   "resultat_initial": "لم تنشر",
+   "resultat_final": "لم تنشر",
+   "metier": "finance",
+   "gouvernorat": "national",
+   "vu_le": "2026-10-27",
+   "historique": [],
+   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
+   "lu_le": "2026-10-27"
+  },
+  {
+   "id": "2813",
+   "decision": "C04/2026",
+   "organisme": "وكالة احياء التراث والتنمية الثقافية",
+   "grade": "مستكتب إدارة - قابضي تذاكر ومراقبي دخول بالمتاحف والمواقع",
+   "postes": 2,
+   "cloture_candidatures": "2026-04-11",
+   "cloture_concours": "2026-04-11",
+   "resultat_initial": "لم تنشر",
+   "resultat_final": "لم تنشر",
+   "metier": "finance",
+   "gouvernorat": "national",
+   "vu_le": "2026-10-27",
+   "historique": [],
+   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
+   "lu_le": "2026-10-27"
+  },
+  {
+   "id": "2814",
+   "decision": "C05/2026",
+   "organisme": "وكالة احياء التراث والتنمية الثقافية",
+   "grade": "مستكتب إدارة - قابضي تذاكر ومراقبي دخول بالمتاحف والمواقع",
+   "postes": 2,
+   "cloture_candidatures": "2026-04-11",
+   "cloture_concours": "2026-04-11",
+   "resultat_initial": "لم تنشر",
+   "resultat_final": "لم تنشر",
+   "metier": "finance",
+   "gouvernorat": "national",
+   "vu_le": "2026-10-27",
+   "historique": [],
+   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
+   "lu_le": "2026-10-27"
+  },
+  {
+   "id": "2815",
+   "decision": "C06/2026",
+   "organisme": "وكالة احياء التراث والتنمية الثقافية",
+   "grade": "مستكتب إدارة - قابضي تذاكر ومراقبي دخول بالمتاحف والمواقع",
+   "postes": 1,
+   "cloture_candidatures": "2026-04-11",
+   "cloture_concours": "2026-04-11",
+   "resultat_initial": "لم تنشر",
+   "resultat_final": "لم تنشر",
+   "metier": "finance",
+   "gouvernorat": "national",
+   "vu_le": "2026-10-27",
+   "historique": [],
+   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
+   "lu_le": "2026-10-27"
+  },
+  {
+   "id": "2816",
+   "decision": "U01/2026",
+   "organisme": "وكالة احياء التراث والتنمية الثقافية",
+   "grade": "عامل وحدة 2 - سائق",
+   "postes": 3,
+   "cloture_candidatures": "2026-04-11",
+   "cloture_concours": "2026-04-11",
+   "resultat_initial": "لم تنشر",
+   "resultat_final": "لم تنشر",
+   "metier": "chauffeur",
+   "gouvernorat": "national",
+   "vu_le": "2026-10-27",
+   "historique": [],
+   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
+   "lu_le": "2026-10-27"
+  },
+  {
+   "id": "2817",
+   "decision": "U02/2026",
+   "organisme": "وكالة احياء التراث والتنمية الثقافية",
+   "grade": "عامل وحدة 2 - ميكانيكي",
+   "postes": 1,
+   "cloture_candidatures": "2026-04-11",
+   "cloture_concours": "2026-04-11",
+   "resultat_initial": "لم تنشر",
+   "resultat_final": "لم تنشر",
+   "metier": "ouvrier",
+   "gouvernorat": "national",
+   "vu_le": "2026-10-27",
+   "historique": [],
+   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
+   "lu_le": "2026-10-27"
+  },
+  {
+   "id": "2818",
+   "decision": "U03/2026",
+   "organisme": "وكالة احياء التراث والتنمية الثقافية",
+   "grade": "عامل وحدة 2 - سباكة",
+   "postes": 2,
+   "cloture_candidatures": "2026-04-11",
+   "cloture_concours": "2026-04-11",
+   "resultat_initial": "لم تنشر",
+   "resultat_final": "لم تنشر",
+   "metier": "ouvrier",
+   "gouvernorat": "national",
+   "vu_le": "2026-10-27",
+   "historique": [],
+   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
+   "lu_le": "2026-10-27"
+  },
+  {
+   "id": "2819",
+   "decision": "U04/2026",
+   "organisme": "وكالة احياء التراث والتنمية الثقافية",
+   "grade": "عامل وحدة 2 - كهرباء",
+   "postes": 1,
+   "cloture_candidatures": "2026-04-11",
+   "cloture_concours": "2026-04-11",
+   "resultat_initial": "لم تنشر",
+   "resultat_final": "لم تنشر",
+   "metier": "ouvrier",
+   "gouvernorat": "national",
+   "vu_le": "2026-10-27",
+   "historique": [],
+   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
+   "lu_le": "2026-10-27"
+  },
+  {
+   "id": "2820",
+   "decision": "U05/2026",
+   "organisme": "وكالة احياء التراث والتنمية الثقافية",
+   "grade": "عامل وحدة 2 - صناعة المنتوجات الثقافية",
+   "postes": 2,
+   "cloture_candidatures": "2026-04-11",
+   "cloture_concours": "2026-04-11",
+   "resultat_initial": "لم تنشر",
+   "resultat_final": "لم تنشر",
+   "metier": "ouvrier",
+   "gouvernorat": "national",
+   "vu_le": "2026-10-27",
+   "historique": [],
+   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
+   "lu_le": "2026-10-27"
+  },
+  {
+   "id": "2821",
+   "decision": "U06/2026",
+   "organisme": "وكالة احياء التراث والتنمية الثقافية",
+   "grade": "عامل وحدة 2 - التأمين الذاتي",
+   "postes": 3,
+   "cloture_candidatures": "2026-04-11",
+   "cloture_concours": "2026-04-11",
+   "resultat_initial": "لم تنشر",
+   "resultat_final": "لم تنشر",
+   "metier": "ouvrier",
+   "gouvernorat": "national",
+   "vu_le": "2026-10-27",
+   "historique": [],
+   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
+   "lu_le": "2026-10-27"
   },
   {
    "id": "2978",
@@ -410,7 +393,7 @@
    "vu_le": "2026-10-21",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-10-26"
+   "lu_le": "2026-10-27"
   },
   {
    "id": "2979",
@@ -427,7 +410,7 @@
    "vu_le": "2026-10-21",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-10-26"
+   "lu_le": "2026-10-27"
   },
   {
    "id": "2980",
@@ -444,7 +427,7 @@
    "vu_le": "2026-10-21",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-10-26"
+   "lu_le": "2026-10-27"
   },
   {
    "id": "2981",
@@ -461,7 +444,7 @@
    "vu_le": "2026-10-21",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-10-26"
+   "lu_le": "2026-10-27"
   },
   {
    "id": "2985",
@@ -478,7 +461,7 @@
    "vu_le": "2026-10-21",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-10-26"
+   "lu_le": "2026-10-27"
   },
   {
    "id": "2986",
@@ -495,7 +478,7 @@
    "vu_le": "2026-10-21",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-10-26"
+   "lu_le": "2026-10-27"
   },
   {
    "id": "2987",
@@ -512,7 +495,7 @@
    "vu_le": "2026-10-21",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-10-26"
+   "lu_le": "2026-10-27"
   },
   {
    "id": "2988",
@@ -529,7 +512,7 @@
    "vu_le": "2026-10-21",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-10-26"
+   "lu_le": "2026-10-27"
   },
   {
    "id": "2989",
@@ -546,7 +529,7 @@
    "vu_le": "2026-10-21",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-10-26"
+   "lu_le": "2026-10-27"
   },
   {
    "id": "2990",
@@ -563,7 +546,7 @@
    "vu_le": "2026-10-21",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-10-26"
+   "lu_le": "2026-10-27"
   },
   {
    "id": "2991",
@@ -580,7 +563,7 @@
    "vu_le": "2026-10-21",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-10-26"
+   "lu_le": "2026-10-27"
   },
   {
    "id": "2992",
@@ -597,7 +580,7 @@
    "vu_le": "2026-10-21",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-10-26"
+   "lu_le": "2026-10-27"
   },
   {
    "id": "2993",
@@ -614,7 +597,7 @@
    "vu_le": "2026-10-21",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-10-26"
+   "lu_le": "2026-10-27"
   },
   {
    "id": "2994",
@@ -631,7 +614,7 @@
    "vu_le": "2026-10-21",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-10-26"
+   "lu_le": "2026-10-27"
   },
   {
    "id": "2995",
@@ -648,7 +631,7 @@
    "vu_le": "2026-10-21",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-10-26"
+   "lu_le": "2026-10-27"
   },
   {
    "id": "2996",
@@ -665,7 +648,7 @@
    "vu_le": "2026-10-21",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-10-26"
+   "lu_le": "2026-10-27"
   },
   {
    "id": "2997",
@@ -682,7 +665,7 @@
    "vu_le": "2026-10-21",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-10-26"
+   "lu_le": "2026-10-27"
   },
   {
    "id": "2998",
@@ -699,7 +682,7 @@
    "vu_le": "2026-10-21",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-10-26"
+   "lu_le": "2026-10-27"
   },
   {
    "id": "2999",
@@ -716,7 +699,7 @@
    "vu_le": "2026-10-21",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-10-26"
+   "lu_le": "2026-10-27"
   },
   {
    "id": "3000",
@@ -733,7 +716,7 @@
    "vu_le": "2026-10-21",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-10-26"
+   "lu_le": "2026-10-27"
   },
   {
    "id": "3001",
@@ -750,7 +733,7 @@
    "vu_le": "2026-10-21",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-10-26"
+   "lu_le": "2026-10-27"
   },
   {
    "id": "3002",
@@ -767,7 +750,7 @@
    "vu_le": "2026-10-26",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-10-26"
+   "lu_le": "2026-10-27"
   },
   {
    "id": "3003",
@@ -784,7 +767,7 @@
    "vu_le": "2026-10-26",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-10-26"
+   "lu_le": "2026-10-27"
   },
   {
    "id": "3004",
@@ -801,7 +784,7 @@
    "vu_le": "2026-10-26",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-10-26"
+   "lu_le": "2026-10-27"
   },
   {
    "id": "3005",
@@ -818,7 +801,109 @@
    "vu_le": "2026-10-26",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-10-26"
+   "lu_le": "2026-10-27"
+  },
+  {
+   "id": "3006",
+   "decision": "مناظرة خارجية بعنوان سنتي 2025 و 2026",
+   "organisme": "وكالة التكوين في مهن السياحة",
+   "grade": "مكون تقني مرطبات بمعهد التكوين في مهن السياحة بالحمامات",
+   "postes": 1,
+   "cloture_candidatures": "2026-07-02",
+   "cloture_concours": "2026-10-31",
+   "resultat_initial": "لم تنشر",
+   "resultat_final": "لم تنشر",
+   "metier": "technicien",
+   "gouvernorat": "national",
+   "vu_le": "2026-10-27",
+   "historique": [],
+   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
+   "lu_le": "2026-10-27"
+  },
+  {
+   "id": "3007",
+   "decision": "مناظرة خارجية بعنوان سنتي 2025 و 2026",
+   "organisme": "وكالة التكوين في مهن السياحة",
+   "grade": "مكون تقني مرطبات بمعهد التكوين في مهن السياحة بجربة",
+   "postes": 1,
+   "cloture_candidatures": "2026-07-02",
+   "cloture_concours": "2026-10-31",
+   "resultat_initial": "لم تنشر",
+   "resultat_final": "لم تنشر",
+   "metier": "technicien",
+   "gouvernorat": "national",
+   "vu_le": "2026-10-27",
+   "historique": [],
+   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
+   "lu_le": "2026-10-27"
+  },
+  {
+   "id": "3008",
+   "decision": "مناظرة خارجية بعنوان سنتي 2025 و 2026",
+   "organisme": "وكالة التكوين في مهن السياحة",
+   "grade": "مكون تقني طوابق بمدرسة التكوين في مهن السياحة بعين دراهم",
+   "postes": 1,
+   "cloture_candidatures": "2026-07-02",
+   "cloture_concours": "2026-10-31",
+   "resultat_initial": "لم تنشر",
+   "resultat_final": "لم تنشر",
+   "metier": "enseignant",
+   "gouvernorat": "national",
+   "vu_le": "2026-10-27",
+   "historique": [],
+   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
+   "lu_le": "2026-10-27"
+  },
+  {
+   "id": "3009",
+   "decision": "مناظرة خارجية بعنوان سنتي 2025 و 2026",
+   "organisme": "وكالة التكوين في مهن السياحة",
+   "grade": "مكون تقني مطعم وحانة بمعهد التكوين في مهن السياحة بسوسة",
+   "postes": 1,
+   "cloture_candidatures": "2026-07-02",
+   "cloture_concours": "2026-10-31",
+   "resultat_initial": "لم تنشر",
+   "resultat_final": "لم تنشر",
+   "metier": "technicien",
+   "gouvernorat": "national",
+   "vu_le": "2026-10-27",
+   "historique": [],
+   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
+   "lu_le": "2026-10-27"
+  },
+  {
+   "id": "3010",
+   "decision": "مناظرة خارجية بعنوان سنتي 2025 و 2026",
+   "organisme": "وكالة التكوين في مهن السياحة",
+   "grade": "مكون تقني مطعم وحانة بمدرسة التكوين في مهن السياحة بالمنستير",
+   "postes": 1,
+   "cloture_candidatures": "2026-07-02",
+   "cloture_concours": "2026-10-31",
+   "resultat_initial": "لم تنشر",
+   "resultat_final": "لم تنشر",
+   "metier": "enseignant",
+   "gouvernorat": "national",
+   "vu_le": "2026-10-27",
+   "historique": [],
+   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
+   "lu_le": "2026-10-27"
+  },
+  {
+   "id": "3011",
+   "decision": "مناظرة خارجية بعنوان سنتي 2025 و 2026",
+   "organisme": "وكالة التكوين في مهن السياحة",
+   "grade": "مكون تقني مطعم وحانة بمدرسة التكوين في مهن السياحة بسوسة الشمالية",
+   "postes": 1,
+   "cloture_candidatures": "2026-07-02",
+   "cloture_concours": "2026-10-31",
+   "resultat_initial": "لم تنشر",
+   "resultat_final": "لم تنشر",
+   "metier": "enseignant",
+   "gouvernorat": "national",
+   "vu_le": "2026-10-27",
+   "historique": [],
+   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
+   "lu_le": "2026-10-27"
   },
   {
    "id": "900800",
@@ -837,7 +922,7 @@
    "lien": "https://concours.finances.gov.tn/theme/documents/concours/8/avis-concours.pdf",
    "vu_le": "2026-10-08",
    "historique": [],
-   "lu_le": "2026-10-26"
+   "lu_le": "2026-10-27"
   },
   {
    "id": "900900",
@@ -856,7 +941,7 @@
    "lien": "https://concours.finances.gov.tn/theme/documents/concours/9/avis-concours.pdf",
    "vu_le": "2026-10-08",
    "historique": [],
-   "lu_le": "2026-10-26"
+   "lu_le": "2026-10-27"
   },
   {
    "id": "3233",
@@ -873,41 +958,7 @@
    "vu_le": "2026-10-21",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-10-26"
-  },
-  {
-   "id": "3264",
-   "decision": "قرار الكاتب العام المكلف بتسيير شؤون بلدية النفيضة المؤرخ في 17 جوان 2026",
-   "organisme": "بلدية النفيضة",
-   "grade": "كهربائي سيارات",
-   "postes": 1,
-   "cloture_candidatures": "2026-10-26",
-   "cloture_concours": "2026-10-26",
-   "resultat_initial": "لم تنشر",
-   "resultat_final": "لم تنشر",
-   "metier": "ouvrier",
-   "gouvernorat": "sousse",
-   "vu_le": "",
-   "historique": [],
-   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-10-26"
-  },
-  {
-   "id": "3265",
-   "decision": "قرار الكاتب العام المكلف بتسيير شؤون بلدية النفيضة المؤرخ في 17 جوان 2026",
-   "organisme": "بلدية النفيضة",
-   "grade": "ميكانيكي محركات ديازال شاحنات ثقيلة",
-   "postes": 1,
-   "cloture_candidatures": "2026-10-26",
-   "cloture_concours": "2026-10-26",
-   "resultat_initial": "لم تنشر",
-   "resultat_final": "لم تنشر",
-   "metier": "ouvrier",
-   "gouvernorat": "sousse",
-   "vu_le": "",
-   "historique": [],
-   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-10-26"
+   "lu_le": "2026-10-27"
   },
   {
    "id": "3239",
@@ -924,7 +975,7 @@
    "vu_le": "",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-10-26"
+   "lu_le": "2026-10-27"
   },
   {
    "id": "3240",
@@ -941,7 +992,7 @@
    "vu_le": "",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-10-26"
+   "lu_le": "2026-10-27"
   },
   {
    "id": "3241",
@@ -958,7 +1009,7 @@
    "vu_le": "",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-10-26"
+   "lu_le": "2026-10-27"
   },
   {
    "id": "3244",
@@ -975,7 +1026,7 @@
    "vu_le": "",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-10-26"
+   "lu_le": "2026-10-27"
   },
   {
    "id": "3245",
@@ -992,7 +1043,7 @@
    "vu_le": "",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-10-26"
+   "lu_le": "2026-10-27"
   },
   {
    "id": "3251",
@@ -1009,7 +1060,7 @@
    "vu_le": "",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-10-26"
+   "lu_le": "2026-10-27"
   },
   {
    "id": "3252",
@@ -1026,7 +1077,7 @@
    "vu_le": "",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-10-26"
+   "lu_le": "2026-10-27"
   },
   {
    "id": "3253",
@@ -1043,7 +1094,7 @@
    "vu_le": "",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-10-26"
+   "lu_le": "2026-10-27"
   },
   {
    "id": "3254",
@@ -1060,7 +1111,7 @@
    "vu_le": "",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-10-26"
+   "lu_le": "2026-10-27"
   },
   {
    "id": "3255",
@@ -1077,7 +1128,7 @@
    "vu_le": "",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-10-26"
+   "lu_le": "2026-10-27"
   },
   {
    "id": "3256",
@@ -1094,7 +1145,7 @@
    "vu_le": "",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-10-26"
+   "lu_le": "2026-10-27"
   },
   {
    "id": "3271",
@@ -1128,7 +1179,7 @@
    "vu_le": "",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-10-26"
+   "lu_le": "2026-10-27"
   },
   {
    "id": "3277",
@@ -1162,7 +1213,7 @@
    "vu_le": "",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-10-26"
+   "lu_le": "2026-10-27"
   },
   {
    "id": "3262",
@@ -1179,7 +1230,7 @@
    "vu_le": "",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-10-26"
+   "lu_le": "2026-10-27"
   },
   {
    "id": "3263",
@@ -1196,7 +1247,7 @@
    "vu_le": "",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-10-26"
+   "lu_le": "2026-10-27"
   },
   {
    "id": "3269",
@@ -1315,7 +1366,7 @@
    "vu_le": "",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-10-26"
+   "lu_le": "2026-10-27"
   },
   {
    "id": "3279",
@@ -1332,7 +1383,7 @@
    "vu_le": "",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-10-26"
+   "lu_le": "2026-10-27"
   },
   {
    "id": "3280",
@@ -1349,7 +1400,7 @@
    "vu_le": "",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-10-26"
+   "lu_le": "2026-10-27"
   },
   {
    "id": "3281",
@@ -1485,7 +1536,7 @@
    "vu_le": "2026-10-09",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-10-26"
+   "lu_le": "2026-10-27"
   },
   {
    "id": "3289",
@@ -1502,7 +1553,7 @@
    "vu_le": "2026-10-09",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-10-26"
+   "lu_le": "2026-10-27"
   },
   {
    "id": "3291",
@@ -1519,7 +1570,7 @@
    "vu_le": "2026-10-15",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-10-26"
+   "lu_le": "2026-10-27"
   },
   {
    "id": "3292",
@@ -1536,7 +1587,7 @@
    "vu_le": "2026-10-15",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-10-26"
+   "lu_le": "2026-10-27"
   },
   {
    "id": "3272",
@@ -1553,7 +1604,7 @@
    "vu_le": "",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-10-26"
+   "lu_le": "2026-10-27"
   },
   {
    "id": "3266",
@@ -1570,7 +1621,7 @@
    "vu_le": "",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-10-26"
+   "lu_le": "2026-10-27"
   },
   {
    "id": "3290",
@@ -1587,7 +1638,7 @@
    "vu_le": "2026-10-14",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-10-26"
+   "lu_le": "2026-10-27"
   },
   {
    "id": "3293",
@@ -1604,7 +1655,7 @@
    "vu_le": "2026-10-15",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-10-26"
+   "lu_le": "2026-10-27"
   },
   {
    "id": "3294",
@@ -1621,7 +1672,7 @@
    "vu_le": "2026-10-16",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-10-26"
+   "lu_le": "2026-10-27"
   },
   {
    "id": "3295",
@@ -1638,7 +1689,7 @@
    "vu_le": "2026-10-16",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-10-26"
+   "lu_le": "2026-10-27"
   },
   {
    "id": "3296",
@@ -1655,7 +1706,7 @@
    "vu_le": "2026-10-16",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-10-26"
+   "lu_le": "2026-10-27"
   },
   {
    "id": "3297",
@@ -1672,7 +1723,7 @@
    "vu_le": "2026-10-16",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-10-26"
+   "lu_le": "2026-10-27"
   },
   {
    "id": "3298",
@@ -1689,7 +1740,7 @@
    "vu_le": "2026-10-16",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-10-26"
+   "lu_le": "2026-10-27"
   },
   {
    "id": "3305",
@@ -1706,7 +1757,7 @@
    "vu_le": "2026-10-22",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-10-26"
+   "lu_le": "2026-10-27"
   },
   {
    "id": "3299",
@@ -1723,7 +1774,7 @@
    "vu_le": "2026-10-20",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-10-26"
+   "lu_le": "2026-10-27"
   },
   {
    "id": "3300",
@@ -1740,7 +1791,7 @@
    "vu_le": "2026-10-20",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-10-26"
+   "lu_le": "2026-10-27"
   },
   {
    "id": "3301",
@@ -1757,7 +1808,7 @@
    "vu_le": "2026-10-20",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-10-26"
+   "lu_le": "2026-10-27"
   },
   {
    "id": "3302",
@@ -1774,7 +1825,7 @@
    "vu_le": "2026-10-20",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-10-26"
+   "lu_le": "2026-10-27"
   },
   {
    "id": "3303",
@@ -1791,7 +1842,7 @@
    "vu_le": "2026-10-20",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-10-26"
+   "lu_le": "2026-10-27"
   },
   {
    "id": "3304",
@@ -1808,7 +1859,7 @@
    "vu_le": "2026-10-20",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-10-26"
+   "lu_le": "2026-10-27"
   },
   {
    "id": "3306",
@@ -1825,7 +1876,7 @@
    "vu_le": "2026-10-23",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-10-26"
+   "lu_le": "2026-10-27"
   },
   {
    "id": "3307",
@@ -1842,7 +1893,7 @@
    "vu_le": "2026-10-23",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-10-26"
+   "lu_le": "2026-10-27"
   },
   {
    "id": "3308",
@@ -1859,7 +1910,7 @@
    "vu_le": "2026-10-24",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-10-26"
+   "lu_le": "2026-10-27"
   },
   {
    "id": "3309",
@@ -1876,7 +1927,7 @@
    "vu_le": "2026-10-24",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-10-26"
+   "lu_le": "2026-10-27"
   },
   {
    "id": "3310",
@@ -1893,7 +1944,7 @@
    "vu_le": "2026-10-24",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-10-26"
+   "lu_le": "2026-10-27"
   },
   {
    "id": "3311",
@@ -1910,7 +1961,7 @@
    "vu_le": "2026-10-24",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-10-26"
+   "lu_le": "2026-10-27"
   },
   {
    "id": "3312",
@@ -1927,7 +1978,24 @@
    "vu_le": "2026-10-26",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-10-26"
+   "lu_le": "2026-10-27"
+  },
+  {
+   "id": "3313",
+   "decision": "قرار فتح اختبار مهني لانتداب عملة متعاقدين صنف 3 في خطة رافع فضلات",
+   "organisme": "بلدية فندق الجديد سلتان",
+   "grade": "رافع فضلات",
+   "postes": 3,
+   "cloture_candidatures": "2026-11-25",
+   "cloture_concours": "2026-11-25",
+   "resultat_initial": "--",
+   "resultat_final": "--",
+   "metier": "autre",
+   "gouvernorat": "nabeul",
+   "vu_le": "2026-10-27",
+   "historique": [],
+   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
+   "lu_le": "2026-10-27"
   },
   {
    "id": "3267",
@@ -1944,7 +2012,7 @@
    "vu_le": "",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-10-26"
+   "lu_le": "2026-10-27"
   },
   {
    "id": "3268",
@@ -1961,7 +2029,7 @@
    "vu_le": "",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-10-26"
+   "lu_le": "2026-10-27"
   }
  ]
 }

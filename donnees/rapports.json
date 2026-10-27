@@ -2,14 +2,14 @@
  "mois": {
   "2026-10": {
    "premier_jour": "2026-10-17",
-   "dernier_jour": "2026-10-26",
+   "dernier_jour": "2026-10-27",
    "fini": false,
    "chiffres": {
-    "au": "2026-10-26",
+    "au": "2026-10-27",
     "debut": "2026-10-09",
     "ouverts": {
-     "n": 64,
-     "postes": 121,
+     "n": 63,
+     "postes": 122,
      "sans_postes": 0
     },
     "national": {
@@ -18,16 +18,16 @@
      "sans_postes": 0
     },
     "locaux": {
-     "n": 42,
-     "postes": 76,
+     "n": 41,
+     "postes": 77,
      "sans_postes": 0
     },
     "finances": 0,
     "gouvernorats": [
      [
       "nabeul",
-      13,
-      28
+      14,
+      31
      ],
      [
       "monastir",
@@ -45,14 +45,14 @@
       7
      ],
      [
-      "sousse",
-      4,
-      11
-     ],
-     [
       "sfax",
       3,
       6
+     ],
+     [
+      "sousse",
+      2,
+      9
      ],
      [
       "gabes",
@@ -73,13 +73,13 @@
     "metiers": [
      [
       "ouvrier",
-      20,
-      34
+      18,
+      32
      ],
      [
       "autre",
-      11,
-      25
+      12,
+      28
      ],
      [
       "administratif",
@@ -163,14 +163,14 @@
      ]
     ],
     "semaine": {
-     "n": 14,
-     "postes": 20,
+     "n": 13,
+     "postes": 26,
      "sans_postes": 0,
-     "jusqu_au": "2026-11-01"
+     "jusqu_au": "2026-11-02"
     },
     "nouveaux": {
-     "n": 29,
-     "postes": 50,
+     "n": 30,
+     "postes": 53,
      "sans_postes": 0
     },
     "nouveaux_metiers": [
@@ -184,7 +184,7 @@
      ],
      [
       "autre",
-      7
+      8
      ],
      [
       "chauffeur",
@@ -200,8 +200,8 @@
      ]
     ],
     "clos": {
-     "n": 12,
-     "postes": 24,
+     "n": 14,
+     "postes": 26,
      "sans_postes": 0
     },
     "resultats": {
@@ -1832,6 +1832,134 @@
      "gouvernorat": "national",
      "cloture_candidatures": "2025-01-23",
      "vu_le": "2026-10-26",
+     "publies": []
+    },
+    "2807": {
+     "postes": 1,
+     "metier": "technicien",
+     "gouvernorat": "national",
+     "cloture_candidatures": "2026-04-11",
+     "vu_le": "2026-10-27",
+     "publies": []
+    },
+    "2808": {
+     "postes": 1,
+     "metier": "technicien",
+     "gouvernorat": "national",
+     "cloture_candidatures": "2026-04-11",
+     "vu_le": "2026-10-27",
+     "publies": []
+    },
+    "2809": {
+     "postes": 1,
+     "metier": "technicien",
+     "gouvernorat": "national",
+     "cloture_candidatures": "2026-04-11",
+     "vu_le": "2026-10-27",
+     "publies": []
+    },
+    "2810": {
+     "postes": 14,
+     "metier": "finance",
+     "gouvernorat": "national",
+     "cloture_candidatures": "2026-04-11",
+     "vu_le": "2026-10-27",
+     "publies": []
+    },
+    "2811": {
+     "postes": 1,
+     "metier": "finance",
+     "gouvernorat": "national",
+     "cloture_candidatures": "2026-04-11",
+     "vu_le": "2026-10-27",
+     "publies": []
+    },
+    "2812": {
+     "postes": 1,
+     "metier": "finance",
+     "gouvernorat": "national",
+     "cloture_candidatures": "2026-04-11",
+     "vu_le": "2026-10-27",
+     "publies": []
+    },
+    "2813": {
+     "postes": 2,
+     "metier": "finance",
+     "gouvernorat": "national",
+     "cloture_candidatures": "2026-04-11",
+     "vu_le": "2026-10-27",
+     "publies": []
+    },
+    "2814": {
+     "postes": 2,
+     "metier": "finance",
+     "gouvernorat": "national",
+     "cloture_candidatures": "2026-04-11",
+     "vu_le": "2026-10-27",
+     "publies": []
+    },
+    "2815": {
+     "postes": 1,
+     "metier": "finance",
+     "gouvernorat": "national",
+     "cloture_candidatures": "2026-04-11",
+     "vu_le": "2026-10-27",
+     "publies": []
+    },
+    "2816": {
+     "postes": 3,
+     "metier": "chauffeur",
+     "gouvernorat": "national",
+     "cloture_candidatures": "2026-04-11",
+     "vu_le": "2026-10-27",
+     "publies": []
+    },
+    "2817": {
+     "postes": 1,
+     "metier": "ouvrier",
+     "gouvernorat": "national",
+     "cloture_candidatures": "2026-04-11",
+     "vu_le": "2026-10-27",
+     "publies": []
+    },
+    "2818": {
+     "postes": 2,
+     "metier": "ouvrier",
+     "gouvernorat": "national",
+     "cloture_candidatures": "2026-04-11",
+     "vu_le": "2026-10-27",
+     "publies": []
+    },
+    "2819": {
+     "postes": 1,
+     "metier": "ouvrier",
+     "gouvernorat": "national",
+     "cloture_candidatures": "2026-04-11",
+     "vu_le": "2026-10-27",
+     "publies": []
+    },
+    "2820": {
+     "postes": 2,
+     "metier": "ouvrier",
+     "gouvernorat": "national",
+     "cloture_candidatures": "2026-04-11",
+     "vu_le": "2026-10-27",
+     "publies": []
+    },
+    "2821": {
+     "postes": 3,
+     "metier": "ouvrier",
+     "gouvernorat": "national",
+     "cloture_candidatures": "2026-04-11",
+     "vu_le": "2026-10-27",
+     "publies": []
+    },
+    "3313": {
+     "postes": 3,
+     "metier": "autre",
+     "gouvernorat": "nabeul",
+     "cloture_candidatures": "2026-11-25",
+     "vu_le": "2026-10-27",
      "publies": []
     }
    }
