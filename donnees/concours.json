@@ -5,6 +5,74 @@
  "pages": 21,
  "concours": [
   {
+   "id": "29",
+   "decision": "ملحق إدارة م د",
+   "organisme": "وزارة الفلاحة والموارد المائية والصيد البحري",
+   "grade": "ملحق إدارة",
+   "postes": 37,
+   "cloture_candidatures": "2017-05-29",
+   "cloture_concours": "2017-05-30",
+   "resultat_initial": "اطلاع",
+   "resultat_final": "لم تنشر",
+   "metier": "administratif",
+   "gouvernorat": "national",
+   "vu_le": "2026-10-27",
+   "historique": [],
+   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
+   "lu_le": "2026-10-27"
+  },
+  {
+   "id": "60",
+   "decision": "مساعدين تقنيين إختصاص صيانة أجهزة الميكروإعلامية م د3",
+   "organisme": "وزارة الفلاحة والموارد المائية والصيد البحري",
+   "grade": "مساعد تقني إختصاص صيانة أجهزة الميكروإعلامية",
+   "postes": 3,
+   "cloture_candidatures": "2017-07-21",
+   "cloture_concours": "2017-07-21",
+   "resultat_initial": "لم تنشر",
+   "resultat_final": "لم تنشر",
+   "metier": "informatique",
+   "gouvernorat": "national",
+   "vu_le": "2026-10-27",
+   "historique": [],
+   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
+   "lu_le": "2026-10-27"
+  },
+  {
+   "id": "61",
+   "decision": "مساعدين تقنيين إختصاص الطباعة م د4",
+   "organisme": "وزارة الفلاحة والموارد المائية والصيد البحري",
+   "grade": "مساعد تقني إختصاص الطباعة",
+   "postes": 3,
+   "cloture_candidatures": "2017-07-21",
+   "cloture_concours": "2017-07-21",
+   "resultat_initial": "لم تنشر",
+   "resultat_final": "لم تنشر",
+   "metier": "technicien",
+   "gouvernorat": "national",
+   "vu_le": "2026-10-27",
+   "historique": [],
+   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
+   "lu_le": "2026-10-27"
+  },
+  {
+   "id": "62",
+   "decision": "مساعدين تقنيين إختصاص الطبخ م د5",
+   "organisme": "وزارة الفلاحة والموارد المائية والصيد البحري",
+   "grade": "مساعد تقني إختصاص الطبخ",
+   "postes": 5,
+   "cloture_candidatures": "2017-07-21",
+   "cloture_concours": "2017-07-21",
+   "resultat_initial": "لم تنشر",
+   "resultat_final": "لم تنشر",
+   "metier": "technicien",
+   "gouvernorat": "national",
+   "vu_le": "2026-10-27",
+   "historique": [],
+   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
+   "lu_le": "2026-10-27"
+  },
+  {
    "id": "2390",
    "decision": "108/2025",
    "organisme": "بلدية ماطر",
@@ -56,40 +124,6 @@
    "lu_le": "2026-10-27"
   },
   {
-   "id": "2412",
-   "decision": "112أ/2025",
-   "organisme": "بلدية ماطر",
-   "grade": "معماري أول",
-   "postes": 1,
-   "cloture_candidatures": "2025-10-17",
-   "cloture_concours": "2026-12-31",
-   "resultat_initial": "لم تنشر",
-   "resultat_final": "لم تنشر",
-   "metier": "autre",
-   "gouvernorat": "bizerte",
-   "vu_le": "2026-10-26",
-   "historique": [],
-   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-10-27"
-  },
-  {
-   "id": "2543",
-   "decision": "112/2025",
-   "organisme": "بلدية ماطر",
-   "grade": "معماري أول متعاقد",
-   "postes": 1,
-   "cloture_candidatures": "2025-11-07",
-   "cloture_concours": "2026-12-31",
-   "resultat_initial": "لم تنشر",
-   "resultat_final": "لم تنشر",
-   "metier": "autre",
-   "gouvernorat": "bizerte",
-   "vu_le": "2026-10-26",
-   "historique": [],
-   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-10-27"
-  },
-  {
    "id": "2548",
    "decision": ": قرار عدد 5332",
    "organisme": "بلدية الحمامات",
@@ -118,261 +152,6 @@
    "resultat_final": "لم تنشر",
    "metier": "ouvrier",
    "gouvernorat": "bizerte",
-   "vu_le": "2026-10-27",
-   "historique": [],
-   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-10-27"
-  },
-  {
-   "id": "2807",
-   "decision": "T07/2026",
-   "organisme": "وكالة احياء التراث والتنمية الثقافية",
-   "grade": "تقني سامي - إضاءة فنية",
-   "postes": 1,
-   "cloture_candidatures": "2026-04-11",
-   "cloture_concours": "2026-04-11",
-   "resultat_initial": "لم تنشر",
-   "resultat_final": "لم تنشر",
-   "metier": "technicien",
-   "gouvernorat": "national",
-   "vu_le": "2026-10-27",
-   "historique": [],
-   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-10-27"
-  },
-  {
-   "id": "2808",
-   "decision": "T08/2026",
-   "organisme": "وكالة احياء التراث والتنمية الثقافية",
-   "grade": "تقني سامي - هندسة مدنية",
-   "postes": 1,
-   "cloture_candidatures": "2026-04-11",
-   "cloture_concours": "2026-04-11",
-   "resultat_initial": "لم تنشر",
-   "resultat_final": "لم تنشر",
-   "metier": "technicien",
-   "gouvernorat": "national",
-   "vu_le": "2026-10-27",
-   "historique": [],
-   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-10-27"
-  },
-  {
-   "id": "2809",
-   "decision": "T09/2026",
-   "organisme": "وكالة احياء التراث والتنمية الثقافية",
-   "grade": "تقني سامي - فوتوغرافي",
-   "postes": 1,
-   "cloture_candidatures": "2026-04-11",
-   "cloture_concours": "2026-04-11",
-   "resultat_initial": "لم تنشر",
-   "resultat_final": "لم تنشر",
-   "metier": "technicien",
-   "gouvernorat": "national",
-   "vu_le": "2026-10-27",
-   "historique": [],
-   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-10-27"
-  },
-  {
-   "id": "2810",
-   "decision": "C01/2026",
-   "organisme": "وكالة احياء التراث والتنمية الثقافية",
-   "grade": "مستكتب إدارة - قابضي تذاكر ومراقبي دخول بالمتاحف والمواقع",
-   "postes": 14,
-   "cloture_candidatures": "2026-04-11",
-   "cloture_concours": "2026-04-11",
-   "resultat_initial": "لم تنشر",
-   "resultat_final": "لم تنشر",
-   "metier": "finance",
-   "gouvernorat": "national",
-   "vu_le": "2026-10-27",
-   "historique": [],
-   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-10-27"
-  },
-  {
-   "id": "2811",
-   "decision": "C02/2026",
-   "organisme": "وكالة احياء التراث والتنمية الثقافية",
-   "grade": "مستكتب إدارة - قابضي تذاكر ومراقبي دخول بالمتاحف والمواقع",
-   "postes": 1,
-   "cloture_candidatures": "2026-04-11",
-   "cloture_concours": "2026-04-11",
-   "resultat_initial": "لم تنشر",
-   "resultat_final": "لم تنشر",
-   "metier": "finance",
-   "gouvernorat": "national",
-   "vu_le": "2026-10-27",
-   "historique": [],
-   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-10-27"
-  },
-  {
-   "id": "2812",
-   "decision": "C03/2026",
-   "organisme": "وكالة احياء التراث والتنمية الثقافية",
-   "grade": "مستكتب إدارة - قابضي تذاكر ومراقبي دخول بالمتاحف والمواقع",
-   "postes": 1,
-   "cloture_candidatures": "2026-04-11",
-   "cloture_concours": "2026-04-11",
-   "resultat_initial": "لم تنشر",
-   "resultat_final": "لم تنشر",
-   "metier": "finance",
-   "gouvernorat": "national",
-   "vu_le": "2026-10-27",
-   "historique": [],
-   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-10-27"
-  },
-  {
-   "id": "2813",
-   "decision": "C04/2026",
-   "organisme": "وكالة احياء التراث والتنمية الثقافية",
-   "grade": "مستكتب إدارة - قابضي تذاكر ومراقبي دخول بالمتاحف والمواقع",
-   "postes": 2,
-   "cloture_candidatures": "2026-04-11",
-   "cloture_concours": "2026-04-11",
-   "resultat_initial": "لم تنشر",
-   "resultat_final": "لم تنشر",
-   "metier": "finance",
-   "gouvernorat": "national",
-   "vu_le": "2026-10-27",
-   "historique": [],
-   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-10-27"
-  },
-  {
-   "id": "2814",
-   "decision": "C05/2026",
-   "organisme": "وكالة احياء التراث والتنمية الثقافية",
-   "grade": "مستكتب إدارة - قابضي تذاكر ومراقبي دخول بالمتاحف والمواقع",
-   "postes": 2,
-   "cloture_candidatures": "2026-04-11",
-   "cloture_concours": "2026-04-11",
-   "resultat_initial": "لم تنشر",
-   "resultat_final": "لم تنشر",
-   "metier": "finance",
-   "gouvernorat": "national",
-   "vu_le": "2026-10-27",
-   "historique": [],
-   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-10-27"
-  },
-  {
-   "id": "2815",
-   "decision": "C06/2026",
-   "organisme": "وكالة احياء التراث والتنمية الثقافية",
-   "grade": "مستكتب إدارة - قابضي تذاكر ومراقبي دخول بالمتاحف والمواقع",
-   "postes": 1,
-   "cloture_candidatures": "2026-04-11",
-   "cloture_concours": "2026-04-11",
-   "resultat_initial": "لم تنشر",
-   "resultat_final": "لم تنشر",
-   "metier": "finance",
-   "gouvernorat": "national",
-   "vu_le": "2026-10-27",
-   "historique": [],
-   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-10-27"
-  },
-  {
-   "id": "2816",
-   "decision": "U01/2026",
-   "organisme": "وكالة احياء التراث والتنمية الثقافية",
-   "grade": "عامل وحدة 2 - سائق",
-   "postes": 3,
-   "cloture_candidatures": "2026-04-11",
-   "cloture_concours": "2026-04-11",
-   "resultat_initial": "لم تنشر",
-   "resultat_final": "لم تنشر",
-   "metier": "chauffeur",
-   "gouvernorat": "national",
-   "vu_le": "2026-10-27",
-   "historique": [],
-   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-10-27"
-  },
-  {
-   "id": "2817",
-   "decision": "U02/2026",
-   "organisme": "وكالة احياء التراث والتنمية الثقافية",
-   "grade": "عامل وحدة 2 - ميكانيكي",
-   "postes": 1,
-   "cloture_candidatures": "2026-04-11",
-   "cloture_concours": "2026-04-11",
-   "resultat_initial": "لم تنشر",
-   "resultat_final": "لم تنشر",
-   "metier": "ouvrier",
-   "gouvernorat": "national",
-   "vu_le": "2026-10-27",
-   "historique": [],
-   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-10-27"
-  },
-  {
-   "id": "2818",
-   "decision": "U03/2026",
-   "organisme": "وكالة احياء التراث والتنمية الثقافية",
-   "grade": "عامل وحدة 2 - سباكة",
-   "postes": 2,
-   "cloture_candidatures": "2026-04-11",
-   "cloture_concours": "2026-04-11",
-   "resultat_initial": "لم تنشر",
-   "resultat_final": "لم تنشر",
-   "metier": "ouvrier",
-   "gouvernorat": "national",
-   "vu_le": "2026-10-27",
-   "historique": [],
-   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-10-27"
-  },
-  {
-   "id": "2819",
-   "decision": "U04/2026",
-   "organisme": "وكالة احياء التراث والتنمية الثقافية",
-   "grade": "عامل وحدة 2 - كهرباء",
-   "postes": 1,
-   "cloture_candidatures": "2026-04-11",
-   "cloture_concours": "2026-04-11",
-   "resultat_initial": "لم تنشر",
-   "resultat_final": "لم تنشر",
-   "metier": "ouvrier",
-   "gouvernorat": "national",
-   "vu_le": "2026-10-27",
-   "historique": [],
-   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-10-27"
-  },
-  {
-   "id": "2820",
-   "decision": "U05/2026",
-   "organisme": "وكالة احياء التراث والتنمية الثقافية",
-   "grade": "عامل وحدة 2 - صناعة المنتوجات الثقافية",
-   "postes": 2,
-   "cloture_candidatures": "2026-04-11",
-   "cloture_concours": "2026-04-11",
-   "resultat_initial": "لم تنشر",
-   "resultat_final": "لم تنشر",
-   "metier": "ouvrier",
-   "gouvernorat": "national",
-   "vu_le": "2026-10-27",
-   "historique": [],
-   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-10-27"
-  },
-  {
-   "id": "2821",
-   "decision": "U06/2026",
-   "organisme": "وكالة احياء التراث والتنمية الثقافية",
-   "grade": "عامل وحدة 2 - التأمين الذاتي",
-   "postes": 3,
-   "cloture_candidatures": "2026-04-11",
-   "cloture_concours": "2026-04-11",
-   "resultat_initial": "لم تنشر",
-   "resultat_final": "لم تنشر",
-   "metier": "ouvrier",
-   "gouvernorat": "national",
    "vu_le": "2026-10-27",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
@@ -541,7 +320,7 @@
    "cloture_concours": "2026-10-31",
    "resultat_initial": "لم تنشر",
    "resultat_final": "لم تنشر",
-   "metier": "autre",
+   "metier": "ouvrier",
    "gouvernorat": "national",
    "vu_le": "2026-10-21",
    "historique": [],
@@ -558,7 +337,7 @@
    "cloture_concours": "2026-10-31",
    "resultat_initial": "لم تنشر",
    "resultat_final": "لم تنشر",
-   "metier": "autre",
+   "metier": "ouvrier",
    "gouvernorat": "national",
    "vu_le": "2026-10-21",
    "historique": [],
@@ -592,7 +371,7 @@
    "cloture_concours": "2026-10-31",
    "resultat_initial": "لم تنشر",
    "resultat_final": "لم تنشر",
-   "metier": "autre",
+   "metier": "ouvrier",
    "gouvernorat": "national",
    "vu_le": "2026-10-21",
    "historique": [],
@@ -1162,7 +941,7 @@
    "vu_le": "",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-10-26"
+   "lu_le": "2026-10-27"
   },
   {
    "id": "3260",
@@ -1174,7 +953,7 @@
    "cloture_concours": "2026-11-02",
    "resultat_initial": "--",
    "resultat_final": "--",
-   "metier": "autre",
+   "metier": "ouvrier",
    "gouvernorat": "nabeul",
    "vu_le": "",
    "historique": [],
@@ -1196,7 +975,7 @@
    "vu_le": "2026-10-15",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-10-26"
+   "lu_le": "2026-10-27"
   },
   {
    "id": "3261",
@@ -1264,7 +1043,7 @@
    "vu_le": "",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-10-26"
+   "lu_le": "2026-10-27"
   },
   {
    "id": "3270",
@@ -1281,7 +1060,7 @@
    "vu_le": "",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-10-26"
+   "lu_le": "2026-10-27"
   },
   {
    "id": "3273",
@@ -1298,7 +1077,7 @@
    "vu_le": "",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-10-26"
+   "lu_le": "2026-10-27"
   },
   {
    "id": "3274",
@@ -1315,7 +1094,7 @@
    "vu_le": "",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-10-26"
+   "lu_le": "2026-10-27"
   },
   {
    "id": "3275",
@@ -1332,7 +1111,7 @@
    "vu_le": "",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-10-26"
+   "lu_le": "2026-10-27"
   },
   {
    "id": "3276",
@@ -1349,7 +1128,7 @@
    "vu_le": "",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-10-26"
+   "lu_le": "2026-10-27"
   },
   {
    "id": "3278",
@@ -1417,7 +1196,7 @@
    "vu_le": "",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-10-26"
+   "lu_le": "2026-10-27"
   },
   {
    "id": "3282",
@@ -1434,7 +1213,7 @@
    "vu_le": "",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-10-26"
+   "lu_le": "2026-10-27"
   },
   {
    "id": "3283",
@@ -1451,7 +1230,7 @@
    "vu_le": "",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-10-26"
+   "lu_le": "2026-10-27"
   },
   {
    "id": "3284",
@@ -1468,7 +1247,7 @@
    "vu_le": "",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-10-26"
+   "lu_le": "2026-10-27"
   },
   {
    "id": "3285",
@@ -1485,7 +1264,7 @@
    "vu_le": "2026-10-15",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-10-26"
+   "lu_le": "2026-10-27"
   },
   {
    "id": "3286",
@@ -1502,7 +1281,7 @@
    "vu_le": "2026-10-15",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-10-26"
+   "lu_le": "2026-10-27"
   },
   {
    "id": "3287",
@@ -1519,7 +1298,7 @@
    "vu_le": "2026-10-15",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-10-26"
+   "lu_le": "2026-10-27"
   },
   {
    "id": "3288",
@@ -1548,7 +1327,7 @@
    "cloture_concours": "2026-11-10",
    "resultat_initial": "--",
    "resultat_final": "--",
-   "metier": "autre",
+   "metier": "ouvrier",
    "gouvernorat": "monastir",
    "vu_le": "2026-10-09",
    "historique": [],
@@ -1718,7 +1497,7 @@
    "cloture_concours": "2026-11-16",
    "resultat_initial": "--",
    "resultat_final": "--",
-   "metier": "autre",
+   "metier": "ouvrier",
    "gouvernorat": "monastir",
    "vu_le": "2026-10-16",
    "historique": [],
@@ -1956,7 +1735,7 @@
    "cloture_concours": "2026-11-23",
    "resultat_initial": "--",
    "resultat_final": "--",
-   "metier": "autre",
+   "metier": "ouvrier",
    "gouvernorat": "sidi-bouzid",
    "vu_le": "2026-10-24",
    "historique": [],
@@ -1990,7 +1769,7 @@
    "cloture_concours": "2026-11-25",
    "resultat_initial": "--",
    "resultat_final": "--",
-   "metier": "autre",
+   "metier": "ouvrier",
    "gouvernorat": "nabeul",
    "vu_le": "2026-10-27",
    "historique": [],

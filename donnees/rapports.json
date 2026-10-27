@@ -73,13 +73,8 @@
     "metiers": [
      [
       "ouvrier",
-      18,
-      32
-     ],
-     [
-      "autre",
-      12,
-      28
+      23,
+      49
      ],
      [
       "administratif",
@@ -89,6 +84,11 @@
      [
       "technicien",
       8,
+      11
+     ],
+     [
+      "autre",
+      7,
       11
      ],
      [
@@ -176,7 +176,7 @@
     "nouveaux_metiers": [
      [
       "ouvrier",
-      9
+      13
      ],
      [
       "administratif",
@@ -184,7 +184,7 @@
      ],
      [
       "autre",
-      8
+      4
      ],
      [
       "chauffeur",
@@ -348,7 +348,7 @@
     },
     "2990": {
      "postes": 1,
-     "metier": "autre",
+     "metier": "ouvrier",
      "gouvernorat": "national",
      "cloture_candidatures": "2026-07-02",
      "vu_le": "2026-10-09",
@@ -356,7 +356,7 @@
     },
     "2991": {
      "postes": 1,
-     "metier": "autre",
+     "metier": "ouvrier",
      "gouvernorat": "national",
      "cloture_candidatures": "2026-07-02",
      "vu_le": "2026-10-09",
@@ -372,7 +372,7 @@
     },
     "2993": {
      "postes": 1,
-     "metier": "autre",
+     "metier": "ouvrier",
      "gouvernorat": "national",
      "cloture_candidatures": "2026-07-02",
      "vu_le": "2026-10-09",
@@ -748,7 +748,7 @@
     },
     "3260": {
      "postes": 8,
-     "metier": "autre",
+     "metier": "ouvrier",
      "gouvernorat": "nabeul",
      "cloture_candidatures": "2026-11-02",
      "vu_le": "",
@@ -924,7 +924,7 @@
     },
     "3289": {
      "postes": 1,
-     "metier": "autre",
+     "metier": "ouvrier",
      "gouvernorat": "monastir",
      "cloture_candidatures": "2026-11-09",
      "vu_le": "2026-10-09",
@@ -1004,7 +1004,7 @@
     },
     "3297": {
      "postes": 3,
-     "metier": "autre",
+     "metier": "ouvrier",
      "gouvernorat": "monastir",
      "cloture_candidatures": "2026-11-16",
      "vu_le": "2026-10-16",
@@ -1692,7 +1692,7 @@
     },
     "3311": {
      "postes": 2,
-     "metier": "autre",
+     "metier": "ouvrier",
      "gouvernorat": "sidi-bouzid",
      "cloture_candidatures": "2026-11-23",
      "vu_le": "2026-10-24",
@@ -1956,9 +1956,41 @@
     },
     "3313": {
      "postes": 3,
-     "metier": "autre",
+     "metier": "ouvrier",
      "gouvernorat": "nabeul",
      "cloture_candidatures": "2026-11-25",
+     "vu_le": "2026-10-27",
+     "publies": []
+    },
+    "29": {
+     "postes": 37,
+     "metier": "administratif",
+     "gouvernorat": "national",
+     "cloture_candidatures": "2017-05-29",
+     "vu_le": "2026-10-27",
+     "publies": []
+    },
+    "60": {
+     "postes": 3,
+     "metier": "informatique",
+     "gouvernorat": "national",
+     "cloture_candidatures": "2017-07-21",
+     "vu_le": "2026-10-27",
+     "publies": []
+    },
+    "61": {
+     "postes": 3,
+     "metier": "technicien",
+     "gouvernorat": "national",
+     "cloture_candidatures": "2017-07-21",
+     "vu_le": "2026-10-27",
+     "publies": []
+    },
+    "62": {
+     "postes": 5,
+     "metier": "technicien",
+     "gouvernorat": "national",
+     "cloture_candidatures": "2017-07-21",
      "vu_le": "2026-10-27",
      "publies": []
     }
