@@ -2,10 +2,10 @@
  "mois": {
   "2026-10": {
    "premier_jour": "2026-10-17",
-   "dernier_jour": "2026-10-27",
+   "dernier_jour": "2026-10-28",
    "fini": false,
    "chiffres": {
-    "au": "2026-10-27",
+    "au": "2026-10-28",
     "debut": "2026-10-09",
     "ouverts": {
      "n": 63,
@@ -166,7 +166,7 @@
      "n": 13,
      "postes": 26,
      "sans_postes": 0,
-     "jusqu_au": "2026-11-02"
+     "jusqu_au": "2026-11-03"
     },
     "nouveaux": {
      "n": 30,
@@ -209,10 +209,10 @@
      "final": 0
     },
     "avis": {
-     "n": 21,
+     "n": 22,
      "types": {
+      "nouveau": 7,
       "resultats": 9,
-      "nouveau": 6,
       "candidatures": 6
      }
     }
