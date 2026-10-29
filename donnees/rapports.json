@@ -2,19 +2,19 @@
  "mois": {
   "2026-10": {
    "premier_jour": "2026-10-17",
-   "dernier_jour": "2026-10-28",
+   "dernier_jour": "2026-10-29",
    "fini": false,
    "chiffres": {
-    "au": "2026-10-28",
+    "au": "2026-10-29",
     "debut": "2026-10-09",
     "ouverts": {
-     "n": 64,
-     "postes": 124,
+     "n": 59,
+     "postes": 113,
      "sans_postes": 0
     },
     "national": {
-     "n": 22,
-     "postes": 45,
+     "n": 17,
+     "postes": 34,
      "sans_postes": 0
     },
     "locaux": {
@@ -78,8 +78,8 @@
     "metiers": [
      [
       "ouvrier",
-      23,
-      49
+      21,
+      47
      ],
      [
       "administratif",
@@ -88,18 +88,18 @@
      ],
      [
       "technicien",
-      8,
-      11
-     ],
-     [
-      "autre",
       7,
-      11
+      8
      ],
      [
       "ingenieur",
       6,
       15
+     ],
+     [
+      "autre",
+      6,
+      9
      ],
      [
       "chauffeur",
@@ -113,8 +113,8 @@
      ],
      [
       "finance",
-      2,
-      6
+      1,
+      2
      ]
     ],
     "organismes": [
@@ -159,19 +159,13 @@
       3,
       8,
       "national"
-     ],
-     [
-      "المركز الوطني للسينما والصورة",
-      3,
-      4,
-      "national"
      ]
     ],
     "semaine": {
-     "n": 13,
-     "postes": 26,
+     "n": 9,
+     "postes": 17,
      "sans_postes": 0,
-     "jusqu_au": "2026-11-03"
+     "jusqu_au": "2026-11-04"
     },
     "nouveaux": {
      "n": 31,
@@ -205,8 +199,8 @@
      ]
     ],
     "clos": {
-     "n": 14,
-     "postes": 26,
+     "n": 19,
+     "postes": 37,
      "sans_postes": 0
     },
     "resultats": {
@@ -2045,6 +2039,46 @@
      "gouvernorat": "bizerte",
      "cloture_candidatures": "2026-11-30",
      "vu_le": "2026-10-28",
+     "publies": []
+    },
+    "346": {
+     "postes": 3,
+     "metier": "ouvrier",
+     "gouvernorat": "nabeul",
+     "cloture_candidatures": "2019-05-15",
+     "vu_le": "2026-10-29",
+     "publies": []
+    },
+    "347": {
+     "postes": 1,
+     "metier": "ouvrier",
+     "gouvernorat": "nabeul",
+     "cloture_candidatures": "2019-05-15",
+     "vu_le": "2026-10-29",
+     "publies": []
+    },
+    "348": {
+     "postes": 6,
+     "metier": "ouvrier",
+     "gouvernorat": "nabeul",
+     "cloture_candidatures": "2019-05-15",
+     "vu_le": "2026-10-29",
+     "publies": []
+    },
+    "349": {
+     "postes": 6,
+     "metier": "ouvrier",
+     "gouvernorat": "nabeul",
+     "cloture_candidatures": "2019-05-15",
+     "vu_le": "2026-10-29",
+     "publies": []
+    },
+    "350": {
+     "postes": 56,
+     "metier": "chauffeur",
+     "gouvernorat": "nabeul",
+     "cloture_candidatures": "2019-05-15",
+     "vu_le": "2026-10-29",
      "publies": []
     }
    }
