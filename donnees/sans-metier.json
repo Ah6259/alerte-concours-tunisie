@@ -60,23 +60,23 @@
    "dernier_vu": "2026-10-29"
   },
   {
-   "cle": "portail-3241",
-   "texte": "مكتبي أو موثق",
-   "organisme": "المركز الوطني للسينما والصورة",
-   "premier_vu": "2026-10-21",
-   "dernier_vu": "2026-10-28"
-  },
-  {
    "cle": "portail-2543",
    "texte": "معماري أول متعاقد",
    "organisme": "بلدية ماطر",
    "premier_vu": "2026-10-21",
-   "dernier_vu": "2026-10-28"
+   "dernier_vu": "2026-10-29"
   },
   {
    "cle": "portail-2412",
    "texte": "معماري أول",
    "organisme": "بلدية ماطر",
+   "premier_vu": "2026-10-21",
+   "dernier_vu": "2026-10-29"
+  },
+  {
+   "cle": "portail-3241",
+   "texte": "مكتبي أو موثق",
+   "organisme": "المركز الوطني للسينما والصورة",
    "premier_vu": "2026-10-21",
    "dernier_vu": "2026-10-28"
   },

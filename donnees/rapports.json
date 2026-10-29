@@ -8,8 +8,8 @@
     "au": "2026-10-29",
     "debut": "2026-10-09",
     "ouverts": {
-     "n": 59,
-     "postes": 113,
+     "n": 61,
+     "postes": 117,
      "sans_postes": 0
     },
     "national": {
@@ -18,8 +18,8 @@
      "sans_postes": 0
     },
     "locaux": {
-     "n": 42,
-     "postes": 79,
+     "n": 44,
+     "postes": 83,
      "sans_postes": 0
     },
     "finances": 0,
@@ -45,6 +45,11 @@
       7
      ],
      [
+      "bizerte",
+      3,
+      6
+     ],
+     [
       "sfax",
       3,
       6
@@ -60,11 +65,6 @@
       4
      ],
      [
-      "bizerte",
-      1,
-      2
-     ],
-     [
       "medenine",
       1,
       2
@@ -78,13 +78,13 @@
     "metiers": [
      [
       "ouvrier",
-      21,
-      47
+      22,
+      49
      ],
      [
       "administratif",
-      12,
-      22
+      13,
+      24
      ],
      [
       "technicien",
@@ -168,18 +168,18 @@
      "jusqu_au": "2026-11-04"
     },
     "nouveaux": {
-     "n": 31,
-     "postes": 55,
+     "n": 33,
+     "postes": 59,
      "sans_postes": 0
     },
     "nouveaux_metiers": [
      [
       "ouvrier",
-      13
+      14
      ],
      [
       "administratif",
-      9
+      10
      ],
      [
       "autre",
@@ -208,10 +208,10 @@
      "final": 0
     },
     "avis": {
-     "n": 27,
+     "n": 28,
      "types": {
+      "candidatures": 9,
       "resultats": 12,
-      "candidatures": 8,
       "nouveau": 7
      }
     }
@@ -2078,6 +2078,22 @@
      "metier": "chauffeur",
      "gouvernorat": "nabeul",
      "cloture_candidatures": "2019-05-15",
+     "vu_le": "2026-10-29",
+     "publies": []
+    },
+    "3315": {
+     "postes": 2,
+     "metier": "administratif",
+     "gouvernorat": "bizerte",
+     "cloture_candidatures": "2026-11-27",
+     "vu_le": "2026-10-29",
+     "publies": []
+    },
+    "3316": {
+     "postes": 2,
+     "metier": "ouvrier",
+     "gouvernorat": "bizerte",
+     "cloture_candidatures": "2026-11-30",
      "vu_le": "2026-10-29",
      "publies": []
     }
