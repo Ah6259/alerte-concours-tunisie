@@ -2,14 +2,14 @@
  "mois": {
   "2026-10": {
    "premier_jour": "2026-10-17",
-   "dernier_jour": "2026-10-29",
+   "dernier_jour": "2026-10-30",
    "fini": false,
    "chiffres": {
-    "au": "2026-10-29",
+    "au": "2026-10-30",
     "debut": "2026-10-09",
     "ouverts": {
-     "n": 61,
-     "postes": 117,
+     "n": 62,
+     "postes": 118,
      "sans_postes": 0
     },
     "national": {
@@ -18,16 +18,16 @@
      "sans_postes": 0
     },
     "locaux": {
-     "n": 44,
-     "postes": 83,
+     "n": 45,
+     "postes": 84,
      "sans_postes": 0
     },
     "finances": 0,
     "gouvernorats": [
      [
       "nabeul",
-      14,
-      31
+      15,
+      32
      ],
      [
       "monastir",
@@ -83,8 +83,8 @@
      ],
      [
       "administratif",
-      13,
-      24
+      14,
+      25
      ],
      [
       "technicien",
@@ -162,14 +162,14 @@
      ]
     ],
     "semaine": {
-     "n": 9,
-     "postes": 17,
+     "n": 12,
+     "postes": 25,
      "sans_postes": 0,
-     "jusqu_au": "2026-11-04"
+     "jusqu_au": "2026-11-05"
     },
     "nouveaux": {
-     "n": 33,
-     "postes": 59,
+     "n": 34,
+     "postes": 60,
      "sans_postes": 0
     },
     "nouveaux_metiers": [
@@ -179,7 +179,7 @@
      ],
      [
       "administratif",
-      10
+      11
      ],
      [
       "autre",
@@ -2095,6 +2095,30 @@
      "gouvernorat": "bizerte",
      "cloture_candidatures": "2026-11-30",
      "vu_le": "2026-10-29",
+     "publies": []
+    },
+    "238": {
+     "postes": 4,
+     "metier": "informatique",
+     "gouvernorat": "national",
+     "cloture_candidatures": "2018-07-01",
+     "vu_le": "2026-10-30",
+     "publies": []
+    },
+    "260": {
+     "postes": 1,
+     "metier": "technicien",
+     "gouvernorat": "national",
+     "cloture_candidatures": "2018-10-11",
+     "vu_le": "2026-10-30",
+     "publies": []
+    },
+    "3317": {
+     "postes": 1,
+     "metier": "administratif",
+     "gouvernorat": "nabeul",
+     "cloture_candidatures": "2026-11-30",
+     "vu_le": "2026-10-30",
      "publies": []
     }
    }
