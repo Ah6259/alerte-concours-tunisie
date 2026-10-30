@@ -8,8 +8,8 @@
     "au": "2026-10-30",
     "debut": "2026-10-09",
     "ouverts": {
-     "n": 62,
-     "postes": 118,
+     "n": 63,
+     "postes": 119,
      "sans_postes": 0
     },
     "national": {
@@ -18,16 +18,16 @@
      "sans_postes": 0
     },
     "locaux": {
-     "n": 45,
-     "postes": 84,
+     "n": 46,
+     "postes": 85,
      "sans_postes": 0
     },
     "finances": 0,
     "gouvernorats": [
      [
       "nabeul",
-      15,
-      32
+      16,
+      33
      ],
      [
       "monastir",
@@ -87,6 +87,11 @@
       25
      ],
      [
+      "autre",
+      7,
+      10
+     ],
+     [
       "technicien",
       7,
       8
@@ -95,11 +100,6 @@
       "ingenieur",
       6,
       15
-     ],
-     [
-      "autre",
-      6,
-      9
      ],
      [
       "chauffeur",
@@ -168,8 +168,8 @@
      "jusqu_au": "2026-11-05"
     },
     "nouveaux": {
-     "n": 34,
-     "postes": 60,
+     "n": 35,
+     "postes": 61,
      "sans_postes": 0
     },
     "nouveaux_metiers": [
@@ -183,7 +183,7 @@
      ],
      [
       "autre",
-      4
+      5
      ],
      [
       "chauffeur",
@@ -2116,6 +2116,14 @@
     "3317": {
      "postes": 1,
      "metier": "administratif",
+     "gouvernorat": "nabeul",
+     "cloture_candidatures": "2026-11-30",
+     "vu_le": "2026-10-30",
+     "publies": []
+    },
+    "3318": {
+     "postes": 1,
+     "metier": "autre",
      "gouvernorat": "nabeul",
      "cloture_candidatures": "2026-11-30",
      "vu_le": "2026-10-30",

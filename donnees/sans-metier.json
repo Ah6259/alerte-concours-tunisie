@@ -1,8 +1,15 @@
 {
  "maj": "2026-10-30",
  "explication": "Éléments lus par le robot mais rangés dans aucune catégorie (gardés 120 jours) : une routine y cherche les thèmes qui reviennent (règle commune § 40).",
- "nombre": 19,
+ "nombre": 20,
  "elements": [
+  {
+   "cle": "portail-3318",
+   "texte": "واضع برامج",
+   "organisme": "بلدية فندق الجديد سلتان",
+   "premier_vu": "2026-10-30",
+   "dernier_vu": "2026-10-30"
+  },
   {
    "cle": "portail-3310",
    "texte": "01 حراسة",
@@ -60,18 +67,18 @@
    "dernier_vu": "2026-10-30"
   },
   {
-   "cle": "portail-2412",
-   "texte": "معماري أول",
+   "cle": "portail-2543",
+   "texte": "معماري أول متعاقد",
    "organisme": "بلدية ماطر",
    "premier_vu": "2026-10-21",
    "dernier_vu": "2026-10-30"
   },
   {
-   "cle": "portail-2543",
-   "texte": "معماري أول متعاقد",
+   "cle": "portail-2412",
+   "texte": "معماري أول",
    "organisme": "بلدية ماطر",
    "premier_vu": "2026-10-21",
-   "dernier_vu": "2026-10-29"
+   "dernier_vu": "2026-10-30"
   },
   {
    "cle": "portail-3241",
