@@ -2,14 +2,14 @@
  "mois": {
   "2026-10": {
    "premier_jour": "2026-10-17",
-   "dernier_jour": "2026-10-30",
+   "dernier_jour": "2026-10-31",
    "fini": false,
    "chiffres": {
-    "au": "2026-10-30",
+    "au": "2026-10-31",
     "debut": "2026-10-09",
     "ouverts": {
-     "n": 63,
-     "postes": 119,
+     "n": 58,
+     "postes": 114,
      "sans_postes": 0
     },
     "national": {
@@ -18,8 +18,8 @@
      "sans_postes": 0
     },
     "locaux": {
-     "n": 46,
-     "postes": 85,
+     "n": 41,
+     "postes": 80,
      "sans_postes": 0
     },
     "finances": 0,
@@ -31,13 +31,8 @@
      ],
      [
       "monastir",
-      8,
-      11
-     ],
-     [
-      "tunis",
-      6,
-      6
+      10,
+      13
      ],
      [
       "sidi-bouzid",
@@ -68,11 +63,6 @@
       "medenine",
       1,
       2
-     ],
-     [
-      "kebili",
-      1,
-      1
      ]
     ],
     "metiers": [
@@ -83,8 +73,8 @@
      ],
      [
       "administratif",
-      14,
-      25
+      15,
+      26
      ],
      [
       "autre",
@@ -92,14 +82,9 @@
       10
      ],
      [
-      "technicien",
-      7,
-      8
-     ],
-     [
       "ingenieur",
-      6,
-      15
+      5,
+      14
      ],
      [
       "chauffeur",
@@ -107,9 +92,14 @@
       5
      ],
      [
-      "informatique",
+      "technicien",
       3,
-      5
+      4
+     ],
+     [
+      "informatique",
+      2,
+      4
      ],
      [
       "finance",
@@ -137,12 +127,6 @@
       "national"
      ],
      [
-      "وكالة التعمير لتونس الكبرى",
-      6,
-      6,
-      "tunis"
-     ],
-     [
       "بلدية باطن الغزال",
       4,
       5,
@@ -162,14 +146,14 @@
      ]
     ],
     "semaine": {
-     "n": 12,
-     "postes": 25,
+     "n": 11,
+     "postes": 30,
      "sans_postes": 0,
-     "jusqu_au": "2026-11-05"
+     "jusqu_au": "2026-11-06"
     },
     "nouveaux": {
-     "n": 35,
-     "postes": 61,
+     "n": 37,
+     "postes": 63,
      "sans_postes": 0
     },
     "nouveaux_metiers": [
@@ -179,7 +163,7 @@
      ],
      [
       "administratif",
-      11
+      13
      ],
      [
       "autre",
@@ -199,8 +183,8 @@
      ]
     ],
     "clos": {
-     "n": 19,
-     "postes": 37,
+     "n": 26,
+     "postes": 44,
      "sans_postes": 0
     },
     "resultats": {
@@ -2127,6 +2111,22 @@
      "gouvernorat": "nabeul",
      "cloture_candidatures": "2026-11-30",
      "vu_le": "2026-10-30",
+     "publies": []
+    },
+    "3319": {
+     "postes": 1,
+     "metier": "administratif",
+     "gouvernorat": "monastir",
+     "cloture_candidatures": "2026-11-30",
+     "vu_le": "2026-10-31",
+     "publies": []
+    },
+    "3320": {
+     "postes": 1,
+     "metier": "administratif",
+     "gouvernorat": "monastir",
+     "cloture_candidatures": "2026-11-30",
+     "vu_le": "2026-10-31",
      "publies": []
     }
    }

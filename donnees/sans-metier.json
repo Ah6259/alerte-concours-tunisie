@@ -1,5 +1,5 @@
 {
- "maj": "2026-10-30",
+ "maj": "2026-10-31",
  "explication": "Éléments lus par le robot mais rangés dans aucune catégorie (gardés 120 jours) : une routine y cherche les thèmes qui reviennent (règle commune § 40).",
  "nombre": 20,
  "elements": [
@@ -8,77 +8,77 @@
    "texte": "واضع برامج",
    "organisme": "بلدية فندق الجديد سلتان",
    "premier_vu": "2026-10-30",
-   "dernier_vu": "2026-10-30"
+   "dernier_vu": "2026-10-31"
   },
   {
    "cle": "portail-3310",
    "texte": "01 حراسة",
    "organisme": "بلدية باطن الغزال",
    "premier_vu": "2026-10-24",
-   "dernier_vu": "2026-10-30"
+   "dernier_vu": "2026-10-31"
   },
   {
    "cle": "portail-3309",
    "texte": "01بستنة",
    "organisme": "بلدية باطن الغزال",
    "premier_vu": "2026-10-24",
-   "dernier_vu": "2026-10-30"
+   "dernier_vu": "2026-10-31"
   },
   {
    "cle": "portail-3296",
    "texte": "ساعي صفقات",
    "organisme": "بلدية صيادة",
    "premier_vu": "2026-10-21",
-   "dernier_vu": "2026-10-30"
+   "dernier_vu": "2026-10-31"
   },
   {
    "cle": "portail-3288",
    "texte": "موزع هاتف",
    "organisme": "بلدية عميرة الحجاج",
    "premier_vu": "2026-10-21",
-   "dernier_vu": "2026-10-30"
+   "dernier_vu": "2026-10-31"
   },
   {
    "cle": "portail-3268",
    "texte": "معاونين مكتبيين أو معاونين موثقين",
    "organisme": "دار الكتب الوطنية",
    "premier_vu": "2026-10-21",
-   "dernier_vu": "2026-10-30"
+   "dernier_vu": "2026-10-31"
   },
   {
    "cle": "portail-3267",
    "texte": "مختزني مكتبات أو توثيق",
    "organisme": "دار الكتب الوطنية",
    "premier_vu": "2026-10-21",
-   "dernier_vu": "2026-10-30"
+   "dernier_vu": "2026-10-31"
   },
   {
    "cle": "portail-2979",
    "texte": "قيّمة",
    "organisme": "وكالة التكوين في مهن السياحة",
    "premier_vu": "2026-10-21",
-   "dernier_vu": "2026-10-30"
+   "dernier_vu": "2026-10-31"
   },
   {
    "cle": "portail-2978",
    "texte": "قيّم",
    "organisme": "وكالة التكوين في مهن السياحة",
    "premier_vu": "2026-10-21",
-   "dernier_vu": "2026-10-30"
+   "dernier_vu": "2026-10-31"
   },
   {
    "cle": "portail-2543",
    "texte": "معماري أول متعاقد",
    "organisme": "بلدية ماطر",
    "premier_vu": "2026-10-21",
-   "dernier_vu": "2026-10-30"
+   "dernier_vu": "2026-10-31"
   },
   {
    "cle": "portail-2412",
    "texte": "معماري أول",
    "organisme": "بلدية ماطر",
    "premier_vu": "2026-10-21",
-   "dernier_vu": "2026-10-30"
+   "dernier_vu": "2026-10-31"
   },
   {
    "cle": "portail-3241",
