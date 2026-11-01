@@ -940,6 +940,22 @@
      "cloture_candidatures": "2026-11-30",
      "vu_le": "2026-10-31",
      "publies": []
+    },
+    "2412": {
+     "postes": 1,
+     "metier": "autre",
+     "gouvernorat": "bizerte",
+     "cloture_candidatures": "2025-10-17",
+     "vu_le": "2026-11-01",
+     "publies": []
+    },
+    "2543": {
+     "postes": 1,
+     "metier": "autre",
+     "gouvernorat": "bizerte",
+     "cloture_candidatures": "2025-11-07",
+     "vu_le": "2026-11-01",
+     "publies": []
     }
    }
   }

@@ -53,6 +53,20 @@
    "dernier_vu": "2026-11-01"
   },
   {
+   "cle": "portail-2543",
+   "texte": "معماري أول متعاقد",
+   "organisme": "بلدية ماطر",
+   "premier_vu": "2026-10-21",
+   "dernier_vu": "2026-11-01"
+  },
+  {
+   "cle": "portail-2412",
+   "texte": "معماري أول",
+   "organisme": "بلدية ماطر",
+   "premier_vu": "2026-10-21",
+   "dernier_vu": "2026-11-01"
+  },
+  {
    "cle": "portail-2979",
    "texte": "قيّمة",
    "organisme": "وكالة التكوين في مهن السياحة",
@@ -63,20 +77,6 @@
    "cle": "portail-2978",
    "texte": "قيّم",
    "organisme": "وكالة التكوين في مهن السياحة",
-   "premier_vu": "2026-10-21",
-   "dernier_vu": "2026-10-31"
-  },
-  {
-   "cle": "portail-2543",
-   "texte": "معماري أول متعاقد",
-   "organisme": "بلدية ماطر",
-   "premier_vu": "2026-10-21",
-   "dernier_vu": "2026-10-31"
-  },
-  {
-   "cle": "portail-2412",
-   "texte": "معماري أول",
-   "organisme": "بلدية ماطر",
    "premier_vu": "2026-10-21",
    "dernier_vu": "2026-10-31"
   },
