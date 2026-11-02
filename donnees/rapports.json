@@ -203,14 +203,14 @@
   },
   "2026-11": {
    "premier_jour": "2026-11-01",
-   "dernier_jour": "2026-11-01",
+   "dernier_jour": "2026-11-02",
    "fini": false,
    "chiffres": {
-    "au": "2026-11-01",
+    "au": "2026-11-02",
     "debut": "2026-11-01",
     "ouverts": {
-     "n": 58,
-     "postes": 114,
+     "n": 66,
+     "postes": 123,
      "sans_postes": 0
     },
     "national": {
@@ -219,21 +219,21 @@
      "sans_postes": 0
     },
     "locaux": {
-     "n": 41,
-     "postes": 80,
+     "n": 49,
+     "postes": 89,
      "sans_postes": 0
     },
     "finances": 0,
     "gouvernorats": [
      [
       "nabeul",
-      16,
-      33
+      22,
+      40
      ],
      [
       "monastir",
-      10,
-      13
+      12,
+      15
      ],
      [
       "sidi-bouzid",
@@ -269,18 +269,18 @@
     "metiers": [
      [
       "ouvrier",
-      22,
-      49
+      27,
+      55
      ],
      [
       "administratif",
-      15,
-      26
+      17,
+      31
      ],
      [
       "autre",
-      7,
-      10
+      6,
+      6
      ],
      [
       "ingenieur",
@@ -289,17 +289,17 @@
      ],
      [
       "chauffeur",
+      4,
+      6
+     ],
+     [
+      "informatique",
       3,
       5
      ],
      [
       "technicien",
       3,
-      4
-     ],
-     [
-      "informatique",
-      2,
       4
      ],
      [
@@ -328,6 +328,12 @@
       "national"
      ],
      [
+      "بلدية الشريفات بوشراي",
+      6,
+      7,
+      "nabeul"
+     ],
+     [
       "بلدية باطن الغزال",
       4,
       5,
@@ -344,20 +350,43 @@
       3,
       8,
       "national"
+     ],
+     [
+      "بلدية جمال",
+      3,
+      3,
+      "monastir"
      ]
     ],
     "semaine": {
-     "n": 11,
-     "postes": 30,
+     "n": 21,
+     "postes": 48,
      "sans_postes": 0,
-     "jusqu_au": "2026-11-07"
+     "jusqu_au": "2026-11-08"
     },
     "nouveaux": {
-     "n": 0,
-     "postes": 0,
+     "n": 8,
+     "postes": 9,
      "sans_postes": 0
     },
-    "nouveaux_metiers": [],
+    "nouveaux_metiers": [
+     [
+      "ouvrier",
+      5
+     ],
+     [
+      "autre",
+      1
+     ],
+     [
+      "chauffeur",
+      1
+     ],
+     [
+      "informatique",
+      1
+     ]
+    ],
     "clos": {
      "n": 0,
      "postes": 0,
@@ -871,7 +900,7 @@
     },
     "3267": {
      "postes": 3,
-     "metier": "autre",
+     "metier": "administratif",
      "gouvernorat": "national",
      "cloture_candidatures": "2026-11-27",
      "vu_le": "",
@@ -879,7 +908,7 @@
     },
     "3268": {
      "postes": 2,
-     "metier": "autre",
+     "metier": "administratif",
      "gouvernorat": "national",
      "cloture_candidatures": "2026-11-27",
      "vu_le": "",
@@ -955,6 +984,70 @@
      "gouvernorat": "bizerte",
      "cloture_candidatures": "2025-11-07",
      "vu_le": "2026-11-01",
+     "publies": []
+    },
+    "3321": {
+     "postes": 1,
+     "metier": "ouvrier",
+     "gouvernorat": "monastir",
+     "cloture_candidatures": "2026-11-09",
+     "vu_le": "2026-11-02",
+     "publies": []
+    },
+    "3327": {
+     "postes": 1,
+     "metier": "informatique",
+     "gouvernorat": "monastir",
+     "cloture_candidatures": "2026-11-30",
+     "vu_le": "2026-11-02",
+     "publies": []
+    },
+    "3322": {
+     "postes": 2,
+     "metier": "ouvrier",
+     "gouvernorat": "nabeul",
+     "cloture_candidatures": "2026-12-03",
+     "vu_le": "2026-11-02",
+     "publies": []
+    },
+    "3323": {
+     "postes": 1,
+     "metier": "ouvrier",
+     "gouvernorat": "nabeul",
+     "cloture_candidatures": "2026-12-03",
+     "vu_le": "2026-11-02",
+     "publies": []
+    },
+    "3324": {
+     "postes": 1,
+     "metier": "autre",
+     "gouvernorat": "nabeul",
+     "cloture_candidatures": "2026-12-03",
+     "vu_le": "2026-11-02",
+     "publies": []
+    },
+    "3325": {
+     "postes": 1,
+     "metier": "ouvrier",
+     "gouvernorat": "nabeul",
+     "cloture_candidatures": "2026-12-03",
+     "vu_le": "2026-11-02",
+     "publies": []
+    },
+    "3326": {
+     "postes": 1,
+     "metier": "ouvrier",
+     "gouvernorat": "nabeul",
+     "cloture_candidatures": "2026-12-03",
+     "vu_le": "2026-11-02",
+     "publies": []
+    },
+    "3328": {
+     "postes": 1,
+     "metier": "chauffeur",
+     "gouvernorat": "nabeul",
+     "cloture_candidatures": "2026-12-03",
+     "vu_le": "2026-11-02",
      "publies": []
     }
    }
