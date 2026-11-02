@@ -209,13 +209,13 @@
     "au": "2026-11-02",
     "debut": "2026-11-01",
     "ouverts": {
-     "n": 66,
-     "postes": 123,
+     "n": 75,
+     "postes": 138,
      "sans_postes": 0
     },
     "national": {
-     "n": 17,
-     "postes": 34,
+     "n": 26,
+     "postes": 49,
      "sans_postes": 0
     },
     "locaux": {
@@ -269,18 +269,18 @@
     "metiers": [
      [
       "ouvrier",
-      27,
-      55
+      30,
+      63
      ],
      [
       "administratif",
-      17,
-      31
+      18,
+      32
      ],
      [
       "autre",
-      6,
-      6
+      10,
+      10
      ],
      [
       "ingenieur",
@@ -304,8 +304,8 @@
      ],
      [
       "finance",
-      1,
-      2
+      2,
+      4
      ]
     ],
     "organismes": [
@@ -314,6 +314,12 @@
       10,
       18,
       "nabeul"
+     ],
+     [
+      "مسرح الأوبرا",
+      9,
+      15,
+      "national"
      ],
      [
       "الديوان الوطني للمناجم",
@@ -365,21 +371,29 @@
      "jusqu_au": "2026-11-08"
     },
     "nouveaux": {
-     "n": 8,
-     "postes": 9,
+     "n": 17,
+     "postes": 24,
      "sans_postes": 0
     },
     "nouveaux_metiers": [
      [
       "ouvrier",
-      5
+      8
      ],
      [
       "autre",
+      5
+     ],
+     [
+      "administratif",
       1
      ],
      [
       "chauffeur",
+      1
+     ],
+     [
+      "finance",
       1
      ],
      [
@@ -397,8 +411,11 @@
      "final": 0
     },
     "avis": {
-     "n": 0,
-     "types": {}
+     "n": 3,
+     "types": {
+      "candidatures": 2,
+      "nouveau": 1
+     }
     }
    },
    "vus": {
@@ -1047,6 +1064,78 @@
      "metier": "chauffeur",
      "gouvernorat": "nabeul",
      "cloture_candidatures": "2026-12-03",
+     "vu_le": "2026-11-02",
+     "publies": []
+    },
+    "3329": {
+     "postes": 2,
+     "metier": "finance",
+     "gouvernorat": "national",
+     "cloture_candidatures": "2026-12-04",
+     "vu_le": "2026-11-02",
+     "publies": []
+    },
+    "3330": {
+     "postes": 1,
+     "metier": "autre",
+     "gouvernorat": "national",
+     "cloture_candidatures": "2026-12-04",
+     "vu_le": "2026-11-02",
+     "publies": []
+    },
+    "3331": {
+     "postes": 1,
+     "metier": "autre",
+     "gouvernorat": "national",
+     "cloture_candidatures": "2026-12-04",
+     "vu_le": "2026-11-02",
+     "publies": []
+    },
+    "3332": {
+     "postes": 1,
+     "metier": "autre",
+     "gouvernorat": "national",
+     "cloture_candidatures": "2026-12-04",
+     "vu_le": "2026-11-02",
+     "publies": []
+    },
+    "3333": {
+     "postes": 1,
+     "metier": "autre",
+     "gouvernorat": "national",
+     "cloture_candidatures": "2026-12-04",
+     "vu_le": "2026-11-02",
+     "publies": []
+    },
+    "3334": {
+     "postes": 1,
+     "metier": "administratif",
+     "gouvernorat": "national",
+     "cloture_candidatures": "2026-12-04",
+     "vu_le": "2026-11-02",
+     "publies": []
+    },
+    "3335": {
+     "postes": 3,
+     "metier": "ouvrier",
+     "gouvernorat": "national",
+     "cloture_candidatures": "2026-12-04",
+     "vu_le": "2026-11-02",
+     "publies": []
+    },
+    "3336": {
+     "postes": 4,
+     "metier": "ouvrier",
+     "gouvernorat": "national",
+     "cloture_candidatures": "2026-12-04",
+     "vu_le": "2026-11-02",
+     "publies": []
+    },
+    "3337": {
+     "postes": 1,
+     "metier": "ouvrier",
+     "gouvernorat": "national",
+     "cloture_candidatures": "2026-12-04",
      "vu_le": "2026-11-02",
      "publies": []
     }

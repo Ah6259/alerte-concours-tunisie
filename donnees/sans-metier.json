@@ -1,8 +1,36 @@
 {
  "maj": "2026-11-02",
  "explication": "Éléments lus par le robot mais rangés dans aucune catégorie (gardés 120 jours) : une routine y cherche les thèmes qui reviennent (règle commune § 40).",
- "nombre": 21,
+ "nombre": 25,
  "elements": [
+  {
+   "cle": "portail-3333",
+   "texte": "01 متصرّف مساعد",
+   "organisme": "مسرح الأوبرا",
+   "premier_vu": "2026-11-02",
+   "dernier_vu": "2026-11-02"
+  },
+  {
+   "cle": "portail-3332",
+   "texte": "01 متصرّف صحافة/إتّصال",
+   "organisme": "مسرح الأوبرا",
+   "premier_vu": "2026-11-02",
+   "dernier_vu": "2026-11-02"
+  },
+  {
+   "cle": "portail-3331",
+   "texte": "01 متصرّف علوم قانونية",
+   "organisme": "مسرح الأوبرا",
+   "premier_vu": "2026-11-02",
+   "dernier_vu": "2026-11-02"
+  },
+  {
+   "cle": "portail-3330",
+   "texte": "متصرّف في تصميم الصّورة",
+   "organisme": "مسرح الأوبرا",
+   "premier_vu": "2026-11-02",
+   "dernier_vu": "2026-11-02"
+  },
   {
    "cle": "portail-3324",
    "texte": "ساعي صفقات",
