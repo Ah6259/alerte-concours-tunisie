@@ -203,14 +203,14 @@
   },
   "2026-11": {
    "premier_jour": "2026-11-01",
-   "dernier_jour": "2026-11-02",
+   "dernier_jour": "2026-11-03",
    "fini": false,
    "chiffres": {
-    "au": "2026-11-02",
+    "au": "2026-11-03",
     "debut": "2026-11-01",
     "ouverts": {
-     "n": 75,
-     "postes": 138,
+     "n": 74,
+     "postes": 130,
      "sans_postes": 0
     },
     "national": {
@@ -219,16 +219,16 @@
      "sans_postes": 0
     },
     "locaux": {
-     "n": 49,
-     "postes": 89,
+     "n": 48,
+     "postes": 81,
      "sans_postes": 0
     },
     "finances": 0,
     "gouvernorats": [
      [
       "nabeul",
-      22,
-      40
+      21,
+      32
      ],
      [
       "monastir",
@@ -269,8 +269,8 @@
     "metiers": [
      [
       "ouvrier",
-      30,
-      63
+      29,
+      55
      ],
      [
       "administratif",
@@ -346,12 +346,6 @@
       "sidi-bouzid"
      ],
      [
-      "بلدية بوعرقوب",
-      3,
-      10,
-      "nabeul"
-     ],
-     [
       "مركز الإعلامية لوزارة الداخلية",
       3,
       8,
@@ -365,10 +359,10 @@
      ]
     ],
     "semaine": {
-     "n": 21,
-     "postes": 48,
+     "n": 25,
+     "postes": 47,
      "sans_postes": 0,
-     "jusqu_au": "2026-11-08"
+     "jusqu_au": "2026-11-09"
     },
     "nouveaux": {
      "n": 17,
@@ -402,8 +396,8 @@
      ]
     ],
     "clos": {
-     "n": 0,
-     "postes": 0,
+     "n": 1,
+     "postes": 8,
      "sans_postes": 0
     },
     "resultats": {
