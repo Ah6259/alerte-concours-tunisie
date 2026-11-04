@@ -1,8 +1,15 @@
 {
  "maj": "2026-11-04",
  "explication": "Éléments lus par le robot mais rangés dans aucune catégorie (gardés 120 jours) : une routine y cherche les thèmes qui reviennent (règle commune § 40).",
- "nombre": 26,
+ "nombre": 27,
  "elements": [
+  {
+   "cle": "portail-3340",
+   "texte": "02 اعوان حراسة الوحدة الاولى صنف1",
+   "organisme": "المركز الفني للابتكار والتجديد والإحاطة في الزربية والحياكة",
+   "premier_vu": "2026-11-04",
+   "dernier_vu": "2026-11-04"
+  },
   {
    "cle": "portail-3338",
    "texte": "1",

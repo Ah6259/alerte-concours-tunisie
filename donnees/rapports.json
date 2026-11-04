@@ -209,13 +209,13 @@
     "au": "2026-11-04",
     "debut": "2026-11-01",
     "ouverts": {
-     "n": 76,
-     "postes": 133,
+     "n": 79,
+     "postes": 137,
      "sans_postes": 0
     },
     "national": {
-     "n": 26,
-     "postes": 49,
+     "n": 29,
+     "postes": 53,
      "sans_postes": 0
     },
     "locaux": {
@@ -269,8 +269,8 @@
     "metiers": [
      [
       "ouvrier",
-      29,
-      55
+      30,
+      56
      ],
      [
       "administratif",
@@ -279,8 +279,8 @@
      ],
      [
       "autre",
-      11,
-      11
+      12,
+      13
      ],
      [
       "ingenieur",
@@ -289,8 +289,8 @@
      ],
      [
       "chauffeur",
-      4,
-      6
+      5,
+      7
      ],
      [
       "informatique",
@@ -352,6 +352,12 @@
       "national"
      ],
      [
+      "المركز الفني للابتكار والتجديد والإحاطة في الزربية والحياكة",
+      3,
+      4,
+      "national"
+     ],
+     [
       "بلدية جمال",
       3,
       3,
@@ -365,18 +371,18 @@
      "jusqu_au": "2026-11-10"
     },
     "nouveaux": {
-     "n": 19,
-     "postes": 27,
+     "n": 22,
+     "postes": 31,
      "sans_postes": 0
     },
     "nouveaux_metiers": [
      [
       "ouvrier",
-      8
+      9
      ],
      [
       "autre",
-      6
+      7
      ],
      [
       "administratif",
@@ -384,7 +390,7 @@
      ],
      [
       "chauffeur",
-      1
+      2
      ],
      [
       "finance",
@@ -1147,6 +1153,30 @@
      "metier": "administratif",
      "gouvernorat": "nabeul",
      "cloture_candidatures": "2026-11-30",
+     "vu_le": "2026-11-04",
+     "publies": []
+    },
+    "3340": {
+     "postes": 2,
+     "metier": "autre",
+     "gouvernorat": "national",
+     "cloture_candidatures": "2026-11-25",
+     "vu_le": "2026-11-04",
+     "publies": []
+    },
+    "3341": {
+     "postes": 1,
+     "metier": "ouvrier",
+     "gouvernorat": "national",
+     "cloture_candidatures": "2026-11-25",
+     "vu_le": "2026-11-04",
+     "publies": []
+    },
+    "3342": {
+     "postes": 1,
+     "metier": "chauffeur",
+     "gouvernorat": "national",
+     "cloture_candidatures": "2026-11-25",
      "vu_le": "2026-11-04",
      "publies": []
     }
