@@ -203,14 +203,14 @@
   },
   "2026-11": {
    "premier_jour": "2026-11-01",
-   "dernier_jour": "2026-11-03",
+   "dernier_jour": "2026-11-04",
    "fini": false,
    "chiffres": {
-    "au": "2026-11-03",
+    "au": "2026-11-04",
     "debut": "2026-11-01",
     "ouverts": {
-     "n": 74,
-     "postes": 130,
+     "n": 76,
+     "postes": 133,
      "sans_postes": 0
     },
     "national": {
@@ -219,16 +219,16 @@
      "sans_postes": 0
     },
     "locaux": {
-     "n": 48,
-     "postes": 81,
+     "n": 50,
+     "postes": 84,
      "sans_postes": 0
     },
     "finances": 0,
     "gouvernorats": [
      [
       "nabeul",
-      21,
-      32
+      23,
+      35
      ],
      [
       "monastir",
@@ -274,13 +274,13 @@
      ],
      [
       "administratif",
-      18,
-      32
+      19,
+      34
      ],
      [
       "autre",
-      10,
-      10
+      11,
+      11
      ],
      [
       "ingenieur",
@@ -359,14 +359,14 @@
      ]
     ],
     "semaine": {
-     "n": 25,
-     "postes": 47,
+     "n": 26,
+     "postes": 48,
      "sans_postes": 0,
-     "jusqu_au": "2026-11-09"
+     "jusqu_au": "2026-11-10"
     },
     "nouveaux": {
-     "n": 17,
-     "postes": 24,
+     "n": 19,
+     "postes": 27,
      "sans_postes": 0
     },
     "nouveaux_metiers": [
@@ -376,11 +376,11 @@
      ],
      [
       "autre",
-      5
+      6
      ],
      [
       "administratif",
-      1
+      2
      ],
      [
       "chauffeur",
@@ -405,8 +405,9 @@
      "final": 0
     },
     "avis": {
-     "n": 3,
+     "n": 4,
      "types": {
+      "report": 1,
       "candidatures": 2,
       "nouveau": 1
      }
@@ -1131,6 +1132,22 @@
      "gouvernorat": "national",
      "cloture_candidatures": "2026-12-04",
      "vu_le": "2026-11-02",
+     "publies": []
+    },
+    "3338": {
+     "postes": 1,
+     "metier": "autre",
+     "gouvernorat": "nabeul",
+     "cloture_candidatures": "2026-11-30",
+     "vu_le": "2026-11-04",
+     "publies": []
+    },
+    "3339": {
+     "postes": 2,
+     "metier": "administratif",
+     "gouvernorat": "nabeul",
+     "cloture_candidatures": "2026-11-30",
+     "vu_le": "2026-11-04",
      "publies": []
     }
    }
