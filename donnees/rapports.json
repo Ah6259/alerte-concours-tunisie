@@ -209,8 +209,8 @@
     "au": "2026-11-05",
     "debut": "2026-11-01",
     "ouverts": {
-     "n": 82,
-     "postes": 145,
+     "n": 84,
+     "postes": 167,
      "sans_postes": 0
     },
     "national": {
@@ -219,8 +219,8 @@
      "sans_postes": 0
     },
     "locaux": {
-     "n": 53,
-     "postes": 92,
+     "n": 55,
+     "postes": 114,
      "sans_postes": 0
     },
     "finances": 0,
@@ -232,8 +232,8 @@
      ],
      [
       "monastir",
-      12,
-      16
+      13,
+      36
      ],
      [
       "sousse",
@@ -261,6 +261,11 @@
       4
      ],
      [
+      "gafsa",
+      1,
+      2
+     ],
+     [
       "medenine",
       1,
       2
@@ -279,13 +284,13 @@
      ],
      [
       "autre",
-      12,
-      13
+      13,
+      33
      ],
      [
       "ingenieur",
-      5,
-      14
+      6,
+      16
      ],
      [
       "technicien",
@@ -371,8 +376,8 @@
      "jusqu_au": "2026-11-11"
     },
     "nouveaux": {
-     "n": 26,
-     "postes": 41,
+     "n": 28,
+     "postes": 63,
      "sans_postes": 0
     },
     "nouveaux_metiers": [
@@ -382,7 +387,7 @@
      ],
      [
       "autre",
-      7
+      8
      ],
      [
       "administratif",
@@ -402,6 +407,10 @@
      ],
      [
       "informatique",
+      1
+     ],
+     [
+      "ingenieur",
       1
      ]
     ],
@@ -1213,6 +1222,22 @@
      "metier": "technicien",
      "gouvernorat": "sousse",
      "cloture_candidatures": "2026-12-07",
+     "vu_le": "2026-11-05",
+     "publies": []
+    },
+    "3347": {
+     "postes": 20,
+     "metier": "autre",
+     "gouvernorat": "monastir",
+     "cloture_candidatures": "2026-11-16",
+     "vu_le": "2026-11-05",
+     "publies": []
+    },
+    "3348": {
+     "postes": 2,
+     "metier": "ingenieur",
+     "gouvernorat": "gafsa",
+     "cloture_candidatures": "2026-12-31",
      "vu_le": "2026-11-05",
      "publies": []
     }

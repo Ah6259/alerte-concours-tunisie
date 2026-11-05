@@ -1,8 +1,15 @@
 {
  "maj": "2026-11-05",
  "explication": "Éléments lus par le robot mais rangés dans aucune catégorie (gardés 120 jours) : une routine y cherche les thèmes qui reviennent (règle commune § 40).",
- "nombre": 27,
+ "nombre": 28,
  "elements": [
+  {
+   "cle": "portail-3347",
+   "texte": "جمع الفضلات بالساحات العمومية والشوارع والأنهج والأزقة وغيرها، افراغ أوعية الفضلات المنزلية، كنس الأنهج وغسلها، رفع الردم والفضلات الصلبة، كنس المجاري والأرصفة، تنظيف المسلخ البلدي والأسواق، كل عمل آخ",
+   "organisme": "بلدية المنستير",
+   "premier_vu": "2026-11-05",
+   "dernier_vu": "2026-11-05"
+  },
   {
    "cle": "portail-3340",
    "texte": "02 اعوان حراسة الوحدة الاولى صنف1",
