@@ -203,14 +203,14 @@
   },
   "2026-11": {
    "premier_jour": "2026-11-01",
-   "dernier_jour": "2026-11-04",
+   "dernier_jour": "2026-11-05",
    "fini": false,
    "chiffres": {
-    "au": "2026-11-04",
+    "au": "2026-11-05",
     "debut": "2026-11-01",
     "ouverts": {
-     "n": 79,
-     "postes": 137,
+     "n": 82,
+     "postes": 145,
      "sans_postes": 0
     },
     "national": {
@@ -219,8 +219,8 @@
      "sans_postes": 0
     },
     "locaux": {
-     "n": 50,
-     "postes": 84,
+     "n": 53,
+     "postes": 92,
      "sans_postes": 0
     },
     "finances": 0,
@@ -233,7 +233,12 @@
      [
       "monastir",
       12,
-      15
+      16
+     ],
+     [
+      "sousse",
+      5,
+      16
      ],
      [
       "sidi-bouzid",
@@ -249,11 +254,6 @@
       "sfax",
       3,
       6
-     ],
-     [
-      "sousse",
-      2,
-      9
      ],
      [
       "gabes",
@@ -274,8 +274,8 @@
      ],
      [
       "administratif",
-      19,
-      34
+      20,
+      37
      ],
      [
       "autre",
@@ -288,6 +288,11 @@
       14
      ],
      [
+      "technicien",
+      5,
+      9
+     ],
+     [
       "chauffeur",
       5,
       7
@@ -296,11 +301,6 @@
       "informatique",
       3,
       5
-     ],
-     [
-      "technicien",
-      3,
-      4
      ],
      [
       "finance",
@@ -366,13 +366,13 @@
     ],
     "semaine": {
      "n": 26,
-     "postes": 48,
+     "postes": 50,
      "sans_postes": 0,
-     "jusqu_au": "2026-11-10"
+     "jusqu_au": "2026-11-11"
     },
     "nouveaux": {
-     "n": 22,
-     "postes": 31,
+     "n": 26,
+     "postes": 41,
      "sans_postes": 0
     },
     "nouveaux_metiers": [
@@ -386,10 +386,14 @@
      ],
      [
       "administratif",
-      2
+      4
      ],
      [
       "chauffeur",
+      2
+     ],
+     [
+      "technicien",
       2
      ],
      [
@@ -402,8 +406,8 @@
      ]
     ],
     "clos": {
-     "n": 1,
-     "postes": 8,
+     "n": 2,
+     "postes": 10,
      "sans_postes": 0
     },
     "resultats": {
@@ -411,11 +415,11 @@
      "final": 0
     },
     "avis": {
-     "n": 4,
+     "n": 5,
      "types": {
+      "nouveau": 2,
       "report": 1,
-      "candidatures": 2,
-      "nouveau": 1
+      "candidatures": 2
      }
     }
    },
@@ -1178,6 +1182,38 @@
      "gouvernorat": "national",
      "cloture_candidatures": "2026-11-25",
      "vu_le": "2026-11-04",
+     "publies": []
+    },
+    "3343": {
+     "postes": 3,
+     "metier": "administratif",
+     "gouvernorat": "monastir",
+     "cloture_candidatures": "2026-11-30",
+     "vu_le": "2026-11-05",
+     "publies": []
+    },
+    "3346": {
+     "postes": 2,
+     "metier": "administratif",
+     "gouvernorat": "sousse",
+     "cloture_candidatures": "2026-11-30",
+     "vu_le": "2026-11-05",
+     "publies": []
+    },
+    "3344": {
+     "postes": 3,
+     "metier": "technicien",
+     "gouvernorat": "sousse",
+     "cloture_candidatures": "2026-12-07",
+     "vu_le": "2026-11-05",
+     "publies": []
+    },
+    "3345": {
+     "postes": 2,
+     "metier": "technicien",
+     "gouvernorat": "sousse",
+     "cloture_candidatures": "2026-12-07",
+     "vu_le": "2026-11-05",
      "publies": []
     }
    }
