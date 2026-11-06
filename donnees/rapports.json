@@ -203,19 +203,19 @@
   },
   "2026-11": {
    "premier_jour": "2026-11-01",
-   "dernier_jour": "2026-11-05",
+   "dernier_jour": "2026-11-06",
    "fini": false,
    "chiffres": {
-    "au": "2026-11-05",
+    "au": "2026-11-06",
     "debut": "2026-11-01",
     "ouverts": {
-     "n": 84,
-     "postes": 167,
+     "n": 81,
+     "postes": 159,
      "sans_postes": 0
     },
     "national": {
-     "n": 29,
-     "postes": 53,
+     "n": 26,
+     "postes": 45,
      "sans_postes": 0
     },
     "locaux": {
@@ -279,8 +279,8 @@
      ],
      [
       "administratif",
-      20,
-      37
+      19,
+      35
      ],
      [
       "autre",
@@ -289,8 +289,8 @@
      ],
      [
       "ingenieur",
-      6,
-      16
+      5,
+      13
      ],
      [
       "technicien",
@@ -303,14 +303,14 @@
       7
      ],
      [
-      "informatique",
-      3,
-      5
-     ],
-     [
       "finance",
       2,
       4
+     ],
+     [
+      "informatique",
+      2,
+      2
      ]
     ],
     "organismes": [
@@ -351,12 +351,6 @@
       "sidi-bouzid"
      ],
      [
-      "مركز الإعلامية لوزارة الداخلية",
-      3,
-      8,
-      "national"
-     ],
-     [
       "المركز الفني للابتكار والتجديد والإحاطة في الزربية والحياكة",
       3,
       4,
@@ -370,10 +364,10 @@
      ]
     ],
     "semaine": {
-     "n": 26,
-     "postes": 50,
+     "n": 23,
+     "postes": 42,
      "sans_postes": 0,
-     "jusqu_au": "2026-11-11"
+     "jusqu_au": "2026-11-12"
     },
     "nouveaux": {
      "n": 28,
@@ -415,8 +409,8 @@
      ]
     ],
     "clos": {
-     "n": 2,
-     "postes": 10,
+     "n": 5,
+     "postes": 18,
      "sans_postes": 0
     },
     "resultats": {
@@ -424,8 +418,9 @@
      "final": 0
     },
     "avis": {
-     "n": 5,
+     "n": 6,
      "types": {
+      "resultats": 1,
       "nouveau": 2,
       "report": 1,
       "candidatures": 2
