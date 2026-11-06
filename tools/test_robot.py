@@ -1,4 +1,5 @@
 """Test du robot (sans réseau) : python tools/test_robot.py"""
+import datetime as dt
 import json, os, subprocess, sys, tempfile
 sys.stdout.reconfigure(encoding="utf-8")
 ICI = os.path.dirname(os.path.abspath(__file__)); RACINE = os.path.dirname(ICI)
@@ -224,6 +225,11 @@ import sources_en_panne as SP
 check("alerte : Finances sans lecture réussie depuis 3 jours -> ÉCHEC ; 2 jours -> rien",
       [s for s, _ in SP.en_panne({"lu_le": "2026-10-15", "finances_ok": "2026-10-12"}, {"lu_le": "2026-10-15"}, "2026-10-15")] == ["plateforme du ministère des Finances"]
       and SP.en_panne({"lu_le": "2026-10-15", "finances_ok": "2026-10-13"}, {"lu_le": "2026-10-13"}, "2026-10-15") == [])
+_r = "<urlopen error [Errno 111] Connection refused>"
+_f = (dt.date(2026, 10, 21) + dt.timedelta(days=SP.SOMMEIL_MAX_JOURS)).isoformat()
+check("Finances : site qui refuse la connexion = sommeil jusqu'à SOMMEIL_MAX_JOURS (06/11/2026, règle commune § 55), alarme après ; erreur de lecture : jamais en sommeil",
+      SP.en_sommeil("2026-10-21", _r, "2026-11-06") == _f and SP.en_sommeil("2026-10-21", _r, (dt.date.fromisoformat(_f) + dt.timedelta(days=1)).isoformat()) is None
+      and SP.en_sommeil("2026-10-21", "list index out of range", "2026-11-06") is None and SP.en_sommeil("2026-10-21", "", "2026-11-06") is None)
 check("alerte : actualités jamais lues -> ÉCHEC", any("actualités" in s for s, _ in SP.en_panne({"lu_le": "2026-10-15", "finances_ok": "2026-10-15"}, {}, "2026-10-15")))
 
 # --- Rapports du mois (18/10/2026, règle commune § 25) : chiffres = comptages, mois fini figé, pas de fausse évolution

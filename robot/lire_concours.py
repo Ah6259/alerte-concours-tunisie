@@ -195,6 +195,7 @@ def main():
     limite = (dt.date.fromisoformat(a.aujourdhui) - dt.timedelta(days=JOURS_FERMES_FINANCES)).isoformat()
     # date de la dernière lecture réussie des Finances (tools/sources_en_panne.py : ÉCHEC après 2 jours, 15/10/2026)
     finances_ok = ancien.get("finances_ok") or a.aujourdhui
+    finances_raison = ""        # 06/11/2026 : raison de la dernière panne (sommeil automatique si le site refuse la connexion)
     try:
         if a.finances_fichier == "non" or (a.fichier and not a.finances_fichier):
             fin = []
@@ -210,10 +211,11 @@ def main():
         if a.finances_fichier != "non" and not (a.fichier and not a.finances_fichier):
             finances_ok = a.aujourdhui
     except Exception as e:
+        finances_raison = str(e)[:200]
         fin = [c for c in ancien["concours"] if c.get("source") == "finances"]
         print(f"ÉCHEC (non bloquant) : plateforme des Finances illisible ({str(e)[:120]}) ; {len(fin)} concours de la veille gardés")
     nouveaux = nouveaux + fin
-    donnees = {"source": URL, "lu_le": a.aujourdhui, "finances_ok": finances_ok, "pages": pages,
+    donnees = {"source": URL, "lu_le": a.aujourdhui, "finances_ok": finances_ok, "finances_raison": finances_raison, "pages": pages,
                "concours": sorted(fusionner(ancien["concours"], nouveaux, a.aujourdhui), key=lambda c: (c["cloture_candidatures"] or "9999", c["id"]))}
     os.makedirs(os.path.dirname(a.sortie), exist_ok=True)
     json.dump(donnees, open(a.sortie, "w", encoding="utf-8", newline="\n"), ensure_ascii=False, indent=1)
