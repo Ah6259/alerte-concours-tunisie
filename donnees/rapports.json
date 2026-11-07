@@ -1269,6 +1269,46 @@
      "cloture_candidatures": "2024-11-25",
      "vu_le": "2026-11-07",
      "publies": []
+    },
+    "553": {
+     "postes": 1,
+     "metier": "ingenieur",
+     "gouvernorat": "sousse",
+     "cloture_candidatures": "2019-11-29",
+     "vu_le": "2026-11-07",
+     "publies": []
+    },
+    "554": {
+     "postes": 1,
+     "metier": "ingenieur",
+     "gouvernorat": "nabeul",
+     "cloture_candidatures": "2019-11-29",
+     "vu_le": "2026-11-07",
+     "publies": []
+    },
+    "586": {
+     "postes": 1,
+     "metier": "ingenieur",
+     "gouvernorat": "siliana",
+     "cloture_candidatures": "2019-11-29",
+     "vu_le": "2026-11-07",
+     "publies": []
+    },
+    "587": {
+     "postes": 1,
+     "metier": "ingenieur",
+     "gouvernorat": "gabes",
+     "cloture_candidatures": "2019-12-02",
+     "vu_le": "2026-11-07",
+     "publies": []
+    },
+    "595": {
+     "postes": 1,
+     "metier": "ingenieur",
+     "gouvernorat": "kairouan",
+     "cloture_candidatures": "2019-12-30",
+     "vu_le": "2026-11-07",
+     "publies": []
     }
    }
   }
