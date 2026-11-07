@@ -203,19 +203,19 @@
   },
   "2026-11": {
    "premier_jour": "2026-11-01",
-   "dernier_jour": "2026-11-06",
+   "dernier_jour": "2026-11-07",
    "fini": false,
    "chiffres": {
-    "au": "2026-11-06",
+    "au": "2026-11-07",
     "debut": "2026-11-01",
     "ouverts": {
-     "n": 81,
-     "postes": 159,
+     "n": 75,
+     "postes": 147,
      "sans_postes": 0
     },
     "national": {
-     "n": 26,
-     "postes": 45,
+     "n": 20,
+     "postes": 33,
      "sans_postes": 0
     },
     "locaux": {
@@ -288,29 +288,29 @@
       33
      ],
      [
-      "ingenieur",
-      5,
-      13
-     ],
-     [
-      "technicien",
-      5,
-      9
-     ],
-     [
       "chauffeur",
       5,
       7
      ],
      [
+      "technicien",
+      3,
+      7
+     ],
+     [
+      "ingenieur",
+      3,
+      6
+     ],
+     [
       "finance",
-      2,
-      4
+      1,
+      2
      ],
      [
       "informatique",
-      2,
-      2
+      1,
+      1
      ]
     ],
     "organismes": [
@@ -324,12 +324,6 @@
       "مسرح الأوبرا",
       9,
       15,
-      "national"
-     ],
-     [
-      "الديوان الوطني للمناجم",
-      6,
-      12,
       "national"
      ],
      [
@@ -364,10 +358,10 @@
      ]
     ],
     "semaine": {
-     "n": 23,
-     "postes": 42,
+     "n": 18,
+     "postes": 32,
      "sans_postes": 0,
-     "jusqu_au": "2026-11-12"
+     "jusqu_au": "2026-11-13"
     },
     "nouveaux": {
      "n": 28,
@@ -409,8 +403,8 @@
      ]
     ],
     "clos": {
-     "n": 5,
-     "postes": 18,
+     "n": 11,
+     "postes": 30,
      "sans_postes": 0
     },
     "resultats": {
@@ -1234,6 +1228,46 @@
      "gouvernorat": "gafsa",
      "cloture_candidatures": "2026-12-31",
      "vu_le": "2026-11-05",
+     "publies": []
+    },
+    "1938": {
+     "postes": 13,
+     "metier": "ouvrier",
+     "gouvernorat": "gabes",
+     "cloture_candidatures": "2024-11-11",
+     "vu_le": "2026-11-07",
+     "publies": []
+    },
+    "1939": {
+     "postes": 1,
+     "metier": "chauffeur",
+     "gouvernorat": "gabes",
+     "cloture_candidatures": "2024-11-11",
+     "vu_le": "2026-11-07",
+     "publies": []
+    },
+    "1991": {
+     "postes": 3,
+     "metier": "administratif",
+     "gouvernorat": "gabes",
+     "cloture_candidatures": "2024-11-25",
+     "vu_le": "2026-11-07",
+     "publies": []
+    },
+    "1992": {
+     "postes": 3,
+     "metier": "administratif",
+     "gouvernorat": "gabes",
+     "cloture_candidatures": "2024-11-25",
+     "vu_le": "2026-11-07",
+     "publies": []
+    },
+    "1993": {
+     "postes": 1,
+     "metier": "administratif",
+     "gouvernorat": "gabes",
+     "cloture_candidatures": "2024-11-25",
+     "vu_le": "2026-11-07",
      "publies": []
     }
    }
