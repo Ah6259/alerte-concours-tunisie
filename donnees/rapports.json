@@ -203,10 +203,10 @@
   },
   "2026-11": {
    "premier_jour": "2026-11-01",
-   "dernier_jour": "2026-11-07",
+   "dernier_jour": "2026-11-08",
    "fini": false,
    "chiffres": {
-    "au": "2026-11-07",
+    "au": "2026-11-08",
     "debut": "2026-11-01",
     "ouverts": {
      "n": 75,
@@ -361,7 +361,7 @@
      "n": 18,
      "postes": 32,
      "sans_postes": 0,
-     "jusqu_au": "2026-11-13"
+     "jusqu_au": "2026-11-14"
     },
     "nouveaux": {
      "n": 28,
@@ -1308,6 +1308,86 @@
      "gouvernorat": "kairouan",
      "cloture_candidatures": "2019-12-30",
      "vu_le": "2026-11-07",
+     "publies": []
+    },
+    "2700": {
+     "postes": 1,
+     "metier": "administratif",
+     "gouvernorat": "national",
+     "cloture_candidatures": "2026-01-27",
+     "vu_le": "2026-11-08",
+     "publies": []
+    },
+    "2701": {
+     "postes": 1,
+     "metier": "technicien",
+     "gouvernorat": "national",
+     "cloture_candidatures": "2026-01-27",
+     "vu_le": "2026-11-08",
+     "publies": []
+    },
+    "2832": {
+     "postes": 1,
+     "metier": "ouvrier",
+     "gouvernorat": "national",
+     "cloture_candidatures": "2026-04-11",
+     "vu_le": "2026-11-08",
+     "publies": []
+    },
+    "2833": {
+     "postes": 4,
+     "metier": "ouvrier",
+     "gouvernorat": "national",
+     "cloture_candidatures": "2026-04-11",
+     "vu_le": "2026-11-08",
+     "publies": []
+    },
+    "2834": {
+     "postes": 1,
+     "metier": "ouvrier",
+     "gouvernorat": "national",
+     "cloture_candidatures": "2026-04-11",
+     "vu_le": "2026-11-08",
+     "publies": []
+    },
+    "2835": {
+     "postes": 1,
+     "metier": "ouvrier",
+     "gouvernorat": "national",
+     "cloture_candidatures": "2026-04-11",
+     "vu_le": "2026-11-08",
+     "publies": []
+    },
+    "2836": {
+     "postes": 1,
+     "metier": "ouvrier",
+     "gouvernorat": "national",
+     "cloture_candidatures": "2026-04-11",
+     "vu_le": "2026-11-08",
+     "publies": []
+    },
+    "2837": {
+     "postes": 3,
+     "metier": "ouvrier",
+     "gouvernorat": "national",
+     "cloture_candidatures": "2026-04-11",
+     "vu_le": "2026-11-08",
+     "publies": []
+    },
+    "2838": {
+     "postes": 1,
+     "metier": "ouvrier",
+     "gouvernorat": "national",
+     "cloture_candidatures": "2026-04-11",
+     "vu_le": "2026-11-08",
+     "publies": []
+    },
+    "2839": {
+     "postes": 2,
+     "metier": "ouvrier",
+     "gouvernorat": "national",
+     "cloture_candidatures": "2026-04-11",
+     "vu_le": "2026-11-08",
      "publies": []
     }
    }
