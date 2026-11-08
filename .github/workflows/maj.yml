@@ -51,6 +51,6 @@ jobs:
           git config user.email "robot-concours@users.noreply.github.com"
           git add -A
           git diff --cached --quiet || git commit -m "Concours du $(date +%d/%m/%Y)"
-          git pull --rebase --autostash -q && git push -q
+          git pull --rebase -X theirs --autostash -q && git push -q
       - name: Source en panne depuis plus de 2 jours ? (ÉCHEC = e-mail à Ahmed ; les données sont déjà enregistrées)
         run: python tools/sources_en_panne.py
