@@ -19,7 +19,12 @@ const pages = ["index.html", "actualites/index.html", "guide-inscription/index.h
 { const dec = x => x.replace(/&#x27;|&#39;|&apos;/g, "’").replace(/&amp;/g, "&").replace(/&quot;/g, '"'), longs = [];
   for (const p of pages) { const h = lire(p); const t = dec((h.match(/<title>([^<]*)<\/title>/) || [])[1] || ""), d = dec((h.match(/<meta name="description" content="([^"]*)"/) || [])[1] || "");
     if (t.length > 70 || t.length < 10) longs.push(`${p} titre ${t.length}`); if (d.length > 170 || d.length < 40) longs.push(`${p} description ${d.length}`); }
-  check("SEO : titre de 10 à 70 caractères et description de 40 à 170 sur chaque page" + (longs.length ? " — " + longs.slice(0, 4).join(" ; ") : ""), longs.length === 0); }
+  check("SEO : titre de 10 à 70 caractères et description de 40 à 170 sur chaque page" + (longs.length ? " — " + longs.slice(0, 4).join(" ; ") : ""), longs.length === 0);
+  // 08/11/2026 (contrôle en ligne) : deux pages de concours avaient le même titre après la coupe -> le numéro est dans le titre, jamais deux titres identiques
+  const vus = new Map(), doubles = [];
+  for (const p of [...pages, ...readdirSync(join(root, "concours")).map(n => `concours/${n}/index.html`)]) {
+    const ti = dec((lire(p).match(/<title>([^<]*)<\/title>/) || [])[1] || ""); if (vus.has(ti)) doubles.push(`${p} = ${vus.get(ti)}`); vus.set(ti, p); }
+  check("SEO : aucun titre en double (pages de concours comprises)" + (doubles.length ? " — " + doubles.slice(0, 3).join(" ; ") : ""), doubles.length === 0); }
 
 // ---- 0. Lieux (règle commune § 11.11, 18/10/2026) : les gouvernorats proposés = les 24 de La Poste + l'exception listée ici
 //      (« national » = toute la Tunisie, un groupe et non un gouvernorat), dans les deux sens : toutes présentes, rien d'autre

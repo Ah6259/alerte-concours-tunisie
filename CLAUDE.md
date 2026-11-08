@@ -174,3 +174,7 @@ Rien n'est ajouté au site sans l'accord d'Ahmed.
   anciennes pages `concours/<n°>/` (plus dans les données, jamais refaites) corrigées une fois ; h2 « Les concours ouverts » au-dessus de la
   liste (plus de saut h1 -> h3) ; test « SEO : titre de 10 à 70 caractères et description de 40 à 170 ». Reste (phase 2 point 7) : une
   adresse par langue (les pages mêlent français et arabe sous lang="fr"), méthode de robot/langues.py de l'immobilier.
+- **08/11/2026 (contrôle SEO en ligne)** : deux pages de concours du même métier avaient le même titre court (« Concours Ouvriers et agents ») :
+  le numéro est maintenant dans le titre (`Concours <métier> n° <id> : …`), `titre_seo()` ne coupe à un séparateur que s'il reste au moins
+  38 caractères, les 403 anciennes pages de concours retitrées une fois ; test « SEO : aucun titre en double (pages de concours comprises) ».
+

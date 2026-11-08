@@ -341,7 +341,7 @@ def titre_seo(t, maxi=70):
         return t
     for sep in (" : ", " — ", " (", " – "):
         i = t.rfind(sep, 0, maxi)
-        if i >= 25:
+        if i >= 38:          # on ne coupe à un séparateur que s'il reste plus de la moitié : sinon deux pages auraient le même titre court
             return t[:i].rstrip(" ,;:—-")
     return t[:maxi - 1].rsplit(" ", 1)[0].rstrip(" ,;:—-(") + "…"
 
@@ -888,7 +888,8 @@ def construire(jour):
 {bouton_alertes("../../")}
 {(lambda la: f'<h2 class="titre-section">{L("Actualités de cet organisme", "أخبار هذا الهيكل")}</h2><div class="actus">{"".join(actu_html(x, "../../") for x in la)}</div>' if la else "")([x for x in actus if c["id"] in x.get("concours", [])][:6])}
 {f'<section class="carte"><h2>{L("Autres concours ouverts proches", "مناظرات مفتوحة قريبة")}</h2><ul class="liens-concours">{autres}</ul></section>' if autres else ""}"""
-        titre = f"Concours {m[1]} : {c['grade']} — {c['organisme']}" + (f" ({p_fr})" if p_fr else "")
+        # SEO (08/11/2026) : le numéro dans le titre -> jamais deux pages de concours avec le même titre après la coupe à 70 caractères
+        titre = f"Concours {m[1]} n° {c['id']} : {c['grade']} — {c['organisme']}" + (f" ({p_fr})" if p_fr else "")
         desc = (f"Concours n° {c['id']} : {c['grade']}, {c['organisme']}" + (f", {p_fr}" if p_fr else "")
                 + (f". Inscription jusqu'au {dfr(lim)}" if ouvert and lim else f". Inscriptions closes le {dfr(lim)}" if lim else "")
                 + ". Lien officiel, guide d'inscription, état des résultats. مناظرة.")
