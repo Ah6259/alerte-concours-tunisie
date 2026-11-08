@@ -16,7 +16,7 @@ const pages = ["index.html", "actualites/index.html", "guide-inscription/index.h
   ...GOUVS.map(g => `gouvernorat/${g}/index.html`), "gouvernorat/national/index.html",
   ...readdirSync(join(root, "metier")).map(m => `metier/${m}/index.html`)];
 // 08/11/2026 (plan SEO d'Ahmed, tous les sites) : titre <= 70 caractères et description <= 170 sur chaque page (Google coupe au-delà)
-{ const dec = x => x.replace(/&#x27;|&#39;|&apos;/g, "’").replace(/&amp;/g, "&").replace(/&quot;/g, "\\""), longs = [];
+{ const dec = x => x.replace(/&#x27;|&#39;|&apos;/g, "’").replace(/&amp;/g, "&").replace(/&quot;/g, '"'), longs = [];
   for (const p of pages) { const h = lire(p); const t = dec((h.match(/<title>([^<]*)<\/title>/) || [])[1] || ""), d = dec((h.match(/<meta name="description" content="([^"]*)"/) || [])[1] || "");
     if (t.length > 70 || t.length < 10) longs.push(`${p} titre ${t.length}`); if (d.length > 170 || d.length < 40) longs.push(`${p} description ${d.length}`); }
   check("SEO : titre de 10 à 70 caractères et description de 40 à 170 sur chaque page" + (longs.length ? " — " + longs.slice(0, 4).join(" ; ") : ""), longs.length === 0); }
