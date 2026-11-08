@@ -259,9 +259,16 @@ def filtres(cs, avec_metier=True, avec_gouv=True):
     return f'<section class="carte filtres{"" if avec_metier and avec_gouv else " deux"}">{"".join(blocs)}</section>'
 
 
+def titre70(long, court):
+    """SEO (08/11/2026) : Google coupe les titres vers 60-70 caractères -> version courte si la longue dépasse."""
+    return long if len(long) <= 70 else court
+
+
 def liste_html(cs, racine, jour, vide_fr, vide_ar):
     n = len(cs)
-    return f"""<p class="compte" id="compte" aria-live="polite"><span>{n} concours ouvert{'s' if n > 1 else ''}</span></p>
+    # SEO (08/11/2026) : un h2 au-dessus des cartes (h3) : aucun niveau de titre sauté après le h1
+    return f"""<h2 class="titre-section titre-liste">{L("Les concours ouverts", "المناظرات المفتوحة")}</h2>
+<p class="compte" id="compte" aria-live="polite"><span>{n} concours ouvert{'s' if n > 1 else ''}</span></p>
 <div class="liste" id="liste">
 {chr(10).join(carte(c, racine, jour) for c in cs)}
 </div>
@@ -762,7 +769,7 @@ def construire(jour):
 <p class="lien-comment"><a href="a-propos/">{L("Comment fonctionne le site ?", "كيف يعمل الموقع؟")}</a></p></section>
 {AVIS}"""
     hero = hero_carte(ouverts, "", hero)
-    pages[""] = page("", "", "Concours Tunisie 2026 : tous les concours ouverts par gouvernorat | Alerte Concours Tunisie",
+    pages[""] = page("", "", "Concours Tunisie 2026 : tous les concours ouverts, par gouvernorat et métier",
                      f"{len(ouverts)} concours publics ouverts en Tunisie, dans les 24 gouvernorats : date limite, postes, lien officiel. Mis à jour chaque jour. مناظرات تونس.",
                      hero, contenu, v, maj, jsonld)
 
@@ -783,7 +790,7 @@ def construire(jour):
 <section class="carte">{grille([x for x in GOUVS + [G.NATIONAL] if x[0] != s], "../../", "gouvernorat", cg, "grille-gouv")}</section>"""
         if s != "national":
             hero = hero_carte(ouverts, "../../", hero, s)
-        pages[f"gouvernorat/{s}/"] = page(f"gouvernorat/{s}/", "../../", f"{titre_fr} 2026 : {len(cs)} concours ouverts | Alerte Concours Tunisie",
+        pages[f"gouvernorat/{s}/"] = page(f"gouvernorat/{s}/", "../../", titre70(f"{titre_fr} 2026 : {len(cs)} concours ouverts | Alerte Concours Tunisie", f"{titre_fr} 2026 : {len(cs)} concours ouverts"),
                                           f"{titre_fr} : {len(cs)} concours ouverts, date limite, postes et lien officiel. {titre_ar}.", hero, contenu, v, maj)
 
     # --- métiers
