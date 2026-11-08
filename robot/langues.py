@@ -213,7 +213,10 @@ def versions(page, chemin):
 
 def nettoyer(racine):
     """Retire chaque page arabe ar/<chemin> dont la page française <chemin> n'existe plus (07/11/2026 : un quartier passé
-    sous 8 annonces perd sa page française, sa version arabe restait en ligne avec des liens vers une page disparue)."""
+    sous 8 annonces perd sa page française, sa version arabe restait en ligne avec des liens vers une page disparue).
+    08/11/2026 (robot Tests rouge) : SEULEMENT si la page française a disparu du disque. Un ancien concours sorti des données garde
+    sa page française (jamais refaite) : sa page arabe doit rester aussi, sinon le bouton de langue et le hreflang mènent à une
+    page absente (10 pages arabes retirées à tort par le robot du 08/11 au soir, restaurées depuis l'historique git)."""
     import os
     import shutil
     retirees = []
@@ -222,7 +225,7 @@ def nettoyer(racine):
         if "index.html" in fichiers:
             rel = os.path.relpath(dossier, base)
             fr = os.path.join(racine, "index.html") if rel == "." else os.path.join(racine, rel, "index.html")
-            if not os.path.exists(fr) or (MIROIR and ("" if rel == "." else rel.replace(os.sep, "/") + "/") not in MIROIR):
+            if not os.path.exists(fr):
                 os.remove(os.path.join(dossier, "index.html"))
                 retirees.append(rel)
         if dossier != base and not os.listdir(dossier):

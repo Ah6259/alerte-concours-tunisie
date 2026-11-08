@@ -136,6 +136,13 @@ check("plan du site : toutes les pages indexables, en français et en arabe (ar/
     for (const m of a.matchAll(/\b(?:href|src|poster)="([^"]*)"/g)) { const u = m[1]; if (/^(https?:|mailto:|tel:|data:|#|\?)/.test(u) || /^\//.test(u)) continue; if (!existe(ar, u)) pb.push(`${ar} : ${u} introuvable`); }
   }
   check(`une adresse par langue : chaque page française a sa page arabe ar/ (une langue par page, hreflang, canonical, titres <= 70 uniques et en arabe, liens valides)` + (pb.length ? " — " + pb.slice(0, 5).join(" ; ") : ""), pb.length === 0); }
+// 08/11/2026 (robot Tests rouge) : TOUTE page française du site qui annonce une page arabe (hreflang ar) doit l'avoir sur le disque, y compris les
+// anciens concours sortis des données (pages jamais refaites) : le robot du soir avait retiré leurs 10 pages arabes (langues.nettoyer), le bouton de
+// langue et le hreflang menaient à une page absente. Vu seulement par le visiteur simulé APRÈS l'envoi : ce test le bloque AVANT.
+{ const orphelines = []; (function parcourir(d, rel) { for (const f of readdirSync(d)) { if (f === "node_modules" || f === ".git" || f === "ar" || f === "tools") continue;
+    const c = join(d, f), r = rel ? rel + "/" + f : f;
+    if (statSync(c).isDirectory()) parcourir(c, r); else if (f === "index.html" && /hreflang="ar"/.test(readFileSync(c, "utf8")) && !existsSync(join(root, "ar", r))) orphelines.push(r); } })(root, "");
+  check("une adresse par langue : toute page française qui annonce une page arabe l'a bien sur le disque (anciens concours compris)" + (orphelines.length ? " — " + orphelines.slice(0, 5).join(" ; ") : ""), orphelines.length === 0); }
 // VS.4 (18/10/2026) : page métier sans concours ouvert -> message utile (alerte, tous les concours), « noindex », hors du plan du site ; jamais « 0 concours ouvert »
 {
   const ouvM = D.concours.filter(c => !c.cloture_candidatures || c.cloture_candidatures >= (D.lu_le || ""));

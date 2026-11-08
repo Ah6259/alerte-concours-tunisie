@@ -190,3 +190,9 @@ Rien n'est ajouté au site sans l'accord d'Ahmed.
   ar/ sans français, bloc « une adresse par langue » (hreflang, canonical, titres arabes <= 70 uniques, liens valides), bouton de langue ;
   2 scénarios du visiteur simulé sur ar/. Page a-propos : ligne « ع / Fr » mise à jour. 157 vérifications, visiteur simulé 0 anomalie.
 
+- **08/11/2026 (soir) — robot Tests rouge après le relevé de 19h** : 10 concours sortis des données ; `LG.nettoyer()` retirait leur page arabe
+  (hors des pages du jour) alors que leur page FRANÇAISE reste sur le disque (ancien concours, jamais refaite) : bouton de langue et hreflang
+  vers une page absente (vu par le visiteur simulé seulement). Corrigé : une page arabe n'est retirée QUE si la page française a disparu du
+  disque ; les 10 pages restaurées depuis l'historique git ; test « toute page française qui annonce une page arabe l'a sur le disque »
+  (toutes les pages du site, anciens concours compris ; sabotage rejoué : attrapé) dans test_site.mjs, donc bloquant dans maj.yml AVANT l'envoi.
+  Même correction dans Appels d'offres (langues.py copié).
