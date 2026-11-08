@@ -73,18 +73,26 @@ def retirer_langue(page, autre):
             continue
         sortie.append(page[i:m.start()])
         if nom in VIDES or m.group(4):
-            i = m.end()
-            continue
-        prof, j = 1, m.end()                                   # fin de l'élément : même nom de balise, en comptant l'imbrication
-        for n in BALISE.finditer(page, m.end()):
-            if n.group(2).lower() != nom or n.group(4):
-                continue
-            prof += -1 if n.group(1) else 1
-            if prof == 0:
-                j = n.end()
-                break
+            j = m.end()
         else:
-            j = len(page)
+            prof, j = 1, m.end()                               # fin de l'élément : même nom de balise, en comptant l'imbrication
+            for n in BALISE.finditer(page, m.end()):
+                if n.group(2).lower() != nom or n.group(4):
+                    continue
+                prof += -1 if n.group(1) else 1
+                if prof == 0:
+                    j = n.end()
+                    break
+            else:
+                j = len(page)
+        # un espace à la place de l'élément retiré : deux mots voisins ne se collent pas dans le texte lu (« civil » + « Kairouan »,
+        # vu par la recherche au son) ; pas d'espace juste après une balise ouvrante ni juste avant la fermeture d'un titre
+        # (<h1><span data-l="ar">…</span></h1> reste propre)
+        avant = "".join(sortie)[-80:]
+        suite = page[j:j + 4]
+        if (suite and not suite[0].isspace() and not re.match(r"</h[1-6]", suite) and not re.match(r"</title", suite)
+                and not re.search(r"<[a-zA-Z][^>]*>$", avant) and avant and not avant[-1].isspace()):
+            sortie.append(" ")
         i = j
     sortie.append(page[i:])
     return "".join(sortie)
