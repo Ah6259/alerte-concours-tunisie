@@ -331,7 +331,34 @@ AVIS = """<section class="carte avis" id="avis" aria-labelledby="avis-titre">
 </section>"""
 
 
+def titre_seo(t, maxi=70):
+    """SEO (08/11/2026, plan d'Ahmed pour tous les sites) : Google coupe les titres vers 60-70 caractères. Le suffixe « | Alerte Concours
+    Tunisie » saute si le titre dépasse ; s'il dépasse encore, coupé au dernier mot entier avec « … »."""
+    if len(t) <= maxi:
+        return t
+    t = t.split(" | ")[0].strip()
+    if len(t) <= maxi:
+        return t
+    for sep in (" : ", " — ", " (", " – "):
+        i = t.rfind(sep, 0, maxi)
+        if i >= 25:
+            return t[:i].rstrip(" ,;:—-")
+    return t[:maxi - 1].rsplit(" ", 1)[0].rstrip(" ,;:—-(") + "…"
+
+
+def desc_seo(d, maxi=165):
+    """Description <= 165 caractères : coupée à la fin de la dernière phrase entière, sinon au dernier mot avec « … »."""
+    if len(d) <= maxi:
+        return d
+    coupe = d[:maxi]
+    i = max(coupe.rfind(". "), coupe.rfind(" ! "), coupe.rfind(" ? "))
+    if i >= 60:
+        return coupe[:i + 1]
+    return coupe[:maxi - 1].rsplit(" ", 1)[0].rstrip(" ,;:—-(") + "…"
+
+
 def page(chemin, racine, titre, description, hero, contenu, v, maj, jsonld="", scripts=(), og_image="assets/og-image-v2.jpg", og_type="website", indexer=True):
+    titre, description = titre_seo(titre), desc_seo(description)
     canon = URL_SITE + chemin
     return f"""<!doctype html>
 <html lang="fr" dir="ltr" translate="no" data-racine="{racine}">
@@ -769,7 +796,7 @@ def construire(jour):
 <p class="lien-comment"><a href="a-propos/">{L("Comment fonctionne le site ?", "كيف يعمل الموقع؟")}</a></p></section>
 {AVIS}"""
     hero = hero_carte(ouverts, "", hero)
-    pages[""] = page("", "", "Concours Tunisie 2026 : tous les concours ouverts, par gouvernorat et métier",
+    pages[""] = page("", "", "Concours Tunisie 2026 : tous les concours ouverts par gouvernorat",
                      f"{len(ouverts)} concours publics ouverts en Tunisie, dans les 24 gouvernorats : date limite, postes, lien officiel. Mis à jour chaque jour. مناظرات تونس.",
                      hero, contenu, v, maj, jsonld)
 
