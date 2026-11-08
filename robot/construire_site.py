@@ -358,9 +358,14 @@ def desc_seo(d, maxi=165):
     return coupe[:maxi - 1].rsplit(" ", 1)[0].rstrip(" ,;:—-(") + "…"
 
 
+DESC_AR = {}      # description arabe propre à une page (chemin -> texte), lue par robot/langues.py pour la page ar/<chemin> (08/11/2026)
+
+
 def page(chemin, racine, titre, description, hero, contenu, v, maj, jsonld="", scripts=(), og_image="assets/og-image-v2.jpg", og_type="website", indexer=True):
     titre, description = titre_seo(titre), desc_seo(description)
     canon = URL_SITE + chemin
+    desc_ar = DESC_AR.get(chemin)
+    meta_ar = f'\n<meta name="description-ar" content="{E(desc_ar)}">' if desc_ar else ""
     return f"""<!doctype html>
 <html lang="fr" dir="ltr" translate="no" data-racine="{racine}">
 <head>
@@ -371,7 +376,7 @@ def page(chemin, racine, titre, description, hero, contenu, v, maj, jsonld="", s
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="robots" content="{'noai, noimageai' if indexer else 'noindex, follow, noai, noimageai'}">
 <title>{E(titre)}</title>
-<meta name="description" content="{E(description)}">
+<meta name="description" content="{E(description)}">{meta_ar}
 <link rel="canonical" href="{canon}">
 <link rel="icon" href="{racine}assets/logo.svg" type="image/svg+xml">
 <link rel="icon" href="{racine}favicon.ico" sizes="32x32">
@@ -807,6 +812,8 @@ def construire(jour):
         locaux = sum(1 for c in cs if c["gouvernorat"] == s)
         titre_fr = f"Concours à {fr}" if s != "national" else "Concours nationaux (toute la Tunisie)"
         titre_ar = f"المناظرات في ولاية {ar}" if s != "national" else "المناظرات الوطنية (كل الجمهورية)"
+        DESC_AR[f"gouvernorat/{s}/"] = (f"المناظرات العمومية المفتوحة في ولاية {ar}: {locaux} مناظرة لهياكل الولاية و{len(cs) - locaux} مناظرة وطنية مفتوحة لكل تونس. الاختصاصات، آخر أجل للترشح والرابط الرسمي."
+                                         if s != "national" else f"كل المناظرات الوطنية المفتوحة لكل تونس: {len(cs)} مناظرة، حسب الاختصاص، مع آخر أجل للترشح والرابط الرسمي لكل مناظرة.")
         hero = f"""{fil("../../", fr, ar)}
     <h1>{L(titre_fr, titre_ar)}</h1>
     <p class="intro">{L(f"{locaux} concours d'organismes de ce gouvernorat" + (f" + {len(cs) - locaux} concours nationaux ouverts à toute la Tunisie." if s != "national" else "."),
@@ -834,6 +841,7 @@ def construire(jour):
             contenu = f"""{bouton_alertes("../../")}
 {metier_vide_html(s, fr, ar, ouverts, cm, "../../")}
 {autres_m}"""
+            DESC_AR[f"metier/{s}/"] = f"مناظرات {ar} في تونس: لا توجد مناظرة مفتوحة اليوم. اشترك في التنبيهات لتُعلَم عند فتح مناظرة جديدة، أو اطّلع على كل المناظرات المفتوحة."
             pages[f"metier/{s}/"] = page(f"metier/{s}/", "../../", f"Concours {fr} Tunisie 2026 : aucun ouvert aujourd'hui | Alerte Concours Tunisie",
                                          f"Concours {fr.lower()} en Tunisie : aucun ouvert aujourd'hui. Alertes Telegram dès l'ouverture, et tous les concours ouverts. مناظرات {ar}.",
                                          hero, contenu, v, maj, indexer=False)
@@ -846,6 +854,7 @@ def construire(jour):
 {filtres(cs, avec_metier=False)}
 {liste_html(cs, "../../", jour, "Aucun concours ouvert pour ce métier aujourd'hui. <a href='../../alertes/'>Recevoir une alerte</a> · <a href='../../#liste'>tous les concours ouverts</a>", "لا توجد مناظرة مفتوحة في هذا الاختصاص اليوم. <a href='../../alertes/'>تلقَّ تنبيهًا</a> · <a href='../../#liste'>كل المناظرات المفتوحة</a>")}
 {autres_m}"""
+        DESC_AR[f"metier/{s}/"] = f"مناظرات {ar} في تونس: {len(cs)} مناظرة مفتوحة، مرتبة حسب الولاية، مع آخر أجل للترشح والرابط الرسمي لكل مناظرة. تنبيهات على تيليغرام عند فتح مناظرة جديدة."
         pages[f"metier/{s}/"] = page(f"metier/{s}/", "../../", f"Concours {fr} Tunisie 2026 : {len(cs)} ouvert{'s' if len(cs) > 1 else ''} | Alerte Concours Tunisie",
                                      f"Concours {fr.lower()} en Tunisie : {len(cs)} ouvert{'s' if len(cs) > 1 else ''}, par gouvernorat, date limite et lien officiel. مناظرات {ar}.", hero, contenu, v, maj)
 
@@ -898,6 +907,9 @@ def construire(jour):
             {"@type": "ListItem", "position": 1, "name": "Alerte Concours Tunisie", "item": URL_SITE},
             {"@type": "ListItem", "position": 2, "name": f"Concours {m[1]}", "item": URL_SITE + f"metier/{m[0]}/"},
             {"@type": "ListItem", "position": 3, "name": f"Concours n° {c['id']}", "item": URL_SITE + f"concours/{c['id']}/"}]}, ensure_ascii=False) + "\n</script>\n")
+        DESC_AR[f"concours/{c['id']}/"] = (f"المناظرة عدد {c['id']}: {c['grade']}، {c['organisme']}" + (f"، {postes} خطة" if postes else "")
+                                             + (f". آخر أجل للترشح {dfr(lim)}" if ouvert and lim else f". انتهى أجل الترشح في {dfr(lim)}" if lim else "")
+                                             + ". الرابط الرسمي، دليل الترشح، حالة النتائج.")
         pages[f"concours/{c['id']}/"] = page(f"concours/{c['id']}/", "../../", titre[:150] + " | Alerte Concours Tunisie", desc, hero, contenu, v, maj, fil_ld)
 
     # --- actualités du portail (08/10/2026) : nouveaux concours, candidatures acceptées, convocations, résultats, reports
