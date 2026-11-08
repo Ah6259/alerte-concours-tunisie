@@ -13,7 +13,8 @@ sys.path.insert(0, ICI)
 import gouvernorats as G      # noqa: E402
 import lire_concours as R     # noqa: E402
 import lire_actualites as A   # noqa: E402
-import rapports as RAP         # noqa: E402
+import rapports as RAP
+import langues as LG     # noqa: E402  (une adresse par langue, 08/11/2026)         # noqa: E402
 import apercus as AP           # noqa: E402  image d'aperçu propre à chaque rapport (18/10/2026)
 
 URL_SITE = "https://concours.clicvia.com/"
@@ -408,7 +409,7 @@ def page(chemin, racine, titre, description, hero, contenu, v, maj, jsonld="", s
 <div class="alerte-panne" id="alerte-panne" role="status"></div>
 {contenu}
 </main>
-<footer id="pied"><div class="wrap"><p>Sources : portail officiel des concours publics (concours.gov.tn) et plateforme des concours du ministère des Finances (concours.finances.gov.tn) · © 2026 Alerte Concours Tunisie — tous droits réservés.</p></div></footer>
+<footer id="pied"><div class="wrap"><p>{L("Sources : portail officiel des concours publics (concours.gov.tn) et plateforme des concours du ministère des Finances (concours.finances.gov.tn) · © 2026 Alerte Concours Tunisie — tous droits réservés.", "المصادر: البوابة الرسمية للمناظرات العمومية (concours.gov.tn) ومنصة مناظرات وزارة المالية (concours.finances.gov.tn) · © 2026 تنبيه المناظرات تونس — جميع الحقوق محفوظة.")}</p></div></footer>
 <script data-goatcounter="{COMPTEUR}/count" async src="https://gc.zgo.at/count.js"></script>
 </body>
 </html>
@@ -547,7 +548,7 @@ def page_a_propos(v, maj):
         ("<b>Alertes sur Telegram</b> (payant) : voir plus bas.", "<b>تنبيهات على تيليغرام</b> (بمقابل): انظر أسفله."),
         ("Bouton <b>Partager</b> en haut de chaque page (menu de partage du téléphone).",
          "زر <b>شارك</b> في أعلى كل صفحة (قائمة المشاركة في الهاتف)."),
-        ("Bouton <b>ع / Fr</b> : tout le site en arabe ou en français.", "زر <b>ع / Fr</b>: كل الموقع بالعربية أو بالفرنسية."),
+        ("Bouton <b>ع / Fr</b> : chaque page existe en français (son adresse normale) et en arabe (adresse qui commence par <code>ar/</code>) ; le bouton passe de l'une à l'autre.", "زر <b>ع / Fr</b>: كل صفحة موجودة بالفرنسية (عنوانها العادي) وبالعربية (عنوان يبدأ بـ <code>ar/</code>)؛ الزر ينقلك من واحدة إلى الأخرى."),
         ("<b>Votre avis</b> : un petit formulaire pour nous écrire.", "<b>رأيك</b>: استمارة صغيرة لمراسلتنا."),
         ("<b>Installer le site</b> sur l'écran d'accueil du téléphone ; les pages déjà vues s'ouvrent même sans connexion.",
          "<b>تثبيت الموقع</b> على الشاشة الرئيسية للهاتف؛ الصفحات التي زرتها تفتح حتى دون اتصال."),
@@ -955,11 +956,17 @@ def construire(jour):
             if not os.path.exists(os.path.join(RACINE, rel)):
                 AP.fabriquer(os.path.join(RACINE, rel), titre_img, mois_img, chiffre, sous)
 
+    # UNE ADRESSE PAR LANGUE (08/11/2026, robot/langues.py) : <chemin> en français seul, ar/<chemin> en arabe seul, hreflang entre les deux
+    LG.MIROIR.clear(); LG.MIROIR.update(pages)
     for chemin, h in pages.items():
-        ecrire(chemin, h)
+        fr, ar = LG.versions(h, chemin)
+        ecrire(chemin, fr)
+        ecrire("ar/" + chemin, ar)
+    LG.nettoyer(RACINE)                      # page arabe sans page française du jour (ancien concours) = retirée
     open(os.path.join(RACINE, "sitemap.xml"), "w", encoding="utf-8", newline="\n").write(
         '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
-        + "".join(f"  <url><loc>{URL_SITE}{c}</loc><lastmod>{rap_dates.get(c) or maj or jour}</lastmod></url>\n" for c in pages if c not in sans_index) + "</urlset>\n")
+        + "".join(f"  <url><loc>{URL_SITE}{c}</loc><lastmod>{rap_dates.get(c) or maj or jour}</lastmod></url>\n" for c in pages if c not in sans_index)
+        + "".join(f"  <url><loc>{URL_SITE}ar/{c}</loc><lastmod>{rap_dates.get(c) or maj or jour}</lastmod></url>\n" for c in pages if c not in sans_index) + "</urlset>\n")
     open(os.path.join(RACINE, "robots.txt"), "w", encoding="utf-8", newline="\n").write(
         "# Assistants IA qui répondent à une question en citant leur source : bienvenus (référencement sur les IA, 13/10/2026)\nUser-agent: OAI-SearchBot\nUser-agent: ChatGPT-User\nUser-agent: PerplexityBot\nUser-agent: Perplexity-User\nUser-agent: Claude-SearchBot\nUser-agent: Claude-User\nUser-agent: MistralAI-User\nUser-agent: DuckAssistBot\nAllow: /\n\n"
         + "User-agent: Googlebot\nAllow: /\n\nUser-agent: Bingbot\nAllow: /\n\n"

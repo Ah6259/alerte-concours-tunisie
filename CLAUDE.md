@@ -177,4 +177,16 @@ Rien n'est ajouté au site sans l'accord d'Ahmed.
 - **08/11/2026 (contrôle SEO en ligne)** : deux pages de concours du même métier avaient le même titre court (« Concours Ouvriers et agents ») :
   le numéro est maintenant dans le titre (`Concours <métier> n° <id> : …`), `titre_seo()` ne coupe à un séparateur que s'il reste au moins
   38 caractères, les 403 anciennes pages de concours retitrées une fois ; test « SEO : aucun titre en double (pages de concours comprises) ».
+- **08/11/2026 — UNE ADRESSE PAR LANGUE (plan SEO d'Ahmed, phase 2 point 7, « suivant » d'Ahmed ; méthode de l'Immobilier)** : `robot/langues.py`
+  (copie adaptée de l'Immobilier) : chaque page fabriquée par `page()` est écrite deux fois par `construire()` : `<chemin>/` en français seul
+  (lang="fr", data-langue-fixe="fr", data-autre-langue) et `ar/<chemin>/` en arabe seul (lang="ar" dir="rtl", titre = H1 arabe + « | تنبيه
+  المناظرات تونس », description = 1er paragraphe arabe, canonical et og:url ar/, données Google françaises retirées, fichiers pris à la racine :
+  data-racine un niveau plus bas, data-site = dossier des pages), hreflang fr / ar / x-default sur les deux ; `LG.MIROIR` = pages du jour
+  (les liens vers une page qui n'existe pas en arabe — ancien concours plus dans les données — repartent à la racine) ; `LG.nettoyer()`
+  retire les pages ar/ sans page du jour. Plan du site : pages FR + AR indexables. Pied statique de `page()` en deux langues.
+  `assets/page.js` : langue de l'adresse (data-langue-fixe), bouton de langue = autre adresse (crochet `window.allerVers` pour les tests),
+  ancien lien `?lang=ar` renvoyé, langue gardée renvoyée seulement en venant du site (jamais robot, Google, lien partagé, cadre) ; liens des
+  pages de l'en-tête / du pied = `${site}` (`window.racinePages()`), fichiers = `${racine}`. Tests : chaque page FR sans arabe + sa page
+  ar/ sans français, bloc « une adresse par langue » (hreflang, canonical, titres arabes <= 70 uniques, liens valides), bouton de langue ;
+  2 scénarios du visiteur simulé sur ar/. Page a-propos : ligne « ع / Fr » mise à jour. 157 vérifications, visiteur simulé 0 anomalie.
 

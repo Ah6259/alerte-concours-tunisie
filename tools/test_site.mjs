@@ -53,9 +53,12 @@ check("pages : accueil, 24 gouvernorats + national, métiers, guide, alertes, à
 for (const p of pages) {
   const h = lire(p);
   const ok1 = /<title>[^<]{10,}<\/title>/.test(h) && /name="description" content="[^"]{30,}"/.test(h) && /rel="canonical" href="https:\/\/concours\.clicvia\.com\//.test(h)
-    && h.includes('http-equiv="Content-Security-Policy"') && /content="(noindex, follow, )?noai, noimageai"/.test(h) && h.includes('data-l="ar"') && h.includes("assets/page.js")
+    && h.includes('http-equiv="Content-Security-Policy"') && /content="(noindex, follow, )?noai, noimageai"/.test(h) && !h.includes('data-l="ar"') && h.includes('data-l="fr"') && h.includes("assets/page.js")
     && !/undefined|NaN|\[object/.test(h) && !/<script>(?!\s*$)/.test(h.replace(/<script type="application\/ld\+json">[\s\S]*?<\/script>/g, ""));
-  check(`${p} : titre, description, adresse canonique, sécurité, français + arabe, aucun trou`, ok1);
+  // une adresse par langue (08/11/2026) : la page arabe ar/<p>, arabe seul
+  const ha = existsSync(join(root, "ar", p)) ? lire("ar/" + p) : "";
+  const ok2 = !!ha && ha.includes('<html lang="ar" dir="rtl"') && ha.includes('data-l="ar"') && !ha.includes('data-l="fr"') && !/undefined|NaN|\[object/.test(ha);
+  check(`${p} : titre, description, adresse canonique, sécurité, français seul + page arabe ar/ (arabe seul), aucun trou`, ok1 && ok2);
 }
 const acc = lire("index.html");
 check("accueil : formulaire « Votre avis » et lien vers le guide d'inscription", acc.includes('id="avis-form"') && acc.includes('href="guide-inscription/"'));
@@ -104,7 +107,35 @@ if (AC.length) {
 const sm = lire("sitemap.xml");
 check("plan du site : les pages des concours", D.concours.every(c => sm.includes(`https://concours.clicvia.com/concours/${c.id}/`)));
 const indexees = pages.filter(p => !lire(p).includes('content="noindex'));
-check("plan du site : toutes les pages indexables", indexees.every(p => sm.includes("https://concours.clicvia.com/" + p.replace(/index\.html$/, ""))));
+check("plan du site : toutes les pages indexables, en français et en arabe (ar/)", indexees.every(p => sm.includes("https://concours.clicvia.com/" + p.replace(/index\.html$/, "")) && sm.includes("https://concours.clicvia.com/ar/" + p.replace(/index\.html$/, ""))));
+// ---- UNE ADRESSE PAR LANGUE (08/11/2026, plan SEO d'Ahmed, phase 2 point 7 ; robot/langues.py) ----------
+{ const dec = x => x.replace(/&#x27;|&#39;|&apos;/g, "’").replace(/&amp;/g, "&").replace(/&quot;/g, '"');
+  const existe = (depuis, rel) => { const c = rel.split("#")[0].split("?")[0]; if (!c) return true; return existsSync(join(root, dirname(depuis), c, c.endsWith("/") ? "index.html" : "")); };
+  const pb = [], titres = new Map();
+  const concoursPages = D.concours.slice(0, 5).map(c => `concours/${c.id}/index.html`);
+  for (const p of [...pages, ...concoursPages, "rapports/index.html"]) {
+    const ar = "ar/" + p, chemin = p.replace("index.html", "");
+    if (!existsSync(join(root, ar))) { pb.push(`${p} : pas de page arabe`); continue; }
+    const f = lire(p), a = lire(ar);
+    if (!/<html lang="fr" dir="ltr"[^>]*data-langue-fixe="fr"[^>]*data-autre-langue="([^"]*)"/.test(f)) pb.push(`${p} : data-langue-fixe`);
+    if (!/<html lang="ar" dir="rtl"[^>]*data-site="[^"]*"[^>]*data-langue-fixe="ar"[^>]*data-autre-langue="([^"]*)"/.test(a)) pb.push(`${ar} : lang / dir / data-langue-fixe`);
+    const versAr = (f.match(/data-autre-langue="([^"]*)"/) || [])[1], versFr = (a.match(/data-autre-langue="([^"]*)"/) || [])[1];
+    if (!versAr || !existe(p, versAr) || !/ar\//.test(versAr)) pb.push(`${p} : bouton de langue -> ${versAr}`);
+    if (!versFr || !existe(ar, versFr) || /ar\//.test(versFr)) pb.push(`${ar} : bouton de langue -> ${versFr}`);
+    for (const [page, url] of [[f, "https://concours.clicvia.com/" + chemin], [a, "https://concours.clicvia.com/ar/" + chemin]]) {
+      if (!page.includes(`<link rel="canonical" href="${url}">`)) pb.push(`${url} : canonical`);
+      if (!page.includes(`<link rel="alternate" hreflang="fr" href="https://concours.clicvia.com/${chemin}">`) || !page.includes(`<link rel="alternate" hreflang="ar" href="https://concours.clicvia.com/ar/${chemin}">`)
+          || !page.includes(`<link rel="alternate" hreflang="x-default" href="https://concours.clicvia.com/${chemin}">`)) pb.push(`${url} : hreflang`);
+      const t = dec((page.match(/<title>([^<]*)<\/title>/) || [])[1] || ""), dsc = dec((page.match(/name="description" content="([^"]*)"/) || [])[1] || "");
+      if (t.length < 10 || t.length > 70) pb.push(`${url} : titre de ${t.length} caractères`);
+      if (dsc.length < 30 || dsc.length > 165) pb.push(`${url} : description de ${dsc.length} caractères`);
+      if (titres.has(t)) pb.push(`${url} : même titre que ${titres.get(t)}`); titres.set(t, url);
+    }
+    if (!/[\u0600-\u06FF]/.test((a.match(/<title>([^<]*)<\/title>/) || [])[1] || "")) pb.push(`${ar} : titre pas en arabe`);
+    if (/application\/ld\+json/.test(a)) pb.push(`${ar} : données Google françaises laissées sur la page arabe`);
+    for (const m of a.matchAll(/\b(?:href|src|poster)="([^"]*)"/g)) { const u = m[1]; if (/^(https?:|mailto:|tel:|data:|#|\?)/.test(u) || /^\//.test(u)) continue; if (!existe(ar, u)) pb.push(`${ar} : ${u} introuvable`); }
+  }
+  check(`une adresse par langue : chaque page française a sa page arabe ar/ (une langue par page, hreflang, canonical, titres <= 70 uniques et en arabe, liens valides)` + (pb.length ? " — " + pb.slice(0, 5).join(" ; ") : ""), pb.length === 0); }
 // VS.4 (18/10/2026) : page métier sans concours ouvert -> message utile (alerte, tous les concours), « noindex », hors du plan du site ; jamais « 0 concours ouvert »
 {
   const ouvM = D.concours.filter(c => !c.cloture_candidatures || c.cloture_candidatures >= (D.lu_le || ""));
@@ -172,8 +203,8 @@ if (JSDOM) {
     && chercher(triple).join() === r2.join() && S.trouve(S.cle("Démission"), "demisssion"));
     check("recherche au son : une recherche absurde (« zzzzqqq ») ne trouve toujours rien", chercher("zzzzqqq").length === 0);
     chercher(""); }
-  d.querySelector(".langue").dispatchEvent(new w.Event("click"));
-  check("navigateur : bouton langue → page en arabe (de droite à gauche)", d.documentElement.lang === "ar" && d.documentElement.dir === "rtl");
+  { const allees = []; w.allerVers = u => allees.push(u); d.querySelector(".langue").dispatchEvent(new w.Event("click"));
+    check("navigateur : bouton langue → ouvre la page arabe ar/ (une adresse par langue) ; la page reste française", /^ar\/(\?jour=[\d-]+)?$/.test(allees[0] || "") && d.documentElement.lang === "fr"); }   // le paramètre ?jour= des tests est gardé
 }
 
 // ---- veille des sites des ministères (08/10/2026)
@@ -264,13 +295,13 @@ check("Votre avis : e-mail obligatoire (required, « obligatoire ») et confirma
   const pr = ["rapports/index.html", ...mois.map(m => `rapports/${m}/index.html`)];
   check("rapports : rapports/ et une page par mois, propres (titre, description, canonique, CSP, FR + AR, aucun trou, pas de script en ligne)", pr.every(p => existsSync(join(root, p)) && (h =>
     /<title>[^<]{10,}<\/title>/.test(h) && /name="description" content="[^"]{30,}"/.test(h) && h.includes(`<link rel="canonical" href="https://concours.clicvia.com/${p.replace(/index\.html$/, "")}">`)
-    && h.includes('http-equiv="Content-Security-Policy"') && h.includes('data-l="ar"') && !/undefined|NaN|None|\[object/.test(h) && !/ on[a-z]+="/.test(h)
+    && h.includes('http-equiv="Content-Security-Policy"') && h.includes('data-l="fr"') && !h.includes('data-l="ar"') && existsSync(join(root, "ar", p)) && lire("ar/" + p).includes('data-l="ar"') && !/undefined|NaN|None|\[object/.test(h) && !/ on[a-z]+="/.test(h)
     && !/<script>(?!\s*$)/.test(h.replace(/<script type="application\/ld\+json">[\s\S]*?<\/script>/g, "")))(lire(p))));
   check("rapports : JSON-LD Article + FAQ + fil d'Ariane, méthode et « Citer ces chiffres » sur chaque mois", mois.every(m => (h => h.includes('"@type": "Article"') && h.includes('"@type": "FAQPage"')
     && h.includes('"@type": "BreadcrumbList"') && h.includes('id="methode"') && h.includes('id="citer"'))(lire(`rapports/${m}/index.html`))));
   check("rapports : dans le plan du site avec la date de leurs chiffres", sm.includes("<loc>https://concours.clicvia.com/rapports/</loc>")
     && mois.every(m => sm.includes(`<loc>https://concours.clicvia.com/rapports/${m}/</loc><lastmod>${H[m].dernier_jour}</lastmod>`)));
-  check("rapports : lien dans le pied de page (toutes les pages) et sur l'accueil", lire("assets/page.js").includes('href="${racine}rapports/"') && acc.includes('href="rapports/"'));
+  check("rapports : lien dans le pied de page (toutes les pages) et sur l'accueil", lire("assets/page.js").includes('href="${site}rapports/"') && acc.includes('href="rapports/"'));
   check("rapports : 1er mois = « Premier rapport » sans évolution ; mois suivants = évolution", mois.every((m, i) => (h => i === 0 ? h.includes("Premier rapport") && !h.includes('id="evolution"')
     : h.includes('id="evolution"') && !h.includes("Premier rapport"))(lire(`rapports/${m}/index.html`))));
   check("rapports : un mois fini dit « figés » avec sa dernière date ; seul le dernier mois peut être en cours", mois.every((m, i) => (h => H[m].fini
@@ -401,7 +432,7 @@ check("paiement : le motif est le code personnel, jamais « nom … (motif du pa
   check(`page « Comment fonctionne le site ? » à jour : chaque fonction du site y est expliquée (${FONCTIONS.length} fonctions)` + (manque.length ? " — manque : " + manque.join(", ") : ""),
     manque.length === 0);
   check("page « Comment fonctionne le site ? » : titre h1, lien dans le pied de page (page.js) et sur l'accueil",
-    /<h1><span data-l="fr">Comment fonctionne le site \?<\/span><span data-l="ar">كيف يعمل الموقع؟<\/span><\/h1>/.test(ap)
+    /<h1><span data-l="fr">Comment fonctionne le site \?<\/span><\/h1>/.test(ap) && /<h1><span data-l="ar">كيف يعمل الموقع؟<\/span><\/h1>/.test(lire("ar/a-propos/index.html"))
     && /a-propos\/">\$\{T\("Comment fonctionne le site \?"/.test(lire("assets/page.js")) && /<a href="a-propos\/">[^<]*Comment fonctionne le site/.test(acc2.replace(/<span data-l="fr">/g, "")));
   check("sitemap : a-propos/ présent", lire("sitemap.xml").includes("https://concours.clicvia.com/a-propos/")); }
 

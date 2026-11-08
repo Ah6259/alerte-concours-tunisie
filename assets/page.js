@@ -3,11 +3,33 @@
 // (le site des conférences gardait « en » → textes tous cachés)
 (function () {
   const html = document.documentElement;
-  const racine = html.dataset.racine || "";
-  let langue = "fr";
-  try { langue = (/^(fr|ar)$/.test(localStorage.getItem("langue") || "") ? localStorage.getItem("langue") : "") || (navigator.language || "").startsWith("ar") && "ar" || "fr"; } catch (e) {}
+  const racine = html.dataset.racine || "";                      // dossier des fichiers (style, scripts, images)
+  // UNE ADRESSE PAR LANGUE (novembre 2026, robot/langues.py) : la page française est à son adresse, la page arabe dans ar/.
+  // Sur ces pages (data-langue-fixe), la langue est celle de l'ADRESSE : le bouton de langue ouvre l'autre adresse
+  // (data-autre-langue) ; un ancien lien « ?lang=ar », ou un visiteur venu d'une page du site qui avait choisi l'autre langue,
+  // est renvoyé vers la bonne adresse. Jamais pour un robot (Google, visiteur simulé) ni dans un cadre.
+  const FIXE = html.dataset.langueFixe === "fr" || html.dataset.langueFixe === "ar" ? html.dataset.langueFixe : "";
+  const site = html.dataset.site !== undefined ? html.dataset.site : racine;   // dossier des PAGES (ar/… sur une page arabe)
+  window.racinePages = () => site;
+  let langue = "fr", gardee = "";
+  try { gardee = /^(fr|ar)$/.test(localStorage.getItem("langue") || "") ? localStorage.getItem("langue") : ""; } catch (e) {}
+  langue = gardee || ((navigator.language || "").startsWith("ar") ? "ar" : "fr");
   const demande = new URLSearchParams(location.search).get("lang");
   if (demande === "ar" || demande === "fr") langue = demande;
+  const aller = (l) => {                                          // autre adresse de la même page, mêmes paramètres, même ancre
+    const q = new URLSearchParams(location.search); q.delete("lang");
+    const u = html.dataset.autreLangue + (q.toString() ? "?" + q : "") + location.hash;
+    if (window.allerVers) return window.allerVers(u);            // pour les tests
+    try { location.replace(u); } catch (e) {}
+  };
+  if (FIXE) {
+    let robot = false;
+    try { robot = navigator.webdriver === true || window.top !== window.self; } catch (e) { robot = true; }
+    const duSite = (document.referrer || "").indexOf(location.origin + "/") === 0;
+    const voulue = (demande === "ar" || demande === "fr") ? demande : (duSite ? gardee : "");
+    langue = FIXE;
+    if (voulue && voulue !== FIXE && !robot) aller(voulue);
+  }
 
   window.T = (fr, ar) => html.lang === "ar" ? ar : fr;
   // Nombres et dates isolés dans un texte arabe (U+2066 … U+2069)
@@ -17,13 +39,13 @@
     const e = document.getElementById("entete");
     if (e) e.innerHTML = `
       <div class="wrap">
-        <a class="logo" href="${racine || "./"}">
+        <a class="logo" href="${site || "./"}">
           <img class="logo-mark" src="${racine}assets/logo.svg" alt="" width="34" height="34">
           <span class="logo-nom">${T("Alerte Concours", "تنبيه المناظرات")}
             <small>${T("Tunisie · tous les concours publics, 24 gouvernorats", "تونس · كل المناظرات العمومية في 24 ولاية")}</small></span>
         </a>
         <div class="entete-boutons">
-          <a class="entete-pro" href="${racine}alertes/">${T("Alertes", "التنبيهات")}</a>
+          <a class="entete-pro" href="${site}alertes/">${T("Alertes", "التنبيهات")}</a>
           <button class="partager" type="button" aria-label="${T("Partager cette page", "شارك هذه الصفحة")}" title="${T("Partager", "شارك")}"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 13.5l6.8 4M15.4 6.5l-6.8 4"/></svg></button>
           <button class="langue" type="button" aria-label="${T("Lire en arabe", "Lire en français")}" title="${T("العربية", "Français")}">${T("ع", "Fr")}</button>
         </div>
@@ -34,14 +56,14 @@
       <div class="wrap">
         <div class="pied-logo"><img src="${racine}assets/logo.svg" alt="" width="24" height="24"> ${T("Alerte Concours Tunisie", "تنبيه المناظرات تونس")}</div>
         <nav>
-          <a href="${racine || "./"}">${T("Tous les concours ouverts", "كل المناظرات المفتوحة")}</a>
-          <a href="${racine}#gouvernorats">${T("Par gouvernorat", "حسب الولاية")}</a>
-          <a href="${racine}#metiers">${T("Par métier", "حسب الاختصاص")}</a>
-          <a href="${racine}guide-inscription/">${T("S'inscrire à un concours", "كيف تترشح لمناظرة")}</a>
-          <a href="${racine}rapports/">${T("Rapports du mois", "التقارير الشهرية")}</a>
-          <a href="${racine}alertes/">${T("Alertes par métier et gouvernorat", "تنبيهات حسب الاختصاص والولاية")}</a>
-          <a href="${racine}a-propos/">${T("Comment fonctionne le site ?", "كيف يعمل الموقع؟")}</a>
-          <a href="${racine}#avis">${T("Votre avis", "رأيك")}</a>
+          <a href="${site || "./"}">${T("Tous les concours ouverts", "كل المناظرات المفتوحة")}</a>
+          <a href="${site}#gouvernorats">${T("Par gouvernorat", "حسب الولاية")}</a>
+          <a href="${site}#metiers">${T("Par métier", "حسب الاختصاص")}</a>
+          <a href="${site}guide-inscription/">${T("S'inscrire à un concours", "كيف تترشح لمناظرة")}</a>
+          <a href="${site}rapports/">${T("Rapports du mois", "التقارير الشهرية")}</a>
+          <a href="${site}alertes/">${T("Alertes par métier et gouvernorat", "تنبيهات حسب الاختصاص والولاية")}</a>
+          <a href="${site}a-propos/">${T("Comment fonctionne le site ?", "كيف يعمل الموقع؟")}</a>
+          <a href="${site}#avis">${T("Votre avis", "رأيك")}</a>
         <a href="https://clicvia.com/" rel="noopener" target="_blank">${T("Tous nos services", "كل خدماتنا")}</a>
         </nav>
         <p>${T(`Source : <a href="https://www.concours.gov.tn/" rel="noopener">portail officiel des concours publics</a> (concours.gov.tn). Chaque concours renvoie au portail officiel, où se fait l'inscription.`,
@@ -52,7 +74,7 @@
         <p>© 2026 ${T("Alerte Concours Tunisie — tous droits réservés.", "تنبيه المناظرات تونس — جميع الحقوق محفوظة.")}</p>
       </div>`;
     document.querySelectorAll(".langue").forEach(b =>
-      b.addEventListener("click", () => appliquer(html.lang === "ar" ? "fr" : "ar")));
+      b.addEventListener("click", () => FIXE ? aller(FIXE === "ar" ? "fr" : "ar") : appliquer(html.lang === "ar" ? "fr" : "ar")));
     // bouton Partager (demande d'Ahmed) : menu de partage du téléphone, sinon WhatsApp avec le lien de la page
     document.querySelectorAll(".partager").forEach(b => b.addEventListener("click", async () => {
       const url = location.href.split("#")[0].replace(/[?&]lang=(fr|ar)/, ""), titre = document.title.split(" | ")[0];
@@ -62,6 +84,7 @@
   }
 
   function appliquer(l) {
+    if (FIXE) l = FIXE;                                           // page à une langue : jamais changée sur place
     html.lang = l; html.dir = l === "ar" ? "rtl" : "ltr";
     try { localStorage.setItem("langue", l); } catch (e) {}
     cadre();
@@ -189,7 +212,7 @@ window.VIDEO_SITE = {"base": BASE_SITE, "defaut": "fr", "video": false, "nom": {
       if (v.getAttribute("poster") !== po) v.setAttribute("poster", po);
     }
     // lien discret « Vidéo de présentation » en bas de l'accueil et de À propos -> la page vidéo
-    var p = location.pathname.replace(/index\.html$/, "");
+    var p = location.pathname.replace(/index\.html$/, "").replace(S.base + "ar/", S.base);
     if (S.video === false) { var ancien = document.getElementById("lien-video"); if (ancien) ancien.remove(); }
     else if (p === S.base || p === S.base + "a-propos/") {
       var b = document.getElementById("lien-video");
