@@ -167,3 +167,10 @@ Rien n'est ajouté au site sans l'accord d'Ahmed.
   Lien « Comment fonctionne le site ? » dans le pied de page (page.js) et sur l'accueil (carte « Comment s'inscrire ? »).
   Test `FONCTIONS` dans tools/test_site.mjs (repère dans le site -> phrase attendue dans la page) : une fonction absente = test rouge.
   Nouvelle fonction = une ligne dans `FONCTIONS` + son explication dans `page_a_propos()`.
+
+- **08/11/2026 — plan SEO d'Ahmed appliqué à ce site (phase 2, contrôle commun `outils visibilite/controle_seo.mjs` de projets-ahmed ;
+  plan : `consignes des taches/seo-concours.md`)** : `titre_seo()` / `desc_seo()` dans `page()` (titre <= 70 caractères : le suffixe
+  « | Alerte Concours Tunisie » saute s'il dépasse, puis coupe à un séparateur ; description <= 165, coupée en fin de phrase) ; les 315
+  anciennes pages `concours/<n°>/` (plus dans les données, jamais refaites) corrigées une fois ; h2 « Les concours ouverts » au-dessus de la
+  liste (plus de saut h1 -> h3) ; test « SEO : titre de 10 à 70 caractères et description de 40 à 170 ». Reste (phase 2 point 7) : une
+  adresse par langue (les pages mêlent français et arabe sous lang="fr"), méthode de robot/langues.py de l'immobilier.
