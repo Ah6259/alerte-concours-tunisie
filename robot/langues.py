@@ -119,6 +119,8 @@ def textes_arabes(page):
         if len(t) >= 40 and "clicvia.com" not in t and not re.match(r"^[^\w\u0600-\u06FF]", t):
             desc = t
             break
+    if desc and len(desc) < 50 and titre:                 # 09/11/2026 (contrôle SEO : « description de 49 caractères » sur ar/rapports/2026-11/) :
+        desc = titre + " — " + desc                       # un paragraphe trop court est précédé du titre arabe (>= 50 caractères)
     if len(desc) > 158:
         desc = desc[:155].rsplit(" ", 1)[0] + "…"
     return titre, desc

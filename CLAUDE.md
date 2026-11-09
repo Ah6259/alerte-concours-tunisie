@@ -196,3 +196,5 @@ Rien n'est ajouté au site sans l'accord d'Ahmed.
   disque ; les 10 pages restaurées depuis l'historique git ; test « toute page française qui annonce une page arabe l'a sur le disque »
   (toutes les pages du site, anciens concours compris ; sabotage rejoué : attrapé) dans test_site.mjs, donc bloquant dans maj.yml AVANT l'envoi.
   Même correction dans Appels d'offres (langues.py copié).
+- 09/11/2026 (contrôle SEO commun : « description de 49 caractères » sur ar/rapports/2026-11/) : `textes_arabes()` de robot/langues.py met le
+  titre arabe devant un premier paragraphe trop court (< 50 caractères) ; le contrôle SEO du matin le vérifie sur toutes les pages.
