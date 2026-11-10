@@ -203,14 +203,14 @@
   },
   "2026-11": {
    "premier_jour": "2026-11-01",
-   "dernier_jour": "2026-11-09",
+   "dernier_jour": "2026-11-10",
    "fini": false,
    "chiffres": {
-    "au": "2026-11-09",
+    "au": "2026-11-10",
     "debut": "2026-11-01",
     "ouverts": {
-     "n": 70,
-     "postes": 141,
+     "n": 65,
+     "postes": 134,
      "sans_postes": 0
     },
     "national": {
@@ -219,21 +219,21 @@
      "sans_postes": 0
     },
     "locaux": {
-     "n": 45,
-     "postes": 96,
+     "n": 40,
+     "postes": 89,
      "sans_postes": 0
     },
     "finances": 0,
     "gouvernorats": [
      [
-      "monastir",
-      13,
-      36
-     ],
-     [
       "nabeul",
       13,
       17
+     ],
+     [
+      "monastir",
+      10,
+      33
      ],
      [
       "sousse",
@@ -251,11 +251,6 @@
       6
      ],
      [
-      "sfax",
-      3,
-      6
-     ],
-     [
       "gabes",
       1,
       4
@@ -269,23 +264,28 @@
       "medenine",
       1,
       2
+     ],
+     [
+      "sfax",
+      1,
+      2
      ]
     ],
     "metiers": [
      [
       "administratif",
-      24,
-      41
+      22,
+      37
      ],
      [
       "ouvrier",
-      22,
-      42
+      20,
+      40
      ],
      [
       "autre",
-      10,
-      32
+      9,
+      31
      ],
      [
       "technicien",
@@ -359,9 +359,9 @@
     ],
     "semaine": {
      "n": 9,
-     "postes": 16,
+     "postes": 35,
      "sans_postes": 0,
-     "jusqu_au": "2026-11-15"
+     "jusqu_au": "2026-11-16"
     },
     "nouveaux": {
      "n": 33,
@@ -403,8 +403,8 @@
      ]
     ],
     "clos": {
-     "n": 21,
-     "postes": 48,
+     "n": 26,
+     "postes": 55,
      "sans_postes": 0
     },
     "resultats": {
@@ -412,11 +412,11 @@
      "final": 0
     },
     "avis": {
-     "n": 8,
+     "n": 9,
      "types": {
+      "nouveau": 3,
       "report": 2,
       "resultats": 2,
-      "nouveau": 2,
       "candidatures": 2
      }
     }
@@ -1428,6 +1428,126 @@
      "gouvernorat": "national",
      "cloture_candidatures": "2026-11-30",
      "vu_le": "2026-11-09",
+     "publies": []
+    },
+    "927": {
+     "postes": 18,
+     "metier": "chauffeur",
+     "gouvernorat": "jendouba",
+     "cloture_candidatures": "2020-12-31",
+     "vu_le": "2026-11-10",
+     "publies": []
+    },
+    "928": {
+     "postes": 7,
+     "metier": "ouvrier",
+     "gouvernorat": "jendouba",
+     "cloture_candidatures": "2020-12-31",
+     "vu_le": "2026-11-10",
+     "publies": []
+    },
+    "929": {
+     "postes": 2,
+     "metier": "ouvrier",
+     "gouvernorat": "jendouba",
+     "cloture_candidatures": "2020-12-31",
+     "vu_le": "2026-11-10",
+     "publies": []
+    },
+    "930": {
+     "postes": 2,
+     "metier": "ouvrier",
+     "gouvernorat": "jendouba",
+     "cloture_candidatures": "2020-12-31",
+     "vu_le": "2026-11-10",
+     "publies": []
+    },
+    "931": {
+     "postes": 1,
+     "metier": "ouvrier",
+     "gouvernorat": "jendouba",
+     "cloture_candidatures": "2020-12-31",
+     "vu_le": "2026-11-10",
+     "publies": []
+    },
+    "932": {
+     "postes": 1,
+     "metier": "ouvrier",
+     "gouvernorat": "jendouba",
+     "cloture_candidatures": "2020-12-31",
+     "vu_le": "2026-11-10",
+     "publies": []
+    },
+    "933": {
+     "postes": 1,
+     "metier": "ouvrier",
+     "gouvernorat": "jendouba",
+     "cloture_candidatures": "2020-12-31",
+     "vu_le": "2026-11-10",
+     "publies": []
+    },
+    "934": {
+     "postes": 5,
+     "metier": "ouvrier",
+     "gouvernorat": "jendouba",
+     "cloture_candidatures": "2020-12-31",
+     "vu_le": "2026-11-10",
+     "publies": []
+    },
+    "935": {
+     "postes": 1,
+     "metier": "administratif",
+     "gouvernorat": "jendouba",
+     "cloture_candidatures": "2020-12-31",
+     "vu_le": "2026-11-10",
+     "publies": []
+    },
+    "936": {
+     "postes": 1,
+     "metier": "administratif",
+     "gouvernorat": "jendouba",
+     "cloture_candidatures": "2020-12-31",
+     "vu_le": "2026-11-10",
+     "publies": []
+    },
+    "1645": {
+     "postes": 20,
+     "metier": "chauffeur",
+     "gouvernorat": "jendouba",
+     "cloture_candidatures": "2023-02-27",
+     "vu_le": "2026-11-10",
+     "publies": []
+    },
+    "1678": {
+     "postes": 1,
+     "metier": "technicien",
+     "gouvernorat": "jendouba",
+     "cloture_candidatures": "2023-06-02",
+     "vu_le": "2026-11-10",
+     "publies": []
+    },
+    "1679": {
+     "postes": 1,
+     "metier": "administratif",
+     "gouvernorat": "jendouba",
+     "cloture_candidatures": "2023-06-02",
+     "vu_le": "2026-11-10",
+     "publies": []
+    },
+    "1680": {
+     "postes": 1,
+     "metier": "administratif",
+     "gouvernorat": "jendouba",
+     "cloture_candidatures": "2023-06-02",
+     "vu_le": "2026-11-10",
+     "publies": []
+    },
+    "1681": {
+     "postes": 1,
+     "metier": "technicien",
+     "gouvernorat": "jendouba",
+     "cloture_candidatures": "2023-06-02",
+     "vu_le": "2026-11-10",
      "publies": []
     }
    }
