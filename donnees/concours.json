@@ -6,255 +6,85 @@
  "pages": 16,
  "concours": [
   {
-   "id": "927",
-   "decision": "2020/01",
-   "organisme": "الشركة الجهوية للنقل بجندوبة",
-   "grade": "سائق حافلة",
-   "postes": 18,
-   "cloture_candidatures": "2020-12-31",
-   "cloture_concours": "2020-12-31",
+   "id": "369",
+   "decision": "بلاغ إعلان عن فتح مناظرة خارجية (متفقد سياحة )",
+   "organisme": "الديوان الوطني التونسي للسياحة",
+   "grade": "متفقد سياحة",
+   "postes": 6,
+   "cloture_candidatures": "2019-08-15",
+   "cloture_concours": "2019-08-15",
    "resultat_initial": "اطلاع",
    "resultat_final": "اطلاع",
-   "metier": "chauffeur",
-   "gouvernorat": "jendouba",
+   "metier": "finance",
+   "gouvernorat": "national",
    "vu_le": "2026-11-10",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
    "lu_le": "2026-11-10"
   },
   {
-   "id": "928",
-   "decision": "2020/01",
-   "organisme": "الشركة الجهوية للنقل بجندوبة",
-   "grade": "عامل",
-   "postes": 7,
-   "cloture_candidatures": "2020-12-31",
-   "cloture_concours": "2020-12-31",
+   "id": "370",
+   "decision": "بلاغ إعلان عن فتح مناظرة خارجية (متفقد صحة )",
+   "organisme": "الديوان الوطني التونسي للسياحة",
+   "grade": "متفقد صحة",
+   "postes": 4,
+   "cloture_candidatures": "2019-08-15",
+   "cloture_concours": "2019-08-15",
    "resultat_initial": "اطلاع",
    "resultat_final": "اطلاع",
-   "metier": "ouvrier",
-   "gouvernorat": "jendouba",
+   "metier": "finance",
+   "gouvernorat": "national",
    "vu_le": "2026-11-10",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
    "lu_le": "2026-11-10"
   },
   {
-   "id": "929",
-   "decision": "2020/01",
-   "organisme": "الشركة الجهوية للنقل بجندوبة",
-   "grade": "عامل",
-   "postes": 2,
-   "cloture_candidatures": "2020-12-31",
-   "cloture_concours": "2020-12-31",
+   "id": "371",
+   "decision": "بلاغ إعلان عن فتح مناظرة خارجية (متصرف إحتصاص اللغة والآداب والحضارة الإنكليزية )",
+   "organisme": "الديوان الوطني التونسي للسياحة",
+   "grade": "متصرف إحتصاص اللغة والآداب والحضارة الإنكليزية",
+   "postes": 1,
+   "cloture_candidatures": "2019-08-15",
+   "cloture_concours": "2019-08-15",
    "resultat_initial": "اطلاع",
-   "resultat_final": "اطلاع",
-   "metier": "ouvrier",
-   "gouvernorat": "jendouba",
-   "vu_le": "2026-11-10",
-   "historique": [],
-   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-11-10"
-  },
-  {
-   "id": "930",
-   "decision": "2020/01",
-   "organisme": "الشركة الجهوية للنقل بجندوبة",
-   "grade": "عامل",
-   "postes": 2,
-   "cloture_candidatures": "2020-12-31",
-   "cloture_concours": "2020-12-31",
-   "resultat_initial": "لم تنشر",
    "resultat_final": "لم تنشر",
-   "metier": "ouvrier",
-   "gouvernorat": "jendouba",
+   "metier": "administratif",
+   "gouvernorat": "national",
    "vu_le": "2026-11-10",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
    "lu_le": "2026-11-10"
   },
   {
-   "id": "931",
-   "decision": "2020/01",
-   "organisme": "الشركة الجهوية للنقل بجندوبة",
-   "grade": "عامل",
+   "id": "372",
+   "decision": "بلاغ إعلان عن فتح مناظرة خارجية (متصرف إحتصاص اللغة الروسية )",
+   "organisme": "الديوان الوطني التونسي للسياحة",
+   "grade": "متصرف إحتصاص اللغة الروسية",
    "postes": 1,
-   "cloture_candidatures": "2020-12-31",
-   "cloture_concours": "2020-12-31",
-   "resultat_initial": "لم تنشر",
-   "resultat_final": "لم تنشر",
-   "metier": "ouvrier",
-   "gouvernorat": "jendouba",
-   "vu_le": "2026-11-10",
-   "historique": [],
-   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-11-10"
-  },
-  {
-   "id": "932",
-   "decision": "2020/01",
-   "organisme": "الشركة الجهوية للنقل بجندوبة",
-   "grade": "عامل",
-   "postes": 1,
-   "cloture_candidatures": "2020-12-31",
-   "cloture_concours": "2020-12-31",
-   "resultat_initial": "لم تنشر",
-   "resultat_final": "لم تنشر",
-   "metier": "ouvrier",
-   "gouvernorat": "jendouba",
-   "vu_le": "2026-11-10",
-   "historique": [],
-   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-11-10"
-  },
-  {
-   "id": "933",
-   "decision": "2020/01",
-   "organisme": "الشركة الجهوية للنقل بجندوبة",
-   "grade": "عامل يدوي",
-   "postes": 1,
-   "cloture_candidatures": "2020-12-31",
-   "cloture_concours": "2020-12-31",
+   "cloture_candidatures": "2019-08-15",
+   "cloture_concours": "2019-08-15",
    "resultat_initial": "اطلاع",
-   "resultat_final": "اطلاع",
-   "metier": "ouvrier",
-   "gouvernorat": "jendouba",
+   "resultat_final": "لم تنشر",
+   "metier": "administratif",
+   "gouvernorat": "national",
    "vu_le": "2026-11-10",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
    "lu_le": "2026-11-10"
   },
   {
-   "id": "934",
-   "decision": "2020/01",
-   "organisme": "الشركة الجهوية للنقل بجندوبة",
-   "grade": "حارس درجة أولى",
-   "postes": 5,
-   "cloture_candidatures": "2020-12-31",
-   "cloture_concours": "2020-12-31",
-   "resultat_initial": "اطلاع",
-   "resultat_final": "اطلاع",
-   "metier": "ouvrier",
-   "gouvernorat": "jendouba",
-   "vu_le": "2026-11-10",
-   "historique": [],
-   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-11-10"
-  },
-  {
-   "id": "935",
-   "decision": "2020/01",
-   "organisme": "الشركة الجهوية للنقل بجندوبة",
-   "grade": "متصرف",
+   "id": "373",
+   "decision": "بلاغ إعلان عن فتح مناظرة خارجية ( متصرف إختصاص اللغة والآداب والحضارة الألمانية )",
+   "organisme": "الديوان الوطني التونسي للسياحة",
+   "grade": "متصرف إختصاص اللغة والآداب والحضارة الألمانية",
    "postes": 1,
-   "cloture_candidatures": "2020-12-31",
-   "cloture_concours": "2020-12-31",
+   "cloture_candidatures": "2019-08-15",
+   "cloture_concours": "2019-08-15",
    "resultat_initial": "اطلاع",
    "resultat_final": "اطلاع",
    "metier": "administratif",
-   "gouvernorat": "jendouba",
-   "vu_le": "2026-11-10",
-   "historique": [],
-   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-11-10"
-  },
-  {
-   "id": "936",
-   "decision": "2020/01",
-   "organisme": "الشركة الجهوية للنقل بجندوبة",
-   "grade": "متصرف",
-   "postes": 1,
-   "cloture_candidatures": "2020-12-31",
-   "cloture_concours": "2020-12-31",
-   "resultat_initial": "لم تنشر",
-   "resultat_final": "لم تنشر",
-   "metier": "administratif",
-   "gouvernorat": "jendouba",
-   "vu_le": "2026-11-10",
-   "historique": [],
-   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-11-10"
-  },
-  {
-   "id": "1645",
-   "decision": "2022/01",
-   "organisme": "الشركة الجهوية للنقل بجندوبة",
-   "grade": "سائق حافلة",
-   "postes": 20,
-   "cloture_candidatures": "2023-02-27",
-   "cloture_concours": "2023-02-27",
-   "resultat_initial": "اطلاع",
-   "resultat_final": "لم تنشر",
-   "metier": "chauffeur",
-   "gouvernorat": "jendouba",
-   "vu_le": "2026-11-10",
-   "historique": [],
-   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-11-10"
-  },
-  {
-   "id": "1678",
-   "decision": "2022/02",
-   "organisme": "الشركة الجهوية للنقل بجندوبة",
-   "grade": "تقني سام P05",
-   "postes": 1,
-   "cloture_candidatures": "2023-06-02",
-   "cloture_concours": "2023-06-02",
-   "resultat_initial": "لم تنشر",
-   "resultat_final": "لم تنشر",
-   "metier": "technicien",
-   "gouvernorat": "jendouba",
-   "vu_le": "2026-11-10",
-   "historique": [],
-   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-11-10"
-  },
-  {
-   "id": "1679",
-   "decision": "2022/02",
-   "organisme": "الشركة الجهوية للنقل بجندوبة",
-   "grade": "متصرف P06",
-   "postes": 1,
-   "cloture_candidatures": "2023-06-02",
-   "cloture_concours": "2023-06-02",
-   "resultat_initial": "لم تنشر",
-   "resultat_final": "لم تنشر",
-   "metier": "administratif",
-   "gouvernorat": "jendouba",
-   "vu_le": "2026-11-10",
-   "historique": [],
-   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-11-10"
-  },
-  {
-   "id": "1680",
-   "decision": "2022/02",
-   "organisme": "الشركة الجهوية للنقل بجندوبة",
-   "grade": "ملحق إدارة P07",
-   "postes": 1,
-   "cloture_candidatures": "2023-06-02",
-   "cloture_concours": "2023-06-02",
-   "resultat_initial": "لم تنشر",
-   "resultat_final": "لم تنشر",
-   "metier": "administratif",
-   "gouvernorat": "jendouba",
-   "vu_le": "2026-11-10",
-   "historique": [],
-   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-11-10"
-  },
-  {
-   "id": "1681",
-   "decision": "2022/02",
-   "organisme": "الشركة الجهوية للنقل بجندوبة",
-   "grade": "تقني سام P08",
-   "postes": 1,
-   "cloture_candidatures": "2023-06-02",
-   "cloture_concours": "2023-06-02",
-   "resultat_initial": "لم تنشر",
-   "resultat_final": "لم تنشر",
-   "metier": "technicien",
-   "gouvernorat": "jendouba",
+   "gouvernorat": "national",
    "vu_le": "2026-11-10",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
@@ -305,40 +135,6 @@
    "resultat_initial": "لم تنشر",
    "resultat_final": "لم تنشر",
    "metier": "informatique",
-   "gouvernorat": "bizerte",
-   "vu_le": "2026-11-08",
-   "historique": [],
-   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-11-10"
-  },
-  {
-   "id": "2412",
-   "decision": "112أ/2025",
-   "organisme": "بلدية ماطر",
-   "grade": "معماري أول",
-   "postes": 1,
-   "cloture_candidatures": "2025-10-17",
-   "cloture_concours": "2026-12-31",
-   "resultat_initial": "لم تنشر",
-   "resultat_final": "لم تنشر",
-   "metier": "autre",
-   "gouvernorat": "bizerte",
-   "vu_le": "2026-11-08",
-   "historique": [],
-   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-11-10"
-  },
-  {
-   "id": "2543",
-   "decision": "112/2025",
-   "organisme": "بلدية ماطر",
-   "grade": "معماري أول متعاقد",
-   "postes": 1,
-   "cloture_candidatures": "2025-11-07",
-   "cloture_concours": "2026-12-31",
-   "resultat_initial": "لم تنشر",
-   "resultat_final": "لم تنشر",
-   "metier": "autre",
    "gouvernorat": "bizerte",
    "vu_le": "2026-11-08",
    "historique": [],
@@ -976,7 +772,7 @@
    "vu_le": "2026-11-04",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-11-09"
+   "lu_le": "2026-11-10"
   },
   {
    "id": "3267",
@@ -1316,7 +1112,7 @@
    "vu_le": "2026-11-02",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-11-09"
+   "lu_le": "2026-11-10"
   },
   {
    "id": "3323",
@@ -1333,7 +1129,7 @@
    "vu_le": "2026-11-02",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-11-09"
+   "lu_le": "2026-11-10"
   },
   {
    "id": "3324",
@@ -1350,7 +1146,7 @@
    "vu_le": "2026-11-02",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-11-09"
+   "lu_le": "2026-11-10"
   },
   {
    "id": "3325",
@@ -1367,7 +1163,7 @@
    "vu_le": "2026-11-02",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-11-09"
+   "lu_le": "2026-11-10"
   },
   {
    "id": "3326",
@@ -1384,7 +1180,7 @@
    "vu_le": "2026-11-02",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-11-09"
+   "lu_le": "2026-11-10"
   },
   {
    "id": "3328",
@@ -1401,7 +1197,7 @@
    "vu_le": "2026-11-02",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-11-09"
+   "lu_le": "2026-11-10"
   },
   {
    "id": "3329",
@@ -1418,7 +1214,7 @@
    "vu_le": "2026-11-02",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-11-09"
+   "lu_le": "2026-11-10"
   },
   {
    "id": "3330",
@@ -1435,7 +1231,7 @@
    "vu_le": "2026-11-02",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-11-09"
+   "lu_le": "2026-11-10"
   },
   {
    "id": "3331",
@@ -1452,7 +1248,7 @@
    "vu_le": "2026-11-02",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-11-09"
+   "lu_le": "2026-11-10"
   },
   {
    "id": "3332",
@@ -1469,7 +1265,7 @@
    "vu_le": "2026-11-02",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-11-09"
+   "lu_le": "2026-11-10"
   },
   {
    "id": "3333",
@@ -1486,7 +1282,7 @@
    "vu_le": "2026-11-02",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-11-09"
+   "lu_le": "2026-11-10"
   },
   {
    "id": "3334",
@@ -1503,7 +1299,7 @@
    "vu_le": "2026-11-02",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-11-09"
+   "lu_le": "2026-11-10"
   },
   {
    "id": "3335",
@@ -1520,7 +1316,7 @@
    "vu_le": "2026-11-02",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-11-09"
+   "lu_le": "2026-11-10"
   },
   {
    "id": "3336",
@@ -1537,7 +1333,7 @@
    "vu_le": "2026-11-02",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-11-09"
+   "lu_le": "2026-11-10"
   },
   {
    "id": "3337",

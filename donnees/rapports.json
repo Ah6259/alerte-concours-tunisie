@@ -412,11 +412,11 @@
      "final": 0
     },
     "avis": {
-     "n": 9,
+     "n": 10,
      "types": {
+      "resultats": 3,
       "nouveau": 3,
       "report": 2,
-      "resultats": 2,
       "candidatures": 2
      }
     }
@@ -1547,6 +1547,46 @@
      "metier": "technicien",
      "gouvernorat": "jendouba",
      "cloture_candidatures": "2023-06-02",
+     "vu_le": "2026-11-10",
+     "publies": []
+    },
+    "369": {
+     "postes": 6,
+     "metier": "finance",
+     "gouvernorat": "national",
+     "cloture_candidatures": "2019-08-15",
+     "vu_le": "2026-11-10",
+     "publies": []
+    },
+    "370": {
+     "postes": 4,
+     "metier": "finance",
+     "gouvernorat": "national",
+     "cloture_candidatures": "2019-08-15",
+     "vu_le": "2026-11-10",
+     "publies": []
+    },
+    "371": {
+     "postes": 1,
+     "metier": "administratif",
+     "gouvernorat": "national",
+     "cloture_candidatures": "2019-08-15",
+     "vu_le": "2026-11-10",
+     "publies": []
+    },
+    "372": {
+     "postes": 1,
+     "metier": "administratif",
+     "gouvernorat": "national",
+     "cloture_candidatures": "2019-08-15",
+     "vu_le": "2026-11-10",
+     "publies": []
+    },
+    "373": {
+     "postes": 1,
+     "metier": "administratif",
+     "gouvernorat": "national",
+     "cloture_candidatures": "2019-08-15",
      "vu_le": "2026-11-10",
      "publies": []
     }
