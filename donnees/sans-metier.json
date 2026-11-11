@@ -1,7 +1,7 @@
 {
  "maj": "2026-11-11",
  "explication": "Éléments lus par le robot mais rangés dans aucune catégorie (gardés 120 jours) : une routine y cherche les thèmes qui reviennent (règle commune § 40).",
- "nombre": 29,
+ "nombre": 30,
  "elements": [
   {
    "cle": "portail-3352",
@@ -78,6 +78,13 @@
    "texte": "معماري أول",
    "organisme": "بلدية ماطر",
    "premier_vu": "2026-10-21",
+   "dernier_vu": "2026-11-11"
+  },
+  {
+   "cle": "portail-156",
+   "texte": "مقرر جلسات",
+   "organisme": "الهيئة العليا المستقلة للاتصال السمعي و البصري",
+   "premier_vu": "2026-11-11",
    "dernier_vu": "2026-11-11"
   },
   {

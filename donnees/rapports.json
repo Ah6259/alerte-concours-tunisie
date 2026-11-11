@@ -209,8 +209,8 @@
     "au": "2026-11-11",
     "debut": "2026-11-01",
     "ouverts": {
-     "n": 66,
-     "postes": 135,
+     "n": 67,
+     "postes": 190,
      "sans_postes": 0
     },
     "national": {
@@ -219,8 +219,8 @@
      "sans_postes": 0
     },
     "locaux": {
-     "n": 41,
-     "postes": 90,
+     "n": 42,
+     "postes": 145,
      "sans_postes": 0
     },
     "finances": 0,
@@ -247,8 +247,8 @@
      ],
      [
       "bizerte",
-      3,
-      6
+      4,
+      61
      ],
      [
       "tunis",
@@ -298,14 +298,14 @@
       13
      ],
      [
+      "chauffeur",
+      4,
+      58
+     ],
+     [
       "ingenieur",
       4,
       7
-     ],
-     [
-      "chauffeur",
-      3,
-      3
      ],
      [
       "finance",
@@ -369,8 +369,8 @@
      "jusqu_au": "2026-11-17"
     },
     "nouveaux": {
-     "n": 35,
-     "postes": 77,
+     "n": 36,
+     "postes": 132,
      "sans_postes": 0
     },
     "nouveaux_metiers": [
@@ -392,7 +392,7 @@
      ],
      [
       "chauffeur",
-      2
+      3
      ],
      [
       "ingenieur",
@@ -1608,6 +1608,86 @@
      "metier": "ouvrier",
      "gouvernorat": "tunis",
      "cloture_candidatures": "2026-12-07",
+     "vu_le": "2026-11-11",
+     "publies": []
+    },
+    "24": {
+     "postes": 1,
+     "metier": "ouvrier",
+     "gouvernorat": "national",
+     "cloture_candidatures": "2017-05-13",
+     "vu_le": "2026-11-11",
+     "publies": []
+    },
+    "25": {
+     "postes": 1,
+     "metier": "ouvrier",
+     "gouvernorat": "national",
+     "cloture_candidatures": "2017-05-13",
+     "vu_le": "2026-11-11",
+     "publies": []
+    },
+    "26": {
+     "postes": 1,
+     "metier": "ouvrier",
+     "gouvernorat": "national",
+     "cloture_candidatures": "2017-05-13",
+     "vu_le": "2026-11-11",
+     "publies": []
+    },
+    "27": {
+     "postes": 1,
+     "metier": "ouvrier",
+     "gouvernorat": "national",
+     "cloture_candidatures": "2017-05-13",
+     "vu_le": "2026-11-11",
+     "publies": []
+    },
+    "156": {
+     "postes": 2,
+     "metier": "autre",
+     "gouvernorat": "national",
+     "cloture_candidatures": "2017-11-30",
+     "vu_le": "2026-11-11",
+     "publies": []
+    },
+    "187": {
+     "postes": 1,
+     "metier": "administratif",
+     "gouvernorat": "national",
+     "cloture_candidatures": "2017-12-15",
+     "vu_le": "2026-11-11",
+     "publies": []
+    },
+    "203": {
+     "postes": 1,
+     "metier": "administratif",
+     "gouvernorat": "national",
+     "cloture_candidatures": "2018-03-20",
+     "vu_le": "2026-11-11",
+     "publies": []
+    },
+    "219": {
+     "postes": 1,
+     "metier": "finance",
+     "gouvernorat": "national",
+     "cloture_candidatures": "2018-06-11",
+     "vu_le": "2026-11-11",
+     "publies": []
+    },
+    "265": {
+     "postes": 1,
+     "metier": "administratif",
+     "gouvernorat": "siliana",
+     "cloture_candidatures": "2018-10-19",
+     "vu_le": "2026-11-11",
+     "publies": []
+    },
+    "3356": {
+     "postes": 55,
+     "metier": "chauffeur",
+     "gouvernorat": "bizerte",
+     "cloture_candidatures": "2026-12-03",
      "vu_le": "2026-11-11",
      "publies": []
     }
