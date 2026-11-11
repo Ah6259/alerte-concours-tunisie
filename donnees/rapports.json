@@ -203,14 +203,14 @@
   },
   "2026-11": {
    "premier_jour": "2026-11-01",
-   "dernier_jour": "2026-11-10",
+   "dernier_jour": "2026-11-11",
    "fini": false,
    "chiffres": {
-    "au": "2026-11-10",
+    "au": "2026-11-11",
     "debut": "2026-11-01",
     "ouverts": {
-     "n": 65,
-     "postes": 134,
+     "n": 66,
+     "postes": 135,
      "sans_postes": 0
     },
     "national": {
@@ -219,8 +219,8 @@
      "sans_postes": 0
     },
     "locaux": {
-     "n": 40,
-     "postes": 89,
+     "n": 41,
+     "postes": 90,
      "sans_postes": 0
     },
     "finances": 0,
@@ -232,8 +232,8 @@
      ],
      [
       "monastir",
-      10,
-      33
+      9,
+      32
      ],
      [
       "sousse",
@@ -249,6 +249,11 @@
       "bizerte",
       3,
       6
+     ],
+     [
+      "tunis",
+      2,
+      2
      ],
      [
       "gabes",
@@ -273,14 +278,14 @@
     ],
     "metiers": [
      [
-      "administratif",
+      "ouvrier",
       22,
-      37
+      42
      ],
      [
-      "ouvrier",
-      20,
-      40
+      "administratif",
+      21,
+      36
      ],
      [
       "autre",
@@ -358,23 +363,23 @@
      ]
     ],
     "semaine": {
-     "n": 9,
-     "postes": 35,
+     "n": 8,
+     "postes": 34,
      "sans_postes": 0,
-     "jusqu_au": "2026-11-16"
+     "jusqu_au": "2026-11-17"
     },
     "nouveaux": {
-     "n": 33,
-     "postes": 75,
+     "n": 35,
+     "postes": 77,
      "sans_postes": 0
     },
     "nouveaux_metiers": [
      [
-      "administratif",
-      9
+      "ouvrier",
+      11
      ],
      [
-      "ouvrier",
+      "administratif",
       9
      ],
      [
@@ -403,8 +408,8 @@
      ]
     ],
     "clos": {
-     "n": 26,
-     "postes": 55,
+     "n": 27,
+     "postes": 56,
      "sans_postes": 0
     },
     "resultats": {
@@ -1588,6 +1593,22 @@
      "gouvernorat": "national",
      "cloture_candidatures": "2019-08-15",
      "vu_le": "2026-11-10",
+     "publies": []
+    },
+    "3354": {
+     "postes": 1,
+     "metier": "ouvrier",
+     "gouvernorat": "tunis",
+     "cloture_candidatures": "2026-12-07",
+     "vu_le": "2026-11-11",
+     "publies": []
+    },
+    "3355": {
+     "postes": 1,
+     "metier": "ouvrier",
+     "gouvernorat": "tunis",
+     "cloture_candidatures": "2026-12-07",
+     "vu_le": "2026-11-11",
      "publies": []
     }
    }
