@@ -209,8 +209,8 @@
     "au": "2026-11-12",
     "debut": "2026-11-01",
     "ouverts": {
-     "n": 66,
-     "postes": 186,
+     "n": 69,
+     "postes": 190,
      "sans_postes": 0
     },
     "national": {
@@ -219,16 +219,16 @@
      "sans_postes": 0
     },
     "locaux": {
-     "n": 41,
-     "postes": 141,
+     "n": 44,
+     "postes": 145,
      "sans_postes": 0
     },
     "finances": 0,
     "gouvernorats": [
      [
       "nabeul",
-      13,
-      17
+      16,
+      21
      ],
      [
       "monastir",
@@ -278,14 +278,14 @@
     ],
     "metiers": [
      [
+      "administratif",
+      24,
+      40
+     ],
+     [
       "ouvrier",
       21,
       38
-     ],
-     [
-      "administratif",
-      21,
-      36
      ],
      [
       "autre",
@@ -338,6 +338,12 @@
       "nabeul"
      ],
      [
+      "بلدية قليبية",
+      5,
+      7,
+      "nabeul"
+     ],
+     [
       "مؤسسة الإذاعة التونسية",
       4,
       10,
@@ -369,18 +375,18 @@
      "jusqu_au": "2026-11-18"
     },
     "nouveaux": {
-     "n": 36,
-     "postes": 132,
+     "n": 39,
+     "postes": 136,
      "sans_postes": 0
     },
     "nouveaux_metiers": [
      [
-      "ouvrier",
-      11
+      "administratif",
+      12
      ],
      [
-      "administratif",
-      9
+      "ouvrier",
+      11
      ],
      [
       "autre",
@@ -1689,6 +1695,30 @@
      "gouvernorat": "bizerte",
      "cloture_candidatures": "2026-12-03",
      "vu_le": "2026-11-11",
+     "publies": []
+    },
+    "3357": {
+     "postes": 1,
+     "metier": "administratif",
+     "gouvernorat": "nabeul",
+     "cloture_candidatures": "2026-12-14",
+     "vu_le": "2026-11-12",
+     "publies": []
+    },
+    "3358": {
+     "postes": 2,
+     "metier": "administratif",
+     "gouvernorat": "nabeul",
+     "cloture_candidatures": "2026-12-14",
+     "vu_le": "2026-11-12",
+     "publies": []
+    },
+    "3359": {
+     "postes": 1,
+     "metier": "administratif",
+     "gouvernorat": "nabeul",
+     "cloture_candidatures": "2026-12-14",
+     "vu_le": "2026-11-12",
      "publies": []
     }
    }
