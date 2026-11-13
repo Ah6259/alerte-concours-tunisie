@@ -423,11 +423,11 @@
      "final": 0
     },
     "avis": {
-     "n": 11,
+     "n": 14,
      "types": {
+      "nouveau": 5,
+      "resultats": 4,
       "candidatures": 3,
-      "resultats": 3,
-      "nouveau": 3,
       "report": 2
      }
     }
