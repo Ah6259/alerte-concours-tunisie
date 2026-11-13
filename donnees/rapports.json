@@ -203,10 +203,10 @@
   },
   "2026-11": {
    "premier_jour": "2026-11-01",
-   "dernier_jour": "2026-11-12",
+   "dernier_jour": "2026-11-13",
    "fini": false,
    "chiffres": {
-    "au": "2026-11-12",
+    "au": "2026-11-13",
     "debut": "2026-11-01",
     "ouverts": {
      "n": 69,
@@ -372,7 +372,7 @@
      "n": 7,
      "postes": 30,
      "sans_postes": 0,
-     "jusqu_au": "2026-11-18"
+     "jusqu_au": "2026-11-19"
     },
     "nouveaux": {
      "n": 39,
@@ -423,12 +423,12 @@
      "final": 0
     },
     "avis": {
-     "n": 10,
+     "n": 11,
      "types": {
+      "candidatures": 3,
       "resultats": 3,
       "nouveau": 3,
-      "report": 2,
-      "candidatures": 2
+      "report": 2
      }
     }
    },
@@ -1719,6 +1719,46 @@
      "gouvernorat": "nabeul",
      "cloture_candidatures": "2026-12-14",
      "vu_le": "2026-11-12",
+     "publies": []
+    },
+    "153": {
+     "postes": 4,
+     "metier": "chauffeur",
+     "gouvernorat": "national",
+     "cloture_candidatures": "2017-10-27",
+     "vu_le": "2026-11-13",
+     "publies": []
+    },
+    "154": {
+     "postes": 2,
+     "metier": "finance",
+     "gouvernorat": "national",
+     "cloture_candidatures": "2017-10-27",
+     "vu_le": "2026-11-13",
+     "publies": []
+    },
+    "155": {
+     "postes": 2,
+     "metier": "ouvrier",
+     "gouvernorat": "national",
+     "cloture_candidatures": "2017-10-27",
+     "vu_le": "2026-11-13",
+     "publies": []
+    },
+    "214": {
+     "postes": 2,
+     "metier": "sante",
+     "gouvernorat": "national",
+     "cloture_candidatures": "2018-05-17",
+     "vu_le": "2026-11-13",
+     "publies": []
+    },
+    "985": {
+     "postes": 4,
+     "metier": "sante",
+     "gouvernorat": "national",
+     "cloture_candidatures": "2021-02-02",
+     "vu_le": "2026-11-13",
      "publies": []
     }
    }
