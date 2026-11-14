@@ -203,14 +203,14 @@
   },
   "2026-11": {
    "premier_jour": "2026-11-01",
-   "dernier_jour": "2026-11-13",
+   "dernier_jour": "2026-11-14",
    "fini": false,
    "chiffres": {
-    "au": "2026-11-13",
+    "au": "2026-11-14",
     "debut": "2026-11-01",
     "ouverts": {
-     "n": 69,
-     "postes": 190,
+     "n": 68,
+     "postes": 188,
      "sans_postes": 0
     },
     "national": {
@@ -219,8 +219,8 @@
      "sans_postes": 0
     },
     "locaux": {
-     "n": 44,
-     "postes": 145,
+     "n": 43,
+     "postes": 143,
      "sans_postes": 0
     },
     "finances": 0,
@@ -236,11 +236,6 @@
       32
      ],
      [
-      "sidi-bouzid",
-      5,
-      7
-     ],
-     [
       "bizerte",
       4,
       61
@@ -249,6 +244,11 @@
       "sousse",
       4,
       12
+     ],
+     [
+      "sidi-bouzid",
+      4,
+      5
      ],
      [
       "tunis",
@@ -284,8 +284,8 @@
      ],
      [
       "ouvrier",
-      21,
-      38
+      20,
+      36
      ],
      [
       "autre",
@@ -370,9 +370,9 @@
     ],
     "semaine": {
      "n": 7,
-     "postes": 30,
+     "postes": 33,
      "sans_postes": 0,
-     "jusqu_au": "2026-11-19"
+     "jusqu_au": "2026-11-20"
     },
     "nouveaux": {
      "n": 39,
@@ -414,8 +414,8 @@
      ]
     ],
     "clos": {
-     "n": 28,
-     "postes": 60,
+     "n": 29,
+     "postes": 62,
      "sans_postes": 0
     },
     "resultats": {
