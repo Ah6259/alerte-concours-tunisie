@@ -1760,6 +1760,46 @@
      "cloture_candidatures": "2021-02-02",
      "vu_le": "2026-11-13",
      "publies": []
+    },
+    "2717": {
+     "postes": 1,
+     "metier": "finance",
+     "gouvernorat": "national",
+     "cloture_candidatures": "2026-01-20",
+     "vu_le": "2026-11-15",
+     "publies": []
+    },
+    "2778": {
+     "postes": 4,
+     "metier": "finance",
+     "gouvernorat": "national",
+     "cloture_candidatures": "2026-04-11",
+     "vu_le": "2026-11-15",
+     "publies": []
+    },
+    "2854": {
+     "postes": 1,
+     "metier": "administratif",
+     "gouvernorat": "national",
+     "cloture_candidatures": "2026-04-29",
+     "vu_le": "2026-11-15",
+     "publies": []
+    },
+    "2940": {
+     "postes": 1,
+     "metier": "finance",
+     "gouvernorat": "national",
+     "cloture_candidatures": "2026-06-01",
+     "vu_le": "2026-11-15",
+     "publies": []
+    },
+    "2989": {
+     "postes": 1,
+     "metier": "finance",
+     "gouvernorat": "national",
+     "cloture_candidatures": "2026-07-02",
+     "vu_le": "2026-11-15",
+     "publies": []
     }
    }
   }
