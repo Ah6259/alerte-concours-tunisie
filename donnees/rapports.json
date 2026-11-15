@@ -203,10 +203,10 @@
   },
   "2026-11": {
    "premier_jour": "2026-11-01",
-   "dernier_jour": "2026-11-14",
+   "dernier_jour": "2026-11-15",
    "fini": false,
    "chiffres": {
-    "au": "2026-11-14",
+    "au": "2026-11-15",
     "debut": "2026-11-01",
     "ouverts": {
      "n": 68,
@@ -372,7 +372,7 @@
      "n": 7,
      "postes": 33,
      "sans_postes": 0,
-     "jusqu_au": "2026-11-20"
+     "jusqu_au": "2026-11-21"
     },
     "nouveaux": {
      "n": 39,
