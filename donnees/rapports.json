@@ -284,13 +284,8 @@
      ],
      [
       "ouvrier",
-      25,
-      44
-     ],
-     [
-      "autre",
-      6,
-      27
+      28,
+      66
      ],
      [
       "chauffeur",
@@ -306,6 +301,11 @@
       "ingenieur",
       4,
       7
+     ],
+     [
+      "autre",
+      3,
+      5
      ],
      [
       "finance",
@@ -398,19 +398,19 @@
      ],
      [
       "ouvrier",
-      15
+      16
      ],
      [
       "technicien",
       4
      ],
      [
-      "autre",
+      "chauffeur",
       3
      ],
      [
-      "chauffeur",
-      3
+      "autre",
+      2
      ],
      [
       "ingenieur",
@@ -435,10 +435,10 @@
      "final": 0
     },
     "avis": {
-     "n": 14,
+     "n": 16,
      "types": {
-      "nouveau": 5,
-      "resultats": 4,
+      "nouveau": 6,
+      "resultats": 5,
       "candidatures": 3,
       "report": 2
      }
@@ -546,7 +546,7 @@
      "metier": "administratif",
      "gouvernorat": "kebili",
      "cloture_candidatures": "2026-10-30",
-     "vu_le": "",
+     "vu_le": "2026-11-16",
      "publies": []
     },
     "3260": {
@@ -799,7 +799,7 @@
     },
     "3296": {
      "postes": 1,
-     "metier": "autre",
+     "metier": "ouvrier",
      "gouvernorat": "monastir",
      "cloture_candidatures": "2026-11-16",
      "vu_le": "2026-10-16",
@@ -911,7 +911,7 @@
     },
     "3310": {
      "postes": 1,
-     "metier": "autre",
+     "metier": "ouvrier",
      "gouvernorat": "sidi-bouzid",
      "cloture_candidatures": "2026-11-23",
      "vu_le": "2026-10-24",
@@ -1239,7 +1239,7 @@
     },
     "3347": {
      "postes": 20,
-     "metier": "autre",
+     "metier": "ouvrier",
      "gouvernorat": "monastir",
      "cloture_candidatures": "2026-11-16",
      "vu_le": "2026-11-05",

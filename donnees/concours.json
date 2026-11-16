@@ -3,88 +3,122 @@
  "lu_le": "2026-11-16",
  "finances_ok": "2026-10-21",
  "finances_raison": "<urlopen error timed out>",
- "pages": 12,
+ "pages": 18,
  "concours": [
   {
-   "id": "897",
-   "decision": "قرار من من رئيس بلدية السند مؤرخ في 30-10-2020 يتعلق بفتح المناظرة الخارجية بالاختبارات لانتداب عون وقتي صنف أ3 ( تقني في الهندسة المدنية ) لفائدة بلدية السند بعنوان سنة 2020",
-   "organisme": "بلدية السند",
-   "grade": "عون وقتي صنف أ3 (هندسة مدنية)",
+   "id": "2390",
+   "decision": "108/2025",
+   "organisme": "بلدية ماطر",
+   "grade": "عدد 01 تقني هندسة ميكانيكية",
    "postes": 1,
-   "cloture_candidatures": "2020-11-30",
-   "cloture_concours": "2020-11-30",
-   "resultat_initial": "لم تنشر",
-   "resultat_final": "لم تنشر",
-   "metier": "ouvrier",
-   "gouvernorat": "gafsa",
-   "vu_le": "2026-11-16",
-   "historique": [],
-   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-11-16"
-  },
-  {
-   "id": "915",
-   "decision": "قرار رئيس البلدية المؤرخ في 30-11-2020",
-   "organisme": "بلدية السند",
-   "grade": "عون وقتي - تقني أ3",
-   "postes": 1,
-   "cloture_candidatures": "2020-12-31",
-   "cloture_concours": "2020-12-31",
+   "cloture_candidatures": "2025-10-03",
+   "cloture_concours": "2026-12-31",
    "resultat_initial": "لم تنشر",
    "resultat_final": "لم تنشر",
    "metier": "technicien",
-   "gouvernorat": "gafsa",
+   "gouvernorat": "bizerte",
    "vu_le": "2026-11-16",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
    "lu_le": "2026-11-16"
   },
   {
-   "id": "1001",
-   "decision": "قرار رئيس البلدية",
-   "organisme": "بلدية السند",
-   "grade": "اتب عام بلدية من الدرجة الثانية على الأقل",
+   "id": "2391",
+   "decision": "108أ/2025",
+   "organisme": "بلدية ماطر",
+   "grade": "عدد 01 تقني هنسة مدينة",
    "postes": 1,
-   "cloture_candidatures": "2021-03-19",
-   "cloture_concours": "2021-03-19",
-   "resultat_initial": "اطلاع",
+   "cloture_candidatures": "2025-10-03",
+   "cloture_concours": "2026-12-31",
+   "resultat_initial": "لم تنشر",
+   "resultat_final": "لم تنشر",
+   "metier": "technicien",
+   "gouvernorat": "bizerte",
+   "vu_le": "2026-11-16",
+   "historique": [],
+   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
+   "lu_le": "2026-11-16"
+  },
+  {
+   "id": "2392",
+   "decision": "110أ/2025",
+   "organisme": "بلدية ماطر",
+   "grade": "عدد 01 تقني مخبر إعلامية",
+   "postes": 1,
+   "cloture_candidatures": "2025-10-10",
+   "cloture_concours": "2026-12-31",
+   "resultat_initial": "لم تنشر",
+   "resultat_final": "لم تنشر",
+   "metier": "informatique",
+   "gouvernorat": "bizerte",
+   "vu_le": "2026-11-16",
+   "historique": [],
+   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
+   "lu_le": "2026-11-16"
+  },
+  {
+   "id": "2412",
+   "decision": "112أ/2025",
+   "organisme": "بلدية ماطر",
+   "grade": "معماري أول",
+   "postes": 1,
+   "cloture_candidatures": "2025-10-17",
+   "cloture_concours": "2026-12-31",
+   "resultat_initial": "لم تنشر",
    "resultat_final": "لم تنشر",
    "metier": "autre",
-   "gouvernorat": "gafsa",
+   "gouvernorat": "bizerte",
    "vu_le": "2026-11-16",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
    "lu_le": "2026-11-16"
   },
   {
-   "id": "2522",
-   "decision": "قرار مؤرخ في 22-09-2025 والمتعلق بضبط كيفية تنظيم وبرنامج الاختبارات المهنية لانتداب عملة متعاقدين لفائدة بلدية السند بعنوان سنة 2025",
-   "organisme": "بلدية السند",
-   "grade": "عامل صنف 3 من الوحدة الأولى",
+   "id": "2543",
+   "decision": "112/2025",
+   "organisme": "بلدية ماطر",
+   "grade": "معماري أول متعاقد",
    "postes": 1,
-   "cloture_candidatures": "2025-11-14",
-   "cloture_concours": "2025-11-14",
+   "cloture_candidatures": "2025-11-07",
+   "cloture_concours": "2026-12-31",
+   "resultat_initial": "لم تنشر",
+   "resultat_final": "لم تنشر",
+   "metier": "autre",
+   "gouvernorat": "bizerte",
+   "vu_le": "2026-11-16",
+   "historique": [],
+   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
+   "lu_le": "2026-11-16"
+  },
+  {
+   "id": "2548",
+   "decision": ": قرار عدد 5332",
+   "organisme": "بلدية الحمامات",
+   "grade": "مهندس أول اختصاص ميكانيك",
+   "postes": 1,
+   "cloture_candidatures": "2025-11-25",
+   "cloture_concours": "2026-11-26",
    "resultat_initial": "اطلاع",
    "resultat_final": "لم تنشر",
-   "metier": "ouvrier",
-   "gouvernorat": "gafsa",
+   "metier": "ingenieur",
+   "gouvernorat": "nabeul",
    "vu_le": "2026-11-16",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
    "lu_le": "2026-11-16"
   },
   {
-   "id": "2523",
-   "decision": "قرار مؤرخ في 22-09-2025 والمتعلق بضبط كيفية تنظيم وبرنامج الاختبارات المهنية لانتداب عملة متعاقدين لفائدة بلدية السند بعنوان سنة 2025",
-   "organisme": "بلدية السند",
-   "grade": "عامل صنف 4 من الوحدة الثانية",
-   "postes": 1,
-   "cloture_candidatures": "2025-11-14",
-   "cloture_concours": "2025-11-14",
+   "id": "2749",
+   "decision": "04أ/26",
+   "organisme": "بلدية ماطر",
+   "grade": "عملة رافعي فضلات",
+   "postes": 10,
+   "cloture_candidatures": "2026-03-23",
+   "cloture_concours": "2026-12-31",
    "resultat_initial": "لم تنشر",
    "resultat_final": "لم تنشر",
    "metier": "ouvrier",
-   "gouvernorat": "gafsa",
+   "gouvernorat": "bizerte",
    "vu_le": "2026-11-16",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
@@ -129,6 +163,57 @@
    "lu_le": "2026-11-16"
   },
   {
+   "id": "3233",
+   "decision": "قرار من الكاتب العام المكلف بتسيير بلدية بنزرت مؤرخ في 21 جويلية 2026 المتعلق بفتح مناظرة خارجية بالاختبارات لانتداب عدد 06 كاتب تصرف بصفة عون وقتي بالسلك الإداري لمشترك للإدارات العمومية لفائدة بلدية بنزرت . - قرار من الكاتب العام المكلف بتسيير بلدية بنزرت مؤرخ في 25فيفري 2026 المتعلق بضبط كيفية تن",
+   "organisme": "بلدية بنزرت",
+   "grade": "كاتب تصرف",
+   "postes": 6,
+   "cloture_candidatures": "2026-10-02",
+   "cloture_concours": "2026-12-31",
+   "resultat_initial": "لم تنشر",
+   "resultat_final": "لم تنشر",
+   "metier": "administratif",
+   "gouvernorat": "bizerte",
+   "vu_le": "2026-11-16",
+   "historique": [],
+   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
+   "lu_le": "2026-11-16"
+  },
+  {
+   "id": "3271",
+   "decision": "قرار عدد 10 لسنة 2026 مؤرخ في 19 ماي 2026",
+   "organisme": "بلدية رجيم معتوق",
+   "grade": "متصرف مساعد",
+   "postes": 1,
+   "cloture_candidatures": "2026-10-30",
+   "cloture_concours": "2026-11-30",
+   "resultat_initial": "--",
+   "resultat_final": "--",
+   "metier": "administratif",
+   "gouvernorat": "kebili",
+   "vu_le": "2026-11-16",
+   "historique": [],
+   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
+   "lu_le": "2026-11-16"
+  },
+  {
+   "id": "3290",
+   "decision": "02/2026",
+   "organisme": "بلدية سيدي بوزيد",
+   "grade": "كهربائي تنوير عمومي",
+   "postes": 2,
+   "cloture_candidatures": "2026-11-13",
+   "cloture_concours": "2026-12-31",
+   "resultat_initial": "--",
+   "resultat_final": "--",
+   "metier": "ouvrier",
+   "gouvernorat": "sidi-bouzid",
+   "vu_le": "2026-11-16",
+   "historique": [],
+   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
+   "lu_le": "2026-11-16"
+  },
+  {
    "id": "3294",
    "decision": "قرار بلدي مؤرخ في 21/09/2026",
    "organisme": "بلدية بوعرقوب",
@@ -143,7 +228,7 @@
    "vu_le": "2026-10-16",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-11-15"
+   "lu_le": "2026-11-16"
   },
   {
    "id": "3295",
@@ -160,7 +245,7 @@
    "vu_le": "2026-10-16",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-11-15"
+   "lu_le": "2026-11-16"
   },
   {
    "id": "3296",
@@ -172,12 +257,12 @@
    "cloture_concours": "2026-11-16",
    "resultat_initial": "--",
    "resultat_final": "--",
-   "metier": "autre",
+   "metier": "ouvrier",
    "gouvernorat": "monastir",
    "vu_le": "2026-10-16",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-11-15"
+   "lu_le": "2026-11-16"
   },
   {
    "id": "3297",
@@ -194,7 +279,7 @@
    "vu_le": "2026-10-16",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-11-15"
+   "lu_le": "2026-11-16"
   },
   {
    "id": "3347",
@@ -206,12 +291,12 @@
    "cloture_concours": "2026-11-16",
    "resultat_initial": "--",
    "resultat_final": "--",
-   "metier": "autre",
+   "metier": "ouvrier",
    "gouvernorat": "monastir",
    "vu_le": "2026-11-05",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-11-15"
+   "lu_le": "2026-11-16"
   },
   {
    "id": "3298",
@@ -228,7 +313,7 @@
    "vu_le": "2026-10-16",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-11-15"
+   "lu_le": "2026-11-16"
   },
   {
    "id": "3305",
@@ -245,7 +330,7 @@
    "vu_le": "2026-10-22",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-11-15"
+   "lu_le": "2026-11-16"
   },
   {
    "id": "3299",
@@ -262,7 +347,7 @@
    "vu_le": "2026-10-20",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-11-15"
+   "lu_le": "2026-11-16"
   },
   {
    "id": "3300",
@@ -279,7 +364,7 @@
    "vu_le": "2026-10-20",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-11-15"
+   "lu_le": "2026-11-16"
   },
   {
    "id": "3301",
@@ -296,7 +381,7 @@
    "vu_le": "2026-10-20",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-11-15"
+   "lu_le": "2026-11-16"
   },
   {
    "id": "3302",
@@ -313,7 +398,7 @@
    "vu_le": "2026-10-20",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-11-15"
+   "lu_le": "2026-11-16"
   },
   {
    "id": "3303",
@@ -330,7 +415,7 @@
    "vu_le": "2026-10-20",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-11-15"
+   "lu_le": "2026-11-16"
   },
   {
    "id": "3304",
@@ -347,7 +432,7 @@
    "vu_le": "2026-10-20",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-11-15"
+   "lu_le": "2026-11-16"
   },
   {
    "id": "3306",
@@ -364,7 +449,7 @@
    "vu_le": "2026-10-23",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-11-15"
+   "lu_le": "2026-11-16"
   },
   {
    "id": "3307",
@@ -381,7 +466,7 @@
    "vu_le": "2026-10-23",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-11-15"
+   "lu_le": "2026-11-16"
   },
   {
    "id": "3308",
@@ -427,12 +512,12 @@
    "cloture_concours": "2026-11-23",
    "resultat_initial": "--",
    "resultat_final": "--",
-   "metier": "autre",
+   "metier": "ouvrier",
    "gouvernorat": "sidi-bouzid",
    "vu_le": "2026-10-24",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-11-15"
+   "lu_le": "2026-11-16"
   },
   {
    "id": "3311",
@@ -449,7 +534,7 @@
    "vu_le": "2026-10-24",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-11-15"
+   "lu_le": "2026-11-16"
   },
   {
    "id": "3312",
@@ -551,7 +636,7 @@
    "vu_le": "",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-11-15"
+   "lu_le": "2026-11-16"
   },
   {
    "id": "3268",
@@ -568,7 +653,7 @@
    "vu_le": "",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-11-15"
+   "lu_le": "2026-11-16"
   },
   {
    "id": "3315",
@@ -585,7 +670,7 @@
    "vu_le": "2026-10-29",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-11-15"
+   "lu_le": "2026-11-16"
   },
   {
    "id": "3314",
@@ -619,7 +704,7 @@
    "vu_le": "2026-10-29",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-11-15"
+   "lu_le": "2026-11-16"
   },
   {
    "id": "3317",
@@ -1435,7 +1520,7 @@
    "vu_le": "2026-11-05",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-11-15"
+   "lu_le": "2026-11-16"
   }
  ]
 }
