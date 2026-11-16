@@ -56,12 +56,16 @@ def pages_html():
             return sorted(f for f in r.stdout.decode("utf-8", "replace").split("\0")
                           if f.endswith(".html") and not any(p.startswith((".", "_")) or p in exclus for p in f.split("/")[:-1])
                           and not f.split("/")[-1].startswith("_")
+                          # 16/11/2026 : pages BRUTES d'une source gardées dans donnees/ à la racine (relevé ANETI de Concours,
+                          # copies du site de l'ANETI) = des données, pas des pages du site (1 412 « liens morts » pour rien)
+                          and f.split("/")[0] != "donnees"
                           and os.path.exists(os.path.join(RACINE, f)))   # 21/10/2026 : page suivie mais effacée par la construction (doublon fusionné)
     except (OSError, subprocess.SubprocessError):
         pass
     out = []
     for d, dirs, fs in os.walk(RACINE):
-        dirs[:] = [x for x in dirs if not x.startswith((".", "_")) and x not in ("node_modules", "tools", "robot", "data-brut", "preuves")]
+        dirs[:] = [x for x in dirs if not x.startswith((".", "_")) and x not in ("node_modules", "tools", "robot", "data-brut", "preuves")
+                   and not (d == RACINE and x == "donnees")]
         for f in fs:
             if f.endswith(".html") and not f.startswith("_"):
                 out.append(os.path.relpath(os.path.join(d, f), RACINE).replace(os.sep, "/"))
