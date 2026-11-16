@@ -203,24 +203,24 @@
   },
   "2026-11": {
    "premier_jour": "2026-11-01",
-   "dernier_jour": "2026-11-15",
+   "dernier_jour": "2026-11-16",
    "fini": false,
    "chiffres": {
-    "au": "2026-11-15",
+    "au": "2026-11-16",
     "debut": "2026-11-01",
     "ouverts": {
-     "n": 68,
-     "postes": 188,
+     "n": 77,
+     "postes": 203,
      "sans_postes": 0
     },
     "national": {
-     "n": 25,
-     "postes": 45,
+     "n": 31,
+     "postes": 53,
      "sans_postes": 0
     },
     "locaux": {
-     "n": 43,
-     "postes": 143,
+     "n": 46,
+     "postes": 150,
      "sans_postes": 0
     },
     "finances": 0,
@@ -251,9 +251,14 @@
       5
      ],
      [
+      "ben-arous",
+      3,
+      8
+     ],
+     [
       "tunis",
-      2,
-      2
+      3,
+      3
      ],
      [
       "gabes",
@@ -266,11 +271,6 @@
       2
      ],
      [
-      "medenine",
-      1,
-      2
-     ],
-     [
       "sfax",
       1,
       2
@@ -279,28 +279,28 @@
     "metiers": [
      [
       "administratif",
-      24,
-      40
+      32,
+      53
      ],
      [
       "ouvrier",
-      20,
-      36
+      25,
+      44
      ],
      [
       "autre",
-      9,
-      31
-     ],
-     [
-      "technicien",
-      5,
-      13
+      6,
+      27
      ],
      [
       "chauffeur",
       4,
       58
+     ],
+     [
+      "technicien",
+      4,
+      11
      ],
      [
       "ingenieur",
@@ -329,6 +329,12 @@
       "الشركة الوطنية العقارية للبلاد التونسية للجنوب",
       6,
       9,
+      "national"
+     ],
+     [
+      "وكالة النهوض بالاستثمار الخارجي",
+      6,
+      8,
       "national"
      ],
      [
@@ -362,6 +368,12 @@
       "sidi-bouzid"
      ],
      [
+      "بلدية بن عروس",
+      3,
+      8,
+      "ben-arous"
+     ],
+     [
       "بلدية جمال",
       3,
       3,
@@ -372,29 +384,29 @@
      "n": 7,
      "postes": 33,
      "sans_postes": 0,
-     "jusqu_au": "2026-11-21"
+     "jusqu_au": "2026-11-22"
     },
     "nouveaux": {
-     "n": 39,
-     "postes": 136,
+     "n": 49,
+     "postes": 153,
      "sans_postes": 0
     },
     "nouveaux_metiers": [
      [
       "administratif",
-      12
+      20
      ],
      [
       "ouvrier",
-      11
-     ],
-     [
-      "autre",
-      5
+      15
      ],
      [
       "technicien",
       4
+     ],
+     [
+      "autre",
+      3
      ],
      [
       "chauffeur",
@@ -414,8 +426,8 @@
      ]
     ],
     "clos": {
-     "n": 29,
-     "postes": 62,
+     "n": 30,
+     "postes": 64,
      "sans_postes": 0
     },
     "resultats": {
@@ -891,7 +903,7 @@
     },
     "3309": {
      "postes": 1,
-     "metier": "autre",
+     "metier": "ouvrier",
      "gouvernorat": "sidi-bouzid",
      "cloture_candidatures": "2026-11-23",
      "vu_le": "2026-10-24",
@@ -1051,7 +1063,7 @@
     },
     "3324": {
      "postes": 1,
-     "metier": "autre",
+     "metier": "ouvrier",
      "gouvernorat": "nabeul",
      "cloture_candidatures": "2026-12-03",
      "vu_le": "2026-11-02",
@@ -1171,7 +1183,7 @@
     },
     "3340": {
      "postes": 2,
-     "metier": "autre",
+     "metier": "ouvrier",
      "gouvernorat": "national",
      "cloture_candidatures": "2026-11-25",
      "vu_le": "2026-11-04",
@@ -1799,6 +1811,126 @@
      "gouvernorat": "national",
      "cloture_candidatures": "2026-07-02",
      "vu_le": "2026-11-15",
+     "publies": []
+    },
+    "897": {
+     "postes": 1,
+     "metier": "ouvrier",
+     "gouvernorat": "gafsa",
+     "cloture_candidatures": "2020-11-30",
+     "vu_le": "2026-11-16",
+     "publies": []
+    },
+    "915": {
+     "postes": 1,
+     "metier": "technicien",
+     "gouvernorat": "gafsa",
+     "cloture_candidatures": "2020-12-31",
+     "vu_le": "2026-11-16",
+     "publies": []
+    },
+    "1001": {
+     "postes": 1,
+     "metier": "autre",
+     "gouvernorat": "gafsa",
+     "cloture_candidatures": "2021-03-19",
+     "vu_le": "2026-11-16",
+     "publies": []
+    },
+    "2522": {
+     "postes": 1,
+     "metier": "ouvrier",
+     "gouvernorat": "gafsa",
+     "cloture_candidatures": "2025-11-14",
+     "vu_le": "2026-11-16",
+     "publies": []
+    },
+    "2523": {
+     "postes": 1,
+     "metier": "ouvrier",
+     "gouvernorat": "gafsa",
+     "cloture_candidatures": "2025-11-14",
+     "vu_le": "2026-11-16",
+     "publies": []
+    },
+    "3368": {
+     "postes": 1,
+     "metier": "administratif",
+     "gouvernorat": "tunis",
+     "cloture_candidatures": "2026-11-30",
+     "vu_le": "2026-11-16",
+     "publies": []
+    },
+    "3360": {
+     "postes": 1,
+     "metier": "administratif",
+     "gouvernorat": "national",
+     "cloture_candidatures": "2026-12-16",
+     "vu_le": "2026-11-16",
+     "publies": []
+    },
+    "3361": {
+     "postes": 1,
+     "metier": "administratif",
+     "gouvernorat": "national",
+     "cloture_candidatures": "2026-12-16",
+     "vu_le": "2026-11-16",
+     "publies": []
+    },
+    "3362": {
+     "postes": 1,
+     "metier": "administratif",
+     "gouvernorat": "national",
+     "cloture_candidatures": "2026-12-16",
+     "vu_le": "2026-11-16",
+     "publies": []
+    },
+    "3363": {
+     "postes": 2,
+     "metier": "administratif",
+     "gouvernorat": "national",
+     "cloture_candidatures": "2026-12-16",
+     "vu_le": "2026-11-16",
+     "publies": []
+    },
+    "3364": {
+     "postes": 1,
+     "metier": "administratif",
+     "gouvernorat": "national",
+     "cloture_candidatures": "2026-12-16",
+     "vu_le": "2026-11-16",
+     "publies": []
+    },
+    "3365": {
+     "postes": 2,
+     "metier": "ouvrier",
+     "gouvernorat": "national",
+     "cloture_candidatures": "2026-12-16",
+     "vu_le": "2026-11-16",
+     "publies": []
+    },
+    "3366": {
+     "postes": 2,
+     "metier": "ouvrier",
+     "gouvernorat": "ben-arous",
+     "cloture_candidatures": "2026-12-16",
+     "vu_le": "2026-11-16",
+     "publies": []
+    },
+    "3367": {
+     "postes": 4,
+     "metier": "administratif",
+     "gouvernorat": "ben-arous",
+     "cloture_candidatures": "2026-12-16",
+     "vu_le": "2026-11-16",
+     "publies": []
+    },
+    "3369": {
+     "postes": 2,
+     "metier": "administratif",
+     "gouvernorat": "ben-arous",
+     "cloture_candidatures": "2026-12-16",
+     "vu_le": "2026-11-16",
      "publies": []
     }
    }
