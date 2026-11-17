@@ -1,4 +1,4 @@
-# Installe sur le PC d'Ahmed la tâche planifiée « Concours-ANETI » : chaque jour à 12h30, tools\aneti_pc.py télécharge
+﻿# Installe sur le PC d'Ahmed la tâche planifiée « Concours-ANETI » : chaque jour à 12h30, tools\aneti_pc.py télécharge
 # les pages de l'ANETI (qui refuse les connexions venant de l'étranger, donc de GitHub) et les envoie sur GitHub.
 #
 # Prérequis (déjà présents pour le relevé Otrity) : Python, Git, connexion GitHub (gh auth login).
@@ -12,6 +12,8 @@ $racine = Split-Path -Parent $PSScriptRoot
 $script = Join-Path $racine "tools\aneti_pc.py"
 
 $py = (Get-Command python -ErrorAction SilentlyContinue).Source
+# pythonw.exe (17/11/2026) : la tâche tourne SANS fenêtre noire (le 17/11, la fenêtre fermée par erreur avait arrêté le relevé)
+if ($py) { $pyw = Join-Path (Split-Path $py) "pythonw.exe"; if (Test-Path $pyw) { $py = $pyw } }
 if (-not $py) { throw "Python introuvable : installez-le d'abord (python.org ou Microsoft Store)." }
 if (-not (Get-Command git -ErrorAction SilentlyContinue)) { throw "Git introuvable : installez-le d'abord (git-scm.com)." }
 

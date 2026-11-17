@@ -27,6 +27,9 @@ import urllib.parse
 import urllib.request
 from pathlib import Path
 
+# tâche Windows lancée par pythonw.exe (17/11/2026) : aucune fenêtre noire à fermer par erreur, git non plus
+SANS_FENETRE = getattr(subprocess, "CREATE_NO_WINDOW", 0)
+
 ROOT = Path(__file__).resolve().parent.parent
 CONF = ROOT / "tools" / "aneti_a_lire.json"
 SORTIE = ROOT / "donnees" / "aneti"
@@ -45,7 +48,7 @@ def log(msg):
 
 
 def git(*args):
-    r = subprocess.run(["git", "-C", str(ROOT), *args], capture_output=True, text=True)
+    r = subprocess.run(["git", "-C", str(ROOT), *args], capture_output=True, text=True, creationflags=SANS_FENETRE)
     if r.returncode:
         raise RuntimeError(f"git {' '.join(args)} : {r.stderr.strip()}")
     return r.stdout
@@ -114,14 +117,14 @@ def main():
         if essai or not ok:
             return 0 if ok else 1
         git("add", "-A", "--", "donnees/aneti")
-        if subprocess.run(["git", "-C", str(ROOT), "diff", "--cached", "--quiet"]).returncode == 0:
+        if subprocess.run(["git", "-C", str(ROOT), "diff", "--cached", "--quiet"], creationflags=SANS_FENETRE).returncode == 0:
             log("rien de nouveau")
             return 0
         git("commit", "-m", f"Relevé ANETI depuis le PC ({r['date']})", "--", "donnees/aneti")
         git("push", "origin", "main")
         log("envoyé sur GitHub")
-    except Exception as e:
-        log(f"ÉCHEC : {e}")
+    except BaseException as e:   # arrêt brutal compris (fenêtre fermée, PC éteint pendant le relevé) : toujours noté
+        log(f"ÉCHEC : {type(e).__name__} {e}")
         return 1
     return 0
 
