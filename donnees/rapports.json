@@ -203,14 +203,14 @@
   },
   "2026-11": {
    "premier_jour": "2026-11-01",
-   "dernier_jour": "2026-11-16",
+   "dernier_jour": "2026-11-17",
    "fini": false,
    "chiffres": {
-    "au": "2026-11-16",
+    "au": "2026-11-17",
     "debut": "2026-11-01",
     "ouverts": {
-     "n": 77,
-     "postes": 203,
+     "n": 72,
+     "postes": 177,
      "sans_postes": 0
     },
     "national": {
@@ -219,21 +219,21 @@
      "sans_postes": 0
     },
     "locaux": {
-     "n": 46,
-     "postes": 150,
+     "n": 41,
+     "postes": 124,
      "sans_postes": 0
     },
     "finances": 0,
     "gouvernorats": [
      [
       "nabeul",
-      16,
-      21
+      14,
+      19
      ],
      [
       "monastir",
-      9,
-      32
+      6,
+      8
      ],
      [
       "bizerte",
@@ -284,13 +284,8 @@
      ],
      [
       "ouvrier",
-      28,
-      66
-     ],
-     [
-      "chauffeur",
-      4,
-      58
+      24,
+      41
      ],
      [
       "technicien",
@@ -301,6 +296,11 @@
       "ingenieur",
       4,
       7
+     ],
+     [
+      "chauffeur",
+      3,
+      57
      ],
      [
       "autre",
@@ -381,10 +381,10 @@
      ]
     ],
     "semaine": {
-     "n": 7,
-     "postes": 33,
+     "n": 14,
+     "postes": 23,
      "sans_postes": 0,
-     "jusqu_au": "2026-11-22"
+     "jusqu_au": "2026-11-23"
     },
     "nouveaux": {
      "n": 49,
@@ -426,8 +426,8 @@
      ]
     ],
     "clos": {
-     "n": 30,
-     "postes": 64,
+     "n": 35,
+     "postes": 90,
      "sans_postes": 0
     },
     "resultats": {
