@@ -435,11 +435,11 @@
      "final": 0
     },
     "avis": {
-     "n": 16,
+     "n": 19,
      "types": {
+      "resultats": 6,
+      "candidatures": 5,
       "nouveau": 6,
-      "resultats": 5,
-      "candidatures": 3,
       "report": 2
      }
     }
