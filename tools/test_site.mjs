@@ -469,5 +469,31 @@ check("paiement : le motif est le code personnel, jamais « nom … (motif du pa
         !!b && journal.share && journal.share.url === "https://concours.clicvia.com" + chemin && !/video/.test(journal.share.url + " " + journal.share.text) && !journal.open);
     }
   } }
+// ---- 17/11/2026 (liste des « 20 points » d'Ahmed, règles communes § 55 et § 58) : page 404 commune + liens Confidentialité / Conditions
+{ const h404 = existsSync(join(root, "404.html")) ? lire("404.html") : "", j404 = existsSync(join(root, "404.js")) ? lire("404.js") : "";
+  check("page 404 commune à la racine publiée (404.html qui charge /404.js « Recherche de la page »)",
+    /<title>Page introuvable — [^<]+<\/title>/.test(h404) && h404.includes('<script src="/404.js"></script>') && j404.includes("Recherche de la page"));
+  const FR = ['href="https://clicvia.com/confidentialite/"', ">Confidentialité</a>", 'href="https://clicvia.com/conditions/"', ">Conditions d'utilisation</a>"];
+  const AR = ['href="https://clicvia.com/ar/confidentialite/"', ">الخصوصية</a>", 'href="https://clicvia.com/ar/conditions/"', ">شروط الاستعمال</a>"];
+  const pied = h => (h.match(/<footer[\s\S]*?<\/footer>/) || [""])[0];
+  // pied écrit dans la page (pages refaites chaque jour, français et arabe)
+  const sansStatique = pages.filter(p => !FR.every(x => pied(lire(p)).includes(x)) || (existsSync(join(root, "ar", p)) && !AR.every(x => pied(lire("ar/" + p)).includes(x))));
+  check("liens « Confidentialité » / « Conditions d'utilisation » écrits dans le pied de chaque page refaite (FR + ar/)" + (sansStatique.length ? " — " + sansStatique.slice(0, 3).join(", ") : ""), !sansStatique.length);
+  // pied fabriqué par assets/page.js (toutes les sortes de pages, anciennes pages de concours comprises)
+  if (JSDOM) {
+    const pj = lire("assets/page.js"), dernierConcours = readdirSync(join(root, "concours")).filter(n => existsSync(join(root, "concours", n, "index.html")))[0];
+    const sortes = ["index.html", "gouvernorat/tunis/index.html", "metier/" + readdirSync(join(root, "metier"))[0] + "/index.html", `concours/${dernierConcours}/index.html`,
+      "actualites/index.html", "ministeres/index.html", "guide-inscription/index.html", "alertes/index.html", "a-propos/index.html", "rapports/index.html"];
+    const ko = [];
+    for (const p of sortes) for (const [pref, att] of [["", FR], ["ar/", AR]]) {
+      if (!existsSync(join(root, pref + p))) continue;
+      const dom = new JSDOM(lire(pref + p).replace(/<script[^>]*src="[^"]*"[^>]*><\/script>/g, ""), { runScripts: "outside-only", url: "https://concours.clicvia.com/" + pref + p.replace(/index\.html$/, ""), pretendToBeVisual: true });
+      const w = dom.window; w.allerVers = () => {}; w.eval(pj); w.document.dispatchEvent(new w.Event("DOMContentLoaded"));
+      await new Promise(r => setTimeout(r, 20));
+      const nav = w.document.querySelector("#pied nav"); if (!nav || !att.every(x => nav.outerHTML.includes(x))) ko.push(pref + p);
+    }
+    check(`liens « Confidentialité » / « Conditions d'utilisation » dans le pied fabriqué par page.js, chaque sorte de page (FR + ar/)` + (ko.length ? " — " + ko.slice(0, 3).join(", ") : ""), !ko.length);
+  }
+}
 console.log(`\n${ok}/${ok + ko} vérifications réussies` + (ko ? ` — ${ko} ÉCHEC(S) : ne pas publier.` : " — tout est bon."));
 process.exit(ko ? 1 : 0);

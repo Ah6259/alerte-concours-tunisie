@@ -65,6 +65,8 @@
           <a href="${site}a-propos/">${T("Comment fonctionne le site ?", "كيف يعمل الموقع؟")}</a>
           <a href="${site}#avis">${T("Votre avis", "رأيك")}</a>
         <a href="https://clicvia.com/" rel="noopener" target="_blank">${T("Tous nos services", "كل خدماتنا")}</a>
+        <a href="https://clicvia.com/${T("", "ar/")}confidentialite/" rel="noopener" target="_blank">${T("Confidentialité", "الخصوصية")}</a>
+        <a href="https://clicvia.com/${T("", "ar/")}conditions/" rel="noopener" target="_blank">${T("Conditions d'utilisation", "شروط الاستعمال")}</a>
         </nav>
         <p>${T(`Source : <a href="https://www.concours.gov.tn/" rel="noopener">portail officiel des concours publics</a> (concours.gov.tn). Chaque concours renvoie au portail officiel, où se fait l'inscription.`,
                `المصدر: <a href="https://www.concours.gov.tn/" rel="noopener">البوابة الرسمية للمناظرات العمومية</a> (${iso("concours.gov.tn")}). كل مناظرة مرفقة برابط البوابة الرسمية حيث يتم الترشح.`)}</p>

@@ -38,6 +38,13 @@ def L(fr, ar):
     return f'<span data-l="fr">{fr}</span><span data-l="ar">{ar}</span>'
 
 
+# pages communes de clicvia.com (17/11/2026) dans le pied de page (aussi ajoutées par assets/page.js quand le script tourne)
+PIED_COMMUN = L('<a href="https://clicvia.com/confidentialite/" rel="noopener">Confidentialité</a> · '
+                '<a href="https://clicvia.com/conditions/" rel="noopener">Conditions d’utilisation</a>'.replace("’", "'"),
+                '<a href="https://clicvia.com/ar/confidentialite/" rel="noopener">الخصوصية</a> · '
+                '<a href="https://clicvia.com/ar/conditions/" rel="noopener">شروط الاستعمال</a>')
+
+
 def dfr(d):
     return f"{d[8:10]}/{d[5:7]}/{d[:4]}" if d else ""
 
@@ -414,7 +421,8 @@ def page(chemin, racine, titre, description, hero, contenu, v, maj, jsonld="", s
 <div class="alerte-panne" id="alerte-panne" role="status"></div>
 {contenu}
 </main>
-<footer id="pied"><div class="wrap"><p>{L("Sources : portail officiel des concours publics (concours.gov.tn) et plateforme des concours du ministère des Finances (concours.finances.gov.tn) · © 2026 Alerte Concours Tunisie — tous droits réservés.", "المصادر: البوابة الرسمية للمناظرات العمومية (concours.gov.tn) ومنصة مناظرات وزارة المالية (concours.finances.gov.tn) · © 2026 تنبيه المناظرات تونس — جميع الحقوق محفوظة.")}</p></div></footer>
+<footer id="pied"><div class="wrap"><p>{L("Sources : portail officiel des concours publics (concours.gov.tn) et plateforme des concours du ministère des Finances (concours.finances.gov.tn) · © 2026 Alerte Concours Tunisie — tous droits réservés.", "المصادر: البوابة الرسمية للمناظرات العمومية (concours.gov.tn) ومنصة مناظرات وزارة المالية (concours.finances.gov.tn) · © 2026 تنبيه المناظرات تونس — جميع الحقوق محفوظة.")}</p>
+<p>{PIED_COMMUN}</p></div></footer>
 <script data-goatcounter="{COMPTEUR}/count" async src="https://gc.zgo.at/count.js"></script>
 </body>
 </html>
@@ -593,6 +601,7 @@ def page_a_propos(v, maj):
 {li("Pas de compte à créer pour consulter le site. Votre téléphone garde seulement la langue choisie.", "لا حساب لإنشائه لتصفح الموقع. هاتفك يحفظ فقط اللغة المختارة.")}
 {li("Statistiques de visite anonymes, sans cookies (GoatCounter).", "إحصائيات زيارات مجهولة، دون ملفات تعريف الارتباط (⁨GoatCounter⁩).")}
 {li("Votre avis et l'inscription aux alertes ne sont envoyés que si vous touchez « Envoyer » (service Formspree). Vos coordonnées servent seulement à l'abonnement : elles ne sont jamais publiées ni vendues.", "رأيك والتسجيل في التنبيهات لا يُرسلان إلا إذا لمست «أرسل» (خدمة ⁨Formspree⁩). بياناتك تُستعمل للاشتراك فقط: لا تُنشر ولا تُباع أبدًا.")}
+{li("Les pages « Confidentialité » et « Conditions d'utilisation », communes à tous nos sites, sont en bas de chaque page.", "صفحتا «الخصوصية» و«شروط الاستعمال»، المشتركتان بين كل مواقعنا، في أسفل كل صفحة.")}
 </ul></section>
 <section class="carte"><h2>{L("Mises à jour automatiques", "تحيين آلي")}</h2>
 <p>{L("Chaque jour, un robot relit les sources et refait toutes les pages, sans intervention à la main. La date de la dernière lecture est écrite en bas de chaque page. Si le portail officiel ne répond pas, la dernière liste lue reste affichée et un avertissement apparaît quand elle date de plusieurs jours.",
