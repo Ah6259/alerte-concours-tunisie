@@ -1,5 +1,5 @@
 {
- "date": "2026-11-18",
+ "date": "2026-11-19",
  "heure": "12:30",
  "pages": [
   {
@@ -78,7 +78,7 @@
    "nom": "accueil-fr",
    "url": "https://www.emploi.nat.tn/fo/Fr/global.php",
    "code": 200,
-   "taille": 114029
+   "taille": 115272
   }
  ]
 }
