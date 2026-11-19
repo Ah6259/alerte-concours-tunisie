@@ -1932,6 +1932,30 @@
      "cloture_candidatures": "2026-12-16",
      "vu_le": "2026-11-16",
      "publies": []
+    },
+    "607": {
+     "postes": 2,
+     "metier": "technicien",
+     "gouvernorat": "ben-arous",
+     "cloture_candidatures": "2020-01-10",
+     "vu_le": "2026-11-19",
+     "publies": []
+    },
+    "1038": {
+     "postes": 1,
+     "metier": "technicien",
+     "gouvernorat": "ben-arous",
+     "cloture_candidatures": "2021-04-19",
+     "vu_le": "2026-11-19",
+     "publies": []
+    },
+    "1039": {
+     "postes": 1,
+     "metier": "ingenieur",
+     "gouvernorat": "ben-arous",
+     "cloture_candidatures": "2021-04-19",
+     "vu_le": "2026-11-19",
+     "publies": []
     }
    }
   }
