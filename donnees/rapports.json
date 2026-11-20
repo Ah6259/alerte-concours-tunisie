@@ -203,14 +203,14 @@
   },
   "2026-11": {
    "premier_jour": "2026-11-01",
-   "dernier_jour": "2026-11-19",
+   "dernier_jour": "2026-11-20",
    "fini": false,
    "chiffres": {
-    "au": "2026-11-19",
+    "au": "2026-11-20",
     "debut": "2026-11-01",
     "ouverts": {
-     "n": 72,
-     "postes": 177,
+     "n": 74,
+     "postes": 179,
      "sans_postes": 0
     },
     "national": {
@@ -219,8 +219,8 @@
      "sans_postes": 0
     },
     "locaux": {
-     "n": 41,
-     "postes": 124,
+     "n": 43,
+     "postes": 126,
      "sans_postes": 0
     },
     "finances": 0,
@@ -236,6 +236,11 @@
       8
      ],
      [
+      "ben-arous",
+      5,
+      10
+     ],
+     [
       "bizerte",
       4,
       61
@@ -249,11 +254,6 @@
       "sidi-bouzid",
       4,
       5
-     ],
-     [
-      "ben-arous",
-      3,
-      8
      ],
      [
       "tunis",
@@ -279,8 +279,8 @@
     "metiers": [
      [
       "administratif",
-      32,
-      53
+      34,
+      55
      ],
      [
       "ouvrier",
@@ -344,6 +344,12 @@
       "nabeul"
      ],
      [
+      "بلدية بن عروس",
+      5,
+      10,
+      "ben-arous"
+     ],
+     [
       "بلدية قليبية",
       5,
       7,
@@ -368,12 +374,6 @@
       "sidi-bouzid"
      ],
      [
-      "بلدية بن عروس",
-      3,
-      8,
-      "ben-arous"
-     ],
-     [
       "بلدية جمال",
       3,
       3,
@@ -384,17 +384,17 @@
      "n": 19,
      "postes": 34,
      "sans_postes": 0,
-     "jusqu_au": "2026-11-25"
+     "jusqu_au": "2026-11-26"
     },
     "nouveaux": {
-     "n": 49,
-     "postes": 153,
+     "n": 51,
+     "postes": 155,
      "sans_postes": 0
     },
     "nouveaux_metiers": [
      [
       "administratif",
-      20
+      22
      ],
      [
       "ouvrier",
@@ -435,9 +435,9 @@
      "final": 0
     },
     "avis": {
-     "n": 20,
+     "n": 21,
      "types": {
-      "resultats": 7,
+      "resultats": 8,
       "candidatures": 5,
       "nouveau": 6,
       "report": 2
@@ -1955,6 +1955,22 @@
      "gouvernorat": "ben-arous",
      "cloture_candidatures": "2021-04-19",
      "vu_le": "2026-11-19",
+     "publies": []
+    },
+    "3370": {
+     "postes": 1,
+     "metier": "administratif",
+     "gouvernorat": "ben-arous",
+     "cloture_candidatures": "2026-12-21",
+     "vu_le": "2026-11-20",
+     "publies": []
+    },
+    "3371": {
+     "postes": 1,
+     "metier": "administratif",
+     "gouvernorat": "ben-arous",
+     "cloture_candidatures": "2026-12-21",
+     "vu_le": "2026-11-20",
      "publies": []
     }
    }
