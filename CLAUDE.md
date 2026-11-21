@@ -202,3 +202,5 @@ Rien n'est ajouté au site sans l'accord d'Ahmed.
   fixe (#EEF3F8) sous un texte devenu clair, et `var(--p)` n'existait pas (rond numéroté et liens D17 / IZI sans couleur). Fin de `assets/style.css` :
   `--p`, `--p-clair`, `--p-tres-clair` (= couleurs du site, claires ou sombres) et `--p-sur` (chiffre du rond) définis ; en sombre, texte foncé
   (#0D141D) sur `.btn`, `.btn-publier`, `.btn-video-site`, `.avis-envoyer`, `.rappel.fort` (J-1 / J-2). Contrôle de contraste (sombre ET clair) : 0 texte sous 3.
+- **21/11/2026 — mode CLAIR plus lisible (accord d'Ahmed : « foncer un peu »)** : bloc clair `:root` de `assets/style.css` : `--rouge` #C2412F -> #B23A29
+  (dates limites « demain ! »), `--or` #B7791F -> #8F5D14 (J-4, « Convocation »), boutons WhatsApp #1F9D55 -> #15803D. Contrôle `mode_sombre.mjs --clair --seuil 4.5` : 0 ; sombre : 0.
