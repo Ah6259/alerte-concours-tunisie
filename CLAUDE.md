@@ -208,3 +208,12 @@ Rien n'est ajouté au site sans l'accord d'Ahmed.
   plateforme des Finances ne répond plus depuis le 21/10/2026 et mettait `maj` en rouge depuis le 20/11. `RETIREES` de
   `tools/sources_en_panne.py` : elle est encore essayée à chaque passage (ses concours reviennent seuls), mais sa panne ne met plus le robot
   en rouge ; tableau et actualités du portail toujours surveillés. Test dans tools/test_robot.py (85).
+
+## 21/11/2026 (nuit) — Google + IA (demande d'Ahmed : « que Google et les IA indexent nos sites »)
+- État Search Console (21/11) : accueil et actualites/ « Discovered - currently not indexed » (Google ne les a pas encore visités) ; aucune requête.
+- Accueil : JSON-LD WebSite (nom FR/AR, éditeur `Organization` Clicvia + page Facebook) à côté de la FAQ (retiré de la page arabe par
+  langues.py, comme avant) ; année du titre = année du jour (`jour[:4]`, plus jamais « 2026 » figé).
+- robots.txt (fabriqué par construire_site.py) : même liste que les autres sites (DuckDuckBot, YandexBot, Applebot permis ; Claude-Web,
+  FacebookBot, ImagesiftBot, HTTrack, wget… refusés ; un bloc par robot : le test lit « User-agent: GPTBot\nDisallow: / »).
+- `llms.txt` réécrit à la main SANS chiffre (l'ancien, de l'outil commun du 13/10, disait « 64 concours » et listait des concours clos).
+- « Comment fonctionne le site ? » (FR + AR) : « Publié par Clicvia… pour nous écrire : Votre avis » (carte « Un site indépendant »).

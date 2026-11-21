@@ -608,7 +608,9 @@ def page_a_propos(v, maj):
        "كل يوم، يعيد برنامج آلي قراءة المصادر ويعيد بناء كل الصفحات، دون أي تدخل يدوي. تاريخ آخر قراءة مكتوب أسفل كل صفحة. إذا لم تستجب البوابة الرسمية، تبقى آخر قائمة مقروءة معروضة ويظهر تنبيه عندما يمر عليها عدة أيام.")}</p></section>
 <section class="carte"><h2>{L("Un site indépendant", "موقع مستقل")}</h2>
 <p>{L("Ce site est indépendant et non officiel. Les informations sont indicatives : seul le portail officiel fait foi, et l'inscription se fait toujours sur le site officiel.",
-       "هذا الموقع مستقل وغير رسمي. المعلومات للإرشاد فقط: البوابة الرسمية هي المرجع الوحيد، والترشح يتم دائمًا في الموقع الرسمي.")}</p></section>
+       "هذا الموقع مستقل وغير رسمي. المعلومات للإرشاد فقط: البوابة الرسمية هي المرجع الوحيد، والترشح يتم دائمًا في الموقع الرسمي.")}</p>
+<p>{L('Publié par <b>Clicvia</b> (<a href="https://clicvia.com/" rel="noopener">clicvia.com</a>), qui réunit des services pratiques et gratuits pour la Tunisie. Pour nous écrire : le formulaire « Votre avis » ci-dessous.',
+       'ينشره ' + ISO("Clicvia") + ' (<a href="https://clicvia.com/ar/" rel="noopener">clicvia.com</a>)، الذي يجمع خدمات عملية مجانية لتونس. لتكتب لنا: استمارة « رأيك » أسفل هذه الصفحة.')}</p></section>
 {AVIS}"""
     return page("a-propos/", "../", "Comment fonctionne le site ? | Alerte Concours Tunisie",
                 "Comment fonctionne Alerte Concours Tunisie : d'où viennent les concours (portail officiel, ministère des Finances), comment s'en servir, chaque fonction, gratuit et payant, vos données.",
@@ -784,7 +786,12 @@ def construire(jour):
     faq = [("Où s'inscrire à un concours public en Tunisie ?", "Sur le portail officiel des concours publics, www.concours.gov.tn (identifiant : numéro de carte d'identité). Certains organismes demandent aussi une inscription sur leur propre site."),
            ("Les concours sont-ils classés par gouvernorat ?", "Oui. Chaque concours est classé dans le gouvernorat de l'organisme ; un concours national (ministère, office national) est ouvert à toute la Tunisie et apparaît dans chaque gouvernorat."),
            ("Ce site est-il officiel ?", "Non. C'est un site indépendant et gratuit qui reprend chaque jour la liste officielle ; seul le portail officiel fait foi.")]
-    jsonld = ('<script type="application/ld+json">\n' + json.dumps({"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [
+    site_ld = {"@context": "https://schema.org", "@type": "WebSite", "name": "Alerte Concours Tunisie", "alternateName": "تنبيه المناظرات تونس",
+               "url": URL_SITE, "inLanguage": ["fr", "ar"],
+               "description": "Tous les concours publics ouverts en Tunisie, par gouvernorat et par métier, avec la date limite et le lien officiel. Mis à jour chaque jour.",
+               "publisher": {"@type": "Organization", "name": "Clicvia", "url": "https://clicvia.com/", "sameAs": ["https://www.facebook.com/1327283777142447"]}}
+    jsonld = ('<script type="application/ld+json">\n' + json.dumps(site_ld, ensure_ascii=False) + "\n</script>\n"
+              + '<script type="application/ld+json">\n' + json.dumps({"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [
         {"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": r}} for q, r in faq]}, ensure_ascii=False) + "\n</script>\n")
     contenu = f"""<section class="carte resume" aria-label="Résumé">
   <div class="r-nouveaux" id="r-nouveaux"><b>0</b><span>{L("nouveaux", "جديدة")}</span></div>
@@ -811,7 +818,7 @@ def construire(jour):
 <p class="lien-comment"><a href="a-propos/">{L("Comment fonctionne le site ?", "كيف يعمل الموقع؟")}</a></p></section>
 {AVIS}"""
     hero = hero_carte(ouverts, "", hero)
-    pages[""] = page("", "", "Concours Tunisie 2026 : tous les concours ouverts par gouvernorat",
+    pages[""] = page("", "", f"Concours Tunisie {jour[:4]} : tous les concours ouverts par gouvernorat",   # année du jour (jamais figée)
                      f"{len(ouverts)} concours publics ouverts en Tunisie, dans les 24 gouvernorats : date limite, postes, lien officiel. Mis à jour chaque jour. مناظرات تونس.",
                      hero, contenu, v, maj, jsonld)
 
@@ -990,8 +997,12 @@ def construire(jour):
         + "".join(f"  <url><loc>{URL_SITE}ar/{c}</loc><lastmod>{rap_dates.get(c) or maj or jour}</lastmod></url>\n" for c in pages if c not in sans_index) + "</urlset>\n")
     open(os.path.join(RACINE, "robots.txt"), "w", encoding="utf-8", newline="\n").write(
         "# Assistants IA qui répondent à une question en citant leur source : bienvenus (référencement sur les IA, 13/10/2026)\nUser-agent: OAI-SearchBot\nUser-agent: ChatGPT-User\nUser-agent: PerplexityBot\nUser-agent: Perplexity-User\nUser-agent: Claude-SearchBot\nUser-agent: Claude-User\nUser-agent: MistralAI-User\nUser-agent: DuckAssistBot\nAllow: /\n\n"
-        + "User-agent: Googlebot\nAllow: /\n\nUser-agent: Bingbot\nAllow: /\n\n"
-        + "".join(f"User-agent: {b}\nDisallow: /\n\n" for b in ("GPTBot", "CCBot", "ClaudeBot", "anthropic-ai", "Google-Extended", "Bytespider", "Amazonbot", "Applebot-Extended", "meta-externalagent", "Diffbot", "omgili", "cohere-ai"))
+        + "# Moteurs de recherche : bienvenus\n" + "".join(f"User-agent: {b}\nAllow: /\n\n" for b in ("Googlebot", "Bingbot", "DuckDuckBot", "YandexBot", "Applebot"))
+        + "# Robots d'entraînement d'IA et aspirateurs de sites : interdits\n"
+        + "".join(f"User-agent: {b}\nDisallow: /\n\n" for b in ("GPTBot", "CCBot", "ClaudeBot", "Claude-Web", "anthropic-ai", "Google-Extended", "Bytespider",
+                                                               "Amazonbot", "Applebot-Extended", "Meta-ExternalAgent", "FacebookBot", "Diffbot", "Omgilibot",
+                                                               "omgili", "cohere-ai", "ImagesiftBot", "HTTrack", "WebCopier", "WebZIP", "Offline Explorer",
+                                                               "wget", "SiteSnagger"))
         + f"User-agent: *\nAllow: /\n\nSitemap: {URL_SITE}sitemap.xml\n")
     json.dump({"id": "/", "name": "Alerte Concours Tunisie", "short_name": "Alerte Concours",
                "description": "Tous les concours publics ouverts en Tunisie, par gouvernorat et par métier.", "start_url": "./", "scope": "./",

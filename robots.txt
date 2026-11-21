@@ -9,12 +9,23 @@ User-agent: MistralAI-User
 User-agent: DuckAssistBot
 Allow: /
 
+# Moteurs de recherche : bienvenus
 User-agent: Googlebot
 Allow: /
 
 User-agent: Bingbot
 Allow: /
 
+User-agent: DuckDuckBot
+Allow: /
+
+User-agent: YandexBot
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+# Robots d'entraînement d'IA et aspirateurs de sites : interdits
 User-agent: GPTBot
 Disallow: /
 
@@ -22,6 +33,9 @@ User-agent: CCBot
 Disallow: /
 
 User-agent: ClaudeBot
+Disallow: /
+
+User-agent: Claude-Web
 Disallow: /
 
 User-agent: anthropic-ai
@@ -39,16 +53,43 @@ Disallow: /
 User-agent: Applebot-Extended
 Disallow: /
 
-User-agent: meta-externalagent
+User-agent: Meta-ExternalAgent
+Disallow: /
+
+User-agent: FacebookBot
 Disallow: /
 
 User-agent: Diffbot
+Disallow: /
+
+User-agent: Omgilibot
 Disallow: /
 
 User-agent: omgili
 Disallow: /
 
 User-agent: cohere-ai
+Disallow: /
+
+User-agent: ImagesiftBot
+Disallow: /
+
+User-agent: HTTrack
+Disallow: /
+
+User-agent: WebCopier
+Disallow: /
+
+User-agent: WebZIP
+Disallow: /
+
+User-agent: Offline Explorer
+Disallow: /
+
+User-agent: wget
+Disallow: /
+
+User-agent: SiteSnagger
 Disallow: /
 
 User-agent: *
