@@ -61,8 +61,15 @@ with tempfile.TemporaryDirectory() as d:
     d2 = d4
     # panne : l'ancien fichier compte 40 lignes, la nouvelle lecture 5 → refus
     d2["concours"] = d2["concours"] * 8; json.dump(d2, open(sortie, "w", encoding="utf-8", newline="\n"), ensure_ascii=False)
-    r3 = run("2026-10-10")
-    check("panne du portail (beaucoup moins de lignes) : ancien fichier gardé, sortie en erreur", r3.returncode == 1 and len(json.load(open(sortie, encoding="utf-8"))["concours"]) == 40)
+    avant = open(sortie, encoding="utf-8").read()
+    r3 = run("2026-10-12")
+    check("panne PASSAGÈRE du portail (beaucoup moins de lignes, dernière lecture réussie la veille) : ancien fichier gardé tel quel, pas d'alerte (§ 51)",
+          r3.returncode == 0 and open(sortie, encoding="utf-8").read() == avant and "PANNE PASSAGÈRE" in r3.stdout)
+    r3 = run("2026-10-14")
+    check("panne du portail qui dure plus de 2 jours : ancien fichier gardé, sortie en erreur",
+          r3.returncode == 1 and open(sortie, encoding="utf-8").read() == avant and len(json.load(open(sortie, encoding="utf-8"))["concours"]) == 40)
+    check("panne : jamais « passagère » sans date de lecture réussie", not R.passagere("", "2026-10-12") and R.passagere("2026-10-11", "2026-10-13")
+          and not R.passagere("2026-10-11", "2026-10-14"))
 
 # --- actualités du portail (08/10/2026)
 import lire_actualites as A
@@ -111,7 +118,7 @@ check("liste coupée une fois par le portail : relue après une pause, la lectur
       len(lu) == 98 and n == 10 and len(_attentes) == 1 and not R.suspecte(lu, 100))
 _lectures = [([{"id": i} for i in range(30 + k)], 3) for k in range(3)]
 lu, n = R.lire_avec_reprise(lambda: _lectures.pop(0), 100, dormir=lambda s: None)
-check("liste coupée à chaque essai : la meilleure lecture est gardée et reste suspecte (robot rouge, ancien fichier gardé)",
+check("liste coupée à chaque essai : la meilleure lecture est gardée et reste suspecte (ancien fichier gardé ; rouge seulement après 2 jours)",
       len(lu) == 32 and not _lectures and R.suspecte(lu, 100))
 _lectures, _t = [([{"id": 1}], 1), ([{"id": i} for i in range(98)], 10)], iter([0, 600])
 lu, n = R.lire_avec_reprise(lambda: _lectures.pop(0), 100, dormir=lambda s: None, horloge=lambda: next(_t))

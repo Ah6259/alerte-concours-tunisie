@@ -8,7 +8,7 @@
 Données : faits publics (organisme, grade, nombre de postes, dates, état des résultats) + lien vers le portail
 officiel ; jamais le texte entier. Le portail n'a pas de robots.txt ; le robot reste lent et s'identifie.
 Prudence : si la lecture ramène beaucoup moins de lignes que la fois précédente (panne du portail), l'ancien fichier
-est gardé et le robot sort en erreur (GitHub prévient ; le site garde ses données).
+est gardé ; le robot ne sort en erreur que si la dernière lecture réussie a plus de 2 jours (panne passagère = pas d'alerte).
 L'historique des résultats (« لم تنشر » = pas encore publié → publié) sert au « Suivi de mes concours ».
 Deuxième source (08/10/2026) : plateforme du ministère des Finances (robot/lire_finances.py), numéros 900000+,
 classés « national » ; une panne de cette source garde ses concours de la veille et ne bloque jamais le site."""
@@ -31,6 +31,7 @@ JOURS_ABSENT = 3          # un concours ouvert qui manque à la lecture est gard
 REPRISE_ATTENTE = 120       # lecture suspecte : nouvel essai après 2 min, puis 4 min (20/10/2026)
 REPRISE_BUDGET = 8 * 60     # ... seulement si tout tient en 8 min (étape GitHub limitée à 15 min)
 SEUIL_CHUTE = 0.5          # moins de 50 % des lignes de la fois précédente : lecture suspecte
+JOURS_PANNE = 2            # lecture suspecte avec une lecture réussie de moins de 2 jours : panne passagère, pas de rouge (§ 51)
 
 # métiers : (slug, nom FR, nom AR, mots du grade). L'ordre compte : le premier qui correspond gagne.
 METIERS = [
@@ -149,6 +150,16 @@ def fusionner(anciens, nouveaux, jour):
     return nouveaux
 
 
+def passagere(lu_le, jour):
+    """Vrai si la dernière lecture réussie (lu_le) date de JOURS_PANNE jours au plus : panne passagère, pas de rouge."""
+    if not lu_le:
+        return False
+    try:
+        return (dt.date.fromisoformat(jour) - dt.date.fromisoformat(str(lu_le)[:10])).days <= JOURS_PANNE
+    except ValueError:
+        return False
+
+
 def suspecte(nouveaux, nb_ancien):
     return not nouveaux or (nb_ancien >= 20 and len(nouveaux) < SEUIL_CHUTE * nb_ancien)
 
@@ -189,7 +200,16 @@ def main():
     if nouveaux is None:
         nouveaux, pages = lire_avec_reprise(lambda: lire_portail(a.max_pages), nb_ancien)
     if suspecte(nouveaux, nb_ancien):
-        print(f"ÉCHEC : lecture suspecte ({len(nouveaux)} lignes contre {nb_ancien} la fois précédente) ; ancien fichier gardé.")
+        # 21/11/2026 (règles communes § 51 et § 55.6) : une panne PASSAGÈRE du portail (lent, liste coupée : 20/11/2026, 40 lignes
+        # contre 84 après 10 min) n'est pas une alerte : ancien fichier gardé tel quel (date de lecture inchangée), le site est
+        # refait avec lui et le passage suivant réessaie. Rouge seulement si la dernière lecture réussie a plus de JOURS_PANNE jours
+        # (tools/sources_en_panne.py le vérifie aussi après l'enregistrement).
+        print(f"Lecture suspecte ({len(nouveaux)} lignes contre {nb_ancien} la fois précédente) ; ancien fichier gardé.")
+        if passagere(ancien.get("lu_le"), a.aujourdhui):
+            print(f"PANNE PASSAGÈRE : dernière lecture réussie le {ancien.get('lu_le')} (moins de {JOURS_PANNE} jours) ; "
+                  "nouvel essai au passage suivant, pas d'alerte.")
+            return
+        print(f"ÉCHEC : portail illisible depuis le {ancien.get('lu_le') or 'jamais'} (plus de {JOURS_PANNE} jours).")
         sys.exit(1)
     # deuxième source : ministère des Finances (une panne ne bloque rien : ses concours de la veille sont gardés)
     limite = (dt.date.fromisoformat(a.aujourdhui) - dt.timedelta(days=JOURS_FERMES_FINANCES)).isoformat()

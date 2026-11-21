@@ -1,7 +1,7 @@
 # Robot quotidien d'Alerte Concours Tunisie — tourne sur GitHub, sans PC.
 # Lecture du tableau officiel des concours -> rapports du mois -> pages du site -> tests -> enregistrement (GitHub Pages republie tout seul).
 # Le site n'est enregistré que si TOUS les tests passent (sinon GitHub prévient et l'ancien site reste en ligne).
-# Si le portail est en panne, l'ancien fichier est gardé (le robot sort en erreur et GitHub prévient).
+# Si le portail est en panne, l'ancien fichier est gardé ; rouge seulement si la panne dure plus de 2 jours (règle § 51).
 name: maj
 on:
   schedule:
@@ -40,7 +40,9 @@ jobs:
       - uses: actions/setup-node@v4
         with: { node-version: "22" }
       - name: Pages du site
-        run: python robot/construire_site.py
+        # date des données (21/11/2026) : un jour de panne passagère du portail, l'ancien fichier est gardé et le site est refait
+        # à SA date (sinon les concours clos entre-temps faussent les compteurs et les tests) ; jour normal : date du jour
+        run: python robot/construire_site.py --aujourdhui "$(python -c 'import json; print(json.load(open("donnees/concours.json"))["lu_le"])')"
       - name: Tests du site (rien n'est publié si un test échoue)
         run: |
           npm install --no-save --no-package-lock jsdom
