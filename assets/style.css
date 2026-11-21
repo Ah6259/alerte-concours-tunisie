@@ -498,3 +498,18 @@ html[dir="rtl"] .paie-etapes>li::before{left:auto;right:12px}
 .rap-partage-ok{margin:6px 0 0;font-size:14px;font-weight:700;color:var(--vert)}
 .rap-partage-ok:empty{display:none}
 @media (prefers-color-scheme:dark){ :root:not([data-theme="light"]) .rap-partager{color:#0D141D} }
+
+/* 21/11/2026 — mode sombre lisible (capture d'Ahmed : étapes du paiement illisibles) + couleur --p enfin définie.
+   --p / --p-tres-clair suivent les couleurs du site (claires ou sombres) ; --p-sur = chiffre du rond numéroté. */
+:root{--p:var(--bleu);--p-clair:var(--bleu-clair);--p-tres-clair:var(--bleu-tres-clair);--p-sur:#fff}
+.paie-etapes>li{color:var(--texte)}
+.paie-etapes>li::before{color:var(--p-sur)}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){--p-sur:#0D141D}
+  /* boutons au texte blanc sur une couleur devenue claire en sombre : texte foncé */
+  :root:not([data-theme="light"]) .btn,:root:not([data-theme="light"]) .btn-publier,:root:not([data-theme="light"]) .btn-video-site,
+  :root:not([data-theme="light"]) .avis-envoyer,:root:not([data-theme="light"]) .rp-partager,:root:not([data-theme="light"]) .rappel.fort{color:#0D141D}
+  :root:not([data-theme="light"]) .appli-btn{background:var(--carte)}
+  :root:not([data-theme="light"]) .appli-btn:has(img){background:#fff}
+  :root:not([data-theme="light"]) .btn-video-partager{background:var(--carte)}
+}
