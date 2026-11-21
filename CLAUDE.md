@@ -198,3 +198,7 @@ Rien n'est ajouté au site sans l'accord d'Ahmed.
   Même correction dans Appels d'offres (langues.py copié).
 - 09/11/2026 (contrôle SEO commun : « description de 49 caractères » sur ar/rapports/2026-11/) : `textes_arabes()` de robot/langues.py met le
   titre arabe devant un premier paragraphe trop court (< 50 caractères) ; le contrôle SEO du matin le vérifie sur toutes les pages.
+- **21/11/2026 — mode sombre lisible (capture d'Ahmed)** : sur `alertes/`, les étapes du paiement (`ol.paie-etapes`) gardaient un fond clair
+  fixe (#EEF3F8) sous un texte devenu clair, et `var(--p)` n'existait pas (rond numéroté et liens D17 / IZI sans couleur). Fin de `assets/style.css` :
+  `--p`, `--p-clair`, `--p-tres-clair` (= couleurs du site, claires ou sombres) et `--p-sur` (chiffre du rond) définis ; en sombre, texte foncé
+  (#0D141D) sur `.btn`, `.btn-publier`, `.btn-video-site`, `.avis-envoyer`, `.rappel.fort` (J-1 / J-2). Contrôle de contraste (sombre ET clair) : 0 texte sous 3.
