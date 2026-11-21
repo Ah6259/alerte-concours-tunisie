@@ -1,52 +1,34 @@
-# Concours Tunisie 2026 : tous les concours ouverts par gouvernorat
+# Alerte Concours Tunisie — tous les concours publics ouverts en Tunisie
 
-> 64 concours publics ouverts en Tunisie, dans les 24 gouvernorats : date limite, postes, lien officiel. Mis à jour chaque jour. مناظرات تونس.
+> Liste gratuite de tous les concours publics (مناظرات) ouverts en Tunisie, relue chaque jour sur le portail officiel des concours (concours.gov.tn) : organisme, grade, nombre de postes, date limite d'inscription et lien officiel. Classés par gouvernorat (24 gouvernorats + concours nationaux) et par métier. مناظرات تونس.
 
-Site gratuit et indépendant, publié par Clicvia (https://clicvia.com/), le portail de services pratiques pour la Tunisie. Adresse : https://concours.clicvia.com/
-Langues : français, arabe.
+Site gratuit et indépendant (non officiel), publié par Clicvia (https://clicvia.com/), qui réunit des services pratiques pour la Tunisie. Adresse : https://concours.clicvia.com/
+Langues : français (pages à leur adresse) et arabe (même page dans https://concours.clicvia.com/ar/…, une adresse par langue).
+L'inscription à un concours se fait toujours sur le portail officiel ; seul le portail officiel fait foi.
 
 ## Pages principales
 
-- [Actualités des concours en Tunisie : résultats, convocations, admis](https://concours.clicvia.com/actualites/) : Résultats, listes des admis, convocations et nouveaux concours publiés sur le portail officiel des concours publics : 300 avis, mis à jour chaque jour. نتائج المناظرات.
-- [Concours des ministères en Tunisie : annonces sur les sites officiels](https://concours.clicvia.com/ministeres/) : Annonces de concours publiées sur les sites officiels des ministères tunisiens (78 annonces), vérifiées chaque semaine : ouverture, convocations, résultats. مناظرات الوزارات.
-- [S'inscrire à un concours public en Tunisie (concours.gov.tn) : les étapes](https://concours.clicvia.com/guide-inscription/) : Comment s'inscrire à un concours public en Tunisie sur concours.gov.tn : créer son compte, trouver le concours, postuler, suivre les résultats.
-- [Alertes concours Tunisie sur Telegram : votre métier, votre gouvernorat — 15 DT / 3 mois](https://concours.clicvia.com/alertes/) : Recevez chaque matin sur Telegram les nouveaux concours publics de votre métier et de votre gouvernorat, et le suivi de vos concours (convocations, résultats). 15 DT / 3 mois ou 39 DT / an, sans 
-- [À propos et sources](https://concours.clicvia.com/a-propos/) : D'où viennent les concours d'Alerte Concours Tunisie : le portail officiel des concours publics et la plateforme du ministère des Finances.
-- [Concours Techniciens : عدد 01 تقني هندسة ميكانيكية — بلدية ماطر (1 poste)](https://concours.clicvia.com/concours/2390/) : Concours n° 2390 : عدد 01 تقني هندسة ميكانيكية, بلدية ماطر, 1 poste. Inscriptions closes le 03/10/2025. Lien officiel, guide d'inscription, état des résultats. مناظرة.
-- [Concours Techniciens : عدد 01 تقني هنسة مدينة — بلدية ماطر (1 poste)](https://concours.clicvia.com/concours/2391/) : Concours n° 2391 : عدد 01 تقني هنسة مدينة, بلدية ماطر, 1 poste. Inscriptions closes le 03/10/2025. Lien officiel, guide d'inscription, état des résultats. مناظرة.
-- [Concours Informatique : عدد 01 تقني مخبر إعلامية — بلدية ماطر (1 poste)](https://concours.clicvia.com/concours/2392/) : Concours n° 2392 : عدد 01 تقني مخبر إعلامية, بلدية ماطر, 1 poste. Inscriptions closes le 10/10/2025. Lien officiel, guide d'inscription, état des résultats. مناظرة.
-- [Concours Autres : معماري أول — بلدية ماطر (1 poste)](https://concours.clicvia.com/concours/2412/) : Concours n° 2412 : معماري أول, بلدية ماطر, 1 poste. Inscriptions closes le 17/10/2025. Lien officiel, guide d'inscription, état des résultats. مناظرة.
-- [Concours Autres : معماري أول متعاقد — بلدية ماطر (1 poste)](https://concours.clicvia.com/concours/2543/) : Concours n° 2543 : معماري أول متعاقد, بلدية ماطر, 1 poste. Inscriptions closes le 07/11/2025. Lien officiel, guide d'inscription, état des résultats. مناظرة.
-- [Concours Ingénieurs : مهندس أول اختصاص ميكانيك — بلدية الحمامات (1 poste)](https://concours.clicvia.com/concours/2548/) : Concours n° 2548 : مهندس أول اختصاص ميكانيك, بلدية الحمامات, 1 poste. Inscriptions closes le 25/11/2025. Lien officiel, guide d'inscription, état des résultats. مناظرة.
-- [Concours Informatique : تقني في الإعلاميّة — المركز الوطني للإعلامية (2 postes)](https://concours.clicvia.com/concours/2583/) : Concours n° 2583 : تقني في الإعلاميّة, المركز الوطني للإعلامية, 2 postes. Inscriptions closes le 15/12/2025. Lien officiel, guide d'inscription, état des résultats. مناظرة.
-- [Concours Informatique : تقني في الإعلامية — بلدية سيدي ثابت (1 poste)](https://concours.clicvia.com/concours/2612/) : Concours n° 2612 : تقني في الإعلامية, بلدية سيدي ثابت, 1 poste. Inscriptions closes le 30/12/2025. Lien officiel, guide d'inscription, état des résultats. مناظرة.
-- [Concours à Tunis 2026 : 27 concours ouverts](https://concours.clicvia.com/gouvernorat/tunis/) : Concours à Tunis : 27 concours ouverts, date limite, postes et lien officiel. المناظرات في ولاية تونس.
-- [Concours à Ariana 2026 : 21 concours ouverts](https://concours.clicvia.com/gouvernorat/ariana/) : Concours à Ariana : 21 concours ouverts, date limite, postes et lien officiel. المناظرات في ولاية أريانة.
-- [Concours à Ben Arous 2026 : 21 concours ouverts](https://concours.clicvia.com/gouvernorat/ben-arous/) : Concours à Ben Arous : 21 concours ouverts, date limite, postes et lien officiel. المناظرات في ولاية بن عروس.
-- [Concours à La Manouba 2026 : 21 concours ouverts](https://concours.clicvia.com/gouvernorat/manouba/) : Concours à La Manouba : 21 concours ouverts, date limite, postes et lien officiel. المناظرات في ولاية منوبة.
-- [Concours à Nabeul 2026 : 35 concours ouverts](https://concours.clicvia.com/gouvernorat/nabeul/) : Concours à Nabeul : 35 concours ouverts, date limite, postes et lien officiel. المناظرات في ولاية نابل.
-- [Concours à Zaghouan 2026 : 21 concours ouverts](https://concours.clicvia.com/gouvernorat/zaghouan/) : Concours à Zaghouan : 21 concours ouverts, date limite, postes et lien officiel. المناظرات في ولاية زغوان.
-- [Concours à Bizerte 2026 : 25 concours ouverts](https://concours.clicvia.com/gouvernorat/bizerte/) : Concours à Bizerte : 25 concours ouverts, date limite, postes et lien officiel. المناظرات في ولاية بنزرت.
-- [Concours à Béja 2026 : 21 concours ouverts](https://concours.clicvia.com/gouvernorat/beja/) : Concours à Béja : 21 concours ouverts, date limite, postes et lien officiel. المناظرات في ولاية باجة.
-- [Concours Ingénieurs Tunisie 2026 : 4 ouverts](https://concours.clicvia.com/metier/ingenieur/) : Concours ingénieurs en Tunisie : 4 ouverts, par gouvernorat, date limite et lien officiel. مناظرات المهندسون.
-- [Concours Santé Tunisie 2026 : 0 ouverts](https://concours.clicvia.com/metier/sante/) : Concours santé en Tunisie : 0 ouverts, par gouvernorat, date limite et lien officiel. مناظرات الصحة.
-- [Concours Enseignement Tunisie 2026 : 0 ouverts](https://concours.clicvia.com/metier/enseignant/) : Concours enseignement en Tunisie : 0 ouverts, par gouvernorat, date limite et lien officiel. مناظرات التعليم.
-- [Concours Informatique Tunisie 2026 : 3 ouverts](https://concours.clicvia.com/metier/informatique/) : Concours informatique en Tunisie : 3 ouverts, par gouvernorat, date limite et lien officiel. مناظرات الإعلامية.
-- [Concours Finances et contrôle Tunisie 2026 : 2 ouverts](https://concours.clicvia.com/metier/finance/) : Concours finances et contrôle en Tunisie : 2 ouverts, par gouvernorat, date limite et lien officiel. مناظرات المالية والمراقبة.
-- [Concours Sécurité Tunisie 2026 : 0 ouverts](https://concours.clicvia.com/metier/securite/) : Concours sécurité en Tunisie : 0 ouverts, par gouvernorat, date limite et lien officiel. مناظرات الأمن.
-- [Concours Chauffeurs Tunisie 2026 : 2 ouverts](https://concours.clicvia.com/metier/chauffeur/) : Concours chauffeurs en Tunisie : 2 ouverts, par gouvernorat, date limite et lien officiel. مناظرات السواق.
-- [Concours Techniciens Tunisie 2026 : 8 ouverts](https://concours.clicvia.com/metier/technicien/) : Concours techniciens en Tunisie : 8 ouverts, par gouvernorat, date limite et lien officiel. مناظرات التقنيون.
+- [Accueil : tous les concours ouverts aujourd'hui](https://concours.clicvia.com/) : liste du jour avec date limite et lien officiel, inscriptions qui se terminent bientôt, filtres par gouvernorat et par métier, recherche.
+- [Actualités des concours](https://concours.clicvia.com/actualites/) : résultats, listes des admis, convocations et nouveaux concours publiés sur le portail officiel.
+- [Concours annoncés sur les sites des ministères](https://concours.clicvia.com/ministeres/) : annonces relevées chaque semaine sur les sites officiels des ministères, avec leur lien.
+- [S'inscrire à un concours sur concours.gov.tn](https://concours.clicvia.com/guide-inscription/) : les étapes une par une (compte, choix du concours, candidature, résultats).
+- [Rapports du mois](https://concours.clicvia.com/rapports/) : les concours du mois en chiffres, par métier et par gouvernorat.
+- [Comment fonctionne le site ?](https://concours.clicvia.com/a-propos/) : sources officielles, mises à jour, qui publie le site.
+- Une page par gouvernorat (concours de ses organismes + concours nationaux ouverts à toute la Tunisie), par exemple [Tunis](https://concours.clicvia.com/gouvernorat/tunis/), [Sfax](https://concours.clicvia.com/gouvernorat/sfax/), [Sousse](https://concours.clicvia.com/gouvernorat/sousse/), [Nabeul](https://concours.clicvia.com/gouvernorat/nabeul/), [concours nationaux](https://concours.clicvia.com/gouvernorat/national/).
+- Une page par métier, par exemple [enseignants](https://concours.clicvia.com/metier/enseignant/), [santé](https://concours.clicvia.com/metier/sante/), [ingénieurs](https://concours.clicvia.com/metier/ingenieur/), [techniciens](https://concours.clicvia.com/metier/technicien/), [administratifs](https://concours.clicvia.com/metier/administratif/), [ouvriers](https://concours.clicvia.com/metier/ouvrier/).
+- Une page par concours (concours/<numéro>/) : grade, organisme, postes, dates, état des résultats et lien officiel.
 
-Le site compte 156 pages au total ; la liste complète est dans le plan du site : https://concours.clicvia.com/sitemap.xml
+La liste complète des pages est dans le plan du site : https://concours.clicvia.com/sitemap.xml
 
 ## Données fraîches (JSON, lisibles par une machine)
 
-Ces fichiers sont produits par les robots du site ; un assistant peut les lire pour répondre avec les données du jour, en citant le site.
-- [Concours publics tunisiens relevés sur la source officielle (ouverts et récents)](https://concours.clicvia.com/donnees/concours.json) — mis à jour chaque jour. Champs : concours[] : organisme, grade, postes, cloture_candidatures (date limite d'inscription), cloture_concours, metier, gouvernorat, lien (officiel) ; lu_le = date du relevé.
+Ce fichier est produit chaque jour par le robot du site ; un assistant peut le lire pour répondre avec les concours du jour, en citant le site.
+- [Concours publics tunisiens relevés sur la source officielle](https://concours.clicvia.com/donnees/concours.json) — mis à jour chaque jour. Champs : lu_le = date du relevé ; concours[] : organisme, grade, postes, cloture_candidatures (date limite d'inscription), cloture_concours, metier, gouvernorat, lien (officiel).
 
 ## À savoir
 
-- Concours publics ouverts, relevés chaque jour sur les sources officielles ; chaque page donne la date limite et le lien officiel.
+- Concours relevés chaque jour sur le portail officiel des concours publics (et, quand elle répond, la plateforme des concours du ministère des Finances) ; la date du relevé est écrite sur chaque page.
+- Un concours « national » (ministère, office national) est ouvert à toute la Tunisie : il apparaît dans chaque gouvernorat.
 - Site non officiel : en cas de doute, la source officielle indiquée sur la page fait foi.
-- Pour citer : « Concours Tunisie 2026 : tous les concours ouverts par gouvernorat » avec le lien de la page utilisée.
+- Pour citer : « Alerte Concours Tunisie » (concours.clicvia.com) avec le lien de la page utilisée.
 - Les assistants IA qui répondent à une question en citant leur source sont les bienvenus ; l'aspiration du contenu pour entraîner un modèle n'est pas autorisée (voir robots.txt).
