@@ -6,261 +6,6 @@
  "pages": 17,
  "concours": [
   {
-   "id": "624",
-   "decision": "CH-01/2020",
-   "organisme": "الشركة الجهوية للنقل ببنزرت",
-   "grade": "سواق",
-   "postes": 51,
-   "cloture_candidatures": "2020-02-11",
-   "cloture_concours": "2020-02-11",
-   "resultat_initial": "اطلاع",
-   "resultat_final": "اطلاع",
-   "metier": "autre",
-   "gouvernorat": "bizerte",
-   "vu_le": "2026-11-21",
-   "historique": [],
-   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-11-21"
-  },
-  {
-   "id": "625",
-   "decision": "AT1-01/2020",
-   "organisme": "الشركة الجهوية للنقل ببنزرت",
-   "grade": "عون تقني",
-   "postes": 2,
-   "cloture_candidatures": "2020-02-11",
-   "cloture_concours": "2020-02-11",
-   "resultat_initial": "اطلاع",
-   "resultat_final": "اطلاع",
-   "metier": "technicien",
-   "gouvernorat": "bizerte",
-   "vu_le": "2026-11-21",
-   "historique": [],
-   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-11-21"
-  },
-  {
-   "id": "626",
-   "decision": "AT2-01/2020",
-   "organisme": "الشركة الجهوية للنقل ببنزرت",
-   "grade": "عون تقني",
-   "postes": 2,
-   "cloture_candidatures": "2020-02-11",
-   "cloture_concours": "2020-02-11",
-   "resultat_initial": "اطلاع",
-   "resultat_final": "اطلاع",
-   "metier": "technicien",
-   "gouvernorat": "bizerte",
-   "vu_le": "2026-11-21",
-   "historique": [],
-   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-11-21"
-  },
-  {
-   "id": "627",
-   "decision": "OQ1-01/2020",
-   "organisme": "الشركة الجهوية للنقل ببنزرت",
-   "grade": "عامل / عامل مؤهل",
-   "postes": 2,
-   "cloture_candidatures": "2020-02-11",
-   "cloture_concours": "2020-02-11",
-   "resultat_initial": "اطلاع",
-   "resultat_final": "اطلاع",
-   "metier": "ouvrier",
-   "gouvernorat": "bizerte",
-   "vu_le": "2026-11-21",
-   "historique": [],
-   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-11-21"
-  },
-  {
-   "id": "628",
-   "decision": "OQ2-01/2020",
-   "organisme": "الشركة الجهوية للنقل ببنزرت",
-   "grade": "عامل / عامل مؤهل",
-   "postes": 2,
-   "cloture_candidatures": "2020-02-11",
-   "cloture_concours": "2020-02-11",
-   "resultat_initial": "اطلاع",
-   "resultat_final": "اطلاع",
-   "metier": "ouvrier",
-   "gouvernorat": "bizerte",
-   "vu_le": "2026-11-21",
-   "historique": [],
-   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-11-21"
-  },
-  {
-   "id": "629",
-   "decision": "OQ3-01/2020",
-   "organisme": "الشركة الجهوية للنقل ببنزرت",
-   "grade": "شهادة الكفاءة المهنية اختصاص كهرباء السيارات",
-   "postes": 1,
-   "cloture_candidatures": "2020-02-11",
-   "cloture_concours": "2020-02-11",
-   "resultat_initial": "لم تنشر",
-   "resultat_final": "لم تنشر",
-   "metier": "autre",
-   "gouvernorat": "bizerte",
-   "vu_le": "2026-11-21",
-   "historique": [],
-   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-11-21"
-  },
-  {
-   "id": "630",
-   "decision": "OQ4-01/2020",
-   "organisme": "الشركة الجهوية للنقل ببنزرت",
-   "grade": "شهادة الكفاءة المهنية اختصاص ميكانيك",
-   "postes": 1,
-   "cloture_candidatures": "2020-02-11",
-   "cloture_concours": "2020-02-11",
-   "resultat_initial": "اطلاع",
-   "resultat_final": "اطلاع",
-   "metier": "autre",
-   "gouvernorat": "bizerte",
-   "vu_le": "2026-11-21",
-   "historique": [],
-   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-11-21"
-  },
-  {
-   "id": "1686",
-   "decision": "CH-01-2023",
-   "organisme": "الشركة الجهوية للنقل ببنزرت",
-   "grade": "سائق حافلة",
-   "postes": 34,
-   "cloture_candidatures": "2023-06-21",
-   "cloture_concours": "2023-06-21",
-   "resultat_initial": "اطلاع",
-   "resultat_final": "اطلاع",
-   "metier": "chauffeur",
-   "gouvernorat": "bizerte",
-   "vu_le": "2026-11-21",
-   "historique": [],
-   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-11-21"
-  },
-  {
-   "id": "1687",
-   "decision": "I-01-2023",
-   "organisme": "الشركة الجهوية للنقل ببنزرت",
-   "grade": "مهندس",
-   "postes": 1,
-   "cloture_candidatures": "2023-06-21",
-   "cloture_concours": "2023-06-21",
-   "resultat_initial": "اطلاع",
-   "resultat_final": "اطلاع",
-   "metier": "ingenieur",
-   "gouvernorat": "bizerte",
-   "vu_le": "2026-11-21",
-   "historique": [],
-   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-11-21"
-  },
-  {
-   "id": "1688",
-   "decision": "TS-01-2023",
-   "organisme": "الشركة الجهوية للنقل ببنزرت",
-   "grade": "تقني سامي",
-   "postes": 1,
-   "cloture_candidatures": "2023-06-21",
-   "cloture_concours": "2023-06-21",
-   "resultat_initial": "اطلاع",
-   "resultat_final": "اطلاع",
-   "metier": "technicien",
-   "gouvernorat": "bizerte",
-   "vu_le": "2026-11-21",
-   "historique": [],
-   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-11-21"
-  },
-  {
-   "id": "1689",
-   "decision": "AQ-01-2023",
-   "organisme": "الشركة الجهوية للنقل ببنزرت",
-   "grade": "عون تقني",
-   "postes": 1,
-   "cloture_candidatures": "2023-06-21",
-   "cloture_concours": "2023-06-21",
-   "resultat_initial": "اطلاع",
-   "resultat_final": "اطلاع",
-   "metier": "technicien",
-   "gouvernorat": "bizerte",
-   "vu_le": "2026-11-21",
-   "historique": [],
-   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-11-21"
-  },
-  {
-   "id": "1690",
-   "decision": "AQ-02-2023",
-   "organisme": "الشركة الجهوية للنقل ببنزرت",
-   "grade": "عون تقني",
-   "postes": 2,
-   "cloture_candidatures": "2023-06-21",
-   "cloture_concours": "2023-06-21",
-   "resultat_initial": "اطلاع",
-   "resultat_final": "اطلاع",
-   "metier": "technicien",
-   "gouvernorat": "bizerte",
-   "vu_le": "2026-11-21",
-   "historique": [],
-   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-11-21"
-  },
-  {
-   "id": "1691",
-   "decision": "AQ-03-2023",
-   "organisme": "الشركة الجهوية للنقل ببنزرت",
-   "grade": "عون تقني",
-   "postes": 3,
-   "cloture_candidatures": "2023-06-21",
-   "cloture_concours": "2023-06-21",
-   "resultat_initial": "اطلاع",
-   "resultat_final": "اطلاع",
-   "metier": "technicien",
-   "gouvernorat": "bizerte",
-   "vu_le": "2026-11-21",
-   "historique": [],
-   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-11-21"
-  },
-  {
-   "id": "1692",
-   "decision": "OU-01-2023",
-   "organisme": "الشركة الجهوية للنقل ببنزرت",
-   "grade": "عامل حراسة ونظافة",
-   "postes": 4,
-   "cloture_candidatures": "2023-06-21",
-   "cloture_concours": "2023-06-21",
-   "resultat_initial": "اطلاع",
-   "resultat_final": "اطلاع",
-   "metier": "ouvrier",
-   "gouvernorat": "bizerte",
-   "vu_le": "2026-11-21",
-   "historique": [],
-   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-11-21"
-  },
-  {
-   "id": "2133",
-   "decision": "CH-01-2024",
-   "organisme": "الشركة الجهوية للنقل ببنزرت",
-   "grade": "سائق حافلات",
-   "postes": 12,
-   "cloture_candidatures": "2025-01-31",
-   "cloture_concours": "2025-01-31",
-   "resultat_initial": "لم تنشر",
-   "resultat_final": "لم تنشر",
-   "metier": "chauffeur",
-   "gouvernorat": "bizerte",
-   "vu_le": "2026-11-21",
-   "historique": [],
-   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-11-21"
-  },
-  {
    "id": "2390",
    "decision": "108/2025",
    "organisme": "بلدية ماطر",
@@ -738,7 +483,7 @@
    "vu_le": "2026-11-04",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-11-20"
+   "lu_le": "2026-11-21"
   },
   {
    "id": "3341",
@@ -755,7 +500,7 @@
    "vu_le": "2026-11-04",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-11-20"
+   "lu_le": "2026-11-21"
   },
   {
    "id": "3342",
@@ -772,7 +517,7 @@
    "vu_le": "2026-11-04",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-11-20"
+   "lu_le": "2026-11-21"
   },
   {
    "id": "3267",
@@ -1010,7 +755,7 @@
    "vu_le": "2026-11-05",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-11-20"
+   "lu_le": "2026-11-21"
   },
   {
    "id": "3349",
@@ -1027,7 +772,7 @@
    "vu_le": "2026-11-09",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-11-20"
+   "lu_le": "2026-11-21"
   },
   {
    "id": "3350",
@@ -1044,7 +789,7 @@
    "vu_le": "2026-11-09",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-11-20"
+   "lu_le": "2026-11-21"
   },
   {
    "id": "3351",
@@ -1061,7 +806,7 @@
    "vu_le": "2026-11-09",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-11-20"
+   "lu_le": "2026-11-21"
   },
   {
    "id": "3352",
@@ -1078,7 +823,7 @@
    "vu_le": "2026-11-09",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-11-20"
+   "lu_le": "2026-11-21"
   },
   {
    "id": "3353",
@@ -1095,7 +840,7 @@
    "vu_le": "2026-11-09",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-11-20"
+   "lu_le": "2026-11-21"
   },
   {
    "id": "3368",
@@ -1112,7 +857,7 @@
    "vu_le": "2026-11-16",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-11-20"
+   "lu_le": "2026-11-21"
   },
   {
    "id": "3322",
@@ -1214,7 +959,7 @@
    "vu_le": "2026-11-02",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-11-20"
+   "lu_le": "2026-11-21"
   },
   {
    "id": "3356",
@@ -1401,7 +1146,7 @@
    "vu_le": "2026-11-05",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-11-20"
+   "lu_le": "2026-11-21"
   },
   {
    "id": "3345",
@@ -1418,7 +1163,7 @@
    "vu_le": "2026-11-05",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-11-20"
+   "lu_le": "2026-11-21"
   },
   {
    "id": "3354",
@@ -1435,7 +1180,7 @@
    "vu_le": "2026-11-11",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-11-20"
+   "lu_le": "2026-11-21"
   },
   {
    "id": "3355",
@@ -1452,7 +1197,7 @@
    "vu_le": "2026-11-11",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-11-20"
+   "lu_le": "2026-11-21"
   },
   {
    "id": "3357",
