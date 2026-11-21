@@ -20,6 +20,10 @@ RACINE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # lecture réussie (ligne « SOMMEIL »), puis l'alarme sonne (décider de la retirer). Une erreur de lecture CHEZ NOUS (page
 # changée, liste trop courte…) sonne toujours après JOURS jours.
 SOMMEIL_MAX_JOURS = 30
+# SOURCES RETIRÉES DE L'ALARME (décision d'Ahmed du 21/11/2026, point A.10 : « le site doit tourner sans le PC ») : la plateforme des
+# Finances ne répond plus depuis le 21/10/2026 ; elle est encore essayée à chaque passage (ses concours reviennent seuls si elle répond),
+# mais sa panne ne met plus le robot en rouge. Pour la remettre sous alarme : la retirer de cet ensemble.
+RETIREES = {"plateforme du ministère des Finances"}
 EXTERNE = re.compile(r"refused|reset by peer|timed? ?out|Errno (101|104|110|111|113)|HTTP Error (403|429|5\d\d)|injoignable|"
                      r"Temporary failure|Name or service not known|unreachable|No route to host|Cloudflare", re.I)
 
@@ -37,7 +41,7 @@ def en_panne(concours, actualites, jour):
     sources = {"tableau des concours (concours.gov.tn)": concours.get("lu_le"),
                "plateforme du ministère des Finances": concours.get("finances_ok"),
                "actualités du portail (concours.gov.tn)": actualites.get("lu_le")}
-    return [(s, d) for s, d in sources.items() if (d or "") < lim]
+    return [(s, d) for s, d in sources.items() if (d or "") < lim and s not in RETIREES]
 
 
 if __name__ == "__main__":

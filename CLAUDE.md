@@ -204,3 +204,7 @@ Rien n'est ajouté au site sans l'accord d'Ahmed.
   (#0D141D) sur `.btn`, `.btn-publier`, `.btn-video-site`, `.avis-envoyer`, `.rappel.fort` (J-1 / J-2). Contrôle de contraste (sombre ET clair) : 0 texte sous 3.
 - **21/11/2026 — mode CLAIR plus lisible (accord d'Ahmed : « foncer un peu »)** : bloc clair `:root` de `assets/style.css` : `--rouge` #C2412F -> #B23A29
   (dates limites « demain ! »), `--or` #B7791F -> #8F5D14 (J-4, « Convocation »), boutons WhatsApp #1F9D55 -> #15803D. Contrôle `mode_sombre.mjs --clair --seuil 4.5` : 0 ; sombre : 0.
+- **21/11/2026 — source des Finances retirée de l'alarme (décision d'Ahmed, point A.10 : « le site doit tourner sans le PC »)** : la
+  plateforme des Finances ne répond plus depuis le 21/10/2026 et mettait `maj` en rouge depuis le 20/11. `RETIREES` de
+  `tools/sources_en_panne.py` : elle est encore essayée à chaque passage (ses concours reviennent seuls), mais sa panne ne met plus le robot
+  en rouge ; tableau et actualités du portail toujours surveillés. Test dans tools/test_robot.py (85).
