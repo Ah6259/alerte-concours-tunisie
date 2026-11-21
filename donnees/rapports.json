@@ -203,14 +203,14 @@
   },
   "2026-11": {
    "premier_jour": "2026-11-01",
-   "dernier_jour": "2026-11-20",
+   "dernier_jour": "2026-11-21",
    "fini": false,
    "chiffres": {
-    "au": "2026-11-20",
+    "au": "2026-11-21",
     "debut": "2026-11-01",
     "ouverts": {
-     "n": 74,
-     "postes": 179,
+     "n": 73,
+     "postes": 174,
      "sans_postes": 0
     },
     "national": {
@@ -219,8 +219,8 @@
      "sans_postes": 0
     },
     "locaux": {
-     "n": 43,
-     "postes": 126,
+     "n": 42,
+     "postes": 121,
      "sans_postes": 0
     },
     "finances": 0,
@@ -246,14 +246,14 @@
       61
      ],
      [
-      "sousse",
-      4,
-      12
-     ],
-     [
       "sidi-bouzid",
       4,
       5
+     ],
+     [
+      "sousse",
+      3,
+      7
      ],
      [
       "tunis",
@@ -284,8 +284,8 @@
      ],
      [
       "ouvrier",
-      24,
-      41
+      23,
+      36
      ],
      [
       "technicien",
@@ -381,10 +381,10 @@
      ]
     ],
     "semaine": {
-     "n": 19,
-     "postes": 34,
+     "n": 21,
+     "postes": 36,
      "sans_postes": 0,
-     "jusqu_au": "2026-11-26"
+     "jusqu_au": "2026-11-27"
     },
     "nouveaux": {
      "n": 51,
@@ -426,8 +426,8 @@
      ]
     ],
     "clos": {
-     "n": 35,
-     "postes": 90,
+     "n": 36,
+     "postes": 95,
      "sans_postes": 0
     },
     "resultats": {
@@ -435,10 +435,11 @@
      "final": 0
     },
     "avis": {
-     "n": 21,
+     "n": 24,
      "types": {
-      "resultats": 8,
-      "candidatures": 5,
+      "convocation": 1,
+      "resultats": 9,
+      "candidatures": 6,
       "nouveau": 6,
       "report": 2
      }
@@ -1971,6 +1972,126 @@
      "gouvernorat": "ben-arous",
      "cloture_candidatures": "2026-12-21",
      "vu_le": "2026-11-20",
+     "publies": []
+    },
+    "624": {
+     "postes": 51,
+     "metier": "autre",
+     "gouvernorat": "bizerte",
+     "cloture_candidatures": "2020-02-11",
+     "vu_le": "2026-11-21",
+     "publies": []
+    },
+    "625": {
+     "postes": 2,
+     "metier": "technicien",
+     "gouvernorat": "bizerte",
+     "cloture_candidatures": "2020-02-11",
+     "vu_le": "2026-11-21",
+     "publies": []
+    },
+    "626": {
+     "postes": 2,
+     "metier": "technicien",
+     "gouvernorat": "bizerte",
+     "cloture_candidatures": "2020-02-11",
+     "vu_le": "2026-11-21",
+     "publies": []
+    },
+    "627": {
+     "postes": 2,
+     "metier": "ouvrier",
+     "gouvernorat": "bizerte",
+     "cloture_candidatures": "2020-02-11",
+     "vu_le": "2026-11-21",
+     "publies": []
+    },
+    "628": {
+     "postes": 2,
+     "metier": "ouvrier",
+     "gouvernorat": "bizerte",
+     "cloture_candidatures": "2020-02-11",
+     "vu_le": "2026-11-21",
+     "publies": []
+    },
+    "629": {
+     "postes": 1,
+     "metier": "autre",
+     "gouvernorat": "bizerte",
+     "cloture_candidatures": "2020-02-11",
+     "vu_le": "2026-11-21",
+     "publies": []
+    },
+    "630": {
+     "postes": 1,
+     "metier": "autre",
+     "gouvernorat": "bizerte",
+     "cloture_candidatures": "2020-02-11",
+     "vu_le": "2026-11-21",
+     "publies": []
+    },
+    "1686": {
+     "postes": 34,
+     "metier": "chauffeur",
+     "gouvernorat": "bizerte",
+     "cloture_candidatures": "2023-06-21",
+     "vu_le": "2026-11-21",
+     "publies": []
+    },
+    "1687": {
+     "postes": 1,
+     "metier": "ingenieur",
+     "gouvernorat": "bizerte",
+     "cloture_candidatures": "2023-06-21",
+     "vu_le": "2026-11-21",
+     "publies": []
+    },
+    "1688": {
+     "postes": 1,
+     "metier": "technicien",
+     "gouvernorat": "bizerte",
+     "cloture_candidatures": "2023-06-21",
+     "vu_le": "2026-11-21",
+     "publies": []
+    },
+    "1689": {
+     "postes": 1,
+     "metier": "technicien",
+     "gouvernorat": "bizerte",
+     "cloture_candidatures": "2023-06-21",
+     "vu_le": "2026-11-21",
+     "publies": []
+    },
+    "1690": {
+     "postes": 2,
+     "metier": "technicien",
+     "gouvernorat": "bizerte",
+     "cloture_candidatures": "2023-06-21",
+     "vu_le": "2026-11-21",
+     "publies": []
+    },
+    "1691": {
+     "postes": 3,
+     "metier": "technicien",
+     "gouvernorat": "bizerte",
+     "cloture_candidatures": "2023-06-21",
+     "vu_le": "2026-11-21",
+     "publies": []
+    },
+    "1692": {
+     "postes": 4,
+     "metier": "ouvrier",
+     "gouvernorat": "bizerte",
+     "cloture_candidatures": "2023-06-21",
+     "vu_le": "2026-11-21",
+     "publies": []
+    },
+    "2133": {
+     "postes": 12,
+     "metier": "chauffeur",
+     "gouvernorat": "bizerte",
+     "cloture_candidatures": "2025-01-31",
+     "vu_le": "2026-11-21",
      "publies": []
     }
    }
