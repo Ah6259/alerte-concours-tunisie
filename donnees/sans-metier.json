@@ -1,8 +1,43 @@
 {
- "maj": "2026-11-21",
+ "maj": "2026-11-22",
  "explication": "Éléments lus par le robot mais rangés dans aucune catégorie (gardés 120 jours) : une routine y cherche les thèmes qui reviennent (règle commune § 40).",
  "nombre": 34,
  "elements": [
+  {
+   "cle": "portail-3352",
+   "texte": "صحفي مخبر",
+   "organisme": "مؤسسة الإذاعة التونسية",
+   "premier_vu": "2026-11-09",
+   "dernier_vu": "2026-11-22"
+  },
+  {
+   "cle": "portail-3338",
+   "texte": "1",
+   "organisme": "بلدية قليبية",
+   "premier_vu": "2026-11-04",
+   "dernier_vu": "2026-11-22"
+  },
+  {
+   "cle": "portail-3318",
+   "texte": "واضع برامج",
+   "organisme": "بلدية فندق الجديد سلتان",
+   "premier_vu": "2026-10-30",
+   "dernier_vu": "2026-11-22"
+  },
+  {
+   "cle": "portail-2543",
+   "texte": "معماري أول متعاقد",
+   "organisme": "بلدية ماطر",
+   "premier_vu": "2026-10-21",
+   "dernier_vu": "2026-11-22"
+  },
+  {
+   "cle": "portail-2412",
+   "texte": "معماري أول",
+   "organisme": "بلدية ماطر",
+   "premier_vu": "2026-10-21",
+   "dernier_vu": "2026-11-22"
+  },
   {
    "cle": "portail-630",
    "texte": "شهادة الكفاءة المهنية اختصاص ميكانيك",
@@ -22,41 +57,6 @@
    "texte": "سواق",
    "organisme": "الشركة الجهوية للنقل ببنزرت",
    "premier_vu": "2026-11-21",
-   "dernier_vu": "2026-11-21"
-  },
-  {
-   "cle": "portail-3352",
-   "texte": "صحفي مخبر",
-   "organisme": "مؤسسة الإذاعة التونسية",
-   "premier_vu": "2026-11-09",
-   "dernier_vu": "2026-11-21"
-  },
-  {
-   "cle": "portail-3338",
-   "texte": "1",
-   "organisme": "بلدية قليبية",
-   "premier_vu": "2026-11-04",
-   "dernier_vu": "2026-11-21"
-  },
-  {
-   "cle": "portail-3318",
-   "texte": "واضع برامج",
-   "organisme": "بلدية فندق الجديد سلتان",
-   "premier_vu": "2026-10-30",
-   "dernier_vu": "2026-11-21"
-  },
-  {
-   "cle": "portail-2543",
-   "texte": "معماري أول متعاقد",
-   "organisme": "بلدية ماطر",
-   "premier_vu": "2026-10-21",
-   "dernier_vu": "2026-11-21"
-  },
-  {
-   "cle": "portail-2412",
-   "texte": "معماري أول",
-   "organisme": "بلدية ماطر",
-   "premier_vu": "2026-10-21",
    "dernier_vu": "2026-11-21"
   },
   {
