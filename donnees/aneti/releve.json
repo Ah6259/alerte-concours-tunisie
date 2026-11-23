@@ -1,12 +1,12 @@
 {
- "date": "2026-11-20",
+ "date": "2026-11-23",
  "heure": "12:30",
  "pages": [
   {
    "nom": "concours-fr",
    "url": "https://www.emploi.nat.tn/fo/Fr/global.php?page=21",
    "code": 200,
-   "taille": 85077
+   "taille": 83886
   },
   {
    "nom": "concours-fr-detail-3752",
@@ -39,22 +39,16 @@
    "taille": 72719
   },
   {
-   "nom": "concours-fr-detail-3747",
-   "url": "https://www.emploi.nat.tn/fo/Fr/global.php?page=198&ref=3747",
+   "nom": "concours-fr-detail-3745",
+   "url": "https://www.emploi.nat.tn/fo/Fr/global.php?page=198&ref=3745",
    "code": 200,
-   "taille": 73767
+   "taille": 74681
   },
   {
    "nom": "concours-fr-detail-3744",
    "url": "https://www.emploi.nat.tn/fo/Fr/global.php?page=198&ref=3744",
    "code": 200,
    "taille": 72408
-  },
-  {
-   "nom": "concours-fr-detail-3745",
-   "url": "https://www.emploi.nat.tn/fo/Fr/global.php?page=198&ref=3745",
-   "code": 200,
-   "taille": 74681
   },
   {
    "nom": "concours-fr-detail-3743",
@@ -84,7 +78,7 @@
    "nom": "accueil-fr",
    "url": "https://www.emploi.nat.tn/fo/Fr/global.php",
    "code": 200,
-   "taille": 116732
+   "taille": 113740
   }
  ]
 }
