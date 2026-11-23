@@ -203,14 +203,14 @@
   },
   "2026-11": {
    "premier_jour": "2026-11-01",
-   "dernier_jour": "2026-11-22",
+   "dernier_jour": "2026-11-23",
    "fini": false,
    "chiffres": {
-    "au": "2026-11-22",
+    "au": "2026-11-23",
     "debut": "2026-11-01",
     "ouverts": {
-     "n": 73,
-     "postes": 174,
+     "n": 72,
+     "postes": 172,
      "sans_postes": 0
     },
     "national": {
@@ -219,8 +219,8 @@
      "sans_postes": 0
     },
     "locaux": {
-     "n": 42,
-     "postes": 121,
+     "n": 41,
+     "postes": 119,
      "sans_postes": 0
     },
     "finances": 0,
@@ -269,18 +269,13 @@
       "gafsa",
       1,
       2
-     ],
-     [
-      "sfax",
-      1,
-      2
      ]
     ],
     "metiers": [
      [
       "administratif",
-      34,
-      55
+      33,
+      53
      ],
      [
       "ouvrier",
@@ -381,10 +376,10 @@
      ]
     ],
     "semaine": {
-     "n": 21,
-     "postes": 36,
+     "n": 20,
+     "postes": 34,
      "sans_postes": 0,
-     "jusqu_au": "2026-11-28"
+     "jusqu_au": "2026-11-29"
     },
     "nouveaux": {
      "n": 51,
@@ -426,8 +421,8 @@
      ]
     ],
     "clos": {
-     "n": 36,
-     "postes": 95,
+     "n": 37,
+     "postes": 97,
      "sans_postes": 0
     },
     "resultats": {
