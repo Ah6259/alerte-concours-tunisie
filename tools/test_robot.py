@@ -110,6 +110,26 @@ try:
 finally:
     U.build_opener, R.PAUSE, R.time.sleep = _vrai, _pause, _dormir
 check("portail trop lent : lecture arrêtée après 10 min avec les pages déjà lues (plus d'étape coupée à 15 min)", n == 2 and len(lu) == len(R.lignes(page)) > 0)
+# --- portail qui ne répond plus (22/11/2026 19h47 : « read operation timed out » après 3 essais, robot rouge) :
+# aucune page = lecture vide (suspecte, ancien fichier gardé) ; en cours de lecture = pages déjà lues gardées
+class _OpPanne:
+    def __init__(self, bonnes): self.bonnes = bonnes
+    def open(self, req, timeout=0):
+        if self.bonnes:
+            return _Rep(self.bonnes.pop(0).encode())
+        raise TimeoutError("The read operation timed out")
+U.build_opener = lambda *a: _OpPanne([]); R.PAUSE = 0; R.time.sleep = lambda s: None
+try:
+    lu, n = R.lire_portail(10)
+finally:
+    U.build_opener, R.PAUSE, R.time.sleep = _vrai, _pause, _dormir
+check("portail injoignable dès la 1re page : pas de plantage, lecture vide (suspecte : ancien fichier gardé)", lu == [] and n == 0 and R.suspecte(lu, 100))
+U.build_opener = lambda *a: _OpPanne([page if "Page$Next" in page else page + "Page$Next"]); R.PAUSE = 0; R.time.sleep = lambda s: None
+try:
+    lu, n = R.lire_portail(10)
+finally:
+    U.build_opener, R.PAUSE, R.time.sleep = _vrai, _pause, _dormir
+check("portail injoignable en cours de lecture : pas de plantage, pages déjà lues gardées", n == 1 and len(lu) == len(R.lignes(page)) > 0)
 # --- liste coupée une fois par le portail (20/10/2026 : 35 lignes au lieu de 100, robot rouge pour une panne passagère) :
 # la lecture suspecte est refaite et la bonne est gardée ; le rouge ne reste que si chaque essai est coupé
 _lectures, _attentes = [([{"id": i} for i in range(35)], 4), ([{"id": i} for i in range(98)], 10)], []

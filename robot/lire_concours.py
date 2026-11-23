@@ -100,7 +100,16 @@ def lire_portail(max_pages, duree_max=DUREE_MAX, horloge=time.monotonic):
             except Exception:
                 if essai == 2: raise
                 time.sleep(10 * (essai + 1))
-    page = get(); vus = {}; n = 1
+    # 23/11/2026 (règles communes § 51 et § 55.6) : portail qui ne répond plus (22/11 19h47 : « read operation timed out »
+    # après 3 essais, robot rouge pour une panne de quelques minutes). Une erreur réseau n'arrête plus le robot : aucune page
+    # lue = lecture vide (suspecte : ancien fichier gardé, rouge seulement après JOURS_PANNE jours) ; en cours de route = les
+    # pages déjà lues sont gardées (comme « portail trop lent », concours manquants gardés 3 jours par fusionner).
+    try:
+        page = get()
+    except Exception as e:
+        print(f"Portail injoignable ({str(e)[:120]}) : aucune page lue")
+        return [], 0
+    vus = {}; n = 1
     for l in lignes(page): vus[l["id"]] = l
     while "Page$Next" in page and n < max_pages:
         if horloge() - debut > duree_max:      # trop lent : on s'arrête là ; les concours non relus sont gardés 3 jours (fusionner)
@@ -109,7 +118,12 @@ def lire_portail(max_pages, duree_max=DUREE_MAX, horloge=time.monotonic):
         f = champs_caches(page); f.update({"__EVENTTARGET": "GVConcoursPublic", "__EVENTARGUMENT": "Page$Next"})
         time.sleep(PAUSE)
         donnees = urllib.parse.urlencode(f).encode()
-        page = get(donnees); n += 1
+        try:
+            page = get(donnees); n += 1
+        except Exception as e:
+            print(f"Portail injoignable en cours de lecture ({str(e)[:120]}) : lecture arrêtée après {n} page(s), "
+                  "concours manquants gardés 3 jours")
+            break
         # page vide ou coupée (08/10/2026 : lecture arrêtée à la 8e page, 37 lignes au lieu de 143) : on la redemande
         # jusqu'à 3 fois ; une vraie dernière page (moins de 5 lignes, pas de page suivante) revient pareille et est gardée
         meilleure = page
@@ -117,7 +131,10 @@ def lire_portail(max_pages, duree_max=DUREE_MAX, horloge=time.monotonic):
             if "Page$Next" in page or len(lignes(page)) >= 5:
                 break
             time.sleep(10 * (essai + 1))
-            page = get(donnees)
+            try:
+                page = get(donnees)
+            except Exception:
+                break
             if len(lignes(page)) >= len(lignes(meilleure)) or "Page$Next" in page:
                 meilleure = page
         page = meilleure
