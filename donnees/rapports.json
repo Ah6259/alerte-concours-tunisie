@@ -209,8 +209,8 @@
     "au": "2026-11-23",
     "debut": "2026-11-01",
     "ouverts": {
-     "n": 72,
-     "postes": 172,
+     "n": 73,
+     "postes": 174,
      "sans_postes": 0
     },
     "national": {
@@ -219,8 +219,8 @@
      "sans_postes": 0
     },
     "locaux": {
-     "n": 41,
-     "postes": 119,
+     "n": 42,
+     "postes": 121,
      "sans_postes": 0
     },
     "finances": 0,
@@ -262,8 +262,8 @@
      ],
      [
       "gabes",
-      1,
-      4
+      2,
+      6
      ],
      [
       "gafsa",
@@ -279,8 +279,8 @@
      ],
      [
       "ouvrier",
-      23,
-      36
+      24,
+      38
      ],
      [
       "technicien",
@@ -382,8 +382,8 @@
      "jusqu_au": "2026-11-29"
     },
     "nouveaux": {
-     "n": 51,
-     "postes": 155,
+     "n": 52,
+     "postes": 157,
      "sans_postes": 0
     },
     "nouveaux_metiers": [
@@ -393,7 +393,7 @@
      ],
      [
       "ouvrier",
-      16
+      17
      ],
      [
       "technicien",
@@ -430,11 +430,11 @@
      "final": 0
     },
     "avis": {
-     "n": 24,
+     "n": 27,
      "types": {
+      "candidatures": 7,
+      "resultats": 11,
       "convocation": 1,
-      "resultats": 9,
-      "candidatures": 6,
       "nouveau": 6,
       "report": 2
      }
@@ -2087,6 +2087,14 @@
      "gouvernorat": "bizerte",
      "cloture_candidatures": "2025-01-31",
      "vu_le": "2026-11-21",
+     "publies": []
+    },
+    "3372": {
+     "postes": 2,
+     "metier": "ouvrier",
+     "gouvernorat": "gabes",
+     "cloture_candidatures": "2026-12-29",
+     "vu_le": "2026-11-23",
      "publies": []
     }
    }
