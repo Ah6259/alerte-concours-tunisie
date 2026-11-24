@@ -209,8 +209,8 @@
     "au": "2026-11-24",
     "debut": "2026-11-01",
     "ouverts": {
-     "n": 61,
-     "postes": 158,
+     "n": 64,
+     "postes": 172,
      "sans_postes": 0
     },
     "national": {
@@ -219,8 +219,8 @@
      "sans_postes": 0
     },
     "locaux": {
-     "n": 36,
-     "postes": 114,
+     "n": 39,
+     "postes": 128,
      "sans_postes": 0
     },
     "finances": 0,
@@ -232,8 +232,8 @@
      ],
      [
       "ben-arous",
-      5,
-      10
+      8,
+      24
      ],
      [
       "bizerte",
@@ -269,8 +269,8 @@
     "metiers": [
      [
       "administratif",
-      30,
-      49
+      32,
+      62
      ],
      [
       "ouvrier",
@@ -294,8 +294,8 @@
      ],
      [
       "ingenieur",
-      2,
-      3
+      3,
+      4
      ],
      [
       "finance",
@@ -316,6 +316,12 @@
       "national"
      ],
      [
+      "بلدية بن عروس",
+      8,
+      24,
+      "ben-arous"
+     ],
+     [
       "وكالة النهوض بالاستثمار الخارجي",
       6,
       8,
@@ -326,12 +332,6 @@
       6,
       7,
       "nabeul"
-     ],
-     [
-      "بلدية بن عروس",
-      5,
-      10,
-      "ben-arous"
      ],
      [
       "بلدية قليبية",
@@ -365,14 +365,14 @@
      "jusqu_au": "2026-11-30"
     },
     "nouveaux": {
-     "n": 52,
-     "postes": 157,
+     "n": 55,
+     "postes": 171,
      "sans_postes": 0
     },
     "nouveaux_metiers": [
      [
       "administratif",
-      22
+      24
      ],
      [
       "ouvrier",
@@ -387,11 +387,11 @@
       3
      ],
      [
-      "autre",
-      2
+      "ingenieur",
+      3
      ],
      [
-      "ingenieur",
+      "autre",
       2
      ],
      [
@@ -2078,6 +2078,30 @@
      "gouvernorat": "gabes",
      "cloture_candidatures": "2026-12-29",
      "vu_le": "2026-11-23",
+     "publies": []
+    },
+    "3373": {
+     "postes": 10,
+     "metier": "administratif",
+     "gouvernorat": "ben-arous",
+     "cloture_candidatures": "2026-12-25",
+     "vu_le": "2026-11-24",
+     "publies": []
+    },
+    "3374": {
+     "postes": 3,
+     "metier": "administratif",
+     "gouvernorat": "ben-arous",
+     "cloture_candidatures": "2026-12-25",
+     "vu_le": "2026-11-24",
+     "publies": []
+    },
+    "3375": {
+     "postes": 1,
+     "metier": "ingenieur",
+     "gouvernorat": "ben-arous",
+     "cloture_candidatures": "2026-12-25",
+     "vu_le": "2026-11-24",
      "publies": []
     }
    }
