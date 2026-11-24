@@ -203,24 +203,24 @@
   },
   "2026-11": {
    "premier_jour": "2026-11-01",
-   "dernier_jour": "2026-11-23",
+   "dernier_jour": "2026-11-24",
    "fini": false,
    "chiffres": {
-    "au": "2026-11-23",
+    "au": "2026-11-24",
     "debut": "2026-11-01",
     "ouverts": {
-     "n": 73,
-     "postes": 174,
+     "n": 61,
+     "postes": 158,
      "sans_postes": 0
     },
     "national": {
-     "n": 31,
-     "postes": 53,
+     "n": 25,
+     "postes": 44,
      "sans_postes": 0
     },
     "locaux": {
-     "n": 42,
-     "postes": 121,
+     "n": 36,
+     "postes": 114,
      "sans_postes": 0
     },
     "finances": 0,
@@ -229,11 +229,6 @@
       "nabeul",
       14,
       19
-     ],
-     [
-      "monastir",
-      6,
-      8
      ],
      [
       "ben-arous",
@@ -246,9 +241,9 @@
       61
      ],
      [
-      "sidi-bouzid",
+      "monastir",
       4,
-      5
+      6
      ],
      [
       "sousse",
@@ -274,23 +269,18 @@
     "metiers": [
      [
       "administratif",
-      33,
-      53
+      30,
+      49
      ],
      [
       "ouvrier",
-      24,
-      38
+      17,
+      30
      ],
      [
       "technicien",
       4,
       11
-     ],
-     [
-      "ingenieur",
-      4,
-      7
      ],
      [
       "chauffeur",
@@ -301,6 +291,11 @@
       "autre",
       3,
       5
+     ],
+     [
+      "ingenieur",
+      2,
+      3
      ],
      [
       "finance",
@@ -318,12 +313,6 @@
       "مسرح الأوبرا",
       9,
       15,
-      "national"
-     ],
-     [
-      "الشركة الوطنية العقارية للبلاد التونسية للجنوب",
-      6,
-      9,
       "national"
      ],
      [
@@ -363,12 +352,6 @@
       "national"
      ],
      [
-      "بلدية باطن الغزال",
-      4,
-      5,
-      "sidi-bouzid"
-     ],
-     [
       "بلدية جمال",
       3,
       3,
@@ -376,10 +359,10 @@
      ]
     ],
     "semaine": {
-     "n": 20,
-     "postes": 34,
+     "n": 25,
+     "postes": 48,
      "sans_postes": 0,
-     "jusqu_au": "2026-11-29"
+     "jusqu_au": "2026-11-30"
     },
     "nouveaux": {
      "n": 52,
@@ -421,8 +404,8 @@
      ]
     ],
     "clos": {
-     "n": 37,
-     "postes": 97,
+     "n": 49,
+     "postes": 113,
      "sans_postes": 0
     },
     "resultats": {
