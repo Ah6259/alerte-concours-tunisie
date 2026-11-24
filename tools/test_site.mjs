@@ -235,8 +235,9 @@ check("alertes : prix 15 DT / 3 mois ou 39 DT / an, pas de renouvellement automa
 check("alertes : paiement en 3 étapes D17 / IZI au 24 321 390 (logos, écrans d'exemple), phrase de confiance, preuve WhatsApp",
   /<ol class="paie-etapes">/.test(al) && /class="paie-confiance"/.test(al) && al.includes("24 321 390") && /href="https:\/\/wa\.me\/21624321390\?text=/.test(al)
   && ["d17.png", "izi.png", "transfert-d17.svg", "transfert-izi.svg"].every(f => existsSync(join(root, "assets/paiement", f))) && /src="\.\.\/assets\/paiement\/d17\.png"/.test(al));
-check("alertes : formulaire Formspree (mwlpakqj) : nom, téléphone, métiers, gouvernorats (+ « Toute la Tunisie »), concours à suivre, formule, conditions",
+check("alertes : formulaire Formspree (mwlpakqj) : nom, téléphone ET e-mail obligatoires (règle d'Ahmed du 24/11/2026), métiers, gouvernorats (+ « Toute la Tunisie »), concours à suivre, formule, conditions",
   /<form id="abo-form" action="https:\/\/formspree\.io\/f\/mwlpakqj"/.test(al) && /name="nom" required/.test(al) && /name="telephone" required/.test(al)
+  && /name="email" required/.test(al) && !/E-mail \(facultatif\)/.test(al)
   && (al.match(/name="metiers"/g) || []).length >= 10 && (al.match(/name="gouvernorats"/g) || []).length === 25 && /id="g-tous"/.test(al)
   && /name="suivis"/.test(al) && (al.match(/name="formule"/g) || []).length === 2 && /href="conditions\/"/.test(al));
 check("alertes : script externe abonnement.js sur cette page seulement", /<script src="\.\.\/assets\/abonnement\.js\?v=/.test(al) && !/abonnement\.js/.test(acc));
@@ -248,7 +249,7 @@ check("alertes : script externe abonnement.js sur cette page seulement", /<scrip
     ["alertes/index.html", "alertes/conditions/index.html"].every(f => contradictions.every(r => !r.test(sansBalises(f)))));
 }
 const co = lire("alertes/conditions/index.html");
-check("conditions : prix, paiement, arrêt (/stop), données personnelles, non officiel", /15 DT pour 3 mois/.test(co) && /\/stop/.test(co) && /Données personnelles/.test(co) && /pas officiel/.test(co));
+check("conditions : prix, paiement, arrêt (/stop), données personnelles (e-mail sans « s'il est donné »), non officiel", /15 DT pour 3 mois/.test(co) && !/e-mail s'il est donné/.test(co) && /\/stop/.test(co) && /Données personnelles/.test(co) && /pas officiel/.test(co));
 check("accueil + pages : gros bouton doré vers alertes/ (avec le prix)", /class="btn-pro-grand" id="btn-alertes" href="alertes\/"/.test(acc) && /15 DT \/ 3 mois/.test(acc)
   && /class="btn-pro-grand" id="btn-alertes" href="\.\.\/\.\.\/alertes\/"/.test(lire(`gouvernorat/${GOUVS[0]}/index.html`)));
 check("sitemap : alertes/ et alertes/conditions/", sm.includes("alertes/</loc>") && sm.includes("alertes/conditions/</loc>"));
@@ -267,6 +268,9 @@ if (JSDOM) {
   caseG("tous").checked = true; caseG("tous").dispatchEvent(new w.Event("change", { bubbles: true }));
   check("alertes : « Toute la Tunisie » décoche les gouvernorats", caseG("tous").checked && !caseG("sfax").checked);
   f.querySelector('[name="nom"]').value = "Test Candidat"; f.querySelector('[name="telephone"]').value = "24 321 390";
+  await soumettre();
+  check("alertes : sans e-mail → message d'erreur, rien n'est envoyé (e-mail obligatoire, 24/11/2026)", envois.length === 0 && /e-mail/.test(d.getElementById("abo-status").textContent));
+  f.querySelector('[name="email"]').value = "candidat@exemple.tn";
   await soumettre();
   check("alertes : sans métier coché → message d'erreur, rien n'est envoyé", envois.length === 0 && /métier/.test(d.getElementById("abo-status").textContent));
   f.querySelector('#abo-metiers input').checked = true; f.querySelector('[name="suivis"]').value = "n° 2390 ; 2412, abc";

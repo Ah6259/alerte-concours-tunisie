@@ -3,6 +3,7 @@
    - Envoi à Formspree (formulaire mwlpakqj, le même que « Votre avis ») sans quitter la page.
    - Les métiers et gouvernorats cochés sont envoyés en UNE ligne chacun (ex. « btp-genie-civil, informatique »),
      prête à recopier dans le bouton GitHub « activer-abonne » du dépôt privé « concours-abonnes ».
+   - E-mail et téléphone OBLIGATOIRES (règle d'Ahmed du 24/11/2026 : e-mail automatique avec le code et le paiement).
    - Concours à suivre (facultatif) : numéros nettoyés (chiffres seulement, 10 au plus).
    - Après l'envoi : le formulaire est remplacé par la confirmation, les modes de paiement et les instructions Telegram.
    - Fichier externe : aucun script en ligne (CSP). Textes en français et en arabe selon la langue de la page. */
@@ -74,7 +75,8 @@
       var suivis = (val("suivis").match(/\d{1,6}/g) || []).slice(0, 10);
       if (!val("nom")) { dire("err", "Indiquez votre nom.", "اكتب اسمك."); champ("nom").focus(); return; }
       if (!tel) { dire("err", "Téléphone : 8 chiffres, par exemple 24 321 390.", "الهاتف: ⁦8⁩ أرقام، مثال ⁦24 321 390⁩."); champ("telephone").focus(); return; }
-      if (val("email") && !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(val("email"))) { dire("err", "Indiquez une adresse e-mail valide.", "اكتب بريدًا إلكترونيًا صحيحًا."); champ("email").focus(); return; }
+      if (!val("email")) { dire("err", "Indiquez votre e-mail : vous y recevez votre code et les étapes du paiement.", "اكتب بريدك الإلكتروني: يصلك عليه رمزك وخطوات الدفع."); champ("email").focus(); return; }
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(val("email"))) { dire("err", "Indiquez une adresse e-mail valide.", "اكتب بريدًا إلكترونيًا صحيحًا."); champ("email").focus(); return; }
       if (!metiers.length) { dire("err", "Cochez au moins un métier.", "اختر اختصاصًا واحدًا على الأقل."); return; }
       if (!gouv.length) { dire("err", "Cochez au moins un gouvernorat (ou « Toute la Tunisie »).", "اختر ولاية واحدة على الأقل (أو «كل الولايات»)."); return; }
       if (!champ("conditions").checked) { dire("err", "Cochez « J'accepte les conditions de l'abonnement ».", "يجب الموافقة على شروط الاشتراك."); return; }

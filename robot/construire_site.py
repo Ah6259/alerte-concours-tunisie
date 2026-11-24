@@ -669,8 +669,8 @@ def pages_alertes(v, maj):
     <input id="abo-nom" name="nom" required maxlength="100" autocomplete="name">
     <label class="abo-etiquette" for="abo-tel">{L("Téléphone (8 chiffres)", "الهاتف (⁦8⁩ أرقام)")}</label>
     <input id="abo-tel" name="telephone" required inputmode="tel" pattern="[0-9 ]{{8,11}}" maxlength="11" autocomplete="tel">
-    <label class="abo-etiquette" for="abo-email">{L("E-mail (facultatif)", "البريد الإلكتروني (اختياري)")}</label>
-    <input id="abo-email" type="email" name="email" maxlength="200" autocomplete="email">
+    <label class="abo-etiquette" for="abo-email">{L("E-mail (vous y recevez votre code et les étapes du paiement)", "البريد الإلكتروني (يصلك عليه رمزك وخطوات الدفع)")}</label>
+    <input id="abo-email" type="email" name="email" required maxlength="200" autocomplete="email">
     <fieldset class="abo-choix" id="abo-metiers">
       <legend>{L("Vos métiers (un ou plusieurs)", "اختصاصاتك (واحد أو أكثر)")}</legend>
       <div class="cases">{cases_m}</div>
@@ -746,8 +746,8 @@ def pages_alertes(v, maj):
          "Les concours et les nouvelles viennent du portail officiel des concours publics (concours.gov.tn). Le classement par métier et par gouvernorat est automatique et peut se tromper ; une annonce peut manquer si le portail est en panne. Seul le portail officiel fait foi : vérifiez toujours l'avis officiel. Ce site n'est pas officiel et ne s'occupe pas de votre candidature.",
          "المناظرات والأخبار مصدرها البوابة الرسمية للمناظرات العمومية (concours.gov.tn). الترتيب حسب الاختصاص والولاية آلي وقد يخطئ، وقد يغيب إعلان إذا تعطلت البوابة. البوابة الرسمية هي المرجع الوحيد: اطّلع دائمًا على البلاغ الرسمي. هذا الموقع ليس رسميًا ولا يتولى ترشحك."),
         ("7. Données personnelles", "7. المعطيات الشخصية",
-         "Nous gardons seulement : nom, téléphone, e-mail s'il est donné, métiers, gouvernorats et concours suivis, dates de l'abonnement et identifiant Telegram. Elles servent uniquement à envoyer les alertes, sont conservées dans un espace privé, ne sont jamais publiées ni vendues, et sont supprimées sur simple demande (WhatsApp). Le formulaire passe par le service Formspree et les alertes par Telegram. Pour vous contacter au sujet de votre abonnement, nous gardons votre nom Telegram et, si vous le partagez, votre numéro. Ils ne sont jamais publiés ni donnés à personne ; envoyez /oublier au robot pour les effacer.",
-         "نحتفظ فقط بـ: الاسم، الهاتف، البريد الإلكتروني إن وُجد، الاختصاصات والولايات والمناظرات المتابَعة، تواريخ الاشتراك ومعرّف تيليغرام. تُستعمل فقط لإرسال التنبيهات، وتُحفظ في فضاء خاص، ولا تُنشر ولا تُباع أبدًا، وتُحذف بمجرد الطلب (واتساب). تمر الاستمارة عبر خدمة ⁨Formspree⁩ والتنبيهات عبر تيليغرام. للتواصل معك بخصوص اشتراكك، نحتفظ باسمك على تيليغرام، وبرقمك إن شاركته. لا يُنشران ولا يُعطيان لأي أحد أبدًا؛ أرسل ⁨/oublier⁩ إلى البرنامج لحذفهما."),
+         "Nous gardons seulement : nom, téléphone, e-mail, métiers, gouvernorats et concours suivis, dates de l'abonnement et identifiant Telegram. Elles servent uniquement à envoyer les alertes, sont conservées dans un espace privé, ne sont jamais publiées ni vendues, et sont supprimées sur simple demande (WhatsApp). Le formulaire passe par le service Formspree et les alertes par Telegram. Pour vous contacter au sujet de votre abonnement, nous gardons votre nom Telegram et, si vous le partagez, votre numéro. Ils ne sont jamais publiés ni donnés à personne ; envoyez /oublier au robot pour les effacer.",
+         "نحتفظ فقط بـ: الاسم، الهاتف، البريد الإلكتروني، الاختصاصات والولايات والمناظرات المتابَعة، تواريخ الاشتراك ومعرّف تيليغرام. تُستعمل فقط لإرسال التنبيهات، وتُحفظ في فضاء خاص، ولا تُنشر ولا تُباع أبدًا، وتُحذف بمجرد الطلب (واتساب). تمر الاستمارة عبر خدمة ⁨Formspree⁩ والتنبيهات عبر تيليغرام. للتواصل معك بخصوص اشتراكك، نحتفظ باسمك على تيليغرام، وبرقمك إن شاركته. لا يُنشران ولا يُعطيان لأي أحد أبدًا؛ أرسل ⁨/oublier⁩ إلى البرنامج لحذفهما."),
         ("8. Contact", "8. الاتصال", f"WhatsApp : {num}.", f"واتساب: {ISO(num)}."),
     ]
     corps = "\n".join(f"  <h2>{L(a, b)}</h2>\n  <p>{L(c, d)}</p>" for a, b, c, d in sections)
