@@ -269,7 +269,13 @@ if (JSDOM) {
   check("alertes : « Toute la Tunisie » décoche les gouvernorats", caseG("tous").checked && !caseG("sfax").checked);
   f.querySelector('[name="nom"]').value = "Test Candidat"; f.querySelector('[name="telephone"]').value = "24 321 390";
   await soumettre();
-  check("alertes : sans e-mail → message d'erreur, rien n'est envoyé (e-mail obligatoire, 24/11/2026)", envois.length === 0 && /e-mail/.test(d.getElementById("abo-status").textContent));
+  check("alertes : sans e-mail → message d'erreur court « Indiquez votre e-mail. », rien n'est envoyé (e-mail obligatoire, 24/11/2026 ; aucune promesse d'e-mail tant que EMAIL_AUTO = false)",
+    envois.length === 0 && d.getElementById("abo-status").textContent === "Indiquez votre e-mail.");
+  { // 25/11/2026 : l'e-mail automatique n'est pas encore en service -> l'étiquette ne promet rien (partie « vous y recevez… » cachée)
+    const lab = d.querySelector('label[for="abo-email"] [data-l="fr"]'), cache = d.querySelector('label[for="abo-email"] [data-email-auto]');
+    check("formulaire (FR) : étiquette « E-mail » seule, la promesse « vous y recevez votre code et les étapes du paiement » est cachée (EMAIL_AUTO = false)",
+      lab.textContent === "E-mail" && cache && cache.hidden && /vous y recevez votre code et les étapes du paiement/.test(cache.textContent)
+      && /var EMAIL_AUTO = false;/.test(lire("assets/abonnement.js"))); }
   f.querySelector('[name="email"]').value = "candidat@exemple.tn";
   await soumettre();
   check("alertes : sans métier coché → message d'erreur, rien n'est envoyé", envois.length === 0 && /métier/.test(d.getElementById("abo-status").textContent));
@@ -298,8 +304,9 @@ if (JSDOM) {
     ap.querySelector(".code-commande #abo-code").textContent === code && /C'est votre numéro de commande : écrivez-le dans le motif du paiement, il nous sert à reconnaître votre paiement\./.test(txt)
     && ap.querySelectorAll("[data-email-auto]").length === 1 && ap.querySelector("[data-email-auto]").hidden && /var EMAIL_AUTO = false;/.test(lire("assets/abonnement.js")) && [...ap.querySelectorAll(".paie-etapes .code-motif")].length === 1 && ap.querySelector(".paie-etapes .code-motif").textContent === code
     && /Vous avez oublié le code dans le motif \? Ce n'est pas grave/.test(txt) && corps.get("pour_activer").endsWith("code: " + code));
-  check("dernière étape (FR) : bouton WhatsApp pré-rempli « Voici ma preuve de paiement — Alerte Concours Tunisie — code <CODE> — 3 mois », sans nom ni téléphone",
-    [...d.querySelectorAll("a.btn-wa")].every(a => decodeURIComponent(a.getAttribute("href")) === `https://wa.me/21624321390?text=Voici ma preuve de paiement — Alerte Concours Tunisie — code ${code} — 3 mois`));
+  check("dernière étape (FR) : bouton WhatsApp pré-rempli « Voici ma preuve de paiement — Alerte Concours Tunisie — code <CODE> — <nom> — 3 mois » (code ET nom, 25/11/2026), sans téléphone",
+    decodeURIComponent(d.getElementById("abo-preuve-apres").getAttribute("href")) === `https://wa.me/21624321390?text=Voici ma preuve de paiement — Alerte Concours Tunisie — code ${code} — Test Candidat — 3 mois`
+    && [...d.querySelectorAll("a.btn-wa")].every(a => !/24321390|24 321 390/.test(decodeURIComponent(a.getAttribute("href")).split("text=")[1])));
   const memo = w.localStorage.getItem("pass-commande"), m = JSON.parse(memo || "{}");
   check("mémoire pass-commande : code, formule, date, lien Telegram — rien de personnel (ni nom, ni téléphone, ni e-mail)",
     m.code === code && m.formule === "3 mois" && /^\d{4}-\d{2}-\d{2}$/.test(m.date) && m.tg === lienTg && Object.keys(m).sort().join() === "code,date,formule,tg"
@@ -311,6 +318,7 @@ if (JSDOM) {
   { const w2 = revenir(al, "https://concours.clicvia.com/alertes/", memo), d2 = w2.document, at = d2.getElementById("abo-attente");
     check("retour sur la page (FR) : bandeau « Votre commande en attente : code … — 3 mois » + 3 étapes du paiement (motif = code) + WhatsApp avec le code + « Ouvrir Telegram » (même lien), formulaire caché",
       !at.hidden && d2.getElementById("abo-form").hidden && /Votre commande en attente :/.test(at.textContent) && at.querySelector("[data-code]").textContent === code
+      && decodeURIComponent(at.querySelector("a.btn-wa").getAttribute("href")) === `https://wa.me/21624321390?text=Voici ma preuve de paiement — Alerte Concours Tunisie — code ${code} — 3 mois`
       && at.querySelector("[data-formule]").textContent === "3 mois" && at.querySelectorAll(".paie-etapes li").length === 3 && at.querySelector(".code-motif").textContent === code
       && decodeURIComponent(at.querySelector("a.btn-wa").getAttribute("href")).includes("code " + code) && d2.getElementById("abo-attente-tg").getAttribute("href") === lienTg
       && /oublié le code/.test(at.textContent));
@@ -327,14 +335,20 @@ if (JSDOM) {
     wA.fetch = (url, o) => { envAr.push(o.body); return Promise.resolve({ ok: true }); };
     wA.eval(lire("assets/page.js")); wA.eval(lire("assets/abonnement.js")); D2.dispatchEvent(new wA.Event("DOMContentLoaded"));
     const fA = D2.getElementById("abo-form");
+    { const labA = D2.querySelector('label[for="abo-email"] [data-l="ar"]'), cacheA = D2.querySelector('label[for="abo-email"] [data-email-auto]');
+      fA.querySelector('[name="nom"]').value = "اختبار"; fA.querySelector('[name="telephone"]').value = "24321390";
+      fA.dispatchEvent(new wA.Event("submit", { cancelable: true })); await new Promise(r => setTimeout(r, 20));
+      check("formulaire (AR) : étiquette « البريد الإلكتروني » seule, promesse « يصلك عليه رمزك وخطوات الدفع » cachée ; erreur courte « اكتب بريدك الإلكتروني. »",
+        labA.textContent === "البريد الإلكتروني" && cacheA && cacheA.hidden && /يصلك عليه رمزك وخطوات الدفع/.test(cacheA.textContent)
+        && D2.getElementById("abo-status").textContent === "اكتب بريدك الإلكتروني." && envAr.length === 0); }
     fA.querySelector('[name="nom"]').value = "اختبار"; fA.querySelector('[name="telephone"]').value = "24321390"; fA.querySelector('[name="email"]').value = "a@exemple.tn";
     fA.querySelector('#abo-metiers input').checked = true; fA.querySelector('#abo-gouv input[value="sfax"]').checked = true;
     fA.querySelector('input[name="formule"][value="1 an"]').checked = true; D2.getElementById("abo-conditions").checked = true;
     fA.dispatchEvent(new wA.Event("submit", { cancelable: true })); await new Promise(r => setTimeout(r, 20));
     const cA = D2.getElementById("abo-code").textContent, tA = D2.getElementById("apres-abo").textContent;
-    check("dernière étape (AR) : code en gros, « هذا رقم طلبك… » + « يصلك أيضًا… » caché + filet, WhatsApp « هذا وصل الدفع — … — الرمز <CODE> — سنة », code envoyé à Formspree",
+    check("dernière étape (AR) : code en gros, « هذا رقم طلبك… » + « يصلك أيضًا… » caché + filet, WhatsApp « هذا وصل الدفع — … — الرمز <CODE> — <الاسم> — سنة » (code ET nom), code envoyé à Formspree",
       /^[A-HJ-NP-Z2-9]{6}$/.test(cA) && tA.includes("هذا رقم طلبك: اكتبه في خانة سبب الدفع، يساعدنا على التعرّف على دفعتك.") && D2.querySelector("#apres-abo [data-email-auto]").hidden
-      && tA.includes("نسيت الرمز في سبب الدفع؟") && decodeURIComponent(D2.getElementById("abo-preuve-apres").getAttribute("href")) === `https://wa.me/21624321390?text=هذا وصل الدفع — تنبيه المناظرات تونس — الرمز ${cA} — سنة`
+      && tA.includes("نسيت الرمز في سبب الدفع؟") && decodeURIComponent(D2.getElementById("abo-preuve-apres").getAttribute("href")) === `https://wa.me/21624321390?text=هذا وصل الدفع — تنبيه المناظرات تونس — الرمز ${cA} — اختبار — سنة`
       && envAr.length === 1 && envAr[0].get("code") === cA && envAr[0].get("pour_activer").endsWith("code: " + cA));
     const mA = wA.localStorage.getItem("pass-commande"), wB = revenir(alAr, "https://concours.clicvia.com/ar/alertes/", mA), atB = wB.document.getElementById("abo-attente");
     check("retour sur la page (AR) : bandeau « طلبك في الانتظار » avec le code et « سنة », formulaire caché, rien de personnel dans la mémoire",

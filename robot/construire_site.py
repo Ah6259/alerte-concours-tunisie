@@ -463,8 +463,9 @@ ABO = {
     "formspree": "https://formspree.io/f/mwlpakqj",
     "robot": "AlerteConcoursTunisieBot",            # robot Telegram créé par Ahmed le 08/10/2026 (jeton dans le dépôt privé concours-abonnes)
 }
-# 25/11/2026 (parcours commun des Pass, règle commune § 70) : message « Voici ma preuve de paiement — <site> — code <CODE> — <formule> » ;
-# après l'inscription, assets/abonnement.js le refait avec le code et la formule (le client n'a rien à recopier)
+# 25/11/2026 (parcours commun des Pass, règle commune § 70) : message « Voici ma preuve de paiement — <site> — code <CODE> — <nom> — <formule> » ;
+# après l'inscription, assets/abonnement.js le refait avec le code, le NOM (lu dans le formulaire, jamais gardé par le téléphone)
+# et la formule (le client n'a rien à recopier) ; au retour sur la page (nom inconnu) : code + formule seulement
 TEXTE_PREUVE = "Voici ma preuve de paiement — Alerte Concours Tunisie — code "
 ICONE_CLOCHE = '<svg viewBox="0 0 24 24"><path d="M6 16.5V11a6 6 0 0 1 12 0v5.5l1.8 1.8H4.2z"/><path d="M10 20.5a2 2 0 0 0 4 0"/></svg>'
 ICONE_WA = '<svg viewBox="0 0 24 24"><path d="M4 20l1.3-4A8 8 0 1 1 8.4 19z"/><path d="M9 8.6c0 3.4 2.9 6.4 6.4 6.4l1-1.4-2-1-1 .9c-1-.4-2.1-1.5-2.5-2.5l.9-1-1-2z"/></svg>'
@@ -610,8 +611,8 @@ def page_a_propos(v, maj):
        f"<b>بمقابل: التنبيهات + المتابعة على تيليغرام</b> ({ISO(p3)} دينار لـ" + ISO(3) + f" أشهر أو {ISO(pa)} دينار للسنة). كل صباح، المناظرات الجديدة في اختصاصاتك وولاياتك (مع المناظرات الوطنية)، تذكير قبل آخر أجل بـ" + ISO(3) + " أيام، ومتابعة المناظرات التي تختارها (قبول الترشحات، الاستدعاءات، التأجيل، النتائج).")}</p>
 <p>{L(f"Paiement par D17 ou IZI, avec pour motif votre <b>code personnel</b> donné sur la page Alertes. Pas de renouvellement automatique : rappel {rj}" + NB + "jours avant la fin, puis l'alerte s'arrête simplement.",
        f"الدفع عبر ⁨D17⁩ أو ⁨IZI⁩ مع ذكر <b>رمزك الشخصي</b> المعطى في صفحة التنبيهات. لا تجديد آلي: تذكير قبل النهاية بـ{ISO(rj)} أيام، ثم يتوقف التنبيه ببساطة.")}</p>
-<p>{L("<b>Commande en attente</b> : après l'inscription, la page « Dernière étape » montre votre code en gros (c'est votre numéro de commande, à écrire dans le motif du paiement), les 3" + NB + "étapes du paiement et un bouton WhatsApp où le code est déjà écrit. Votre téléphone se souvient de la commande pendant 60" + NB + "jours (seulement le code, la formule et la date, jamais votre nom, téléphone ou e-mail) : en revenant sur la page Alertes, vous retrouvez le code, le paiement, WhatsApp et « Ouvrir Telegram » ; « Nouvelle commande » l'efface. Code oublié dans le motif ? Envoyez quand même la preuve sur WhatsApp, nous retrouvons votre demande.",
-       "<b>طلب في الانتظار</b>: بعد التسجيل، تعرض صفحة «الخطوة الأخيرة» رمزك بخط كبير (هو رقم طلبك، اكتبه في خانة سبب الدفع)، وخطوات الدفع الثلاث وزر واتساب مكتوب فيه الرمز. يتذكر هاتفك الطلب مدة " + ISO(60) + " يومًا (الرمز والصيغة والتاريخ فقط، لا اسمك ولا هاتفك ولا بريدك أبدًا): عند العودة إلى صفحة التنبيهات تجد الرمز والدفع وواتساب و«افتح تيليغرام»؛ و«طلب جديد» يمحوه. نسيت الرمز في سبب الدفع؟ أرسل الوصل على واتساب وسنجد طلبك.")}</p>
+<p>{L("<b>Commande en attente</b> : après l'inscription, la page « Dernière étape » montre votre code en gros (c'est votre numéro de commande, à écrire dans le motif du paiement), les 3" + NB + "étapes du paiement et un bouton WhatsApp où le code et votre nom sont déjà écrits. Votre téléphone se souvient de la commande pendant 60" + NB + "jours (seulement le code, la formule et la date, jamais votre nom, téléphone ou e-mail) : en revenant sur la page Alertes, vous retrouvez le code, le paiement, WhatsApp et « Ouvrir Telegram » ; « Nouvelle commande » l'efface. Code oublié dans le motif ? Envoyez quand même la preuve sur WhatsApp, nous retrouvons votre demande.",
+       "<b>طلب في الانتظار</b>: بعد التسجيل، تعرض صفحة «الخطوة الأخيرة» رمزك بخط كبير (هو رقم طلبك، اكتبه في خانة سبب الدفع)، وخطوات الدفع الثلاث وزر واتساب مكتوب فيه الرمز واسمك. يتذكر هاتفك الطلب مدة " + ISO(60) + " يومًا (الرمز والصيغة والتاريخ فقط، لا اسمك ولا هاتفك ولا بريدك أبدًا): عند العودة إلى صفحة التنبيهات تجد الرمز والدفع وواتساب و«افتح تيليغرام»؛ و«طلب جديد» يمحوه. نسيت الرمز في سبب الدفع؟ أرسل الوصل على واتساب وسنجد طلبك.")}</p>
 <a class="btn" href="../alertes/">{L("Voir les alertes", "اطّلع على التنبيهات")}</a></section>
 <section class="carte"><h2>{L("Vos données", "بياناتك")}</h2>
 <ul>
@@ -696,7 +697,7 @@ def pages_alertes(v, maj):
     <input id="abo-nom" name="nom" required maxlength="100" autocomplete="name">
     <label class="abo-etiquette" for="abo-tel">{L("Téléphone (8 chiffres)", "الهاتف (⁦8⁩ أرقام)")}</label>
     <input id="abo-tel" name="telephone" required inputmode="tel" pattern="[0-9 ]{{8,11}}" maxlength="11" autocomplete="tel">
-    <label class="abo-etiquette" for="abo-email">{L("E-mail (vous y recevez votre code et les étapes du paiement)", "البريد الإلكتروني (يصلك عليه رمزك وخطوات الدفع)")}</label>
+    <label class="abo-etiquette" for="abo-email">{L("E-mail", "البريد الإلكتروني")}<span data-email-auto hidden>{L(" (vous y recevez votre code et les étapes du paiement)", " (يصلك عليه رمزك وخطوات الدفع)")}</span></label>
     <input id="abo-email" type="email" name="email" required maxlength="200" autocomplete="email">
     <fieldset class="abo-choix" id="abo-metiers">
       <legend>{L("Vos métiers (un ou plusieurs)", "اختصاصاتك (واحد أو أكثر)")}</legend>
