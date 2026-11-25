@@ -257,3 +257,13 @@ Rien n'est ajouté au site sans l'accord d'Ahmed.
 - Tests : bloc « 25/11/2026 » de test_site.mjs (23 vérifications, chaque sabotage attrapé) + 2 dans test_robot.py ; page « Comment fonctionne
   le site ? » (FR + AR) : 3 lignes (encadré, rappel, clics comptés) et FONCTIONS. Corrigé en passant : en-têtes du tableau d'une fiche
   illisibles en mode sombre (couleur écrite en dur -> `var(--doux)`).
+
+## 25/11/2026 — plan Google (chute d'octobre, fiche `memoire claude/chute-google-octobre-2026.md` de projets-ahmed)
+- **B.2 lastmod honnête** : `robot/lastmod.py` (appelé par construire_site.py) : date d'une page = dernier VRAI changement (empreinte du HTML
+  sans dates, ?v= ni compte à rebours « encore N jours / demain », mémoire `donnees/lastmod.json`, page inconnue = date retrouvée dans git) ;
+  les rapports du mois gardent la date de leurs chiffres. (Le 25/11, 240 pages sur 246 datées du jour : vrai changement, l'encadré des alertes.)
+- **B.1 fiches périmées** : `fiche_perimee()` = inscriptions closes ET concours fini depuis plus de 60 jours -> page en ligne mais
+  `noindex, follow`, hors du plan du site (fiches du jour ET anciennes fiches, via `noindex_si_perimee()` dans `ajouter_encadre_anciennes()`).
+  Le 25/11 : 265 fiches françaises + 73 arabes en noindex ; plan du site 250 -> 246 adresses. Date inconnue = fiche gardée indexée.
+- Tests (test_site.mjs, vérifiés par sabotage) : dates pas toutes du jour, date = donnees/lastmod.json, aucune page noindex dans le plan,
+  accueil / gouvernorats / guide… jamais noindex, règle des 60 jours recalculée, lastmod.py avec données inventées.

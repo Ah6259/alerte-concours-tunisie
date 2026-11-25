@@ -105,7 +105,7 @@ if (AC.length) {
   check("accueil : les 4 dernières actualités + lien vers la page", (acc.match(/<article class="actu /g) || []).length === Math.min(4, AC.length) && acc.includes('href="actualites/"'));
 }
 const sm = lire("sitemap.xml");
-check("plan du site : les pages des concours", D.concours.every(c => sm.includes(`https://concours.clicvia.com/concours/${c.id}/`)));
+check("plan du site : les pages des concours (sauf fiches périmées en noindex, plan Google B.1)", D.concours.every(c => lire(`concours/${c.id}/index.html`).includes('content="noindex') || sm.includes(`https://concours.clicvia.com/concours/${c.id}/`)));
 const indexees = pages.filter(p => !lire(p).includes('content="noindex'));
 check("plan du site : toutes les pages indexables, en français et en arabe (ar/)", indexees.every(p => sm.includes("https://concours.clicvia.com/" + p.replace(/index\.html$/, "")) && sm.includes("https://concours.clicvia.com/ar/" + p.replace(/index\.html$/, ""))));
 // ---- UNE ADRESSE PAR LANGUE (08/11/2026, plan SEO d'Ahmed, phase 2 point 7 ; robot/langues.py) ----------
@@ -706,6 +706,63 @@ check("paiement : le motif est le code personnel, jamais « nom … (motif du pa
     }
     check(`liens « Confidentialité » / « Conditions d'utilisation » dans le pied fabriqué par page.js, chaque sorte de page (FR + ar/)` + (ko.length ? " — " + ko.slice(0, 3).join(", ") : ""), !ko.length);
   }
+}
+
+// ---- 25/11/2026 (plan Google B.1 + B.2) : plan du site HONNÊTE.
+//      B.2 : <lastmod> = dernier VRAI changement de la page (robot/lastmod.py, mémoire donnees/lastmod.json), jamais « aujourd'hui » partout ;
+//      B.1 : fiche de concours périmée (inscriptions closes ET concours fini depuis plus de 60 jours) = en ligne, mais noindex et hors du plan.
+{
+  const U = "https://concours.clicvia.com/";
+  const urls = [...sm.matchAll(/<url><loc>([^<]+)<\/loc>(?:<lastmod>([^<]+)<\/lastmod>)?/g)];
+  const jour = new Date().toISOString().slice(0, 10), datesSm = urls.map(m => m[2]);
+  check(`plan du site : chaque adresse a sa date (${urls.length} adresses)`, urls.length > 10 && datesSm.every(d => /^\d{4}-\d{2}-\d{2}$/.test(d)));
+  check("plan du site : les dates ne sont pas toutes celles du jour, ni toutes identiques (date du dernier vrai changement)",
+    !datesSm.every(d => d === jour) && new Set(datesSm).size > 1);
+  const LMJ = existsSync(join(root, "donnees/lastmod.json")) ? JSON.parse(lire("donnees/lastmod.json")) : {};
+  const fichierDe = u => u.replace(U, "") + "index.html";
+  const faux = urls.filter(m => !/\/rapports\/(\d{4}-\d{2}\/)?$/.test(m[1]) && (!LMJ[fichierDe(m[1])] || LMJ[fichierDe(m[1])].date !== m[2])).map(m => m[1]);
+  check("plan du site : la date de chaque page = celle de donnees/lastmod.json (rapports du mois : date de leurs chiffres)" + (faux.length ? " — " + faux.slice(0, 3).join(", ") : ""), !faux.length);
+  const cs = lire("robot/construire_site.py");
+  check("robot/construire_site.py : dates fabriquées par robot/lastmod.py (pas « maj or jour » pour tout)", /import lastmod as LM/.test(cs) && !/lastmod>\{rap_dates\.get\(c\) or maj or jour\}/.test(cs));
+  const noidx = f => /<meta name="robots" content="[^"]*noindex/.test(lire(f));
+  const avecNoindex = urls.filter(m => existsSync(join(root, fichierDe(m[1]))) && noidx(fichierDe(m[1]))).map(m => m[1]);
+  check("plan du site : aucune page en noindex" + (avecNoindex.length ? " — " + avecNoindex.slice(0, 3).join(", ") : ""), !avecNoindex.length);
+  const jamais = ["index.html", "a-propos/index.html", "guide-inscription/index.html", "actualites/index.html", "rapports/index.html", "alertes/index.html",
+    ...GOUVS.map(g => `gouvernorat/${g}/index.html`), "gouvernorat/national/index.html"].flatMap(f => [f, "ar/" + f]).filter(f => !existsSync(join(root, f)) || noidx(f));
+  check("accueil, gouvernorats, guide, actualités, alertes, a-propos, rapports : jamais en noindex" + (jamais.length ? " — " + jamais.slice(0, 3).join(", ") : ""), !jamais.length);
+  // règle recalculée ici (zone de 2 jours autour de la limite ignorée : le robot construit avec la date du relevé)
+  const ref = D.lu_le || jour, recul = n => new Date(Date.parse(ref) - n * 864e5).toISOString().slice(0, 10);
+  const iso = s => { const m = (s || "").match(/(\d{2})\/(\d{2})\/(\d{4})/); return m ? `${m[3]}-${m[2]}-${m[1]}` : ""; };
+  const ligne = (h, lab) => { const i = h.indexOf(lab); return i < 0 ? null : iso(h.slice(i, i + 400).split("</tr>")[0]); };
+  const malRangees = [];
+  for (const pref of ["", "ar/"]) for (const n of readdirSync(join(root, pref + "concours"))) {
+    const f = `${pref}concours/${n}/index.html`; if (!existsSync(join(root, f))) continue;
+    const h = lire(f), lim = ligne(h, pref ? "آخر أجل للترشح" : "Clôture des candidatures") ?? ligne(h, "Clôture des candidatures"), fin = ligne(h, pref ? "ختم المناظرة" : "Clôture du concours") ?? ligne(h, "Clôture du concours");
+    if (lim === null) continue;
+    const sur = !!lim && lim < recul(61) && (!fin || fin < recul(61)), pasSur = !lim || lim >= recul(59) || (fin && fin >= recul(59));
+    if ((sur && !noidx(f)) || (pasSur && noidx(f))) malRangees.push(f);
+  }
+  check(`fiches de concours : noindex si inscriptions ET concours finis depuis plus de 60 jours, sinon indexées (${readdirSync(join(root, "concours")).filter(n => existsSync(join(root, `concours/${n}/index.html`)) && noidx(`concours/${n}/index.html`)).length} fiches en noindex)`
+    + (malRangees.length ? " — " + malRangees.slice(0, 3).join(", ") : ""), !malRangees.length);
+  // données inventées : une page inchangée garde sa date (même si sa date de relevé, son ?v= et son compte à rebours changent), une page changée prend la date du jour
+  const { execFileSync } = await import("node:child_process");
+  const { mkdtempSync, writeFileSync, mkdirSync, rmSync } = await import("node:fs");
+  const { tmpdir } = await import("node:os");
+  const tmp = mkdtempSync(join(tmpdir(), "lastmod-"));
+  try {
+    mkdirSync(join(tmp, "a"), { recursive: true }); mkdirSync(join(tmp, "b"), { recursive: true });
+    writeFileSync(join(tmp, "a/index.html"), '<p>Mis à jour le 01/11/2026</p><small class="reste">encore 5 jours</small><link href="s.css?v=1">');
+    writeFileSync(join(tmp, "b/index.html"), "<p>Concours 12 : 3 postes</p>");
+    const py = jr => JSON.parse(execFileSync(process.platform === "win32" ? "python" : "python3", ["-c",
+      `import sys,json,re;sys.path.insert(0,${JSON.stringify(join(root, "robot"))});import lastmod;print(json.dumps(lastmod.dates(${JSON.stringify(tmp)},["a/index.html","b/index.html"],"${jr}","m.json",[re.compile(r'<small class="reste">.*?</small>')])))`], { encoding: "utf-8" }));
+    const j1 = py("2026-11-01");
+    writeFileSync(join(tmp, "a/index.html"), '<p>Mis à jour le 02/11/2026</p><small class="reste">encore 4 jours</small><link href="s.css?v=2">');
+    writeFileSync(join(tmp, "b/index.html"), "<p>Concours 12 : 4 postes</p>");
+    const j2 = py("2026-11-02");
+    check("robot/lastmod.py (données inventées) : page dont seuls la date, le ?v= et le compte à rebours changent = date gardée ; contenu changé = date du jour",
+      j1["a/index.html"] === "2026-11-01" && j2["a/index.html"] === "2026-11-01" && j2["b/index.html"] === "2026-11-02");
+  } catch (e) { check("robot/lastmod.py (données inventées) : " + e.message, false); }
+  finally { rmSync(tmp, { recursive: true, force: true }); }
 }
 console.log(`\n${ok}/${ok + ko} vérifications réussies` + (ko ? ` — ${ko} ÉCHEC(S) : ne pas publier.` : " — tout est bon."));
 process.exit(ko ? 1 : 0);

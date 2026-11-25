@@ -587,6 +587,36 @@ def encadre_fiche(c, jour, racine="../../"):
     return encadre_alertes(racine, fr, ar, _params(metier=m[0], gouv=g[0]), "alertes-fiche", rappel)
 
 
+PERIME_JOURS = 60
+
+
+def fiche_perimee(lim, fin, jour):
+    """Plan Google B.1 (25/11/2026) : fiche de concours MAIGRE = inscriptions closes depuis plus de 60 jours ET concours terminé depuis plus
+    de 60 jours (ou date de fin inconnue). Elle reste en ligne pour le visiteur, mais en noindex et hors du plan du site. En cas de doute
+    (date de clôture inconnue), la fiche reste indexée."""
+    borne = (dt.date.fromisoformat(jour) - dt.timedelta(days=PERIME_JOURS)).isoformat()
+    return bool(lim) and lim < borne and (not fin or fin < borne)
+
+
+def _date_apres(h, etiquettes):
+    """Date (AAAA-MM-JJ) écrite dans la ligne du tableau d'une fiche qui porte cette étiquette ; "" si vide, None si pas de ligne."""
+    for e in etiquettes:
+        i = h.find(e)
+        if i >= 0:
+            m = re.search(r"(\d{2})/(\d{2})/(\d{4})", h[i:i + 400].split("</tr>")[0])
+            return f"{m.group(3)}-{m.group(2)}-{m.group(1)}" if m else ""
+    return None
+
+
+def noindex_si_perimee(h, jour):
+    """Ancienne fiche (plus dans les données) : noindex si elle est périmée d'après les dates de son tableau."""
+    lim = _date_apres(h, ("Clôture des candidatures", "آخر أجل للترشح"))
+    fin = _date_apres(h, ("Clôture du concours", "ختم المناظرة"))
+    if lim is None or not fiche_perimee(lim, fin, jour):
+        return h
+    return h.replace('<meta name="robots" content="noai, noimageai">', '<meta name="robots" content="noindex, follow, noai, noimageai">', 1)
+
+
 def ajouter_encadre_anciennes(ids_du_jour, jour, v):
     """Anciennes fiches de concours (plus dans les données, jamais refaites) : on y met (ou remplace) le même encadré, d'après le
     métier et le gouvernorat écrits dans leur tableau. Concours clos : jamais de bouton « Me rappeler la date limite »."""
@@ -597,16 +627,20 @@ def ajouter_encadre_anciennes(ids_du_jour, jour, v):
             f = os.path.join(dossier, num, "index.html")
             if num in ids_du_jour or not os.path.exists(f):
                 continue
-            h = open(f, encoding="utf-8").read()
+            h0 = open(f, encoding="utf-8").read()
+            h = noindex_si_perimee(h0, jour)          # 25/11/2026 (plan Google B.1) : vieille fiche périmée = noindex
             mm = re.search(r'href="\.\./\.\./metier/([a-z-]+)/"', h)
             mg = re.search(r'href="\.\./\.\./gouvernorat/([a-z-]+)/"', h)
             ancre = '<div class="alerte-panne" id="alerte-panne" role="status"></div>\n'
             if not (mm and mg and mm.group(1) in M_PAR and mg.group(1) in G_PAR and ancre in h):
+                if h != h0:
+                    open(f, "w", encoding="utf-8", newline="\n").write(h)
+                    n += 1
                 continue
             bloc = LG.retirer_langue(encadre_fiche({"id": num, "metier": mm.group(1), "gouvernorat": mg.group(1)}, jour), "ar" if garder == "fr" else "fr")
             neuf = re.sub(r"<!--encadre-alertes-->.*?<!--/encadre-alertes-->\n?", "", h, flags=re.S).replace(ancre, ancre + bloc + "\n", 1)
             neuf = re.sub(r"(assets/(?:style\.css|page\.js|son\.js|app\.js|avis\.js)\?v=)[0-9a-f]+", lambda x: x.group(1) + v, neuf)   # style de l'encadré
-            if neuf != h:
+            if neuf != h0:
                 open(f, "w", encoding="utf-8", newline="\n").write(neuf)
                 n += 1
     return n
@@ -1060,7 +1094,11 @@ def construire(jour):
         DESC_AR[f"concours/{c['id']}/"] = (f"المناظرة عدد {c['id']}: {c['grade']}، {c['organisme']}" + (f"، {postes} خطة" if postes else "")
                                              + (f". آخر أجل للترشح {dfr(lim)}" if ouvert and lim else f". انتهى أجل الترشح في {dfr(lim)}" if lim else "")
                                              + ". الرابط الرسمي، دليل الترشح، حالة النتائج.")
-        pages[f"concours/{c['id']}/"] = page(f"concours/{c['id']}/", "../../", titre[:150] + " | Alerte Concours Tunisie", desc, hero, contenu, v, maj, fil_ld)
+        perimee = fiche_perimee(lim, fin, jour)      # 25/11/2026 (plan Google B.1) : en ligne, mais noindex et hors du plan du site
+        pages[f"concours/{c['id']}/"] = page(f"concours/{c['id']}/", "../../", titre[:150] + " | Alerte Concours Tunisie", desc, hero, contenu, v, maj, fil_ld,
+                                             indexer=not perimee)
+        if perimee:
+            sans_index.add(f"concours/{c['id']}/")
 
     # --- actualités du portail (08/10/2026) : nouveaux concours, candidatures acceptées, convocations, résultats, reports
     if actus:
@@ -1126,10 +1164,16 @@ def construire(jour):
         ecrire("ar/" + chemin, ar)
     LG.nettoyer(RACINE)                      # page arabe sans page française du jour (ancien concours) = retirée
     ajouter_encadre_anciennes({str(c["id"]) for c in d["concours"]}, jour, v)   # 25/11/2026 : encadré des alertes aussi sur les anciennes fiches
+    # plan du site (25/11/2026, plan Google B.2) : date = dernier VRAI changement de chaque page (robot/lastmod.py, mémoire
+    # donnees/lastmod.json : empreinte sans dates ni ?v=), jamais « aujourd'hui » pour tout ; un rapport du mois garde la date de ses chiffres
+    import lastmod as LM
+    adresses = [c for c in pages if c not in sans_index] + ["ar/" + c for c in pages if c not in sans_index]
+    compte_a_rebours = [re.compile(r'<small class="reste">.*?</small>', re.S), re.compile(r"\((?:encore \d+ jours|demain|aujourd’hui)\)")]
+    DATES = LM.dates(RACINE, [a + "index.html" for a in adresses], jour, "donnees/lastmod.json", compte_a_rebours)
     open(os.path.join(RACINE, "sitemap.xml"), "w", encoding="utf-8", newline="\n").write(
         '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
-        + "".join(f"  <url><loc>{URL_SITE}{c}</loc><lastmod>{rap_dates.get(c) or maj or jour}</lastmod></url>\n" for c in pages if c not in sans_index)
-        + "".join(f"  <url><loc>{URL_SITE}ar/{c}</loc><lastmod>{rap_dates.get(c) or maj or jour}</lastmod></url>\n" for c in pages if c not in sans_index) + "</urlset>\n")
+        + "".join(f"  <url><loc>{URL_SITE}{a}</loc><lastmod>{rap_dates.get(a[3:] if a.startswith('ar/') else a) or DATES.get(a + 'index.html') or jour}</lastmod></url>\n" for a in adresses)
+        + "</urlset>\n")
     open(os.path.join(RACINE, "robots.txt"), "w", encoding="utf-8", newline="\n").write(
         "# Assistants IA qui répondent à une question en citant leur source : bienvenus (référencement sur les IA, 13/10/2026)\nUser-agent: OAI-SearchBot\nUser-agent: ChatGPT-User\nUser-agent: PerplexityBot\nUser-agent: Perplexity-User\nUser-agent: Claude-SearchBot\nUser-agent: Claude-User\nUser-agent: MistralAI-User\nUser-agent: DuckAssistBot\nAllow: /\n\n"
         + "# Moteurs de recherche : bienvenus\n" + "".join(f"User-agent: {b}\nAllow: /\n\n" for b in ("Googlebot", "Bingbot", "DuckDuckBot", "YandexBot", "Applebot"))
