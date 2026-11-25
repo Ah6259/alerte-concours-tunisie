@@ -282,7 +282,7 @@ if (JSDOM) {
   check("alertes : envoi à Formspree avec la ligne « pour_activer » (téléphone 8 chiffres, concours suivis nettoyés), puis confirmation",
     envois.length === 1 && /formspree\.io\/f\/mwlpakqj/.test(envois[0][0]) && corps.get("telephone") === "24321390" && corps.get("suivis") === "2390, 2412"
     && /suivis: 2390,2412/.test(corps.get("pour_activer")) && f.hidden && !d.getElementById("apres-abo").hidden
-    && /Test%20Candidat/.test(d.getElementById("abo-preuve-apres").getAttribute("href")));
+    && /code%3A%20[A-HJ-NP-Z2-9]{6}$/.test(encodeURIComponent(corps.get("pour_activer"))));
   // 14/10/2026 (règle commune § 15 : inscription immédiate ; plus d'essai depuis le 20/10/2026) : code créé sur place, lien Telegram avec les choix, gestes expliqués avant
   const code = d.getElementById("abo-code").textContent, lienTg = d.getElementById("abo-ouvrir-tg").getAttribute("href");
   const mSorted = f.getAttribute("data-metiers").split(","), premier = f.querySelector('#abo-metiers input').value;
@@ -292,6 +292,54 @@ if (JSDOM) {
   check("inscription immédiate : 3 gestes expliqués avant Telegram (DÉMARRER, réponse le matin suivant vers 8 h) ; plus d'« activation sous 24 heures »",
     d.querySelectorAll("#apres-abo .etapes-tg li").length === 3 && /DÉMARRER/.test(d.getElementById("apres-abo").textContent)
     && /le matin suivant, vers 8 h/.test(d.getElementById("apres-abo").textContent) && !/24 heures/.test(al));
+  // 25/11/2026 (parcours commun des Pass, règle commune § 70) : page « Dernière étape » + mémoire « pass-commande » (FR puis AR)
+  const ap = d.getElementById("apres-abo"), txt = ap.textContent;
+  check("dernière étape (FR) : code en gros + « numéro de commande … motif du paiement » + « Vous le recevez aussi par e-mail » + motif = le code + filet « oublié le code ? »",
+    ap.querySelector(".code-commande #abo-code").textContent === code && /C'est votre numéro de commande : écrivez-le dans le motif du paiement, il nous sert à reconnaître votre paiement\./.test(txt)
+    && /Vous le recevez aussi par e-mail\./.test(txt) && [...ap.querySelectorAll(".paie-etapes .code-motif")].length === 1 && ap.querySelector(".paie-etapes .code-motif").textContent === code
+    && /Vous avez oublié le code dans le motif \? Ce n'est pas grave/.test(txt) && corps.get("pour_activer").endsWith("code: " + code));
+  check("dernière étape (FR) : bouton WhatsApp pré-rempli « Voici ma preuve de paiement — Alerte Concours Tunisie — code <CODE> — 3 mois », sans nom ni téléphone",
+    [...d.querySelectorAll("a.btn-wa")].every(a => decodeURIComponent(a.getAttribute("href")) === `https://wa.me/21624321390?text=Voici ma preuve de paiement — Alerte Concours Tunisie — code ${code} — 3 mois`));
+  const memo = w.localStorage.getItem("pass-commande"), m = JSON.parse(memo || "{}");
+  check("mémoire pass-commande : code, formule, date, lien Telegram — rien de personnel (ni nom, ni téléphone, ni e-mail)",
+    m.code === code && m.formule === "3 mois" && /^\d{4}-\d{2}-\d{2}$/.test(m.date) && m.tg === lienTg && Object.keys(m).sort().join() === "code,date,formule,tg"
+    && !/Test Candidat|24321390|24 321 390|candidat@exemple|exemple\.tn/.test(JSON.stringify(Object.assign({}, w.localStorage))));
+  // retour sur la page (nouvelle fenêtre, même mémoire) : bandeau « commande en attente » à la place du formulaire
+  const revenir = (page, url, valeur) => { const dd = new JSDOM(page, { runScripts: "outside-only", url, pretendToBeVisual: true });
+    if (valeur) dd.window.localStorage.setItem("pass-commande", valeur); dd.window.fetch = () => Promise.resolve({ ok: true });
+    dd.window.eval(lire("assets/page.js")); dd.window.eval(lire("assets/abonnement.js")); dd.window.document.dispatchEvent(new dd.window.Event("DOMContentLoaded")); return dd.window; };
+  { const w2 = revenir(al, "https://concours.clicvia.com/alertes/", memo), d2 = w2.document, at = d2.getElementById("abo-attente");
+    check("retour sur la page (FR) : bandeau « Votre commande en attente : code … — 3 mois » + 3 étapes du paiement (motif = code) + WhatsApp avec le code + « Ouvrir Telegram » (même lien), formulaire caché",
+      !at.hidden && d2.getElementById("abo-form").hidden && /Votre commande en attente :/.test(at.textContent) && at.querySelector("[data-code]").textContent === code
+      && at.querySelector("[data-formule]").textContent === "3 mois" && at.querySelectorAll(".paie-etapes li").length === 3 && at.querySelector(".code-motif").textContent === code
+      && decodeURIComponent(at.querySelector("a.btn-wa").getAttribute("href")).includes("code " + code) && d2.getElementById("abo-attente-tg").getAttribute("href") === lienTg
+      && /oublié le code/.test(at.textContent));
+    d2.getElementById("abo-nouvelle").dispatchEvent(new w2.Event("click"));
+    check("« Nouvelle commande » : mémoire effacée, bandeau caché, formulaire de nouveau visible", w2.localStorage.getItem("pass-commande") === null && at.hidden && !d2.getElementById("abo-form").hidden); }
+  { const vieux = JSON.stringify(Object.assign({}, m, { date: new Date(Date.now() - 61 * 864e5).toISOString().slice(0, 10) }));
+    const w3 = revenir(al, "https://concours.clicvia.com/alertes/", vieux), w4 = revenir(al, "https://concours.clicvia.com/alertes/", JSON.stringify(Object.assign({}, m, { code: "abc" })));
+    check("mémoire pass-commande : gardée 60 jours (au-delà : effacée, pas de bandeau) ; code au mauvais format ignoré",
+      w3.document.getElementById("abo-attente").hidden && w3.localStorage.getItem("pass-commande") === null && !w3.document.getElementById("abo-form").hidden
+      && w4.document.getElementById("abo-attente").hidden && w4.localStorage.getItem("pass-commande") === null); }
+  { // page arabe : mêmes protections, textes en arabe
+    const alAr = lire("ar/alertes/index.html"), envAr = [];
+    const dA = new JSDOM(alAr, { runScripts: "outside-only", url: "https://concours.clicvia.com/ar/alertes/", pretendToBeVisual: true }), wA = dA.window, D2 = wA.document;
+    wA.fetch = (url, o) => { envAr.push(o.body); return Promise.resolve({ ok: true }); };
+    wA.eval(lire("assets/page.js")); wA.eval(lire("assets/abonnement.js")); D2.dispatchEvent(new wA.Event("DOMContentLoaded"));
+    const fA = D2.getElementById("abo-form");
+    fA.querySelector('[name="nom"]').value = "اختبار"; fA.querySelector('[name="telephone"]').value = "24321390"; fA.querySelector('[name="email"]').value = "a@exemple.tn";
+    fA.querySelector('#abo-metiers input').checked = true; fA.querySelector('#abo-gouv input[value="sfax"]').checked = true;
+    fA.querySelector('input[name="formule"][value="1 an"]').checked = true; D2.getElementById("abo-conditions").checked = true;
+    fA.dispatchEvent(new wA.Event("submit", { cancelable: true })); await new Promise(r => setTimeout(r, 20));
+    const cA = D2.getElementById("abo-code").textContent, tA = D2.getElementById("apres-abo").textContent;
+    check("dernière étape (AR) : code en gros, « هذا رقم طلبك… » + « يصلك أيضًا عبر البريد الإلكتروني » + filet, WhatsApp « هذا وصل الدفع — … — الرمز <CODE> — سنة », code envoyé à Formspree",
+      /^[A-HJ-NP-Z2-9]{6}$/.test(cA) && tA.includes("هذا رقم طلبك: اكتبه في خانة سبب الدفع، يساعدنا على التعرّف على دفعتك.") && tA.includes("يصلك أيضًا عبر البريد الإلكتروني.")
+      && tA.includes("نسيت الرمز في سبب الدفع؟") && decodeURIComponent(D2.getElementById("abo-preuve-apres").getAttribute("href")) === `https://wa.me/21624321390?text=هذا وصل الدفع — تنبيه المناظرات تونس — الرمز ${cA} — سنة`
+      && envAr.length === 1 && envAr[0].get("code") === cA && envAr[0].get("pour_activer").endsWith("code: " + cA));
+    const mA = wA.localStorage.getItem("pass-commande"), wB = revenir(alAr, "https://concours.clicvia.com/ar/alertes/", mA), atB = wB.document.getElementById("abo-attente");
+    check("retour sur la page (AR) : bandeau « طلبك في الانتظار » avec le code et « سنة », formulaire caché, rien de personnel dans la mémoire",
+      !atB.hidden && /طلبك في الانتظار/.test(atB.textContent) && atB.querySelector("[data-code]").textContent === cA && atB.querySelector("[data-formule]").textContent === "سنة"
+      && wB.document.getElementById("abo-form").hidden && !/اختبار|24321390|exemple/.test(mA)); }
   check("inscription immédiate : listes triées du formulaire = cases du formulaire", JSON.stringify([...f.querySelectorAll('#abo-metiers input')].map(x => x.value).sort()) === JSON.stringify(mSorted));
 }
 
@@ -431,6 +479,7 @@ check("paiement : le motif est le code personnel, jamais « nom … (motif du pa
     ["rapports du mois", existsSync(join(root, "rapports/index.html")), /Rapports du mois/],
     ["alertes Telegram payantes (Alertes + Suivi)", existsSync(join(root, "alertes/index.html")), /Payant : Alertes \+ Suivi sur Telegram/],
     ["paiement avec le code personnel, sans renouvellement automatique", /abo-code/.test(lire("alertes/index.html") + lire("assets/abonnement.js")), /code personnel[\s\S]*Pas de renouvellement automatique/],
+    ["commande en attente gardée par le téléphone (code, paiement, WhatsApp, Telegram)", /pass-commande/.test(lire("assets/abonnement.js")) && /id="abo-attente"/.test(lire("alertes/index.html")), /Commande en attente<\/b>[\s\S]*numéro de commande[\s\S]*60.jours[\s\S]*Nouvelle commande/],
     ["bouton Partager", /class="partager"/.test(js), /Partager<\/b>/],
     ["français / arabe", /class="langue"/.test(js), /ع \/ Fr/],
     ["votre avis", /id="avis-form"/.test(acc2), /Votre avis<\/b>/],

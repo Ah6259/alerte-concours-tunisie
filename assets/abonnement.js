@@ -5,12 +5,53 @@
      prête à recopier dans le bouton GitHub « activer-abonne » du dépôt privé « concours-abonnes ».
    - E-mail et téléphone OBLIGATOIRES (règle d'Ahmed du 24/11/2026 : e-mail automatique avec le code et le paiement).
    - Concours à suivre (facultatif) : numéros nettoyés (chiffres seulement, 10 au plus).
-   - Après l'envoi : le formulaire est remplacé par la confirmation, les modes de paiement et les instructions Telegram.
+   - Après l'envoi : le formulaire est remplacé par la page « Dernière étape » (parcours commun des Pass, règle commune § 70,
+     25/11/2026) : code de commande en gros (= motif du paiement), paiement en 3 étapes, WhatsApp pré-rempli avec le code,
+     filet « oublié le code ? », puis Telegram.
+   - Le téléphone se souvient de la commande (localStorage « pass-commande » : code, formule, date, lien Telegram ; JAMAIS nom,
+     téléphone ni e-mail ; gardée 60 jours) : en revenant, bandeau « Votre commande en attente » + paiement + WhatsApp +
+     « Ouvrir Telegram » + « Nouvelle commande ». Pas de vérification d'activation sur ce site (alertes sur Telegram).
    - Fichier externe : aucun script en ligne (CSP). Textes en français et en arabe selon la langue de la page. */
 (function () {
   var ADRESSE = "https://formspree.io/f/mwlpakqj";
   var ar = function () { return document.documentElement.lang === "ar"; };
   var T = function (fr, a) { return ar() ? a : fr; };
+  var SITE_FR = "Alerte Concours Tunisie", SITE_AR = "تنبيه المناظرات تونس", WA = "21624321390";
+  var FORMULES_AR = { "3 mois": "3 أشهر", "1 an": "سنة" };
+  var CLE = "pass-commande", JOURS = 60, FORMAT = /^[A-HJ-NP-Z2-9]{6}$/;
+  var formuleLue = function (f) { return T(f, FORMULES_AR[f] || f); };
+  // message WhatsApp de la preuve de paiement : le client n'a rien à recopier (code + formule déjà dedans)
+  function lienWa(code, formule) {
+    return "https://wa.me/" + WA + "?text=" + encodeURIComponent(T(
+      "Voici ma preuve de paiement — " + SITE_FR + " — code " + code + " — " + formuleLue(formule),
+      "هذا وصل الدفع — " + SITE_AR + " — الرمز " + code + " — " + formuleLue(formule)));
+  }
+  // remplit toute la page : code (gros + motif), formule, liens WhatsApp, liens Telegram
+  function remplir(code, formule, tg) {
+    var i, x = document.querySelectorAll("[data-code]");
+    for (i = 0; i < x.length; i++) x[i].textContent = code;
+    x = document.querySelectorAll("[data-formule]");
+    for (i = 0; i < x.length; i++) x[i].textContent = formuleLue(formule);
+    x = document.querySelectorAll("a.btn-wa");
+    for (i = 0; i < x.length; i++) x[i].setAttribute("href", lienWa(code, formule));
+    x = document.querySelectorAll("a[data-tg]");
+    for (i = 0; i < x.length; i++) if (tg) x[i].setAttribute("href", tg);
+  }
+  function aujourdhui() { return new Date().toISOString().slice(0, 10); }
+  function memoriser(code, formule, tg) {
+    try { localStorage.setItem(CLE, JSON.stringify({ code: code, formule: formule, date: aujourdhui(), tg: tg })); } catch (e) {}
+  }
+  function oublier() { try { localStorage.removeItem(CLE); } catch (e) {} }
+  // commande gardée : seulement si le code est au bon format, le lien Telegram est le nôtre et elle a moins de 60 jours
+  function relire() {
+    var c = null;
+    try { c = JSON.parse(localStorage.getItem(CLE) || "null"); } catch (e) { c = null; }
+    if (!c) return null;
+    var t = Date.parse(String(c.date || "") + "T00:00:00Z");
+    if (!FORMAT.test(c.code || "") || !(t > 0) || Date.now() - t > JOURS * 864e5 || (c.tg && !/^https:\/\/t\.me\//.test(c.tg))) { oublier(); return null; }
+    return c;
+  }
+  window.PASS_COMMANDE = { cle: CLE, jours: JOURS, relire: relire };
 
   function coches(form, nom) {
     var res = [], c = form.querySelectorAll('input[name="' + nom + '"]');
@@ -53,6 +94,19 @@
     var apres = document.getElementById("apres-abo");
     var dire = function (classe, fr, a) { statut.className = classe; statut.textContent = T(fr, a); };
 
+    // retour sur la page : la commande en attente est montrée à la place du formulaire
+    var attente = document.getElementById("abo-attente"), cmd = relire();
+    if (cmd && attente) { remplir(cmd.code, cmd.formule, cmd.tg); attente.hidden = false; form.hidden = true; }
+    var nouvelle = document.getElementById("abo-nouvelle");
+    if (nouvelle) nouvelle.addEventListener("click", function () {
+      oublier();
+      if (attente) attente.hidden = true;
+      if (apres) apres.hidden = true;
+      form.hidden = false;
+      var n = champ0("nom"); if (n && n.focus) n.focus();
+    });
+    function champ0(n) { return form.querySelector('[name="' + n + '"]'); }
+
     // « Toute la Tunisie » et les gouvernorats un par un s'excluent
     var tous = document.getElementById("g-tous");
     form.addEventListener("change", function (e) {
@@ -86,16 +140,10 @@
       var code = nouveauCode();
       var lien = "https://t.me/" + form.getAttribute("data-robot") + "?start=e" + code + "_" +
         encoder(metiers, (form.getAttribute("data-metiers") || "").split(",")) + "_" + encoder(gouv, (form.getAttribute("data-gouv") || "").split(","));
+      var coche = form.querySelector('input[name="formule"]:checked'), formule = coche ? coche.value : "3 mois";
       var fini = function () {
-        // lien WhatsApp de la preuve de paiement : on ajoute le code et le nom au message prérempli
-        var liens = document.querySelectorAll("#abo-preuve, #abo-preuve-apres");
-        for (var i = 0; i < liens.length; i++) {
-          var base = liens[i].getAttribute("data-texte") || "";
-          liens[i].setAttribute("href", "https://wa.me/21624321390?text=" + encodeURIComponent(base + val("nom") + " — code " + code));
-        }
-        var c = document.getElementById("abo-code"), o = document.getElementById("abo-ouvrir-tg");
-        if (c) c.textContent = code;
-        if (o) o.setAttribute("href", lien);
+        remplir(code, formule, lien);                          // code en gros, motif, WhatsApp pré-rempli, « Ouvrir Telegram »
+        memoriser(code, formule, lien);                        // le téléphone se souvient de la commande (rien de personnel)
         form.hidden = true;
         if (apres) { apres.hidden = false; if (apres.scrollIntoView) try { apres.scrollIntoView({ block: "start" }); } catch (x) {} }
       };
@@ -112,7 +160,7 @@
       donnees.set("code", code);                               // code personnel (motif du paiement)
       // ligne prête pour le bouton « activer-abonne » (dépôt privé)
       donnees.set("pour_activer", "nom: " + val("nom") + " ; telephone: " + tel +
-        " ; metiers: " + metiers.join(",") + " ; gouvernorats: " + gouv.join(",") + " ; suivis: " + suivis.join(","));
+        " ; metiers: " + metiers.join(",") + " ; gouvernorats: " + gouv.join(",") + " ; suivis: " + suivis.join(",") + " ; code: " + code);
       bouton.disabled = true;
       dire("", "Envoi…", "جارٍ الإرسال…");
       fetch(ADRESSE, { method: "POST", body: donnees, headers: { "Accept": "application/json" } })

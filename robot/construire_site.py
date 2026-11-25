@@ -463,8 +463,9 @@ ABO = {
     "formspree": "https://formspree.io/f/mwlpakqj",
     "robot": "AlerteConcoursTunisieBot",            # robot Telegram créé par Ahmed le 08/10/2026 (jeton dans le dépôt privé concours-abonnes)
 }
-TEXTE_PREUVE = ("Bonjour, voici la preuve de paiement de mon abonnement Alertes concours "
-                "(Alerte Concours Tunisie). Nom : ")
+# 25/11/2026 (parcours commun des Pass, règle commune § 70) : message « Voici ma preuve de paiement — <site> — code <CODE> — <formule> » ;
+# après l'inscription, assets/abonnement.js le refait avec le code et la formule (le client n'a rien à recopier)
+TEXTE_PREUVE = "Voici ma preuve de paiement — Alerte Concours Tunisie — code "
 ICONE_CLOCHE = '<svg viewBox="0 0 24 24"><path d="M6 16.5V11a6 6 0 0 1 12 0v5.5l1.8 1.8H4.2z"/><path d="M10 20.5a2 2 0 0 0 4 0"/></svg>'
 ICONE_WA = '<svg viewBox="0 0 24 24"><path d="M4 20l1.3-4A8 8 0 1 1 8.4 19z"/><path d="M9 8.6c0 3.4 2.9 6.4 6.4 6.4l1-1.4-2-1-1 .9c-1-.4-2.1-1.5-2.5-2.5l.9-1-1-2z"/></svg>'
 APPLIS = {
@@ -487,7 +488,8 @@ def lien_preuve(ident="abo-preuve"):
             + L("Envoyer la preuve de paiement par WhatsApp", "أرسل إثبات الدفع عبر واتساب") + "</a>")
 
 
-def liste_paiements(racine):
+def liste_paiements(racine, avec_code=False):
+    """Paiement en 3 étapes. avec_code : le motif affiche le code de la commande (rempli par assets/abonnement.js, attribut data-code)."""
     applis = "".join(f'<a class="appli-btn" href="{APPLIS[m][0]}" target="_blank" rel="noopener noreferrer"><img src="{racine}assets/paiement/{m.lower()}.png" alt="{m}" width="44" height="44"></a>' for m in ABO["paiements"])
     ios = " · ".join(f'<a class="appli" href="{APPLIS[m][1]}" target="_blank" rel="noopener noreferrer">{m}</a>' for m in ABO["paiements"])
     e1, e1b = L("Ouvrez l'application :", 'افتح التطبيق:'), L('Sur iPhone :', 'على آيفون:')
@@ -496,9 +498,20 @@ def liste_paiements(racine):
     e3b = L('Puis envoyez la capture du paiement par WhatsApp (bouton vert).', 'ثم أرسل لقطة الدفع عبر واتساب (الزر الأخضر).')
     conf = L("Vous payez directement dans l'application officielle de La Poste Tunisienne (D17) ou de Zitouna Paiement (IZI) : nous ne voyons jamais vos codes.", 'تدفع مباشرة في التطبيق الرسمي للبريد التونسي (D17) أو لزيتونة للدفع (IZI): لا نطّلع أبدًا على رموزك.')
     motif = L('votre code personnel (donné à l’inscription)', 'رمزك الشخصي (يُعطى عند التسجيل)')
+    if avec_code:
+        motif = L('votre numéro de commande', 'رقم طلبك') + ' <bdi class="code-motif" data-code dir="ltr"></bdi>'
+
     return (f'<div class="paie"><ol class="paie-etapes"><li>{e1} <span class="applis">{applis}</span><br><span class="petit">{e1b} {ios}</span></li>'
             f'<li>{e2} <strong><bdi dir="ltr">{ABO["numero"]}</bdi></strong>.<br>{e2b} <strong>{prix_abo()}</strong>{AIDE_TRANSFERT.replace("RACINE", racine)}</li>'
             f'<li>{e3} <strong>{motif}</strong>. {e3b}</li></ol><p class="paie-confiance">{conf}</p></div>')
+
+
+# Parcours commun des Pass (règle commune § 70, 25/11/2026) : textes de la page « Dernière étape » et du bandeau « commande en attente »
+PHRASE_CODE = L("C'est votre numéro de commande : écrivez-le dans le motif du paiement, il nous sert à reconnaître votre paiement.",
+                "هذا رقم طلبك: اكتبه في خانة سبب الدفع، يساعدنا على التعرّف على دفعتك.")
+PHRASE_EMAIL = L("Vous le recevez aussi par e-mail.", "يصلك أيضًا عبر البريد الإلكتروني.")
+FILET = L("Vous avez oublié le code dans le motif ? Ce n'est pas grave : envoyez quand même la preuve sur WhatsApp, nous retrouvons votre demande.",
+          "نسيت الرمز في سبب الدفع؟ لا بأس: أرسل الوصل على واتساب وسنجد طلبك.")
 
 
 def texte_telegram(robot):
@@ -595,6 +608,8 @@ def page_a_propos(v, maj):
        f"<b>بمقابل: التنبيهات + المتابعة على تيليغرام</b> ({ISO(p3)} دينار لـ" + ISO(3) + f" أشهر أو {ISO(pa)} دينار للسنة). كل صباح، المناظرات الجديدة في اختصاصاتك وولاياتك (مع المناظرات الوطنية)، تذكير قبل آخر أجل بـ" + ISO(3) + " أيام، ومتابعة المناظرات التي تختارها (قبول الترشحات، الاستدعاءات، التأجيل، النتائج).")}</p>
 <p>{L(f"Paiement par D17 ou IZI, avec pour motif votre <b>code personnel</b> donné sur la page Alertes. Pas de renouvellement automatique : rappel {rj}" + NB + "jours avant la fin, puis l'alerte s'arrête simplement.",
        f"الدفع عبر ⁨D17⁩ أو ⁨IZI⁩ مع ذكر <b>رمزك الشخصي</b> المعطى في صفحة التنبيهات. لا تجديد آلي: تذكير قبل النهاية بـ{ISO(rj)} أيام، ثم يتوقف التنبيه ببساطة.")}</p>
+<p>{L("<b>Commande en attente</b> : après l'inscription, la page « Dernière étape » montre votre code en gros (c'est votre numéro de commande, à écrire dans le motif du paiement ; vous le recevez aussi par e-mail), les 3" + NB + "étapes du paiement et un bouton WhatsApp où le code est déjà écrit. Votre téléphone se souvient de la commande pendant 60" + NB + "jours (seulement le code, la formule et la date, jamais votre nom, téléphone ou e-mail) : en revenant sur la page Alertes, vous retrouvez le code, le paiement, WhatsApp et « Ouvrir Telegram » ; « Nouvelle commande » l'efface. Code oublié dans le motif ? Envoyez quand même la preuve sur WhatsApp, nous retrouvons votre demande.",
+       "<b>طلب في الانتظار</b>: بعد التسجيل، تعرض صفحة «الخطوة الأخيرة» رمزك بخط كبير (هو رقم طلبك، اكتبه في خانة سبب الدفع؛ يصلك أيضًا عبر البريد الإلكتروني)، وخطوات الدفع الثلاث وزر واتساب مكتوب فيه الرمز. يتذكر هاتفك الطلب مدة " + ISO(60) + " يومًا (الرمز والصيغة والتاريخ فقط، لا اسمك ولا هاتفك ولا بريدك أبدًا): عند العودة إلى صفحة التنبيهات تجد الرمز والدفع وواتساب و«افتح تيليغرام»؛ و«طلب جديد» يمحوه. نسيت الرمز في سبب الدفع؟ أرسل الوصل على واتساب وسنجد طلبك.")}</p>
 <a class="btn" href="../alertes/">{L("Voir les alertes", "اطّلع على التنبيهات")}</a></section>
 <section class="carte"><h2>{L("Vos données", "بياناتك")}</h2>
 <ul>
@@ -649,20 +664,30 @@ def pages_alertes(v, maj):
 <section class="carte">
   <h2>{L("Comment ça marche ?", "كيف يعمل؟")}</h2>
   <ol class="etapes" data-l="fr">
-    <li>Vous choisissez vos <b>métiers</b> et vos <b>gouvernorats</b> dans le formulaire ci-dessous (et, si vous voulez, les numéros des concours à suivre).</li>
-    <li>La page vous donne votre <b>code personnel</b> et un bouton « Ouvrir Telegram » : touchez <b>DÉMARRER</b> (vos choix sont dans le lien).</li>
+    <li>Vous indiquez votre nom, votre téléphone WhatsApp et votre e-mail, puis vous choisissez vos <b>métiers</b> et vos <b>gouvernorats</b> dans le formulaire ci-dessous (et, si vous voulez, les numéros des concours à suivre).</li>
+    <li>La page vous donne votre <b>code personnel</b> (votre numéro de commande, aussi envoyé par e-mail) et un bouton « Ouvrir Telegram » : touchez <b>DÉMARRER</b> (vos choix sont dans le lien).</li>
     <li>Vous payez par D17 ou IZI, avec pour motif votre code, et envoyez la preuve par WhatsApp : vos alertes commencent dès réception du paiement.</li>
     <li>Chaque matin, vous recevez les nouveaux concours qui vous concernent. Pour suivre un concours de plus, envoyez au robot <b>/suivre</b> et son numéro (exemple : <code>/suivre 2390</code>).</li>
   </ol>
   <ol class="etapes" data-l="ar">
-    <li>تختار <b>اختصاصاتك</b> و<b>ولاياتك</b> في الاستمارة أسفله (وأرقام المناظرات التي تريد متابعتها إن شئت).</li>
-    <li>تعطيك الصفحة <b>رمزك الشخصي</b> وزر « افتح تيليغرام »: المس <b>ابدأ</b> (اختياراتك موجودة في الرابط).</li>
+    <li>تكتب اسمك وهاتف واتساب وبريدك الإلكتروني، ثم تختار <b>اختصاصاتك</b> و<b>ولاياتك</b> في الاستمارة أسفله (وأرقام المناظرات التي تريد متابعتها إن شئت).</li>
+    <li>تعطيك الصفحة <b>رمزك الشخصي</b> (رقم طلبك، يصلك أيضًا عبر البريد الإلكتروني) وزر « افتح تيليغرام »: المس <b>ابدأ</b> (اختياراتك موجودة في الرابط).</li>
     <li>تدفع عبر ⁨D17⁩ أو ⁨IZI⁩ مع ذكر رمزك، وترسل الإثبات عبر واتساب: تبدأ تنبيهاتك فور استلام الدفع.</li>
     <li>كل صباح، تصلك المناظرات الجديدة التي تهمّك. لمتابعة مناظرة أخرى، أرسل إلى البرنامج <b><bdi dir="ltr">/suivre</bdi></b> ورقمها (مثال: <code dir="ltr">/suivre 2390</code>).</li>
   </ol>
 </section>
 <section class="carte abo" id="inscription" aria-labelledby="abo-titre">
   <h2 id="abo-titre">{L("Inscription", "التسجيل")}</h2>
+  <div class="abo-attente" id="abo-attente" hidden>
+    <p class="attente-titre"><b>{L("Votre commande en attente :", "طلبك في الانتظار:")}</b> {L("code", "الرمز")} <b class="abo-code" data-code dir="ltr"></b> — <span data-formule></span></p>
+    <p class="petit">{PHRASE_CODE}</p>
+    {liste_paiements("../", avec_code=True)}
+    {lien_preuve("abo-preuve-attente")}
+    <p class="petit filet">{FILET}</p>
+    <p>{L("Pas encore touché <b>DÉMARRER</b> dans Telegram ? Le bouton ci-dessous ouvre notre robot avec vos choix.", "لم تلمس <b>ابدأ</b> في تيليغرام بعد؟ الزر أسفله يفتح برنامجنا باختياراتك.")}</p>
+    <a class="btn-telegram" id="abo-attente-tg" data-tg href="https://t.me/{ABO['robot']}" target="_blank" rel="noopener">{L("Ouvrir Telegram", "افتح تيليغرام")}</a>
+    <button type="button" class="btn-clair abo-nouvelle" id="abo-nouvelle">{L("Nouvelle commande", "طلب جديد")}</button>
+  </div>
   <form id="abo-form" action="{ABO['formspree']}" method="POST" novalidate data-robot="{ABO['robot']}"
         data-metiers="{','.join(sorted(s for s, _, _ in METIERS))}" data-gouv="{','.join(sorted(s for s, _, _ in GOUVS))}">
     <label class="abo-etiquette" for="abo-nom">{L("Votre nom et prénom", "اسمك ولقبك")}</label>
@@ -697,20 +722,25 @@ def pages_alertes(v, maj):
                         "تُستعمل بياناتك للاشتراك فقط: لا تُنشر ولا تُباع أبدًا (إرسال عبر خدمة ⁨Formspree⁩). لا يُرسل أي شيء دون الضغط على «أرسل».")}</p>
   </form>
   <div class="apres-abo" id="apres-abo" hidden>
-    <h3>{L("Dernière étape : ouvrez Telegram", "الخطوة الأخيرة: افتح تيليغرام")}</h3>
-    <p>{L("Votre inscription est prête. Votre code personnel (motif du paiement) :", "تسجيلك جاهز. رمزك الشخصي (سبب الدفع):")}
-      <b class="abo-code" id="abo-code" dir="ltr"></b></p>
+    <h3>{L("Dernière étape : payez, puis ouvrez Telegram", "الخطوة الأخيرة: ادفع ثم افتح تيليغرام")}</h3>
+    <div class="code-commande">
+      <b class="abo-code" id="abo-code" data-code dir="ltr"></b>
+      <p>{PHRASE_CODE}</p>
+      <p class="petit">{PHRASE_EMAIL}</p>
+    </div>
+    <h3>{L("Paiement", "الدفع")}</h3>
+    <p>{L("Payez par D17 ou IZI, avec pour motif votre code personnel : vos alertes commencent dès réception du paiement.", "ادفع عبر ⁨D17⁩ أو ⁨IZI⁩ مع ذكر رمزك الشخصي كسبب للدفع: تبدأ تنبيهاتك فور استلام الدفع.")}</p>
+    {liste_paiements("../", avec_code=True)}
+    {lien_preuve("abo-preuve-apres")}
+    <p class="petit filet">{FILET}</p>
+    <h3>{L("Ensuite : ouvrez Telegram", "بعد ذلك: افتح تيليغرام")}</h3>
     <ol class="etapes-tg">
       <li>{L("Touchez « Ouvrir Telegram » : l'application s'ouvre sur notre robot.", "المس « افتح تيليغرام »: يفتح التطبيق على برنامجنا.")}</li>
       <li>{L("Touchez <b>DÉMARRER</b> en bas de l'écran. Rien d'autre à écrire : vos choix sont déjà dans le lien.", "المس <b>ابدأ</b> أسفل الشاشة. لا شيء آخر تكتبه: اختياراتك موجودة في الرابط.")}</li>
       <li>{L("Le robot vous répond <b>le matin suivant, vers 8 h</b>. Vos concours arrivent chaque matin dès réception de votre paiement (ci-dessous). Vous pouvez fermer Telegram en attendant.", "يجيبك البرنامج <b>في الصباح الموالي، حوالي الساعة ⁦8⁩</b>. تصلك مناظراتك كل صباح فور استلام دفعك (أسفله). يمكنك غلق تيليغرام في الأثناء.")}</li>
     </ol>
-    <a class="btn-telegram" id="abo-ouvrir-tg" href="https://t.me/{ABO['robot']}" target="_blank" rel="noopener">{L("Ouvrir Telegram", "افتح تيليغرام")}</a>
+    <a class="btn-telegram" id="abo-ouvrir-tg" data-tg href="https://t.me/{ABO['robot']}" target="_blank" rel="noopener">{L("Ouvrir Telegram", "افتح تيليغرام")}</a>
     <p class="petit">{L("Pas Telegram ? Il s'installe en une minute (Google Play, App Store), puis revenez toucher le bouton. En attendant, toute la liste des concours reste gratuite sur ce site.", "ليس لديك تيليغرام؟ يُثبَّت في دقيقة (Google Play، App Store)، ثم عد والمس الزر. في الأثناء، قائمة المناظرات كاملة مجانية في هذا الموقع.")}</p>
-    <h3>{L("Paiement", "الدفع")}</h3>
-    <p>{L("Payez par D17 ou IZI, avec pour motif votre code personnel : vos alertes commencent dès réception du paiement.", "ادفع عبر ⁨D17⁩ أو ⁨IZI⁩ مع ذكر رمزك الشخصي كسبب للدفع: تبدأ تنبيهاتك فور استلام الدفع.")}</p>
-    {liste_paiements("../")}
-    {lien_preuve("abo-preuve-apres")}
     <p class="petit">{L(f"Pas de renouvellement automatique : nous vous prévenons {rj} jours avant la fin.", f"لا تجديد آلي: نعلمك قبل النهاية بـ{ISO(rj)} أيام.")}</p>
   </div>
 </section>
