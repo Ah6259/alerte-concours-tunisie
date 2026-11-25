@@ -18,6 +18,9 @@
   var T = function (fr, a) { return ar() ? a : fr; };
   var SITE_FR = "Alerte Concours Tunisie", SITE_AR = "تنبيه المناظرات تونس", WA = "21624321390";
   var FORMULES_AR = { "3 mois": "3 أشهر", "1 an": "سنة" };
+  // « Vous le recevez aussi par e-mail » : l'e-mail automatique n'est pas encore en service (25/11/2026) -> phrase cachée.
+  // Le jour où il marche : EMAIL_AUTO = true (les éléments [data-email-auto] s'affichent).
+  var EMAIL_AUTO = false;
   var CLE = "pass-commande", JOURS = 60, FORMAT = /^[A-HJ-NP-Z2-9]{6}$/;
   var formuleLue = function (f) { return T(f, FORMULES_AR[f] || f); };
   // message WhatsApp de la preuve de paiement : le client n'a rien à recopier (code + formule déjà dedans)
@@ -34,6 +37,8 @@
     for (i = 0; i < x.length; i++) x[i].textContent = formuleLue(formule);
     x = document.querySelectorAll("a.btn-wa");
     for (i = 0; i < x.length; i++) x[i].setAttribute("href", lienWa(code, formule));
+    x = document.querySelectorAll("[data-email-auto]");
+    for (i = 0; i < x.length; i++) x[i].hidden = !EMAIL_AUTO;
     x = document.querySelectorAll("a[data-tg]");
     for (i = 0; i < x.length; i++) if (tg) x[i].setAttribute("href", tg);
   }

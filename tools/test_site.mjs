@@ -294,9 +294,9 @@ if (JSDOM) {
     && /le matin suivant, vers 8 h/.test(d.getElementById("apres-abo").textContent) && !/24 heures/.test(al));
   // 25/11/2026 (parcours commun des Pass, règle commune § 70) : page « Dernière étape » + mémoire « pass-commande » (FR puis AR)
   const ap = d.getElementById("apres-abo"), txt = ap.textContent;
-  check("dernière étape (FR) : code en gros + « numéro de commande … motif du paiement » + « Vous le recevez aussi par e-mail » + motif = le code + filet « oublié le code ? »",
+  check("dernière étape (FR) : code en gros + « numéro de commande … motif du paiement » + « Vous le recevez aussi par e-mail » CACHÉ (e-mail automatique pas encore en service, EMAIL_AUTO = false) + motif = le code + filet « oublié le code ? »",
     ap.querySelector(".code-commande #abo-code").textContent === code && /C'est votre numéro de commande : écrivez-le dans le motif du paiement, il nous sert à reconnaître votre paiement\./.test(txt)
-    && /Vous le recevez aussi par e-mail\./.test(txt) && [...ap.querySelectorAll(".paie-etapes .code-motif")].length === 1 && ap.querySelector(".paie-etapes .code-motif").textContent === code
+    && ap.querySelectorAll("[data-email-auto]").length === 1 && ap.querySelector("[data-email-auto]").hidden && /var EMAIL_AUTO = false;/.test(lire("assets/abonnement.js")) && [...ap.querySelectorAll(".paie-etapes .code-motif")].length === 1 && ap.querySelector(".paie-etapes .code-motif").textContent === code
     && /Vous avez oublié le code dans le motif \? Ce n'est pas grave/.test(txt) && corps.get("pour_activer").endsWith("code: " + code));
   check("dernière étape (FR) : bouton WhatsApp pré-rempli « Voici ma preuve de paiement — Alerte Concours Tunisie — code <CODE> — 3 mois », sans nom ni téléphone",
     [...d.querySelectorAll("a.btn-wa")].every(a => decodeURIComponent(a.getAttribute("href")) === `https://wa.me/21624321390?text=Voici ma preuve de paiement — Alerte Concours Tunisie — code ${code} — 3 mois`));
@@ -332,8 +332,8 @@ if (JSDOM) {
     fA.querySelector('input[name="formule"][value="1 an"]').checked = true; D2.getElementById("abo-conditions").checked = true;
     fA.dispatchEvent(new wA.Event("submit", { cancelable: true })); await new Promise(r => setTimeout(r, 20));
     const cA = D2.getElementById("abo-code").textContent, tA = D2.getElementById("apres-abo").textContent;
-    check("dernière étape (AR) : code en gros, « هذا رقم طلبك… » + « يصلك أيضًا عبر البريد الإلكتروني » + filet, WhatsApp « هذا وصل الدفع — … — الرمز <CODE> — سنة », code envoyé à Formspree",
-      /^[A-HJ-NP-Z2-9]{6}$/.test(cA) && tA.includes("هذا رقم طلبك: اكتبه في خانة سبب الدفع، يساعدنا على التعرّف على دفعتك.") && tA.includes("يصلك أيضًا عبر البريد الإلكتروني.")
+    check("dernière étape (AR) : code en gros, « هذا رقم طلبك… » + « يصلك أيضًا… » caché + filet, WhatsApp « هذا وصل الدفع — … — الرمز <CODE> — سنة », code envoyé à Formspree",
+      /^[A-HJ-NP-Z2-9]{6}$/.test(cA) && tA.includes("هذا رقم طلبك: اكتبه في خانة سبب الدفع، يساعدنا على التعرّف على دفعتك.") && D2.querySelector("#apres-abo [data-email-auto]").hidden
       && tA.includes("نسيت الرمز في سبب الدفع؟") && decodeURIComponent(D2.getElementById("abo-preuve-apres").getAttribute("href")) === `https://wa.me/21624321390?text=هذا وصل الدفع — تنبيه المناظرات تونس — الرمز ${cA} — سنة`
       && envAr.length === 1 && envAr[0].get("code") === cA && envAr[0].get("pour_activer").endsWith("code: " + cA));
     const mA = wA.localStorage.getItem("pass-commande"), wB = revenir(alAr, "https://concours.clicvia.com/ar/alertes/", mA), atB = wB.document.getElementById("abo-attente");

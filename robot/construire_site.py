@@ -509,6 +509,8 @@ def liste_paiements(racine, avec_code=False):
 # Parcours commun des Pass (règle commune § 70, 25/11/2026) : textes de la page « Dernière étape » et du bandeau « commande en attente »
 PHRASE_CODE = L("C'est votre numéro de commande : écrivez-le dans le motif du paiement, il nous sert à reconnaître votre paiement.",
                 "هذا رقم طلبك: اكتبه في خانة سبب الدفع، يساعدنا على التعرّف على دفعتك.")
+# « reçu aussi par e-mail » : l'e-mail automatique n'est pas encore en service -> phrase CACHÉE (attribut hidden + data-email-auto),
+# montrée seulement si EMAIL_AUTO = true dans assets/abonnement.js (consigne du 25/11/2026)
 PHRASE_EMAIL = L("Vous le recevez aussi par e-mail.", "يصلك أيضًا عبر البريد الإلكتروني.")
 FILET = L("Vous avez oublié le code dans le motif ? Ce n'est pas grave : envoyez quand même la preuve sur WhatsApp, nous retrouvons votre demande.",
           "نسيت الرمز في سبب الدفع؟ لا بأس: أرسل الوصل على واتساب وسنجد طلبك.")
@@ -608,8 +610,8 @@ def page_a_propos(v, maj):
        f"<b>بمقابل: التنبيهات + المتابعة على تيليغرام</b> ({ISO(p3)} دينار لـ" + ISO(3) + f" أشهر أو {ISO(pa)} دينار للسنة). كل صباح، المناظرات الجديدة في اختصاصاتك وولاياتك (مع المناظرات الوطنية)، تذكير قبل آخر أجل بـ" + ISO(3) + " أيام، ومتابعة المناظرات التي تختارها (قبول الترشحات، الاستدعاءات، التأجيل، النتائج).")}</p>
 <p>{L(f"Paiement par D17 ou IZI, avec pour motif votre <b>code personnel</b> donné sur la page Alertes. Pas de renouvellement automatique : rappel {rj}" + NB + "jours avant la fin, puis l'alerte s'arrête simplement.",
        f"الدفع عبر ⁨D17⁩ أو ⁨IZI⁩ مع ذكر <b>رمزك الشخصي</b> المعطى في صفحة التنبيهات. لا تجديد آلي: تذكير قبل النهاية بـ{ISO(rj)} أيام، ثم يتوقف التنبيه ببساطة.")}</p>
-<p>{L("<b>Commande en attente</b> : après l'inscription, la page « Dernière étape » montre votre code en gros (c'est votre numéro de commande, à écrire dans le motif du paiement ; vous le recevez aussi par e-mail), les 3" + NB + "étapes du paiement et un bouton WhatsApp où le code est déjà écrit. Votre téléphone se souvient de la commande pendant 60" + NB + "jours (seulement le code, la formule et la date, jamais votre nom, téléphone ou e-mail) : en revenant sur la page Alertes, vous retrouvez le code, le paiement, WhatsApp et « Ouvrir Telegram » ; « Nouvelle commande » l'efface. Code oublié dans le motif ? Envoyez quand même la preuve sur WhatsApp, nous retrouvons votre demande.",
-       "<b>طلب في الانتظار</b>: بعد التسجيل، تعرض صفحة «الخطوة الأخيرة» رمزك بخط كبير (هو رقم طلبك، اكتبه في خانة سبب الدفع؛ يصلك أيضًا عبر البريد الإلكتروني)، وخطوات الدفع الثلاث وزر واتساب مكتوب فيه الرمز. يتذكر هاتفك الطلب مدة " + ISO(60) + " يومًا (الرمز والصيغة والتاريخ فقط، لا اسمك ولا هاتفك ولا بريدك أبدًا): عند العودة إلى صفحة التنبيهات تجد الرمز والدفع وواتساب و«افتح تيليغرام»؛ و«طلب جديد» يمحوه. نسيت الرمز في سبب الدفع؟ أرسل الوصل على واتساب وسنجد طلبك.")}</p>
+<p>{L("<b>Commande en attente</b> : après l'inscription, la page « Dernière étape » montre votre code en gros (c'est votre numéro de commande, à écrire dans le motif du paiement), les 3" + NB + "étapes du paiement et un bouton WhatsApp où le code est déjà écrit. Votre téléphone se souvient de la commande pendant 60" + NB + "jours (seulement le code, la formule et la date, jamais votre nom, téléphone ou e-mail) : en revenant sur la page Alertes, vous retrouvez le code, le paiement, WhatsApp et « Ouvrir Telegram » ; « Nouvelle commande » l'efface. Code oublié dans le motif ? Envoyez quand même la preuve sur WhatsApp, nous retrouvons votre demande.",
+       "<b>طلب في الانتظار</b>: بعد التسجيل، تعرض صفحة «الخطوة الأخيرة» رمزك بخط كبير (هو رقم طلبك، اكتبه في خانة سبب الدفع)، وخطوات الدفع الثلاث وزر واتساب مكتوب فيه الرمز. يتذكر هاتفك الطلب مدة " + ISO(60) + " يومًا (الرمز والصيغة والتاريخ فقط، لا اسمك ولا هاتفك ولا بريدك أبدًا): عند العودة إلى صفحة التنبيهات تجد الرمز والدفع وواتساب و«افتح تيليغرام»؛ و«طلب جديد» يمحوه. نسيت الرمز في سبب الدفع؟ أرسل الوصل على واتساب وسنجد طلبك.")}</p>
 <a class="btn" href="../alertes/">{L("Voir les alertes", "اطّلع على التنبيهات")}</a></section>
 <section class="carte"><h2>{L("Vos données", "بياناتك")}</h2>
 <ul>
@@ -665,13 +667,13 @@ def pages_alertes(v, maj):
   <h2>{L("Comment ça marche ?", "كيف يعمل؟")}</h2>
   <ol class="etapes" data-l="fr">
     <li>Vous indiquez votre nom, votre téléphone WhatsApp et votre e-mail, puis vous choisissez vos <b>métiers</b> et vos <b>gouvernorats</b> dans le formulaire ci-dessous (et, si vous voulez, les numéros des concours à suivre).</li>
-    <li>La page vous donne votre <b>code personnel</b> (votre numéro de commande, aussi envoyé par e-mail) et un bouton « Ouvrir Telegram » : touchez <b>DÉMARRER</b> (vos choix sont dans le lien).</li>
+    <li>La page vous donne votre <b>code personnel</b> (votre numéro de commande) et un bouton « Ouvrir Telegram » : touchez <b>DÉMARRER</b> (vos choix sont dans le lien).</li>
     <li>Vous payez par D17 ou IZI, avec pour motif votre code, et envoyez la preuve par WhatsApp : vos alertes commencent dès réception du paiement.</li>
     <li>Chaque matin, vous recevez les nouveaux concours qui vous concernent. Pour suivre un concours de plus, envoyez au robot <b>/suivre</b> et son numéro (exemple : <code>/suivre 2390</code>).</li>
   </ol>
   <ol class="etapes" data-l="ar">
     <li>تكتب اسمك وهاتف واتساب وبريدك الإلكتروني، ثم تختار <b>اختصاصاتك</b> و<b>ولاياتك</b> في الاستمارة أسفله (وأرقام المناظرات التي تريد متابعتها إن شئت).</li>
-    <li>تعطيك الصفحة <b>رمزك الشخصي</b> (رقم طلبك، يصلك أيضًا عبر البريد الإلكتروني) وزر « افتح تيليغرام »: المس <b>ابدأ</b> (اختياراتك موجودة في الرابط).</li>
+    <li>تعطيك الصفحة <b>رمزك الشخصي</b> (رقم طلبك) وزر « افتح تيليغرام »: المس <b>ابدأ</b> (اختياراتك موجودة في الرابط).</li>
     <li>تدفع عبر ⁨D17⁩ أو ⁨IZI⁩ مع ذكر رمزك، وترسل الإثبات عبر واتساب: تبدأ تنبيهاتك فور استلام الدفع.</li>
     <li>كل صباح، تصلك المناظرات الجديدة التي تهمّك. لمتابعة مناظرة أخرى، أرسل إلى البرنامج <b><bdi dir="ltr">/suivre</bdi></b> ورقمها (مثال: <code dir="ltr">/suivre 2390</code>).</li>
   </ol>
@@ -726,7 +728,7 @@ def pages_alertes(v, maj):
     <div class="code-commande">
       <b class="abo-code" id="abo-code" data-code dir="ltr"></b>
       <p>{PHRASE_CODE}</p>
-      <p class="petit">{PHRASE_EMAIL}</p>
+      <p class="petit" data-email-auto hidden>{PHRASE_EMAIL}</p>
     </div>
     <h3>{L("Paiement", "الدفع")}</h3>
     <p>{L("Payez par D17 ou IZI, avec pour motif votre code personnel : vos alertes commencent dès réception du paiement.", "ادفع عبر ⁨D17⁩ أو ⁨IZI⁩ مع ذكر رمزك الشخصي كسبب للدفع: تبدأ تنبيهاتك فور استلام الدفع.")}</p>
