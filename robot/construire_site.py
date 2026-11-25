@@ -295,7 +295,7 @@ def metier_vide_html(s, fr, ar, ouverts, cm, racine):
 <h2>{L(f"Aucun concours « {E(fr)} » ouvert aujourd'hui", f"لا توجد مناظرة «{ar}» مفتوحة اليوم")}</h2>
 <p>{L(f"De nouveaux concours sont publiés chaque semaine. Recevez une alerte sur Telegram dès qu'un concours « {E(fr)} » s'ouvre dans votre gouvernorat.",
        f"تُنشر مناظرات جديدة كل أسبوع. تلقَّ تنبيهًا على تيليغرام فور فتح مناظرة «{ar}» في ولايتك.")}</p>
-<p><a class="btn" id="vide-alertes" href="{racine}alertes/">{L("M'alerter dès qu'un concours s'ouvre", "نبّهني عند فتح مناظرة")}</a>
+<p><a class="btn" id="vide-alertes" href="{racine}{E(_params(metier=s))}" data-clic="alertes-metier">{L("M'alerter dès qu'un concours s'ouvre", "نبّهني عند فتح مناظرة")}</a>
 <a class="btn" id="vide-tous" href="{racine}#liste">{L(f"Voir les {n} concours ouverts (tous les métiers)", f"شاهد {ISO(n)} مناظرة مفتوحة (كل الاختصاصات)")}</a></p>
 {f'<p>{L("Métiers qui ont des concours ouverts :", "اختصاصات فيها مناظرات مفتوحة:")}</p><p class="liens-proches">{liens}</p>' if liens else ""}
 </section>"""
@@ -541,6 +541,98 @@ def bouton_alertes(racine):
 
 
 
+def _params(**kv):
+    """Adresse de la page alertes/ avec les choix déjà cochés (25/11/2026) : seules les vraies clés (métier, gouvernorat, n°) passent."""
+    q = []
+    if kv.get("suivi") and re.fullmatch(r"\d{1,6}", str(kv["suivi"])):
+        q.append(f"suivi={kv['suivi']}")
+    if kv.get("metier") in M_PAR:
+        q.append(f"metier={kv['metier']}")
+    if kv.get("gouv") in G_PAR and kv["gouv"] != "national":     # concours national : pas de gouvernorat (les nationaux sont toujours inclus)
+        q.append(f"gouv={kv['gouv']}")
+    return "alertes/" + ("?" + "&".join(q) if q else "") + "#inscription"
+
+
+def encadre_alertes(racine, texte_fr, texte_ar, params, clic, rappel=""):
+    """Encadré « 🔔 … » vers les alertes PAYANTES (25/11/2026, demande d'Ahmed, « pas de gratuité ») : fiches de concours, pages
+    métier et gouvernorat. Le clic est compté dans GoatCounter par assets/page.js (attribut data-clic). Marqueurs de commentaire :
+    les anciennes fiches (plus dans les données) reçoivent le même encadré (ajouter_encadre_anciennes())."""
+    prix = L(f"Alertes + Suivi sur Telegram : {ABO['prix_3mois']}\u00a0DT / 3\u00a0mois ou {ABO['prix_an']}\u00a0DT / an.",
+             f"التنبيهات + المتابعة على تيليغرام: {ISO(ABO['prix_3mois'])} دينار / {ISO(3)} أشهر أو {ISO(ABO['prix_an'])} دينار / سنة.")
+    return (f'<!--encadre-alertes--><section class="carte encadre-alertes" id="encadre-alertes">'
+            f'<p class="encadre-texte">🔔 {L(texte_fr, texte_ar)}</p>'
+            f'<p class="encadre-boutons"><a class="btn" id="encadre-btn" href="{racine}{E(params)}" data-clic="{clic}">{L("Recevoir ces alertes", "تلقَّ هذه التنبيهات")}</a></p>'
+            f'<p class="encadre-prix">{prix}</p>{rappel}</section><!--/encadre-alertes-->')
+
+
+def encadre_fiche(c, jour, racine="../../"):
+    """Encadré d'une fiche de concours : métier + gouvernorat du concours ; bouton « Me rappeler la date limite » seulement si
+    l'inscription se termine dans PLUS de 3 jours (le rappel part 3 jours avant : jamais une promesse impossible à tenir)."""
+    m, g = M_PAR.get(c["metier"], R.AUTRE), G_PAR.get(c["gouvernorat"], G.NATIONAL)
+    quoi_fr = f"un concours «\u00a0{E(m[1])}\u00a0»" if m[0] != "autre" else "un concours"
+    quoi_ar = f"أي مناظرة «{m[2]}»" if m[0] != "autre" else "أي مناظرة"
+    if g[0] == "national":
+        fr = f"Ne ratez plus {quoi_fr} : recevez-les chaque matin sur Telegram (les concours nationaux sont toujours compris, quel que soit votre gouvernorat)."
+        ar = f"لا تفوّت {quoi_ar}: تصلك كل صباح على تيليغرام (المناظرات الوطنية مضمّنة دائمًا، مهما كانت ولايتك)."
+    else:
+        fr = f"Ne ratez plus {quoi_fr} à {E(g[1])} : recevez-les chaque matin sur Telegram."
+        ar = f"لا تفوّت {quoi_ar} في ولاية {g[2]}: تصلك كل صباح على تيليغرام."
+    lim = c.get("cloture_candidatures") or ""
+    rappel = ""
+    if lim and (dt.date.fromisoformat(lim) - dt.date.fromisoformat(jour)).days > ABO["rappel_jours"]:
+        rj = ABO["rappel_jours"]
+        rappel = (f'<p class="encadre-rappel" data-rappel-limite="{lim}"><a class="btn-clair" id="rappel-btn" href="{racine}{E(_params(suivi=c["id"], metier=m[0], gouv=g[0]))}" data-clic="rappel-date">'
+                  f'{L("Me rappeler la date limite", "ذكّرني بآخر أجل")}</a>'
+                  f'<small>{L(f"Avec les alertes : rappel sur Telegram {rj}" + chr(160) + f"jours avant le {dfr(lim)}, puis le suivi de ce concours (convocations, résultats).", f"مع التنبيهات: تذكير على تيليغرام قبل {ISO(dfr(lim))} بـ{ISO(rj)} أيام، ثم متابعة هذه المناظرة (الاستدعاءات، النتائج).")}</small></p>')
+    return encadre_alertes(racine, fr, ar, _params(metier=m[0], gouv=g[0]), "alertes-fiche", rappel)
+
+
+def ajouter_encadre_anciennes(ids_du_jour, jour, v):
+    """Anciennes fiches de concours (plus dans les données, jamais refaites) : on y met (ou remplace) le même encadré, d'après le
+    métier et le gouvernorat écrits dans leur tableau. Concours clos : jamais de bouton « Me rappeler la date limite »."""
+    n = 0
+    for pref, garder in (("", "fr"), ("ar/", "ar")):
+        dossier = os.path.join(RACINE, pref + "concours")
+        for num in (os.listdir(dossier) if os.path.isdir(dossier) else []):
+            f = os.path.join(dossier, num, "index.html")
+            if num in ids_du_jour or not os.path.exists(f):
+                continue
+            h = open(f, encoding="utf-8").read()
+            mm = re.search(r'href="\.\./\.\./metier/([a-z-]+)/"', h)
+            mg = re.search(r'href="\.\./\.\./gouvernorat/([a-z-]+)/"', h)
+            ancre = '<div class="alerte-panne" id="alerte-panne" role="status"></div>\n'
+            if not (mm and mg and mm.group(1) in M_PAR and mg.group(1) in G_PAR and ancre in h):
+                continue
+            bloc = LG.retirer_langue(encadre_fiche({"id": num, "metier": mm.group(1), "gouvernorat": mg.group(1)}, jour), "ar" if garder == "fr" else "fr")
+            neuf = re.sub(r"<!--encadre-alertes-->.*?<!--/encadre-alertes-->\n?", "", h, flags=re.S).replace(ancre, ancre + bloc + "\n", 1)
+            neuf = re.sub(r"(assets/(?:style\.css|page\.js|son\.js|app\.js|avis\.js)\?v=)[0-9a-f]+", lambda x: x.group(1) + v, neuf)   # style de l'encadré
+            if neuf != h:
+                open(f, "w", encoding="utf-8", newline="\n").write(neuf)
+                n += 1
+    return n
+
+
+def encadre_metier(s, fr, ar, n):
+    """Page d'un métier : « <N> concours « métier » ouverts » (N = le nombre écrit en haut de la page)."""
+    quoi_fr = f"«\u00a0{E(fr)}\u00a0» " if s != "autre" else ""
+    quoi_ar = f"«{ar}» " if s != "autre" else ""
+    return encadre_alertes("../../", f"{n} concours {quoi_fr}ouvert{'s' if n > 1 else ''}. Soyez prévenu des prochains : chaque matin sur Telegram.",
+                           f"{ISO(n)} مناظرة {quoi_ar}مفتوحة. كن أول من يعلم بالمناظرات القادمة: كل صباح على تيليغرام.",
+                           _params(metier=s), "alertes-metier")
+
+
+def encadre_gouv(s, fr, ar, n):
+    """Page d'un gouvernorat : « <N> concours ouverts à <gouvernorat> » (N = le nombre de la liste, nationaux compris)."""
+    pl = "s" if n > 1 else ""
+    if s == "national":
+        t_fr = f"{n} concours nationau{'x' if n > 1 else ''} ouvert{pl} à toute la Tunisie. Soyez prévenu des prochains : chaque matin sur Telegram (toujours compris dans les alertes, quel que soit votre gouvernorat)."
+        t_ar = f"{ISO(n)} مناظرة وطنية مفتوحة لكل الجمهورية. كن أول من يعلم بالمناظرات القادمة: كل صباح على تيليغرام (مضمّنة دائمًا في التنبيهات، مهما كانت ولايتك)."
+    else:
+        t_fr = f"{n} concours ouvert{pl} à {E(fr)} (concours nationaux compris). Soyez prévenu des prochains : chaque matin sur Telegram."
+        t_ar = f"{ISO(n)} مناظرة مفتوحة في ولاية {ar} (مع المناظرات الوطنية). كن أول من يعلم بالمناظرات القادمة: كل صباح على تيليغرام."
+    return encadre_alertes("../../", t_fr, t_ar, _params(gouv=s), "alertes-gouvernorat")
+
+
 def page_a_propos(v, maj):
     """Page a-propos/ « Comment fonctionne le site ? » (règle commune § 44) : à quoi sert le site, sources, mode d'emploi,
     chaque fonction visible (une ligne), gratuit / payant, vos données, mises à jour, site indépendant."""
@@ -576,6 +668,10 @@ def page_a_propos(v, maj):
         ("<b>Rapports du mois</b> : les concours en chiffres (par métier, par gouvernorat), avec un bouton « Partager ce rapport ».",
          "<b>التقارير الشهرية</b>: المناظرات بالأرقام (حسب الاختصاص والولاية)، مع زر «شارك هذا التقرير»."),
         ("<b>Alertes sur Telegram</b> (payant) : voir plus bas.", "<b>تنبيهات على تيليغرام</b> (بمقابل): انظر أسفله."),
+        ("Encadré <b>« Ne ratez plus un concours »</b> sur chaque page de concours, de métier et de gouvernorat : le bouton « Recevoir ces alertes » ouvre la page des alertes (payantes) avec ce métier et ce gouvernorat déjà cochés.",
+         "إطار <b>«لا تفوّت أي مناظرة»</b> في كل صفحة مناظرة واختصاص وولاية: زر «تلقَّ هذه التنبيهات» يفتح صفحة التنبيهات (بمقابل) مع هذا الاختصاص وهذه الولاية محدّدين مسبقًا."),
+        ("Bouton <b>« Me rappeler la date limite »</b> sur la page d'un concours encore ouvert (plus de 3" + NB + "jours avant la fin) : il ajoute ce concours aux « concours à suivre » des alertes (payantes) ; rappel sur Telegram 3" + NB + "jours avant la date limite, puis le suivi de ses résultats.",
+         "زر <b>«ذكّرني بآخر أجل»</b> في صفحة مناظرة ما زالت مفتوحة (أكثر من " + ISO(3) + " أيام قبل النهاية): يضيف هذه المناظرة إلى «المناظرات للمتابعة» في التنبيهات (بمقابل)؛ تذكير على تيليغرام قبل آخر أجل بـ" + ISO(3) + " أيام، ثم متابعة نتائجها."),
         ("Bouton <b>Partager</b> en haut de chaque page (menu de partage du téléphone).",
          "زر <b>شارك</b> في أعلى كل صفحة (قائمة المشاركة في الهاتف)."),
         ("Bouton <b>ع / Fr</b> : chaque page existe en français (son adresse normale) et en arabe (adresse qui commence par <code>ar/</code>) ; le bouton passe de l'une à l'autre.", "زر <b>ع / Fr</b>: كل صفحة موجودة بالفرنسية (عنوانها العادي) وبالعربية (عنوان يبدأ بـ <code>ar/</code>)؛ الزر ينقلك من واحدة إلى الأخرى."),
@@ -618,7 +714,7 @@ def page_a_propos(v, maj):
 <section class="carte"><h2>{L("Vos données", "بياناتك")}</h2>
 <ul>
 {li("Pas de compte à créer pour consulter le site. Votre téléphone garde seulement la langue choisie.", "لا حساب لإنشائه لتصفح الموقع. هاتفك يحفظ فقط اللغة المختارة.")}
-{li("Statistiques de visite anonymes, sans cookies (GoatCounter).", "إحصائيات زيارات مجهولة، دون ملفات تعريف الارتباط (⁨GoatCounter⁩).")}
+{li("Statistiques de visite anonymes, sans cookies (GoatCounter) : nous comptons aussi, sans savoir qui vous êtes, les clics sur les boutons qui mènent aux alertes.", "إحصائيات زيارات مجهولة، دون ملفات تعريف الارتباط (⁨GoatCounter⁩): نحسب أيضًا، دون معرفة هويتك، النقرات على الأزرار التي تؤدي إلى التنبيهات.")}
 {li("Votre avis et l'inscription aux alertes ne sont envoyés que si vous touchez « Envoyer » (service Formspree). Vos coordonnées servent seulement à l'abonnement : elles ne sont jamais publiées ni vendues. L'e-mail de confirmation part par notre service d'envoi (Resend) ; rien n'est gardé.", "رأيك والتسجيل في التنبيهات لا يُرسلان إلا إذا لمست «أرسل» (خدمة ⁨Formspree⁩). بياناتك تُستعمل للاشتراك فقط: لا تُنشر ولا تُباع أبدًا. بريد التأكيد يُرسل عبر خدمة الإرسال لدينا (⁨Resend⁩)؛ ولا يُحفظ شيء.")}
 {li("Les pages « Confidentialité » et « Conditions d'utilisation », communes à tous nos sites, sont en bas de chaque page.", "صفحتا «الخصوصية» و«شروط الاستعمال»، المشتركتان بين كل مواقعنا، في أسفل كل صفحة.")}
 </ul></section>
@@ -694,6 +790,7 @@ def pages_alertes(v, maj):
   </div>
   <form id="abo-form" action="{ABO['formspree']}" method="POST" novalidate data-robot="{ABO['robot']}"
         data-metiers="{','.join(sorted(s for s, _, _ in METIERS))}" data-gouv="{','.join(sorted(s for s, _, _ in GOUVS))}">
+    <p class="avert abo-repris" id="abo-repris" hidden>{L("Vos choix de la page précédente sont déjà cochés plus bas (métier, gouvernorat, concours à suivre) : vérifiez-les, puis remplissez le reste.", "اختياراتك من الصفحة السابقة محدّدة أسفله (الاختصاص، الولاية، المناظرات للمتابعة): تحقّق منها ثم أكمل الباقي.")}</p>
     <label class="abo-etiquette" for="abo-nom">{L("Votre nom et prénom", "اسمك ولقبك")}</label>
     <input id="abo-nom" name="nom" required maxlength="100" autocomplete="name">
     <label class="abo-etiquette" for="abo-tel">{L("Téléphone (8 chiffres)", "الهاتف (⁦8⁩ أرقام)")}</label>
@@ -870,6 +967,7 @@ def construire(jour):
                          f"{ISO(locaux)} مناظرة لهياكل هذه الولاية" + (f" + {ISO(len(cs) - locaux)} مناظرة وطنية مفتوحة لكل الجمهورية." if s != "national" else "."))}</p>"""
         contenu = f"""{bouton_alertes("../../")}
 {filtres(cs, avec_gouv=False)}
+{encadre_gouv(s, fr, ar, len(cs)) if cs else ""}
 {liste_html(cs, "../../", jour, "Aucun concours ouvert pour ce gouvernorat aujourd'hui.", "لا توجد مناظرة مفتوحة في هذه الولاية اليوم.")}
 <h2 class="titre-section">{L("Autres gouvernorats", "ولايات أخرى")}</h2>
 <section class="carte">{grille([x for x in GOUVS + [G.NATIONAL] if x[0] != s], "../../", "gouvernorat", cg, "grille-gouv")}</section>"""
@@ -902,6 +1000,7 @@ def construire(jour):
     <p class="intro">{L(f"{len(cs)} concours ouvert{'s' if len(cs) > 1 else ''} dans toute la Tunisie. Filtrez par gouvernorat.", f"{ISO(len(cs))} مناظرة مفتوحة في كل الجمهورية. اختر الولاية.")}</p>"""
         contenu = f"""{bouton_alertes("../../")}
 {filtres(cs, avec_metier=False)}
+{encadre_metier(s, fr, ar, len(cs))}
 {liste_html(cs, "../../", jour, "Aucun concours ouvert pour ce métier aujourd'hui. <a href='../../alertes/'>Recevoir une alerte</a> · <a href='../../#liste'>tous les concours ouverts</a>", "لا توجد مناظرة مفتوحة في هذا الاختصاص اليوم. <a href='../../alertes/'>تلقَّ تنبيهًا</a> · <a href='../../#liste'>كل المناظرات المفتوحة</a>")}
 {autres_m}"""
         DESC_AR[f"metier/{s}/"] = f"مناظرات {ar} في تونس: {len(cs)} مناظرة مفتوحة، مرتبة حسب الولاية، مع آخر أجل للترشح والرابط الرسمي لكل مناظرة. تنبيهات على تيليغرام عند فتح مناظرة جديدة."
@@ -939,7 +1038,8 @@ def construire(jour):
     <h1 dir="rtl" lang="ar">{E(c["grade"])}</h1>
     <p class="intro" dir="rtl" lang="ar">{E(c["organisme"])}</p>
     <p class="intro">{etat}</p>"""
-        contenu = f"""<section class="carte"><h2>{L("Le concours", "المناظرة")}</h2>
+        contenu = f"""{encadre_fiche(c, jour)}
+<section class="carte"><h2>{L("Le concours", "المناظرة")}</h2>
 <table class="fiche-concours">{table}</table>
 {lien_officiel(c, detail=True)}
 <p class="note">{L("Informations reprises du tableau officiel des concours publics. Seul le portail officiel fait foi : lisez toujours l'avis officiel (conditions, pièces, dates).", "معطيات مأخوذة من الجدول الرسمي للمناظرات العمومية. البوابة الرسمية هي المرجع الوحيد: اطّلع دائمًا على البلاغ الرسمي (الشروط، الوثائق، الآجال).")}</p></section>
@@ -1025,6 +1125,7 @@ def construire(jour):
         ecrire(chemin, fr)
         ecrire("ar/" + chemin, ar)
     LG.nettoyer(RACINE)                      # page arabe sans page française du jour (ancien concours) = retirée
+    ajouter_encadre_anciennes({str(c["id"]) for c in d["concours"]}, jour, v)   # 25/11/2026 : encadré des alertes aussi sur les anciennes fiches
     open(os.path.join(RACINE, "sitemap.xml"), "w", encoding="utf-8", newline="\n").write(
         '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
         + "".join(f"  <url><loc>{URL_SITE}{c}</loc><lastmod>{rap_dates.get(c) or maj or jour}</lastmod></url>\n" for c in pages if c not in sans_index)

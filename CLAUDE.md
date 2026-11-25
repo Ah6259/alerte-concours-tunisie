@@ -237,3 +237,23 @@ Rien n'est ajouté au site sans l'accord d'Ahmed.
 - Améliorer le parcours : modifier le module dans projets-ahmed, `python3 "outils communs/pass-commun/synchroniser.py"`, tests, envoyer
   CHAQUE site (LISEZMOI.md du module). Rien n'a changé pour le visiteur (comparaison avant / après : mêmes textes, même code, même Formspree,
   même WhatsApp, même mémoire ; demande d'e-mail identique, clés dans un autre ordre).
+
+## 25/11/2026 : encadrés vers les alertes + clics comptés ; PAS de gratuité (ni essai, ni canal gratuit) — « Fais 1, 2, 3, 4 et pas de gratuité » d'Ahmed
+- Constat : les visiteurs arrivent par les fiches `concours/<n°>/`, les pages `metier/` et `gouvernorat/`, mais vont peu jusqu'à `alertes/` (payante).
+- **Encadré « 🔔 Ne ratez plus un concours « <métier> » à <gouvernorat> : recevez-les chaque matin sur Telegram. »** (`encadre_fiche()` de
+  construire_site.py) juste sous la date limite (1re carte sous le bandeau) de CHAQUE fiche, FR + ar/ ; bouton « Recevoir ces alertes » ->
+  `alertes/?metier=<clé>&gouv=<clé>#inscription` (concours national : pas de gouvernorat, les nationaux sont toujours inclus) ; prix écrit
+  (15 DT / 3 mois ou 39 DT / an). Les ~414 ANCIENNES fiches (plus dans les données) reçoivent le même encadré à chaque construction
+  (`ajouter_encadre_anciennes()`, métier et gouvernorat lus dans leur tableau, entre les marqueurs `<!--encadre-alertes-->`, ?v= remis à jour).
+- **Pages métier et gouvernorat** : « <N> concours « <métier> » ouverts. Soyez prévenu des prochains : chaque matin sur Telegram. » au-dessus de
+  la liste (N = nombre de la liste de la page ; `encadre_metier()` / `encadre_gouv()`) ; page métier vide : bouton « M'alerter » -> `?metier=`.
+- **« Me rappeler la date limite »** sur une fiche dont l'inscription se termine dans PLUS de 3 jours (le robot privé `concours-abonnes` rappelle
+  3 jours avant la date limite les concours SUIVIS, puis leurs résultats) -> `alertes/?suivi=<n°>&metier=…&gouv=…` ; caché par page.js selon la
+  date du visiteur (`data-rappel-limite`) quand il reste 3 jours ou moins.
+- **alertes/** : `assets/pass-reglages.js` (crochet `brancher`, module commun NON modifié) coche les métiers / gouvernorats de l'adresse, ajoute le
+  n° aux « concours à suivre », montre « Vos choix de la page précédente sont déjà cochés… » (`#abo-repris`) ; valeur inconnue = ignorée.
+- **Clics comptés** (page.js, lien `data-clic`) : événements GoatCounter `/alerte-concours-tunisie/clic/alertes-fiche`, `…/clic/alertes-metier`,
+  `…/clic/alertes-gouvernorat`, `…/clic/rappel-date` (rien si GoatCounter est bloqué). Dans GoatCounter : chercher « clic/ ».
+- Tests : bloc « 25/11/2026 » de test_site.mjs (23 vérifications, chaque sabotage attrapé) + 2 dans test_robot.py ; page « Comment fonctionne
+  le site ? » (FR + AR) : 3 lignes (encadré, rappel, clics comptés) et FONCTIONS. Corrigé en passant : en-têtes du tableau d'une fiche
+  illisibles en mode sombre (couleur écrite en dur -> `var(--doux)`).

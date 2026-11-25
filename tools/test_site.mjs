@@ -151,7 +151,7 @@ check("plan du site : toutes les pages indexables, en français et en arabe (ar/
   check(`métiers vides (${vides.join(", ") || "aucun aujourd'hui"}) : noindex, absents du plan du site, message utile avec lien Alertes + tous les concours, pas de « 0 concours »`,
     vides.every(m => { const h = lire(`metier/${m}/index.html`);
       return h.includes('content="noindex, follow, noai, noimageai"') && !sm.includes(`/metier/${m}/</loc>`) && h.includes('id="metier-vide"')
-        && h.includes('id="vide-alertes" href="../../alertes/"') && h.includes('id="vide-tous" href="../../#liste"') && !/>\s*0 concours/.test(h) && !h.includes('id="compte"'); }));
+        && h.includes(`id="vide-alertes" href="../../alertes/?metier=${m}#inscription" data-clic="alertes-metier"`) && h.includes('id="vide-tous" href="../../#liste"') && !/>\s*0 concours/.test(h) && !h.includes('id="compte"'); }));
   check("métiers avec des concours ouverts : indexés, dans le plan du site, sans message « aucun »", pleins.length > 0
     && pleins.every(m => { const h = lire(`metier/${m}/index.html`); return h.includes('content="noai, noimageai"') && sm.includes(`/metier/${m}/</loc>`) && !h.includes('id="metier-vide"') && h.includes('id="compte"'); }));
   check("aucune page du site n'annonce « 0 concours ouvert(s) »", pages.every(p => !/>\s*0 concours ouverts?\b/.test(lire(p))));
@@ -513,6 +513,108 @@ check("Votre avis : e-mail obligatoire (required, « obligatoire ») et confirma
 // 18/10/2026 (décision d'Ahmed) : motif du paiement = le CODE PERSONNEL, jamais le nom (deux clients peuvent avoir le même nom)
 check("paiement : le motif est le code personnel, jamais « nom … (motif du paiement) »",
   !/nom[^<]{0,40}\(motif du paiement\)/.test(lire("alertes/index.html")) && !/motif\s*[:=]\s*(votre )?nom/i.test(lire("alertes/index.html")));
+// ---- 25/11/2026 (« Fais 1, 2, 3, 4 et pas de gratuité », Ahmed) : encadré « Ne ratez plus un concours » vers les alertes PAYANTES
+//      sur chaque fiche de concours (anciennes comprises), page métier et page gouvernorat, FR + ar/ ; « Me rappeler la date limite » ;
+//      cases cochées d'après l'adresse sur alertes/ ; clics comptés dans GoatCounter (événements /alerte-concours-tunisie/clic/<nom>).
+{ const enc = h => (h.match(/<!--encadre-alertes-->([\s\S]*?)<!--\/encadre-alertes-->/) || [])[1] || "";
+  const lien = h => ((enc(h).match(/id="encadre-btn" href="([^"]*)" data-clic="([a-z-]+)"/) || []).slice(1));
+  const jourMs = x => Date.parse(x + "T00:00:00Z"), LU = D.lu_le;
+  const attenduFiche = c => "../../alertes/?" + [`metier=${c.metier}`].concat(c.gouvernorat === "national" ? [] : [`gouv=${c.gouvernorat}`]).join("&amp;") + "#inscription";
+  const ko1 = [], ko2 = [];
+  for (const c of D.concours) for (const pref of ["", "ar/"]) {
+    const f = `${pref}concours/${c.id}/index.html`; if (!existsSync(join(root, f))) { if (!pref) ko1.push(f + " (absente)"); continue; }
+    const h = lire(f), e = enc(h), [href, clic] = lien(h);
+    const bonTexte = pref ? /لا تفوّت/.test(e) && !/Ne ratez plus/.test(e) : /Ne ratez plus un concours/.test(e) && !/[؀-ۿ]/.test(e);
+    if (href !== attenduFiche(c) || clic !== "alertes-fiche" || !bonTexte || !/15.DT \/ 3.mois|⁦15⁩ دينار/.test(e)) ko1.push(f);
+    // rappel : seulement si la date limite est à plus de 3 jours (date de construction >= date des données : un jour d'écart toléré)
+    const lim = c.cloture_candidatures, reste = lim ? (jourMs(lim) - jourMs(LU)) / 864e5 : null, r = e.match(/<p class="encadre-rappel" data-rappel-limite="([^"]+)"><a class="btn-clair" id="rappel-btn" href="([^"]*)" data-clic="rappel-date">/);
+    if (r ? !(reste > 3 && r[1] === lim && r[2] === attenduFiche(c).replace("?", `?suivi=${c.id}&amp;`)) : (reste !== null && reste > 4)) ko2.push(f + (r ? " (rappel en trop)" : " (rappel manquant)"));
+  }
+  check(`encadré alertes sur chaque fiche du jour (${D.concours.length}, FR + ar/) : texte de la langue, prix, lien alertes/?metier=…&gouv=… (aucun gouvernorat pour un concours national), clic « alertes-fiche »` + (ko1.length ? " — " + ko1.slice(0, 4).join(", ") : ""), D.concours.length > 0 && !ko1.length);
+  check("« Me rappeler la date limite » : présent seulement si l'inscription se termine dans plus de 3 jours, lien alertes/?suivi=<n°>&metier=…, clic « rappel-date »" + (ko2.length ? " — " + ko2.slice(0, 4).join(", ") : ""),
+    !ko2.length && D.concours.some(c => c.cloture_candidatures && (jourMs(c.cloture_candidatures) - jourMs(LU)) / 864e5 > 4 ? /id="rappel-btn"/.test(lire(`concours/${c.id}/index.html`)) : false));
+  const ids = new Set(D.concours.map(c => String(c.id))), anciennes = readdirSync(join(root, "concours")).filter(n => !ids.has(n) && existsSync(join(root, "concours", n, "index.html")));
+  const ko3 = [];
+  for (const n of anciennes) for (const pref of ["", "ar/"]) {
+    const f = `${pref}concours/${n}/index.html`; if (!existsSync(join(root, f))) continue;
+    const h = lire(f), [href, clic] = lien(h);
+    if (!/^\.\.\/\.\.\/alertes\/\?metier=[a-z-]+(&amp;gouv=[a-z-]+)?#inscription$/.test(href || "") || clic !== "alertes-fiche" || /id="rappel-btn"/.test(h) || (h.match(/id="encadre-alertes"/g) || []).length !== 1) ko3.push(f);
+  }
+  check(`encadré alertes aussi sur les ${anciennes.length} anciennes fiches (concours clos, FR + ar/), une seule fois, sans bouton de rappel` + (ko3.length ? " — " + ko3.slice(0, 4).join(", ") : ""), anciennes.length > 0 && !ko3.length);
+  const ouvM = D.concours.filter(c => !c.cloture_candidatures || c.cloture_candidatures >= LU);
+  const ko4 = [];
+  for (const m of readdirSync(join(root, "metier"))) for (const pref of ["", "ar/"]) {
+    const f = `${pref}metier/${m}/index.html`, h = lire(f), e = enc(h), [href, clic] = lien(h);
+    const compte = (h.match(/id="compte"[^>]*><span>(\d+) concours/) || [])[1];
+    if (!compte) { if (e) ko4.push(f + " (encadré sur une page sans liste)"); continue; }
+    const n = (pref ? e.match(/⁦(\d+)⁩ مناظرة/) : e.match(/(\d+) concours /)) || [];
+    if (n[1] !== compte || href !== `../../alertes/?metier=${m}#inscription` || clic !== "alertes-metier" || !(pref ? /كن أول من يعلم/ : /Soyez prévenu des prochains/).test(e)) ko4.push(f + ` (${n[1]} / ${compte})`);
+  }
+  for (const g of [...GOUVS, "national"]) for (const pref of ["", "ar/"]) {
+    const f = `${pref}gouvernorat/${g}/index.html`, h = lire(f), e = enc(h), [href, clic] = lien(h);
+    const compte = (h.match(/id="compte"[^>]*><span>(\d+) concours/) || [])[1];
+    if (!compte) { if (e) ko4.push(f + " (encadré sur une page sans liste)"); continue; }
+    const n = (pref ? e.match(/⁦(\d+)⁩ مناظرة/) : e.match(/(\d+) concours /)) || [];
+    if (n[1] !== compte || href !== (g === "national" ? "../../alertes/#inscription" : `../../alertes/?gouv=${g}#inscription`) || clic !== "alertes-gouvernorat") ko4.push(f + ` (${n[1]} / ${compte})`);
+  }
+  check("encadré alertes sur les pages métier et gouvernorat (FR + ar/) : « N concours … ouverts. Soyez prévenu des prochains », N = le nombre de la liste de la page, lien alertes/?metier= ou ?gouv=, clic compté" + (ko4.length ? " — " + ko4.slice(0, 4).join(", ") : ""), !ko4.length);
+  // compte de la page = vrai nombre de concours ouverts (et pas seulement celui écrit dans la page)
+  check("pages métier / gouvernorat : le nombre de l'encadré = le nombre de concours ouverts des données", ["ouvrier", "administratif"].every(m => !existsSync(join(root, `metier/${m}/index.html`)) || !enc(lire(`metier/${m}/index.html`)) || enc(lire(`metier/${m}/index.html`)).includes(`${ouvM.filter(c => c.metier === m).length} concours `)));
+  if (JSDOM) {
+    // alertes/ : cases cochées d'après l'adresse ; valeurs inconnues ignorées sans erreur ; « tous » exclusif
+    const essaiAlertes = (f, q) => {
+      const erreurs = [];
+      const dom = new JSDOM(lire(f).replace(/<script[^>]*src="[^"]*"[^>]*><\/script>/g, ""), { runScripts: "outside-only", url: "https://concours.clicvia.com/" + f.replace(/index\.html$/, "") + q, pretendToBeVisual: true });
+      const w = dom.window; w.allerVers = () => {}; w.fetch = () => Promise.resolve({ ok: true });
+      w.addEventListener("error", e => erreurs.push(e.message));
+      try { w.eval(lire("assets/page.js")); w.eval(PASS_JS); w.document.dispatchEvent(new w.Event("DOMContentLoaded")); } catch (e) { erreurs.push(String(e)); }
+      const d = w.document, coches = n => [...d.querySelectorAll(`input[name="${n}"]:checked`)].map(x => x.value);
+      return { m: coches("metiers"), g: coches("gouvernorats"), s: d.querySelector('[name="suivis"]').value, info: !d.getElementById("abo-repris").hidden, erreurs };
+    };
+    for (const f of ["alertes/index.html", "ar/alertes/index.html"]) {
+      const a = essaiAlertes(f, "?suivi=2390&metier=ingenieur&gouv=sfax#inscription");
+      check(`${f} : ?metier=ingenieur&gouv=sfax&suivi=2390 → « Ingénieurs » et « Sfax » cochés, 2390 dans « concours à suivre », phrase « vos choix … déjà cochés » affichée`,
+        a.m.join() === "ingenieur" && a.g.join() === "sfax" && a.s === "2390" && a.info && !a.erreurs.length);
+      const b = essaiAlertes(f, "?metier=zzz,%3Cscript%3E&gouv=atlantide&suivi=abc");
+      check(`${f} : paramètres inconnus (métier zzz, gouvernorat atlantide, suivi abc) ignorés sans erreur, rien coché, aucune phrase`, !b.m.length && !b.g.length && b.s === "" && !b.info && !b.erreurs.length);
+      const c = essaiAlertes(f, "?gouv=tous,sfax&metier=informatique,securite");
+      check(`${f} : ?gouv=tous,sfax → seulement « Toute la Tunisie » ; deux métiers cochés`, c.g.join() === "tous" && c.m.join() === "informatique,securite" && !c.erreurs.length);
+      const s = essaiAlertes(f, "");
+      check(`${f} : sans paramètre → rien de coché, phrase cachée`, !s.m.length && !s.g.length && !s.info && !s.erreurs.length);
+    }
+    // clic compté (faux GoatCounter) ; rien (et aucune erreur) sans GoatCounter
+    const fiche = D.concours.find(c => existsSync(join(root, `concours/${c.id}/index.html`)) && /id="rappel-btn"/.test(lire(`concours/${c.id}/index.html`)));
+    const essaiClic = (f, avecGc, ident) => {
+      const dom = new JSDOM(lire(f).replace(/<script[^>]*src="[^"]*"[^>]*><\/script>/g, ""), { runScripts: "outside-only", url: "https://concours.clicvia.com/" + f.replace(/index\.html$/, ""), pretendToBeVisual: true });
+      const w = dom.window, comptes = [], erreurs = []; w.allerVers = () => {};
+      w.addEventListener("error", e => erreurs.push(e.message));
+      w.eval(lire("assets/page.js"));
+      if (avecGc) w.goatcounter.count = o => comptes.push(o);
+      w.document.dispatchEvent(new w.Event("DOMContentLoaded"));
+      const a = w.document.getElementById(ident);
+      if (a) { a.addEventListener("click", e => e.preventDefault()); a.dispatchEvent(new w.MouseEvent("click", { bubbles: true, cancelable: true })); }
+      return { a, comptes, erreurs };
+    };
+    for (const [f, ident, nom] of [[fiche && `concours/${fiche.id}/index.html`, "encadre-btn", "alertes-fiche"], [fiche && `ar/concours/${fiche.id}/index.html`, "rappel-btn", "rappel-date"],
+      ["metier/ouvrier/index.html", "encadre-btn", "alertes-metier"], ["ar/gouvernorat/sousse/index.html", "encadre-btn", "alertes-gouvernorat"]]) {
+      if (!f || !existsSync(join(root, f)) || !/encadre-btn/.test(lire(f))) { check(`clic compté : page d'essai ${f} trouvée`, false); continue; }
+      const r = essaiClic(f, true, ident);
+      check(`clic compté (faux GoatCounter) sur ${f} #${ident} → événement « /alerte-concours-tunisie/clic/${nom} »`,
+        r.comptes.length === 1 && r.comptes[0].path === "/alerte-concours-tunisie/clic/" + nom && r.comptes[0].event === true && !!r.comptes[0].title && !r.erreurs.length);
+      const s = essaiClic(f, false, ident);
+      check(`sans GoatCounter (bloqué) sur ${f} : aucun compte, aucune erreur`, !s.comptes.length && !s.erreurs.length && !!s.a);
+    }
+    // « Me rappeler la date limite » caché selon la date du VISITEUR (page vue plus tard que sa construction)
+    const date = n => { const x = new Date(Date.now() + n * 864e5); return `${x.getFullYear()}-${String(x.getMonth() + 1).padStart(2, "0")}-${String(x.getDate()).padStart(2, "0")}`; };
+    const vu = n => { const dom = new JSDOM(`<!doctype html><html lang="fr" data-langue-fixe="fr"><body><p class="encadre-rappel" data-rappel-limite="${date(n)}"><a href="#">x</a></p></body></html>`, { runScripts: "outside-only", url: "https://concours.clicvia.com/concours/1/", pretendToBeVisual: true });
+      dom.window.allerVers = () => {}; dom.window.eval(lire("assets/page.js")); dom.window.document.dispatchEvent(new dom.window.Event("DOMContentLoaded"));
+      return !dom.window.document.querySelector(".encadre-rappel").hidden; };
+    check("« Me rappeler la date limite » : caché chez le visiteur quand la date limite est à 3 jours ou moins, visible à 10 jours", !vu(2) && !vu(3) && vu(10));
+  }
+  // pas de gratuité (décision d'Ahmed du 25/11/2026) : aucun encadré ne promet un essai, un canal ou une formule gratuite
+  const textes = [...D.concours.map(c => `concours/${c.id}/index.html`), "metier/ouvrier/index.html", "gouvernorat/sousse/index.html"].filter(f => existsSync(join(root, f))).map(f => enc(lire(f))).join(" ");
+  check("encadrés : aucune gratuité promise (ni essai, ni canal, ni formule gratuite)", textes.length > 1000 && !/gratuit|offert|essai|مجان/i.test(textes));
+}
 // 25/10/2026 (RÈGLE d'Ahmed : « la page Comment fonctionne le site doit être mise à jour chaque fois qu'on modifie le site », règle commune § 44) :
 // chaque fonction visible du site (repère dans les pages ou le code) doit être expliquée dans a-propos/ ; nouvelle fonction = une ligne ici + la page
 { const ap = lire("a-propos/index.html"), acc2 = lire("index.html"), js = lire("assets/app.js") + lire("assets/page.js");
@@ -531,6 +633,9 @@ check("paiement : le motif est le code personnel, jamais « nom … (motif du pa
     ["sites des ministères", existsSync(join(root, "ministeres/index.html")), /Sites des ministères/],
     ["guide d'inscription", existsSync(join(root, "guide-inscription/index.html")), /Guide d'inscription|Guide d&#x27;inscription|Guide d’inscription/],
     ["rapports du mois", existsSync(join(root, "rapports/index.html")), /Rapports du mois/],
+    ["encadré « Ne ratez plus un concours » vers les alertes (fiches, métiers, gouvernorats)", /id="encadre-alertes"/.test(lire("metier/ouvrier/index.html") + lire("gouvernorat/sousse/index.html")), /« Ne ratez plus un concours »<\/b>[\s\S]*déjà cochés/],
+    ["bouton « Me rappeler la date limite » (suivi + rappel 3 jours avant, avec les alertes)", /data-rappel-limite/.test(lire("assets/page.js")), /« Me rappeler la date limite »<\/b>[\s\S]*concours à suivre[\s\S]*3.jours avant la date limite/],
+    ["clics vers les alertes comptés (GoatCounter, sans savoir qui)", /clic\//.test(lire("assets/page.js")), /clics sur les boutons qui mènent aux alertes/],
     ["alertes Telegram payantes (Alertes + Suivi)", existsSync(join(root, "alertes/index.html")), /Payant : Alertes \+ Suivi sur Telegram/],
     ["paiement avec le code personnel, sans renouvellement automatique", /abo-code/.test(lire("alertes/index.html") + PASS_JS), /code personnel[\s\S]*Pas de renouvellement automatique/],
     ["commande en attente gardée par le téléphone (code, paiement, WhatsApp, Telegram)", /pass-commande/.test(PASS_JS) && /id="abo-attente"/.test(lire("alertes/index.html")), /Commande en attente<\/b>[\s\S]*numéro de commande[\s\S]*60.jours[\s\S]*Nouvelle commande/],

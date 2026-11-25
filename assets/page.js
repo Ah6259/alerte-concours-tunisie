@@ -156,6 +156,31 @@ document.addEventListener("click", function (e) {
   copier();
 });
 
+/* Clics vers les alertes (25/11/2026, demande d'Ahmed) : tout lien data-clic="<nom>" (encadrés des fiches, métiers, gouvernorats,
+   « Me rappeler la date limite ») est compté dans GoatCounter comme un ÉVÉNEMENT « /alerte-concours-tunisie/clic/<nom> »
+   (préfixe du site, comme ses pages, dans le compteur commun). Rien si GoatCounter est absent ou bloqué ; le lien s'ouvre toujours. */
+(function () {
+  document.addEventListener("click", function (e) {
+    var a = e.target && e.target.closest && e.target.closest("a[data-clic]");
+    if (!a) return;
+    var nom = (a.getAttribute("data-clic") || "").replace(/[^a-z-]/g, "");
+    if (!nom) return;
+    var titres = { "alertes-fiche": "Clic vers les alertes (fiche d'un concours)", "alertes-metier": "Clic vers les alertes (page d'un métier)",
+      "alertes-gouvernorat": "Clic vers les alertes (page d'un gouvernorat)", "rappel-date": "Clic « Me rappeler la date limite »" };
+    try { if (window.goatcounter && typeof window.goatcounter.count === "function")
+      window.goatcounter.count({ path: "/alerte-concours-tunisie/clic/" + nom, title: titres[nom] || "Clic " + nom, event: true }); } catch (x) {}
+  });
+  // « Me rappeler la date limite » : caché selon la date du VISITEUR si la date limite est à 3 jours ou moins (page vue plus tard)
+  function cacherRappel() {
+    var d = new Date(), auj = d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0") + "-" + String(d.getDate()).padStart(2, "0");
+    document.querySelectorAll("[data-rappel-limite]").forEach(function (p) {
+      var lim = p.getAttribute("data-rappel-limite");
+      if (/^\d{4}-\d{2}-\d{2}$/.test(lim) && (Date.parse(lim) - Date.parse(auj)) / 864e5 <= 3) p.hidden = true;
+    });
+  }
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", cacherRappel); else cacherRappel();
+})();
+
 /* >>> vidéo de présentation : page video/ partagée par le bouton « Partager » (outil vidéos d'Ahmed) */
 /* Adresse du site (11 octobre 2026) : concours.clicvia.com (racine « / ») ; l'ancienne adresse ah6259.github.io/alerte-concours-tunisie/ redirige
    vers elle. BASE_SITE = dossier du site selon l'adresse ; GoatCounter garde le préfixe /alerte-concours-tunisie (compteur commun). */

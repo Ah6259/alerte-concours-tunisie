@@ -421,8 +421,8 @@ html[dir="rtl"] .paie-etapes>li::before{left:auto;right:12px}
 .carte .prix{font-size:22px;font-weight:800;color:var(--bleu);margin:6px 0 10px}
 /* page d'un concours (08/10/2026) */
 .fiche-concours{width:100%;border-collapse:collapse;margin:0 0 14px;font-size:15px}
-.fiche-concours th,.fiche-concours td{padding:8px 6px;border-top:1px solid #E3E8EE;vertical-align:top;text-align:start}
-.fiche-concours th{width:42%;color:#5B6B7A;font-weight:600}
+.fiche-concours th,.fiche-concours td{padding:8px 6px;border-top:1px solid var(--ligne);vertical-align:top;text-align:start}
+.fiche-concours th{width:42%;color:var(--doux);font-weight:600}
 .liens-concours{margin:0;padding-inline-start:18px;display:flex;flex-direction:column;gap:8px}
 .ao h3 a{color:inherit;text-decoration:none}.ao h3 a:hover{text-decoration:underline}
 /* carte de la Tunisie EN HAUT du bandeau (08/10/2026, règle d'Ahmed, comme les annuaires) */
@@ -523,3 +523,17 @@ html[dir="rtl"] .paie-etapes>li::before{left:auto;right:12px}
 .abo-attente .attente-titre{font-size:16.5px}
 .abo-attente .btn-telegram{margin:10px 0}
 .abo-attente .abo-nouvelle{width:100%;max-width:340px;margin-top:10px;cursor:pointer;font-family:inherit}
+/* 25/11/2026 — encadré « Ne ratez plus un concours » vers les alertes (fiches, métiers, gouvernorats) + « Me rappeler la date limite » */
+.encadre-alertes{border-left:5px solid #F2B33D;background:var(--or-clair)}
+html[dir="rtl"] .encadre-alertes{border-left:1px solid var(--ligne);border-right:5px solid #F2B33D}
+.encadre-alertes p{margin:0 0 8px}
+.encadre-texte{font-weight:700;font-size:16px;line-height:1.45;color:var(--texte)}
+.encadre-boutons{display:flex;flex-wrap:wrap;gap:8px}
+.encadre-boutons .btn{margin-top:0}
+.encadre-prix{font-size:13.5px;color:var(--texte)}
+.encadre-rappel{border-top:1px dashed var(--or);padding-top:10px;margin-top:4px!important}
+.encadre-rappel .btn-clair{display:inline-block;text-decoration:none;margin:0 0 6px}
+.encadre-rappel small{display:block;font-size:13px;color:var(--texte)}
+.encadre-rappel[hidden],.abo-repris[hidden]{display:none}
+.abo-repris{margin:0 0 12px}
+#inscription,#encadre-alertes,.abo-repris{scroll-margin-top:76px}

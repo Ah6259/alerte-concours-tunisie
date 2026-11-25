@@ -318,8 +318,17 @@ check("pas de classement sur 1 ou 2 éléments : pas de « gouvernorat qui compt
 # --- VS.4 (18/10/2026) : métier sans concours ouvert -> message utile, page noindex hors du plan du site (générateur)
 _mv = CS.metier_vide_html("sante", "Santé", "الصحة", base, {"ouvrier": 3, "ingenieur": 1}, "../../")
 check("métier vide : message « Aucun concours ouvert », lien Alertes, lien vers TOUS les concours ouverts, métiers qui en ont (le plus fourni d'abord)",
-      "Aucun concours « Santé » ouvert" in _mv and 'href="../../alertes/"' in _mv and 'href="../../#liste"' in _mv and f"Voir les {len(base)} concours ouverts" in _mv
+      "Aucun concours « Santé » ouvert" in _mv and 'href="../../alertes/?metier=sante#inscription" data-clic="alertes-metier"' in _mv and 'href="../../#liste"' in _mv and f"Voir les {len(base)} concours ouverts" in _mv
       and _mv.index("metier/ouvrier/") < _mv.index("metier/ingenieur/") and "metier/sante/" not in _mv)
+# --- 25/11/2026 : encadré des alertes (générateur) — seules les vraies clés passent dans l'adresse ; rappel seulement à plus de 3 jours
+check("encadré alertes : adresse alertes/ avec les seules vraies clés (métier, gouvernorat, n° ; « national » et valeurs inconnues retirés)",
+      CS._params(metier="ingenieur", gouv="sfax", suivi="2390") == "alertes/?suivi=2390&metier=ingenieur&gouv=sfax#inscription"
+      and CS._params(metier="zzz", gouv="national", suivi="12a") == "alertes/#inscription" and CS._params(gouv="atlantide") == "alertes/#inscription")
+_ef = lambda lim: CS.encadre_fiche({"id": 2390, "metier": "ingenieur", "gouvernorat": "sfax", "cloture_candidatures": lim}, "2026-11-25")
+check("encadré d'une fiche : « Me rappeler la date limite » seulement si la date limite est à plus de 3 jours (4 jours : oui ; 3 jours, passée, absente : non)",
+      'id="rappel-btn"' in _ef("2026-11-29") and 'suivi=2390&amp;metier=ingenieur&amp;gouv=sfax' in _ef("2026-11-29")
+      and all('id="rappel-btn"' not in _ef(x) for x in ("2026-11-28", "2026-11-20", ""))
+      and "Ne ratez plus un concours «\u00a0Ingénieurs\u00a0» à Sfax" in _ef("") and "gratuit" not in _ef("2026-11-29").lower())
 _pg = CS.page("metier/sante/", "../../", "Titre de test assez long", "Description de test assez longue pour la page.", "", "", "v", "", indexer=False)
 check("page noindex : balise robots « noindex, follow » (et toujours noai) ; page normale : sans noindex",
       'content="noindex, follow, noai, noimageai"' in _pg and "noindex" not in CS.page("x/", "../", "T", "D", "", "", "v", ""))
