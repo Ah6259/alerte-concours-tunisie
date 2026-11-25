@@ -203,19 +203,19 @@
   },
   "2026-11": {
    "premier_jour": "2026-11-01",
-   "dernier_jour": "2026-11-24",
+   "dernier_jour": "2026-11-25",
    "fini": false,
    "chiffres": {
-    "au": "2026-11-24",
+    "au": "2026-11-25",
     "debut": "2026-11-01",
     "ouverts": {
-     "n": 64,
-     "postes": 172,
+     "n": 65,
+     "postes": 173,
      "sans_postes": 0
     },
     "national": {
-     "n": 25,
-     "postes": 44,
+     "n": 26,
+     "postes": 45,
      "sans_postes": 0
     },
     "locaux": {
@@ -279,8 +279,8 @@
      ],
      [
       "technicien",
-      4,
-      11
+      5,
+      12
      ],
      [
       "chauffeur",
@@ -362,11 +362,11 @@
      "n": 25,
      "postes": 48,
      "sans_postes": 0,
-     "jusqu_au": "2026-11-30"
+     "jusqu_au": "2026-12-01"
     },
     "nouveaux": {
-     "n": 55,
-     "postes": 171,
+     "n": 56,
+     "postes": 172,
      "sans_postes": 0
     },
     "nouveaux_metiers": [
@@ -380,7 +380,7 @@
      ],
      [
       "technicien",
-      4
+      5
      ],
      [
       "chauffeur",
@@ -413,9 +413,9 @@
      "final": 0
     },
     "avis": {
-     "n": 27,
+     "n": 28,
      "types": {
-      "candidatures": 7,
+      "candidatures": 8,
       "resultats": 11,
       "convocation": 1,
       "nouveau": 6,
@@ -2102,6 +2102,94 @@
      "gouvernorat": "ben-arous",
      "cloture_candidatures": "2026-12-25",
      "vu_le": "2026-11-24",
+     "publies": []
+    },
+    "2398": {
+     "postes": 5,
+     "metier": "ouvrier",
+     "gouvernorat": "jendouba",
+     "cloture_candidatures": "2025-10-13",
+     "vu_le": "2026-11-25",
+     "publies": []
+    },
+    "2399": {
+     "postes": 10,
+     "metier": "ouvrier",
+     "gouvernorat": "jendouba",
+     "cloture_candidatures": "2025-10-13",
+     "vu_le": "2026-11-25",
+     "publies": []
+    },
+    "2400": {
+     "postes": 4,
+     "metier": "ouvrier",
+     "gouvernorat": "jendouba",
+     "cloture_candidatures": "2025-10-13",
+     "vu_le": "2026-11-25",
+     "publies": []
+    },
+    "2401": {
+     "postes": 2,
+     "metier": "ouvrier",
+     "gouvernorat": "jendouba",
+     "cloture_candidatures": "2025-10-13",
+     "vu_le": "2026-11-25",
+     "publies": []
+    },
+    "2402": {
+     "postes": 1,
+     "metier": "autre",
+     "gouvernorat": "jendouba",
+     "cloture_candidatures": "2025-10-13",
+     "vu_le": "2026-11-25",
+     "publies": []
+    },
+    "2403": {
+     "postes": 1,
+     "metier": "ouvrier",
+     "gouvernorat": "jendouba",
+     "cloture_candidatures": "2025-10-13",
+     "vu_le": "2026-11-25",
+     "publies": []
+    },
+    "2404": {
+     "postes": 1,
+     "metier": "autre",
+     "gouvernorat": "jendouba",
+     "cloture_candidatures": "2025-10-13",
+     "vu_le": "2026-11-25",
+     "publies": []
+    },
+    "3202": {
+     "postes": 2,
+     "metier": "ouvrier",
+     "gouvernorat": "jendouba",
+     "cloture_candidatures": "2026-10-13",
+     "vu_le": "2026-11-25",
+     "publies": []
+    },
+    "3203": {
+     "postes": 1,
+     "metier": "autre",
+     "gouvernorat": "jendouba",
+     "cloture_candidatures": "2026-10-13",
+     "vu_le": "2026-11-25",
+     "publies": []
+    },
+    "3204": {
+     "postes": 1,
+     "metier": "ouvrier",
+     "gouvernorat": "jendouba",
+     "cloture_candidatures": "2026-10-13",
+     "vu_le": "2026-11-25",
+     "publies": []
+    },
+    "3376": {
+     "postes": 1,
+     "metier": "technicien",
+     "gouvernorat": "national",
+     "cloture_candidatures": "2026-12-28",
+     "vu_le": "2026-11-25",
      "publies": []
     }
    }
