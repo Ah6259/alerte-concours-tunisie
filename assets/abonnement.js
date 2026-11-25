@@ -18,9 +18,19 @@
   var T = function (fr, a) { return ar() ? a : fr; };
   var SITE_FR = "Alerte Concours Tunisie", SITE_AR = "تنبيه المناظرات تونس", WA = "21624321390";
   var FORMULES_AR = { "3 mois": "3 أشهر", "1 an": "سنة" };
-  // « Vous le recevez aussi par e-mail » : l'e-mail automatique n'est pas encore en service (25/11/2026) -> phrase cachée.
-  // Le jour où il marche : EMAIL_AUTO = true (les éléments [data-email-auto] s'affichent).
-  var EMAIL_AUTO = false;
+  // E-mail automatique au client (A.17) : EN SERVICE depuis le 25/11/2026 (Worker « email-clients » + Resend, copie à Ahmed).
+  // EMAIL_AUTO = true : phrases « vous y recevez votre code… » / « Vous le recevez aussi par e-mail » affichées ([data-email-auto]) et
+  // demande envoyée au service ; false = tout caché, rien envoyé (retour en arrière en un mot si le service tombe).
+  var EMAIL_AUTO = true;
+  var EMAIL_API = "https://api-email.clicvia.com/inscription";
+  // envoi au service d'e-mail : sans attendre la réponse, jamais bloquant (Formspree et le code restent la voie principale)
+  function envoyerEmail(d) {
+    if (!EMAIL_AUTO || !window.fetch) return;
+    try {
+      fetch(EMAIL_API, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(d), keepalive: true })
+        .catch(function () {});
+    } catch (e) {}
+  }
   var CLE = "pass-commande", JOURS = 60, FORMAT = /^[A-HJ-NP-Z2-9]{6}$/;
   var formuleLue = function (f) { return T(f, FORMULES_AR[f] || f); };
   // message WhatsApp de la preuve de paiement : le client n'a rien à recopier (code + nom + formule déjà dedans, 25/11/2026).
@@ -177,6 +187,9 @@
       // ligne prête pour le bouton « activer-abonne » (dépôt privé)
       donnees.set("pour_activer", "nom: " + val("nom") + " ; telephone: " + tel +
         " ; metiers: " + metiers.join(",") + " ; gouvernorats: " + gouv.join(",") + " ; suivis: " + suivis.join(",") + " ; code: " + code);
+      // e-mail automatique au client (code, prix, paiement, WhatsApp, Telegram ; langue de la page ; Ahmed en copie)
+      envoyerEmail({ site: "concours", langue: ar() ? "ar" : "fr", nom: val("nom"), email: val("email"), code: code,
+        metiers: metiers, gouvernorats: gouv, suivis: suivis.join(", "), formule: formule, lien_telegram: lien });
       bouton.disabled = true;
       dire("", "Envoi…", "جارٍ الإرسال…");
       fetch(ADRESSE, { method: "POST", body: donnees, headers: { "Accept": "application/json" } })
