@@ -1168,7 +1168,8 @@ def construire(jour):
     # donnees/lastmod.json : empreinte sans dates ni ?v=), jamais « aujourd'hui » pour tout ; un rapport du mois garde la date de ses chiffres
     import lastmod as LM
     adresses = [c for c in pages if c not in sans_index] + ["ar/" + c for c in pages if c not in sans_index]
-    compte_a_rebours = [re.compile(r'<small class="reste">.*?</small>', re.S), re.compile(r"\((?:encore \d+ jours|demain|aujourd’hui)\)")]
+    compte_a_rebours = [re.compile(r'<small class="reste">.*?</small>', re.S), re.compile(r'data-panne="\d"'),
+                        re.compile(r'<div class="alerte-panne[^"]*" id="alerte-panne"[^>]*>.*?</div>', re.S), re.compile(r"\((?:encore \d+ jours|demain|aujourd’hui)\)")]
     DATES = LM.dates(RACINE, [a + "index.html" for a in adresses], jour, "donnees/lastmod.json", compte_a_rebours)
     open(os.path.join(RACINE, "sitemap.xml"), "w", encoding="utf-8", newline="\n").write(
         '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'

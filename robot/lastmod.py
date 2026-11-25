@@ -21,8 +21,12 @@ _DATES = [
     re.compile(r"\?v=[\w.-]+"),
     re.compile(r"\d{4}-\d{2}-\d{2}(?:T[\d:.]+(?:Z|[+-]\d{2}:?\d{2})?)?"),
     re.compile(r"\d{1,2}/\d{1,2}/\d{4}"),
+    re.compile(r"(?<![\d,.])\d{1,2}:\d{2}(?::\d{2})?(?![\d,.])"),        # heure du relevé (« 16:42 »)
     re.compile(r"\d{1,2}(?:er)?(?:\s|&nbsp;| )+(?:" + MOIS + r")(?:\s|&nbsp;| )+\d{4}", re.I),
 ]
+
+
+VERSION = 2   # à augmenter si la façon de calculer l'empreinte change : la mémoire est alors refaite depuis git, jamais « aujourd'hui »
 
 
 def empreinte(html, ignorer=()):
@@ -64,6 +68,8 @@ def dates(racine, chemins, aujourd_hui=None, memoire="donnees/lastmod.json", ign
         mem = json.loads(f.read_text(encoding="utf-8"))
     except Exception:
         mem = {}
+    if mem.pop("_version", 1) != VERSION:
+        mem = {c: {"date": x.get("date")} for c, x in mem.items() if isinstance(x, dict)}   # empreintes à refaire
     neuf, res = {}, {}
     for c in chemins:
         p = racine / c
@@ -73,12 +79,12 @@ def dates(racine, chemins, aujourd_hui=None, memoire="donnees/lastmod.json", ign
         ancien = mem.get(c)
         if ancien and ancien.get("empreinte") == emp:
             d = ancien["date"]                     # contenu inchangé : la date reste
-        elif ancien:
+        elif ancien and "empreinte" in ancien:
             d = jour                               # contenu changé : date du jour
         else:
             d = _date_git(racine, c, emp, ignorer) or jour  # page inconnue : sa vraie date dans git, sinon nouvelle
         neuf[c] = {"empreinte": emp, "date": d}
         res[c] = d
     f.parent.mkdir(parents=True, exist_ok=True)
-    f.write_text(json.dumps(dict(sorted(neuf.items())), ensure_ascii=False, indent=1) + "\n", encoding="utf-8", newline="\n")
+    f.write_text(json.dumps({"_version": VERSION, **dict(sorted(neuf.items()))}, ensure_ascii=False, indent=1) + "\n", encoding="utf-8", newline="\n")
     return res

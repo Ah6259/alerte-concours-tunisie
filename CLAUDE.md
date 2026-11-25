@@ -267,3 +267,5 @@ Rien n'est ajouté au site sans l'accord d'Ahmed.
   Le 25/11 : 265 fiches françaises + 73 arabes en noindex ; plan du site 250 -> 246 adresses. Date inconnue = fiche gardée indexée.
 - Tests (test_site.mjs, vérifiés par sabotage) : dates pas toutes du jour, date = donnees/lastmod.json, aucune page noindex dans le plan,
   accueil / gouvernorats / guide… jamais noindex, règle des 60 jours recalculée, lastmod.py avec données inventées.
+- (suite 25/11) `robot/lastmod.py` version 2 (même fichier que dans Appels d'offres) : l'heure du relevé (« 16:42 ») et le bandeau de panne
+  (`data-panne`, `#alerte-panne`) n'entrent plus dans l'empreinte ; `VERSION` changée = mémoire refaite depuis git (jamais « aujourd'hui »).
