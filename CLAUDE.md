@@ -27,7 +27,7 @@ Sur un nouveau PC, avant le premier commit : `git config user.name Ah6259` et
   (l'état des résultats du tableau officiel change → message). **Entraînement** : QCM écrits par nous.
 - **Page `alertes/` OUVERTE (08/10/2026, « fais » d'Ahmed)** : offre + paiement en 3 étapes + formulaire Formspree
   (nom, téléphone, e-mail facultatif, métiers, gouvernorats ou « Toute la Tunisie », numéros de concours à suivre,
-  formule 3 mois / 1 an ; plus d'essai depuis le 20/10/2026) + `alertes/conditions/` ; `assets/abonnement.js` (ligne « pour_activer »).
+  formule 3 mois / 1 an ; plus d'essai depuis le 20/10/2026) + `alertes/conditions/` ; `assets/pass-commun.js` + `assets/pass-reglages.js` (ligne « pour_activer », voir le 25/11/2026 en bas).
   Gros bouton doré `bouton_alertes()` sur toutes les pages. Réglages : `ABO` de construire_site.py (`robot` = **@AlerteConcoursTunisieBot**, créé le 08/10 ;
   son jeton = secret `TELEGRAM_BOT_TOKEN` du dépôt privé, jamais ailleurs). **Abonnés = dépôt PRIVÉ `concours-abonnes`** (jamais ici).
 - **Prix** (frais D17 / IZI d'environ 2 DT payés par le client en plus) : Alertes + Suivi 15 DT / 3 mois ou
@@ -153,7 +153,7 @@ Rien n'est ajouté au site sans l'accord d'Ahmed.
   elle y revient seule dès qu'un concours de ce métier s'ouvre. Tests : test_robot.py + test_site.mjs ; scénario Santé lit `p.intro`.
 
 ## Code personnel des alertes (18/10/2026, contrôle commun « case du code »)
-- Ce site n'a AUCUNE case où le visiteur tape un code : `alertes/` CRÉE le code (6 caractères, `assets/abonnement.js`), l'affiche
+- Ce site n'a AUCUNE case où le visiteur tape un code : `alertes/` CRÉE le code (6 caractères, module commun `assets/pass-commun.js` réglé par `assets/pass-reglages.js`), l'affiche
   (`#abo-code`) et le met dans le lien Telegram ; rien dans localStorage. Plus d'essai gratuit depuis le 20/10/2026.
 - Corrigé : les conditions disaient « motif = nom et prénom de l'abonné » alors que la page dit « Motif : votre code personnel »
   -> « code personnel de l'abonné (donné à l'inscription) » (test dans test_site.mjs).
@@ -226,3 +226,14 @@ Rien n'est ajouté au site sans l'accord d'Ahmed.
   FacebookBot, ImagesiftBot, HTTrack, wget… refusés ; un bloc par robot : le test lit « User-agent: GPTBot\nDisallow: / »).
 - `llms.txt` réécrit à la main SANS chiffre (l'ancien, de l'outil commun du 13/10, disait « 64 concours » et listait des concours clos).
 - « Comment fonctionne le site ? » (FR + AR) : « Publié par Clicvia… pour nous écrire : Votre avis » (carte « Un site indépendant »).
+
+## 25/11/2026 — PASS.1 : parcours d'achat par le MODULE COMMUN (règle commune § 70.8, 1er site migré, ordre d'Ahmed)
+- `assets/abonnement.js` est SUPPRIMÉ. La page `alertes/` (FR + ar/) charge `assets/pass-commun.js` (COPIE EXACTE du module
+  `outils communs/pass-commun/pass-commun.js` de projets-ahmed : **ne jamais la modifier ici**) puis `assets/pass-reglages.js` (ce qui
+  est propre au site : nom, formules 3 mois / 1 an, code 6 caractères sans O/0/I/1, métiers, gouvernorats, concours suivis, lien Telegram,
+  ligne `pour_activer`, champs de l'e-mail, « Toute la Tunisie » ; `emailAuto: true`). `assets/pass-commun.empreinte` = empreinte écrite
+  par `synchroniser.py` ; test_site.mjs échoue si la copie est modifiée (et, si projets-ahmed est à côté, si elle diffère du module) et
+  vérifie que la demande d'e-mail est ACCEPTÉE par le vrai `verifier()` du service.
+- Améliorer le parcours : modifier le module dans projets-ahmed, `python3 "outils communs/pass-commun/synchroniser.py"`, tests, envoyer
+  CHAQUE site (LISEZMOI.md du module). Rien n'a changé pour le visiteur (comparaison avant / après : mêmes textes, même code, même Formspree,
+  même WhatsApp, même mémoire ; demande d'e-mail identique, clés dans un autre ordre).

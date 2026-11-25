@@ -465,7 +465,7 @@ ABO = {
     "robot": "AlerteConcoursTunisieBot",            # robot Telegram créé par Ahmed le 08/10/2026 (jeton dans le dépôt privé concours-abonnes)
 }
 # 25/11/2026 (parcours commun des Pass, règle commune § 70) : message « Voici ma preuve de paiement — <site> — code <CODE> — <nom> — <formule> » ;
-# après l'inscription, assets/abonnement.js le refait avec le code, le NOM (lu dans le formulaire, jamais gardé par le téléphone)
+# après l'inscription, assets/pass-reglages.js (module commun assets/pass-commun.js) le refait avec le code, le NOM (lu dans le formulaire, jamais gardé par le téléphone)
 # et la formule (le client n'a rien à recopier) ; au retour sur la page (nom inconnu) : code + formule seulement
 TEXTE_PREUVE = "Voici ma preuve de paiement — Alerte Concours Tunisie — code "
 ICONE_CLOCHE = '<svg viewBox="0 0 24 24"><path d="M6 16.5V11a6 6 0 0 1 12 0v5.5l1.8 1.8H4.2z"/><path d="M10 20.5a2 2 0 0 0 4 0"/></svg>'
@@ -491,7 +491,7 @@ def lien_preuve(ident="abo-preuve"):
 
 
 def liste_paiements(racine, avec_code=False):
-    """Paiement en 3 étapes. avec_code : le motif affiche le code de la commande (rempli par assets/abonnement.js, attribut data-code)."""
+    """Paiement en 3 étapes. avec_code : le motif affiche le code de la commande (rempli par le module commun assets/pass-commun.js, attribut data-code)."""
     applis = "".join(f'<a class="appli-btn" href="{APPLIS[m][0]}" target="_blank" rel="noopener noreferrer"><img src="{racine}assets/paiement/{m.lower()}.png" alt="{m}" width="44" height="44"></a>' for m in ABO["paiements"])
     ios = " · ".join(f'<a class="appli" href="{APPLIS[m][1]}" target="_blank" rel="noopener noreferrer">{m}</a>' for m in ABO["paiements"])
     e1, e1b = L("Ouvrez l'application :", 'افتح التطبيق:'), L('Sur iPhone :', 'على آيفون:')
@@ -512,7 +512,7 @@ def liste_paiements(racine, avec_code=False):
 PHRASE_CODE = L("C'est votre numéro de commande : écrivez-le dans le motif du paiement, il nous sert à reconnaître votre paiement.",
                 "هذا رقم طلبك: اكتبه في خانة سبب الدفع، يساعدنا على التعرّف على دفعتك.")
 # « reçu aussi par e-mail » : l'e-mail automatique n'est pas encore en service -> phrase CACHÉE (attribut hidden + data-email-auto),
-# montrée seulement si EMAIL_AUTO = true dans assets/abonnement.js (consigne du 25/11/2026)
+# montrée seulement si emailAuto: true dans assets/pass-reglages.js (consigne du 25/11/2026)
 PHRASE_EMAIL = L("Vous le recevez aussi par e-mail.", "يصلك أيضًا عبر البريد الإلكتروني.")
 FILET = L("Vous avez oublié le code dans le motif ? Ce n'est pas grave : envoyez quand même la preuve sur WhatsApp, nous retrouvons votre demande.",
           "نسيت الرمز في سبب الدفع؟ لا بأس: أرسل الوصل على واتساب وسنجد طلبك.")
@@ -754,7 +754,7 @@ def pages_alertes(v, maj):
     titre = f"Alertes concours Tunisie sur Telegram : votre métier, votre gouvernorat — {p3} DT / 3 mois | Alerte Concours Tunisie"
     desc = (f"Recevez chaque matin sur Telegram les nouveaux concours publics de votre métier et de votre gouvernorat, et le suivi de vos concours "
             f"(convocations, résultats). {p3} DT / 3 mois ou {pa} DT / an, sans renouvellement automatique.")
-    res = {"alertes/": page("alertes/", "../", titre, desc, hero, contenu, v, maj, scripts=("abonnement.js",))}
+    res = {"alertes/": page("alertes/", "../", titre, desc, hero, contenu, v, maj, scripts=("pass-commun.js", "pass-reglages.js"))}
 
     hero = f"""    <p class="fil"><a href="../../">{L("Accueil", "الرئيسية")}</a> › <a href="../">{L("Alertes", "التنبيهات")}</a> › {L("Conditions", "الشروط")}</p>
     <h1>{L("Conditions de l'abonnement", "شروط الاشتراك")}</h1>
@@ -805,7 +805,7 @@ def ecrire(chemin, contenu):
 def construire(jour):
     d, ouverts = charger(jour)
     maj = d.get("lu_le", "")
-    v = hashlib.sha1("".join(open(os.path.join(RACINE, "assets", f), "rb").read().decode("utf-8", "ignore") for f in ("style.css", "page.js", "son.js", "app.js", "avis.js", "abonnement.js")).encode()).hexdigest()[:8]
+    v = hashlib.sha1("".join(open(os.path.join(RACINE, "assets", f), "rb").read().decode("utf-8", "ignore") for f in ("style.css", "page.js", "son.js", "app.js", "avis.js", "pass-commun.js", "pass-reglages.js")).encode()).hexdigest()[:8]
     cm, cg = comptes(ouverts)
     urgents = sum(1 for c in ouverts if c.get("cloture_candidatures") and 0 <= (dt.date.fromisoformat(c["cloture_candidatures"]) - dt.date.fromisoformat(jour)).days < 7)
     postes = sum(c.get("postes") or 0 for c in ouverts)

@@ -221,6 +221,28 @@ if (JSDOM) {
     nbm >= Math.min(1, DM.annonces.length) && [...pm.matchAll(/<li class="annonce-min">(.*?)<\/li>/g)].every(m => /href="https?:\/\//.test(m[1])) && pm.includes("Source : site officiel")
     && acc.includes('href="ministeres/"') && lire("actualites/index.html").includes('href="../ministeres/"') && sm.includes("ministeres/</loc>")); }
 // ---- Alertes concours (abonnement Telegram, 08/10/2026) : page, paiement, formulaire, rien de privé dans ce dépôt
+// 25/11/2026 (PASS.1, module commun du parcours d'achat) : assets/pass-commun.js = COPIE EXACTE du module de projets-ahmed
+// (« outils communs/pass-commun/pass-commun.js », recopié par synchroniser.py) ; assets/pass-reglages.js = ce qui est propre au site.
+// dépôt projets-ahmed à côté (cloud : ../projets-ahmed ou ../../projets-ahmed ; PC : le dossier parent « _claude code project ») ; absent sur GitHub
+const PROJETS = [join(root, "../projets-ahmed"), join(root, "../../projets-ahmed"), join(root, "../.."), "/home/user/projets-ahmed"]
+  .find(d => existsSync(join(d, "outils communs/pass-commun/pass-commun.js"))) || "";
+// vrai verifier() du service d'e-mail (worker.js + sites.json, comme test_worker.mjs) : la demande envoyée doit être ACCEPTÉE
+let VERIFIER_EMAIL = null;
+if (PROJETS && existsSync(join(PROJETS, "outils communs/email-clients/worker.js"))) {
+  const { mkdtempSync, writeFileSync } = await import("node:fs"), { tmpdir } = await import("node:os"), { pathToFileURL } = await import("node:url");
+  const ec = join(PROJETS, "outils communs/email-clients"), wk = readFileSync(join(ec, "worker.js"), "utf8").replace("/*SITES_ICI*/ {}", readFileSync(join(ec, "sites.json"), "utf8").trim());
+  const f = join(mkdtempSync(join(tmpdir(), "email-")), "worker.mjs"); writeFileSync(f, wk);
+  VERIFIER_EMAIL = (await import(pathToFileURL(f).href)).verifier;
+}
+const PASS_JS = lire("assets/pass-commun.js") + "\n" + lire("assets/pass-reglages.js");
+const EMAIL_AUTO_OK = /emailAuto: true,/.test(lire("assets/pass-reglages.js"));
+{ const { createHash } = await import("node:crypto");
+  const copie = readFileSync(join(root, "assets/pass-commun.js")), emp = createHash("sha256").update(copie).digest("hex");
+  const attendue = existsSync(join(root, "assets/pass-commun.empreinte")) ? lire("assets/pass-commun.empreinte").trim() : "";
+  check("module commun du Pass : assets/pass-commun.js NON modifié dans le site (empreinte écrite par synchroniser.py)", emp === attendue);
+  const original = PROJETS && join(PROJETS, "outils communs/pass-commun/pass-commun.js");
+  if (original && existsSync(original))   // dépôt voisin présent (PC, cloud) : la copie doit être celle du module ; absent (GitHub) : contrôle sauté
+    check("module commun du Pass : copie identique au module de projets-ahmed (sinon : python3 synchroniser.py)", readFileSync(original).equals(copie)); }
 const al = lire("alertes/index.html");
 check("alertes : prix 15 DT / 3 mois ou 39 DT / an, pas de renouvellement automatique, alertes dès réception du paiement",
   /15 DT \/ 3 mois/.test(al) && /39 DT \/ an/.test(al) && /Pas de renouvellement automatique/.test(al) && /dès réception du paiement/.test(al));
@@ -240,7 +262,9 @@ check("alertes : formulaire Formspree (mwlpakqj) : nom, téléphone ET e-mail ob
   && /name="email" required/.test(al) && !/E-mail \(facultatif\)/.test(al)
   && (al.match(/name="metiers"/g) || []).length >= 10 && (al.match(/name="gouvernorats"/g) || []).length === 25 && /id="g-tous"/.test(al)
   && /name="suivis"/.test(al) && (al.match(/name="formule"/g) || []).length === 2 && /href="conditions\/"/.test(al));
-check("alertes : script externe abonnement.js sur cette page seulement", /<script src="\.\.\/assets\/abonnement\.js\?v=/.test(al) && !/abonnement\.js/.test(acc));
+check("alertes : module commun du Pass (pass-commun.js) puis réglage du site (pass-reglages.js) sur cette page seulement, ancien abonnement.js retiré",
+  /<script src="\.\.\/assets\/pass-commun\.js\?v=[^"]+"><\/script>\s*<script src="\.\.\/assets\/pass-reglages\.js\?v=/.test(al) && !/pass-commun\.js|pass-reglages\.js/.test(acc)
+  && !existsSync(join(root, "assets/abonnement.js")) && !/abonnement\.js/.test(al));
 { // 18/10/2026 : le motif du paiement est le CODE PERSONNEL donné à l'inscription (#abo-code) — jamais « votre nom » / « nom de l'entreprise » ailleurs sur la page ou dans les conditions
   const sansBalises = f => lire(f).replace(/<[^>]*>/g, " ");
   const contradictions = [/pour motif (votre nom|le nom)/, /name as reference/, /motif du paiement et facture/];
@@ -254,14 +278,14 @@ check("accueil + pages : gros bouton doré vers alertes/ (avec le prix)", /class
   && /class="btn-pro-grand" id="btn-alertes" href="\.\.\/\.\.\/alertes\/"/.test(lire(`gouvernorat/${GOUVS[0]}/index.html`)));
 check("sitemap : alertes/ et alertes/conditions/", sm.includes("alertes/</loc>") && sm.includes("alertes/conditions/</loc>"));
 check("aucune donnée d'abonné dans ce dépôt public (abonnes.json, chat_id, jeton Telegram)",
-  !existsSync(join(root, "abonnes.json")) && !existsSync(join(root, "donnees/abonnes.json")) && !/chat_id|bot\d{6,}:/.test(al + lire("assets/abonnement.js")));
+  !existsSync(join(root, "abonnes.json")) && !existsSync(join(root, "donnees/abonnes.json")) && !/chat_id|bot\d{6,}:/.test(al + lire("assets/pass-commun.js") + lire("assets/pass-reglages.js")));
 if (JSDOM) {
   const envois = [];
   const dom = new JSDOM(al, { runScripts: "outside-only", url: "https://concours.clicvia.com/alertes/", pretendToBeVisual: true });
   const w = dom.window, d = w.document;
   const emails = [];   // demandes au service d'e-mail automatique (A.17), gardées à part des envois Formspree
   w.fetch = (url, o) => { if (/api-email\.clicvia\.com/.test(url)) emails.push([url, o]); else envois.push([url, o.body]); return Promise.resolve({ ok: true }); };
-  w.eval(lire("assets/page.js")); w.eval(lire("assets/abonnement.js"));
+  w.eval(lire("assets/page.js")); w.eval(PASS_JS);
   d.dispatchEvent(new w.Event("DOMContentLoaded"));
   const f = d.getElementById("abo-form"), caseG = v => d.querySelector(`#abo-gouv input[value="${v}"]`);
   const soumettre = async () => { f.dispatchEvent(new w.Event("submit", { cancelable: true })); await new Promise(r => setTimeout(r, 20)); };
@@ -276,7 +300,7 @@ if (JSDOM) {
     const cache = d.querySelector('label[for="abo-email"] [data-email-auto]');
     check("formulaire (FR) : étiquette « E-mail » + promesse « vous y recevez votre code et les étapes du paiement » AFFICHÉE (EMAIL_AUTO = true)",
       cache && !cache.hidden && /vous y recevez votre code et les étapes du paiement/.test(cache.textContent)
-      && /var EMAIL_AUTO = true;/.test(lire("assets/abonnement.js"))); }
+      && EMAIL_AUTO_OK); }
   f.querySelector('[name="email"]').value = "candidat@exemple.tn";
   await soumettre();
   check("alertes : sans métier coché → message d'erreur, rien n'est envoyé", envois.length === 0 && /métier/.test(d.getElementById("abo-status").textContent));
@@ -309,7 +333,9 @@ if (JSDOM) {
     check("e-mail automatique (FR) : UNE demande à https://api-email.clicvia.com/inscription (JSON) avec site concours, langue fr, nom, e-mail, CE code, métiers, gouvernorats, formule et lien Telegram",
       emails.length === 1 && e[0] === "https://api-email.clicvia.com/inscription" && e[1].method === "POST" && /application\/json/.test(e[1].headers["Content-Type"])
       && j.site === "concours" && j.langue === "fr" && j.nom === "Test Candidat" && j.email === "candidat@exemple.tn" && j.code === code
-      && Array.isArray(j.metiers) && j.metiers.length === 1 && j.gouvernorats.join() === "tous" && j.formule === "3 mois" && j.lien_telegram === lienTg); }
+      && Array.isArray(j.metiers) && j.metiers.length === 1 && j.gouvernorats.join() === "tous" && j.formule === "3 mois" && j.lien_telegram === lienTg);
+    if (VERIFIER_EMAIL) check("e-mail automatique (FR) : la demande envoyée est ACCEPTÉE par le vrai verifier() du service (worker.js + sites.json de projets-ahmed)",
+      !!(VERIFIER_EMAIL(j, "https://concours.clicvia.com") || {}).d); }
   check("CSP de la page alertes/ : connect-src autorise https://api-email.clicvia.com (sinon le navigateur bloque l'e-mail automatique)",
     /connect-src[^;]*https:\/\/api-email\.clicvia\.com/.test(al) && /connect-src[^;]*https:\/\/api-email\.clicvia\.com/.test(lire("ar/alertes/index.html")));
   check("dernière étape (FR) : bouton WhatsApp pré-rempli « Voici ma preuve de paiement — Alerte Concours Tunisie — code <CODE> — <nom> — 3 mois » (code ET nom, 25/11/2026), sans téléphone",
@@ -322,7 +348,7 @@ if (JSDOM) {
   // retour sur la page (nouvelle fenêtre, même mémoire) : bandeau « commande en attente » à la place du formulaire
   const revenir = (page, url, valeur) => { const dd = new JSDOM(page, { runScripts: "outside-only", url, pretendToBeVisual: true });
     if (valeur) dd.window.localStorage.setItem("pass-commande", valeur); dd.window.fetch = () => Promise.resolve({ ok: true });
-    dd.window.eval(lire("assets/page.js")); dd.window.eval(lire("assets/abonnement.js")); dd.window.document.dispatchEvent(new dd.window.Event("DOMContentLoaded")); return dd.window; };
+    dd.window.eval(lire("assets/page.js")); dd.window.eval(PASS_JS); dd.window.document.dispatchEvent(new dd.window.Event("DOMContentLoaded")); return dd.window; };
   { const w2 = revenir(al, "https://concours.clicvia.com/alertes/", memo), d2 = w2.document, at = d2.getElementById("abo-attente");
     check("retour sur la page (FR) : bandeau « Votre commande en attente : code … — 3 mois » + 3 étapes du paiement (motif = code) + WhatsApp avec le code + « Ouvrir Telegram » (même lien), formulaire caché",
       !at.hidden && d2.getElementById("abo-form").hidden && /Votre commande en attente :/.test(at.textContent) && at.querySelector("[data-code]").textContent === code
@@ -342,7 +368,7 @@ if (JSDOM) {
     const dA = new JSDOM(alAr, { runScripts: "outside-only", url: "https://concours.clicvia.com/ar/alertes/", pretendToBeVisual: true }), wA = dA.window, D2 = wA.document;
     const emAr = [];
     wA.fetch = (url, o) => { if (/api-email\.clicvia\.com/.test(url)) emAr.push(JSON.parse(o.body)); else envAr.push(o.body); return Promise.resolve({ ok: true }); };
-    wA.eval(lire("assets/page.js")); wA.eval(lire("assets/abonnement.js")); D2.dispatchEvent(new wA.Event("DOMContentLoaded"));
+    wA.eval(lire("assets/page.js")); wA.eval(PASS_JS); D2.dispatchEvent(new wA.Event("DOMContentLoaded"));
     const fA = D2.getElementById("abo-form");
     { const cacheA = D2.querySelector('label[for="abo-email"] [data-email-auto]');
       fA.querySelector('[name="nom"]').value = "اختبار"; fA.querySelector('[name="telephone"]').value = "24321390";
@@ -361,6 +387,7 @@ if (JSDOM) {
       && envAr.length === 1 && envAr[0].get("code") === cA && envAr[0].get("pour_activer").endsWith("code: " + cA));
     check("e-mail automatique (AR) : demande au service en langue ar, avec CE code, le nom arabe, la formule « 1 an »",
       emAr.length === 1 && emAr[0].langue === "ar" && emAr[0].code === cA && emAr[0].nom === "اختبار" && emAr[0].formule === "1 an" && emAr[0].site === "concours");
+    if (VERIFIER_EMAIL) check("e-mail automatique (AR) : demande ACCEPTÉE par le vrai verifier() du service", !!(VERIFIER_EMAIL(emAr[0] || {}, "https://concours.clicvia.com") || {}).d);
     const mA = wA.localStorage.getItem("pass-commande"), wB = revenir(alAr, "https://concours.clicvia.com/ar/alertes/", mA), atB = wB.document.getElementById("abo-attente");
     check("retour sur la page (AR) : bandeau « طلبك في الانتظار » avec le code et « سنة », formulaire caché, rien de personnel dans la mémoire",
       !atB.hidden && /طلبك في الانتظار/.test(atB.textContent) && atB.querySelector("[data-code]").textContent === cA && atB.querySelector("[data-formule]").textContent === "سنة"
@@ -489,7 +516,7 @@ check("paiement : le motif est le code personnel, jamais « nom … (motif du pa
 // chaque fonction visible du site (repère dans les pages ou le code) doit être expliquée dans a-propos/ ; nouvelle fonction = une ligne ici + la page
 { const ap = lire("a-propos/index.html"), acc2 = lire("index.html"), js = lire("assets/app.js") + lire("assets/page.js");
   const FONCTIONS = [
-    ["e-mail de confirmation automatique (A.17, 25/11/2026)", /var EMAIL_AUTO = true;/.test(lire("assets/abonnement.js")), /E-mail de confirmation/],
+    ["e-mail de confirmation automatique (A.17, 25/11/2026)", EMAIL_AUTO_OK, /E-mail de confirmation/],
     ["résumé du jour (ouverts, nouveaux, bientôt)", /id="r-nouveaux"/.test(acc2), /Résumé du jour/],
     ["carte de la Tunisie", /class="carte-tn"/.test(acc2), /Carte de la Tunisie/],
     ["inscriptions qui se terminent bientôt", /id="bientot"/.test(acc2), /Inscriptions qui se terminent bientôt/],
@@ -504,8 +531,8 @@ check("paiement : le motif est le code personnel, jamais « nom … (motif du pa
     ["guide d'inscription", existsSync(join(root, "guide-inscription/index.html")), /Guide d'inscription|Guide d&#x27;inscription|Guide d’inscription/],
     ["rapports du mois", existsSync(join(root, "rapports/index.html")), /Rapports du mois/],
     ["alertes Telegram payantes (Alertes + Suivi)", existsSync(join(root, "alertes/index.html")), /Payant : Alertes \+ Suivi sur Telegram/],
-    ["paiement avec le code personnel, sans renouvellement automatique", /abo-code/.test(lire("alertes/index.html") + lire("assets/abonnement.js")), /code personnel[\s\S]*Pas de renouvellement automatique/],
-    ["commande en attente gardée par le téléphone (code, paiement, WhatsApp, Telegram)", /pass-commande/.test(lire("assets/abonnement.js")) && /id="abo-attente"/.test(lire("alertes/index.html")), /Commande en attente<\/b>[\s\S]*numéro de commande[\s\S]*60.jours[\s\S]*Nouvelle commande/],
+    ["paiement avec le code personnel, sans renouvellement automatique", /abo-code/.test(lire("alertes/index.html") + PASS_JS), /code personnel[\s\S]*Pas de renouvellement automatique/],
+    ["commande en attente gardée par le téléphone (code, paiement, WhatsApp, Telegram)", /pass-commande/.test(PASS_JS) && /id="abo-attente"/.test(lire("alertes/index.html")), /Commande en attente<\/b>[\s\S]*numéro de commande[\s\S]*60.jours[\s\S]*Nouvelle commande/],
     ["bouton Partager", /class="partager"/.test(js), /Partager<\/b>/],
     ["français / arabe", /class="langue"/.test(js), /ع \/ Fr/],
     ["votre avis", /id="avis-form"/.test(acc2), /Votre avis<\/b>/],
