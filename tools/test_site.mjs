@@ -224,8 +224,9 @@ if (JSDOM) {
 // 25/11/2026 (PASS.1, module commun du parcours d'achat) : assets/pass-commun.js = COPIE EXACTE du module de projets-ahmed
 // (« outils communs/pass-commun/pass-commun.js », recopié par synchroniser.py) ; assets/pass-reglages.js = ce qui est propre au site.
 // dépôt projets-ahmed à côté (cloud : ../projets-ahmed ou ../../projets-ahmed ; PC : le dossier parent « _claude code project ») ; absent sur GitHub
-const PROJETS = [join(root, "../projets-ahmed"), join(root, "../../projets-ahmed"), join(root, "../.."), "/home/user/projets-ahmed"]
-  .find(d => existsSync(join(d, "outils communs/pass-commun/pass-commun.js"))) || "";
+// (variable PROJETS_AHMED : une autre copie du dépôt général, essayée en premier)
+const PROJETS = [process.env.PROJETS_AHMED, join(root, "../projets-ahmed"), join(root, "../../projets-ahmed"), join(root, "../.."), "/home/user/projets-ahmed"]
+  .filter(Boolean).find(d => existsSync(join(d, "outils communs/pass-commun/pass-commun.js"))) || "";
 // vrai verifier() du service d'e-mail (worker.js + sites.json, comme test_worker.mjs) : la demande envoyée doit être ACCEPTÉE
 let VERIFIER_EMAIL = null;
 if (PROJETS && existsSync(join(PROJETS, "outils communs/email-clients/worker.js"))) {

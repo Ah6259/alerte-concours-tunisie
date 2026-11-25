@@ -14,11 +14,11 @@
      (crochet `essayerCode` du site) ; bouton « Nouvelle commande ».
    ES5 simple, aucun script en ligne (CSP). Textes FR / AR / EN ici ; un site ne change un texte que par son réglage (`textes`).
 
-   Utilisation dans une page :  <script src="…/assets/pass-commun.js?v=…"></script>  puis  <script src="…/assets/pass-reglages.js?v=…">
-   où pass-reglages.js appelle  PassCommun.brancher({ … réglage du site … })  (forme du réglage : LISEZMOI.md). */
+   Utilisation dans une page : balise script de « …/assets/pass-commun.js?v=… », puis celle de « …/assets/pass-reglages.js?v=… »
+   (jamais la balise fermante écrite ici : certains tests recopient ce fichier DANS la page), où pass-reglages.js appelle  PassCommun.brancher({ … réglage du site … })  (forme du réglage : LISEZMOI.md). */
 (function () {
   "use strict";
-  var VERSION = "2026-11-25a";
+  var VERSION = "2026-11-25b";
   var FORMSPREE = "https://formspree.io/f/mwlpakqj";
   var EMAIL_API = "https://api-email.clicvia.com/inscription";
   var WHATSAPP = "21624321390";
@@ -191,7 +191,11 @@
       function dire(classe, t) { if (!statut) return; statut.className = classe; statut.textContent = typeof t === "string" ? t : choisir(t); }
       function champ(n) { return form.querySelector('[name="' + n + '"]'); }
       function val(n) { var x = champ(n); return x ? String(x.value || "").trim() : ""; }
-      function etatCommande(t) { var x = document.querySelectorAll("[data-etat-commande]"); for (var i = 0; i < x.length; i++) x[i].textContent = t ? texte(t) : ""; }
+      // état de la commande au retour ; classesEtat (facultatif) : classe CSS de la ligne selon l'état (ex. { attenteImpossible: "err" })
+      function etatCommande(t) {
+        var x = document.querySelectorAll("[data-etat-commande]");
+        for (var i = 0; i < x.length; i++) { x[i].textContent = t ? texte(t) : ""; if (R.classesEtat) x[i].className = (t && R.classesEtat[t]) || ""; }
+      }
       function fermerAttente() { if (attente) attente.hidden = true; if (apres) apres.hidden = true; form.hidden = false; etatCommande(""); }
       if (R.brancher) R.brancher({ form: form, champ: champ, val: val });
 
@@ -201,6 +205,8 @@
       if (cmd && attente) {
         remplir(cmd);
         attente.hidden = false; form.hidden = true;
+        if (R.apresAuRetour && apres) apres.hidden = false;   // facultatif : la page « Dernière étape » reste montrée sous le bandeau
+        if (R.auRetour) R.auRetour({ cmd: cmd, code: affiche(cmd.code, cmd.formule), form: form, attente: attente, apres: apres });
         if (R.essayerCode) {                      // sites à code tapé : même vérification que « J'ai un code »
           etatCommande("verification");
           var essai;
@@ -218,7 +224,7 @@
         oublier(); enCours = null;
         fermerAttente();
         if (R.nouvelle) R.nouvelle({ form: form, champ: champ, val: val });
-        var n = champ("nom"); if (n && n.focus) n.focus();
+        var n = champ("nom"); if (R.focusNouvelle !== false && n && n.focus) n.focus();   // focusNouvelle: false = pas de curseur
       });
 
       form.addEventListener("submit", function (e) {
