@@ -215,6 +215,11 @@ html[lang="ar"] .trad small{font-family:"Noto Kufi Arabic",Figtree,sans-serif}
 .bientot-liste li{min-width:0}
 .bientot-liste a{overflow:hidden;display:flex;align-items:center;gap:8px;text-decoration:none;color:var(--texte);background:var(--bg);border-radius:10px;padding:7px 10px;min-width:0}
 .bientot-liste .b-objet{flex:1 1 0;min-width:0;unicode-bidi:plaintext;text-align:start;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:14px;font-weight:600}
+/* 26/11/2026 (visiteur simulé, titre arabe court « مختزني مكتبات أو توثيق ») : le titre est une COLONNE qui remplit la ligne ;
+   sur la page française tous les titres commencent à gauche (un titre arabe n'est plus poussé contre le gouvernorat) ;
+   1 px de marge intérieure = la colonne entière est la place du titre (espaces égaux de 8 px de chaque côté) */
+html:not([dir="rtl"]) .bientot-liste .b-objet{text-align:left}
+.bientot-liste .b-objet{padding-inline-end:1px}
 .bientot-liste small{flex:none;color:var(--doux);font-size:12px;font-weight:700}
 .ao.visee{box-shadow:0 0 0 3px var(--accent),var(--ombre)}
 
