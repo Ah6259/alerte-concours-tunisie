@@ -1,5 +1,5 @@
 {
- "maj": "2026-11-25",
+ "maj": "2026-11-26",
  "explication": "Éléments lus par le robot mais rangés dans aucune catégorie (gardés 120 jours) : une routine y cherche les thèmes qui reviennent (règle commune § 40).",
  "nombre": 37,
  "elements": [
@@ -8,41 +8,41 @@
    "texte": "صحفي مخبر",
    "organisme": "مؤسسة الإذاعة التونسية",
    "premier_vu": "2026-11-09",
-   "dernier_vu": "2026-11-25"
+   "dernier_vu": "2026-11-26"
   },
   {
    "cle": "portail-3338",
    "texte": "1",
    "organisme": "بلدية قليبية",
    "premier_vu": "2026-11-04",
-   "dernier_vu": "2026-11-25"
+   "dernier_vu": "2026-11-26"
   },
   {
    "cle": "portail-3318",
    "texte": "واضع برامج",
    "organisme": "بلدية فندق الجديد سلتان",
    "premier_vu": "2026-10-30",
-   "dernier_vu": "2026-11-25"
-  },
-  {
-   "cle": "portail-3203",
-   "texte": "لحام",
-   "organisme": "بلدية طبرقة",
-   "premier_vu": "2026-11-25",
-   "dernier_vu": "2026-11-25"
+   "dernier_vu": "2026-11-26"
   },
   {
    "cle": "portail-2543",
    "texte": "معماري أول متعاقد",
    "organisme": "بلدية ماطر",
    "premier_vu": "2026-10-21",
-   "dernier_vu": "2026-11-25"
+   "dernier_vu": "2026-11-26"
   },
   {
    "cle": "portail-2412",
    "texte": "معماري أول",
    "organisme": "بلدية ماطر",
    "premier_vu": "2026-10-21",
+   "dernier_vu": "2026-11-26"
+  },
+  {
+   "cle": "portail-3203",
+   "texte": "لحام",
+   "organisme": "بلدية طبرقة",
+   "premier_vu": "2026-11-25",
    "dernier_vu": "2026-11-25"
   },
   {

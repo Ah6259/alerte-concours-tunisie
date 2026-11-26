@@ -203,32 +203,32 @@
   },
   "2026-11": {
    "premier_jour": "2026-11-01",
-   "dernier_jour": "2026-11-25",
+   "dernier_jour": "2026-11-26",
    "fini": false,
    "chiffres": {
-    "au": "2026-11-25",
+    "au": "2026-11-26",
     "debut": "2026-11-01",
     "ouverts": {
-     "n": 66,
-     "postes": 174,
+     "n": 65,
+     "postes": 171,
      "sans_postes": 0
     },
     "national": {
-     "n": 26,
-     "postes": 45,
+     "n": 23,
+     "postes": 41,
      "sans_postes": 0
     },
     "locaux": {
-     "n": 40,
-     "postes": 129,
+     "n": 42,
+     "postes": 130,
      "sans_postes": 0
     },
     "finances": 0,
     "gouvernorats": [
      [
       "nabeul",
-      14,
-      19
+      13,
+      16
      ],
      [
       "ben-arous",
@@ -251,17 +251,27 @@
       7
      ],
      [
+      "ariana",
+      3,
+      6
+     ],
+     [
       "tunis",
       3,
       3
      ],
      [
       "gabes",
-      2,
-      6
+      1,
+      2
      ],
      [
       "gafsa",
+      1,
+      2
+     ],
+     [
+      "manouba",
       1,
       2
      ]
@@ -269,23 +279,18 @@
     "metiers": [
      [
       "administratif",
-      33,
-      63
+      35,
+      65
      ],
      [
       "ouvrier",
-      17,
-      30
+      15,
+      26
      ],
      [
       "technicien",
       5,
       12
-     ],
-     [
-      "chauffeur",
-      3,
-      57
      ],
      [
       "autre",
@@ -296,6 +301,11 @@
       "ingenieur",
       3,
       4
+     ],
+     [
+      "chauffeur",
+      2,
+      56
      ],
      [
       "finance",
@@ -346,10 +356,10 @@
       "national"
      ],
      [
-      "المركز الفني للابتكار والتجديد والإحاطة في الزربية والحياكة",
-      4,
+      "بلدية سكرة",
+      3,
       6,
-      "national"
+      "ariana"
      ],
      [
       "بلدية جمال",
@@ -359,24 +369,24 @@
      ]
     ],
     "semaine": {
-     "n": 25,
-     "postes": 48,
+     "n": 21,
+     "postes": 39,
      "sans_postes": 0,
-     "jusqu_au": "2026-12-01"
+     "jusqu_au": "2026-12-02"
     },
     "nouveaux": {
-     "n": 57,
-     "postes": 173,
+     "n": 61,
+     "postes": 181,
      "sans_postes": 0
     },
     "nouveaux_metiers": [
      [
       "administratif",
-      25
+      28
      ],
      [
       "ouvrier",
-      17
+      18
      ],
      [
       "technicien",
@@ -404,8 +414,8 @@
      ]
     ],
     "clos": {
-     "n": 49,
-     "postes": 113,
+     "n": 54,
+     "postes": 124,
      "sans_postes": 0
     },
     "resultats": {
@@ -413,9 +423,10 @@
      "final": 0
     },
     "avis": {
-     "n": 28,
+     "n": 30,
      "types": {
-      "candidatures": 8,
+      "candidatures": 9,
+      "autre": 1,
       "resultats": 11,
       "convocation": 1,
       "nouveau": 6,
@@ -2198,6 +2209,38 @@
      "gouvernorat": "ben-arous",
      "cloture_candidatures": "2026-12-25",
      "vu_le": "2026-11-25",
+     "publies": []
+    },
+    "3378": {
+     "postes": 2,
+     "metier": "ouvrier",
+     "gouvernorat": "manouba",
+     "cloture_candidatures": "2026-11-27",
+     "vu_le": "2026-11-26",
+     "publies": []
+    },
+    "3379": {
+     "postes": 1,
+     "metier": "administratif",
+     "gouvernorat": "ariana",
+     "cloture_candidatures": "2026-12-10",
+     "vu_le": "2026-11-26",
+     "publies": []
+    },
+    "3380": {
+     "postes": 2,
+     "metier": "administratif",
+     "gouvernorat": "ariana",
+     "cloture_candidatures": "2026-12-10",
+     "vu_le": "2026-11-26",
+     "publies": []
+    },
+    "3381": {
+     "postes": 3,
+     "metier": "administratif",
+     "gouvernorat": "ariana",
+     "cloture_candidatures": "2026-12-10",
+     "vu_le": "2026-11-26",
      "publies": []
     }
    }
