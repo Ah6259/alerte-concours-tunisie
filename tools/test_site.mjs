@@ -109,9 +109,22 @@ if (AC.length) {
   check("accueil : les 4 dernières actualités + lien vers la page", (acc.match(/<article class="actu /g) || []).length === Math.min(4, AC.length) && acc.includes('href="actualites/"'));
 }
 const sm = lire("sitemap.xml");
-check("plan du site : chaque fiche de concours en ligne y est (fiches terminées retirées, § 72)", D.concours.every(c => !existsSync(join(root, `concours/${c.id}/index.html`)) || sm.includes(`https://concours.clicvia.com/concours/${c.id}/`)));
+// VIS.3 (27/11/2026) : plan RÉDUIT — pages principales, métiers, gouvernorats d'au moins 3 concours ouverts (+ national), les 40 fiches
+// de concours OUVERTS aux plus de postes, dernier rapport du mois ; chaque page avec sa page arabe ; jamais une fiche close ; <= 160 adresses
 const indexees = pages.filter(p => !lire(p).includes('content="noindex'));
-check("plan du site : toutes les pages indexables, en français et en arabe (ar/)", indexees.every(p => sm.includes("https://concours.clicvia.com/" + p.replace(/index\.html$/, "")) && sm.includes("https://concours.clicvia.com/ar/" + p.replace(/index\.html$/, ""))));
+const locsPlan = [...sm.matchAll(/<loc>https:\/\/concours\.clicvia\.com\/([^<]*)<\/loc>/g)].map(m => m[1]);
+const ouvertsT = D.concours.filter(c => !c.cloture_candidatures || c.cloture_candidatures >= D.lu_le);
+const nbG = {}; ouvertsT.forEach(c => nbG[c.gouvernorat] = (nbG[c.gouvernorat] || 0) + 1);
+const fichesPlan = locsPlan.filter(u => /^concours\/\d+\/$/.test(u));
+const fichesFermees = fichesPlan.filter(u => !ouvertsT.some(c => `concours/${c.id}/` === u));
+const sansAr = locsPlan.filter(u => !u.startsWith("ar/") && !locsPlan.includes("ar/" + u));
+const gouvTrop = locsPlan.filter(u => /^gouvernorat\/[a-z-]+\/$/.test(u) && u !== "gouvernorat/national/" && (nbG[u.split("/")[1]] || 0) < 3);
+const rapPlan = locsPlan.filter(u => /^rapports\/\d{4}-\d{2}\/$/.test(u));
+check(`plan du site RÉDUIT (VIS.3) : ${locsPlan.length} adresses, ${fichesPlan.length} fiches (concours ouverts seulement, 40 au plus), chaque page avec sa page arabe, gouvernorats d'au moins 3 concours ouverts, un seul rapport du mois`
+  + (fichesFermees.length ? " — fiches closes : " + fichesFermees.slice(0, 2).join(", ") : "") + (sansAr.length ? " — sans page arabe : " + sansAr.slice(0, 2).join(", ") : "") + (gouvTrop.length ? " — " + gouvTrop.slice(0, 2).join(", ") : ""),
+  locsPlan.length >= 40 && locsPlan.length <= 160 && fichesPlan.length >= 10 && fichesPlan.length <= 40 && !fichesFermees.length && !sansAr.length && !gouvTrop.length && rapPlan.length === 1
+  && ["", "a-propos/", "alertes/", "actualites/", "guide-inscription/", "ministeres/", "rapports/", "gouvernorat/national/"].every(u => locsPlan.includes(u))
+  && indexees.filter(p => /^metier\//.test(p)).every(p => locsPlan.includes(p.replace(/index\.html$/, ""))));
 // ---- UNE ADRESSE PAR LANGUE (08/11/2026, plan SEO d'Ahmed, phase 2 point 7 ; robot/langues.py) ----------
 { const dec = x => x.replace(/&#x27;|&#39;|&apos;/g, "’").replace(/&amp;/g, "&").replace(/&quot;/g, '"');
   const existe = (depuis, rel) => { const c = rel.split("#")[0].split("?")[0]; if (!c) return true; return existsSync(join(root, dirname(depuis), c, c.endsWith("/") ? "index.html" : "")); };
@@ -415,8 +428,8 @@ check("Votre avis : e-mail obligatoire (required, « obligatoire ») et confirma
     && !/<script>(?!\s*$)/.test(h.replace(/<script type="application\/ld\+json">[\s\S]*?<\/script>/g, "")))(lire(p))));
   check("rapports : JSON-LD Article + FAQ + fil d'Ariane, méthode et « Citer ces chiffres » sur chaque mois", mois.every(m => (h => h.includes('"@type": "Article"') && h.includes('"@type": "FAQPage"')
     && h.includes('"@type": "BreadcrumbList"') && h.includes('id="methode"') && h.includes('id="citer"'))(lire(`rapports/${m}/index.html`))));
-  check("rapports : dans le plan du site avec la date de leurs chiffres", sm.includes("<loc>https://concours.clicvia.com/rapports/</loc>")
-    && mois.every(m => sm.includes(`<loc>https://concours.clicvia.com/rapports/${m}/</loc><lastmod>${H[m].dernier_jour}</lastmod>`)));
+  check("rapports : rapports/ et le DERNIER mois dans le plan du site (réduit, VIS.3) avec la date de leurs chiffres", sm.includes("<loc>https://concours.clicvia.com/rapports/</loc>")
+    && sm.includes(`<loc>https://concours.clicvia.com/rapports/${mois[mois.length - 1]}/</loc><lastmod>${H[mois[mois.length - 1]].dernier_jour}</lastmod>`));   // VIS.3 : dernier mois seul
   check("rapports : lien dans le pied de page (toutes les pages) et sur l'accueil", lire("assets/page.js").includes('href="${site}rapports/"') && acc.includes('href="rapports/"'));
   check("rapports : 1er mois = « Premier rapport » sans évolution ; mois suivants = évolution", mois.every((m, i) => (h => i === 0 ? h.includes("Premier rapport") && !h.includes('id="evolution"')
     : h.includes('id="evolution"') && !h.includes("Premier rapport"))(lire(`rapports/${m}/index.html`))));

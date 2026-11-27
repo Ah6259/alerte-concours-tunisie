@@ -989,6 +989,36 @@ def ecrire(chemin, contenu):
     open(f, "w", encoding="utf-8", newline="\n").write(contenu)
 
 
+PLAN_GOUV_MIN = 3
+PLAN_FICHES = 40
+
+
+def plan_reduit(pages, sans_index, ouverts):
+    """Adresses FRANÇAISES gardées dans le plan du site (VIS.3, 27/11/2026) ; voir l'appel dans construire()."""
+    par_g = {}
+    for c in ouverts:
+        par_g[c["gouvernorat"]] = par_g.get(c["gouvernorat"], 0) + 1
+    fiches = [f"concours/{c['id']}/" for c in sorted(ouverts, key=lambda c: (-(c.get("postes") or 0), c.get("cloture_candidatures") or "9999", str(c["id"])))]
+    fiches = [f for f in fiches if f in pages and f not in sans_index][:PLAN_FICHES]
+    mois = sorted(c for c in pages if re.fullmatch(r"rapports/\d{4}-\d{2}/", c))
+    garde = []
+    for c in pages:
+        if c in sans_index:
+            continue
+        if c.startswith("concours/"):
+            ok = c in fiches
+        elif c.startswith("gouvernorat/"):
+            g = c.split("/")[1]
+            ok = g == "national" or par_g.get(g, 0) >= PLAN_GOUV_MIN
+        elif re.fullmatch(r"rapports/\d{4}-\d{2}/", c):
+            ok = c == mois[-1]
+        else:
+            ok = True
+        if ok:
+            garde.append(c)
+    return garde
+
+
 def construire(jour):
     d, ouverts = charger(jour)
     maj = d.get("lu_le", "")
@@ -1228,7 +1258,12 @@ def construire(jour):
     # plan du site (25/11/2026, plan Google B.2) : date = dernier VRAI changement de chaque page (robot/lastmod.py, mémoire
     # donnees/lastmod.json : empreinte sans dates ni ?v=), jamais « aujourd'hui » pour tout ; un rapport du mois garde la date de ses chiffres
     import lastmod as LM
-    adresses = [c for c in pages if c not in sans_index] + ["ar/" + c for c in pages if c not in sans_index]
+    # PLAN DU SITE RÉDUIT (VIS.3 point 2, 27/11/2026 ; « fais l'ordre 3 → 1 → 2 → 4 » d'Ahmed ; règle commune § 72) : Google prenait
+    # très peu de pages du domaine ; le plan ne garde que les pages principales, les métiers, les gouvernorats d'au moins
+    # PLAN_GOUV_MIN concours ouverts (+ « national »), les PLAN_FICHES fiches de concours OUVERTS qui offrent le plus de postes et le
+    # DERNIER rapport du mois ; chaque page avec sa page arabe (tout hreflang pointe vers le plan). Le reste reste EN LIGNE, sans noindex.
+    gardees = plan_reduit(pages, sans_index, ouverts)
+    adresses = gardees + ["ar/" + c for c in gardees]
     compte_a_rebours = [re.compile(r'<small class="reste">.*?</small>', re.S), re.compile(r'data-panne="\d"'),
                         re.compile(r'<div class="alerte-panne[^"]*" id="alerte-panne"[^>]*>.*?</div>', re.S), re.compile(r"\((?:encore \d+ jours|demain|aujourd’hui)\)")]
     DATES = LM.dates(RACINE, [a + "index.html" for a in adresses], jour, "donnees/lastmod.json", compte_a_rebours)
