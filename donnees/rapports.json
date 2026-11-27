@@ -203,24 +203,24 @@
   },
   "2026-11": {
    "premier_jour": "2026-11-01",
-   "dernier_jour": "2026-11-26",
+   "dernier_jour": "2026-11-27",
    "fini": false,
    "chiffres": {
-    "au": "2026-11-26",
+    "au": "2026-11-27",
     "debut": "2026-11-01",
     "ouverts": {
-     "n": 65,
-     "postes": 171,
+     "n": 70,
+     "postes": 177,
      "sans_postes": 0
     },
     "national": {
-     "n": 23,
-     "postes": 41,
+     "n": 26,
+     "postes": 45,
      "sans_postes": 0
     },
     "locaux": {
-     "n": 42,
-     "postes": 130,
+     "n": 44,
+     "postes": 132,
      "sans_postes": 0
     },
     "finances": 0,
@@ -232,8 +232,8 @@
      ],
      [
       "ben-arous",
-      9,
-      25
+      11,
+      27
      ],
      [
       "bizerte",
@@ -288,6 +288,11 @@
       26
      ],
      [
+      "ingenieur",
+      7,
+      8
+     ],
+     [
       "technicien",
       5,
       12
@@ -298,38 +303,33 @@
       5
      ],
      [
-      "ingenieur",
-      3,
-      4
-     ],
-     [
       "chauffeur",
       2,
       56
      ],
      [
+      "informatique",
+      2,
+      3
+     ],
+     [
       "finance",
       1,
       2
-     ],
-     [
-      "informatique",
-      1,
-      1
      ]
     ],
     "organismes": [
+     [
+      "بلدية بن عروس",
+      10,
+      26,
+      "ben-arous"
+     ],
      [
       "مسرح الأوبرا",
       9,
       15,
       "national"
-     ],
-     [
-      "بلدية بن عروس",
-      8,
-      24,
-      "ben-arous"
      ],
      [
       "وكالة النهوض بالاستثمار الخارجي",
@@ -362,6 +362,12 @@
       "ariana"
      ],
      [
+      "المركز الوطني لسجل المؤسسات",
+      3,
+      4,
+      "national"
+     ],
+     [
       "بلدية جمال",
       3,
       3,
@@ -369,14 +375,14 @@
      ]
     ],
     "semaine": {
-     "n": 21,
-     "postes": 39,
+     "n": 28,
+     "postes": 101,
      "sans_postes": 0,
-     "jusqu_au": "2026-12-02"
+     "jusqu_au": "2026-12-03"
     },
     "nouveaux": {
-     "n": 61,
-     "postes": 181,
+     "n": 66,
+     "postes": 187,
      "sans_postes": 0
     },
     "nouveaux_metiers": [
@@ -389,6 +395,10 @@
       18
      ],
      [
+      "ingenieur",
+      7
+     ],
+     [
       "technicien",
       5
      ],
@@ -397,19 +407,15 @@
       3
      ],
      [
-      "ingenieur",
-      3
-     ],
-     [
       "autre",
       2
      ],
      [
-      "finance",
-      1
+      "informatique",
+      2
      ],
      [
-      "informatique",
+      "finance",
       1
      ]
     ],
@@ -423,13 +429,13 @@
      "final": 0
     },
     "avis": {
-     "n": 30,
+     "n": 32,
      "types": {
+      "resultats": 12,
+      "nouveau": 7,
       "candidatures": 9,
       "autre": 1,
-      "resultats": 11,
       "convocation": 1,
-      "nouveau": 6,
       "report": 2
      }
     }
@@ -2241,6 +2247,46 @@
      "gouvernorat": "ariana",
      "cloture_candidatures": "2026-12-10",
      "vu_le": "2026-11-26",
+     "publies": []
+    },
+    "3385": {
+     "postes": 1,
+     "metier": "ingenieur",
+     "gouvernorat": "ben-arous",
+     "cloture_candidatures": "2026-12-28",
+     "vu_le": "2026-11-27",
+     "publies": []
+    },
+    "3386": {
+     "postes": 1,
+     "metier": "ingenieur",
+     "gouvernorat": "ben-arous",
+     "cloture_candidatures": "2026-12-28",
+     "vu_le": "2026-11-27",
+     "publies": []
+    },
+    "3382": {
+     "postes": 1,
+     "metier": "ingenieur",
+     "gouvernorat": "national",
+     "cloture_candidatures": "2026-12-30",
+     "vu_le": "2026-11-27",
+     "publies": []
+    },
+    "3383": {
+     "postes": 1,
+     "metier": "ingenieur",
+     "gouvernorat": "national",
+     "cloture_candidatures": "2026-12-30",
+     "vu_le": "2026-11-27",
+     "publies": []
+    },
+    "3384": {
+     "postes": 2,
+     "metier": "informatique",
+     "gouvernorat": "national",
+     "cloture_candidatures": "2026-12-30",
+     "vu_le": "2026-11-27",
      "publies": []
     }
    }

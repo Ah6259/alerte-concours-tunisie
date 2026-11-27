@@ -1,9 +1,9 @@
 {
  "source": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
- "lu_le": "2026-11-26",
+ "lu_le": "2026-11-27",
  "finances_ok": "2026-10-21",
  "finances_raison": "<urlopen error timed out>",
- "pages": 17,
+ "pages": 18,
  "concours": [
   {
    "id": "2390",
@@ -20,7 +20,7 @@
    "vu_le": "2026-11-16",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-11-26"
+   "lu_le": "2026-11-27"
   },
   {
    "id": "2391",
@@ -37,7 +37,7 @@
    "vu_le": "2026-11-16",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-11-26"
+   "lu_le": "2026-11-27"
   },
   {
    "id": "2392",
@@ -54,7 +54,7 @@
    "vu_le": "2026-11-21",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-11-26"
+   "lu_le": "2026-11-27"
   },
   {
    "id": "2412",
@@ -71,7 +71,7 @@
    "vu_le": "2026-11-21",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-11-26"
+   "lu_le": "2026-11-27"
   },
   {
    "id": "2543",
@@ -88,24 +88,7 @@
    "vu_le": "2026-11-21",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-11-26"
-  },
-  {
-   "id": "2548",
-   "decision": ": قرار عدد 5332",
-   "organisme": "بلدية الحمامات",
-   "grade": "مهندس أول اختصاص ميكانيك",
-   "postes": 1,
-   "cloture_candidatures": "2025-11-25",
-   "cloture_concours": "2026-11-26",
-   "resultat_initial": "اطلاع",
-   "resultat_final": "لم تنشر",
-   "metier": "ingenieur",
-   "gouvernorat": "nabeul",
-   "vu_le": "2026-11-16",
-   "historique": [],
-   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-11-26"
+   "lu_le": "2026-11-27"
   },
   {
    "id": "2749",
@@ -122,7 +105,7 @@
    "vu_le": "2026-11-16",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-11-26"
+   "lu_le": "2026-11-27"
   },
   {
    "id": "900800",
@@ -141,7 +124,7 @@
    "lien": "https://concours.finances.gov.tn/theme/documents/concours/8/avis-concours.pdf",
    "vu_le": "2026-10-08",
    "historique": [],
-   "lu_le": "2026-11-26"
+   "lu_le": "2026-11-27"
   },
   {
    "id": "900900",
@@ -160,7 +143,7 @@
    "lien": "https://concours.finances.gov.tn/theme/documents/concours/9/avis-concours.pdf",
    "vu_le": "2026-10-08",
    "historique": [],
-   "lu_le": "2026-11-26"
+   "lu_le": "2026-11-27"
   },
   {
    "id": "3233",
@@ -177,7 +160,7 @@
    "vu_le": "2026-11-16",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-11-26"
+   "lu_le": "2026-11-27"
   },
   {
    "id": "3271",
@@ -194,7 +177,7 @@
    "vu_le": "2026-11-16",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-11-26"
+   "lu_le": "2026-11-27"
   },
   {
    "id": "3290",
@@ -211,7 +194,7 @@
    "vu_le": "2026-11-16",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-11-26"
+   "lu_le": "2026-11-27"
   },
   {
    "id": "3299",
@@ -228,7 +211,7 @@
    "vu_le": "2026-10-20",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-11-26"
+   "lu_le": "2026-11-27"
   },
   {
    "id": "3300",
@@ -245,7 +228,7 @@
    "vu_le": "2026-10-20",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-11-26"
+   "lu_le": "2026-11-27"
   },
   {
    "id": "3301",
@@ -262,7 +245,7 @@
    "vu_le": "2026-10-20",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-11-26"
+   "lu_le": "2026-11-27"
   },
   {
    "id": "3302",
@@ -279,7 +262,7 @@
    "vu_le": "2026-10-20",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-11-26"
+   "lu_le": "2026-11-27"
   },
   {
    "id": "3303",
@@ -296,7 +279,7 @@
    "vu_le": "2026-10-20",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-11-26"
+   "lu_le": "2026-11-27"
   },
   {
    "id": "3304",
@@ -313,7 +296,7 @@
    "vu_le": "2026-10-20",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-11-26"
+   "lu_le": "2026-11-27"
   },
   {
    "id": "3340",
@@ -330,7 +313,7 @@
    "vu_le": "2026-11-04",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-11-26"
+   "lu_le": "2026-11-27"
   },
   {
    "id": "3341",
@@ -347,7 +330,7 @@
    "vu_le": "2026-11-04",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-11-26"
+   "lu_le": "2026-11-27"
   },
   {
    "id": "3342",
@@ -364,7 +347,7 @@
    "vu_le": "2026-11-04",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-11-26"
+   "lu_le": "2026-11-27"
   },
   {
    "id": "3267",
@@ -381,7 +364,7 @@
    "vu_le": "",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-11-26"
+   "lu_le": "2026-11-27"
   },
   {
    "id": "3268",
@@ -398,7 +381,7 @@
    "vu_le": "",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-11-26"
+   "lu_le": "2026-11-27"
   },
   {
    "id": "3315",
@@ -415,7 +398,7 @@
    "vu_le": "2026-10-29",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-11-26"
+   "lu_le": "2026-11-27"
   },
   {
    "id": "3378",
@@ -432,7 +415,7 @@
    "vu_le": "2026-11-26",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-11-26"
+   "lu_le": "2026-11-27"
   },
   {
    "id": "3314",
@@ -449,7 +432,7 @@
    "vu_le": "2026-10-28",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-11-26"
+   "lu_le": "2026-11-27"
   },
   {
    "id": "3316",
@@ -466,7 +449,7 @@
    "vu_le": "2026-10-29",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-11-26"
+   "lu_le": "2026-11-27"
   },
   {
    "id": "3317",
@@ -483,7 +466,7 @@
    "vu_le": "2026-10-30",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-11-26"
+   "lu_le": "2026-11-27"
   },
   {
    "id": "3318",
@@ -500,7 +483,7 @@
    "vu_le": "2026-10-30",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-11-26"
+   "lu_le": "2026-11-27"
   },
   {
    "id": "3319",
@@ -517,7 +500,7 @@
    "vu_le": "2026-10-31",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-11-26"
+   "lu_le": "2026-11-27"
   },
   {
    "id": "3320",
@@ -534,7 +517,7 @@
    "vu_le": "2026-10-31",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-11-26"
+   "lu_le": "2026-11-27"
   },
   {
    "id": "3327",
@@ -551,7 +534,7 @@
    "vu_le": "2026-11-02",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-11-26"
+   "lu_le": "2026-11-27"
   },
   {
    "id": "3338",
@@ -568,7 +551,7 @@
    "vu_le": "2026-11-04",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-11-26"
+   "lu_le": "2026-11-27"
   },
   {
    "id": "3339",
@@ -585,7 +568,7 @@
    "vu_le": "2026-11-04",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-11-26"
+   "lu_le": "2026-11-27"
   },
   {
    "id": "3343",
@@ -602,7 +585,7 @@
    "vu_le": "2026-11-05",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-11-26"
+   "lu_le": "2026-11-27"
   },
   {
    "id": "3346",
@@ -619,7 +602,7 @@
    "vu_le": "2026-11-05",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-11-26"
+   "lu_le": "2026-11-27"
   },
   {
    "id": "3349",
@@ -636,7 +619,7 @@
    "vu_le": "2026-11-09",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-11-26"
+   "lu_le": "2026-11-27"
   },
   {
    "id": "3350",
@@ -653,7 +636,7 @@
    "vu_le": "2026-11-09",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-11-26"
+   "lu_le": "2026-11-27"
   },
   {
    "id": "3351",
@@ -670,7 +653,7 @@
    "vu_le": "2026-11-09",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-11-26"
+   "lu_le": "2026-11-27"
   },
   {
    "id": "3352",
@@ -687,7 +670,7 @@
    "vu_le": "2026-11-09",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-11-26"
+   "lu_le": "2026-11-27"
   },
   {
    "id": "3353",
@@ -704,7 +687,7 @@
    "vu_le": "2026-11-09",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-11-26"
+   "lu_le": "2026-11-27"
   },
   {
    "id": "3368",
@@ -721,7 +704,7 @@
    "vu_le": "2026-11-16",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-11-26"
+   "lu_le": "2026-11-27"
   },
   {
    "id": "3322",
@@ -738,7 +721,7 @@
    "vu_le": "2026-11-02",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-11-26"
+   "lu_le": "2026-11-27"
   },
   {
    "id": "3323",
@@ -755,7 +738,7 @@
    "vu_le": "2026-11-02",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-11-26"
+   "lu_le": "2026-11-27"
   },
   {
    "id": "3324",
@@ -772,7 +755,7 @@
    "vu_le": "2026-11-02",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-11-26"
+   "lu_le": "2026-11-27"
   },
   {
    "id": "3325",
@@ -789,7 +772,7 @@
    "vu_le": "2026-11-02",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-11-26"
+   "lu_le": "2026-11-27"
   },
   {
    "id": "3326",
@@ -806,7 +789,7 @@
    "vu_le": "2026-11-02",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-11-26"
+   "lu_le": "2026-11-27"
   },
   {
    "id": "3328",
@@ -823,7 +806,7 @@
    "vu_le": "2026-11-02",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-11-26"
+   "lu_le": "2026-11-27"
   },
   {
    "id": "3356",
@@ -840,7 +823,7 @@
    "vu_le": "2026-11-11",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-11-26"
+   "lu_le": "2026-11-27"
   },
   {
    "id": "3329",
@@ -857,7 +840,7 @@
    "vu_le": "2026-11-02",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-11-26"
+   "lu_le": "2026-11-27"
   },
   {
    "id": "3330",
@@ -874,7 +857,7 @@
    "vu_le": "2026-11-02",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-11-26"
+   "lu_le": "2026-11-27"
   },
   {
    "id": "3331",
@@ -891,7 +874,7 @@
    "vu_le": "2026-11-02",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-11-26"
+   "lu_le": "2026-11-27"
   },
   {
    "id": "3332",
@@ -908,7 +891,7 @@
    "vu_le": "2026-11-02",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-11-26"
+   "lu_le": "2026-11-27"
   },
   {
    "id": "3333",
@@ -925,7 +908,7 @@
    "vu_le": "2026-11-02",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-11-26"
+   "lu_le": "2026-11-27"
   },
   {
    "id": "3334",
@@ -942,7 +925,7 @@
    "vu_le": "2026-11-02",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-11-26"
+   "lu_le": "2026-11-27"
   },
   {
    "id": "3335",
@@ -959,7 +942,7 @@
    "vu_le": "2026-11-02",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-11-26"
+   "lu_le": "2026-11-27"
   },
   {
    "id": "3336",
@@ -976,7 +959,7 @@
    "vu_le": "2026-11-02",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-11-26"
+   "lu_le": "2026-11-27"
   },
   {
    "id": "3337",
@@ -993,7 +976,7 @@
    "vu_le": "2026-11-02",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-11-26"
+   "lu_le": "2026-11-27"
   },
   {
    "id": "3344",
@@ -1010,7 +993,7 @@
    "vu_le": "2026-11-05",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-11-26"
+   "lu_le": "2026-11-27"
   },
   {
    "id": "3345",
@@ -1027,7 +1010,7 @@
    "vu_le": "2026-11-05",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-11-26"
+   "lu_le": "2026-11-27"
   },
   {
    "id": "3354",
@@ -1044,7 +1027,7 @@
    "vu_le": "2026-11-11",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-11-26"
+   "lu_le": "2026-11-27"
   },
   {
    "id": "3355",
@@ -1061,7 +1044,7 @@
    "vu_le": "2026-11-11",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-11-26"
+   "lu_le": "2026-11-27"
   },
   {
    "id": "3379",
@@ -1078,7 +1061,7 @@
    "vu_le": "2026-11-26",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-11-26"
+   "lu_le": "2026-11-27"
   },
   {
    "id": "3380",
@@ -1095,7 +1078,7 @@
    "vu_le": "2026-11-26",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-11-26"
+   "lu_le": "2026-11-27"
   },
   {
    "id": "3381",
@@ -1112,7 +1095,7 @@
    "vu_le": "2026-11-26",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-11-26"
+   "lu_le": "2026-11-27"
   },
   {
    "id": "3357",
@@ -1129,7 +1112,7 @@
    "vu_le": "2026-11-12",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-11-26"
+   "lu_le": "2026-11-27"
   },
   {
    "id": "3358",
@@ -1146,7 +1129,7 @@
    "vu_le": "2026-11-12",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-11-26"
+   "lu_le": "2026-11-27"
   },
   {
    "id": "3359",
@@ -1163,7 +1146,7 @@
    "vu_le": "2026-11-12",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-11-26"
+   "lu_le": "2026-11-27"
   },
   {
    "id": "3360",
@@ -1180,7 +1163,7 @@
    "vu_le": "2026-11-16",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-11-26"
+   "lu_le": "2026-11-27"
   },
   {
    "id": "3361",
@@ -1197,7 +1180,7 @@
    "vu_le": "2026-11-16",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-11-26"
+   "lu_le": "2026-11-27"
   },
   {
    "id": "3362",
@@ -1214,7 +1197,7 @@
    "vu_le": "2026-11-16",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-11-26"
+   "lu_le": "2026-11-27"
   },
   {
    "id": "3363",
@@ -1231,7 +1214,7 @@
    "vu_le": "2026-11-16",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-11-26"
+   "lu_le": "2026-11-27"
   },
   {
    "id": "3364",
@@ -1248,7 +1231,7 @@
    "vu_le": "2026-11-16",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-11-26"
+   "lu_le": "2026-11-27"
   },
   {
    "id": "3365",
@@ -1265,7 +1248,7 @@
    "vu_le": "2026-11-16",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-11-26"
+   "lu_le": "2026-11-27"
   },
   {
    "id": "3366",
@@ -1282,7 +1265,7 @@
    "vu_le": "2026-11-16",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-11-26"
+   "lu_le": "2026-11-27"
   },
   {
    "id": "3367",
@@ -1299,7 +1282,7 @@
    "vu_le": "2026-11-16",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-11-26"
+   "lu_le": "2026-11-27"
   },
   {
    "id": "3369",
@@ -1316,7 +1299,7 @@
    "vu_le": "2026-11-16",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-11-26"
+   "lu_le": "2026-11-27"
   },
   {
    "id": "3370",
@@ -1333,7 +1316,7 @@
    "vu_le": "2026-11-20",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-11-26"
+   "lu_le": "2026-11-27"
   },
   {
    "id": "3371",
@@ -1350,7 +1333,7 @@
    "vu_le": "2026-11-20",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-11-26"
+   "lu_le": "2026-11-27"
   },
   {
    "id": "3373",
@@ -1367,7 +1350,7 @@
    "vu_le": "2026-11-24",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-11-26"
+   "lu_le": "2026-11-27"
   },
   {
    "id": "3374",
@@ -1384,7 +1367,7 @@
    "vu_le": "2026-11-24",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-11-26"
+   "lu_le": "2026-11-27"
   },
   {
    "id": "3375",
@@ -1401,7 +1384,7 @@
    "vu_le": "2026-11-24",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-11-26"
+   "lu_le": "2026-11-27"
   },
   {
    "id": "3377",
@@ -1418,7 +1401,7 @@
    "vu_le": "2026-11-25",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-11-26"
+   "lu_le": "2026-11-27"
   },
   {
    "id": "3376",
@@ -1435,7 +1418,41 @@
    "vu_le": "2026-11-25",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-11-26"
+   "lu_le": "2026-11-27"
+  },
+  {
+   "id": "3385",
+   "decision": "قرار رئيس الحكومة المؤرخ في 30 ديسمبر 2024 يتعلق بضبط كيفية تنظيم المناظرة بالاختبارات لإعادة توظيف أعوان الدولة و الجماعات المحلية و المؤسسات العمومية ذات الصبغة الإدارية في رتبة مهندس أول بالسلك المشترك لمهندسي الإدارات العمومية.",
+   "organisme": "بلدية بن عروس",
+   "grade": "مهندس أول اختصاص \" هندسة ميكانيكية \"",
+   "postes": 1,
+   "cloture_candidatures": "2026-12-28",
+   "cloture_concours": "2026-12-28",
+   "resultat_initial": "--",
+   "resultat_final": "--",
+   "metier": "ingenieur",
+   "gouvernorat": "ben-arous",
+   "vu_le": "2026-11-27",
+   "historique": [],
+   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
+   "lu_le": "2026-11-27"
+  },
+  {
+   "id": "3386",
+   "decision": "قرار رئيس الحكومة المؤرخ في 30 ديسمبر 2024 يتعلق بضبط كيفية تنظيم المناظرة بالاختبارات لإعادة توظيف أعوان الدولة و الجماعات المحلية و المؤسسات العمومية ذات الصبغة الإدارية في رتبة مهندس أول بالسلك المشترك لمهندسي الإدارات العمومية.",
+   "organisme": "بلدية بن عروس",
+   "grade": "مهندس أول اختصاص \" هندسة مدنية \"",
+   "postes": 1,
+   "cloture_candidatures": "2026-12-28",
+   "cloture_concours": "2026-12-28",
+   "resultat_initial": "--",
+   "resultat_final": "--",
+   "metier": "ingenieur",
+   "gouvernorat": "ben-arous",
+   "vu_le": "2026-11-27",
+   "historique": [],
+   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
+   "lu_le": "2026-11-27"
   },
   {
    "id": "3372",
@@ -1452,7 +1469,58 @@
    "vu_le": "2026-11-23",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-11-26"
+   "lu_le": "2026-11-27"
+  },
+  {
+   "id": "3382",
+   "decision": "مناظرة خارجية لإنتداب إطارات قارين بالمركز الوطني لسجلّ المؤسسات بعنوان سنتي 2025-2026",
+   "organisme": "المركز الوطني لسجل المؤسسات",
+   "grade": "مهندس أوّل",
+   "postes": 1,
+   "cloture_candidatures": "2026-12-30",
+   "cloture_concours": "2026-12-30",
+   "resultat_initial": "لم تنشر",
+   "resultat_final": "لم تنشر",
+   "metier": "ingenieur",
+   "gouvernorat": "national",
+   "vu_le": "2026-11-27",
+   "historique": [],
+   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
+   "lu_le": "2026-11-27"
+  },
+  {
+   "id": "3383",
+   "decision": "C02/2025",
+   "organisme": "المركز الوطني لسجل المؤسسات",
+   "grade": "مهندس أوّل",
+   "postes": 1,
+   "cloture_candidatures": "2026-12-30",
+   "cloture_concours": "2026-12-30",
+   "resultat_initial": "لم تنشر",
+   "resultat_final": "لم تنشر",
+   "metier": "ingenieur",
+   "gouvernorat": "national",
+   "vu_le": "2026-11-27",
+   "historique": [],
+   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
+   "lu_le": "2026-11-27"
+  },
+  {
+   "id": "3384",
+   "decision": "C03/2025",
+   "organisme": "المركز الوطني لسجل المؤسسات",
+   "grade": "محلل أوّل",
+   "postes": 2,
+   "cloture_candidatures": "2026-12-30",
+   "cloture_concours": "2026-12-30",
+   "resultat_initial": "لم تنشر",
+   "resultat_final": "لم تنشر",
+   "metier": "informatique",
+   "gouvernorat": "national",
+   "vu_le": "2026-11-27",
+   "historique": [],
+   "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
+   "lu_le": "2026-11-27"
   },
   {
    "id": "3348",
@@ -1469,7 +1537,7 @@
    "vu_le": "2026-11-05",
    "historique": [],
    "lien": "https://www.concours.gov.tn/P1/index5.aspx?id=5",
-   "lu_le": "2026-11-26"
+   "lu_le": "2026-11-27"
   }
  ]
 }
