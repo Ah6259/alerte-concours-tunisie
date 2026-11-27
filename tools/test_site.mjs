@@ -750,11 +750,12 @@ check("paiement : le motif est le code personnel, jamais « nom … (motif du pa
     + (malRangees.length ? " — " + malRangees.slice(0, 3).join(", ") : ""), !malRangees.length);
   // § 72 : aucun lien de nos pages vers une fiche de concours qui n'existe pas (actualités, accueil, organismes)
   const mortes = [];
-  for (const p of pages) { const h = lire(p), dir = p.replace(/[^/]*$/, "");
+  const toutes = [...pages, ...["", "ar/"].flatMap(pr => readdirSync(join(root, pr + "concours")).map(n => `${pr}concours/${n}/index.html`).filter(f => existsSync(join(root, f))))];
+  for (const p of new Set(toutes)) { const h = lire(p), dir = p.replace(/[^/]*$/, "");
     for (const m of h.matchAll(/href="((?:\.\.\/)*)concours\/(\d+)\/"/g)) {
       const cible = join(root, dir, m[1], `concours/${m[2]}/index.html`);
       if (!existsSync(cible)) { mortes.push(p + " -> concours/" + m[2]); break; } } }
-  check("aucun lien vers une fiche de concours retirée (§ 72)" + (mortes.length ? " — " + mortes.slice(0, 3).join(", ") : ""), !mortes.length);
+  check("aucun lien vers une fiche de concours retirée, dans toutes les pages et toutes les fiches, même anciennes (§ 72)" + (mortes.length ? " — " + mortes.slice(0, 3).join(", ") : ""), !mortes.length);
   // données inventées : une page inchangée garde sa date (même si sa date de relevé, son ?v= et son compte à rebours changent), une page changée prend la date du jour
   const { execFileSync } = await import("node:child_process");
   const { mkdtempSync, writeFileSync, mkdirSync, rmSync } = await import("node:fs");

@@ -645,6 +645,25 @@ def retirer_fiches_terminees(garde):
     return n
 
 
+def delier_fiches_retirees(garde):
+    """§ 72 : les anciennes fiches (jamais refaites) gardent des liens « Concours n° … » vers des fiches retirées (visiteur simulé du
+    27/11/2026 : 36 liens morts) -> ces liens sont enlevés. Renvoie le nombre de pages corrigées."""
+    lien = re.compile(r'<a href="((?:\.\./)*)concours/(\d+)/">(.*?)</a>', re.S)
+    n = 0
+    for pref in ("", "ar/"):
+        dossier = os.path.join(RACINE, pref + "concours")
+        for num in (os.listdir(dossier) if os.path.isdir(dossier) else []):
+            f = os.path.join(dossier, num, "index.html")
+            if not os.path.exists(f):
+                continue
+            h0 = open(f, encoding="utf-8").read()
+            h = lien.sub(lambda m: m.group(0) if m.group(2) in garde else "", h0)
+            if h != h0:
+                open(f, "w", encoding="utf-8", newline="\n").write(h)
+                n += 1
+    return n
+
+
 def noindex_si_perimee(h, jour):
     """Ancienne fiche (plus dans les données) : noindex si elle est périmée d'après les dates de son tableau."""
     lim = _date_apres(h, ("Clôture des candidatures", "آخر أجل للترشح"))
@@ -1204,6 +1223,7 @@ def construire(jour):
         ecrire("ar/" + chemin, ar)
     LG.nettoyer(RACINE)                      # page arabe sans page française du jour (ancien concours) = retirée
     print(f"fiches de concours terminées retirées (§ 72) : {retirer_fiches_terminees(FICHES)}")
+    print(f"pages sans lien vers une fiche retirée (§ 72) : {delier_fiches_retirees(FICHES)} corrigée(s)")
     ajouter_encadre_anciennes({str(c["id"]) for c in d["concours"]}, jour, v)   # 25/11/2026 : encadré des alertes aussi sur les anciennes fiches
     # plan du site (25/11/2026, plan Google B.2) : date = dernier VRAI changement de chaque page (robot/lastmod.py, mémoire
     # donnees/lastmod.json : empreinte sans dates ni ?v=), jamais « aujourd'hui » pour tout ; un rapport du mois garde la date de ses chiffres
