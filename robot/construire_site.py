@@ -5,7 +5,7 @@ Pages : accueil (tous les concours ouverts, filtres gouvernorat + métier, compt
 (24 + « Toute la Tunisie » ; un concours national apparaît dans CHAQUE gouvernorat), une page par métier, guide
 « s'inscrire à un concours », alertes (abonnement Telegram) et leurs conditions, à propos et sources ; sitemap, robots.txt, manifeste.
 Gabarit, styles et scripts repris d'Alertes appels d'offres Tunisie (même famille de sites)."""
-import argparse, datetime as dt, hashlib, html, json, os, re, sys
+import argparse, datetime as dt, hashlib, html, json, os, re, shutil, sys
 
 ICI = os.path.dirname(os.path.abspath(__file__))
 RACINE = os.path.dirname(ICI)
@@ -176,7 +176,8 @@ def page_ministeres(v, maj, jour):
 
 def actu_html(x, racine):
     t = TYPES_ACTU.get(x["type"], A.AUTRE)
-    liens = "".join(f'<a href="{racine}concours/{E(n)}/">{L(f"Concours n° {E(n)}", f"المناظرة عدد {ISO(E(n))}")}</a>' for n in x.get("concours", [])[:6])
+    liens = "".join(f'<a href="{racine}concours/{E(n)}/">{L(f"Concours n° {E(n)}", f"المناظرة عدد {ISO(E(n))}")}</a>'
+                    for n in [n for n in x.get("concours", []) if str(n) in FICHES][:6])      # § 72 : jamais de lien vers une fiche retirée
     return (f'<article class="actu actu-{t[0]}"><p class="actu-haut"><span class="actu-type">{L(t[1], t[2])}</span>'
             f'<span class="actu-date">{ISO(dfr(x.get("date")))}</span></p>'
             f'<h3 dir="rtl" lang="ar">{E(x["organisme"])}</h3><p class="actu-resume" dir="rtl" lang="ar">{E(x["resume"])}</p>'
@@ -608,6 +609,42 @@ def _date_apres(h, etiquettes):
     return None
 
 
+FICHES = set()   # § 72 (27/11/2026) : numéros des fiches de concours EN LIGNE après ce passage (liens des actualités limités à elles)
+
+
+def perimee_html(h, jour):
+    """Fiche déjà écrite : périmée d'après les dates de son tableau (pas de ligne de date = jamais périmée, en cas de doute on garde)."""
+    lim = _date_apres(h, ("Clôture des candidatures", "آخر أجل للترشح"))
+    fin = _date_apres(h, ("Clôture du concours", "ختم المناظرة"))
+    return lim is not None and fiche_perimee(lim, fin, jour)
+
+
+def fiches_gardees(d, jour):
+    """Règle commune § 72 (27/11/2026, Ahmed : « tous les sites doivent gérer de la même manière les pages terminées ») : une fiche
+    terminée (inscriptions ET concours finis depuis plus de 60 jours, les résultats sont alors publiés) est RETIRÉE, comme une conférence
+    passée : hors du plan du site, aucun lien vers elle ; la page 404 commune guide le visiteur. Renvoie les numéros des fiches gardées."""
+    ids = {str(c["id"]) for c in d["concours"]}
+    garde = {str(c["id"]) for c in d["concours"] if not fiche_perimee(c.get("cloture_candidatures") or "", c.get("cloture_concours") or "", jour)}
+    dossier = os.path.join(RACINE, "concours")
+    for num in (os.listdir(dossier) if os.path.isdir(dossier) else []):
+        f = os.path.join(dossier, num, "index.html")
+        if num not in ids and os.path.exists(f) and not perimee_html(open(f, encoding="utf-8").read(), jour):
+            garde.add(num)
+    return garde
+
+
+def retirer_fiches_terminees(garde):
+    """Supprime les dossiers concours/<n>/ et ar/concours/<n>/ des fiches terminées (§ 72). Renvoie le nombre de fiches retirées."""
+    n = 0
+    for pref in ("", "ar/"):
+        dossier = os.path.join(RACINE, pref + "concours")
+        for num in (os.listdir(dossier) if os.path.isdir(dossier) else []):
+            if num not in garde and os.path.isdir(os.path.join(dossier, num)):
+                shutil.rmtree(os.path.join(dossier, num), ignore_errors=True)
+                n += 1 if not pref else 0
+    return n
+
+
 def noindex_si_perimee(h, jour):
     """Ancienne fiche (plus dans les données) : noindex si elle est périmée d'après les dates de son tableau."""
     lim = _date_apres(h, ("Clôture des candidatures", "آخر أجل للترشح"))
@@ -625,7 +662,7 @@ def ajouter_encadre_anciennes(ids_du_jour, jour, v):
         dossier = os.path.join(RACINE, pref + "concours")
         for num in (os.listdir(dossier) if os.path.isdir(dossier) else []):
             f = os.path.join(dossier, num, "index.html")
-            if num in ids_du_jour or not os.path.exists(f):
+            if num in ids_du_jour or num not in FICHES or not os.path.exists(f):
                 continue
             h0 = open(f, encoding="utf-8").read()
             h = noindex_si_perimee(h0, jour)          # 25/11/2026 (plan Google B.1) : vieille fiche périmée = noindex
@@ -936,6 +973,7 @@ def ecrire(chemin, contenu):
 def construire(jour):
     d, ouverts = charger(jour)
     maj = d.get("lu_le", "")
+    FICHES.clear(); FICHES.update(fiches_gardees(d, jour))     # § 72 : fiches en ligne après ce passage
     v = hashlib.sha1("".join(open(os.path.join(RACINE, "assets", f), "rb").read().decode("utf-8", "ignore") for f in ("style.css", "page.js", "son.js", "app.js", "avis.js", "pass-commun.js", "pass-reglages.js")).encode()).hexdigest()[:8]
     cm, cg = comptes(ouverts)
     urgents = sum(1 for c in ouverts if c.get("cloture_candidatures") and 0 <= (dt.date.fromisoformat(c["cloture_candidatures"]) - dt.date.fromisoformat(jour)).days < 7)
@@ -1094,7 +1132,9 @@ def construire(jour):
         DESC_AR[f"concours/{c['id']}/"] = (f"المناظرة عدد {c['id']}: {c['grade']}، {c['organisme']}" + (f"، {postes} خطة" if postes else "")
                                              + (f". آخر أجل للترشح {dfr(lim)}" if ouvert and lim else f". انتهى أجل الترشح في {dfr(lim)}" if lim else "")
                                              + ". الرابط الرسمي، دليل الترشح، حالة النتائج.")
-        perimee = fiche_perimee(lim, fin, jour)      # 25/11/2026 (plan Google B.1) : en ligne, mais noindex et hors du plan du site
+        if str(c["id"]) not in FICHES:                # § 72 (27/11/2026) : fiche terminée = retirée (plus de noindex accumulés)
+            continue
+        perimee = False
         pages[f"concours/{c['id']}/"] = page(f"concours/{c['id']}/", "../../", titre[:150] + " | Alerte Concours Tunisie", desc, hero, contenu, v, maj, fil_ld,
                                              indexer=not perimee)
         if perimee:
@@ -1163,6 +1203,7 @@ def construire(jour):
         ecrire(chemin, fr)
         ecrire("ar/" + chemin, ar)
     LG.nettoyer(RACINE)                      # page arabe sans page française du jour (ancien concours) = retirée
+    print(f"fiches de concours terminées retirées (§ 72) : {retirer_fiches_terminees(FICHES)}")
     ajouter_encadre_anciennes({str(c["id"]) for c in d["concours"]}, jour, v)   # 25/11/2026 : encadré des alertes aussi sur les anciennes fiches
     # plan du site (25/11/2026, plan Google B.2) : date = dernier VRAI changement de chaque page (robot/lastmod.py, mémoire
     # donnees/lastmod.json : empreinte sans dates ni ?v=), jamais « aujourd'hui » pour tout ; un rapport du mois garde la date de ses chiffres

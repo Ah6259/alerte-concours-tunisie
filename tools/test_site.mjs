@@ -73,8 +73,12 @@ check("un concours local figure seulement dans son gouvernorat", !loc || (lire(`
 
 // ---- 3. Google, robots, téléphone
 // une page par concours (08/10/2026) : chaque concours du tableau officiel, avec grade, organisme, lien officiel, guide, canonique
-const pc = D.concours.map(c => [c, `concours/${c.id}/index.html`]);
-check(`pages des concours : une par concours (${D.concours.length}), grade + organisme, lien officiel https, guide, adresse canonique`,
+// § 72 (27/11/2026) : fiche terminée (inscriptions ET concours finis depuis plus de 60 jours) = retirée ; les autres ont leur page
+const TERMINE = c => { const b = new Date(Date.parse(D.lu_le || new Date().toISOString().slice(0, 10)) - 58 * 864e5).toISOString().slice(0, 10);
+  const lim = c.cloture_candidatures || "", fin = c.cloture_concours || ""; return !!lim && lim < b && (!fin || fin < b); };
+const DC = D.concours.filter(c => !TERMINE(c));
+const pc = DC.map(c => [c, `concours/${c.id}/index.html`]);
+check(`pages des concours : une par concours non terminé (${DC.length} sur ${D.concours.length}), grade + organisme, lien officiel https, guide, adresse canonique`,
   pc.every(([c, f]) => existsSync(join(root, f)) && (h => h.includes(`<link rel="canonical" href="https://concours.clicvia.com/concours/${c.id}/">`)
     && h.includes(c.source === "finances" ? 'class="officiel" href="https://concours.finances.gov.tn/' : 'class="officiel" href="https://www.concours.gov.tn/') && h.includes('href="../../guide-inscription/"')
     && h.includes(c.grade.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;")) && !/undefined|NaN|None/.test(h))(lire(f))));
@@ -105,7 +109,7 @@ if (AC.length) {
   check("accueil : les 4 dernières actualités + lien vers la page", (acc.match(/<article class="actu /g) || []).length === Math.min(4, AC.length) && acc.includes('href="actualites/"'));
 }
 const sm = lire("sitemap.xml");
-check("plan du site : les pages des concours (sauf fiches périmées en noindex, plan Google B.1)", D.concours.every(c => lire(`concours/${c.id}/index.html`).includes('content="noindex') || sm.includes(`https://concours.clicvia.com/concours/${c.id}/`)));
+check("plan du site : chaque fiche de concours en ligne y est (fiches terminées retirées, § 72)", D.concours.every(c => !existsSync(join(root, `concours/${c.id}/index.html`)) || sm.includes(`https://concours.clicvia.com/concours/${c.id}/`)));
 const indexees = pages.filter(p => !lire(p).includes('content="noindex'));
 check("plan du site : toutes les pages indexables, en français et en arabe (ar/)", indexees.every(p => sm.includes("https://concours.clicvia.com/" + p.replace(/index\.html$/, "")) && sm.includes("https://concours.clicvia.com/ar/" + p.replace(/index\.html$/, ""))));
 // ---- UNE ADRESSE PAR LANGUE (08/11/2026, plan SEO d'Ahmed, phase 2 point 7 ; robot/langues.py) ----------
@@ -521,7 +525,7 @@ check("paiement : le motif est le code personnel, jamais « nom … (motif du pa
   const jourMs = x => Date.parse(x + "T00:00:00Z"), LU = D.lu_le;
   const attenduFiche = c => "../../alertes/?" + [`metier=${c.metier}`].concat(c.gouvernorat === "national" ? [] : [`gouv=${c.gouvernorat}`]).join("&amp;") + "#inscription";
   const ko1 = [], ko2 = [];
-  for (const c of D.concours) for (const pref of ["", "ar/"]) {
+  for (const c of DC) for (const pref of ["", "ar/"]) {
     const f = `${pref}concours/${c.id}/index.html`; if (!existsSync(join(root, f))) { if (!pref) ko1.push(f + " (absente)"); continue; }
     const h = lire(f), e = enc(h), [href, clic] = lien(h);
     const bonTexte = pref ? /لا تفوّت/.test(e) && !/Ne ratez plus/.test(e) : /Ne ratez plus un concours/.test(e) && !/[؀-ۿ]/.test(e);
@@ -530,7 +534,7 @@ check("paiement : le motif est le code personnel, jamais « nom … (motif du pa
     const lim = c.cloture_candidatures, reste = lim ? (jourMs(lim) - jourMs(LU)) / 864e5 : null, r = e.match(/<p class="encadre-rappel" data-rappel-limite="([^"]+)"><a class="btn-clair" id="rappel-btn" href="([^"]*)" data-clic="rappel-date">/);
     if (r ? !(reste > 3 && r[1] === lim && r[2] === attenduFiche(c).replace("?", `?suivi=${c.id}&amp;`)) : (reste !== null && reste > 4)) ko2.push(f + (r ? " (rappel en trop)" : " (rappel manquant)"));
   }
-  check(`encadré alertes sur chaque fiche du jour (${D.concours.length}, FR + ar/) : texte de la langue, prix, lien alertes/?metier=…&gouv=… (aucun gouvernorat pour un concours national), clic « alertes-fiche »` + (ko1.length ? " — " + ko1.slice(0, 4).join(", ") : ""), D.concours.length > 0 && !ko1.length);
+  check(`encadré alertes sur chaque fiche du jour (${DC.length}, FR + ar/) : texte de la langue, prix, lien alertes/?metier=…&gouv=… (aucun gouvernorat pour un concours national), clic « alertes-fiche »` + (ko1.length ? " — " + ko1.slice(0, 4).join(", ") : ""), D.concours.length > 0 && !ko1.length);
   check("« Me rappeler la date limite » : présent seulement si l'inscription se termine dans plus de 3 jours, lien alertes/?suivi=<n°>&metier=…, clic « rappel-date »" + (ko2.length ? " — " + ko2.slice(0, 4).join(", ") : ""),
     !ko2.length && D.concours.some(c => c.cloture_candidatures && (jourMs(c.cloture_candidatures) - jourMs(LU)) / 864e5 > 4 ? /id="rappel-btn"/.test(lire(`concours/${c.id}/index.html`)) : false));
   const ids = new Set(D.concours.map(c => String(c.id))), anciennes = readdirSync(join(root, "concours")).filter(n => !ids.has(n) && existsSync(join(root, "concours", n, "index.html")));
@@ -740,10 +744,17 @@ check("paiement : le motif est le code personnel, jamais « nom … (motif du pa
     const h = lire(f), lim = ligne(h, pref ? "آخر أجل للترشح" : "Clôture des candidatures") ?? ligne(h, "Clôture des candidatures"), fin = ligne(h, pref ? "ختم المناظرة" : "Clôture du concours") ?? ligne(h, "Clôture du concours");
     if (lim === null) continue;
     const sur = !!lim && lim < recul(61) && (!fin || fin < recul(61)), pasSur = !lim || lim >= recul(59) || (fin && fin >= recul(59));
-    if ((sur && !noidx(f)) || (pasSur && noidx(f))) malRangees.push(f);
+    if (sur || noidx(f)) malRangees.push(f);
   }
-  check(`fiches de concours : noindex si inscriptions ET concours finis depuis plus de 60 jours, sinon indexées (${readdirSync(join(root, "concours")).filter(n => existsSync(join(root, `concours/${n}/index.html`)) && noidx(`concours/${n}/index.html`)).length} fiches en noindex)`
+  check(`fiches de concours (§ 72, 27/11/2026) : aucune fiche terminée depuis plus de 60 jours en ligne, aucune fiche en noindex (${readdirSync(join(root, "concours")).length} fiches)`
     + (malRangees.length ? " — " + malRangees.slice(0, 3).join(", ") : ""), !malRangees.length);
+  // § 72 : aucun lien de nos pages vers une fiche de concours qui n'existe pas (actualités, accueil, organismes)
+  const mortes = [];
+  for (const p of pages) { const h = lire(p), dir = p.replace(/[^/]*$/, "");
+    for (const m of h.matchAll(/href="((?:\.\.\/)*)concours\/(\d+)\/"/g)) {
+      const cible = join(root, dir, m[1], `concours/${m[2]}/index.html`);
+      if (!existsSync(cible)) { mortes.push(p + " -> concours/" + m[2]); break; } } }
+  check("aucun lien vers une fiche de concours retirée (§ 72)" + (mortes.length ? " — " + mortes.slice(0, 3).join(", ") : ""), !mortes.length);
   // données inventées : une page inchangée garde sa date (même si sa date de relevé, son ?v= et son compte à rebours changent), une page changée prend la date du jour
   const { execFileSync } = await import("node:child_process");
   const { mkdtempSync, writeFileSync, mkdirSync, rmSync } = await import("node:fs");
