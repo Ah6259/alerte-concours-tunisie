@@ -168,7 +168,7 @@ def page_ministeres(v, maj, jour):
     contenu = f"""<section class="carte"><p class="note">{L(f"{ok} site(s) lus lors de la dernière visite ; les autres ne répondaient pas ou refusent les robots (pas de contournement). Titres repris tels quels avec le lien officiel : lisez toujours l'avis complet sur le site du ministère.",
         f"تمت قراءة {ISO(ok)} موقعًا في آخر زيارة؛ البقية لم تستجب أو ترفض البرامج الآلية (دون تحايل). العناوين كما هي مع الرابط الرسمي: اقرأ دائمًا البلاغ كاملًا في موقع الوزارة.")}</p></section>
 {blocs or f'<section class="carte"><p>{L("Première visite des sites des ministères en cours : les annonces apparaîtront ici.", "الزيارة الأولى لمواقع الوزارات جارية: ستظهر البلاغات هنا.")}</p></section>'}
-{bouton_alertes("../")}"""
+{bouton_alertes("../", "alertes-ministeres")}"""
     return page("ministeres/", "../", "Concours des ministères en Tunisie : annonces sur les sites officiels | Alerte Concours Tunisie",
                 f"Annonces de concours publiées sur les sites officiels des ministères tunisiens ({n_ann} annonces), vérifiées chaque semaine : ouverture, convocations, résultats. مناظرات الوزارات.",
                 hero, contenu, v, maj)
@@ -532,12 +532,14 @@ def texte_telegram(robot):
              "<b><bdi dir=\"ltr\">/start</bdi></b> متبوعًا برمزك.")
 
 
-def bouton_alertes(racine):
-    """Gros bouton doré (comme Alertes appels d'offres) -> page alertes/ (inscription)."""
+def bouton_alertes(racine, clic="alertes-entete"):
+    """Gros bouton doré (comme Alertes appels d'offres) -> page alertes/ (inscription). Clic compté dans GoatCounter
+    (28/11/2026, règle commune § 71.2) : `clic` = endroit (alertes-accueil, alertes-actualites… ; alertes-entete sur les fiches,
+    métiers et gouvernorats, qui ont déjà leur encadré compté à part)."""
     titre = L("Alertes concours : votre métier et votre gouvernorat chaque matin sur Telegram", "تنبيهات المناظرات: اختصاصك وولايتك كل صباح على تيليغرام")
     sous = L(f"Suivi de vos concours (convocations, résultats) · {ABO['prix_3mois']} DT / 3 mois",
              f"متابعة مناظراتك (الاستدعاءات، النتائج) · {ISO(ABO['prix_3mois'])} دينار / ⁦3⁩ أشهر")
-    return (f'<a class="btn-pro-grand" id="btn-alertes" href="{racine}alertes/">{ICONE_CLOCHE}'
+    return (f'<a class="btn-pro-grand" id="btn-alertes" href="{racine}alertes/" data-clic="{clic}">{ICONE_CLOCHE}'
             f'<span>{titre}<small>{sous}</small></span></a>')
 
 
@@ -685,6 +687,8 @@ def ajouter_encadre_anciennes(ids_du_jour, jour, v):
                 continue
             h0 = open(f, encoding="utf-8").read()
             h = noindex_si_perimee(h0, jour)          # 25/11/2026 (plan Google B.1) : vieille fiche périmée = noindex
+            # 28/11/2026 (§ 71.2) : gros bouton doré des vieilles fiches compté comme celui des fiches du jour
+            h = re.sub(r'(id="btn-alertes" href="\.\./\.\./alertes/")(>)', r'\1 data-clic="alertes-entete"\2', h)
             mm = re.search(r'href="\.\./\.\./metier/([a-z-]+)/"', h)
             mg = re.search(r'href="\.\./\.\./gouvernorat/([a-z-]+)/"', h)
             ancre = '<div class="alerte-panne" id="alerte-panne" role="status"></div>\n'
@@ -800,11 +804,11 @@ def page_a_propos(v, maj):
        f"الدفع عبر ⁨D17⁩ أو ⁨IZI⁩ مع ذكر <b>رمزك الشخصي</b> المعطى في صفحة التنبيهات. لا تجديد آلي: تذكير قبل النهاية بـ{ISO(rj)} أيام، ثم يتوقف التنبيه ببساطة.")}</p>
 <p>{L("<b>Commande en attente</b> : après l'inscription, la page « Dernière étape » montre votre code en gros (c'est votre numéro de commande, à écrire dans le motif du paiement), les 3" + NB + "étapes du paiement et un bouton WhatsApp où le code et votre nom sont déjà écrits. Votre téléphone se souvient de la commande pendant 60" + NB + "jours (seulement le code, la formule et la date, jamais votre nom, téléphone ou e-mail) : en revenant sur la page Alertes, vous retrouvez le code, le paiement, WhatsApp et « Ouvrir Telegram » ; « Nouvelle commande » l'efface. Code oublié dans le motif ? Envoyez quand même la preuve sur WhatsApp, nous retrouvons votre demande. <b>E-mail de confirmation</b> : dans la minute qui suit l'inscription, vous recevez aussi tout cela par e-mail (code, prix, paiement, boutons WhatsApp et Telegram), dans la langue de la page.",
        "<b>طلب في الانتظار</b>: بعد التسجيل، تعرض صفحة «الخطوة الأخيرة» رمزك بخط كبير (هو رقم طلبك، اكتبه في خانة سبب الدفع)، وخطوات الدفع الثلاث وزر واتساب مكتوب فيه الرمز واسمك. يتذكر هاتفك الطلب مدة " + ISO(60) + " يومًا (الرمز والصيغة والتاريخ فقط، لا اسمك ولا هاتفك ولا بريدك أبدًا): عند العودة إلى صفحة التنبيهات تجد الرمز والدفع وواتساب و«افتح تيليغرام»؛ و«طلب جديد» يمحوه. نسيت الرمز في سبب الدفع؟ أرسل الوصل على واتساب وسنجد طلبك. <b>بريد التأكيد</b>: خلال دقيقة من التسجيل يصلك كل هذا أيضًا عبر البريد الإلكتروني (الرمز، الثمن، الدفع، زرّا واتساب وتيليغرام) بلغة الصفحة.")}</p>
-<a class="btn" href="../alertes/">{L("Voir les alertes", "اطّلع على التنبيهات")}</a></section>
+<a class="btn" href="../alertes/" data-clic="alertes-a-propos">{L("Voir les alertes", "اطّلع على التنبيهات")}</a></section>
 <section class="carte"><h2>{L("Vos données", "بياناتك")}</h2>
 <ul>
 {li("Pas de compte à créer pour consulter le site. Votre téléphone garde seulement la langue choisie.", "لا حساب لإنشائه لتصفح الموقع. هاتفك يحفظ فقط اللغة المختارة.")}
-{li("Statistiques de visite anonymes, sans cookies (GoatCounter) : nous comptons aussi, sans savoir qui vous êtes, les clics sur les boutons qui mènent aux alertes.", "إحصائيات زيارات مجهولة، دون ملفات تعريف الارتباط (⁨GoatCounter⁩): نحسب أيضًا، دون معرفة هويتك، النقرات على الأزرار التي تؤدي إلى التنبيهات.")}
+{li("Statistiques de visite anonymes, sans cookies (GoatCounter) : nous comptons aussi, sans savoir qui vous êtes, les clics sur les boutons qui mènent aux alertes : tous les liens vers la page Alertes, partout où ils sont (encadrés, « Me rappeler la date limite », gros bouton doré, bouton « Alertes » du haut, pied de page), avec l'endroit du clic (accueil, fiche, métier, gouvernorat, actualités, ministères, guide, rapports, cette page).", "إحصائيات زيارات مجهولة، دون ملفات تعريف الارتباط (⁨GoatCounter⁩): نحسب أيضًا، دون معرفة هويتك، النقرات على الأزرار التي تؤدي إلى التنبيهات: كل الروابط نحو صفحة التنبيهات أينما كانت (الإطارات، «ذكّرني بآخر أجل»، الزر الذهبي الكبير، زر «التنبيهات» في الأعلى، أسفل الصفحة)، مع مكان النقرة (الصفحة الرئيسية، المناظرة، الاختصاص، الولاية، الأخبار، الوزارات، الدليل، التقارير، هذه الصفحة).")}
 {li("Votre avis et l'inscription aux alertes ne sont envoyés que si vous touchez « Envoyer » (service Formspree). Vos coordonnées servent seulement à l'abonnement : elles ne sont jamais publiées ni vendues. L'e-mail de confirmation part par notre service d'envoi (Resend) ; rien n'est gardé.", "رأيك والتسجيل في التنبيهات لا يُرسلان إلا إذا لمست «أرسل» (خدمة ⁨Formspree⁩). بياناتك تُستعمل للاشتراك فقط: لا تُنشر ولا تُباع أبدًا. بريد التأكيد يُرسل عبر خدمة الإرسال لدينا (⁨Resend⁩)؛ ولا يُحفظ شيء.")}
 {li("Les pages « Confidentialité » et « Conditions d'utilisation », communes à tous nos sites, sont en bas de chaque page.", "صفحتا «الخصوصية» و«شروط الاستعمال»، المشتركتان بين كل مواقعنا، في أسفل كل صفحة.")}
 </ul></section>
@@ -1055,7 +1059,7 @@ def construire(jour):
   <h2 id="bientot-titre">{L("⏰ Inscriptions qui se terminent bientôt", "⏰ ترشحات تنتهي قريبًا")}</h2>
   <ol class="bientot-liste" id="bientot-liste"></ol>
 </section>
-{bouton_alertes("")}
+{bouton_alertes("", "alertes-accueil")}
 {filtres(ouverts)}
 {liste_html(ouverts, "", jour, "Aucun concours ouvert pour ce choix. Essayez un autre métier ou tous les gouvernorats.", "لا توجد مناظرة مفتوحة لهذا الاختيار. جرّب اختصاصًا آخر أو كل الولايات.")}
 <h2 class="titre-section" id="gouvernorats">{L("Par gouvernorat", "حسب الولاية")}</h2>
@@ -1122,7 +1126,7 @@ def construire(jour):
         contenu = f"""{bouton_alertes("../../")}
 {filtres(cs, avec_metier=False)}
 {encadre_metier(s, fr, ar, len(cs))}
-{liste_html(cs, "../../", jour, "Aucun concours ouvert pour ce métier aujourd'hui. <a href='../../alertes/'>Recevoir une alerte</a> · <a href='../../#liste'>tous les concours ouverts</a>", "لا توجد مناظرة مفتوحة في هذا الاختصاص اليوم. <a href='../../alertes/'>تلقَّ تنبيهًا</a> · <a href='../../#liste'>كل المناظرات المفتوحة</a>")}
+{liste_html(cs, "../../", jour, "Aucun concours ouvert pour ce métier aujourd'hui. <a href='../../alertes/' data-clic='alertes-metier'>Recevoir une alerte</a> · <a href='../../#liste'>tous les concours ouverts</a>", "لا توجد مناظرة مفتوحة في هذا الاختصاص اليوم. <a href='../../alertes/' data-clic='alertes-metier'>تلقَّ تنبيهًا</a> · <a href='../../#liste'>كل المناظرات المفتوحة</a>")}
 {autres_m}"""
         DESC_AR[f"metier/{s}/"] = f"مناظرات {ar} في تونس: {len(cs)} مناظرة مفتوحة، مرتبة حسب الولاية، مع آخر أجل للترشح والرابط الرسمي لكل مناظرة. تنبيهات على تيليغرام عند فتح مناظرة جديدة."
         pages[f"metier/{s}/"] = page(f"metier/{s}/", "../../", f"Concours {fr} Tunisie 2026 : {len(cs)} ouvert{'s' if len(cs) > 1 else ''} | Alerte Concours Tunisie",
@@ -1205,7 +1209,7 @@ def construire(jour):
         contenu = f"""<section class="carte"><p class="puces-actu">{puces} <a class="pastille" href="../ministeres/">{L("Sites des ministères", "مواقع الوزارات")}</a></p>
 <p class="note">{L("Résumés des avis officiels. Lisez toujours l'avis complet sur le portail officiel : seul lui fait foi.", "ملخصات للبلاغات الرسمية. اقرأ دائمًا البلاغ كاملًا في البوابة الرسمية: هي المرجع الوحيد.")}</p></section>
 {blocs}
-{bouton_alertes("../")}"""
+{bouton_alertes("../", "alertes-actualites")}"""
         pages["actualites/"] = page("actualites/", "../", "Actualités des concours en Tunisie : résultats, convocations, admis | Alerte Concours Tunisie",
                                     f"Résultats, listes des admis, convocations et nouveaux concours publiés sur le portail officiel des concours publics : {len(actus)} avis, mis à jour chaque jour. نتائج المناظرات.",
                                     hero, contenu, v, maj)
@@ -1220,7 +1224,7 @@ def construire(jour):
     <p class="intro">{L("Les 5 étapes sur le portail officiel des concours publics, d'après le guide officiel du candidat.", "المراحل الخمس في البوابة الرسمية للمناظرات العمومية، حسب الدليل الرسمي للمترشح.")}</p>"""
     contenu = f"""<section class="carte"><ol class="etapes">{etapes}</ol>
 <a class="btn" href="{URL_PORTAIL}" target="_blank" rel="noopener">{L("Ouvrir le portail officiel", "افتح البوابة الرسمية")}</a></section>
-{bouton_alertes("../")}"""
+{bouton_alertes("../", "alertes-guide")}"""
     pages["guide-inscription/"] = page("guide-inscription/", "../", "S'inscrire à un concours public en Tunisie (concours.gov.tn) : les étapes | Alerte Concours Tunisie",
                                        "Comment s'inscrire à un concours public en Tunisie sur concours.gov.tn : créer son compte, trouver le concours, postuler, suivre les résultats.", hero, contenu, v, maj)
 

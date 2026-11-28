@@ -632,6 +632,48 @@ check("paiement : le motif est le code personnel, jamais « nom … (motif du pa
   const textes = [...D.concours.map(c => `concours/${c.id}/index.html`), "metier/ouvrier/index.html", "gouvernorat/sousse/index.html"].filter(f => existsSync(join(root, f))).map(f => enc(lire(f))).join(" ");
   check("encadrés : aucune gratuité promise (ni essai, ni canal, ni formule gratuite)", textes.length > 1000 && !/gratuit|offert|essai|مجان/i.test(textes));
 }
+// ---- 28/11/2026 (audit en ligne, règle commune § 71.2) : CHAQUE lien vers alertes/ (page payante) est compté dans GoatCounter
+//      (data-clic = endroit) : toutes les pages fabriquées (anciennes fiches comprises, FR + ar/), sauf alertes/ elle-même ; en-tête et pied de page.js.
+{ const htmls = []; (function parcourir(d, rel) { for (const n of readdirSync(d)) { if (["node_modules", ".git", "tools"].includes(n)) continue;
+    const c = join(d, n), r = rel + n; if (statSync(c).isDirectory()) { if (r === "alertes" || r === "ar/alertes") continue; parcourir(c, r + "/"); } else if (n.endsWith(".html")) htmls.push(r); } })(root, "");
+  const sansClic = [], RE_LIEN = /<a\b[^>]*\bhref=["']((?:\.\.\/)*(?:ar\/)?alertes\/(?:[?#][^"']*)?)["'][^>]*>/g;
+  let nLiens = 0;
+  for (const f of htmls) for (const m of lire(f).matchAll(RE_LIEN)) { nLiens++; if (!/\bdata-clic=["'][a-z-]+["']/.test(m[0])) sansClic.push(f + " : " + m[0].slice(0, 90)); }
+  check(`chaque lien vers alertes/ porte data-clic (${nLiens} liens dans ${htmls.length} pages, anciennes fiches comprises, FR + ar/)` + (sansClic.length ? " — " + sansClic.slice(0, 3).join(" | ") : ""), nLiens > 100 && !sansClic.length);
+  const pj = lire("assets/page.js"), lienJs = [...pj.matchAll(/<a\b[^>]*href="\$\{site\}alertes\/"[^>]*>/g)].map(m => m[0]);
+  check("assets/page.js : bouton « Alertes » du haut et lien du pied de page comptés (alertes-barre, alertes-pied)",
+    lienJs.length === 2 && lienJs.every(x => /data-clic="[a-z-]+"/.test(x)) && /data-clic="alertes-barre"/.test(pj) && /data-clic="alertes-pied"/.test(pj));
+  const bouton = f => (lire(f).match(/id="btn-alertes"[^>]*data-clic="([a-z-]+)"/) || [])[1];
+  const ATTENDU = [["index.html", "alertes-accueil"], ["ar/index.html", "alertes-accueil"], ["actualites/index.html", "alertes-actualites"], ["ministeres/index.html", "alertes-ministeres"],
+    ["guide-inscription/index.html", "alertes-guide"], ["ar/guide-inscription/index.html", "alertes-guide"], ["rapports/index.html", "alertes-rapport"], ["metier/ouvrier/index.html", "alertes-entete"],
+    ["gouvernorat/sousse/index.html", "alertes-entete"]].filter(([f]) => existsSync(join(root, f)));
+  const malNommes = ATTENDU.filter(([f, n]) => bouton(f) !== n).map(([f, n]) => `${f} (${bouton(f)} au lieu de ${n})`);
+  check("gros bouton doré : l'endroit du clic est celui de la page (accueil, actualités, ministères, guide, rapports ; alertes-entete sur métiers et gouvernorats)" + (malNommes.length ? " — " + malNommes.join(", ") : ""), ATTENDU.length >= 8 && !malNommes.length);
+  check("a-propos/ : « Voir les alertes » compté (alertes-a-propos)", /href="\.\.\/alertes\/" data-clic="alertes-a-propos"/.test(lire("a-propos/index.html")) && /data-clic="alertes-a-propos"/.test(lire("ar/a-propos/index.html")));
+  if (JSDOM) {
+    const essai = (f, avecGc, sel) => {
+      const dom = new JSDOM(lire(f).replace(/<script[^>]*src="[^"]*"[^>]*><\/script>/g, ""), { runScripts: "outside-only", url: "https://concours.clicvia.com/" + f.replace(/index\.html$/, ""), pretendToBeVisual: true });
+      const w = dom.window, comptes = [], erreurs = []; w.allerVers = () => {};
+      w.addEventListener("error", e => erreurs.push(e.message));
+      w.eval(lire("assets/page.js"));
+      if (avecGc) w.goatcounter.count = o => comptes.push(o);
+      w.document.dispatchEvent(new w.Event("DOMContentLoaded"));
+      const a = w.document.querySelector(sel);
+      if (a) { a.addEventListener("click", e => e.preventDefault()); a.dispatchEvent(new w.MouseEvent("click", { bubbles: true, cancelable: true })); }
+      return { a, comptes, erreurs };
+    };
+    for (const [f, sel, nom] of [["index.html", "#btn-alertes", "alertes-accueil"], ["ar/actualites/index.html", "#btn-alertes", "alertes-actualites"],
+      ["rapports/index.html", "#btn-alertes", "alertes-rapport"], ["a-propos/index.html", 'a[data-clic="alertes-a-propos"]', "alertes-a-propos"],
+      ["guide-inscription/index.html", "#entete a.entete-pro", "alertes-barre"], ["ministeres/index.html", '#pied a[href$="alertes/"]', "alertes-pied"]]) {
+      if (!existsSync(join(root, f))) { check(`clic compté : page d'essai ${f} trouvée`, false); continue; }
+      const r = essai(f, true, sel);
+      check(`clic compté (faux GoatCounter) sur ${f} ${sel} → « /alerte-concours-tunisie/clic/${nom} »`,
+        !!r.a && r.comptes.length === 1 && r.comptes[0].path === "/alerte-concours-tunisie/clic/" + nom && r.comptes[0].event === true && !!r.comptes[0].title && !/^Clic alertes/.test(r.comptes[0].title) && !r.erreurs.length);
+      const s = essai(f, false, sel);
+      check(`sans GoatCounter sur ${f} ${sel} : aucun compte, aucune erreur, le lien reste`, !!s.a && !s.comptes.length && !s.erreurs.length);
+    }
+  }
+}
 // 25/10/2026 (RÈGLE d'Ahmed : « la page Comment fonctionne le site doit être mise à jour chaque fois qu'on modifie le site », règle commune § 44) :
 // chaque fonction visible du site (repère dans les pages ou le code) doit être expliquée dans a-propos/ ; nouvelle fonction = une ligne ici + la page
 { const ap = lire("a-propos/index.html"), acc2 = lire("index.html"), js = lire("assets/app.js") + lire("assets/page.js");
@@ -653,6 +695,7 @@ check("paiement : le motif est le code personnel, jamais « nom … (motif du pa
     ["encadré « Ne ratez plus un concours » vers les alertes (fiches, métiers, gouvernorats)", /id="encadre-alertes"/.test(lire("metier/ouvrier/index.html") + lire("gouvernorat/sousse/index.html")), /« Ne ratez plus un concours »<\/b>[\s\S]*déjà cochés/],
     ["bouton « Me rappeler la date limite » (suivi + rappel 3 jours avant, avec les alertes)", /data-rappel-limite/.test(lire("assets/page.js")), /« Me rappeler la date limite »<\/b>[\s\S]*concours à suivre[\s\S]*3.jours avant la date limite/],
     ["clics vers les alertes comptés (GoatCounter, sans savoir qui)", /clic\//.test(lire("assets/page.js")), /clics sur les boutons qui mènent aux alertes/],
+    ["tous les liens vers les alertes comptés, avec leur endroit (28/11/2026, § 71.2)", /data-clic="alertes-pied"/.test(lire("assets/page.js")), /tous les liens vers la page Alertes[\s\S]*gros bouton doré[\s\S]*pied de page[\s\S]*avec l'endroit du clic/],
     ["alertes Telegram payantes (Alertes + Suivi)", existsSync(join(root, "alertes/index.html")), /Payant : Alertes \+ Suivi sur Telegram/],
     ["paiement avec le code personnel, sans renouvellement automatique", /abo-code/.test(lire("alertes/index.html") + PASS_JS), /code personnel[\s\S]*Pas de renouvellement automatique/],
     ["commande en attente gardée par le téléphone (code, paiement, WhatsApp, Telegram)", /pass-commande/.test(PASS_JS) && /id="abo-attente"/.test(lire("alertes/index.html")), /Commande en attente<\/b>[\s\S]*numéro de commande[\s\S]*60.jours[\s\S]*Nouvelle commande/],

@@ -290,7 +290,7 @@ def page_mois(C, hist, mois, v, maj, images=False):
 <p class="rap-citer">Source : Alerte Concours Tunisie, « {E(titre)} », {C.URL_SITE}{chemin}</p></section>''')
     sections.insert(0, bloc_partage(C, titre, chemin, haut=True))
     sections.append(bloc_partage(C, titre, chemin))
-    sections.append(C.bouton_alertes("../../"))
+    sections.append(C.bouton_alertes("../../", "alertes-rapport"))
 
     etat = (L(f"Mois terminé : chiffres au {dfr(au)}, figés.", f"شهر منتهٍ: الأرقام في {ISO(dfr(au))}، نهائية.") if fini
             else L(f"Chiffres au {dfr(au)} — mois en cours, mis à jour chaque jour.", f"الأرقام في {ISO(dfr(au))} — الشهر الجاري، تحيين يومي."))
@@ -336,7 +336,7 @@ def page_liste(C, hist, v, maj):
     tl = "Rapports du mois : les concours publics en Tunisie en chiffres"
     contenu = (bloc_partage(C, tl, "rapports/", haut=True) + f'<section class="carte"><ul class="rap-mois">{items}</ul>'
                f'<p class="note">{L("Le mois en cours est mis à jour chaque jour ; un mois terminé n’est plus jamais modifié. Aucune estimation : chaque nombre est un comptage.", "الشهر الجاري يُحيَّن كل يوم؛ والشهر المنتهي لا يُغيَّر أبدًا. لا تقديرات: كل رقم هو عدّ.")}</p></section>'
-               + bloc_partage(C, tl, "rapports/") + C.bouton_alertes("../"))
+               + bloc_partage(C, tl, "rapports/") + C.bouton_alertes("../", "alertes-rapport"))
     return C.page("rapports/", "../", tl + " | Alerte Concours Tunisie",
                   DESC_DEBUT + "Chaque mois, les concours publics ouverts en Tunisie en chiffres : nombre de concours et de postes, par métier, gouvernorat et organisme, d'après le tableau officiel. تقارير المناظرات.",
                   hero, contenu, v, maj)

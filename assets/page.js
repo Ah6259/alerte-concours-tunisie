@@ -45,7 +45,7 @@
             <small>${T("Tunisie · tous les concours publics, 24 gouvernorats", "تونس · كل المناظرات العمومية في 24 ولاية")}</small></span>
         </a>
         <div class="entete-boutons">
-          <a class="entete-pro" href="${site}alertes/">${T("Alertes", "التنبيهات")}</a>
+          <a class="entete-pro" href="${site}alertes/" data-clic="alertes-barre">${T("Alertes", "التنبيهات")}</a>
           <button class="partager" type="button" aria-label="${T("Partager cette page", "شارك هذه الصفحة")}" title="${T("Partager", "شارك")}"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 13.5l6.8 4M15.4 6.5l-6.8 4"/></svg></button>
           <button class="langue" type="button" aria-label="${T("Lire en arabe", "Lire en français")}" title="${T("العربية", "Français")}">${T("ع", "Fr")}</button>
         </div>
@@ -61,7 +61,7 @@
           <a href="${site}#metiers">${T("Par métier", "حسب الاختصاص")}</a>
           <a href="${site}guide-inscription/">${T("S'inscrire à un concours", "كيف تترشح لمناظرة")}</a>
           <a href="${site}rapports/">${T("Rapports du mois", "التقارير الشهرية")}</a>
-          <a href="${site}alertes/">${T("Alertes par métier et gouvernorat", "تنبيهات حسب الاختصاص والولاية")}</a>
+          <a href="${site}alertes/" data-clic="alertes-pied">${T("Alertes par métier et gouvernorat", "تنبيهات حسب الاختصاص والولاية")}</a>
           <a href="${site}a-propos/">${T("Comment fonctionne le site ?", "كيف يعمل الموقع؟")}</a>
           <a href="${site}#avis">${T("Votre avis", "رأيك")}</a>
         <a href="https://clicvia.com/" rel="noopener" target="_blank">${T("Tous nos services", "كل خدماتنا")}</a>
@@ -156,8 +156,9 @@ document.addEventListener("click", function (e) {
   copier();
 });
 
-/* Clics vers les alertes (25/11/2026, demande d'Ahmed) : tout lien data-clic="<nom>" (encadrés des fiches, métiers, gouvernorats,
-   « Me rappeler la date limite ») est compté dans GoatCounter comme un ÉVÉNEMENT « /alerte-concours-tunisie/clic/<nom> »
+/* Clics vers les alertes (25/11/2026, demande d'Ahmed ; 28/11/2026 : TOUS les liens vers alertes/, règle commune § 71.2) :
+   tout lien data-clic="<nom>" (encadrés des fiches, métiers, gouvernorats, « Me rappeler la date limite », gros bouton doré,
+   bouton « Alertes » du haut, pied de page, « Voir les alertes ») est compté dans GoatCounter comme un ÉVÉNEMENT « /alerte-concours-tunisie/clic/<nom> »
    (préfixe du site, comme ses pages, dans le compteur commun). Rien si GoatCounter est absent ou bloqué ; le lien s'ouvre toujours. */
 (function () {
   document.addEventListener("click", function (e) {
@@ -166,7 +167,12 @@ document.addEventListener("click", function (e) {
     var nom = (a.getAttribute("data-clic") || "").replace(/[^a-z-]/g, "");
     if (!nom) return;
     var titres = { "alertes-fiche": "Clic vers les alertes (fiche d'un concours)", "alertes-metier": "Clic vers les alertes (page d'un métier)",
-      "alertes-gouvernorat": "Clic vers les alertes (page d'un gouvernorat)", "rappel-date": "Clic « Me rappeler la date limite »" };
+      "alertes-gouvernorat": "Clic vers les alertes (page d'un gouvernorat)", "rappel-date": "Clic « Me rappeler la date limite »",
+      "alertes-entete": "Clic vers les alertes (gros bouton doré d'une fiche, d'un métier ou d'un gouvernorat)",
+      "alertes-accueil": "Clic vers les alertes (accueil)", "alertes-actualites": "Clic vers les alertes (actualités)",
+      "alertes-ministeres": "Clic vers les alertes (sites des ministères)", "alertes-guide": "Clic vers les alertes (guide d'inscription)",
+      "alertes-a-propos": "Clic vers les alertes (Comment fonctionne le site ?)", "alertes-rapport": "Clic vers les alertes (rapports du mois)",
+      "alertes-barre": "Clic vers les alertes (bouton « Alertes » en haut de page)", "alertes-pied": "Clic vers les alertes (pied de page)" };
     try { if (window.goatcounter && typeof window.goatcounter.count === "function")
       window.goatcounter.count({ path: "/alerte-concours-tunisie/clic/" + nom, title: titres[nom] || "Clic " + nom, event: true }); } catch (x) {}
   });

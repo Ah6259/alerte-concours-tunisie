@@ -269,3 +269,18 @@ Rien n'est ajouté au site sans l'accord d'Ahmed.
   accueil / gouvernorats / guide… jamais noindex, règle des 60 jours recalculée, lastmod.py avec données inventées.
 - (suite 25/11) `robot/lastmod.py` version 2 (même fichier que dans Appels d'offres) : l'heure du relevé (« 16:42 ») et le bandeau de panne
   (`data-panne`, `#alerte-panne`) n'entrent plus dans l'empreinte ; `VERSION` changée = mémoire refaite depuis git (jamais « aujourd'hui »).
+
+## 28/11/2026 — TOUS les liens vers alertes/ comptés (audit en ligne, règle commune § 71.2, « fais tout » d'Ahmed)
+- L'audit avait trouvé des liens vers la page payante `alertes/` non comptés : gros bouton doré `bouton_alertes()`, bouton « Alertes » du
+  haut et lien du pied de page (injectés par assets/page.js), « Voir les alertes » de a-propos/. Rien de nouveau à l'écran (ni encadré, ni gratuité, ni prix changé).
+- Endroits (événements GoatCounter `/alerte-concours-tunisie/clic/<endroit>`, titres dans `titres` de page.js) : gros bouton doré =
+  `alertes-accueil`, `alertes-actualites`, `alertes-ministeres`, `alertes-guide`, `alertes-rapport` (rapports.py) selon la page, et
+  `alertes-entete` sur les fiches, métiers et gouvernorats (qui ont déjà leur encadré compté à part) ; `alertes-a-propos` (« Voir les alertes ») ;
+  `alertes-barre` (bouton « Alertes » du haut) ; `alertes-pied` (pied de page) ; lien « Recevoir une alerte » d'une liste vide = `alertes-metier`.
+  `bouton_alertes(racine, clic)` ; les ANCIENNES fiches reçoivent `data-clic="alertes-entete"` sur leur bouton doré dans `ajouter_encadre_anciennes()`.
+  Les liens de la page alertes/ vers elle-même ne sont pas comptés.
+- « Comment fonctionne le site ? » (FR + AR, « Vos données ») : liste des endroits comptés ; ligne ajoutée dans FONCTIONS.
+- Tests (test_site.mjs, bloc « 28/11/2026 ») : chaque lien vers alertes/ de chaque page fabriquée (anciennes fiches comprises, FR + ar/, hors
+  alertes/) porte data-clic ; page.js (haut + pied) ; endroit du bouton doré par page ; clic avec faux GoatCounter = 1 événement, rien sans lui.
+  Sabotages attrapés (data-clic retiré du guide, du pied de page.js, d'une ancienne fiche ; la construction suivante remet celui de l'ancienne fiche).
+  226 vérifications, test_robot 89, visiteur simulé ANOMALIES 0.
